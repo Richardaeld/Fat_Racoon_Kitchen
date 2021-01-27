@@ -2,8 +2,8 @@
 
 # UX
 
-# Goals
-## User Goals
+## Goals
+### User Goals
 - I want to find a recipe for dinner.
 - I want to use my cell phone to look up a recipe.
 - I want a pasta dish Ive never tried before.
@@ -11,8 +11,9 @@
 - I want a well rated recipe.
 - I dont know what I want for dinner.
 - My significant other wants a new chicken dish for dinner.
+- *consider* having a form for users to commit on others recipies. This could ustablish a sense of cooking community.
 
-## Developer Goals
+### Developer Goals
 - I want to showcase my python abilities.
     - Datetime (python)
     - Flask (flash, render_template, redirect, request, session, url_for)
@@ -26,10 +27,19 @@
     - Pymongo (Flask - mongo DB)
     - 
 
-# Client Stories and Experience Provided
-## Client Stories
+## Client Stories and Experience Provided
+### Client Stories
 
-## Experience Provided
+### Experience Provided
+- A meal star carousel on the front page (cycles through meal stars, proetin, bread, pasta, ...).
+- Be able to look up recipies by meal(brakefast, lunch, ...) or star type (protein, bread, pasta, ...).
+- Have a random, "recipe of the day" (more likely a random recipe).
+- Recipies can be favorited by users to allow them to quickly and easily find them.
+- Create a form to allow others to commit on recipies to establish a sense of community and fellowship.
+- Allow users to submit their own recipies to be rated and used by others.
+- Make site fully responsive.
+- Have a search bar for to find recipe name (or maybe use it to search ingredience?) .
+- Use a rating system for dishes - [[*star amount*, *users rated this count*], [*star amount*, *users rated this count*], ...] - using this frame a 5 star rating system could be build. Take the total number of ratings and average them together for overall rating  
 
 # Design Choices
 
