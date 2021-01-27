@@ -4,8 +4,27 @@
 
 # Goals
 ## User Goals
+- I want to find a recipe for dinner.
+- I want to use my cell phone to look up a recipe.
+- I want a pasta dish Ive never tried before.
+- I want a place to leave a recipe I can easiy find.
+- I want a well rated recipe.
+- I dont know what I want for dinner.
+- My significant other wants a new chicken dish for dinner.
 
 ## Developer Goals
+- I want to showcase my python abilities.
+    - Datetime (python)
+    - Flask (flash, render_template, redirect, request, session, url_for)
+    - Jinja (Templates)
+    - Python Day Time 
+    - Pymongo (Flask - mongo DB)
+    - 
+
+- I want to showcase my DB abilites.
+    - Mongo DB
+    - Pymongo (Flask - mongo DB)
+    - 
 
 # Client Stories and Experience Provided
 ## Client Stories
