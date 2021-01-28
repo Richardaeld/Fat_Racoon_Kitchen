@@ -5,7 +5,7 @@ without the ideal ingredience on hand, a little taste pairing or extra spice can
 help home chefs make the jump from recipe depentent to taste depentent. Our chefs know the importance of making the best out of what we have on hand 
 and want to share that liberating experience with other home chefs.
 
-The two chefs of the Fat Racoon Kitchen started as sleep deprived, nocturnal home chefs that would use the "garbage", leftovers, or that one thing 
+The chefs of the Fat Racoon Kitchen started as sleep deprived, nocturnal home chefs that would use the "garbage", leftovers, or that one thing 
 that has to be eatten today (Weve all done it) to make a meal. With practice and study these meals improved over time but it started with learning 
 fundamental cooking practices and taste pairings. We want to help others wisely spend their kitchen time making the best meals they can. We offer 
 conventional cooking practice and recipe guidance to help them along the way. The Fat Racoon Kitchen believes that helping to establish a community 
@@ -185,4 +185,5 @@ in college, let us know!
     + A basic guide to the current version of Werkzeug.
 + [World Wide Web Consortium (W3C)](https://www.w3.org/)
     + Used to understand basic standardization practices for web based apps.
+    
 # Acknowledgements
