@@ -134,10 +134,55 @@ in college, let us know!
 
 # Tools and Credits
 ## Tools
++ [Balsamiq](https://balsamiq.com/)
+    + Used to produce the wireframes.
++ [Bootstrap](https://getbootstrap.com/)
+    + Used as framework.
++ [BrowserStack](https://www.browserstack.com/)
+    + Used to check for compatibility errors.
++ [GitHub](https://github.com/)
+    + Used for version control and deploys application information to Heroku.
++ [GitPod](https://www.gitpod.io/)
+    + Integrated development environment used.
++ [Google Fonts](https://fonts.google.com/)
+    + Imported font families from here.
++ [Heroku](https://www.heroku.com/)
+    + Site where application is deployed.
++ [Jigsaw (Validation Service)](https://jigsaw.w3.org/css-validator/)
+    + Used to identify errors in CSS.
++ [JSHint](https://jshint.com/)
+    + Used to identify errors in JavaScript.
++ [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+    + Used to check for performance, accessibility, best practices, and SEO.
++ [Pingdom](https://tools.pingdom.com/)
+    + Used to check load time.
++ [Techsini](https://techsini.com/multi-mockup/)
+    + Used for their viewable responsiveness PNG.
++ [TinyPNG](https://tinypng.com/)
+    + Used to Minimize KB load per image.
++ [W3C Validator](https://validator.w3.org/)
+    + Used to identify errors in markup.
 
 ## Credits
 ### Code Citations
 
 ### References and Ideas
-
++ [Bootstrap](https://getbootstrap.com/)
+    + Framework used to help speed up development and provide a better overall UX.
++ [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+    + A basic guide to the current version of Flask.
++ [MDN Web Docs](https://developer.mozilla.org/en-US/)
+    + Invaluable source of information about JavaScript, HTML, and CSS.
++ [PyMongo](https://pymongo.readthedocs.io/en/stable/)
+    + A basic guide to the current version of PyMongo
++ [Stack Overflow](https://stackoverflow.com/)
+    + Great souce of information for finding a starting place and direction to research.
++ [TestLodge](https://blog.testlodge.com/how-to-write-test-cases-for-software-with-sample/)
+    + Used to help formulate test syntax structure.
++ [W3Schools](https://www.w3schools.com/)
+    + Extremely helpful for explaining base HTML, CSS, and JavaScript principles.
++ [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
+    + A basic guide to the current version of Werkzeug.
++ [World Wide Web Consortium (W3C)](https://www.w3.org/)
+    + Used to understand basic standardization practices for web based apps.
 # Acknowledgements
