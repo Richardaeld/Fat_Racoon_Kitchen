@@ -1,4 +1,25 @@
-# Romancing The Cards - Introduction
+# Fat Racoon Kitchen - Introduction
+The Fat Racoon Kitchen is devoted to helping home cooks provide better meals to friends, family, and/or yourself. We provide a network of user uploaded 
+recipies that can be searched through with our "Ingredience on Hand" or "Garbage" search, which is a favorite for our chefs. We stoutly believe that even 
+without the ideal ingredience on hand, a little taste pairing or extra spice can help make any meal provide a savory experience. Our end goal is to 
+help home chefs make the jump from recipe depentent to taste depentent. Our chefs know the importance of making the best out of what we have on hand 
+and want to share that liberating experience with other home chefs.
+
+The two chefs of the Fat Racoon Kitchen started as sleep deprived, nocturnal home chefs that would use the "garbage", leftovers, or that one thing 
+that has to be eatten today (Weve all done it) to make a meal. With practice and study these meals improved over time but it started with learning 
+fundamental cooking practices and taste pairings. We want to help others wisely spend their kitchen time making the best meals they can. We offer 
+conventional cooking practice and recipe guidance to help them along the way. The Fat Racoon Kitchen believes that helping to establish a community 
+of home cooks and their recipies in an intuitive search engine will be a boon to home chefs everywhere. It helps newer chefs see that not every 
+recipe has to be complicated or convoluted.
+
+We offer home cooking fundamentals along with a search engine where you can list all of your "garbage"(ingredience on hand) and see if we have a 
+recipe that contains all that you have. If not we have a *star* search where you can look for a recipe that takes the star component of your meal 
+into account and renders a search result based on that. 
+
+For our home cooks that submit recipes, we even offer a place to put in a recipes background or history. Cooking has more meaning that just preparing 
+food. For many it is a connection to your history or life experience.  We encourage our users to give us a little history on the recipes they submit. 
+Let us help preserve the history of a recipe. Its important to us and to those that submitted it. From a family recipe to this is all I could afford 
+in college, let us know!
 
 # UX
 
