@@ -91,6 +91,15 @@ in college, let us know!
 ## Scalability
 
 # Technology Languages
++ HTML - Skeleton frame of the application.
++ CSS - Beautifies the skeleton (HTML).
++ JavaScript - Allows for dynamic content on the application.
++ Python - Allows back end programs to run. These programs are:
+    + Flask - Allows use of Templating, security, user searching, and other critical functions.
+    + Pymongo - Allows flask (python) to communicate with Mongo DB.
+    + Werkzeug - Encrypts data as it is sent between the user and server.
+    + Datetime - Allows python to take a date/time stamp.
++ Mongo DB - Database that application communicates with and stores information on.
 
 # Testing
 ## Developer Testing Specifications
