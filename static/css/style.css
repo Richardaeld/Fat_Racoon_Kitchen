@@ -13,12 +13,25 @@ body {
     background-size: 20px 20px;
 }
 
+/* -- blank is extra till pymongo runs -- */
+.blank-large-recipe {
+    height: 300px;
+}
+
 .cross-border {
     display:grid;
     background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) 47%, #010203 48% 50%, rgba(0, 0, 0, 0) 51% 100%),
                 repeating-linear-gradient(135deg, rgba(0, 0, 0, 0) 47%, #010203 48% 50%, rgba(0, 0, 0, 0)51% 100%);
     background-size: 10px 10px;
     background-color: #adadad;
+}
+
+.cross-border-2 {
+    display:grid;
+    background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) 47%, #00ff0d 48% 50%, rgba(0, 0, 0, 0) 51% 100%),
+                repeating-linear-gradient(135deg, rgba(0, 0, 0, 0) 47%, #00ff0d 48% 50%, rgba(0, 0, 0, 0)51% 100%);
+    background-size: 10px 10px;
+    background-color: #474747;
 }
 
 .bubble-letters {
@@ -91,10 +104,28 @@ body {
 /* -- Nav bar -- */
 .custom-nav {
     font-family: "Yanone Kaffeesatz", sans-serif;
-    display: grid;
     background: #fff;
     border-top: 2px solid rgba(14, 266, 266, .5);
     border-bottom: 2px solid rgba(14, 266, 266, .5);
 }
 
+/* -- cards -- */
+.card-external {
+    padding: 1rem;
+}
 
+.recipe-descript {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-size: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    margin: 0rem;
+}
+
+.avatar {
+    border-radius: 50%;
+    background-color: royalblue;
+    height: 75px;
+    width: 75px;
+    transform: translateX(-50%) translateY(70.5px);
+}
