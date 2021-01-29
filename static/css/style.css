@@ -19,7 +19,6 @@ body {
 }
 
 .cross-border {
-    display:grid;
     background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) 47%, #010203 48% 50%, rgba(0, 0, 0, 0) 51% 100%),
                 repeating-linear-gradient(135deg, rgba(0, 0, 0, 0) 47%, #010203 48% 50%, rgba(0, 0, 0, 0)51% 100%);
     background-size: 10px 10px;
@@ -27,7 +26,6 @@ body {
 }
 
 .cross-border-2 {
-    display:grid;
     background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) 47%, #00ff0d 48% 50%, rgba(0, 0, 0, 0) 51% 100%),
                 repeating-linear-gradient(135deg, rgba(0, 0, 0, 0) 47%, #00ff0d 48% 50%, rgba(0, 0, 0, 0)51% 100%);
     background-size: 10px 10px;
