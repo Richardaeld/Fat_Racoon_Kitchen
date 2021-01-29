@@ -1,3 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
+
 body {
     background-color: #474747;
+    text-align: center;
 }
+
+/* -- Text Effects or gradient Patterns  -- */
+.picnic-pattern {
+    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0) 29%, rgba(226, 14, 14, 0.25) 30% 70%, rgba(0, 0, 0, 0) 71% 100%),
+                repeating-linear-gradient(90deg, rgba(0, 0, 0, 0) 29%, rgba(226, 14, 14, 0.25) 30% 70%, rgba(0, 0, 0, 0) 71% 100%);
+    background-color: #fff;
+    background-size: 20px 20px;
+}
+
+.cross-border {
+    display:grid;
+    background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) 47%, #010203 48% 50%, rgba(0, 0, 0, 0) 51% 100%),
+                repeating-linear-gradient(135deg, rgba(0, 0, 0, 0) 47%, #010203 48% 50%, rgba(0, 0, 0, 0)51% 100%);
+    background-size: 10px 10px;
+    background-color: #adadad;
+}
+
+.bubble-letters {
+    color: #fff;
+    text-shadow: 0px 1px rgba(0, 0, 0, .75),
+                1px 0px rgba(0, 0, 0, .75),
+                0px -1px rgba(0, 0, 0, .75),
+                -1px 0px rgba(0, 0, 0, .75);
+}
+
+/* -- Header -- */
+.logo-background {
+    background-image: url("../images/grain-1-90.jpg");
+    background-size: 100% 100%;
+    z-index: 0;
+    border-radius: 5%;
+    margin: 2rem;
+    box-shadow: 0px -4px 5px rgba(0, 0, 0, .75),
+                -4px 0px 5px rgba(0, 0, 0, .75);
+}
+
+.header-text-1:before,
+.header-text-1:after,
+.header-text-2:before,
+.header-text-2:after {
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+/* -- wood grain image for text -- */
+.header-text-1,
+.header-text-2 {
+    font-size: 3.5rem;
+    font-family: "Indie Flower", sans-serif;
+    background: url("../images/grain-1-90.jpg") no-repeat center top;
+    text-shadow: 0px 0px rgba(0, 0, 0, 0);
+    color: transparent;
+    -webkit-background-clip: text;
+    z-index: 2;
+}
+/* -- Adds shadow or depth to text -- */
+.header-text-1:before,
+.header-text-2:before {
+    text-shadow: -1px 0px rgba(0, 0, 0, .75),
+                0px -2px rgba(0, 0, 0, .75);
+    z-index: -1;
+}
+
+.header-text-1:before {
+    content: "Fat Racoon";
+}
+
+/* -- adds a full text body shadow -- */
+.header-text-1:after {
+    content: "Fat Racoon";
+    text-shadow: 0px 0px rgba(0, 0, 0, .25);
+}
+
+.header-text-2:before {
+    content: "Kitchen";
+}
+
+/* -- adds a full text body shadow -- */
+.header-text-2:after {
+    content: "Kitchen";
+    text-shadow: 0px 0px rgba(0, 0, 0, .25);
+}
+
+/* -- Nav bar -- */
+
