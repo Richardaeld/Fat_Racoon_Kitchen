@@ -89,4 +89,12 @@ body {
 }
 
 /* -- Nav bar -- */
+.custom-nav {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    display: grid;
+    background: #fff;
+    border-top: 2px solid rgba(14, 266, 266, .5);
+    border-bottom: 2px solid rgba(14, 266, 266, .5);
+}
+
 
