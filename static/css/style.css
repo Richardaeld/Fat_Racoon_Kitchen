@@ -228,7 +228,7 @@ hr {
 .recipe-descript {
     font-family: "Yanone Kaffeesatz", sans-serif;
     font-size: 1rem;
-    padding: 1rem;
+    padding: 1rem !important;
     background-color: #fff;
     margin: 0rem;
 }
@@ -239,7 +239,7 @@ hr {
     background-color: royalblue;
     height: 75px;
     width: 75px;
-    transform: translateX(-100%) translateY(100%);
+    transform: translateX(-70%) translateY(175%);
 }
 
 .card-carousel {
