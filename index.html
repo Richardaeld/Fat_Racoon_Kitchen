@@ -8,8 +8,6 @@
     <title>Fat Racoon Kitchen</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="static/css/style.css" type="text/css">
 </head>
 <body>
@@ -54,17 +52,21 @@
     </nav>
 
     <!-- Section for 'recipe of the day' -->
-    <section class="row no-gutters">                <!--  No size given, auto sizes with size of picture/recipe description/ chef bio  -->
+    <section class="row no-gutters" style="background-color:#fff; ">                <!--  No size given, auto sizes with size of picture/recipe description/ chef bio  -->
+        <div class="col-12">
+            <h1>Recommended recipe of the day</h1>
+            <p>Take a moment to browse one of our Chef's recommended recipies!</p>
+        </div>
         <div class="col-12">
             <div class="row no-gutters">
 
-                <div class="col-sm-6 col-md-3 cross-border-2 card-external order-xs-2 order-sm-2">
+                <div class="col-sm-6 col-md-3 cross-border-2 card-external order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
                     <div class="recipe-picture">
                         <p><i>Picture of Recipe or Featured Star</i></p>
                     </div>
                 </div>
 
-                <div class=" col-sm-12 col-md-6 recipe-descript order-xs-1 order-sm-1">
+                <div class=" col-sm-12 col-md-6 recipe-descript order-1 order-sm-1 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
                     <h3>Chicken Fried Rice</h3>
                     <h5>Features <i>Chicken</i></h5>
                     <p>
@@ -86,7 +88,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-3 cross-border-2 card-external order-xs-3 order-sm-3">
+                <div class="col-sm-6 col-md-3 cross-border-2 card-external order-3 order-sm-3 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
                     <div class="avatar">
                         <svg width="50" height="50">
                             <circle cx="25" cy="25" r="20" stroke-width="4" fill="#010203" />
