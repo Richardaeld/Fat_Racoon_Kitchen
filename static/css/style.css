@@ -7,24 +7,19 @@ body {
     text-align: center;
 }
 
-/* -- Text Effects or gradient Patterns  -- */
-.picnic-pattern { /* red traditional southen table linen pattern */
+/* ---------------------------------------- Text Effects or gradient Patterns  ---------------------------------------- */
+.picnic-pattern { /* red traditional southen table linen pattern (square pattern) */
     background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0) 29%, rgba(226, 14, 14, 0.25) 30% 70%, rgba(0, 0, 0, 0) 71% 100%),
                 repeating-linear-gradient(90deg, rgba(0, 0, 0, 0) 29%, rgba(226, 14, 14, 0.25) 30% 70%, rgba(0, 0, 0, 0) 71% 100%);
     background-color: #fff;
     background-size: 20px 20px;
 }
 
-.racoon-pattern { /* black southen table linen pattern */
+.racoon-pattern { /* black southen table linen pattern (square pattern) */
     background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0) 9%, rgba(0, 0, 0, 0.25) 10% 50%, rgba(0, 0, 0, 0) 51% 100%),
                 repeating-linear-gradient(90deg, rgba(0, 0, 0, 0) 9%, rgba(0, 0, 0, 0.25) 10% 50%, rgba(0, 0, 0, 0) 51% 100%);
     background-color: #fff;
     background-size: 20px 20px;
-}
-
-/* -- blank is extra till pymongo runs -- */
-.blank-large-recipe {
-    height: 300px;
 }
 
 .cross-border { /* black cross grey background */
@@ -49,7 +44,92 @@ body {
                 -1px 0px rgba(0, 0, 0, .75);
 }
 
-/* -- Header -- */
+/* -- blank is extra till pymongo runs -- */
+.blank-large-recipe {
+    height: 300px;
+}
+
+/* ---------------------------------------- Animation  ---------------------------------------- */
+/* ---------------------------------------- Social 'drink' link with ripple animation (start) ---------------------------------------- */
+/* -- Ripple effect over 'drink' social links -- */
+.ripple {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    transform: scale(0);
+    border-radius: 50%;
+    border: 2px solid #ce52007c;
+    box-shadow: inset 2px 0px rgba(0, 0, 0, .25),
+                inset 0px 2px rgba(0, 0, 0, .25),
+                inset -2px 0px rgba(0, 0, 0, .25),
+                inset 0px -2px rgba(0, 0, 0, .25),
+                1px 0px #ff66007c,
+                0px 1px #ff66007c,
+                -1px 0px #ff66007c,
+                0px -1px #ff66007c;
+    z-index: 0;
+    transform: translateX(-50%) translateY(11%) scale(0);
+}
+
+.create-ripple {
+    animation: 10s linear 0s 1 normal forwards tea-ripple;
+}
+
+@keyframes tea-ripple {
+    0%{transform: translateX(-50%) translateY(11%) scale(0);}
+    90%{transform: translateX(-50%) translateY(11%) scale(.9);}
+    100%{transform: translateX(-50%) translateY(11%);
+        border: 2px solid #ce520000;
+        box-shadow: inset 2px 0px rgba(0, 0, 0, 0),
+                    inset 0px 2px rgba(0, 0, 0, 0),
+                    inset -2px 0px rgba(0, 0, 0, 0),
+                    inset 0px -2px rgba(0, 0, 0, 0),
+                    1px 0px #ff660000,
+                    0px 1px #ff660000,
+                    -1px 0px #ff660000,
+                    0px -1px #ff660000;}
+}
+
+.social-position:hover .ripple  {
+    transition-duration: 2s;
+    transform: translateX(-50%) translateY(11%) ;
+}
+
+/* -- Outer most box of social links -- */
+.social-link {
+    position: absolute;
+    z-index: 2;
+    font-size: 1.5rem;
+    transform: translateX(-50%) translateY(65%);
+}
+
+/* -- Liquid layer of drink -- */
+.liquid {
+    background-color: #923c01;
+    border-radius: 50%;
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    z-index: 0;
+    transform: translateX(11%) translateY(11%);
+}
+
+/* -- glass 'container' layer of drink -- */
+.glass {
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    border: 5px solid #acacac80;
+    border-radius: 50%;
+    box-shadow:  -3px 0px 2px  rgba(0, 0, 0, .25),
+                inset 2px 0px 2px  rgba(0, 0, 0, .5),
+                 0px -3px 2px  rgba(0, 0, 0, .25),
+                inset 0px 2px 2px  rgba(0, 0, 0, .5);
+}
+/* ---------------------------------------- Social 'drink' link with ripple animation (end) ---------------------------------------- */
+
+/* ---------------------------------------- Index Page  ---------------------------------------- */
+/* ---------------------------------------- Header  ---------------------------------------- */
 .logo-background {
     background-image: url("../images/grain-1-90.jpg");
     background-size: 100% 100%;
@@ -87,13 +167,13 @@ body {
     z-index: 2;
     margin: 0;
 }
+
 /* -- Adds shadow or depth to text -- */
 .header-text-1:before,
 .header-text-2:before {
+    z-index: -1;
     text-shadow: -1px 0px rgba(0, 0, 0, .75),
                 0px -2px rgba(0, 0, 0, .75);
-
-    z-index: -1;
 }
 
 .header-text-1:before {
@@ -116,7 +196,7 @@ body {
     text-shadow: 0px 0px rgba(0, 0, 0, .1);
 }
 
-/* -- Nav bar -- */
+/* ---------------------------------------- Nav Bar ---------------------------------------- */
 .custom-nav {
     font-family: "Yanone Kaffeesatz", sans-serif;
     background: #fff;
@@ -124,7 +204,7 @@ body {
     border-bottom: 2px solid rgba(14, 266, 266, .5);
 }
 
-/* -- cards -- */
+/* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
 .card-external {
     padding: 1rem;
 }
@@ -149,17 +229,12 @@ body {
     margin: 1rem;
 }
 
-/* -- footer -- */
+/* ---------------------------------------- Footer ---------------------------------------- */
 footer {
     background-image: url("../images/cuttingboard-90.jpg");
     background-size: contain;
     background-size: 100% 100%;
     height: 15rem;
-
-}
-
-.search-footer {
-    background-color: #fff;
 }
 
 .table-runner-pattern {
@@ -170,96 +245,14 @@ footer {
                 0px -1px 5px 5px rgba(0, 0, 0, .25 );
 }
 
-.table-runner-text-area {
-    position: absolute;
-    transform: translateY(125%);
-}
-
 .social-position  {
-
     position: relative;
     width: 55px;
     height: 55px;
     top:105%;       /*-------------------JS assign me*/
 }
 
-.footer-ul li {
+.footer-ul li { /* removes border and white boxes placed by bootstrap */
     background:transparent;
     border: none;
-}
-
-.social-link {
-    position: absolute;
-    z-index: 2;
-    font-size: 1.5rem;
-    transform: translateX(-50%) translateY(65%);
-}
-
-.liquid {
-    background-color: #923c01;
-    border-radius: 50%;
-    position: absolute;
-    height: 45px;
-    width: 45px;
-    z-index: 0;
-    transform: translateX(11%) translateY(11%);
-
-}
-
-.glass {
-
-    position: absolute;
-    height: 55px;
-    width: 55px;
-    border: 5px solid #acacac80;
-    border-radius: 50%;
-    box-shadow:  -3px 0px 2px  rgba(0, 0, 0, .25),
-                inset 2px 0px 2px  rgba(0, 0, 0, .5),
-                 0px -3px 2px  rgba(0, 0, 0, .25),
-                inset 0px 2px 2px  rgba(0, 0, 0, .5);
-}
-
-.ripple {
-    position: absolute;
-    height: 45px;
-    width: 45px;
-    transform: scale(0);
-    border-radius: 50%;
-    border: 2px solid #ce52007c;
-    box-shadow: inset 2px 0px rgba(0, 0, 0, .25),
-                inset 0px 2px rgba(0, 0, 0, .25),
-                inset -2px 0px rgba(0, 0, 0, .25),
-                inset 0px -2px rgba(0, 0, 0, .25),
-                1px 0px #ff66007c,
-                0px 1px #ff66007c,
-                -1px 0px #ff66007c,
-                0px -1px #ff66007c;
-
-    z-index: 0;
-    transform: translateX(-50%) translateY(11%) scale(0);
-
-}
-
-.social-position:hover .ripple  {
-    transition-duration: 2s;
-    transform: translateX(-50%) translateY(11%) ;
-}
-
-.create-ripple {
-    animation: 10s linear 0s 1 normal forwards tea-ripple;
-}
-
-@keyframes tea-ripple {
-    0%{transform: translateX(-50%) translateY(11%) scale(0);}
-    90%{transform: translateX(-50%) translateY(11%) scale(.9);}
-    100%{transform: translateX(-50%) translateY(11%);
-        border: 2px solid #ce520000;
-        box-shadow: inset 2px 0px rgba(0, 0, 0, 0),
-                    inset 0px 2px rgba(0, 0, 0, 0),
-                    inset -2px 0px rgba(0, 0, 0, 0),
-                    inset 0px -2px rgba(0, 0, 0, 0),
-                    1px 0px #ff660000,
-                    0px 1px #ff660000,
-                    -1px 0px #ff660000,
-                    0px -1px #ff660000;}
 }
