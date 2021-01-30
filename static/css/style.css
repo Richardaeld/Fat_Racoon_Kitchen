@@ -8,6 +8,10 @@ body {
     font-family: "Reenie Beanie",sans-serif;
 }
 
+hr {
+    border-top: 2px solid #fff
+}
+
 /* ---------------------------------------- Text Effects or gradient Patterns  ---------------------------------------- */
 .picnic-pattern { /* red traditional southen table linen pattern (square pattern) */
     background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0) 29%, rgba(226, 14, 14, 0.25) 30% 70%, rgba(0, 0, 0, 0) 71% 100%),
@@ -48,6 +52,9 @@ body {
 /* -- blank is extra till pymongo runs -- */
 .blank-large-recipe {
     height: 300px;
+}
+.blank-carousel-recipe {
+    height: 250px;
 }
 
 /* ---------------------------------------- Animation  ---------------------------------------- */
@@ -237,6 +244,12 @@ body {
 
 .card-carousel {
     margin: 1rem;
+}
+
+.carousel-picture {
+    height:50%;
+    margin: 1rem;
+    background-color: #010203;
 }
 
 /* ---------------------------------------- Footer ---------------------------------------- */
