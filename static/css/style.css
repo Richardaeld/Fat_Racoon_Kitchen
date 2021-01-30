@@ -248,12 +248,12 @@ hr {
 }
 
 .card-carousel {
-    margin: 1rem;
+    padding: 1rem !important;
 }
 
 .carousel-picture {
     height:50%;
-    margin: 1rem;
+    padding: 1rem !important;
     background-color: #010203;
 }
 
