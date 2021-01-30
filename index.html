@@ -52,21 +52,35 @@
     </nav>
 
     <!-- Section for 'recipe of the day' -->
-    <section class="row no-gutters">
-        <div class="col-12 blank-large-recipe">
+    <section class="row no-gutters">                <!--  No size given, auto sizes with size of picture/recipe description/ chef bio  -->
+        <div class="col-12">
             <div class="row no-gutters">
                 <div class="col-3 cross-border-2 card-external">
-                    <h1>picture of dish</h1>
+                    <div class="recipe-picture">
+                        <p><i>Picture of Recipe or Featured Star</i></p>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <p class="recipe-descript">
-                        Recipe description,
-                        star of meal,
-                        prep time,
-                        cook time,
-                        total time,
-                        
+                <div class="col-6 recipe-descript">
+                    <h3>Chicken Fried Rice</h3>
+                    <h5>Features <i>Chicken</i></h5>
+                    <p>
+                        An easy and quick recipe.  You can take what little there is in the fridge and make a super easy meal.
                     </p>
+                    <div class="row no-gutters">
+                        <span class="col-4">
+                            <h6>Prep Time</h6>
+                            <p>20 Minutes</p>
+                        </span>
+                        <span class="col-4">
+                            <h6>Cook Time</h6>
+                            <p>15 Minutes</p>
+                        </span>
+                        <span class="col-4">
+                            <h6>Total Time</h6>
+                            <p>35 Minutes</p>
+                        </span>
+                    </div>
+
                 </div>
                 <div class="col-3 cross-border-2 card-external">
                     <div class="avatar">
@@ -77,7 +91,11 @@
                             <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203" />
                         </svg>
                     </div>
-                    <h1> Brief User description</h1>
+                    <p>
+                        <i>As a home chef, Ive spent numerous night looking in my fridge wondering what I could possibly make from what I see. After a day of working it's difficult 
+                        to want to cook anything. However, Ive found that when I cannot plan ahead a few simple taste pairings can go a long way in making something from the "garbage"
+                        in my fridge.</i>
+                    </p>
 
                 </div>
             </div>
@@ -95,7 +113,7 @@
         </div>
 
         <div class="col-2 blank-large-recipe cross-border-2 card-carousel">
-            <div class="10"> **picture**</div>
+            <div class="10">**picture**</div>
             <div class="10">
                 <h1>Test header</h1>
             </div>

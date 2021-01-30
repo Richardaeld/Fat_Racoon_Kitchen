@@ -5,6 +5,7 @@
 body {
     background-color: #474747;
     text-align: center;
+    font-family: "Reenie Beanie",sans-serif;
 }
 
 /* ---------------------------------------- Text Effects or gradient Patterns  ---------------------------------------- */
@@ -206,7 +207,15 @@ body {
 
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
 .card-external {
-    padding: 1rem;
+    padding: 1.5rem !important;
+    color: #fff;
+}
+
+.recipe-picture {
+    height: 100%;
+    width: 100%;
+    padding: 1.5rem;
+    background: #010203;
 }
 
 .recipe-descript {
@@ -218,11 +227,12 @@ body {
 }
 
 .avatar {
+    position: absolute;
     border-radius: 50%;
     background-color: royalblue;
     height: 75px;
     width: 75px;
-    transform: translateX(-50%) translateY(70.5px);
+    transform: translateX(-100%) translateY(100%);
 }
 
 .card-carousel {
