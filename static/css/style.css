@@ -144,6 +144,7 @@ hr {
     z-index: 1;
 }
 /* ---------------------------------------- Social 'drink' link with ripple animation (end) ---------------------------------------- */
+
 /* ---------------------------------------- Napkin ---------------------------------------- */
 
 .shadow-box {
@@ -184,7 +185,7 @@ hr {
   width: 70px;
   height: 15px;
   transform: translateY(65px);
-  background: repeating-linear-gradient(to right, rgba(0,0,0,0)30%, black 30% 54%, rgba(0,0,0,0) 54% 100%);
+  background: repeating-linear-gradient(to right, rgba(0,0,0,0)30%, rgba(124, 124, 124, 0.5) 30% 54%, rgba(0,0,0,0) 54% 100%);
   background-size: 5px 5px;
 }
 
@@ -193,7 +194,7 @@ hr {
   width: 15px;
   height: 80px;
   transform: translateX(65px);
-  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0)30%, black 30% 54%, rgba(0,0,0,0) 54% 100%);
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0)30%, rgba(124, 124, 124, 0.5) 30% 54%, rgba(0,0,0,0) 54% 100%);
   background-size: 5px 5px;
   border-bottom: 10px solid rgba(255, 255, 255, 0);
   border-right: 10px solid rgba(0, 0, 0, 0);
@@ -202,7 +203,7 @@ hr {
 .napkin-right-triangle-corner {
     width: 30px;
     height: 30px;
-    background: repeating-linear-gradient(to top, rgba(0,0,0,0)30%, black 30% 52%, rgba(0,0,0,0) 52% 100%);
+    background: repeating-linear-gradient(to top, rgba(0,0,0,0)30%, rgba(124, 124, 124, 0.5) 30% 52%, rgba(0,0,0,0) 52% 100%);
     background-size: 5px 5px;
     clip-path: polygon(0% 50%, 50% 50%, 50% 0%);
     transform: translate(50px, 65px) rotate(90deg);
@@ -212,9 +213,11 @@ hr {
 .napkin-border-lines{
   width: 65px;
   height: 65px;
-  border-bottom: 3px double #010203;
-  border-right: 3px double #010203;
+  border-bottom: 3px double rgba(124, 124, 124, 0.5);
+  border-right: 3px double rgba(124, 124, 124, 0.5);
 }
+
+
 
 /* ---------------------------------------- Index Page  ---------------------------------------- */
 /* ---------------------------------------- Header  ---------------------------------------- */
