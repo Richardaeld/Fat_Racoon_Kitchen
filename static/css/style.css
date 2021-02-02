@@ -135,12 +135,12 @@ hr {
     position: absolute;
     height: 55px;
     width: 55px;
-    border: 5px solid #acacac80;
+    border: 5px solid rgba(66, 89, 190, 0.5);
     border-radius: 50%;
-    box-shadow:  -3px 0px 2px  rgba(0, 0, 0, .25),
+    box-shadow:  -7px -10px 2px 2px  rgba(0, 0, 0, .25),
+                inset -5px -5px 2px  rgba(0, 0, 0, .5),
                 inset 2px 0px 2px  rgba(0, 0, 0, .5),
-                 0px -3px 2px  rgba(0, 0, 0, .25),
-                inset 0px 2px 2px  rgba(0, 0, 0, .5);
+                inset 0px 2px 2px  rgba(0, 0, 0, .25);
     z-index: 1;
 }
 /* ---------------------------------------- Social 'drink' link with ripple animation (end) ---------------------------------------- */
