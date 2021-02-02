@@ -122,7 +122,10 @@ in college, let us know!
 
 # Bugs and Other Problems
 ## Previous Bugs
+-- jagged edges after using a transform-rotate fixed by using a recommended line of code -webkit-backface-visibility:hidden -- reccomdation found here https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome
+    -- for napkins edge
 
+--have a triangle shapped container to hold a repeating linear gradient.  Found solution at MDN using a clip-path:polygon https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path 
 ## Current Bugs
 
 ## Other Problems
@@ -162,6 +165,8 @@ in college, let us know!
     + Used to Minimize KB load per image.
 + [W3C Validator](https://validator.w3.org/)
     + Used to identify errors in markup.
++ [JSFiddle](https://jsfiddle.net/)
+    + Used for tinkering and creating CSS art. 
 
 ## Credits
 ### Code Citations

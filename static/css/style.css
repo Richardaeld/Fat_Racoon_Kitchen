@@ -62,7 +62,7 @@ hr {
     height: 250px;
 }
 
-/* ---------------------------------------- Animation  ---------------------------------------- */
+/* ---------------------------------------- Animation/Art  ---------------------------------------- */
 /* ---------------------------------------- Social 'drink' link with ripple animation (start) ---------------------------------------- */
 /* -- Ripple effect over 'drink' social links -- */
 .ripple {
@@ -106,6 +106,7 @@ hr {
 .social-position:hover .ripple  {
     transition-duration: 2s;
     transform: translateX(-50%) translateY(11%) ;
+    z-index: 1;
 }
 
 /* -- Outer most box of social links -- */
@@ -114,6 +115,7 @@ hr {
     z-index: 2;
     font-size: 1.5rem;
     transform: translateX(-50%) translateY(65%);
+    z-index: 1;
 }
 
 /* -- Liquid layer of drink -- */
@@ -125,6 +127,7 @@ hr {
     width: 45px;
     z-index: 0;
     transform: translateX(11%) translateY(11%);
+    z-index: 1;
 }
 
 /* -- glass 'container' layer of drink -- */
@@ -138,8 +141,80 @@ hr {
                 inset 2px 0px 2px  rgba(0, 0, 0, .5),
                  0px -3px 2px  rgba(0, 0, 0, .25),
                 inset 0px 2px 2px  rgba(0, 0, 0, .5);
+    z-index: 1;
 }
 /* ---------------------------------------- Social 'drink' link with ripple animation (end) ---------------------------------------- */
+/* ---------------------------------------- Napkin ---------------------------------------- */
+
+.shadow-box {
+    height:80px;
+    width: 80px;
+    position: absolute;
+    background-color: transparent;
+    box-shadow:   -1px 0px 2px  rgba(0, 0, 0, .5),
+                2px 0px 2px  rgba(0, 0, 0, .75),
+                 0px -1px 2px  rgba(0, 0, 0, .5),
+                0px 2px 2px  rgba(0, 0, 0, .75);
+}
+
+.napkin-out-container {
+  height: 80px;
+  width: 80px;
+  background-color: #fff;
+  /*box-shadow:  -1px 0px 2px  rgba(0, 0, 0, .5),     -------  original-----
+                inset 2px 0px 2px  rgba(0, 0, 0, .75),
+                 0px -1px 2px  rgba(0, 0, 0, .5),
+                inset 0px 2px 2px  rgba(0, 0, 0, .75);*/
+ /* box-shadow:  inset -1px 0px 2px  rgba(0, 0, 0, .5),
+                2px 0px 2px  rgba(0, 0, 0, .75),
+                inset 0px -1px 2px  rgba(0, 0, 0, .5),
+                0px 2px 2px  rgba(0, 0, 0, .75);*/
+    background-color: #e0e0e0;
+      transform: rotate(180deg) translateX(25%) translateY(25%);
+    z-index: 0;
+}
+
+
+.napkin-out-container div {
+  position: absolute;
+  z-index: 0;
+}
+
+.napkin-vertical-lines {
+  width: 70px;
+  height: 15px;
+  transform: translateY(65px);
+  background: repeating-linear-gradient(to right, rgba(0,0,0,0)30%, black 30% 54%, rgba(0,0,0,0) 54% 100%);
+  background-size: 5px 5px;
+}
+
+ .napkin-horizontal-lines {
+  /*box-sizing: border-box;*/
+  width: 15px;
+  height: 80px;
+  transform: translateX(65px);
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0)30%, black 30% 54%, rgba(0,0,0,0) 54% 100%);
+  background-size: 5px 5px;
+  border-bottom: 10px solid rgba(255, 255, 255, 0);
+  border-right: 10px solid rgba(0, 0, 0, 0);
+}
+
+.napkin-right-triangle-corner {
+    width: 30px;
+    height: 30px;
+    background: repeating-linear-gradient(to top, rgba(0,0,0,0)30%, black 30% 52%, rgba(0,0,0,0) 52% 100%);
+    background-size: 5px 5px;
+    clip-path: polygon(0% 50%, 50% 50%, 50% 0%);
+    transform: translate(50px, 65px) rotate(90deg);
+    background-color: #e0e0e0;
+}
+
+.napkin-border-lines{
+  width: 65px;
+  height: 65px;
+  border-bottom: 3px double #010203;
+  border-right: 3px double #010203;
+}
 
 /* ---------------------------------------- Index Page  ---------------------------------------- */
 /* ---------------------------------------- Header  ---------------------------------------- */
