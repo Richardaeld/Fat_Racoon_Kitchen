@@ -167,6 +167,8 @@ in college, let us know!
     + Used to identify errors in markup.
 + [JSFiddle](https://jsfiddle.net/)
     + Used for tinkering and creating CSS art. 
++ [Inkscape](https://inkscape.org/)
+    + Used to create scalable vector graphics (SVG).
 
 ## Credits
 ### Code Citations
