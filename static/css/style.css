@@ -217,25 +217,7 @@ hr {
   border-right: 3px double rgba(124, 124, 124, 0.5);
 }
 
-.nap1 {
-      transform: rotate(180deg) translateX(25%) translateY(25%);
 
-}
-
-.nap2 {
-          transform: rotateX(180deg) translateX(-15%) translateY(25%);
-
-}
-
-.nap3 {
-          transform: rotateY(180deg) translateX(25%) translateY(-15%);
-
-}
-
-.nap4 {
-          transform: rotate(180deg) translateX(25%) translateY(25%);
-
-}
 
 /* ---------------------------------------- Index Page  ---------------------------------------- */
 /* ---------------------------------------- Header  ---------------------------------------- */
@@ -385,4 +367,12 @@ footer {
 .footer-ul li { /* removes border and white boxes placed by bootstrap */
     background:transparent;
     border: none;
+}
+
+.racoon img {
+    height: 100%;
+    width: 50%;
+    position: relative;
+    top:0;
+    bottom:0;
 }
