@@ -135,7 +135,7 @@ hr {
     position: absolute;
     height: 55px;
     width: 55px;
-    border: 5px solid rgba(66, 89, 190, 0.5);
+    border: 5px solid rgba(49, 63, 128, 0.5);
     border-radius: 50%;
     box-shadow:  -7px -10px 2px 2px  rgba(0, 0, 0, .25),
                 inset -5px -5px 2px  rgba(0, 0, 0, .5),
@@ -143,19 +143,33 @@ hr {
                 inset 0px 2px 2px  rgba(0, 0, 0, .25);
     z-index: 1;
 }
+
+/* -- glass shadow layer of drink -- */
+.glass-shadow {
+    right: 1px;
+    top: 1px;
+    height: 53px;
+    width: 53px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: transparent;
+    z-index: 1;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .5),
+                inset -1px -1px 3px rgba(0, 0, 0, .5);
+}
+
 /* ---------------------------------------- Social 'drink' link with ripple animation (end) ---------------------------------------- */
 
 /* ---------------------------------------- Napkin ---------------------------------------- */
 
-.shadow-box {
+.napkin-shadow {
     height:80px;
     width: 80px;
     position: absolute;
     background-color: transparent;
-    box-shadow:   -1px 0px 2px  rgba(0, 0, 0, .5),
-                2px 0px 2px  rgba(0, 0, 0, .75),
-                 0px -1px 2px  rgba(0, 0, 0, .5),
-                0px 2px 2px  rgba(0, 0, 0, .75);
+    box-shadow:   -1px -1px 1px   rgba(0, 0, 0, .25),
+                1px 1px 1px 1px rgba(0, 0, 0, .25),
+                inset 2px 2px 2px rgba(0, 0, 0, .25);
 }
 
 .napkin-out-container {
@@ -216,8 +230,6 @@ hr {
   border-bottom: 3px double rgba(124, 124, 124, 0.5);
   border-right: 3px double rgba(124, 124, 124, 0.5);
 }
-
-
 
 /* ---------------------------------------- Index Page  ---------------------------------------- */
 /* ---------------------------------------- Header  ---------------------------------------- */
@@ -346,7 +358,7 @@ footer {
 
 .table-runner-pattern {
     position: absolute;
-    height: 15%;
+    height: 10rem;
     box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, .25),
                 0px -1px 5px 5px rgba(0, 0, 0, .25 );
 }
