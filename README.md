@@ -33,6 +33,7 @@ in college, let us know!
 - I dont know what I want for dinner.
 - My significant other wants a new chicken dish for dinner.
 - *consider* having a form for users to commit on others recipies. This could ustablish a sense of cooking community.
+- *theme* homecooking *southern home style*
 
 ### Developer Goals
 - I want to showcase my python abilities.
@@ -41,12 +42,14 @@ in college, let us know!
     - Jinja (Templates)
     - Python Day Time 
     - Pymongo (Flask - mongo DB)
-    - 
 
 - I want to showcase my DB abilites.
     - Mongo DB
     - Pymongo (Flask - mongo DB)
-    - 
+
+- I want to showcase my artistic diversity
+    - css art
+    - svg art
 
 ## Client Stories and Experience Provided
 ### Client Stories
@@ -68,6 +71,7 @@ in college, let us know!
 ## Content Blocks
 ### Template 1
 #### Index
+- 
 
 ### Template 2
 #### About Us
