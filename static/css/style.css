@@ -332,6 +332,11 @@ hr {
     border-top: 2px solid rgba(14, 266, 266, .5);
     border-bottom: 2px solid rgba(14, 266, 266, .5);
 }
+@media (min-width: 992px) {
+    .custom-nav {
+        border-right: 2px solid rgba(14, 266, 266, .5);
+    }
+}
 
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
 .card-external {
