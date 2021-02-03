@@ -236,7 +236,7 @@ hr {
 }
 
 .napkin-nav {
-      transform:  translateX(-45%) translateY(25%) rotate(135deg);
+      transform:  translateX(-0%) translateY(-65%) rotate(135deg);
 }
 
 .napkin-nav p {
@@ -384,7 +384,7 @@ footer {
 
 .table-runner-pattern {
     position: absolute;
-    height: 10rem;
+    height: 15rem;
     box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, .25),
                 0px -1px 5px 5px rgba(0, 0, 0, .25 );
 }
@@ -413,4 +413,8 @@ footer {
     position: relative;
     top:0;
     bottom:0;
+}
+
+.social-link-push li {
+    top: 10px;
 }
