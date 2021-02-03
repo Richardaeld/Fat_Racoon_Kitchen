@@ -163,7 +163,7 @@ in college, let us know!
 + Share env.py information with heroku
     + select (go to) settings
     + click reveal config vars of config vars
-
+    + add all of the 'os.environ.setdefault' key value pairs without their quotations
 
 
 ## Database build
