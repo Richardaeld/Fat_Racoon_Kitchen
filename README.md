@@ -135,7 +135,7 @@ in college, let us know!
 ## Other Problems
 
 # Deployment
-## Setup structure on Github (developer only)
+## Setup structure on GitPod (developer only)
 + install Flask
     + in bash type "pip3 install Flask"
 + python file structure
@@ -144,11 +144,27 @@ in college, let us know!
         + Add "env.py" to "gitignore" list (NEVER PUSH THIS FILE)
         + Add "__pycache__/" to "gitignore" list (NEVER PUSH THIS FILE)
 
+
 ## Deploy Clone from GitHub
 
 
 ## heroku Deployment
 + create app on Heroku
++ Files for heroku from GitPod
+    + in bash "pip3 freeze --local > requirements.txt
+    + in bash "echo web: python run.py > Procfile"
+        + If the opened Procfile has a blank line at the bottom, delete this line. It could cause problems with Heroku otherwise.
+    + this creates two files for heroku to identify what it needs to run app
++ link Heroku and GitHub
+    + From personal > *name of app* created at first Setup
+    + select (go to) deploy
+    + select GitHub from 'deployment method' section
+    + from your GitHub account and the name of the cloned repository
++ Share env.py information with heroku
+    + select (go to) settings
+    + click reveal config vars of config vars
+
+
 
 ## Database build
 + create Database on MongoDB
