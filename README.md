@@ -134,10 +134,27 @@ in college, let us know!
 
 ## Other Problems
 
-# Clone and Deployment Information
+# Deployment
+## Setup structure on Github (developer only)
++ install Flask
+    + in bash type "pip3 install Flask"
++ python file structure
+    + create "*name*.py" file in root 
+    + create "env.py" file in root
+        + Add "env.py" to "gitignore" list (NEVER PUSH THIS FILE)
+        + Add "__pycache__/" to "gitignore" list (NEVER PUSH THIS FILE)
+
 ## Deploy Clone from GitHub
 
-## GitHub Deployment
+
+## heroku Deployment
++ create app on Heroku
+
+## Database build
++ create Database on MongoDB
++ create collections for Database: feature, recipes, users
++ add featured items to feature as format: {name:feature} features will be you meal star (ex. protein, veg, pasta)
+ 
 
 # Tools and Credits
 ## Tools
@@ -173,6 +190,8 @@ in college, let us know!
     + Used for tinkering and creating CSS art. 
 + [Inkscape](https://inkscape.org/)
     + Used to create scalable vector graphics (SVG).
++ [RandomKeygen](https://randomkeygen.com/)
+    + Used to create random secret key for "env.py"
 
 ## Credits
 ### Code Citations
