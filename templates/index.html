@@ -28,27 +28,27 @@
                     </div>
                 </div>
 
+                {% for recipe in raccoonrecipe %}
                 <div class=" col-sm-12 col-md-6 recipe-descript order-1 order-sm-1 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
-                    <h3>Chicken Fried Rice</h3>
-                    <h5>Features <i>Chicken</i></h5>
-                    <p>
-                        An easy and quick recipe.  You can take what little there is in the fridge and make a super easy meal.
-                    </p>
+                    <h3>{{ recipe.name.title() }}</h3>
+                    <h5>Features <i>{{ recipe.feature }}</i></h5>
+                    <p>{{ recipe.text }}</p>
                     <div class="row no-gutters">
                         <span class="col-4">
                             <h6>Prep Time</h6>
-                            <p>20 Minutes</p>
+                            <p>{{ time[0] }}</p>
                         </span>
                         <span class="col-4">
                             <h6>Cook Time</h6>
-                            <p>15 Minutes</p>
+                            <p>{{ time[1] }}</p>
                         </span>
                         <span class="col-4">
                             <h6>Total Time</h6>
-                            <p>35 Minutes</p>
+                            <p>{{ time[2] }}</p>
                         </span>
                     </div>
                 </div>
+                {% endfor %}
 
                 <div class="col-sm-6 col-md-3 cross-border-2 card-external order-3 order-sm-3 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
                     <div class="recipe-picture">
@@ -61,9 +61,9 @@
                                     <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203" />
                                 </svg>
                             </div>
-                            <i>As a home chef, Ive spent numerous night looking in my fridge wondering what I could possibly make from what I see. After a day of working it's difficult 
-                            to want to cook anything. However, Ive found that when I cannot plan ahead a few simple taste pairings can go a long way in making something from the "garbage"
-                            in my fridge.</i>
+                            <i>
+                                {{ chef }}
+                            </i>
                         </p>
                     </div>
                 </div>

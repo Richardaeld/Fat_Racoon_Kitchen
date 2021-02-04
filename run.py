@@ -21,8 +21,20 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
+    # Loads carousel items
     features = list(mongo.db.feature.find())
-    return render_template("index.html", features=features)
+    # Loads recipe of the day
+    raccoonrecipe = list(mongo.db.recipes.find())
+    # Finds, splits and loads cook time data from recipe of the day
+    time = raccoonrecipe[0]["time"].split(",")
+    # finds and loads chefs information from recipe of the day
+    chef = mongo.db.users.find_one({"name": raccoonrecipe[0]["created_by"]})['bio']
+    return render_template(
+        "index.html",
+        features=features,
+        raccoonrecipe=raccoonrecipe,
+        time=time,
+        chef=chef)
 
 
 if __name__ == "__main__":
