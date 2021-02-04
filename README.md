@@ -148,7 +148,7 @@ in college, let us know!
 ## Deploy Clone from GitHub
 
 
-## heroku Deployment
+## Heroku Deployment
 + create app on Heroku
 + Files for heroku from GitPod
     + in bash "pip3 freeze --local > requirements.txt
@@ -164,7 +164,9 @@ in college, let us know!
     + select (go to) settings
     + click reveal config vars of config vars
     + add all of the 'os.environ.setdefault' key value pairs without their quotations
-
++ Enable automatic deployment
+    + select (go to) deploy
+    + select 'automatic deploys' in 'automatic deploys section
 
 ## Database build
 + create Database on MongoDB
