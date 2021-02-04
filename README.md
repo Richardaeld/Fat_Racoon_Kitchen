@@ -130,6 +130,8 @@ in college, let us know!
     -- for napkins edge
 
 --have a triangle shapped container to hold a repeating linear gradient.  Found solution at MDN using a clip-path:polygon https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path 
+
+--Procfile was missing a space after colon
 ## Current Bugs
 
 ## Other Problems
