@@ -136,6 +136,7 @@ in college, let us know!
 
 # Deployment
 ## Setup structure on GitPod (developer only)
+### Flask
 + install Flask
     + in bash type "pip3 install Flask"
 + python file structure
@@ -144,6 +145,10 @@ in college, let us know!
         + Add "env.py" to "gitignore" list (NEVER PUSH THIS FILE)
         + Add "__pycache__/" to "gitignore" list (NEVER PUSH THIS FILE)
 
+### PyMongo
++ install PyMongo
+    + in bash type "pip3 install flask-pymongo"
+    + in bash type "pip3 install dnspython"
 
 ## Deploy Clone from GitHub
 
@@ -166,13 +171,24 @@ in college, let us know!
     + add all of the 'os.environ.setdefault' key value pairs without their quotations
 + Enable automatic deployment
     + select (go to) deploy
-    + select 'automatic deploys' in 'automatic deploys section
+    + select 'automatic deploys' in 'automatic deploys' section
+    + select 'deploy branch' in 'manual deploy' section
 
 ## Database build
+### Database structure
 + create Database on MongoDB
 + create collections for Database: feature, recipes, users
 + add featured items to feature as format: {name:feature} features will be you meal star (ex. protein, veg, pasta)
- 
+
+### Connecting to DB
++ find URI
+    + go to cluster
+    + select 'connect'
+    + select 'connect your application'
+    + select driver (python) and version of python
+    + copy string provided
+    + paste string in env.py as the "MONGO_URI" value
+    + Update the pasted string with the DBname and password by replacing <DBname> and <password> (replace angled brackets as well)
 
 # Tools and Credits
 ## Tools
