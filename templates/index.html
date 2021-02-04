@@ -8,7 +8,7 @@
     <title>Fat Racoon Kitchen</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
 </head>
 <body>
 
@@ -83,14 +83,14 @@
         <div class="col-12">
             <div class="row no-gutters align-items-center justify-content-center">
                 <div class="col-2 racoon">
-                    <img src="static/images/s_raccoon_face.svg" alt="fat raccoon face">
+                    <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
                 </div>
                 <div class="col-8">
                 <h1>One of our Chef's Personal Favorites</h1>
                 <p> Take a moment to browse one of our Chef's recommended recipies!</p>
                 </div>
                 <div class="col-2 racoon">
-                    <img src="static/images/s_raccoon_face.svg" alt="fat raccoon face">
+                    <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
                 </div>
             </div>
         </div>
@@ -254,7 +254,7 @@
                                 <li class="list-group-item">
                                     <div class="social-position">
                                         <div class="napkin-out-container napkin-nav">
-                                            <img class="racoon-face" src="static/images/s_raccoon_face.svg" alt="">
+                                            <img class="racoon-face" src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
                                             <div class="napkin-shadow"></div>
                                             <div class="napkin-border-lines"></div>
                                             <div class="napkin-horizontal-lines"></div>
