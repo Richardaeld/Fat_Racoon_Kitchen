@@ -21,7 +21,8 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    features = list(mongo.db.feature.find())
+    return render_template("index.html", features=features)
 
 
 if __name__ == "__main__":

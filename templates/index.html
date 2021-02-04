@@ -24,6 +24,7 @@
                 <div class="col-sm-6 col-md-3 cross-border-2 card-external order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
                     <div class="recipe-picture">
                         <p><i>Picture of Recipe or Featured Star</i></p>
+
                     </div>
                 </div>
 
@@ -74,45 +75,17 @@
     <!-- carousel -->
     <aside class="row no-gutters justify-content-around cross-border" style="color:#fff;">
 
-        <div class="col-3 col-sm-3 col-md-2 blank-carousel-recipe cross-border-2 card-carousel">
-            <div class="10 carousel-picture"> <i>**picture**</i></div>
-            <hr>
-            <div class="10">
-                <h1><i>Star Name</i></h1>
+        {% for feature in features %}
+            <div class="col-3 col-sm-3 col-md-2 blank-carousel-recipe cross-border-2 card-carousel">
+                <div class="10 carousel-picture"> <i>**picture**</i></div>
+                <hr>
+                <div class="10">
+                    <h1>
+                        {{feature.name}}
+                    </h1>
+                </div>
             </div>
-        </div>
-
-        <div class="col-3 col-sm-3 col-md-2 blank-carousel-recipe cross-border-2 card-carousel">
-            <div class="10 carousel-picture"> <i>**picture**</i></div>
-            <hr>
-            <div class="10">
-                <h1><i>Star Name</i></h1>
-            </div>
-        </div>
-
-        <div class="col-3 col-sm-3 col-md-2 blank-carousel-recipe cross-border-2 card-carousel">
-            <div class="10 carousel-picture"> <i>**picture**</i></div>
-            <hr>
-            <div class="10">
-                <h1><i>Star Name</i></h1>
-            </div>
-        </div>
-
-        <div class="col-3 col-sm-3 col-md-2 blank-carousel-recipe cross-border-2 card-carousel d-none d-md-block">
-            <div class="10 carousel-picture"> <i>**picture**</i></div>
-            <hr>
-            <div class="10">
-                <h1><i>Star Name</i></h1>
-            </div>
-        </div>
-
-        <div class="col-3 col-sm-3 col-md-2 blank-carousel-recipe cross-border-2 card-carousel d-none d-lg-block">
-            <div class="10 carousel-picture"> <i>**picture**</i></div>
-            <hr>
-            <div class="10">
-                <h1><i>Star Name</i></h1>
-            </div>
-        </div>
+        {% endfor %}
 
     </aside>
 {% endblock %}

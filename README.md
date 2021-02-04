@@ -179,7 +179,10 @@ in college, let us know!
 + create Database on MongoDB
 + create collections for Database: feature, recipes, users
 + add featured items to feature as format: {name:feature} features will be you meal star (ex. protein, veg, pasta)
-
++ create index (**notes**)
+    + in bash "python3"
+    + in bash "from *app name* import mongo"
+    + mongo.db.*collection*create_index([("name", "text"), ("name2","text")])
 ### Connecting to DB
 + find URI
     + go to cluster
