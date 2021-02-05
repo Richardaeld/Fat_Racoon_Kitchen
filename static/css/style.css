@@ -344,15 +344,54 @@ header {
 
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
 .card-external {
-    padding: 1.5rem !important;
+    padding: 0rem 0rem !important;
+    margin: 1.5rem 1.5rem; /* Im throwing the alignment off*/ 
     color: #fff;
+    position: relative;
+    z-index: 2;
+
+}
+
+.sticky-note {
+    background-color: #e7d912;
+       /* box-shadow: inset -2px 0px 2px rgba(0, 0, 0, .25);*/
+       z-index: 2;
+
+}
+
+.sticky-note:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    z-index: 0;
+    height: 75%;
+    width: 40%;
+    /*box-shadow: 0px 2px 0px rgba(0, 0, 0, .25);*/
+
+    box-shadow: 0px 60px 20px 0px rgba(0, 0, 0, .25);
+    /*transform: rotate(-20deg) skewX(-20deg);*/ /* sticks out in padded area*/
+    transform: translateX(0px) translateY(-7px) rotate(-10deg) skewX(-10deg);
+}
+
+.sticky-note-corner {
+    position: absolute;
+    height: 100%;
+    background-color: red;
 }
 
 .recipe-picture {
+    position: relative;
     height: 100%;
     width: 100%;
     padding: 1.5rem;
-    background: #010203;
+    background: #e7d912;
+    color: #010203;
+    z-index: 2;
+    box-shadow: inset -2px -2px 2px  rgba(0, 0, 0, .25),
+                -1px -1px 2px 0px rgba(0, 0, 0, .25);
+
 }
 
 .recipe-descript {
@@ -426,7 +465,7 @@ right: 0;
 
 .carousel-button-right,
 .carousel-button-left {
-    position: relative;
+    position: absolute;
     top: 6rem;
     border-top: 2rem solid transparent;
     border-bottom: 2rem solid transparent;
