@@ -375,6 +375,11 @@ header {
 
 .card-carousel {
     padding: 1rem !important;
+    display: none;
+}
+
+.card-carousel-vis {
+    display: block;
 }
 
 .carousel-picture {

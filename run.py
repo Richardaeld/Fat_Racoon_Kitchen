@@ -3,9 +3,15 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from pymongo import MongoClient  #
+import gridfs  #
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env
+
+
+db = MongoClient().gridfs_example  #
+fs = gridfs.GridFS(db)  #
 
 
 app = Flask(__name__)
