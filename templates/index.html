@@ -73,19 +73,29 @@
     </section>
 
     <!-- carousel -->
-    <aside class="row no-gutters justify-content-around cross-border" style="color:#fff;">
+    <aside class="row no-gutters justify-content-around card-section picnic-pattern">
+
+        <div class="col-1 carousel-button carousel-left">
+            <div class="col-1 carousel-button-left"></div>
+        </div>
 
         {% for feature in features %}
-            <div class="col-3 col-sm-3 col-md-2 blank-carousel-recipe cross-border-2 card-carousel">
+            <div class="col-3 col-sm-2 col-md-1 blank-carousel-recipe card-carousel">
                 <div class="10 carousel-picture"> <i>**picture**</i></div>
                 <hr>
                 <div class="10">
-                    <h1>
-                        {{feature.name}}
-                    </h1>
+                    <p>
+                        {{feature.name.title()}}
+                    </p>
                 </div>
             </div>
         {% endfor %}
+
+        <div class="col-1 carousel-button carousel-right">
+            <div class="row justify-content-center">
+                <div class="col-1 carousel-button-right"></div>
+            </div>
+        </div>
 
     </aside>
 {% endblock %}

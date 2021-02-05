@@ -9,7 +9,7 @@ body {
 }
 
 hr {
-    border-top: 2px solid #fff
+    border-top: 2px solid #010203;
 }
 
 .container {
@@ -373,9 +373,28 @@ header {
 
 }
 
+.card-section {
+    border-top: 2px solid rgba(226, 14, 14, .5);
+    border-bottom: 2px solid rgba(226, 14, 14, .5);
+}
+
 .card-carousel {
+    margin: .5rem 0rem;
     padding: 1rem !important;
     display: none;
+    border-radius: 15%;
+    background-color: #e2e2e2;
+    color: #010203;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .25 ),
+                -1px -1px 2px 2px rgba(0, 0, 0, .15 ),
+                inset 1px 1px 2px rgba(0, 0, 0, .25),
+                inset -2px -2px 2px rgba(0, 0, 0, .25 );
+}
+
+.card-carousel p {
+    font-size: 1.5rem;
+    font-family: "Yanone Kaffeesatz",sans-serif;
+    text-shadow: 2px 2px rgba(0, 0, 0, .15 );
 }
 
 .card-carousel-vis {
@@ -386,8 +405,45 @@ header {
     height:50%;
     padding: 1rem !important;
     background-color: #010203;
+    border-radius: 15%;
 }
 
+.carousel-button {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .25);
+    height: 15.75rem; /* -----------------------------------------   set with JS  or set as carousel height*/
+    width: 8rem;
+    z-index: 1;
+}
+
+.carousel-left {
+left: 0;
+}
+
+.carousel-right {
+right: 0;
+}
+
+.carousel-button-right,
+.carousel-button-left {
+    position: relative;
+    top: 6rem;
+    border-top: 2rem solid transparent;
+    border-bottom: 2rem solid transparent;
+    width: 50%;
+}
+
+.carousel-button-right {
+    border-left: 2rem solid rgba(255, 255, 255, .5);
+    border-right: 2rem solid transparent;
+    left: 3rem;
+}
+
+.carousel-button-left {
+    border-left: 2rem solid transparent;
+    border-right: 2rem solid rgba(255, 255, 255, .5);
+    right: 2rem;
+}
 /* ---------------------------------------- Footer ---------------------------------------- */
 footer {
     background-image: url("../images/cuttingboard-90.jpg");
