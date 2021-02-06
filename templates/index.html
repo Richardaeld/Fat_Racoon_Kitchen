@@ -23,10 +23,11 @@
 
                 <div class="col-sm-6 col-md-3 order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1 order-xxl-1 ">
                     <div class="row no-gutters justify-content-center">
-                        <div class="col-10 card-external sticky-note">
-                            <div class="sticky-note-corner"></div>
+                        <div class="col-10 sticky-note">
                             <div class="recipe-picture">
-                                <p><i>Picture of Recipe or Featured Star</i></p>
+                                <p>
+                                    <i>Picture of Recipe or Featured Star</i>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -56,9 +57,9 @@
 
                 <div class="col-sm-6 col-md-3 order-3 order-sm-3 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
                     <div class="row no-gutters justify-content-center">
-                        <div class="col-10 card-external sticky-note">
-                            <div class="sticky-note-corner"></div>
-                            <div class="recipe-picture">
+                        <div class="col-10 sticky-note sticky-note-right">
+                            
+                            <div class="recipe-picture ">
                                 <p>
                                     <div class="avatar">
                                         <svg width="50" height="50">
@@ -82,14 +83,20 @@
     </section>
 
     <!-- carousel -->
-    <aside class="row no-gutters justify-content-around card-section picnic-pattern">
+    <aside class="row no-gutters justify-content-around align-items-center card-section picnic-pattern carousel">
 
         <div class="col-1 carousel-button carousel-left">
-            <div class="col-1 carousel-button-left"></div>
+            <div class="row no-gutters justify-content-center">
+                <div class="col-1">
+                    <svg  class="carousel-button-svg">
+                        <polygon points="37.5, 0 0, 37.5 37.5, 75"/>
+                    </svg>
+                </div>
+            </div>
         </div>
 
         {% for feature in features %}
-            <div class="col-3 col-sm-2 col-md-1 blank-carousel-recipe card-carousel">
+            <div class="col-3 col-sm-2 col-md-1 blank-carousel-recipe card-carousel ">
                 <div class="10 carousel-picture"> <i>**picture**</i></div>
                 <hr>
                 <div class="10">
@@ -101,8 +108,12 @@
         {% endfor %}
 
         <div class="col-1 carousel-button carousel-right">
-            <div class="row justify-content-center">
-                <div class="col-1 carousel-button-right"></div>
+            <div class="row no-gutters justify-content-center">
+                <div class="col-1">
+                    <svg class="carousel-button-svg">
+                        <polygon points="0, 75 37.5, 37.5 0, 0"/>
+                    </svg>
+                </div>
             </div>
         </div>
 

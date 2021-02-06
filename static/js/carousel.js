@@ -10,6 +10,8 @@ function findWidth(){
     let reveal; 
     screenWidth = window.screen.width;
 
+
+
     // Sets carousel number to be shown
     if (screenWidth > 1200) {
         reveal = 6;
@@ -18,6 +20,8 @@ function findWidth(){
     } else {
         reveal = 3;
     }
+
+    
 
     // Finds the amount of visible carousel boxes
     let visible = document.querySelectorAll(".card-carousel-vis")
@@ -49,4 +53,3 @@ var carouselArray = []
 for(i=0; i<(carousel.length); i++){
     carouselArray.push(i);
 }
-

@@ -343,14 +343,7 @@ header {
 }
 
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
-.card-external {
-    padding: 0rem 0rem !important;
-    margin: 0rem 0rem; /* Im throwing the alignment off*/ 
-    color: #fff;
-    position: relative;
-    z-index: 2;
 
-}
 
 .notebook-paper {
     background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, rgba(57, 118, 230, .5) 45% 55%, rgba(0, 0, 0, 0) 55% 100%);
@@ -358,10 +351,21 @@ header {
 }
 
 .sticky-note {
+    color: #fff;
+    position: relative;
     background-color: #e7d912;
        /* box-shadow: inset -2px 0px 2px rgba(0, 0, 0, .25);*/
     z-index: 2;
     margin: 1.5rem 0rem;
+    height: 20rem;
+}
+
+.sticky-note-right div {
+    transform: rotateY(180deg);
+}
+
+.sticky-note-right p {
+    transform: rotateY(0deg);
 
 }
 
@@ -372,21 +376,19 @@ header {
     right: 0;
     background-color: transparent;
     z-index: 0;
-    height: 75%;
-    width: 40%;
+    height: 95%;
+    width: 50%;
     /*box-shadow: 0px 2px 0px rgba(0, 0, 0, .25);*/
 
-    box-shadow: 0px 60px 20px 0px rgba(0, 0, 0, .25);
+    box-shadow: /*0px 60px 20px 0px rgba(0, 0, 0, .25),*/
+                -20px 20px 20px 0px rgba(0, 0, 0, .25 );
     /*transform: rotate(-20deg) skewX(-20deg);*/ /* sticks out in padded area*/
     transform: translateX(0px) translateY(-7px) rotate(-10deg) skewX(-10deg);
 }
 
-.sticky-note-corner {
-    position: absolute;
-    height: 100%;
-    background-color: red;
+.sticky-note-right {
+    transform: rotateY(180deg);
 }
-
 .recipe-picture {
     position: relative;
     height: 100%;
@@ -423,6 +425,10 @@ header {
     border-bottom: 2px solid rgba(226, 14, 14, .5);
 }
 
+.carousel {
+    height: 20rem;
+}
+
 .card-carousel {
     margin: .5rem 0rem;
     padding: 1rem !important;
@@ -451,14 +457,20 @@ header {
     height:50%;
     padding: 1rem !important;
     background-color: #010203;
-        border-radius: 15%;
+    border-radius: 15%;
 
+}
+
+.carousel-button-svg {
+    fill: rgba(255, 255, 255, 0.5);
+    height: 75px;
+    width: 37.5px;
 }
 
 .carousel-button {
     position: absolute;
     background-color: rgba(0, 0, 0, .25);
-    height: 15.75rem; /* -----------------------------------------   set with JS  or set as carousel height*/
+    height: 20rem; /* -----------------------------------------   set with JS  or set as carousel height*/
     width: 8rem;
     z-index: 1;
 }
@@ -468,29 +480,13 @@ left: 0;
 }
 
 .carousel-right {
-right: 0;
+right: 0px;
 }
 
-.carousel-button-right,
-.carousel-button-left {
-    position: absolute;
-    top: 6rem;
-    border-top: 2rem solid transparent;
-    border-bottom: 2rem solid transparent;
-    width: 50%;
+.carousel-button svg {
+    transform: translateY(7.5rem);
 }
 
-.carousel-button-right {
-    border-left: 2rem solid rgba(255, 255, 255, .5);
-    border-right: 2rem solid transparent;
-    left: 3rem;
-}
-
-.carousel-button-left {
-    border-left: 2rem solid transparent;
-    border-right: 2rem solid rgba(255, 255, 255, .5);
-    right: 2rem;
-}
 
 /* ---------------------------------------- Footer ---------------------------------------- */
 footer {
