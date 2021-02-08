@@ -234,6 +234,7 @@ in college, let us know!
 
 ## Credits
 ### Code Citations
++ [Pretty Printed](https://www.youtube.com/watch?v=DsgAuceHha4) - how to upload images to MongoDB
 
 ### References and Ideas
 + [Bootstrap](https://getbootstrap.com/)

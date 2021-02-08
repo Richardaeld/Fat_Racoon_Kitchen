@@ -3,15 +3,11 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from pymongo import MongoClient  #
-import gridfs  #
+#from pymongo import MongoClient  #
+#import gridfs  #
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env
-
-
-db = MongoClient().gridfs_example  #
-fs = gridfs.GridFS(db)  #
 
 
 app = Flask(__name__)
@@ -41,6 +37,28 @@ def index():
         raccoonrecipe=raccoonrecipe,
         time=time,
         chef=chef)
+
+
+#@app.route('/')
+#def index():
+#    return '''
+#        <form method="POST" action="/create" enctype="multipart/form-data">
+#            <input type="text" name="username">
+#            <input type="file" name="profile_image">
+#            <input type="submit">
+#        </form>
+#    '''
+
+
+#@app.route('/create', methods=['POST'])
+#def create():
+#    if 'profile_image' in request.files:
+#        profile_image = request.files['profile_image']
+#        # first is file name second is file data
+#        mongo.save_file(profile_image.filename, profile_image)
+#        mongo.db.users.insert({'username': request.form.get('username'), 'profile_image_name': profile_image.filename})
+#    return "Holy icosahedron!"
+
 
 
 if __name__ == "__main__":
