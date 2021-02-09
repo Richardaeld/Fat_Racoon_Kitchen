@@ -77,6 +77,34 @@ modaltabs = document.querySelectorAll(".tab");
 modaltabs.forEach(tabSelect);
 function tabSelect(item, index) {
     item.addEventListener("click", function () {
+        if(item.textContent.trim() === "Login"){
+            var totalLogin = document.querySelectorAll(".login-account").length;
+            for (i=0; i <totalLogin; i++){
+                document.getElementsByClassName("login-account")[i].classList.remove("make-invis");
+            }
+            var totalCreate = document.querySelectorAll(".login-account").length;
+            for (i=0; i <totalCreate; i++){
+                document.getElementsByClassName("create-account")[i].classList.add("make-invis");
+                }
+            
+
+        } else {
+            var totalCreate = document.querySelectorAll(".login-account").length;
+            for (i=0; i <totalCreate; i++){
+                document.getElementsByClassName("create-account")[i].classList.remove("make-invis");
+                }
+            var totalLogin = document.querySelectorAll(".login-account").length;
+            for (i=0; i <totalLogin; i++){
+                document.getElementsByClassName("login-account")[i].classList.remove("make-invis");
+            }
+        }
+//        if(document.querySelector(".tab-selected").classList.contains("create-account")){
+//            document.querySelectorAll(".create-account")
+
+//        }else{
+
+//        }
+
         document.querySelector(".tab-selected").classList.remove("tab-selected");
         item.classList.add("tab-selected")
     });
