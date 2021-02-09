@@ -17,23 +17,23 @@
         </div>
 
         <fieldset class="col-10 create-account make-invis">
-            <label type="text">Name:</label>
-            <input  value="Jane/John Doe">
+            <label type="text" for="name">Name:</label>
+            <input type="text" id="name" name="name" value="Jane/John Doe" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
         </fieldset>
 
         <fieldset class="col-10 login-account">
-            <label type="text">Email:</label>
-            <input  value="###@###.com">
+            <label type="email" for="email">Email:</label>
+            <input type="email" id="email" name="email" value="###@###.com" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
         </fieldset>
 
         <fieldset class="col-10 login-account">
-            <label type="text">Password:</label>
-            <input  value="1234">
+            <label type="password" for="password">Password:</label>
+            <input  type="password" id="password" name="password" value="1234" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
         </fieldset>
 
         <fieldset class="col-10 create-account make-invis">
-            <label type="text">Reenter Password:</label>
-            <input  value="1234">
+            <label type="password" for="passwordCheck">Re-enter Password:</label>
+            <input type="password" id="passwordCheck" name="passwordCheck" value="1234" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
         </fieldset>
 
         <input class="custom-button" type="submit" value="Login">
