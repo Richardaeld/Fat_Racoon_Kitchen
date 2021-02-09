@@ -53,3 +53,31 @@ var carouselArray = []
 for(i=0; i<(carousel.length); i++){
     carouselArray.push(i);
 }
+
+// Allows login modal to function and pop up
+var signInModal = document.querySelectorAll(".login-modal");
+signInModal.forEach(popUpModal);
+function popUpModal(item, index){
+    item.addEventListener("click", function () {
+        document.getElementsByClassName("custom-modal")[0].classList.remove("make-invis");
+    });
+}
+// makes modal disappear if background clicked
+document.getElementsByClassName("modal-background")[0].addEventListener("click", function() {
+    document.getElementsByClassName("custom-modal")[0].classList.add("make-invis");
+})
+
+// adds a different background to button when clicked
+document.getElementsByClassName("custom-button")[0].addEventListener("click", function () {
+    document.getElementsByClassName("custom-button")[0].classList.add("custom-button-press");
+})
+
+// Makes the tab for login and create account clickable and switch between login and create account areas
+modaltabs = document.querySelectorAll(".tab");
+modaltabs.forEach(tabSelect);
+function tabSelect(item, index) {
+    item.addEventListener("click", function () {
+        document.querySelector(".tab-selected").classList.remove("tab-selected");
+        item.classList.add("tab-selected")
+    });
+}
