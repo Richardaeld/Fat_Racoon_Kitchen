@@ -189,7 +189,6 @@ hr {
     z-index: 0;
 }
 
-
 .napkin-out-container div {
   position: absolute;
   z-index: 0;
@@ -233,6 +232,7 @@ hr {
 
 .footer-ul-bottom li {
     padding: 0rem 2rem 0rem 2rem;
+    list-style-type: none;
 }
 
 .napkin-nav {
@@ -471,7 +471,6 @@ header {
     position: absolute;
     background-color: rgba(0, 0, 0, .25);
     height: 20rem; /* -----------------------------------------   set with JS  or set as carousel height*/
-    width: 8rem;
     z-index: 1;
 }
 
@@ -504,6 +503,15 @@ footer {
                 0px -1px 5px 5px rgba(0, 0, 0, .25 );
 }
 
+@media (max-width: 575.98px) {
+    .table-runner-pattern {
+        height: 25rem;
+    }
+    footer {
+        height:30rem;
+    }
+}
+
 .social-position  {
     position: relative;
     width: 55px;
@@ -514,6 +522,13 @@ footer {
 @media (max-width: 767.98px) {
     .social-position {
         top: 0%;
+        /*transform: scale(.9);*/
+    }
+}
+
+@media (max-width: 575.98px) {
+    .social-position {
+        /*transform: scale(.7);*/
     }
 }
 
@@ -531,7 +546,14 @@ footer {
 }
 
 .social-link-push li {
-    top: 10px;
+    top: 50px;
+    left: 10px;
+    height: 90px;
+}
+
+.napkin-link-push li{
+    left:-10px;
+    top: 40px;
 }
 
 /* ---------------------------------------- form ---------------------------------------- */

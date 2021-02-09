@@ -4,10 +4,10 @@ var carousel = document.querySelectorAll(".card-carousel");
 // Find width of screen and sets amount of carousel boxes
 // This function is called by a global event handler and 
 // resizes according to the current width of screen
-
+var reveal;
 function findWidth(){
     let screenWidth;
-    let reveal; 
+   // var reveal; 
     screenWidth = window.screen.width;
 
 
@@ -18,7 +18,7 @@ function findWidth(){
     } else if (screenWidth > 768) {
         reveal = 4;
     } else {
-        reveal = 3;
+        reveal = 1;
     }
 
     
@@ -41,6 +41,9 @@ function findWidth(){
     }
 
 }
+
+
+
 // initial setting of carousel boxes
 findWidth();
 
@@ -53,6 +56,39 @@ var carouselArray = []
 for(i=0; i<(carousel.length); i++){
     carouselArray.push(i);
 }
+
+// Left button on card carousel -- switches to previous carousel item
+document.getElementsByClassName("carousel-left")[0].addEventListener("click", function () {
+    console.log (reveal)
+    for (let i=0; i < reveal; i++){
+        document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.remove("card-carousel-vis")
+    }
+    for (let i=0; i < reveal; i++){
+        let x = carouselArray.pop()
+        carouselArray.unshift(x)
+    }
+    for (let i=0; i < reveal; i++){
+        document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.add("card-carousel-vis")
+    }
+})
+
+// Right button on card carousel -- switches to next carousel item
+document.getElementsByClassName("carousel-right")[0].addEventListener("click", function () {
+    for (let i=0; i < reveal; i++){
+        document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.remove("card-carousel-vis")
+    }
+    for (let i=0; i < reveal; i++){
+        let x = carouselArray.shift()
+        carouselArray.push(x)
+    }
+    for (i=0; i < reveal; i++){
+        document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.add("card-carousel-vis")
+    }
+})
+
+
+
+
 
 // Allows login modal to function and pop up
 var signInModal = document.querySelectorAll(".login-modal");
