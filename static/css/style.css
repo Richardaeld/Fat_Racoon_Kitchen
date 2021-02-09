@@ -533,3 +533,109 @@ footer {
 .social-link-push li {
     top: 10px;
 }
+
+/* ---------------------------------------- form ---------------------------------------- */
+.custom-modal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.custom-modal h1 {
+    display: inline-block;
+}
+
+.custom-modal p{
+    display: inline-block;
+    transform: skew(0deg);
+
+}
+
+
+.modal-background {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, .75);
+}
+
+.make-invis {
+    display: none;
+}
+
+.tab-body {
+    font-family: "Yanone+Kaffeesatz", sans-serif;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #010203;
+    background-color: rgba(14, 255, 255, 0.5);
+    overflow: hidden;
+}
+
+
+
+.tab {
+    margin-top: .5rem;
+    display: inline-block;
+}
+
+.tab p {
+    margin: 0;
+}
+
+.tab-selected {
+    border-top-right-radius: 25%;
+    border-top-left-radius: 25%;
+    transform: skew(-10deg);
+    background-color: rgba(0, 0, 0, .25);
+    font-size: 1.75rem;
+    border-top: 2px solid #010203;
+    padding: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+form {
+    background-color: #ebebeb;
+    font-family: "Yanone+Kaffeesatz", sans-serif;
+    margin: 2rem;
+    border-radius: 5%;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .25 ), /* same as card carousel */
+                -1px -1px 2px 2px rgba(0, 0, 0, .15 ),
+                inset 1px 1px 2px rgba(0, 0, 0, .25),
+                inset -2px -2px 2px rgba(0, 0, 0, .25 );
+}
+
+form h1 {
+    padding: 1rem;
+}
+
+form label {
+    text-align: right;
+    width: 30%;
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px #fff;
+}
+
+form input {
+    text-align: left;
+    width: 60%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .25 ),
+                -1px -1px 2px rgba(0, 0, 0, .15 ),
+                inset 1px 1px 2px rgba(0, 0, 0, .25),
+                inset -1px -1px 2px rgba(0, 0, 0, .25 );
+}
+
+.custom-button {
+    width: auto;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    border: 2px solid #474747;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, .5 );
+}
+
+.custom-button-press {
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25 ),
+                inset -2px -2px 2px rgba(0, 0, 0, .25 );
+}

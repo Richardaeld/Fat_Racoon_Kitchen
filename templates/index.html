@@ -1,5 +1,37 @@
 {% extends "base.html" %}
 
+{% block modal %}
+<aside class="row no-gutters justify-content-center custom-modal make-invis" style="background-color: transparent;">
+    <div class="col-12 modal-background"></div>
+
+    <form class="col-10 col-md-6" style="overflow: hidden;">
+        <div class="row no-gutters">
+            <div class="col-12 tab-body">
+                <div class="tab tab-selected">
+                    <p>Login</p>
+                </div>
+                <div class="tab">
+                    <p>Create Account</p>
+                </div>
+            </div>
+        </div>
+
+        <fieldset class="col-10">
+            <label type="text">Email:</label>
+            <input  value="###@###.com">
+        </fieldset>
+
+        <fieldset class="col-10">
+            <label type="text">Password:</label>
+            <input  value="1234">
+        </fieldset>
+
+        <input class="custom-button" type="submit" value="Login">
+    </form>
+</aside>
+{% endblock %}
+
+
 {% block section %}
     <!-- Section for 'recipe of the day' -->
     <section class="row no-gutters" style="background-color:#fff; ">                <!--  No size given, auto sizes with size of picture/recipe description/ chef bio  -->
