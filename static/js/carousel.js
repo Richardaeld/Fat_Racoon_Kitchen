@@ -14,9 +14,11 @@ function findWidth(){
 
     // Sets carousel number to be shown
     if (screenWidth > 1200) {
-        reveal = 6;
+        reveal = 5;
     } else if (screenWidth > 768) {
-        reveal = 4;
+        reveal = 3;
+    } else if (screenWidth > 576){
+        reveal = 2
     } else {
         reveal = 1;
     }
