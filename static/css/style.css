@@ -232,7 +232,6 @@ hr {
 
 .footer-ul-bottom li {
     padding: 0rem 2rem 0rem 2rem;
-    list-style-type: none;
 }
 
 .napkin-nav {
@@ -532,9 +531,8 @@ footer {
     }
 }
 
-.footer-ul li { /* removes border and white boxes placed by bootstrap */
-    background:transparent;
-    border: none;
+.footer-ul li { 
+    list-style-type: none;
 }
 
 .racoon img {
@@ -545,16 +543,20 @@ footer {
     bottom:0;
 }
 
-.social-link-push li {
-    top: 50px;
-    left: 10px;
-    height: 90px;
+@media (max-width: 767.98px) {
+    .social-link-push li {
+        top: 50px;
+        left: 10px;
+        height: 90px;
+    }
+
+    .napkin-link-push li{
+        left:-10px;
+        top: 40px;
+    }
+
 }
 
-.napkin-link-push li{
-    left:-10px;
-    top: 40px;
-}
 
 /* ---------------------------------------- form ---------------------------------------- */
 .custom-modal {
