@@ -26,39 +26,64 @@ mongo = PyMongo(app)
 def index():
     # Loads carousel items
     features = list(mongo.db.feature.find())
+
     # Loads recipe of the day
     raccoonrecipe = list(mongo.db.recipes.find())
+
     # Finds, splits and loads cook time data from recipe of the day
     time = raccoonrecipe[0]["time"].split(",")
+
     # finds and loads chefs information from recipe of the day
     chef = mongo.db.users.find_one(
         {"name": raccoonrecipe[0]["created_by"]})['bio']
 
-    # Login information
+    # --Login-- information
+    if request.method == "POST" and request.form.get("name") == "":
+        userNameTaken = mongo.db.users.find_one({"email": request.form.get("email")})
+        if userNameTaken:
+            if check_password_hash(userNameTaken["password"], request.form.get("password")):
+                session["user"] = request.form.get("email")
+                flash("Welcome back!")
+                return redirect(url_for("index"))
+            else:
+                flash("*meta password* Login credentials incorrect!")
+                return redirect(url_for("index"))
+        else:
+            flash("*meta name*Login credentials incorrect!")
 
-    # Create account information
+    # --Create account-- information
     if request.method == "POST":
         userNameTaken = mongo.db.users.find_one({"email": request.form.get("email")})
+
+        # Check to be sure email doesnt already exist in DB
         if userNameTaken:
             flash("This email was already taken!")
             return redirect(url_for("index"))
 
+        # Gather form information and submit to DB
         create = {
             "username": request.form.get("name"),
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password"))
         }
-        session["user"] = request.form.get("username")
         mongo.db.users.insert_one(create)
+
+        # Create session for user name
+        session["user"] = request.form.get("email")
         flash("Welcome to the table!")
-        return redirect(url_for("index"))
+        return redirect(url_for("index", username=session['user']))
 
     return render_template(
-        "index.html",
-        features=features,
-        raccoonrecipe=raccoonrecipe,
-        time=time,
-        chef=chef)
+        "index.html", features=features, raccoonrecipe=raccoonrecipe,
+        time=time, chef=chef)
+
+
+@app.route('/logout')
+def logout():
+    # Removes session for user
+    session.pop("user")
+    flash("You've been logged out!")
+    return redirect(url_for("index"))
 
 
 #@app.route('/')
