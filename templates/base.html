@@ -30,7 +30,7 @@
             <nav class="custom-nav d-none d-lg-block d-xl-block d-xxl-block">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
@@ -43,7 +43,7 @@
                         <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
@@ -73,7 +73,7 @@
     <nav class="custom-nav d-block d-sm-block d-md-block d-lg-none">
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="{{ url_for('index') }}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">About Us</a>
@@ -86,7 +86,7 @@
                 <a class="nav-link" href="{{ url_for('logout') }}">logout</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
             </li>
             {% endif %}
             <li class="nav-item">
