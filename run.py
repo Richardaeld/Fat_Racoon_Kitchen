@@ -6,6 +6,7 @@ from flask_pymongo import PyMongo
 #from pymongo import MongoClient  #
 #import gridfs  #
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -37,18 +38,17 @@ def index():
 
     # Create account information
     if request.method == "POST":
-        userNameTaken = mongo.db.users.find_one({"username": request.form.get("name")})
+        userNameTaken = mongo.db.users.find_one({"email": request.form.get("email")})
         if userNameTaken:
-            flash("This name was already taken!")
+            flash("This email was already taken!")
             return redirect(url_for("index"))
 
         create = {
             "username": request.form.get("name"),
             "email": request.form.get("email"),
-            "password": request.form.get("password")
+            "password": generate_password_hash(request.form.get("password"))
         }
         session["user"] = request.form.get("username")
-        print(create)
         mongo.db.users.insert_one(create)
         flash("Welcome to the table!")
         return redirect(url_for("index"))
