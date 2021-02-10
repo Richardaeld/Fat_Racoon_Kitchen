@@ -132,6 +132,8 @@ in college, let us know!
 --have a triangle shapped container to hold a repeating linear gradient.  Found solution at MDN using a clip-path:polygon https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path 
 
 --Procfile was missing a space after colon
+-- if session only responsive outside of header, below nav bar
+    -- had to call dictionary and item (ex. session.user)
 ## Current Bugs
 
 ## Other Problems
