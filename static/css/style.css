@@ -674,3 +674,9 @@ form input {
     box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25 ),
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
+
+
+/* ---------------------------------------- Profile ---------------------------------------- */
+.profile-lists p {
+    text-align: left;
+}

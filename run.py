@@ -86,6 +86,18 @@ def logout():
     return redirect(url_for("index"))
 
 
+@app.route('/profile')
+def profile():
+    # Loads user Info
+    chef_info = list(mongo.db.users.find({"email": session['user']}))
+    
+    # Loads carousel items
+    features = list(mongo.db.feature.find())
+    return render_template(
+        "profile.html", chef_info=chef_info,
+        features=features)
+
+
 #@app.route('/')
 #def index():
 #    return '''
