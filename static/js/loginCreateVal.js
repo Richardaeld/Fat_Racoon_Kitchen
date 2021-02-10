@@ -11,6 +11,9 @@ function tabSelect(item, index) {
             for (i=0; i <totalCreate; i++){
                 document.getElementsByClassName("create-account")[i].classList.add("make-invis");
                 document.getElementsByClassName("create-account")[i].getElementsByTagName("input")[0].removeAttribute("required");
+                document.getElementsByClassName("create-account")[i].getElementsByTagName("input")[0].setAttribute("value", "");
+                document.getElementsByClassName("create-account")[i].getElementsByTagName("input")[0].value = "";
+
             }
         } else {
             // Makes all create account material visivle and makes adds required when create account is clicked
