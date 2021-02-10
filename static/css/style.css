@@ -327,6 +327,17 @@ header {
     content: "Racoon";
     text-shadow: 0px 0px rgba(0, 0, 0, .1);
 }
+/* ---------------------------------------- Flash messges ---------------------------------------- */
+
+.flash {
+    height: 5rem;
+    color: #fff;
+    font-family: "Yanone Kaffeesatz", sans-serif;
+}
+
+.flash h1 {
+    margin-bottom: 0;;
+}
 
 /* ---------------------------------------- Nav Bar ---------------------------------------- */
 .custom-nav {

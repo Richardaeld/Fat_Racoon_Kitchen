@@ -4,7 +4,7 @@
 <aside class="row no-gutters justify-content-center custom-modal make-invis" style="background-color: transparent;">
     <div class="col-12 modal-background"></div>
 
-    <form class="col-10 col-md-6" style="overflow: hidden;">
+    <form class="col-10 col-md-6" style="overflow: hidden;" method="POST" action="{{ url_for('index') }}">
         <div class="row no-gutters">
             <div class="col-12 tab-body">
                 <div class="tab tab-selected">
@@ -18,22 +18,22 @@
 
         <fieldset class="col-10 create-account make-invis">
             <label type="text" for="name">Name:</label>
-            <input type="text" id="name" name="name" value="Jane/John Doe" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
+            <input type="text" id="name" name="name" value="JaneDoe" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
         </fieldset>
 
         <fieldset class="col-10 login-account">
             <label type="email" for="email">Email:</label>
-            <input type="email" id="email" name="email" value="###@###.com" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
+            <input type="email" id="email" name="email" value="asdfa@aol.com" minlength="5" maxlength="20"  required>
         </fieldset>
 
         <fieldset class="col-10 login-account">
             <label type="password" for="password">Password:</label>
-            <input  type="password" id="password" name="password" value="1234" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
+            <input  type="password" id="password" name="password" value="123456" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
         </fieldset>
 
         <fieldset class="col-10 create-account make-invis">
             <label type="password" for="passwordCheck">Re-enter Password:</label>
-            <input type="password" id="passwordCheck" name="passwordCheck" value="1234" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
+            <input type="password" id="passwordCheck" name="passwordCheck" value="123456" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
         </fieldset>
 
         <input class="custom-button" type="submit" value="Login">
@@ -166,5 +166,6 @@
 
 {% block custom_script %}
 <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+<script src="{{ url_for('static', filename='js/general.js') }}"></script>
 <script src="{{ url_for('static', filename='js/loginCreateVal.js') }}"></script>
 {% endblock %}

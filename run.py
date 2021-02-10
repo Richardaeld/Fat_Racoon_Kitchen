@@ -21,7 +21,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route("/")
+@app.route("/", methods=("GET", "POST"))
 def index():
     # Loads carousel items
     features = list(mongo.db.feature.find())
@@ -30,7 +30,29 @@ def index():
     # Finds, splits and loads cook time data from recipe of the day
     time = raccoonrecipe[0]["time"].split(",")
     # finds and loads chefs information from recipe of the day
-    chef = mongo.db.users.find_one({"name": raccoonrecipe[0]["created_by"]})['bio']
+    chef = mongo.db.users.find_one(
+        {"name": raccoonrecipe[0]["created_by"]})['bio']
+
+    # Login information
+
+    # Create account information
+    if request.method == "POST":
+        userNameTaken = mongo.db.users.find_one({"username": request.form.get("name")})
+        if userNameTaken:
+            flash("This name was already taken!")
+            return redirect(url_for("index"))
+
+        create = {
+            "username": request.form.get("name"),
+            "email": request.form.get("email"),
+            "password": request.form.get("password")
+        }
+        session["user"] = request.form.get("username")
+        print(create)
+        mongo.db.users.insert_one(create)
+        flash("Welcome to the table!")
+        return redirect(url_for("index"))
+
     return render_template(
         "index.html",
         features=features,

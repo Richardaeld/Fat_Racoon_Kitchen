@@ -58,6 +58,20 @@
         </div>
     </header>
 
+    <aside id="flash">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="row no-gutters justify-content-center flash align-items-center">
+                    <div class="col-10">
+                        <h1> {{ message }} </h1>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {%endwith%}
+    </aside>
+
     <!-- Site main nav bar -->
     <nav class="custom-nav d-block d-sm-block d-md-block d-lg-none">
         <ul class="nav justify-content-center">
