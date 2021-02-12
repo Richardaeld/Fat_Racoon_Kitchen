@@ -1,0 +1,287 @@
+/* ---------------------------------------- Text Effects or gradient Patterns  ---------------------------------------- */
+.picnic-pattern { /* red traditional southen table linen pattern (square pattern) */
+    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0) 29%, rgba(226, 14, 14, 0.25) 30% 70%, rgba(0, 0, 0, 0) 71% 100%),
+                repeating-linear-gradient(90deg, rgba(0, 0, 0, 0) 29%, rgba(226, 14, 14, 0.25) 30% 70%, rgba(0, 0, 0, 0) 71% 100%);
+    background-color: #fff;
+    background-size: 20px 20px;
+}
+
+.racoon-pattern { /* black southen table linen pattern (square pattern) */
+    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0) 9%, rgba(0, 0, 0, 0.25) 10% 50%, rgba(0, 0, 0, 0) 51% 100%),
+                repeating-linear-gradient(90deg, rgba(0, 0, 0, 0) 9%, rgba(0, 0, 0, 0.25) 10% 50%, rgba(0, 0, 0, 0) 51% 100%);
+    background-color: #fff;
+    background-size: 20px 20px;
+}
+
+.cross-border { /* black cross grey background */
+    background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) 47%, #010203 48% 50%, rgba(0, 0, 0, 0) 51% 100%),
+                repeating-linear-gradient(135deg, rgba(0, 0, 0, 0) 47%, #010203 48% 50%, rgba(0, 0, 0, 0)51% 100%);
+    background-size: 10px 10px;
+    background-color: #adadad;
+}
+
+.cross-border-2 { /* green cross grey background */
+    background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) 47%, #00ff0d 48% 50%, rgba(0, 0, 0, 0) 51% 100%),
+                repeating-linear-gradient(135deg, rgba(0, 0, 0, 0) 47%, #00ff0d 48% 50%, rgba(0, 0, 0, 0)51% 100%);
+    background-size: 10px 10px;
+    background-color: #474747;
+}
+
+.notebook-paper {
+    background: repeating-linear-gradient(to bottom, #fff 45%, rgba(57, 118, 230, .5) 45% 55%, #fff 55% 100%);
+    background-size: 20px 20px;
+}
+
+.bubble-letters {
+    color: #fff;
+    text-shadow: 0px 1px rgba(0, 0, 0, .75),
+                1px 0px rgba(0, 0, 0, .75),
+                0px -1px rgba(0, 0, 0, .75),
+                -1px 0px rgba(0, 0, 0, .75);
+}
+
+/* ---------------------------------------- Animation/Art  ---------------------------------------- */
+/* ---------------------------------------- Sticky Note ---------------------------------------- */
+/* structure of sticky note is important!*/
+/* > == one level deeper ||  This effect requires a height to be set at the sticky-note level*/ 
+/* div(sticky-note) > div(recipe-picture) > p () *place content here within p* */
+/* sticky-note-right goes with sticky-note to generate a reverse shadow  */
+.sticky-note {
+    color: #fff;
+    position: relative;
+    background-color: #e7d912;
+    z-index: 2;
+    margin: 1.5rem 0rem;
+}
+
+.sticky-note-right div {
+    transform: rotateY(180deg);
+}
+
+.sticky-note-right p {
+    transform: rotateY(0deg);
+}
+
+.sticky-note:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    z-index: 0;
+    /*height: 95%;  --original  */
+    height: 90%;
+    width: 50%;
+    /*box-shadow: -20px 20px 20px 0px rgba(0, 0, 0, .25 ); --original */
+    box-shadow: -20px 45px 20px 0px rgba(0, 0, 0, .25 );
+    transform: translateX(0px) translateY(-7px) rotate(-10deg) skewX(-10deg);
+}
+
+.sticky-note-right {
+    transform: rotateY(180deg);
+}
+
+.sticky-note-inner-div {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 1.5rem;
+    background: #e7d912;
+    color: #010203;
+    z-index: 2;
+    box-shadow: inset -2px -2px 2px  rgba(0, 0, 0, .25),
+                -1px -1px 2px 0px rgba(0, 0, 0, .25);
+}
+
+/* ---------------------------------------- Social 'drink' link with ripple animation (start) ---------------------------------------- */
+/* -- Ripple effect over 'drink' social links -- */
+.ripple {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    transform: scale(0);
+    border-radius: 50%;
+    border: 2px solid #ce52007c;
+    box-shadow: inset 2px 0px rgba(0, 0, 0, .25),
+                inset 0px 2px rgba(0, 0, 0, .25),
+                inset -2px 0px rgba(0, 0, 0, .25),
+                inset 0px -2px rgba(0, 0, 0, .25),
+                1px 0px #ff66007c,
+                0px 1px #ff66007c,
+                -1px 0px #ff66007c,
+                0px -1px #ff66007c;
+    z-index: 0;
+    transform: translateX(-50%) translateY(11%) scale(0);
+}
+
+.create-ripple {
+    animation: 10s linear 0s 1 normal forwards tea-ripple;
+}
+
+@keyframes tea-ripple {
+    0%{transform: translateX(-50%) translateY(11%) scale(0);}
+    90%{transform: translateX(-50%) translateY(11%) scale(.9);}
+    100%{transform: translateX(-50%) translateY(11%);
+        border: 2px solid #ce520000;
+        box-shadow: inset 2px 0px rgba(0, 0, 0, 0),
+                    inset 0px 2px rgba(0, 0, 0, 0),
+                    inset -2px 0px rgba(0, 0, 0, 0),
+                    inset 0px -2px rgba(0, 0, 0, 0),
+                    1px 0px #ff660000,
+                    0px 1px #ff660000,
+                    -1px 0px #ff660000,
+                    0px -1px #ff660000;}
+}
+
+.social-position:hover .ripple  {
+    transition-duration: 2s;
+    transform: translateX(-50%) translateY(11%) ;
+    z-index: 1;
+}
+
+/* -- Outer most box of social links -- */
+.social-link {
+    position: absolute;
+    z-index: 2;
+    font-size: 1.5rem;
+    transform: translateX(-50%) translateY(65%);
+    z-index: 1;
+}
+
+/* -- Liquid layer of drink -- */
+.liquid {
+    background-color: #923c01;
+    border-radius: 50%;
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    z-index: 0;
+    transform: translateX(11%) translateY(11%);
+    z-index: 1;
+}
+
+/* -- glass 'container' layer of drink -- */
+.glass {
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    border: 5px solid rgba(49, 63, 128, 0.5);
+    border-radius: 50%;
+    box-shadow:  -7px -10px 2px 2px  rgba(0, 0, 0, .25),
+                inset -5px -5px 2px  rgba(0, 0, 0, .5),
+                inset 2px 0px 2px  rgba(0, 0, 0, .5),
+                inset 0px 2px 2px  rgba(0, 0, 0, .25);
+    z-index: 1;
+}
+
+/* -- glass shadow layer of drink -- */
+.glass-shadow {
+    right: 1px;
+    top: 1px;
+    height: 53px;
+    width: 53px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: transparent;
+    z-index: 1;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .5),
+                inset -1px -1px 3px rgba(0, 0, 0, .5);
+}
+
+/* ---------------------------------------- Social 'drink' link with ripple animation (end) ---------------------------------------- */
+
+/* ---------------------------------------- Napkin ---------------------------------------- */
+
+.napkin-shadow {
+    height:80px;
+    width: 80px;
+    position: absolute;
+    background-color: transparent;
+    box-shadow:   -1px -1px 1px   rgba(0, 0, 0, .25),
+                1px 1px 1px 1px rgba(0, 0, 0, .25),
+                inset 2px 2px 2px rgba(0, 0, 0, .25);
+}
+
+.napkin-out-container {
+  height: 80px;
+  width: 80px;
+  background-color: #fff;
+  /*box-shadow:  -1px 0px 2px  rgba(0, 0, 0, .5),     -------  original-----
+                inset 2px 0px 2px  rgba(0, 0, 0, .75),
+                 0px -1px 2px  rgba(0, 0, 0, .5),
+                inset 0px 2px 2px  rgba(0, 0, 0, .75);*/
+ /* box-shadow:  inset -1px 0px 2px  rgba(0, 0, 0, .5),
+                2px 0px 2px  rgba(0, 0, 0, .75),
+                inset 0px -1px 2px  rgba(0, 0, 0, .5),
+                0px 2px 2px  rgba(0, 0, 0, .75);*/
+    background-color: #e0e0e0;
+      transform: rotate(180deg) translateX(25%) translateY(25%);
+    z-index: 0;
+}
+
+.napkin-out-container div {
+  position: absolute;
+  z-index: 0;
+}
+
+.napkin-vertical-lines {
+  width: 70px;
+  height: 15px;
+  transform: translateY(65px);
+  background: repeating-linear-gradient(to right, rgba(0,0,0,0)30%, rgba(124, 124, 124, 0.5) 30% 54%, rgba(0,0,0,0) 54% 100%);
+  background-size: 5px 5px;
+}
+
+ .napkin-horizontal-lines {
+  /*box-sizing: border-box;*/
+  width: 15px;
+  height: 80px;
+  transform: translateX(65px);
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0)30%, rgba(124, 124, 124, 0.5) 30% 54%, rgba(0,0,0,0) 54% 100%);
+  background-size: 5px 5px;
+  border-bottom: 10px solid rgba(255, 255, 255, 0);
+  border-right: 10px solid rgba(0, 0, 0, 0);
+}
+
+.napkin-right-triangle-corner {
+    width: 30px;
+    height: 30px;
+    background: repeating-linear-gradient(to top, rgba(0,0,0,0)30%, rgba(124, 124, 124, 0.5) 30% 52%, rgba(0,0,0,0) 52% 100%);
+    background-size: 5px 5px;
+    clip-path: polygon(0% 50%, 50% 50%, 50% 0%);
+    transform: translate(50px, 65px) rotate(90deg);
+    background-color: #e0e0e0;
+}
+
+.napkin-border-lines{
+  width: 65px;
+  height: 65px;
+  border-bottom: 3px double rgba(124, 124, 124, 0.5);
+  border-right: 3px double rgba(124, 124, 124, 0.5);
+}
+
+.footer-ul-bottom li {
+    padding: 0rem 2rem 0rem 2rem;
+}
+
+.napkin-nav {
+      transform:  translateX(-0%) translateY(-65%) rotate(135deg);
+}
+
+.napkin-nav p {
+    position: absolute;
+      transform: rotate(225deg) translateX(-25%) translateY(-50%);
+}
+
+.napkin-nav img {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transform: rotate(225deg) translateX(25%) translateY(-50%);
+    filter: sepia(100%); 
+}
+
+.raccoon-face {
+    height: 100px;
+    width:100px;
+}
