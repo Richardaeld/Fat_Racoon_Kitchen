@@ -1,25 +1,27 @@
 {% extends "base.html" %}
 {% block section %}
 <!--  User basic information  -->
-<section class="row no-gutters justify-content-around carousel align-items-center"> <!--  used carousel height  -->
+<section class="row no-gutters justify-content-around align-items-center notebook-paper" style="background-color:  #010203;"> <!--  used carousel height  -->
+    <!--  Chef Name and Bio  -->
     {% for chef in chef_info %}
-        <div class="col-6 bubble-letters">
-            <div class="row no-gutters">
-                <div class="col-12">
+        <div class="col-6 bubble-letters sticky-note profile-sticky-height">
+            <div class="row no-gutters sticky-note-inner-div">
+                <div class="col-12" style="color:#474747; text-shadow: 2px 2px rgba(0,0,0,.75);">
                     <h1>
                         {{ chef.username }}
                     </h1>
                 </div>
                 <div class="col-12">
-                    <p>
+                    <p style="font-size:2.5rem;">
                         {{ chef.bio }}
                     </p>
                 </div>
             </div>
         </div>
-        <div class="col-4 align-items-center" style="height:6rem;">
+        <!--  Avatar of chef or basic stand in  -->
+        <div class="col-4 align-items-center sticky-note sticky-note-right profile-sticky-height">
             {% if chef.avatar == none %}
-            <div class="row no-gutters justify-content-center">
+            <div class="row no-gutters justify-content-center sticky-note-inner-div">
                 <div class="avatar">
                     <svg width="50" height="50">
                         <circle cx="25" cy="25" r="20" stroke-width="4" fill="#010203"/>
@@ -28,18 +30,56 @@
                         <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203"/>
                     </svg>
                 </div>
-                </div>
-            {% else %}
-                <h1 class="bubble-letters">I shouldnt be here!!</h1>
-            {% endif %}
-            <h1 class="bubble-letters">I Could be a search bar!!</h1>
+                {% else %}
+                    <h1 class="bubble-letters">I shouldnt be here!!</h1>
+                {% endif %}
+                    <h1 class="bubble-letters">I Could be a search bar!!</h1>
+            </div>
         </div>
         {% endfor %}
-
 </section>
 
-<!-- carousel -->
-<aside class="row no-gutters justify-content-around align-items-center card-section picnic-pattern carousel">
+<!--  Ten most recent columns   -->
+<section class="row no-gutters justify-content-around bubble-letters profile-lists notebook-paper">
+    
+    <!--  Display ten most recent recipe uploads  -->
+    <div class="col-3 sticky-note profile-sticky-height">
+        <div class="sticky-note-inner-div">
+            <h3>10 most recipies you've uploaded</h3>
+            <hr>
+            {% for recipe in submittedRecipes %}
+                {% if recipe[0] + 1 < 6 %} <!--  Change this line to allow more or less on list  -->
+                    <p>{{  recipe[0] + 1 }}. {{ recipe[1].name }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!--  Display ten most recent favorited recipes  -->
+    <div class="col-3 sticky-note profile-sticky-height">
+        <div class="sticky-note-inner-div">
+            <h3>10 recently favorited recipies</h3>
+            <hr>
+            {% for favorite in favorites %}
+                <p>{{ favorite[0] + 1 }}. {{ favorite[1] }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!--  Display ten most recently viewed recipes  -->
+    <div class="col-3 sticky-note sticky-note-right profile-sticky-height">
+        <div class="sticky-note-inner-div">            
+            <h3>10 recently viewed recipies</h3>
+            <hr>
+            {% for recent in recents %}
+                <p>{{ recent[0] + 1 }}. {{ recent[1] }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- carousel --> <!--   Not happy with look on profile page, change background and move to bottom of profile   -->
+<!--<aside class="row no-gutters justify-content-around align-items-center card-section picnic-pattern carousel">
 
         <div class="col-2 col-sm-1 carousel-button carousel-left">
             <div class="row no-gutters justify-content-center">
@@ -73,37 +113,9 @@
             </div>
         </div>
 
-</aside>
+</aside>-->
 
-<!--  Ten most recent columns   -->
-<section class="row no-gutters justify-content-around bubble-letters profile-lists">
-    
-    <!--  Display ten most recent recipe uploads  -->
-    <div class="col-3">
-        <h1>The ten most recent recipies youve uploaded</h1>
-        {% for recipe in submittedRecipes %}
-            {% if recipe[0] + 1 < 6 %} <!--  Change this line to allow more or less on list  -->
-                <p style="font-size: 2rem;">{{  recipe[0] + 1 }}. {{ recipe[1].name }}</p>
-            {% endif %}
-        {% endfor %}
-    </div>
 
-    <!--  Display ten most recent favorited recipes  -->
-    <div class="col-3">
-        <h1>The ten most recent favorite recipies</h1>
-        {% for favorite in favorites %}
-            <p style="font-size: 2rem;">{{ favorite[0] + 1 }}. {{ favorite[1] }}</p>
-        {% endfor %}
-    </div>
-    
-    <!--  Display ten most recently viewed recipes  -->
-    <div class="col-3">
-        <h1>The ten most recent viewed recipies</h1>
-        {% for recent in recents %}
-        <p style="font-size: 2rem;">{{ recent[0] + 1 }}. {{ recent[1] }}</p>
-        {% endfor %}
-    </div>
-</section>
 {% endblock %}
 
 {% block custom_script %}
