@@ -77,27 +77,32 @@
 
 <!--  Ten most recent columns   -->
 <section class="row no-gutters justify-content-around bubble-letters profile-lists">
-<div class="col-3">
-    <h1>The ten most recent recipies youve uploaded</h1>
-    <p>1</p>
-    <p>2</p>
-    <p>3</p>
-    <p>4</p>
-</div>
-<div class="col-3">
-    <h1>The ten most recent favorite recipies</h1>
-    <p>1</p>
-    <p>2</p>
-    <p>3</p>
-    <p>4</p>
-</div>
-<div class="col-3">
-    <h1>The ten most recent viewed recipies</h1>
-    <p>1</p>
-    <p>2</p>
-    <p>3</p>
-    <p>4</p>
-</div>
+    
+    <!--  Display ten most recent recipe uploads  -->
+    <div class="col-3">
+        <h1>The ten most recent recipies youve uploaded</h1>
+        {% for recipe in submittedRecipes %}
+            {% if recipe[0] + 1 < 6 %} <!--  Change this line to allow more or less on list  -->
+                <p style="font-size: 2rem;">{{  recipe[0] + 1 }}. {{ recipe[1].name }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!--  Display ten most recent favorited recipes  -->
+    <div class="col-3">
+        <h1>The ten most recent favorite recipies</h1>
+        {% for favorite in favorites %}
+            <p style="font-size: 2rem;">{{ favorite[0] + 1 }}. {{ favorite[1] }}</p>
+        {% endfor %}
+    </div>
+    
+    <!--  Display ten most recently viewed recipes  -->
+    <div class="col-3">
+        <h1>The ten most recent viewed recipies</h1>
+        {% for recent in recents %}
+        <p style="font-size: 2rem;">{{ recent[0] + 1 }}. {{ recent[1] }}</p>
+        {% endfor %}
+    </div>
 </section>
 {% endblock %}
 

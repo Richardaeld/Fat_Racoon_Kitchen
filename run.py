@@ -90,16 +90,43 @@ def logout():
 def profile():
     # Loads user Info
     chef_info = list(mongo.db.users.find({"email": session['user']}))
-    
+
+    # Find user selected favorites by '_id' and add them to a list
+    favorites = []
+    userFavorites = (mongo.db.users.find({"email": session['user']}))
+    for fav in userFavorites:
+        for fa in fav["favorites"]:
+            favorite = mongo.db.recipes.find_one({"_id": ObjectId(fa)})
+            favorites += [favorite["name"]]
+
+    favorites = enumerate(favorites)
+
+    # Find Chef submitted recipies, change them into
+    # a list, and give each iteration a number
+    submittedRecipes = enumerate(list(mongo.db.recipes.find(
+        {"created_by": session['user']})))
+
+    # Find ten previously user viewed recipies
+    recents = []
+    userRecents = mongo.db.users.find({"email": session['user']})
+    for recent in userRecents:
+        for recentId in recent["recent"]:
+            ids = mongo.db.recipes.find_one({"_id": ObjectId(recentId)})
+            recents += [ids["name"]]
+
+    recents = enumerate(recents)
+
     # Loads carousel items
     features = list(mongo.db.feature.find())
+
     return render_template(
         "profile.html", chef_info=chef_info,
-        features=features)
+        features=features, submittedRecipes=submittedRecipes,
+        favorites=favorites, recents=recents)
 
 
-#@app.route('/')
-#def index():
+# @app.route('/')
+# def index():
 #    return '''
 #        <form method="POST" action="/create" enctype="multipart/form-data">
 #            <input type="text" name="username">
@@ -109,15 +136,16 @@ def profile():
 #    '''
 
 
-#@app.route('/create', methods=['POST'])
-#def create():
+# @app.route('/create', methods=['POST'])
+# def create():
 #    if 'profile_image' in request.files:
 #        profile_image = request.files['profile_image']
 #        # first is file name second is file data
 #        mongo.save_file(profile_image.filename, profile_image)
-#        mongo.db.users.insert({'username': request.form.get('username'), 'profile_image_name': profile_image.filename})
+#        mongo.db.users.insert(
+#           {'username': request.form.get('username'),
+#           'profile_image_name': profile_image.filename})
 #    return "Holy icosahedron!"
-
 
 
 if __name__ == "__main__":
