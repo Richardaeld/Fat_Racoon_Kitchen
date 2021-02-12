@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
 
-
+/* ----------------------------------------  General Tag  ---------------------------------------- */
 body {
     background-color: #474747;
     text-align: center;
@@ -12,46 +12,8 @@ hr {
     border-top: 2px solid #010203;
 }
 
-.container {
-    margin:0;
-    padding:0;
-}
-
-/* ---------------------------------------- Text Effects or gradient Patterns  ---------------------------------------- */
-.picnic-pattern { /* red traditional southen table linen pattern (square pattern) */
-    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0) 29%, rgba(226, 14, 14, 0.25) 30% 70%, rgba(0, 0, 0, 0) 71% 100%),
-                repeating-linear-gradient(90deg, rgba(0, 0, 0, 0) 29%, rgba(226, 14, 14, 0.25) 30% 70%, rgba(0, 0, 0, 0) 71% 100%);
-    background-color: #fff;
-    background-size: 20px 20px;
-}
-
-.racoon-pattern { /* black southen table linen pattern (square pattern) */
-    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0) 9%, rgba(0, 0, 0, 0.25) 10% 50%, rgba(0, 0, 0, 0) 51% 100%),
-                repeating-linear-gradient(90deg, rgba(0, 0, 0, 0) 9%, rgba(0, 0, 0, 0.25) 10% 50%, rgba(0, 0, 0, 0) 51% 100%);
-    background-color: #fff;
-    background-size: 20px 20px;
-}
-
-.cross-border { /* black cross grey background */
-    background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) 47%, #010203 48% 50%, rgba(0, 0, 0, 0) 51% 100%),
-                repeating-linear-gradient(135deg, rgba(0, 0, 0, 0) 47%, #010203 48% 50%, rgba(0, 0, 0, 0)51% 100%);
-    background-size: 10px 10px;
-    background-color: #adadad;
-}
-
-.cross-border-2 { /* green cross grey background */
-    background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0) 47%, #00ff0d 48% 50%, rgba(0, 0, 0, 0) 51% 100%),
-                repeating-linear-gradient(135deg, rgba(0, 0, 0, 0) 47%, #00ff0d 48% 50%, rgba(0, 0, 0, 0)51% 100%);
-    background-size: 10px 10px;
-    background-color: #474747;
-}
-
-.bubble-letters {
-    color: #fff;
-    text-shadow: 0px 1px rgba(0, 0, 0, .75),
-                1px 0px rgba(0, 0, 0, .75),
-                0px -1px rgba(0, 0, 0, .75),
-                -1px 0px rgba(0, 0, 0, .75);
+header {
+    border-bottom: 2px solid rgba(226, 14, 14, .5);
 }
 
 /* -- blank is extra till pymongo runs -- */
@@ -62,209 +24,10 @@ hr {
     height: 250px;
 }
 
-/* ---------------------------------------- Animation/Art  ---------------------------------------- */
-/* ---------------------------------------- Social 'drink' link with ripple animation (start) ---------------------------------------- */
-/* -- Ripple effect over 'drink' social links -- */
-.ripple {
-    position: absolute;
-    height: 45px;
-    width: 45px;
-    transform: scale(0);
-    border-radius: 50%;
-    border: 2px solid #ce52007c;
-    box-shadow: inset 2px 0px rgba(0, 0, 0, .25),
-                inset 0px 2px rgba(0, 0, 0, .25),
-                inset -2px 0px rgba(0, 0, 0, .25),
-                inset 0px -2px rgba(0, 0, 0, .25),
-                1px 0px #ff66007c,
-                0px 1px #ff66007c,
-                -1px 0px #ff66007c,
-                0px -1px #ff66007c;
-    z-index: 0;
-    transform: translateX(-50%) translateY(11%) scale(0);
-}
-
-.create-ripple {
-    animation: 10s linear 0s 1 normal forwards tea-ripple;
-}
-
-@keyframes tea-ripple {
-    0%{transform: translateX(-50%) translateY(11%) scale(0);}
-    90%{transform: translateX(-50%) translateY(11%) scale(.9);}
-    100%{transform: translateX(-50%) translateY(11%);
-        border: 2px solid #ce520000;
-        box-shadow: inset 2px 0px rgba(0, 0, 0, 0),
-                    inset 0px 2px rgba(0, 0, 0, 0),
-                    inset -2px 0px rgba(0, 0, 0, 0),
-                    inset 0px -2px rgba(0, 0, 0, 0),
-                    1px 0px #ff660000,
-                    0px 1px #ff660000,
-                    -1px 0px #ff660000,
-                    0px -1px #ff660000;}
-}
-
-.social-position:hover .ripple  {
-    transition-duration: 2s;
-    transform: translateX(-50%) translateY(11%) ;
-    z-index: 1;
-}
-
-/* -- Outer most box of social links -- */
-.social-link {
-    position: absolute;
-    z-index: 2;
-    font-size: 1.5rem;
-    transform: translateX(-50%) translateY(65%);
-    z-index: 1;
-}
-
-/* -- Liquid layer of drink -- */
-.liquid {
-    background-color: #923c01;
-    border-radius: 50%;
-    position: absolute;
-    height: 45px;
-    width: 45px;
-    z-index: 0;
-    transform: translateX(11%) translateY(11%);
-    z-index: 1;
-}
-
-/* -- glass 'container' layer of drink -- */
-.glass {
-    position: absolute;
-    height: 55px;
-    width: 55px;
-    border: 5px solid rgba(49, 63, 128, 0.5);
-    border-radius: 50%;
-    box-shadow:  -7px -10px 2px 2px  rgba(0, 0, 0, .25),
-                inset -5px -5px 2px  rgba(0, 0, 0, .5),
-                inset 2px 0px 2px  rgba(0, 0, 0, .5),
-                inset 0px 2px 2px  rgba(0, 0, 0, .25);
-    z-index: 1;
-}
-
-/* -- glass shadow layer of drink -- */
-.glass-shadow {
-    right: 1px;
-    top: 1px;
-    height: 53px;
-    width: 53px;
-    position: absolute;
-    border-radius: 50%;
-    background-color: transparent;
-    z-index: 1;
-    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .5),
-                inset -1px -1px 3px rgba(0, 0, 0, .5);
-}
-
-/* ---------------------------------------- Social 'drink' link with ripple animation (end) ---------------------------------------- */
-
-/* ---------------------------------------- Napkin ---------------------------------------- */
-
-.napkin-shadow {
-    height:80px;
-    width: 80px;
-    position: absolute;
-    background-color: transparent;
-    box-shadow:   -1px -1px 1px   rgba(0, 0, 0, .25),
-                1px 1px 1px 1px rgba(0, 0, 0, .25),
-                inset 2px 2px 2px rgba(0, 0, 0, .25);
-}
-
-.napkin-out-container {
-  height: 80px;
-  width: 80px;
-  background-color: #fff;
-  /*box-shadow:  -1px 0px 2px  rgba(0, 0, 0, .5),     -------  original-----
-                inset 2px 0px 2px  rgba(0, 0, 0, .75),
-                 0px -1px 2px  rgba(0, 0, 0, .5),
-                inset 0px 2px 2px  rgba(0, 0, 0, .75);*/
- /* box-shadow:  inset -1px 0px 2px  rgba(0, 0, 0, .5),
-                2px 0px 2px  rgba(0, 0, 0, .75),
-                inset 0px -1px 2px  rgba(0, 0, 0, .5),
-                0px 2px 2px  rgba(0, 0, 0, .75);*/
-    background-color: #e0e0e0;
-      transform: rotate(180deg) translateX(25%) translateY(25%);
-    z-index: 0;
-}
-
-.napkin-out-container div {
-  position: absolute;
-  z-index: 0;
-}
-
-.napkin-vertical-lines {
-  width: 70px;
-  height: 15px;
-  transform: translateY(65px);
-  background: repeating-linear-gradient(to right, rgba(0,0,0,0)30%, rgba(124, 124, 124, 0.5) 30% 54%, rgba(0,0,0,0) 54% 100%);
-  background-size: 5px 5px;
-}
-
- .napkin-horizontal-lines {
-  /*box-sizing: border-box;*/
-  width: 15px;
-  height: 80px;
-  transform: translateX(65px);
-  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0)30%, rgba(124, 124, 124, 0.5) 30% 54%, rgba(0,0,0,0) 54% 100%);
-  background-size: 5px 5px;
-  border-bottom: 10px solid rgba(255, 255, 255, 0);
-  border-right: 10px solid rgba(0, 0, 0, 0);
-}
-
-.napkin-right-triangle-corner {
-    width: 30px;
-    height: 30px;
-    background: repeating-linear-gradient(to top, rgba(0,0,0,0)30%, rgba(124, 124, 124, 0.5) 30% 52%, rgba(0,0,0,0) 52% 100%);
-    background-size: 5px 5px;
-    clip-path: polygon(0% 50%, 50% 50%, 50% 0%);
-    transform: translate(50px, 65px) rotate(90deg);
-    background-color: #e0e0e0;
-}
-
-.napkin-border-lines{
-  width: 65px;
-  height: 65px;
-  border-bottom: 3px double rgba(124, 124, 124, 0.5);
-  border-right: 3px double rgba(124, 124, 124, 0.5);
-}
-
-.footer-ul-bottom li {
-    padding: 0rem 2rem 0rem 2rem;
-}
-
-.napkin-nav {
-      transform:  translateX(-0%) translateY(-65%) rotate(135deg);
-}
-
-.napkin-nav p {
-    position: absolute;
-      transform: rotate(225deg) translateX(-25%) translateY(-50%);
-}
-
-.napkin-nav img {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    transform: rotate(225deg) translateX(25%) translateY(-50%);
-    filter: sepia(100%); 
-}
-
-.raccoon-face {
-    height: 100px;
-    width:100px;
-}
-
 /* ---------------------------------------- Index Page  ---------------------------------------- */
-/* ---------------------------------------- Header  ---------------------------------------- */
-header {
-    border-bottom: 2px solid rgba(226, 14, 14, .5);
-}
-
+/* ---------------------------------------- Header and Logo ---------------------------------------- */
 .logo-background {
-    background-image: url("../images/grain-1-90.jpg");
-    background-size: 100% 100%;
+    background: url("../images/grain-1-90.jpg") 0% 0% / 100% 100%;
     z-index: 0;
     border-radius: 5%;
     margin: 2rem 0rem;
@@ -272,10 +35,6 @@ header {
                 inset 2px 0px 2px  rgba(0, 0, 0, .75),
                  0px -3px 2px  rgba(0, 0, 0, .5),
                 inset 0px 2px 2px  rgba(0, 0, 0, .75);
-    /*
-    box-shadow: 0px -4px 5px rgba(0, 0, 0, .75),
-                -4px 0px 5px rgba(0, 0, 0, .75);
-    */
 }
 
 .header-text-1:before,
@@ -290,8 +49,7 @@ header {
 /* -- wood grain image for text -- */
 .header-text-1,
 .header-text-2 {
-    font-size: 3.5rem;
-    font-family: "Indie Flower", sans-serif;
+    font: 3.5rem "Indie Flower", sans-serif;
     background: url("../images/grain-1-90.jpg") no-repeat center top;
     text-shadow: 0px 0px rgba(0, 0, 0, 0);
     color: transparent;
@@ -328,7 +86,6 @@ header {
     text-shadow: 0px 0px rgba(0, 0, 0, .1);
 }
 /* ---------------------------------------- Flash messges ---------------------------------------- */
-
 .flash {
     height: 5rem;
     color: #fff;
@@ -336,7 +93,7 @@ header {
 }
 
 .flash h1 {
-    margin-bottom: 0;;
+    margin-bottom: 0;
 }
 
 /* ---------------------------------------- Nav Bar ---------------------------------------- */
@@ -346,6 +103,7 @@ header {
     border-top: 2px solid rgba(14, 266, 266, .5);
     border-bottom: 2px solid rgba(14, 266, 266, .5);
 }
+
 @media (min-width: 992px) {
     .custom-nav {
         border-right: 2px solid rgba(14, 266, 266, .5);
@@ -353,68 +111,12 @@ header {
 }
 
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
-
-
-.notebook-paper {
-    background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, rgba(57, 118, 230, .5) 45% 55%, rgba(0, 0, 0, 0) 55% 100%);
-    background-size: 20px 20px;
-}
-
-.sticky-note {
-    color: #fff;
-    position: relative;
-    background-color: #e7d912;
-       /* box-shadow: inset -2px 0px 2px rgba(0, 0, 0, .25);*/
-    z-index: 2;
-    margin: 1.5rem 0rem;
+.recipe-of-day-aside-height {
     height: 20rem;
 }
 
-.sticky-note-right div {
-    transform: rotateY(180deg);
-}
-
-.sticky-note-right p {
-    transform: rotateY(0deg);
-
-}
-
-.sticky-note:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    background-color: transparent;
-    z-index: 0;
-    height: 95%;
-    width: 50%;
-    /*box-shadow: 0px 2px 0px rgba(0, 0, 0, .25);*/
-
-    box-shadow: /*0px 60px 20px 0px rgba(0, 0, 0, .25),*/
-                -20px 20px 20px 0px rgba(0, 0, 0, .25 );
-    /*transform: rotate(-20deg) skewX(-20deg);*/ /* sticks out in padded area*/
-    transform: translateX(0px) translateY(-7px) rotate(-10deg) skewX(-10deg);
-}
-
-.sticky-note-right {
-    transform: rotateY(180deg);
-}
-.recipe-picture {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    padding: 1.5rem;
-    background: #e7d912;
-    color: #010203;
-    z-index: 2;
-    box-shadow: inset -2px -2px 2px  rgba(0, 0, 0, .25),
-                -1px -1px 2px 0px rgba(0, 0, 0, .25);
-
-}
-
 .recipe-descript {
-    font-family: "Yanone Kaffeesatz", sans-serif;
-    font-size: 1rem;
+    font: 1rem "Yanone Kaffeesatz", sans-serif;
     padding: 1rem !important;
     background-color: #fff;
     margin: 0rem;
@@ -427,7 +129,6 @@ header {
     height: 75px;
     width: 75px;
     float: left;
-
 }
 
 .card-section {
@@ -450,12 +151,10 @@ header {
                 -1px -1px 2px 2px rgba(0, 0, 0, .15 ),
                 inset 1px 1px 2px rgba(0, 0, 0, .25),
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
-
 }
 
 .card-carousel p {
-    font-size: 1.5rem;
-    font-family: "Yanone Kaffeesatz",sans-serif;
+    font: 1.5rem "Yanone Kaffeesatz",sans-serif;
     text-shadow: 2px 2px rgba(0, 0, 0, .15 );
 }
 
@@ -499,9 +198,7 @@ right: 0px;
 
 /* ---------------------------------------- Footer ---------------------------------------- */
 footer {
-    background-image: url("../images/cuttingboard-90.jpg");
-    background-size: contain;
-    background-size: 100% 100%;
+    background: url("../images/cuttingboard-90.jpg") 0% 0% / 100% 100%; /* table background image */
     height: 20rem;
     border-top: 2px solid #474747;
 }
@@ -532,13 +229,6 @@ footer {
 @media (max-width: 767.98px) {
     .social-position {
         top: 0%;
-        /*transform: scale(.9);*/
-    }
-}
-
-@media (max-width: 575.98px) {
-    .social-position {
-        /*transform: scale(.7);*/
     }
 }
 
@@ -565,9 +255,7 @@ footer {
         left:-10px;
         top: 40px;
     }
-
 }
-
 
 /* ---------------------------------------- form ---------------------------------------- */
 .custom-modal {
@@ -584,9 +272,7 @@ footer {
 .custom-modal p{
     display: inline-block;
     transform: skew(0deg);
-
 }
-
 
 .modal-background {
     position: absolute;
@@ -600,14 +286,11 @@ footer {
 }
 
 .tab-body {
-    font-family: "Yanone+Kaffeesatz", sans-serif;
-    font-size: 1.5rem;
+    font: 1.5rem "Yanone+Kaffeesatz", sans-serif;
     border-bottom: 2px solid #010203;
     background-color: rgba(14, 255, 255, 0.5);
     overflow: hidden;
 }
-
-
 
 .tab {
     margin-top: .5rem;
@@ -675,8 +358,12 @@ form input {
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
 
-
 /* ---------------------------------------- Profile ---------------------------------------- */
 .profile-lists p {
     text-align: left;
+}
+
+.profile-sticky-height { /*------------------------------  recustomizes sticky*/
+    height: 35rem;
+    font-family: "Yanone+Kaffeesatz", sans-serif;
 }
