@@ -28,7 +28,7 @@ def index():
     features = list(mongo.db.feature.find())
 
     # Loads recipe of the day
-    raccoonrecipe = list(mongo.db.recipes.find())
+    raccoonrecipe = list(mongo.db.recipes.find({"_id": ObjectId("601aef906fa63479d64827f1")}))  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
 
     # Finds, splits and loads cook time data from recipe of the day
     time = raccoonrecipe[0]["time"].split(",")
