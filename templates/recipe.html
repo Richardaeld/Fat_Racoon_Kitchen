@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block section %}
+<section class="row no-gutters bubble-letters notebook-paper">
+    <div class="col-12">
+        <div class="row no-gutters">
+
+            <div class="col-4">
+                <div class="row no-gutters justify-content-center">
+                    <div class="col-10 sticky-note carousel">
+                        <div class="sticky-note-inner-div">
+                            <h1 style="color:#fff;">
+                                Im a picture of the recipe
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="row no-gutters justify-content-center">
+                    <div class="col-10 sticky-note carousel">
+                        <div class="row no-gutters sticky-note-inner-div justify-content-center" style="color:#fff; font-size:2rem;">
+
+                            <div class="col-10">
+                            <h1 style="color:#fff;">
+                                {{ recipeInfo.name }}
+                            </h1>
+                            </div>
+
+                        <span class="col-4">
+                            <h6>Prep Time</h6>
+                            <p>{{ time[0] }}</p>
+                        </span>
+                        <span class="col-4">
+                            <h6>Cook Time</h6>
+                            <p>{{ time[1] }}</p>
+                        </span>
+                        <span class="col-4">
+                            <h6>Total Time</h6>
+                            <p>{{ time[2] }}</p>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="row no-gutters justify-content-center">
+                    <div class="col-10 sticky-note sticky-note-right carousel">  <!--  Im useing carousel as a height  -->
+                        <div class="sticky-note-inner-div">
+
+                            <p style="color:#fff;">
+                                {{ recipeInfo.text }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12 bubble-letters">
+        <div class="row no-gutters">
+            <div class="col-6 ">
+                <div class="row no-gutters justify-content-center">
+                    <div class="col-10 sticky-note">
+                        <div class="sticky-note-inner-div">
+                            <ul>
+                            {% for ingredient in ingredients %}
+                                <li>
+                                    <p style="color:#fff; font-size:2rem; text-align:left;">{{ ingredient }}</p>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row no-gutters justify-content-center ">
+                    <div class="col-10 sticky-note sticky-note-right">
+                        <div class="sticky-note-inner-div">
+                                {% for step in steps %}
+                                    <p style="color:#fff; font-size:2rem;">{{ step[0] +1 }}. {{ step[1] }}</p>
+                                <hr>  <!--  Find a better space  -->
+                                {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

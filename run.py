@@ -78,7 +78,7 @@ def index():
         time=time, chef=chef)
 
 
-@app.route('/logout')
+@app.route("/logout")
 def logout():
     # Removes session for user
     session.pop("user")
@@ -86,18 +86,20 @@ def logout():
     return redirect(url_for("index"))
 
 
-@app.route('/profile')
+@app.route("/profile", methods=("GET", "POST"))
 def profile():
     # Loads user Info
     chef_info = list(mongo.db.users.find({"email": session['user']}))
 
     # Find user selected favorites by '_id' and add them to a list
     favorites = []
+    favoriteId = []
     userFavorites = (mongo.db.users.find({"email": session['user']}))
     for fav in userFavorites:
         for fa in fav["favorites"]:
             favorite = mongo.db.recipes.find_one({"_id": ObjectId(fa)})
             favorites += [favorite["name"]]
+            favoriteId += [favorite["_id"]]
 
     favorites = enumerate(favorites)
 
@@ -122,7 +124,23 @@ def profile():
     return render_template(
         "profile.html", chef_info=chef_info,
         features=features, submittedRecipes=submittedRecipes,
-        favorites=favorites, recents=recents)
+        favorites=favorites, favoriteId=favoriteId, recents=recents)
+
+
+@app.route("/recipe/<recipeId>")
+def recipe(recipeId):
+    # Finds recipe to display
+    recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
+
+    # Finds the splits time info into a list
+    time = recipeInfo["time"].split(",")
+
+    # Finds ingredients and sets it to its own list
+    ingredients = recipeInfo["ingredients"]
+
+    # Finds steps and sets it to its own list
+    steps = enumerate(recipeInfo["steps"])
+    return render_template("recipe.html", recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps)
 
 
 # @app.route('/')
