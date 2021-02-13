@@ -91,6 +91,19 @@ def profile():
     # Loads user Info
     chef_info = list(mongo.db.users.find({"email": session['user']}))
 
+    # Find Chef submitted recipies, change them into
+    # a list, and give each iteration a number
+    submitteds = []
+    submittedId = []
+    usersubmitteds = (mongo.db.users.find({"email": session['user']}))
+    for sub in usersubmitteds:
+        for su in sub["submitted"]:
+            submitted = mongo.db.recipes.find_one({"_id": ObjectId(su)})
+            submitteds += [submitted["name"]]
+            submittedId += [submitted["_id"]]
+
+    submitteds = enumerate(submitteds)
+
     # Find user selected favorites by '_id' and add them to a list
     favorites = []
     favoriteId = []
@@ -103,18 +116,15 @@ def profile():
 
     favorites = enumerate(favorites)
 
-    # Find Chef submitted recipies, change them into
-    # a list, and give each iteration a number
-    submittedRecipes = enumerate(list(mongo.db.recipes.find(
-        {"created_by": session['user']})))
-
     # Find ten previously user viewed recipies
     recents = []
-    userRecents = mongo.db.users.find({"email": session['user']})
-    for recent in userRecents:
-        for recentId in recent["recent"]:
-            ids = mongo.db.recipes.find_one({"_id": ObjectId(recentId)})
-            recents += [ids["name"]]
+    recentId = []
+    userRecents = (mongo.db.users.find({"email": session['user']}))
+    for rec in userRecents:
+        for re in rec["recent"]:
+            recent = mongo.db.recipes.find_one({"_id": ObjectId(re)})
+            recents += [recent["name"]]
+            recentId += [recent["_id"]]
 
     recents = enumerate(recents)
 
@@ -123,8 +133,10 @@ def profile():
 
     return render_template(
         "profile.html", chef_info=chef_info,
-        features=features, submittedRecipes=submittedRecipes,
-        favorites=favorites, favoriteId=favoriteId, recents=recents)
+        features=features,
+        submitteds=submitteds, submittedId=submittedId,
+        favorites=favorites, favoriteId=favoriteId,
+        recents=recents, recentId=recentId)
 
 
 @app.route("/recipe/<recipeId>")

@@ -45,11 +45,11 @@
     <!--  Display ten most recent recipe uploads  -->
     <div class="col-3 sticky-note profile-sticky-height">
         <div class="sticky-note-inner-div">
-            <h3>10 most recipies you've uploaded</h3>
+            <h3>10 Recently Uploaded Recipes</h3>
             <hr>
-            {% for recipe in submittedRecipes %}
-                {% if recipe[0] + 1 < 6 %} <!--  Change this line to allow more or less on list  -->
-                    <p>{{  recipe[0] + 1 }}. {{ recipe[1].name }}</p>
+            {% for submitted in submitteds %}
+                {% if submitted[0] + 1 < 6 %} <!--  Change this line to allow more or less on list  -->
+                    <p><a href="{{ url_for('recipe', recipeId=submittedId[submitted[0]]) }}">{{  submitted[0] + 1 }}. {{ submitted[1] }}</p></a>
                 {% endif %}
             {% endfor %}
         </div>
@@ -58,10 +58,10 @@
     <!--  Display ten most recent favorited recipes  -->
     <div class="col-3 sticky-note profile-sticky-height">
         <div class="sticky-note-inner-div">
-            <h3>10 recently favorited recipies</h3>
+            <h3>10 Recently Favorited Recipes</h3>
             <hr>
             {% for favorite in favorites %}
-                <p>{{ favorite[0] + 1 }}. {{ favorite[1] }}</p>
+                <p><a href="{{ url_for('recipe', recipeId=favoriteId[favorite[0]] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1] }}</a></p>
             {% endfor %}
         </div>
     </div>
@@ -69,10 +69,10 @@
     <!--  Display ten most recently viewed recipes  -->
     <div class="col-3 sticky-note sticky-note-right profile-sticky-height">
         <div class="sticky-note-inner-div">            
-            <h3>10 recently viewed recipies</h3>
+            <h3>10 Recently Viewed Recipes</h3>
             <hr>
             {% for recent in recents %}
-                <p>{{ recent[0] + 1 }}. {{ recent[1] }}</p>
+            <p><a href="{{ url_for('recipe', recipeId=recentId[recent[0]] ) }}">{{ recent[0] + 1 }}. {{ recent[1] }}</a></p>
             {% endfor %}
         </div>
     </div>
