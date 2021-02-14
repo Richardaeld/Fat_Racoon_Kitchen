@@ -46,6 +46,7 @@
 /* > == one level deeper ||  This effect requires a height to be set at the sticky-note level*/ 
 /* div(sticky-note) > div(recipe-picture) > p () *place content here within p* */
 /* sticky-note-right goes with sticky-note to generate a reverse shadow  */
+/*  sticky-note-middle goes with sticky-note to generate a bottom shadow  */
 .sticky-note {
     color: #fff;
     position: relative;
@@ -75,6 +76,38 @@
     /*box-shadow: -20px 20px 20px 0px rgba(0, 0, 0, .25 ); --original */
     box-shadow: -20px 45px 20px 0px rgba(0, 0, 0, .25 );
     transform: translateX(0px) translateY(-7px) rotate(-10deg) skewX(-10deg);
+}
+
+.sticky-note-middle:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    z-index: 0;
+    /*height: 95%;  --original  */
+    height: 100%;
+    width: 100%;
+    /*box-shadow: -20px 20px 20px 0px rgba(0, 0, 0, .25 ); --original */
+    box-shadow: -20px 45px 20px 0px rgba(0, 0, 0, .25 );
+    transform: translateX(0%) translateY(-10%) rotate(-3deg) skewX(-5deg) scale(.95);
+    z-index: 0;
+}
+
+.sticky-note-middle:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    z-index: 0;
+    /*height: 95%;  --original  */
+    height: 100%;
+    width: 100%;
+    /*box-shadow: -20px 20px 20px 0px rgba(0, 0, 0, .25 ); --original */
+    box-shadow: -20px 45px 20px 0px rgba(0, 0, 0, .25 );
+    transform: rotateY(180deg) translateX(0%) translateY(-110%) rotate(-3deg) skewX(-5deg) scale(.95);
+    z-index: 0;
 }
 
 .sticky-note-right {
