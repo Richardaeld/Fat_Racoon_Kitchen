@@ -35,7 +35,7 @@ def index():
 
     # finds and loads chefs information from recipe of the day
     chef = mongo.db.users.find_one(
-        {"name": raccoonrecipe[0]["created_by"]})['bio']
+        {"name": raccoonrecipe[0]["created_by"]})#['bio']
 
     # --Login-- information
     if request.method == "POST" and request.form.get("name") == "":
