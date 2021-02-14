@@ -36,15 +36,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
                     </li>
+                    {% if session.user == null %}
                     <li class="nav-item">
                         <a class="nav-link login-modal" href="#">Login</a>
                     </li>
+                    {% endif %}
                     {% if session.user %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
@@ -79,15 +81,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">About Us</a>
             </li>
+            {% if session.user == null %}
             <li class="nav-item">
                 <a class="nav-link login-modal" href="#">login</a>
             </li>
+            {% endif %}
             {% if session.user %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('logout') }}">logout</a>
+                <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+                <a class="nav-link" href="{{ url_for('logout') }}">logout</a>
             </li>
             {% endif %}
             <li class="nav-item">
