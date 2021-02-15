@@ -106,7 +106,7 @@ def logout():
 @app.route("/profile", methods=("GET", "POST"))
 def profile():
     # Loads user Info
-    chef_info = list(mongo.db.users.find({"email": session['user']}))
+    chef_info = mongo.db.users.find_one({"email": session['user']})
 
     # Find Chef submitted recipies, change them into
     # a list, and give each iteration a number
