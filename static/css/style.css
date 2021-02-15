@@ -204,7 +204,7 @@ right: 0px;
 footer {
     background: url("../images/cuttingboard-90.jpg") 0% 0% / 100% 100%; /* table background image */
     height: 20rem;
-   /* border-top: 2px solid #474747;*/
+    border-top: 2px solid #474747;
 }
 
 .table-runner-pattern {
