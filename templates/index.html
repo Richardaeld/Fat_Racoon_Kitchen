@@ -54,8 +54,8 @@
                     <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
                 </div>
                 <div class="col-8">
-                <h1>One of our Chef's Personal Favorites</h1>
-                <p>Take a moment to browse one of our Chef's recommended recipies!</p>
+                <h1 style="font-size: 4rem;">One of our Chef's Personal Favorites</h1>
+                <p style="font-size: 2rem;">Take a moment to browse one of our Chef's recommended recipies!</p>
                 </div>
                 <div class="col-2 racoon">
                     <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
@@ -79,22 +79,24 @@
                 </div>
 
                 {% for recipe in raccoonrecipe %}
-                <div class=" col-sm-12 col-md-6 recipe-descript order-1 order-sm-1 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
-                    <h3>{{ recipe.name.title() }}</h3>
-                    <h5>Features <i>{{ recipe.feature }}</i></h5>
-                    <p>{{ recipe.text }}</p>
-                    <div class="row no-gutters">
-                        <span class="col-4">
-                            <h6>Prep Time</h6>
-                            <p>{{ time[0] }}</p>
-                        </span>
-                        <span class="col-4">
-                            <h6>Cook Time</h6>
-                            <p>{{ time[1] }}</p>
-                        </span>
-                        <span class="col-4">
-                            <h6>Total Time</h6>
-                            <p>{{ time[2] }}</p>
+                <div class="col-sm-12 col-md-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-1 order-xxl-1 sticky-note sticky-note-middle"> <!-- recipe-descript --><!-- removed recipe description to keep sticky note working properly -->
+                    <div class="sticky-note-inner-div">
+                        <h3>{{ recipe.name.title() }}</h3>
+                        <h5>Features <i>{{ recipe.feature }}</i></h5>
+                        <p>{{ recipe.text }}</p>
+                        <span class="row no-gutters">
+                            <span class="col-4">
+                                <h6>Prep Time</h6>
+                                <p>{{ time[0] }}</p>
+                            </span>
+                            <span class="col-4">
+                                <h6>Cook Time</h6>
+                                <p>{{ time[1] }}</p>
+                            </span>
+                            <span class="col-4">
+                                <h6>Total Time</h6>
+                                <p>{{ time[2] }}</p>
+                            </span>
                         </span>
                     </div>
                 </div>
@@ -114,10 +116,10 @@
                                             <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203" />
                                         </svg>
                                     </div>
-                                    <i>
+                                    <i style="font-size: 1.5rem; line-height: 1;">
                                         {{ chef.bio }}
                                     </i>
-                                    <h4>-- {{chef.name.title()}}</h4>
+                                    <h2>-- {{chef.name.title()}}</h2>
                                 </p>
                             </div>
                         </div>
@@ -129,7 +131,15 @@
     </section>
 
     <!-- carousel -->
-    <aside class="row no-gutters justify-content-around align-items-center card-section picnic-pattern carousel">
+    <aside class="row no-gutters justify-content-around align-items-center card-section woodgrain-background carousel">
+
+        <div class="col-12" style="height:5rem;">
+            <div class="row no-gutters justify-content-center">
+                <div class="card-carousel-header index-card">
+                    <h1>Quick meal ideas</h1>
+                </div>
+            </div>
+        </div>
 
         <div class="col-2 col-sm-1 carousel-button carousel-left">
             <div class="row no-gutters justify-content-center">
@@ -142,13 +152,20 @@
         </div>
 
         {% for feature in features %}
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 blank-carousel-recipe card-carousel ">
-                <div class="10 carousel-picture"> <i>**picture**</i></div>
-                <hr>
-                <div class="10">
-                    <p>
-                        {{feature.name.title()}}
-                    </p>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-3 blank-carousel-recipe card-carousel index-card">
+            <!--    <div class="10 carousel-picture"> <i>**picture**</i></div>-->
+            <!--    <hr>-->
+                <div>
+                    <p>--{{feature.name.title()}}</p>
+                    <ul>
+                        {% for feat in featurename %}
+                            {% if feat[0] == feature.name %}
+                                <li>
+                                    <p>{{ feat[1] }}</p>
+                                </li>
+                            {%endif%}
+                        {%endfor%}
+                    </ul>
                 </div>
             </div>
         {% endfor %}

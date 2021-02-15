@@ -24,8 +24,25 @@ mongo = PyMongo(app)
 
 @app.route("/", methods=("GET", "POST"))
 def index():
-    # Loads carousel items
+    # Loads carousel feature items
     features = list(mongo.db.feature.find())
+
+    iteration = 0
+    featurename = []
+    featurefinder = mongo.db.feature.find()
+    for feature1 in featurefinder:
+        featuremongo = mongo.db.recipes.find({"feature": feature1["name"]})
+        for recipename in featuremongo:
+            if(iteration == 0 ):
+                featPrev = feature1["name"]
+            if (iteration >= 3):
+                continue
+            if (featPrev != feature1["name"]):
+                iteration = 0
+            featurename += [[feature1["name"], recipename["name"]]]
+            iteration += 1
+
+    print(featurename)
 
     # Loads recipe of the day
     raccoonrecipe = list(mongo.db.recipes.find({"_id": ObjectId("601aef906fa63479d64827f1")}))  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
@@ -75,7 +92,7 @@ def index():
 
     return render_template(
         "index.html", features=features, raccoonrecipe=raccoonrecipe,
-        time=time, chef=chef)
+        time=time, chef=chef, featurename=featurename)
 
 
 @app.route("/logout")

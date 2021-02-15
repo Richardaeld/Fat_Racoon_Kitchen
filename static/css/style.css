@@ -112,7 +112,7 @@ header {
 
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
 .recipe-of-day-aside-height {
-    height: 20rem;
+    height: 25rem;
 }
 
 .recipe-descript {
@@ -132,19 +132,22 @@ header {
 }
 
 .card-section {
-    border-top: 2px solid rgba(226, 14, 14, .5);
-    border-bottom: 2px solid rgba(226, 14, 14, .5);
+  /*  border-top: 2px solid rgba(226, 14, 14, .5);*/
+  /*  border-bottom: 2px solid rgba(226, 14, 14, .5);*/
 }
 
 .carousel {
-    height: 20rem;
+    height: 30rem;
+    background-color: #fff;
 }
 
+.card-carousel-header,
 .card-carousel {
     margin: .5rem 0rem;
     padding: 1rem !important;
     display: none;
-    border-radius: 15%;
+    /*border-radius: 15%;*/
+    border-radius: 5%;
     background-color: #e2e2e2;
     color: #010203;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, .25 ),
@@ -153,11 +156,12 @@ header {
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
 
-.card-carousel p {
+/*.card-carousel p {
     font: 1.5rem "Yanone Kaffeesatz",sans-serif;
     text-shadow: 2px 2px rgba(0, 0, 0, .15 );
-}
+}*/
 
+.card-carousel-header,
 .card-carousel-vis {
     display: block;
 }
@@ -200,7 +204,7 @@ right: 0px;
 footer {
     background: url("../images/cuttingboard-90.jpg") 0% 0% / 100% 100%; /* table background image */
     height: 20rem;
-    border-top: 2px solid #474747;
+   /* border-top: 2px solid #474747;*/
 }
 
 .table-runner-pattern {
