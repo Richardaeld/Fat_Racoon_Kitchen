@@ -332,9 +332,13 @@ footer {
     padding: 1rem;
 }
 
+.form-login-label-width {
+    width: 30%
+} 
+
 .form-login label {
     text-align: right;
-    width: 30%;
+/*    width: 30%;*/
     padding-top: 1rem;
     font-size: 1.5rem;
     text-shadow: 2px 2px #fff;
