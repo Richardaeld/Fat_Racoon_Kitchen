@@ -3,7 +3,7 @@
 <section class="row no-gutters" style="background-color:rgba(14, 255, 255, 0.5);">
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
-            <form class="col-10 recipe-form form-login">
+            <form class="col-10 recipe-form form-login" method="POST" action="{{ url_for('add_edit_recipe') }}">
                 <div class="row no-gutters">
 
                     <!-- header -->
@@ -84,7 +84,15 @@
                                 <label type="text" for="feature">Feature</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="feature" name="feature">
+
+                                <select name="feature" id="feature" style="font-size: 1.5rem;">
+                                    {% for feature in features %}
+                                        <option value="{{feature.name}}">{{feature.name.title()}}</option>
+                                    {% endfor %}
+                                </select>
+                                
+                                <!--<input type="text" id="feature" name="feature">-->
+                            
                             </div>
                         </div>
                     </fieldset>
@@ -92,23 +100,47 @@
                     <!-- Recipe ingredients -->
                     <fieldset class="col-12">
                         <div class="row no-gutters justify-content-center align-items-center">
+
                             <div class="col-6 recipe-form-label">
-                                <label type="text" for="recipeIngredients">Recipe Ingredients</label>
+                                <div class="row no-gutters">
+                                    <div class="col-12">
+                                        <label type="text" for="recipeIngredients">Recipe Ingredients</label>  <!-- for id and name will have problems with JS additional script -->
+                                    </div>
+                                    <div style="text-align:center;" class="col-6 custom-button recipeAddButton">
+                                       <p>add</p>
+                                    </div>
+                                    <div style="text-align:center;" class="col-6 custom-button recipeRemoveButton">
+                                       <p>Remove</p>
+                                    </div>
+                                </div>                                        
                             </div>
-                            <div class="col-6 recipe-form-input">
-                                <input type="text" id="recipeIngredients" name="recipeIngredients">
+
+                            <div class="col-6 recipe-form-input ingredientAddRemoveLocation">
+                                <input type="text" id="recipeIngredients-0" name="recipeIngredients-0">
                             </div>
+                        
                         </div>
                     </fieldset>
 
                     <!-- Recipe steps -->
                     <fieldset class="col-12">
                         <div class="row no-gutters justify-content-center align-items-center">
+
                             <div class="col-6 recipe-form-label">
-                                <label type="text" for="recipeSteps">Recipe Steps</label>
+                                <div class="row no-gutters">
+                                    <div class="col-12">
+                                        <label type="text" for="recipeSteps">Recipe Steps</label>  <!-- for id and name will have problems with JS additional script -->
+                                    </div>
+                                    <div style="text-align:center;" class="col-6 custom-button stepAddButton">
+                                        <p>add</p>
+                                    </div>
+                                    <div style="text-align:center;" class="col-6 custom-button stepRemoveButton">
+                                        <p>remove</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 recipe-form-input">
-                                <input type="text" id="recipeSteps" name="recipeSteps">
+                            <div class="col-6 recipe-form-input stepAddRemoveLocation">
+                                <input type="text" id="recipeSteps-0" name="recipeSteps-0">
                             </div>
                         </div>
                     </fieldset>
@@ -136,4 +168,8 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block custom_script %}
+<script src="{{ url_for('static', filename='js/addEditRecipe.js') }}"></script>
 {% endblock %}

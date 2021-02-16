@@ -366,6 +366,10 @@ footer {
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
 
+.recipe-form label {
+    padding-top: .5rem;
+}
+
 .recipe-form-label {
     white-space: nowrap;
     text-align: end;
@@ -374,6 +378,10 @@ footer {
 
 .recipe-form-input {
     text-align: start;
+}
+
+.recipe-form-select {
+    width: 100%;
 }
 
 .recipe-form fieldset {

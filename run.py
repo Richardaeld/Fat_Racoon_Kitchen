@@ -171,9 +171,11 @@ def recipe(recipeId):
     steps = enumerate(recipeInfo["steps"])
     return render_template("recipe.html", recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps)
 
-@app.route("/add_edit", methods=("GET","POST"))
-def add_edit():
-    return render_template("add_edit.html")
+@app.route("/add_edit_recipe", methods=("GET","POST"))
+def add_edit_recipe():
+    features = mongo.db.feature.find()
+    return render_template(
+        "add_edit_recipe.html", features=features)
 
 # @app.route('/')
 # def index():
