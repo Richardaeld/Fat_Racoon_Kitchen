@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block section %}
+<section class="row no-gutters" style="background-color:rgba(14, 255, 255, 0.5);">
+    <div class="col-12">
+        <div class="row no-gutters justify-content-center">
+            <form class="col-10 recipe-form form-login">
+                <div class="row no-gutters">
+
+                    <!-- header -->
+                    <div class="col-12">
+                        <h1>Add New Recipe</h1>
+                    </div>
+
+                    <!-- Recipe Name -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters justify-content-center align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label  type="text" for="recipeName">Recipe Name</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="text" id="recipeName" name="recipeName" value="Recipe Name">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- general Cook Time information -->
+                    <fieldset class="col-12">
+                        <h4>Recipe General Information</h4>
+                        <div class="row no-gutters justify-content-center">
+
+
+                                    <span class="col-3">
+                                        <div class="row no-gutters">
+                                            <div class="col-12">
+                                                <label type="text" for="prepTime"><h4>Prep Time</h4></label>
+                                            </div>
+                                            <div class="col-12">
+                                                <input type="text" id="prepTime" name="prepTime" value="Prep Time">
+                                            </div>
+                                        </div>
+                                    </span>
+
+                                    <span class="col-3">
+                                        <div class="row no-gutters">
+                                            <div class="col-12">
+                                                <label type="text" for="cookTime"><h4>Cook Time</h4></label>
+                                            </div>
+                                            <div class="col-12">
+                                                <input type="text" id="cookTime" name="cookTime" value="Prep Time">
+                                            </div>    
+                                        </div>
+                                    </span>
+
+                                    <span class="col-3">
+                                        <div class="row no-gutters">
+                                            <div class="col-12">
+                                                <label type="text" for="totalTime"><h4>Total Time</h4></label>
+                                            </div>
+                                            <div class="col-12">
+                                                <input type="text" id="totalTime" name="totalTime" value="Prep Time">
+                                            </div>
+                                        </div>
+                                    </span>
+
+                        </div>
+                    </fieldset>
+
+                    <!-- Recipe description -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters justify-content-center align-items-center" >
+                            <div class="col-6 recipe-form-label">
+                                <label type="text" for="recipeDescription">Recipe Description</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <textarea type="text" id="recipeDescription" name="recipeDescription" cols="30" rows="10">Recipe Description</textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Recipe Feature -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters justify-content-center align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label type="text" for="feature">Feature</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="text" id="feature" name="feature">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Recipe ingredients -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters justify-content-center align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label type="text" for="recipeIngredients">Recipe Ingredients</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="text" id="recipeIngredients" name="recipeIngredients">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Recipe steps -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters justify-content-center align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label type="text" for="recipeSteps">Recipe Steps</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="text" id="recipeSteps" name="recipeSteps">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Recipe history -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters justify-content-center align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label type="text" for="recipeHistory">Recipe History</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <textarea type="text" name="recipeHistory" id="recipeHistory" cols="30" rows="10">recipeHistory</textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="col">
+                        <input class="custom-button" id="custom-button" type="submit" value="Submit">
+
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

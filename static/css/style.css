@@ -317,7 +317,7 @@ footer {
     margin-right: 1.5rem;
 }
 
-form {
+.form-login {
     background-color: #ebebeb;
     font-family: "Yanone+Kaffeesatz", sans-serif;
     margin: 2rem;
@@ -328,11 +328,11 @@ form {
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
 
-form h1 {
+.form-login h1 {
     padding: 1rem;
 }
 
-form label {
+.form-login label {
     text-align: right;
     width: 30%;
     padding-top: 1rem;
@@ -340,7 +340,7 @@ form label {
     text-shadow: 2px 2px #fff;
 }
 
-form input {
+.form-login input {
     text-align: left;
     width: 60%;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, .25 ),
@@ -357,9 +357,31 @@ form input {
     box-shadow: 4px 4px 2px rgba(0, 0, 0, .5 );
 }
 
+#custom-button {
+    width: auto;
+}
+
 .custom-button-press {
     box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25 ),
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
+}
+
+.recipe-form-label {
+    white-space: nowrap;
+    text-align: end;
+    right: 1.5rem;
+}
+
+.recipe-form-input {
+    text-align: start;
+}
+
+.recipe-form fieldset {
+    margin-bottom: 2rem;
+}
+
+.recipe-form textarea {
+    width: 80%;
 }
 
 /* ---------------------------------------- Profile ---------------------------------------- */

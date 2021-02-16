@@ -171,6 +171,9 @@ def recipe(recipeId):
     steps = enumerate(recipeInfo["steps"])
     return render_template("recipe.html", recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps)
 
+@app.route("/add_edit", methods=("GET","POST"))
+def add_edit():
+    return render_template("add_edit.html")
 
 # @app.route('/')
 # def index():
