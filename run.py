@@ -173,7 +173,9 @@ def recipe(recipeId):
 
 @app.route("/add_edit_recipe", methods=("GET","POST"))
 def add_edit_recipe():
+    # Generates the select/option for meal feature
     features = mongo.db.feature.find()
+
     return render_template(
         "add_edit_recipe.html", features=features)
 

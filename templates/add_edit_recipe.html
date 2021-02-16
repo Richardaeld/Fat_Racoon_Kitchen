@@ -99,24 +99,44 @@
 
                     <!-- Recipe ingredients -->
                     <fieldset class="col-12">
-                        <div class="row no-gutters justify-content-center align-items-center">
+                        <div class="row no-gutters justify-content-center">
 
-                            <div class="col-6 recipe-form-label">
+                            <div class="col-12 recipe-form-label">
+                                <div class="row no-gutters justify-content-center">
+                                    <label style="text-align: center;" type="text" for="recipeIngredients">Recipe Ingredients</label>  <!-- for id and name will have problems with JS additional script -->
+                                    <div class="row-6"></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
                                 <div class="row no-gutters">
-                                    <div class="col-12">
-                                        <label type="text" for="recipeIngredients">Recipe Ingredients</label>  <!-- for id and name will have problems with JS additional script -->
+
+                                    <div class="col-6">
+                                        <div class="row no-gutters justify-content-end">
+                                            <div style="text-align:center;" class="col-4 custom-button recipeAddButton">
+                                                <p>add</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div style="text-align:center;" class="col-6 custom-button recipeAddButton">
-                                       <p>add</p>
+                                    <div class="col-6">
+                                        <div class="row no-gutters justify-content-start">
+                                            <div style="text-align:center;" class="col-4 custom-button recipeRemoveButton">
+                                                <p>Remove</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div style="text-align:center;" class="col-6 custom-button recipeRemoveButton">
-                                       <p>Remove</p>
-                                    </div>
-                                </div>                                        
+                                    
+                                </div>
                             </div>
 
-                            <div class="col-6 recipe-form-input ingredientAddRemoveLocation">
-                                <input type="text" id="recipeIngredients-0" name="recipeIngredients-0">
+                            <div class="col-10 recipe-form-input">
+                                <div class="row no-gutters justify-content-center ingredientAddRemoveLocation">
+                                    <div class="col-6">
+                                        <div class="row no-gutters">
+                                            <span class="col-1">1.</span>
+                                            <input class="col-11" type="text" id="recipeIngredients-1" name="recipeIngredients-1">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         
                         </div>
@@ -157,6 +177,7 @@
                         </div>
                     </fieldset>
 
+                    <!-- submit button -->
                     <div class="col">
                         <input class="custom-button" id="custom-button" type="submit" value="Submit">
 
