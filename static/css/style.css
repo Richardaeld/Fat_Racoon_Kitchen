@@ -411,3 +411,27 @@ footer {
     font-family: "Yanone Kaffeesatz", sans-serif;
     text-align: left;
 }
+
+.recipe-lists li {
+    padding-bottom: 1.5rem;
+}
+
+.recipe-lists h1,
+.recipe-lists hr {
+    position: relative;
+    right: 1rem;
+}
+
+.recipe-lists h1 {
+    text-align: center;
+}
+
+.recipe-lists hr{
+    width: 40%;
+}
+
+.recipe-lists-steps {
+    list-style-type: decimal;
+    font-size:1.75rem;
+}
+

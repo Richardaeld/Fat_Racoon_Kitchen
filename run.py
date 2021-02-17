@@ -195,7 +195,8 @@ def recipe(recipeId):
     ingredients = recipeInfo["ingredients"]
 
     # Finds steps and sets it to its own list
-    steps = enumerate(recipeInfo["steps"])
+    #steps = enumerate(recipeInfo["steps"])
+    steps = recipeInfo["steps"]
     return render_template("recipe.html", recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps)
 
 @app.route("/add_edit_recipe", methods=("GET","POST"))

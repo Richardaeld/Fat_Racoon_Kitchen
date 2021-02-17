@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block section %}
-<section class="row no-gutters bubble-letters notebook-paper">
+<section class="row no-gutters notebook-paper">
     <div class="col-12">
         <div class="row no-gutters">
 
@@ -8,7 +8,7 @@
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note carousel">
                         <div class="sticky-note-inner-div">
-                            <h1 style="color:#fff;">
+                            <h1>
                                 Im a picture of the recipe
                             </h1>
                         </div>
@@ -18,11 +18,11 @@
 
             <div class="col-4">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note sticky-note-middle carousel">
-                        <div class="row no-gutters sticky-note-inner-div justify-content-center" style="color:#fff; font-size:2rem;">
+                    <div class="col-10 sticky-note sticky-note-middle">
+                        <div class="row no-gutters sticky-note-inner-div justify-content-center">
 
                             <div class="col-10">
-                            <h1 style="color:#fff;">
+                            <h1>
                                 {{ recipeInfo.name }}
                             </h1>
                             </div>
@@ -47,9 +47,9 @@
             <div class="col-4">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note sticky-note-right carousel">  <!--  Im useing carousel as a height  -->
-                        <div class="sticky-note-inner-div">
+                        <div class="row no-gutters align-items-center sticky-note-inner-div">
 
-                            <p style="color:#fff;">
+                            <p class="col">
                                 {{ recipeInfo.text }}
                             </p>
                         </div>
@@ -59,16 +59,18 @@
 
         </div>
     </div>
-    <div class="col-12 bubble-letters">
+    <div class="col-12">
         <div class="row no-gutters">
             <div class="col-6 ">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note">
                         <div class="sticky-note-inner-div">
-                            <ul>
+                            <ul class="recipe-lists">
+                                <h1>Recipe Ingredients</h1>
+                                <hr>
                             {% for ingredient in ingredients %}
                                 <li>
-                                    <p style="color:#fff; font-size:2rem; text-align:left;">{{ ingredient }}</p>
+                                    <h6>{{ ingredient }}</h6>
                                 </li>
                             {% endfor %}
                             </ul>
@@ -79,11 +81,16 @@
             <div class="col-6">
                 <div class="row no-gutters justify-content-center ">
                     <div class="col-10 sticky-note sticky-note-right">
-                        <div class="sticky-note-inner-div">
+                        <div class="sticky-note-inner-div recipe-lists">
+                            <ul class="recipe-lists-steps">
+                                <h1>Recipe Steps</h1>
+                                <hr>
                                 {% for step in steps %}
-                                    <p style="color:#fff; font-size:2rem;">{{ step[0] +1 }}. {{ step[1] }}</p>
-                                <hr>  <!--  Find a better space  -->
+                                    <li>
+                                        <h6>{{ step }}</h6> 
+                                    </li>
                                 {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>
