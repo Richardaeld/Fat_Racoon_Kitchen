@@ -176,6 +176,40 @@ def add_edit_recipe():
     # Generates the select/option for meal feature
     features = mongo.db.feature.find()
 
+    if request.method == "POST":
+        time = [request.form.get("prepTime") + " minutes", request.form.get("cookTime") + " minutes", request.form.get("totalTime") + " minutes"]
+        ingredients = []
+        steps = []
+
+        recipeStepsTotal = (request.form.get("recipeStepsTotal"))
+        recipeStepsTotal = int(recipeStepsTotal)
+        for step in range(1, recipeStepsTotal + 1):
+            recipeStep = "recipeSteps-" + str(step)
+            steps += [recipeStep]
+    #        print(test)
+    #        print(request.form.get(test))
+
+        recipeIngredientsTotal = request.form.get("recipeIngredientsTotal")
+        recipeIngredientsTotal = int(recipeIngredientsTotal)
+        for step in range(1, recipeIngredientsTotal + 1):
+            ingredientStep = "recipeIngredients-" + str(step)
+            ingredients += [ingredientStep]
+    #        print(test)
+    #        print(request.form.get(test))
+
+        add_recipe = {
+            "name": request.form.get("recipeName"),
+            "feature": request.form.get("feature"),
+            "ingredients": ingredients,
+            "steps": steps,
+            "time": time,
+            "text": request.form.get("recipeDescription"),
+            "created_by": session["user"]
+        }
+        print(add_recipe)
+        mongo.db.recipes.insert_one(add_recipe)
+
+
     return render_template(
         "add_edit_recipe.html", features=features)
 
