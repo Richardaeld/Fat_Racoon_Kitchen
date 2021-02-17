@@ -161,7 +161,7 @@
                         {% for feat in featurename %}
                             {% if feat[0] == feature.name %}
                                 <li>
-                                    <p>{{ feat[1] }}</p>
+                                    <a href="{{ url_for('recipe', recipeId=feat[2]) }}"><p>{{ feat[1] }}</p></a>
                                 </li>
                             {%endif%}
                         {%endfor%}

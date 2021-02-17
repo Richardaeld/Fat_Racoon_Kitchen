@@ -56,10 +56,11 @@ def index():
                 iteration = 0
             # Creates list to be used on carousel
             if(iteration <= 3 and featPrev == feature1["name"]):
-                featurename += [[feature1["name"], recipename["name"]]]
+                featurename += [[feature1["name"], recipename["name"], recipename["_id"]]]
                 iteration += 1
                 print(iteration)
 
+    print(featurename)
     # Loads recipe of the day
     raccoonrecipe = list(mongo.db.recipes.find({"_id": ObjectId("601aef906fa63479d64827f1")}))  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
 
