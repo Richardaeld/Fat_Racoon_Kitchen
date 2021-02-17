@@ -4,7 +4,7 @@
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
             <form class="col-10 recipe-form form-login" method="POST" action="{{ url_for('add_edit_recipe') }}">
-                <div class="row no-gutters">
+                <div class="row no-gutters justify-content-center">
 
                     <!-- header -->
                     <div class="col-12">
@@ -101,12 +101,10 @@
                     <fieldset class="col-12">
                         <div class="row no-gutters justify-content-center">
 
-                            <div class="col-12 recipe-form-label">
-                                <div class="row no-gutters justify-content-center">
-                                    <label style="text-align: center;" type="text" for="recipeIngredients">Recipe Ingredients</label>  <!-- for id and name will have problems with JS additional script -->
-                                    <div class="row-6"></div>
-                                </div>
+                            <div class="col-12" style="text-align: center;"> <!-- removed . recipe-form-label  because of padding right -- off centering text -->
+                                <label type="text" for="recipeIngredients">Recipe Ingredients</label>  <!-- for id and name will have problems with JS additional script -->
                             </div>
+                            
                             <div class="col-12">
                                 <div class="row no-gutters">
 
@@ -144,23 +142,42 @@
 
                     <!-- Recipe steps -->
                     <fieldset class="col-12">
-                        <div class="row no-gutters justify-content-center align-items-center">
+                        <div class="row no-gutters justify-content-center">
 
-                            <div class="col-6 recipe-form-label">
+                            <div class="col-12" style="text-align: center;">
+                                <label type="text" for="recipeSteps">Recipe Steps</label>  <!-- for id and name will have problems with JS additional script -->
+                            </div>
+
+                            <div class="col-12">
                                 <div class="row no-gutters">
-                                    <div class="col-12">
-                                        <label type="text" for="recipeSteps">Recipe Steps</label>  <!-- for id and name will have problems with JS additional script -->
+
+                                    <div class="col-6">
+                                        <div class="row no-gutters justify-content-end">
+                                            <div style="text-align:center;" class="col-4 custom-button stepAddButton">
+                                                <p>add</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div style="text-align:center;" class="col-6 custom-button stepAddButton">
-                                        <p>add</p>
+                                    <div class="col-6">
+                                        <div class="row no-gutters">
+                                            <div style="text-align:center;" class="col-4 custom-button stepRemoveButton">
+                                                <p>remove</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div style="text-align:center;" class="col-6 custom-button stepRemoveButton">
-                                        <p>remove</p>
-                                    </div>
+
                                 </div>
                             </div>
-                            <div class="col-6 recipe-form-input stepAddRemoveLocation">
-                                <input type="text" id="recipeSteps-0" name="recipeSteps-0">
+
+                            <div class="col-10 recipe-form-input">
+                                <div class="row no-gutters justify-content-center stepAddRemoveLocation">
+                                    <div class="col-6">
+                                        <div class="row no-gutters">
+                                            <span class="col-1">1.</span>
+                                            <input class="col-11" type="text" id="recipeSteps-0" name="recipeSteps-0">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </fieldset>

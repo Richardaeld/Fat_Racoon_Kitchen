@@ -50,15 +50,43 @@ document.querySelector(".recipeRemoveButton").addEventListener("click", function
 })
 
 //step add button
-var arrayStepLength = 0;
+var arrayStepLength = 1;
 document.querySelector(".stepAddButton").addEventListener("click", function() {
+    // Variables
     var addLocation = document.getElementsByClassName("stepAddRemoveLocation")[0];
     arrayStepLength++;
+    var createDivCol = document.createElement("div");
+    var createDivRow = document.createElement("div");
+    var createSpan = document.createElement("span");
     var createInput = document.createElement("input");
-    addLocation.appendChild(createInput);
-    addLocation.lastChild.setAttribute("type", "text");
-    addLocation.lastChild.setAttribute("id", "recipesteps-" + arrayStepLength);
-    addLocation.lastChild.setAttribute("name", "recipesteps-" + arrayStepLength);
+
+    // Add content to span node
+    createSpan.textContent = arrayStepLength + ".";
+    // Creates external div with bootstrap col value
+    addLocation.appendChild(createDivCol);
+    addLocation.lastChild.setAttribute("class","col-6")
+    // Sets Variable for div injection location
+    var innerDivLoc = addLocation.getElementsByTagName("div").length;
+    // Creates internal div with bootstrap row value
+    addLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow)
+    addLocation.getElementsByTagName("div")[innerDivLoc-1].lastChild.setAttribute("class","row no-gutters")
+    // Creates span with ingredient # and bootstrap col value
+    addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan)
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-1")
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;")
+    // Creates input with form information and bootstrap col value
+    addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-11");
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("type","text");
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("id","recipeIngredients-" + arrayStepLength);
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("name","recipeIngredients-" + arrayStepLength);
+
+
+
+//    addLocation.appendChild(createInput);
+//    addLocation.lastChild.setAttribute("type", "text");
+//    addLocation.lastChild.setAttribute("id", "recipesteps-" + arrayStepLength);
+ //   addLocation.lastChild.setAttribute("name", "recipesteps-" + arrayStepLength);
 })
 
 //step remove button
