@@ -405,3 +405,9 @@ footer {
     height: 35rem;
     font-family: "Yanone+Kaffeesatz", sans-serif;
 }
+
+/* ---------------------------------------- Recipe ---------------------------------------- */
+.recipe-lists {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    text-align: left;
+}

@@ -4,10 +4,10 @@
 <section class="row no-gutters justify-content-around align-items-center notebook-paper" style="background-color:  #010203;"> <!--  used carousel height  -->
     <div class="col-12">
         <div class="row no-gutters justify-content-around">
-            <div class="col-2 custom-button sticky-note-no-shadow" style="background-color:#a7a7a7;">
+            <div class="col-2 custom-button sticky-note-no-shadow">
                 <div class="sticky-note-inner-div" >
                     <a href="{{ url_for('add_edit_recipe') }}">
-                    <p style="font-size: 1.5rem;">Share a Recipe</p>
+                    <h6>Share a Recipe</h6>
                     </a>
                 </div>
             </div>
@@ -19,24 +19,24 @@
             <div class="col-2 sticky-note-no-shadow custom-button">
                 <div class="sticky-note-inner-div">
                     <a href="">
-                        <p style="font-size: 1.5rem;">Update Profile</p>
+                        <h6>Update Profile</h6>
                     </a>
                 </div>
             </div>
         </div>
     </div>
     <!--  Chef Name and Bio  -->
-        <div class="col-6 bubble-letters sticky-note profile-sticky-height">
+        <div class="col-6 sticky-note profile-sticky-height">
             <div class="row no-gutters sticky-note-inner-div">
-                <div class="col-12" style="color:#474747; text-shadow: 2px 2px rgba(0,0,0,.75);">
+                <div class="col-12">
                     <h1>
                         {{ chef_info.username }}
                     </h1>
                 </div>
                 <div class="col-12">
-                    <p style="font-size:2.5rem;">
+                    <h6>
                         {{ chef_info.bio }}
-                    </p>
+                    </h6>
                 </div>
             </div>
         </div>

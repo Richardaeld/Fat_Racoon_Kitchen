@@ -54,8 +54,8 @@
                     <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
                 </div>
                 <div class="col-8">
-                <h1 style="font-size: 4rem;">One of our Chef's Personal Favorites</h1>
-                <p style="font-size: 2rem;">Take a moment to browse one of our Chef's recommended recipies!</p>
+                <h1>One of our Chef's Personal Favorites</h1>
+                <p>Take a moment to browse one of our Chef's recommended recipies!</p>
                 </div>
                 <div class="col-2 racoon">
                     <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
@@ -81,8 +81,8 @@
                 {% for recipe in raccoonrecipe %}
                 <div class="col-sm-12 col-md-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-1 order-xxl-1 sticky-note sticky-note-middle"> <!-- recipe-descript --><!-- removed recipe description to keep sticky note working properly -->
                     <div class="sticky-note-inner-div">
-                        <h3>{{ recipe.name.title() }}</h3>
-                        <h5>Features <i>{{ recipe.feature }}</i></h5>
+                        <h1>{{ recipe.name.title() }}</h1>
+                        <h6>Features <i>{{ recipe.feature }}</i></h6>
                         <p>{{ recipe.text }}</p>
                         <span class="row no-gutters">
                             <span class="col-4">
@@ -116,10 +116,8 @@
                                             <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203" />
                                         </svg>
                                     </div>
-                                    <i style="font-size: 1.5rem; line-height: 1;">
-                                        {{ chef.bio }}
-                                    </i>
-                                    <h2>-- {{chef.name.title()}}</h2>
+                                    <p>{{ chef.bio }}</p>
+                                    <h6>-- {{chef.name.title()}}</h6>
                                 </p>
                             </div>
                         </div>
