@@ -108,16 +108,24 @@ def profile():
     # Loads user Info
     chef_info = mongo.db.users.find_one({"email": session['user']})
 
+
+
     # Find Chef submitted recipies, change them into
     # a list, and give each iteration a number
     submitteds = []
     submittedId = []
-    usersubmitteds = (mongo.db.users.find({"email": session['user']}))
-    for sub in usersubmitteds:
-        for su in sub["submitted"]:
-            submitted = mongo.db.recipes.find_one({"_id": ObjectId(su)})
-            submitteds += [submitted["name"]]
-            submittedId += [submitted["_id"]]
+   # usersubmitteds = (mongo.db.users.find({"email": session['user']}))
+   # for sub in usersubmitteds:
+   #     for su in sub["submitted"]:
+   #         submitted = mongo.db.recipes.find_one({"_id": ObjectId(su)})
+   #         submitteds += [submitted["name"]]
+   #         submittedId += [submitted["_id"]]
+   # submitteds = enumerate(submitteds)
+   #-----------------------------made obsolete with current idea
+    submittedAll = mongo.db.recipes.find({"created_by": session["user"]})
+    for submitted in submittedAll:
+        submitteds += [submitted["name"]]
+        submittedId += [submitted["_id"]]
 
     submitteds = enumerate(submitteds)
 
@@ -162,7 +170,9 @@ def recipe(recipeId):
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
 
     # Finds the splits time info into a list
-    time = recipeInfo["time"].split(",")
+    # time = recipeInfo["time"].split(",")
+    # --- commited out with user added recipes
+    time = recipeInfo["time"] 
 
     # Finds ingredients and sets it to its own list
     ingredients = recipeInfo["ingredients"]
@@ -185,7 +195,7 @@ def add_edit_recipe():
         recipeStepsTotal = int(recipeStepsTotal)
         for step in range(1, recipeStepsTotal + 1):
             recipeStep = "recipeSteps-" + str(step)
-            steps += [recipeStep]
+            steps += [request.form.get(recipeStep)]
     #        print(test)
     #        print(request.form.get(test))
 
@@ -193,7 +203,7 @@ def add_edit_recipe():
         recipeIngredientsTotal = int(recipeIngredientsTotal)
         for step in range(1, recipeIngredientsTotal + 1):
             ingredientStep = "recipeIngredients-" + str(step)
-            ingredients += [ingredientStep]
+            ingredients += [request.form.get(ingredientStep)]
     #        print(test)
     #        print(request.form.get(test))
 
@@ -206,9 +216,9 @@ def add_edit_recipe():
             "text": request.form.get("recipeDescription"),
             "created_by": session["user"]
         }
-        print(add_recipe)
+    #    print(steps)
+    #    print(add_recipe)
         mongo.db.recipes.insert_one(add_recipe)
-
 
     return render_template(
         "add_edit_recipe.html", features=features)
