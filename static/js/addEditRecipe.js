@@ -86,8 +86,8 @@ document.querySelector(".stepAddButton").addEventListener("click", function() {
     addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
     addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-11");
     addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("type","text");
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("id","recipeIngredients-" + arrayStepLength);
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("name","recipeIngredients-" + arrayStepLength);
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("id","recipeSteps-" + arrayStepLength);
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("name","recipeSteps-" + arrayStepLength);
 
 
 
@@ -104,4 +104,9 @@ document.querySelector(".stepRemoveButton").addEventListener("click", function (
         removeLocation.lastChild.remove();
         arrayStepLength--;
     }
+})
+
+document.getElementById("custom-button").addEventListener("click", function() {
+    document.getElementById("recipeIngredientsTotal").removeAttribute("disabled");
+    document.getElementById("recipeStepsTotal").removeAttribute("disabled");
 })
