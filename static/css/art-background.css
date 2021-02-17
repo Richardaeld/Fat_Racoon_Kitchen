@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
 /* ---------------------------------------- Text Effects or gradient Patterns  ---------------------------------------- */
 .picnic-pattern { /* red traditional southen table linen pattern (square pattern) */
     background: linear-gradient(0deg, rgba(0, 0, 0, 0) 29%, rgba(226, 14, 14, 0.25) 30% 70%, rgba(0, 0, 0, 0) 71% 100%),
@@ -72,11 +74,27 @@
 /*  *sticky-note-no-shadow* can replace sticky-note to remove lifting shadow  */
 .sticky-note-no-shadow,
 .sticky-note {
-    color: #fff;
     position: relative;
     background-color: #e7d912;
     z-index: 2;
     margin: 1.5rem 0rem;
+    font-family: "Reenie Beanie", sans-serif;
+}
+
+.sticky-note p,
+.sticky-note-no-shadow p {
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.sticky-note h1,
+.sticky-note-no-shadow h1 {
+    font-size: 2.5rem;
+}
+
+.sticky-note h6,
+.sticky-note-no-shadow h6 {
+    font-size: 2rem;
 }
 
 .sticky-note-right div {
