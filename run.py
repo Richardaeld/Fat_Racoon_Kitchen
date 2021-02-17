@@ -27,22 +27,38 @@ def index():
     # Loads carousel feature items
     features = list(mongo.db.feature.find())
 
+    # Generates list of recipes to be presented in carousel
     iteration = 0
     featurename = []
+    # gets dish features for comparason
     featurefinder = mongo.db.feature.find()
     for feature1 in featurefinder:
+        # gets recipe feature to compare with dish features
         featuremongo = mongo.db.recipes.find({"feature": feature1["name"]})
+        # Compares all recipe features for matching dish feature
         for recipename in featuremongo:
-            if(iteration == 0 ):
+            # first loop generates featPrev variable
+            if (iteration == 0):
                 featPrev = feature1["name"]
-            if (iteration >= 3):
-                continue
-            if (featPrev != feature1["name"]):
+            # if iteration max is reached, prevents additional recipes
+            # from being posted, and resets iteration when a new dish
+            # feature is used
+            elif (iteration >= 3):
+                if (featPrev == feature1["name"]):
+                    continue
+                elif (featPrev != feature1["name"]):
+                    iteration = 0
+                    featPrev = feature1["name"]
+            # if dish feature doesnt match recipe feature it resets
+            #  iteration count and updates dish feature
+            elif (featPrev != feature1["name"]):
+                featPrev = feature1["name"]
                 iteration = 0
-            featurename += [[feature1["name"], recipename["name"]]]
-            iteration += 1
-
-    print(featurename)
+            # Creates list to be used on carousel
+            if(iteration <= 3 and featPrev == feature1["name"]):
+                featurename += [[feature1["name"], recipename["name"]]]
+                iteration += 1
+                print(iteration)
 
     # Loads recipe of the day
     raccoonrecipe = list(mongo.db.recipes.find({"_id": ObjectId("601aef906fa63479d64827f1")}))  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
