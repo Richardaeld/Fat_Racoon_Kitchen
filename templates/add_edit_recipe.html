@@ -106,22 +106,33 @@
                             </div>
                             
                             <div class="col-12">
-                                <div class="row no-gutters">
+                                <div class="row no-gutters justify-content-center">
 
-                                    <div class="col-6">
-                                        <div class="row no-gutters justify-content-end">
-                                            <div style="text-align:center;" class="col-4 custom-button recipeAddButton">
+                                    <div class="col-2">
+                                        <div class="row no-gutters">
+                                            <div style="text-align:center;" class="col-12 custom-button recipeAddButton">
                                                 <p>add</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="row no-gutters justify-content-start">
-                                            <div style="text-align:center;" class="col-4 custom-button recipeRemoveButton">
+                                    <div class="col-2">
+                                        <div class="row no-gutters">
+                                            <div style="text-align:center;" class="col-12 custom-button recipeRemoveButton">
                                                 <p>Remove</p>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-2">
+                                        <div class="row no-gutters">
+                                            <div style="text-align:center; height:100%;" class="col-12 custom-button ">
+                                                <select name="recipeIngredientsTotal" id="recipeIngredientsTotal" style="text-align: center; font-size: 1.5rem; width:100%; height:100%;" disabled>
+                                                    <option value="1" selected>1</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     
                                 </div>
                             </div>
@@ -145,23 +156,33 @@
                         <div class="row no-gutters justify-content-center">
 
                             <div class="col-12" style="text-align: center;">
-                                <label type="text" for="recipeSteps">Recipe Steps</label>  <!-- for id and name will have problems with JS additional script -->
+                                <label type="text" for="recipeSteps">Recipe Steps - <span>1</span></label>  <!-- for id and name will have problems with JS additional script -->
                             </div>
 
                             <div class="col-12">
-                                <div class="row no-gutters">
+                                <div class="row no-gutters justify-content-center">
 
-                                    <div class="col-6">
+                                    <div class="col-2">
                                         <div class="row no-gutters justify-content-end">
-                                            <div style="text-align:center;" class="col-4 custom-button stepAddButton">
+                                            <div style="text-align:center;" class="col-12 custom-button stepAddButton">
                                                 <p>add</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-2">
                                         <div class="row no-gutters">
-                                            <div style="text-align:center;" class="col-4 custom-button stepRemoveButton">
+                                            <div style="text-align:center;" class="col-12 custom-button stepRemoveButton">
                                                 <p>remove</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <div class="row no-gutters">
+                                            <div style="text-align:center; height:100%;" class="col-12 custom-button ">
+                                                <select name="recipeStepsTotal" id="recipeStepsTotal" style="text-align: center; font-size: 1.5rem; width:100%; height:100%;" disabled>
+                                                    <option value="1" selected>1</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

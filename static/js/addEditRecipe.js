@@ -9,20 +9,25 @@ document.querySelector(".recipeAddButton").addEventListener("click", function() 
     var createSpan = document.createElement("span");
     var createInput = document.createElement("input");
 
+    document.getElementById("recipeIngredientsTotal").options[0].value = arrayIngredientLength;
+    document.getElementById("recipeIngredientsTotal").options[0].textContent = arrayIngredientLength;
+
+   // document.getElementById("recipeIngredientsTotal").option.textContent = arrayIngredientLength
+
     // Add content to span node
     createSpan.textContent = arrayIngredientLength + ".";
     // Creates external div with bootstrap col value
     addLocation.appendChild(createDivCol);
-    addLocation.lastChild.setAttribute("class","col-6")
+    addLocation.lastChild.setAttribute("class","col-6");
     // Sets Variable for div injection location
     var innerDivLoc = addLocation.getElementsByTagName("div").length;
     // Creates internal div with bootstrap row value
-    addLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow)
-    addLocation.getElementsByTagName("div")[innerDivLoc-1].lastChild.setAttribute("class","row no-gutters")
+    addLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow);
+    addLocation.getElementsByTagName("div")[innerDivLoc-1].lastChild.setAttribute("class","row no-gutters");
     // Creates span with ingredient # and bootstrap col value
-    addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan)
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-1")
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;")
+    addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-1");
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;");
     // Creates input with form information and bootstrap col value
     addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
     addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-11");
@@ -60,20 +65,23 @@ document.querySelector(".stepAddButton").addEventListener("click", function() {
     var createSpan = document.createElement("span");
     var createInput = document.createElement("input");
 
+    document.getElementById("recipeStepsTotal").options[0].value = arrayStepLength;
+    document.getElementById("recipeStepsTotal").options[0].textContent = arrayStepLength;
+
     // Add content to span node
     createSpan.textContent = arrayStepLength + ".";
     // Creates external div with bootstrap col value
     addLocation.appendChild(createDivCol);
-    addLocation.lastChild.setAttribute("class","col-6")
+    addLocation.lastChild.setAttribute("class","col-6");
     // Sets Variable for div injection location
     var innerDivLoc = addLocation.getElementsByTagName("div").length;
     // Creates internal div with bootstrap row value
-    addLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow)
-    addLocation.getElementsByTagName("div")[innerDivLoc-1].lastChild.setAttribute("class","row no-gutters")
+    addLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow);
+    addLocation.getElementsByTagName("div")[innerDivLoc-1].lastChild.setAttribute("class","row no-gutters");
     // Creates span with ingredient # and bootstrap col value
-    addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan)
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-1")
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;")
+    addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-1");
+    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;");
     // Creates input with form information and bootstrap col value
     addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
     addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-11");
