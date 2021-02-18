@@ -81,8 +81,8 @@
             <div class="col-6">
                 <div class="row no-gutters justify-content-center ">
                     <div class="col-10 sticky-note sticky-note-right">
-                        <div class="sticky-note-inner-div recipe-lists">
-                            <ul class="recipe-lists-steps">
+                        <div class="sticky-note-inner-div ">
+                            <ul class="recipe-lists recipe-lists-steps">
                                 <h1>Recipe Steps</h1>
                                 <hr>
                                 {% for step in steps %}
@@ -99,4 +99,8 @@
     </div>
 
 </section>
+{% endblock %}
+
+{% block custom_script %}
+<script src="{{ url_for('static', filename='js/recipe.js') }}"></script>
 {% endblock %}
