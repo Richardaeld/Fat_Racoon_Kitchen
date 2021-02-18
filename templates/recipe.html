@@ -1,6 +1,23 @@
 {% extends "base.html" %}
 {% block section %}
 <section class="row no-gutters notebook-paper">
+
+    {% if recipeInfo.created_by == session["user"] %}
+    <div class="col-12">
+        <div class="row no-gutters justify-content-around">
+            <div class="col-2 custom-button sticky-note-no-shadow">
+                <div class="sticky-note-inner-div" >
+                    <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
+                    <h6>Edit Your Recipe</h6>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6"></div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    {% endif %}
+
     <div class="col-12">
         <div class="row no-gutters">
 
