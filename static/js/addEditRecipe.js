@@ -1,5 +1,8 @@
-// ingredient Add Button
-var arrayIngredientLength = 1;
+var arrayIngredientLength = document.getElementsByClassName("ingredientAddRemoveLocation")[0].querySelectorAll("input").length;
+document.getElementById("recipeIngredientsTotal").options[0].value = arrayIngredientLength;
+document.getElementById("recipeIngredientsTotal").options[0].textContent = arrayIngredientLength;
+
+// ingredient Add Button -- Dynamically adds extra boxes for user input for recipe ingredients
 document.querySelector(".recipeAddButton").addEventListener("click", function() {
     // Variables
     var addLocation = document.getElementsByClassName("ingredientAddRemoveLocation")[0];
@@ -27,7 +30,7 @@ document.querySelector(".recipeAddButton").addEventListener("click", function() 
     // Creates span with ingredient # and bootstrap col value
     addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
     addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-1");
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;");
+//    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;");
     // Creates input with form information and bootstrap col value
     addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
     addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-11");
@@ -49,13 +52,19 @@ document.querySelector(".recipeAddButton").addEventListener("click", function() 
 document.querySelector(".recipeRemoveButton").addEventListener("click", function() {
     var removeLocation = document.getElementsByClassName("ingredientAddRemoveLocation")[0];
     if (arrayIngredientLength > 0){
-        removeLocation.lastChild.remove();
+        childTotal = document.getElementsByClassName("ingredientAddRemoveLocation")[0].children.length
+        removeLocation.children[childTotal-1].remove();
         arrayIngredientLength--;
+        document.getElementById("recipeIngredientsTotal").options[0].value = arrayIngredientLength;
+        document.getElementById("recipeIngredientsTotal").options[0].textContent = arrayIngredientLength;
     }
 })
 
 //step add button
-var arrayStepLength = 1;
+var arrayStepLength = document.getElementsByClassName("stepAddRemoveLocation")[0].querySelectorAll("input").length;
+document.getElementById("recipeStepsTotal").options[0].value = arrayStepLength;
+document.getElementById("recipeStepsTotal").options[0].textContent = arrayStepLength;
+
 document.querySelector(".stepAddButton").addEventListener("click", function() {
     // Variables
     var addLocation = document.getElementsByClassName("stepAddRemoveLocation")[0];
@@ -81,7 +90,7 @@ document.querySelector(".stepAddButton").addEventListener("click", function() {
     // Creates span with ingredient # and bootstrap col value
     addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
     addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-1");
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;");
+//    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;");
     // Creates input with form information and bootstrap col value
     addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
     addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-11");
@@ -101,8 +110,11 @@ document.querySelector(".stepAddButton").addEventListener("click", function() {
 document.querySelector(".stepRemoveButton").addEventListener("click", function () {
     var removeLocation = document.getElementsByClassName("stepAddRemoveLocation")[0];
     if (arrayStepLength>0){
-        removeLocation.lastChild.remove();
+        childTotal = document.getElementsByClassName("stepAddRemoveLocation")[0].children.length
+        removeLocation.children[childTotal-1].remove();
         arrayStepLength--;
+        document.getElementById("recipeStepsTotal").options[0].value = arrayStepLength;
+        document.getElementById("recipeStepsTotal").options[0].textContent = arrayStepLength;
     }
 })
 
@@ -110,3 +122,5 @@ document.getElementById("custom-button").addEventListener("click", function() {
     document.getElementById("recipeIngredientsTotal").removeAttribute("disabled");
     document.getElementById("recipeStepsTotal").removeAttribute("disabled");
 })
+
+// 
