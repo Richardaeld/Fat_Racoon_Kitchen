@@ -199,13 +199,29 @@ def recipe(recipeId):
     steps = recipeInfo["steps"]
     return render_template("recipe.html", recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps)
 
-@app.route("/add_edit_recipe", methods=("GET","POST"))
-def add_edit_recipe():
+
+@app.route("/add_edit_recipe/<recipeId>", methods=("GET", "POST"))
+def add_edit_recipe(recipeId):
+    # if editing recipe, populate the page with recipe information
+    # if gets all existing recipe information
+    # else populates blanks
+    if (recipeId != 'new'):
+        recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
+        recipeIngEnum = enumerate(recipeInfo["ingredients"])
+        recipeSteEnum = enumerate(recipeInfo["steps"])
+        print(True)
+    else:
+        recipeInfo = None
+        recipeIngEnum = None
+        recipeSteEnum = None
+        print(False)
+
     # Generates the select/option for meal feature
     features = mongo.db.feature.find()
 
+
     if request.method == "POST":
-        time = [request.form.get("prepTime") + " minutes", request.form.get("cookTime") + " minutes", request.form.get("totalTime") + " minutes"]
+        time = [request.form.get("prepTime"), request.form.get("cookTime"), request.form.get("totalTime")]
         ingredients = []
         steps = []
 
@@ -232,6 +248,7 @@ def add_edit_recipe():
             "steps": steps,
             "time": time,
             "text": request.form.get("recipeDescription"),
+            "history":request.form.get("recipeHistory"),
             "created_by": session["user"]
         }
     #    print(steps)
@@ -239,7 +256,8 @@ def add_edit_recipe():
         mongo.db.recipes.insert_one(add_recipe)
 
     return render_template(
-        "add_edit_recipe.html", features=features)
+        "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
+        recipeIngEnum=recipeIngEnum, recipeSteEnum=recipeSteEnum)
 
 # @app.route('/')
 # def index():
