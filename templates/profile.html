@@ -82,8 +82,10 @@
             <h3>10 Recently Favorited Recipes</h3>
             <hr>
             {% for favorite in favorites %}
-                {% if favorite[0] + 1 < 11 %}
-                    <p><a href="{{ url_for('recipe', recipeId=favoriteId[favorite[0]] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1] }}</a></p>
+                {% if favorite %}
+                    {% if favorite[0] + 1 < 11 %}
+                        <p><a href="{{ url_for('recipe', recipeId=favoriteId[favorite[0]] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1] }}</a></p>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </div>
@@ -95,8 +97,10 @@
             <h3>10 Recently Viewed Recipes</h3>
             <hr>
             {% for recent in recents %}
-                {% if recent[0] + 1 < 11 %}
-                    <p><a href="{{ url_for('recipe', recipeId=recentId[recent[0]] ) }}">{{ recent[0] + 1 }}. {{ recent[1] }}</a></p>
+                {% if recent %}
+                    {% if recent[0] + 1 < 11 %}
+                        <p><a href="{{ url_for('recipe', recipeId=recentId[recent[0]] ) }}">{{ recent[0] + 1 }}. {{ recent[1] }}</a></p>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </div>
