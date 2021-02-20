@@ -2,6 +2,7 @@
 {% block section %}
 <section class="row no-gutters notebook-paper">
 
+    <!-- Allow a user to edit their own recipes -->
     {% if recipeInfo.created_by == session["user"] %}
     <div class="col-12">
         <div class="row no-gutters justify-content-around">
@@ -17,55 +18,61 @@
         </div>
     </div>
     {% endif %}
-
+    <!-- recipe picture, name, times, and description -->
     <div class="col-12">
         <div class="row no-gutters">
 
+            <!-- picture of recipe -->
             <div class="col-4">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note carousel">
-                        <div class="sticky-note-inner-div">
+                        <div id="avatarImg" class="sticky-note-inner-div">
+                            {% if recipeInfo.avatar %}
+                            <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="">
+                            {% else %}
                             <h1>
-                                Im a picture of the recipe
+                                This is a place holder for recipes without images :'(
                             </h1>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- recipe name and times -->
             <div class="col-4">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note sticky-note-middle">
                         <div class="row no-gutters sticky-note-inner-div justify-content-center">
 
                             <div class="col-10">
-                            <h1>
-                                {{ recipeInfo.name }}
-                            </h1>
+                                <h1>
+                                    {{ recipeInfo.name }}
+                                </h1>
                             </div>
 
-                        <span class="col-4">
-                            <h6>Prep Time</h6>
-                            <p>{{ time[0] }}</p>
-                        </span>
-                        <span class="col-4">
-                            <h6>Cook Time</h6>
-                            <p>{{ time[1] }}</p>
-                        </span>
-                        <span class="col-4">
-                            <h6>Total Time</h6>
-                            <p>{{ time[2] }}</p>
-                        </span>
+                            <span class="col-4">
+                                <h6>Prep Time</h6>
+                                <p>{{ time[0] }}</p>
+                            </span>
+                            <span class="col-4">
+                                <h6>Cook Time</h6>
+                                <p>{{ time[1] }}</p>
+                            </span>
+                            <span class="col-4">
+                                <h6>Total Time</h6>
+                                <p>{{ time[2] }}</p>
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Recipe description -->
             <div class="col-4">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note sticky-note-right carousel">  <!--  Im useing carousel as a height  -->
                         <div class="row no-gutters align-items-center sticky-note-inner-div">
-
                             <p class="col">
                                 {{ recipeInfo.text }}
                             </p>
@@ -76,8 +83,11 @@
 
         </div>
     </div>
+
+    <!-- recipe ingredients and steps -->
     <div class="col-12">
         <div class="row no-gutters">
+            <!-- Recipe Ingredients -->
             <div class="col-6 ">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note">
@@ -85,16 +95,17 @@
                             <ul class="recipe-lists">
                                 <h1>Recipe Ingredients</h1>
                                 <hr>
-                            {% for ingredient in ingredients %}
-                                <li>
-                                    <h6>{{ ingredient }}</h6>
-                                </li>
-                            {% endfor %}
+                                {% for ingredient in ingredients %}
+                                    <li>
+                                        <h6>{{ ingredient }}</h6>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Recipe Steps -->
             <div class="col-6">
                 <div class="row no-gutters justify-content-center ">
                     <div class="col-10 sticky-note sticky-note-right">
