@@ -11,3 +11,18 @@ function list (item, index){
         }
     })
 }
+
+// find height and width of container
+var crabHeight = document.getElementById("avatarImg").clientHeight;
+var crabWidth =  document.getElementById("avatarImg").clientWidth;
+console.log(document.getElementById("avatarImg").getBoundingClientRect())
+
+// Alter height and width to compensate for padding
+crabWidth = (crabWidth * 0.9) + "px";
+crabHeight = (crabHeight * 0.9) + "px";
+console.log(crabHeight);
+console.log(crabWidth);
+
+// Applying new height and width so image stays in container
+document.getElementById("avatarImg").getElementsByTagName("img")[0].style.height = crabHeight;
+document.getElementById("avatarImg").getElementsByTagName("img")[0].style.width = crabWidth;
