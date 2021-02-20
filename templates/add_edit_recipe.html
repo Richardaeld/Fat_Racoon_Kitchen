@@ -3,8 +3,11 @@
 <section class="row no-gutters" style="background-color:rgba(14, 255, 255, 0.5);">
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
-            <form class="col-10 recipe-form form-login" method="POST" action="{{ url_for('add_edit_recipe', recipeId='new') }}">
-                <div class="row no-gutters justify-content-center">
+            <form class="col-10 recipe-form form-login" method="POST" enctype="multipart/form-data" action="{% if session.editRecipe %}
+                                                                                                            {{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}
+                                                                                                            {% else %} 
+                                                                                                            {{ url_for ('add_edit_recipe', recipeId='new') }} 
+                                                                                                            {% endif %}">
 
                     <!-- header -->
                     <div class="col-12">
@@ -76,7 +79,7 @@
                                 <label type="text" for="recipeDescription">Recipe Description</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <textarea type="text" id="recipeDescription" name="recipeDescription" cols="30" rows="10">{% if recipeInfo == none %}Recipe Description{% else %}{{ recipeInfo.text }}{% endif %}</textarea>
+                                <textarea type="text" id="recipeDescription" name="recipeDescription" cols="20" rows="5">{% if recipeInfo == none %}Recipe Description{% else %}{{ recipeInfo.text }}{% endif %}</textarea>
                             </div>
                         </div>
                     </fieldset>
@@ -136,25 +139,23 @@
                                         </div>
                                     </div>
 
-
-                                    
                                 </div>
                             </div>
 
                             <div class="col-10 recipe-form-input">
                                 <div class="row no-gutters justify-content-center ingredientAddRemoveLocation">
                                     {% if recipeInfo == none %}
-                                    <div class="col-6">
-                                        <div class="row no-gutters">
-                                                <span class="col-1">1.</span>
+                                    <div class="col-6 step-ingredient-number">
+                                        <div class="row no-gutters align-items-center">
+                                                <span class="col-1">1. </span>
                                                 <input class="col-11" type="text" id="recipeIngredients-1" name="recipeIngredients-1">
                                         </div>
                                     </div>
                                     {% else %}
                                         {% for ingredient in recipeIngEnum %}
-                                            <div class="col-6">
-                                                <div class="row no-gutters">
-                                                    <span class="col-1">{{ingredient[0] + 1}}.</span>
+                                            <div class="col-6 step-ingredient-number">
+                                                <div class="row no-gutters align-items-center">
+                                                    <span class="col-1">{{ingredient[0] + 1}}. </span>
                                                     <input class="col-11" type="text" id="recipeIngredients-{{ingredient[0] + 1}}" name="recipeIngredients-{{ingredient[0] + 1}}" value="{{ingredient[1]}}">
                                                 </div>
                                             </div>
@@ -210,17 +211,17 @@
                             <div class="col-10 recipe-form-input">
                                 <div class="row no-gutters justify-content-center stepAddRemoveLocation">
                                     {% if recipeInfo == none %}
-                                    <div class="col-6">
-                                        <div class="row no-gutters">
-                                            <span class="col-1">1.</span>
+                                    <div class="col-6 step-ingredient-number">
+                                        <div class="row no-gutters align-items-center">
+                                            <span class="col-1">1. </span>
                                             <input class="col-11" type="text" id="recipeSteps-1" name="recipeSteps-1">
                                         </div>
                                     </div>
                                     {% else %}
                                         {% for step in recipeSteEnum %}
-                                            <div class="col-6">
-                                                <div class="row no-gutters">
-                                                    <span class="col-1">{{step[0] + 1}}.</span>
+                                            <div class="col-6 step-ingredient-number">
+                                                <div class="row no-gutters align-items-center">
+                                                    <span class="col-1">{{step[0] + 1}}. </span>
                                                     <input class="col-11" type="text" id="recipeSteps-{{step[0] + 1}}" name="recipeSteps-{{step[0] + 1}}" value="{{step[1]}}">
                                                 </div>
                                             </div>
@@ -228,6 +229,18 @@
                                     {% endif %}
 
                                 </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Recipe Image -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label type="text" for="avatar">Recipe Image</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="file" name="avatar" id="avatar">
                             </div>
                         </div>
                     </fieldset>
@@ -240,9 +253,9 @@
                             </div>
                             <div class="col-6 recipe-form-input">
                                 {% if recipeInfo == none %}
-                                    <textarea type="text" name="recipeHistory" id="recipeHistory" cols="30" rows="10">recipeHistory</textarea>
+                                    <textarea type="text" name="recipeHistory" id="recipeHistory" cols="20" rows="5">recipeHistory</textarea>
                                 {% else %}
-                                    <textarea type="text" name="recipeHistory" id="recipeHistory" cols="30" rows="10">{{ recipeInfo.history }}</textarea>
+                                    <textarea type="text" name="recipeHistory" id="recipeHistory" cols="20" rows="5">{{ recipeInfo.history }}</textarea>
                                 {% endif %}
                             </div>
                         </div>
@@ -253,7 +266,7 @@
                         <input class="custom-button" id="custom-button" type="submit" value="Submit">
                     </div>
 
-                </div>
+
             </form>
         </div>
     </div>

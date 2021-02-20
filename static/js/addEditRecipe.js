@@ -18,10 +18,10 @@ document.querySelector(".recipeAddButton").addEventListener("click", function() 
    // document.getElementById("recipeIngredientsTotal").option.textContent = arrayIngredientLength
 
     // Add content to span node
-    createSpan.textContent = arrayIngredientLength + ".";
+    createSpan.textContent = arrayIngredientLength + ". ";
     // Creates external div with bootstrap col value
     addLocation.appendChild(createDivCol);
-    addLocation.lastChild.setAttribute("class","col-6");
+    addLocation.lastChild.setAttribute("class","col-6 step-ingredient-number");
     // Sets Variable for div injection location
     var innerDivLoc = addLocation.getElementsByTagName("div").length;
     // Creates internal div with bootstrap row value
@@ -78,10 +78,10 @@ document.querySelector(".stepAddButton").addEventListener("click", function() {
     document.getElementById("recipeStepsTotal").options[0].textContent = arrayStepLength;
 
     // Add content to span node
-    createSpan.textContent = arrayStepLength + ".";
+    createSpan.textContent = arrayStepLength + ". ";
     // Creates external div with bootstrap col value
     addLocation.appendChild(createDivCol);
-    addLocation.lastChild.setAttribute("class","col-6");
+    addLocation.lastChild.setAttribute("class","col-6 step-ingredient-number");
     // Sets Variable for div injection location
     var innerDivLoc = addLocation.getElementsByTagName("div").length;
     // Creates internal div with bootstrap row value

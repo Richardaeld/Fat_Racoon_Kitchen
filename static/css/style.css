@@ -396,6 +396,10 @@ footer {
     width: 80%;
 }
 
+.step-ingredient-number span {
+    text-align: right;
+}
+
 /* ---------------------------------------- Profile ---------------------------------------- */
 .profile-lists p {
     text-align: left;
