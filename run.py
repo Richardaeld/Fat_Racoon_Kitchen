@@ -150,8 +150,9 @@ def profile():
     for fav in userFavorites:
         for fa in fav["favorites"]:
             favorite = mongo.db.recipes.find_one({"_id": ObjectId(fa)})
-            favorites += [favorite["name"]]
-            favoriteId += [favorite["_id"]]
+            if favorite:
+                favorites += [favorite["name"]]
+                favoriteId += [favorite["_id"]]
 
     favorites = enumerate(favorites)
 
@@ -162,8 +163,9 @@ def profile():
     for rec in userRecents:
         for re in rec["recent"]:
             recent = mongo.db.recipes.find_one({"_id": ObjectId(re)})
-            recents += [recent["name"]]
-            recentId += [recent["_id"]]
+            if recent:
+                recents += [recent["name"]]
+                recentId += [recent["_id"]]
 
     recents = enumerate(recents)
 
@@ -218,6 +220,11 @@ def add_edit_recipe(recipeId):
         print(recipeId)
         print(True)
     else:
+        try:
+            if session['editRecipe']:
+                session.pop('editRecipe')
+        except KeyError:
+            print("I ran a KeyError for console because editRecipe has been poped")
 
         recipeInfo = None
         recipeIngEnum = None
