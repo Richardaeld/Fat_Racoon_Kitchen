@@ -136,6 +136,7 @@ in college, let us know!
     -- had to call dictionary and item (ex. session.user)
 ## Current Bugs
 -- profile.html carousel spills over when fixed to half screen
+-- login modal only on index
 ## Other Problems
 
 # Deployment
