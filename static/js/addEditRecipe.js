@@ -118,9 +118,20 @@ document.querySelector(".stepRemoveButton").addEventListener("click", function (
     }
 })
 
+// Creates a random string for image name assignment
+const characterLibrary = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_@!&,?0123456789"
+const characterLibraryLength = characterLibrary.length;
+var imageName = ""
+for (let i=0; i<20; i++){
+    let characterLibraryIndex = Math.floor(Math.random()*(characterLibraryLength));
+    imageName += characterLibrary[characterLibraryIndex];
+}
+console.log(imageName);
+
+// Removes disabled attribute tag when submit button is pushed (so form can be read)
+// Adds randomly generated image name
 document.getElementById("custom-button").addEventListener("click", function() {
     document.getElementById("recipeIngredientsTotal").removeAttribute("disabled");
     document.getElementById("recipeStepsTotal").removeAttribute("disabled");
+    document.getElementById("avatar_name").setAttribute("value", imageName)
 })
-
-// 
