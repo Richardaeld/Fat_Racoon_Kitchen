@@ -159,13 +159,24 @@ def profile():
     # Find ten previously user viewed recipies
     recents = []
     recentId = []
-    userRecents = (mongo.db.users.find({"email": session['user']}))
-    for rec in userRecents:
-        for re in rec["recent"]:
-            recent = mongo.db.recipes.find_one({"_id": ObjectId(re)})
-            if recent:
-                recents += [recent["name"]]
-                recentId += [recent["_id"]]
+    userRecents = (mongo.db.users.find_one({"email": session['user']}))
+
+    print(userRecents)
+    print(userRecents["recent"])
+    print(len(userRecents["recent"]))
+    
+    if userRecents["recent"][0] == "" and len(userRecents["recent"]) == 1:
+        print("Good If")
+    elif userRecents["recent"] != "":
+        for rec in userRecents["recent"]:
+            print(rec)
+            print("bad if, didnt catch")
+            rec = mongo.db.recipes.find_one({"_id": ObjectId(rec)})
+            if rec:
+                recents += [rec["name"]]
+                recentId += [rec["_id"]]
+
+        #    for re in rec["recent"]:
 
     recents = enumerate(recents)
 
@@ -196,6 +207,17 @@ def recipe(recipeId):
     # Finds steps and sets it to its own list
     #steps = enumerate(recipeInfo["steps"])
     steps = recipeInfo["steps"]
+
+    # Creates a previously viewed list
+    if session["user"]:
+        userRecent = []
+        findRecent = mongo.db.users.find_one({"email": session["user"]})
+        findRecent = findRecent["recent"]
+        print(findRecent)
+        userRecent += [recipeInfo["_id"]]
+        mongo.db.users.update_one({"email": session["user"]}, {"$set": {"recent": userRecent}})
+        #for recent in findRecent:
+        #    userRecent += [recent]
 
     if request.method == "POST":
         mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
