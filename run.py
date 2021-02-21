@@ -332,9 +332,12 @@ def add_edit_recipe(recipeId):
     #    print(steps)
     #    print(add_recipe)
         print("Im Creating")
-        mongo.db.recipes.insert_one(add_recipe)
-        pymongo.results.InsertOneResult
-        return redirect(url_for("profile"))
+        #mongo.db.recipes.insert_one(add_recipe)
+        result = mongo.db.recipes.insert_one(add_recipe)
+        print(result.inserted_id)
+        testId = result.inserted_id
+
+        return redirect(url_for("recipe", recipeId=testId))
 
     return render_template(
         "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
