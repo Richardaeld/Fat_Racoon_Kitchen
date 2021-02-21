@@ -24,5 +24,35 @@ console.log(crabHeight);
 console.log(crabWidth);
 
 // Applying new height and width so image stays in container
-document.getElementById("avatarImg").getElementsByTagName("img")[0].style.height = crabHeight;
-document.getElementById("avatarImg").getElementsByTagName("img")[0].style.width = crabWidth;
+//document.getElementById("avatarImg").getElementsByTagName("img")[0].style.height = crabHeight;
+//document.getElementById("avatarImg").getElementsByTagName("img")[0].style.width = crabWidth;
+
+// Open Delete Modal
+document.getElementById("deleteModal").addEventListener("click", function() {
+    document.getElementsByClassName("custom-modal")[0].classList.remove("make-invis");
+})
+
+document.getElementsByClassName("modal-background")[0].addEventListener("click", function () {
+    document.getElementsByClassName("custom-modal")[0].classList.add("make-invis");
+})
+
+// Delete form validation logic
+document.getElementById("recipeName").addEventListener("keyup", function() {
+    let check = document.getElementById("checkName").getElementsByTagName("span")[0].getAttribute("value");
+    let userinput = document.getElementById("recipeName").value;
+    console.log(userinput)
+    // Apply disabled or ignore as needed
+    if (check != userinput) {
+        if (document.getElementById("custom-button").hasAttribute("disbaled")){
+            //no nothing
+        } else {
+            document.getElementById("custom-button").setAttribute("disabled", "");
+        }
+        console.log("nope")
+    // remove disabled if name and user input match
+    } else if (check == userinput){
+        console.log("correct")
+        document.getElementById("custom-button").removeAttribute("disabled")
+    }
+})
+

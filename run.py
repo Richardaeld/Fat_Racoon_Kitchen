@@ -180,7 +180,7 @@ def profile():
         recents=recents, recentId=recentId)
 
 
-@app.route("/recipe/<recipeId>")
+@app.route("/recipe/<recipeId>", methods=("GET", "POST"))
 def recipe(recipeId):
     # Finds recipe to display
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
@@ -196,6 +196,11 @@ def recipe(recipeId):
     # Finds steps and sets it to its own list
     #steps = enumerate(recipeInfo["steps"])
     steps = recipeInfo["steps"]
+
+    if request.method == "POST":
+        mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
+        return redirect(url_for("profile"))
+
     return render_template("recipe.html", recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps)
 
 
