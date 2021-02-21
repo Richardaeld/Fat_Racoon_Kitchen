@@ -133,5 +133,19 @@ console.log(imageName);
 document.getElementById("custom-button").addEventListener("click", function() {
     document.getElementById("recipeIngredientsTotal").removeAttribute("disabled");
     document.getElementById("recipeStepsTotal").removeAttribute("disabled");
-    document.getElementById("avatar_name").setAttribute("value", imageName)
+    document.getElementById("avatar_name").setAttribute("value", imageName);
+})
+
+// Check file size
+document.getElementById("avatar").addEventListener("change", function() {
+    let loc = document.getElementById("avatar")
+    let fileSize = loc.files[0].size;
+    if (fileSize > 100000) {
+        loc.value = null;
+        loc.classList.add("invalid");
+        document.getElementById("avatar_valid").classList.remove("make-invis");
+    } else if (fileSize < 100000 && loc.classList.contains("invalid")){
+        loc.classList.remove("invalid");
+        document.getElementById("avatar_valid").classList.add("make-invis");
+    }
 })
