@@ -164,10 +164,10 @@ def profile():
     print(userRecents)
     print(userRecents["recent"])
     print(len(userRecents["recent"]))
-    
-    if userRecents["recent"][0] == "" and len(userRecents["recent"]) == 1:
-        print("Good If")
-    elif userRecents["recent"] != "":
+
+    if len(userRecents["recent"]) == 0:
+        print("user recents doesnt exist")
+    else:
         for rec in userRecents["recent"]:
             print(rec)
             print("bad if, didnt catch")
@@ -210,14 +210,31 @@ def recipe(recipeId):
 
     # Creates a previously viewed list
     if session["user"]:
-        userRecent = []
+        userRecentFinal = []
         findRecent = mongo.db.users.find_one({"email": session["user"]})
-        findRecent = findRecent["recent"]
-        print(findRecent)
-        userRecent += [recipeInfo["_id"]]
-        mongo.db.users.update_one({"email": session["user"]}, {"$set": {"recent": userRecent}})
-        #for recent in findRecent:
-        #    userRecent += [recent]
+        # Creates base list
+        if len(findRecent["recent"]) == 0:
+            findRecent = [recipeInfo["_id"]]
+        else:
+            findRecent = [recipeInfo["_id"]] + findRecent["recent"]
+
+        # Iterates through checking to duplicates
+        # For outer Loop
+        for final in findRecent:
+            checkPass = True
+            if len(userRecentFinal) == 0:
+                userRecentFinal += [final]
+            # Check for duplicates and remove them
+            for check in userRecentFinal:
+                # Im idiot prevention -- can remove post development
+                if len(userRecentFinal) > 10:
+                    break
+                elif final == check:
+                    checkPass = False
+                elif check == userRecentFinal[-1] and checkPass is True:
+                    userRecentFinal += [final]
+
+        mongo.db.users.update_one({"email": session["user"]}, {"$set": {"recent": userRecentFinal}})
 
     if request.method == "POST":
         mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
