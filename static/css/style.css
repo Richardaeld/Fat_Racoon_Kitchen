@@ -443,3 +443,7 @@ footer {
     font-size:1.75rem;
 }
 
+#favorite {
+    height: 2rem;
+    width: 2rem;
+}
