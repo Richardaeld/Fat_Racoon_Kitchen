@@ -55,4 +55,3 @@ document.getElementById("recipeName").addEventListener("keyup", function() {
         document.getElementById("custom-button").removeAttribute("disabled")
     }
 })
-

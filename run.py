@@ -147,14 +147,14 @@ def profile():
     favorites = []
     favoriteId = []
     userFavorites = (mongo.db.users.find({"email": session['user']}))
-    for fav in userFavorites:
-        for fa in fav["favorites"]:
-            favorite = mongo.db.recipes.find_one({"_id": ObjectId(fa)})
-            if favorite:
-                favorites += [favorite["name"]]
-                favoriteId += [favorite["_id"]]
+    #for fav in userFavorites:
+    #    for fa in fav["favorites"]:
+    #        favorite = mongo.db.recipes.find_one({"_id": ObjectId(fa)})
+    #        if favorite:
+    #            favorites += [favorite["name"]]
+    #            favoriteId += [favorite["_id"]]
 
-    favorites = enumerate(favorites)
+    #favorites = enumerate(favorites)
 
     # Find ten previously user viewed recipies
     recents = []
@@ -191,6 +191,14 @@ def profile():
         recents=recents, recentId=recentId)
 
 
+#@app.route("/addFavorite<recipeId>", methods=("GET", "POST"))
+#def addFavorite(recipeId):
+#    recipeInfo = mongo.db.recipes.fine_one({"_id": recipeId})
+#    userInfo = mongo.db.users.find_one({"email": session["user"]})
+#    userInfo = userInfo["favorites"]
+#    return redirect(url_for("recipe", recipeId=recipeInfo["_id"]))
+
+
 @app.route("/recipe/<recipeId>", methods=("GET", "POST"))
 def recipe(recipeId):
     # Finds recipe to display
@@ -199,7 +207,7 @@ def recipe(recipeId):
     # Finds the splits time info into a list
     # time = recipeInfo["time"].split(",")
     # --- commited out with user added recipes
-    time = recipeInfo["time"] 
+    time = recipeInfo["time"]
 
     # Finds ingredients and sets it to its own list
     ingredients = recipeInfo["ingredients"]
@@ -212,6 +220,15 @@ def recipe(recipeId):
     if session["user"]:
         userRecentFinal = []
         findRecent = mongo.db.users.find_one({"email": session["user"]})
+        findFavorite = findRecent["favorites"]
+
+        # Add favorite star
+        favoriteRecipe = False
+        for favorite in findFavorite:
+            if [favorite] == [recipeInfo["_id"]]:
+                favoriteRecipe = True
+                break
+
         # Creates base list
         if len(findRecent["recent"]) == 0:
             findRecent = [recipeInfo["_id"]]
@@ -240,7 +257,7 @@ def recipe(recipeId):
         mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
         return redirect(url_for("profile"))
 
-    return render_template("recipe.html", recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps)
+    return render_template("recipe.html", recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps, favoriteRecipe=favoriteRecipe)
 
 
 # Code customized from Pretty Printed
