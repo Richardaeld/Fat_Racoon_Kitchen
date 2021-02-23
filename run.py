@@ -191,18 +191,52 @@ def profile():
         recents=recents, recentId=recentId)
 
 
-#@app.route("/addFavorite<recipeId>", methods=("GET", "POST"))
-#def addFavorite(recipeId):
-#    recipeInfo = mongo.db.recipes.fine_one({"_id": recipeId})
-#    userInfo = mongo.db.users.find_one({"email": session["user"]})
-#    userInfo = userInfo["favorites"]
-#    return redirect(url_for("recipe", recipeId=recipeInfo["_id"]))
+@app.route("/recipe/<recipeId>/<favoriteChange>", methods=("GET", "POST"))
+def addFavorite(recipeId, favoriteChange):
+    recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
+    user = mongo.db.users.find_one({"email": session["user"]})
+    if favoriteChange == "True":
+        favoriteChange = True
+    else:
+        favoriteChange = False
+
+    if favoriteChange is False:
+        newFav = user["favorites"] + [recipeInfo["_id"]]
+        print("False ", newFav)
+        mongo.db.users.update_one({"_id": user["_id"]}, {"$set": {"favorites": newFav}})
+        favoriteChange = True
+
+    elif favoriteChange is True:
+        newFav = []
+        changeFav = user["favorites"]
+        for fav in changeFav:
+            if fav == recipeInfo["_id"]:
+                continue
+            else:
+                newFav += [fav]
+        favoriteChange = False
+        mongo.db.users.update_one({"_id": user["_id"]}, {"$set": {"favorites": newFav}})
+
+        print("True ", newFav)
+        print(" Im truye")
+
+    print(" imafter if statements")
+    time = recipeInfo["time"]
+    ingredients = recipeInfo["ingredients"]
+    steps = recipeInfo["steps"]
+
+    #recipeInfo = mongo.db.recipes.fine_one({"_id": recipeId})
+    #print("Im recipe info from add favorites ", recipeInfo['_id'])
+    #userInfo = mongo.db.users.find_one({"email": session["user"]})
+    #userInfo = userInfo["favorites"]
+    return render_template("recipe.html", recipeId=recipeInfo["_id"], recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps, favoriteRecipe=favoriteChange, favoriteChange=favoriteChange)
 
 
 @app.route("/recipe/<recipeId>", methods=("GET", "POST"))
 def recipe(recipeId):
     # Finds recipe to display
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
+
 
     # Finds the splits time info into a list
     # time = recipeInfo["time"].split(",")
@@ -220,14 +254,20 @@ def recipe(recipeId):
     if session["user"]:
         userRecentFinal = []
         findRecent = mongo.db.users.find_one({"email": session["user"]})
-        findFavorite = findRecent["favorites"]
 
-        # Add favorite star
-        favoriteRecipe = False
-        for favorite in findFavorite:
-            if [favorite] == [recipeInfo["_id"]]:
-                favoriteRecipe = True
+        # determine if favorited
+        favorited = findRecent["favorites"]
+        print(favorited, "Im favorited")
+        for fav in favorited:
+            if len(favorited) == 0:
                 break
+            if fav == recipeInfo["_id"]:
+                favoriteRecipe = True
+                print("Favorite Break!!")
+                break
+            else:
+                favoriteRecipe = False
+                print("False try again!!")
 
         # Creates base list
         if len(findRecent["recent"]) == 0:
@@ -257,6 +297,7 @@ def recipe(recipeId):
         mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
         return redirect(url_for("profile"))
 
+    print(favoriteRecipe)
     return render_template("recipe.html", recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps, favoriteRecipe=favoriteRecipe)
 
 

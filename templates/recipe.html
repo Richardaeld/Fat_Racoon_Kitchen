@@ -74,8 +74,8 @@
                                     {{ recipeInfo.name }}
                                 </h1>
                                 <div>
-                                    <h1>
-                                        <a href="#">Favorite </a>
+                                    <h1> {{ recipeInfo._id }}
+                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">Favorite </a>
                                         {% if favoriteRecipe == True %}
                                         <img class="favorite" src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Im the favorite icon">
                                         {% else %}
