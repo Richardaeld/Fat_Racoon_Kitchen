@@ -146,7 +146,16 @@ def profile():
     # Find user selected favorites by '_id' and add them to a list
     favorites = []
     favoriteId = []
-    userFavorites = (mongo.db.users.find({"email": session['user']}))
+    userFavorites = (mongo.db.users.find_one({"email": session['user']}))
+    if len(userFavorites["favorites"]) == 0:
+        print(" user favorites doesnt exist")
+    else:
+        for fav in userFavorites["favorites"]:
+            fav = mongo.db.recipes.find_one({"_id": ObjectId(fav)})
+            if fav:
+                favorites += [fav["name"]]
+                favoriteId += [fav["_id"]]
+    favorites = enumerate(favorites)
     #for fav in userFavorites:
     #    for fa in fav["favorites"]:
     #        favorite = mongo.db.recipes.find_one({"_id": ObjectId(fa)})
@@ -161,16 +170,16 @@ def profile():
     recentId = []
     userRecents = (mongo.db.users.find_one({"email": session['user']}))
 
-    print(userRecents)
-    print(userRecents["recent"])
-    print(len(userRecents["recent"]))
+#    print(userRecents)
+#    print(userRecents["recent"])
+#    print(len(userRecents["recent"]))
 
     if len(userRecents["recent"]) == 0:
         print("user recents doesnt exist")
     else:
         for rec in userRecents["recent"]:
-            print(rec)
-            print("bad if, didnt catch")
+#            print(rec)
+#            print("bad if, didnt catch")
             rec = mongo.db.recipes.find_one({"_id": ObjectId(rec)})
             if rec:
                 recents += [rec["name"]]
