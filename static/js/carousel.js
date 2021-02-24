@@ -8,8 +8,7 @@ var carousel = document.querySelectorAll(".card-carousel");
 var reveal; // Amount of cards to reveal per responsiveness
 function findWidth(){
     let screenWidth;
-    screenWidth = window.screen.clientWidth; // Find screen width
-
+    screenWidth = document.body.offsetWidth; // Find screen width
     // Sets carousel number to be shown
     if (screenWidth > 1200) {
         reveal = 3;
@@ -50,11 +49,10 @@ for(i=0; i<(carousel.length); i++){
 }
 
 // Carousel button function
-var locCarouselArray =  document.getElementsByClassName("card-carousel")[carouselArray[i]]
 function carouselButton (button) {
     document.getElementsByClassName(button)[0].addEventListener("click", function () {
         for (let i=0; i < reveal; i++){
-            locCarouselArray.classList.remove("card-carousel-vis");
+            document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.remove("card-carousel-vis");
         }
         if (button == "carousel-right")
             for (let i=0; i < reveal; i++){
@@ -67,7 +65,7 @@ function carouselButton (button) {
                 carouselArray.unshift(x);
             }
         for (let i=0; i < reveal; i++){
-            locCarouselArray.classList.add("card-carousel-vis");
+            document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.add("card-carousel-vis");
         }
     })
 }
