@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block section %}
+<section class="row no-gutters" style="background-color:rgba(14, 255, 255, 0.5);">
+    <div class="col-12">
+        <div class="row no-gutters justify-content-center">
+            <form class="col-10 recipe-form form-login" method="POST" enctype="multipart/form-data" action="{{ url_for('edit_user_info', userInfo=userInfo) }}">
+
+                    <!-- header -->
+                    <div class="col-12">
+                        <h1>Update {{userInfo.username}}'s' Information</h1>
+                    </div>
+
+                    <!-- User Name -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters justify-content-center align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label  type="text" for="username">Name</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="text" id="username" name="username" value="{{ userInfo.username }}">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Email -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters justify-content-center align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label  type="text" for="email">Email</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="text" id="email" name="email" value="{{ userInfo.email }}">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Password -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters justify-content-center align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label  type="text" for="password">Current Password</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="text" id="password" name="password" value="">
+                            </div>
+                            <div class="col-6 recipe-form-label">
+                                <label  type="text" for="newPassword">New Password</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="text" id="newPassword" name="newPassword" value="">
+                            </div>
+                            <div class="col-6 recipe-form-label">
+                                <label  type="text" for="ConNewPassword">Confirm New Password</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="text" id="ConNewPassword" name="ConNewPassword" value="">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Bio -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters justify-content-center align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label  type="text" for="Bio">Bio</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <textarea name="bio" id="bio" cols="30" rows="5">{{ userInfo.bio }}</textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Avatar -->
+                    <fieldset class="col-12">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-6 recipe-form-label">
+                                <label type="text" for="avatar">Avatar</label>
+                            </div>
+                            <div class="col-6 recipe-form-input">
+                                <input type="file" name="avatar" id="avatar">
+                                <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
+                                <p id="avatar_valid" class="make-invis">Please select a file of 100KB or less. Server space is limited!</p>
+                            </div>
+                        </div>
+                    </fieldset>                    
+
+                    <!-- submit button -->
+                    <div class="col">
+                        <input class="custom-button" id="custom-button" type="submit" value="Submit">
+                    </div>
+
+
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block custom_script %}
+<script src="{{ url_for('static', filename='js/edit_user_info.js') }}"></script>
+{% endblock %}
