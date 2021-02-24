@@ -324,6 +324,7 @@ def add_edit_recipe(recipeId):
     # if editing recipe, populate the page with recipe information
     # if gets all existing recipe information
     # else populates blanks
+    print(recipeId)
     if (recipeId != 'new'):
         recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
         recipeIngEnum = enumerate(recipeInfo["ingredients"])
@@ -334,6 +335,7 @@ def add_edit_recipe(recipeId):
     else:
         try:
             if session['editRecipe']:
+                print("Im popping aosdjfh;asdjf;lsakjflkajshd;lfja;sjf")
                 session.pop('editRecipe')
         except KeyError:
             print("I ran a KeyError for console because editRecipe has been poped")
@@ -345,66 +347,68 @@ def add_edit_recipe(recipeId):
 
     # Generates the select/option for meal feature
     features = mongo.db.feature.find()
+    print(session["editRecipe"], "Im broken!!")
+    #try:
+    if request.method == "POST" and session['editRecipe']:
+        time = [request.form.get("prepTime"), request.form.get("cookTime"), request.form.get("totalTime")]
+        ingredients = []
+        steps = []
 
-    try:
-        if request.method == "POST" and session['editRecipe']:
-            time = [request.form.get("prepTime"), request.form.get("cookTime"), request.form.get("totalTime")]
-            ingredients = []
-            steps = []
+        recipeStepsTotal = (request.form.get("recipeStepsTotal"))
+        recipeStepsTotal = int(recipeStepsTotal)
+        for step in range(1, recipeStepsTotal + 1):
+            recipeStep = "recipeSteps-" + str(step)
+            # Skip columns that are empty
+            if request.form.get(recipeStep) == "":
+                continue
+            steps += [request.form.get(recipeStep)]
+    #        print(test)
+    #        print(request.form.get(test))
 
-            recipeStepsTotal = (request.form.get("recipeStepsTotal"))
-            recipeStepsTotal = int(recipeStepsTotal)
-            for step in range(1, recipeStepsTotal + 1):
-                recipeStep = "recipeSteps-" + str(step)
-                # Skip columns that are empty
-                if request.form.get(recipeStep) == "":
-                    continue
-                steps += [request.form.get(recipeStep)]
-        #        print(test)
-        #        print(request.form.get(test))
-
-            recipeIngredientsTotal = request.form.get("recipeIngredientsTotal")
-            recipeIngredientsTotal = int(recipeIngredientsTotal)
-            for step in range(1, recipeIngredientsTotal + 1):
-                ingredientStep = "recipeIngredients-" + str(step)
-                # Skip columns that are empty
-                if request.form.get(ingredientStep) == "":
-                    continue
-                ingredients += [request.form.get(ingredientStep)]
-        #        print(test)
-        #        print(request.form.get(test))
-
+        recipeIngredientsTotal = request.form.get("recipeIngredientsTotal")
+        recipeIngredientsTotal = int(recipeIngredientsTotal)
+        for step in range(1, recipeIngredientsTotal + 1):
+            ingredientStep = "recipeIngredients-" + str(step)
+            # Skip columns that are empty
+            if request.form.get(ingredientStep) == "":
+                continue
+            ingredients += [request.form.get(ingredientStep)]
+    #        print(test)
+    #        print(request.form.get(test))
+        try:
             if recipeInfo["avatar"]:
                 delPrevImg = recipeInfo["avatar_id"]
                 mongo.db.fs.chunks.delete_many({"files_id": ObjectId(delPrevImg)})
                 mongo.db.fs.files.delete_many({"_id": ObjectId(delPrevImg)})
+        except KeyError:
+            print("Avatar doesnt exist")
 
-            # Code customized from Pretty Printed
-            # https://www.youtube.com/watch?v=DsgAuceHha4
-            avatar = request.files['avatar']
-            # format filename and then file
-            mongo.save_file(request.form.get("avatar_name"), avatar)
-            imageDict = mongo.db.fs.files.find_one({"filename": request.form.get("avatar_name")})
+        # Code customized from Pretty Printed
+        # https://www.youtube.com/watch?v=DsgAuceHha4
+        avatar = request.files['avatar']
+        # format filename and then file
+        mongo.save_file(request.form.get("avatar_name"), avatar)
+        imageDict = mongo.db.fs.files.find_one({"filename": request.form.get("avatar_name")})
 
-            edit_recipe = {
-                "name": request.form.get("recipeName"),
-                "feature": request.form.get("feature"),
-                "ingredients": ingredients,
-                "steps": steps,
-                "time": time,
-                "text": request.form.get("recipeDescription"),
-                "history": request.form.get("recipeHistory"),
-                "date": datetime.datetime.now(),
-                "avatar": request.form.get("avatar_name"),
-                "avatar_id": imageDict["_id"],
-                "created_by": session["user"]
-            }
+        edit_recipe = {
+            "name": request.form.get("recipeName"),
+            "feature": request.form.get("feature"),
+            "ingredients": ingredients,
+            "steps": steps,
+            "time": time,
+            "text": request.form.get("recipeDescription"),
+            "history": request.form.get("recipeHistory"),
+            "date": datetime.datetime.now(),
+            "avatar": request.form.get("avatar_name"),
+            "avatar_id": imageDict["_id"],
+            "created_by": session["user"]
+        }
 
-            mongo.db.recipes.update({"_id": ObjectId(recipeInfo["_id"])}, edit_recipe)
-            return redirect(url_for("recipe", recipeId=recipeInfo["_id"]))
+        mongo.db.recipes.update({"_id": ObjectId(recipeInfo["_id"])}, edit_recipe)
+        return redirect(url_for("recipe", recipeId=recipeInfo["_id"]))
 
-    except KeyError:
-        print("Im not an edit recipe, Im a add new recipe")
+    #except:
+    #    print(" Im not an edit recipe, Im a add new recipe")
 
     if request.method == "POST":
         time = [request.form.get("prepTime"), request.form.get("cookTime"), request.form.get("totalTime")]
@@ -453,6 +457,42 @@ def add_edit_recipe(recipeId):
     return render_template(
         "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
         recipeIngEnum=recipeIngEnum, recipeSteEnum=recipeSteEnum)
+
+
+@app.route("/profile/edit", methods=("GET", "POST"))
+def edit_user_info():
+    userInfo = mongo.db.users.find_one({"email": session["user"]})
+
+    if request.method == "POST":
+        if userInfo["avatar"]:
+            delPrevImg = userInfo["avatar_id"]
+            mongo.db.fs.chunks.delete_many({"files_id": ObjectId(delPrevImg)})
+            mongo.db.fs.files.delete_many({"_id": ObjectId(delPrevImg)})
+
+        # Code customized from Pretty Printed
+        # https://www.youtube.com/watch?v=DsgAuceHha4
+        avatar = request.files['avatar']
+        
+        # format filename and then file
+        mongo.save_file(request.form.get("avatar_name"), avatar)
+        imageDict = mongo.db.fs.files.find_one({"filename": request.form.get("avatar_name")})
+        imgUpdate = {"$set": {
+            "avatar": request.form.get("avatar_name"),
+            "avatar_id": imageDict["_id"]
+        }}
+        mongo.db.users.update({"_id": ObjectId(userInfo["_id"])}, imgUpdate)
+
+        update = {"$set": {
+            "username": request.form.get("username"),
+            "email": request.form.get("email"),
+        #    "password": request.form.get("newPassword"),
+
+            "bio": request.form.get("bio")
+        }}
+    #    mongo.db.users.update({"_id": ObjectId(userInfo["_id"])}, update)
+        return redirect(url_for("profile"))
+
+    return render_template("edit_user_info.html", userInfo=userInfo)
 
 
 if __name__ == "__main__":
