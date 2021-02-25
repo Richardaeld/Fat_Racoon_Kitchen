@@ -58,15 +58,13 @@ def index():
                 featurename += [[feature1["name"], recipename["name"], recipename["_id"]]]
                 iteration += 1
 
-    # Loads recipe of the day
-    raccoonrecipe = list(mongo.db.recipes.find({"_id": ObjectId("601aef906fa63479d64827f1")}))  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
-
+    # Loads recipe of the day # THIS IS THE RECIPE!!!
+    raccoonrecipe = mongo.db.recipes.find_one({"_id": ObjectId("60375c0a5bcabd698d1e1750")})  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
     # Finds, splits and loads cook time data from recipe of the day
-    time = raccoonrecipe[0]["time"].split(",")
+    time = raccoonrecipe["time"]
 
     # finds and loads chefs information from recipe of the day
-    chef = mongo.db.users.find_one(
-        {"name": raccoonrecipe[0]["created_by"]})#['bio']
+    chef = mongo.db.users.find_one({"email": raccoonrecipe["created_by"]})#['bio']
 
     # --Login-- information
     if request.method == "POST" and request.form.get("name") == "":

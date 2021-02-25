@@ -69,21 +69,26 @@
                 <div class="col-sm-6 col-md-3 order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1 order-xxl-1 ">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-10 sticky-note recipe-of-day-aside-height">
-                            <div class="sticky-note-inner-div">
-                                <p>
-                                    <i>Picture of Recipe or Featured Star</i>
-                                </p>
-                            </div>
+                            {% if raccoonrecipe.avatar %}
+                                <div id="avatarImg" class="sticky-note-inner-div">
+                                    <img src="{{ url_for('avatar', avatar_image=raccoonrecipe.avatar) }}" alt="">
+                                </div>
+                            {% else %}
+                                <div class="sticky-note-inner-div">
+                                    <p>
+                                        <i>Picture of Recipe or Featured Star</i>
+                                    </p>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
 
-                {% for recipe in raccoonrecipe %}
                 <div class="col-sm-12 col-md-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-1 order-xxl-1 sticky-note sticky-note-middle"> <!-- recipe-descript --><!-- removed recipe description to keep sticky note working properly -->
                     <div class="sticky-note-inner-div">
-                        <h1>{{ recipe.name.title() }}</h1>
-                        <h6>Features <i>{{ recipe.feature }}</i></h6>
-                        <p>{{ recipe.text }}</p>
+                        <h1>{{ raccoonrecipe.name.title() }}</h1>
+                        <h6>Features <i>{{ raccoonrecipe.feature }}</i></h6>
+                        <p>{{ raccoonrecipe.text }}</p>
                         <span class="row no-gutters">
                             <span class="col-4">
                                 <h6>Prep Time</h6>
@@ -100,13 +105,12 @@
                         </span>
                     </div>
                 </div>
-                {% endfor %}
 
                 <div class="col-sm-6 col-md-3 order-3 order-sm-3 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-10 sticky-note sticky-note-right recipe-of-day-aside-height">
                             
-                            <div class="sticky-note-inner-div">
+                            <div class="sticky-note-inner-div" style="overflow: hidden;"> <!--  fix overflow with JS  -->
                                 <p>
                                     <div class="avatar">
                                         <svg width="50" height="50">
@@ -117,7 +121,7 @@
                                         </svg>
                                     </div>
                                     <p>{{ chef.bio }}</p>
-                                    <h6>-- {{chef.name.title()}}</h6>
+                                    <h6>-- {{chef.username.title()}}</h6>
                                 </p>
                             </div>
                         </div>
@@ -182,6 +186,7 @@
 {% endblock %}
 
 {% block custom_script %}
-<script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
-<script src="{{ url_for('static', filename='js/loginCreateVal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/loginCreateVal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>
 {% endblock %}
