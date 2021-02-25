@@ -53,10 +53,10 @@
                     </svg>
                 </div>
                 {% else %}
-                    <h1 class="bubble-letters">I shouldnt be here!!</h1>
-                    <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="">
+                    <div id="avatarImg" class="sticky-note-inner-div">
+                        <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="">
+                    </div>
                 {% endif %}
-                    <h1 class="bubble-letters">I Could be a search bar!!</h1>
             </div>
         </div>
 </section>
