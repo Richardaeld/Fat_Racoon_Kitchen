@@ -1,123 +1,59 @@
-var arrayIngredientLength = document.getElementsByClassName("ingredientAddRemoveLocation")[0].querySelectorAll("input").length;
-document.getElementById("recipeIngredientsTotal").options[0].value = arrayIngredientLength;
-document.getElementById("recipeIngredientsTotal").options[0].textContent = arrayIngredientLength;
+ // ---- Create/Remove boxes for user input of ingredients/steps
+function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, removeButton) {
+    let arrayIngredientLength = document.getElementsByClassName(addRemoveLoc)[0].querySelectorAll("input").length;
+    let totalLoc = document.getElementById(totalLocId).options[0];
+    let addRemoveLocation = document.getElementsByClassName(addRemoveLoc)[0];
+    totalLoc.value = arrayIngredientLength;
+    totalLoc.textContent = arrayIngredientLength;
 
-// ingredient Add Button -- Dynamically adds extra boxes for user input for recipe ingredients
-document.querySelector(".recipeAddButton").addEventListener("click", function() {
-    // Variables
-    var addLocation = document.getElementsByClassName("ingredientAddRemoveLocation")[0];
-    arrayIngredientLength++;
-    var createDivCol = document.createElement("div");
-    var createDivRow = document.createElement("div");
-    var createSpan = document.createElement("span");
-    var createInput = document.createElement("input");
+    // ingredient Add Button -- Dynamically adds extra boxes for user input for recipe ingredients
+    document.querySelector(addButton).addEventListener("click", function() {
+        // Increases box count variable
+        arrayIngredientLength++;
+        // Creation of elements and adding of content
+        let createDivCol = document.createElement("div");
+        createDivCol.className = "col-6 step-ingredient-number"
+        let createDivRow = document.createElement("div");
+        createDivRow.className = "row no-gutters"
+        let createSpan = document.createElement("span");
+        createSpan.textContent = arrayIngredientLength + ". ";
+        createSpan.className = "col-1"
+        let createInput = document.createElement("input");
+        createInput.className = "col-11"
+        createInput.id = arrayClass + arrayIngredientLength
+        createInput.name = arrayClass + arrayIngredientLength
+        createInput.type = "text"
 
-    document.getElementById("recipeIngredientsTotal").options[0].value = arrayIngredientLength;
-    document.getElementById("recipeIngredientsTotal").options[0].textContent = arrayIngredientLength;
+        // sets Value of select for user to see the number of availiable boxes
+        totalLoc.value = arrayIngredientLength;
+        totalLoc.textContent = arrayIngredientLength;
 
-   // document.getElementById("recipeIngredientsTotal").option.textContent = arrayIngredientLength
+        // Creates boxes with structure div(div(span, input))
+        addRemoveLocation.appendChild(createDivCol);
+        // Sets Variable for div injection location
+        let innerDivLoc = addRemoveLocation.getElementsByTagName("div").length;
+        addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow);
+        addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
+        addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
+    })
 
-    // Add content to span node
-    createSpan.textContent = arrayIngredientLength + ". ";
-    // Creates external div with bootstrap col value
-    addLocation.appendChild(createDivCol);
-    addLocation.lastChild.setAttribute("class","col-6 step-ingredient-number");
-    // Sets Variable for div injection location
-    var innerDivLoc = addLocation.getElementsByTagName("div").length;
-    // Creates internal div with bootstrap row value
-    addLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow);
-    addLocation.getElementsByTagName("div")[innerDivLoc-1].lastChild.setAttribute("class","row no-gutters");
-    // Creates span with ingredient # and bootstrap col value
-    addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-1");
-//    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;");
-    // Creates input with form information and bootstrap col value
-    addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-11");
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("type","text");
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("id","recipeIngredients-" + arrayIngredientLength);
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("name","recipeIngredients-" + arrayIngredientLength);
+    document.querySelector(removeButton).addEventListener("click", function() {
+        if (arrayIngredientLength > 1){
+            childTotal = addRemoveLocation.children.length
+            addRemoveLocation.children[childTotal-1].remove();
+            // Decreases box count variable
+            arrayIngredientLength--;
+            // sets Value of select for user to see the number of availiable boxes
+            totalLoc.value = arrayIngredientLength;
+            totalLoc.textContent = arrayIngredientLength;
+        }
+    })
+}
 
-    //addLocation.appendChild(createSpan);
-    //addLocation.lastChild.setAttribute("class", "col-1")
-    //addLocation.lastChild.setAttribute("style", "text-align: end;")
-    //addLocation.appendChild(createInput);
-    //addLocation.lastChild.setAttribute("type","text");
-    //addLocation.lastChild.setAttribute("id","recipeIngredients-" + arrayIngredientLength);
-    //addLocation.lastChild.setAttribute("name","recipeIngredients-" + arrayIngredientLength);
-    //addLocation.lastChild.setAttribute("class", "col-5");
-})
+createRemoveFormBoxes("ingredientAddRemoveLocation", "recipeIngredientsTotal", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton");
+createRemoveFormBoxes("stepAddRemoveLocation", "recipeStepsTotal", ".stepAddButton", "recipeSteps-", ".stepRemoveButton");
 
-//ingredient remove button
-document.querySelector(".recipeRemoveButton").addEventListener("click", function() {
-    var removeLocation = document.getElementsByClassName("ingredientAddRemoveLocation")[0];
-    if (arrayIngredientLength > 0){
-        childTotal = document.getElementsByClassName("ingredientAddRemoveLocation")[0].children.length
-        removeLocation.children[childTotal-1].remove();
-        arrayIngredientLength--;
-        document.getElementById("recipeIngredientsTotal").options[0].value = arrayIngredientLength;
-        document.getElementById("recipeIngredientsTotal").options[0].textContent = arrayIngredientLength;
-    }
-})
-
-//step add button
-var arrayStepLength = document.getElementsByClassName("stepAddRemoveLocation")[0].querySelectorAll("input").length;
-document.getElementById("recipeStepsTotal").options[0].value = arrayStepLength;
-document.getElementById("recipeStepsTotal").options[0].textContent = arrayStepLength;
-
-document.querySelector(".stepAddButton").addEventListener("click", function() {
-    // Variables
-    var addLocation = document.getElementsByClassName("stepAddRemoveLocation")[0];
-    arrayStepLength++;
-    var createDivCol = document.createElement("div");
-    var createDivRow = document.createElement("div");
-    var createSpan = document.createElement("span");
-    var createInput = document.createElement("input");
-
-    document.getElementById("recipeStepsTotal").options[0].value = arrayStepLength;
-    document.getElementById("recipeStepsTotal").options[0].textContent = arrayStepLength;
-
-    // Add content to span node
-    createSpan.textContent = arrayStepLength + ". ";
-    // Creates external div with bootstrap col value
-    addLocation.appendChild(createDivCol);
-    addLocation.lastChild.setAttribute("class","col-6 step-ingredient-number");
-    // Sets Variable for div injection location
-    var innerDivLoc = addLocation.getElementsByTagName("div").length;
-    // Creates internal div with bootstrap row value
-    addLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow);
-    addLocation.getElementsByTagName("div")[innerDivLoc-1].lastChild.setAttribute("class","row no-gutters");
-    // Creates span with ingredient # and bootstrap col value
-    addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-1");
-//    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("style", "text-align: end;");
-    // Creates input with form information and bootstrap col value
-    addLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("class", "col-11");
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("type","text");
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("id","recipeSteps-" + arrayStepLength);
-    addLocation.getElementsByTagName("div")[innerDivLoc].lastChild.setAttribute("name","recipeSteps-" + arrayStepLength);
-
-
-
-//    addLocation.appendChild(createInput);
-//    addLocation.lastChild.setAttribute("type", "text");
-//    addLocation.lastChild.setAttribute("id", "recipesteps-" + arrayStepLength);
- //   addLocation.lastChild.setAttribute("name", "recipesteps-" + arrayStepLength);
-})
-
-//step remove button
-document.querySelector(".stepRemoveButton").addEventListener("click", function () {
-    var removeLocation = document.getElementsByClassName("stepAddRemoveLocation")[0];
-    if (arrayStepLength>0){
-        childTotal = document.getElementsByClassName("stepAddRemoveLocation")[0].children.length
-        removeLocation.children[childTotal-1].remove();
-        arrayStepLength--;
-        document.getElementById("recipeStepsTotal").options[0].value = arrayStepLength;
-        document.getElementById("recipeStepsTotal").options[0].textContent = arrayStepLength;
-    }
-})
-
+// ---- Avatar validation information
 // Creates a random string for image name assignment
 const characterLibrary = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_@!&,?0123456789"
 const characterLibraryLength = characterLibrary.length;
@@ -127,7 +63,6 @@ for (let i=0; i<20; i++){
     imageName += characterLibrary[characterLibraryIndex];
 }
 console.log(imageName);
-
 // Removes disabled attribute tag when submit button is pushed (so form can be read)
 // Adds randomly generated image name
 document.getElementById("custom-button").addEventListener("click", function() {
