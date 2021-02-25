@@ -122,20 +122,10 @@ def profile():
     # Loads user Info
     chef_info = mongo.db.users.find_one({"email": session['user']})
 
-
-
     # Find Chef submitted recipies, change them into
     # a list, and give each iteration a number
     submitteds = []
     submittedId = []
-   # usersubmitteds = (mongo.db.users.find({"email": session['user']}))
-   # for sub in usersubmitteds:
-   #     for su in sub["submitted"]:
-   #         submitted = mongo.db.recipes.find_one({"_id": ObjectId(su)})
-   #         submitteds += [submitted["name"]]
-   #         submittedId += [submitted["_id"]]
-   # submitteds = enumerate(submitteds)
-   #-----------------------------made obsolete with current idea
     submittedAll = mongo.db.recipes.find({"created_by": session["user"]})
     for submitted in submittedAll:
         submitteds += [submitted["name"]]
@@ -146,55 +136,30 @@ def profile():
     # Find user selected favorites by '_id' and add them to a list
     favorites = []
     favoriteId = []
-    userFavorites = (mongo.db.users.find_one({"email": session['user']}))
-    if len(userFavorites["favorites"]) == 0:
-        print(" user favorites doesnt exist")
-    else:
-        for fav in userFavorites["favorites"]:
+    userFavorites = chef_info["favorites"]
+    if len(userFavorites) > 0:
+        for fav in userFavorites:
             fav = mongo.db.recipes.find_one({"_id": ObjectId(fav)})
             if fav:
                 favorites += [fav["name"]]
                 favoriteId += [fav["_id"]]
-    favorites = enumerate(favorites)
-    #for fav in userFavorites:
-    #    for fa in fav["favorites"]:
-    #        favorite = mongo.db.recipes.find_one({"_id": ObjectId(fa)})
-    #        if favorite:
-    #            favorites += [favorite["name"]]
-    #            favoriteId += [favorite["_id"]]
 
-    #favorites = enumerate(favorites)
+    favorites = enumerate(favorites)
 
     # Find ten previously user viewed recipies
     recents = []
     recentId = []
-    userRecents = (mongo.db.users.find_one({"email": session['user']}))
-
-#    print(userRecents)
-#    print(userRecents["recent"])
-#    print(len(userRecents["recent"]))
-
-    if len(userRecents["recent"]) == 0:
-        print("user recents doesnt exist")
-    else:
-        for rec in userRecents["recent"]:
-#            print(rec)
-#            print("bad if, didnt catch")
+    userRecents = chef_info["recent"]
+    if len(userRecents) > 0:
+        for rec in userRecents:
             rec = mongo.db.recipes.find_one({"_id": ObjectId(rec)})
             if rec:
                 recents += [rec["name"]]
                 recentId += [rec["_id"]]
-
-        #    for re in rec["recent"]:
-
     recents = enumerate(recents)
-
-    # Loads carousel items
-    features = list(mongo.db.feature.find())
 
     return render_template(
         "profile.html", chef_info=chef_info,
-        features=features,
         submitteds=submitteds, submittedId=submittedId,
         favorites=favorites, favoriteId=favoriteId,
         recents=recents, recentId=recentId)
@@ -246,18 +211,8 @@ def recipe(recipeId):
     # Finds recipe to display
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
 
-
     # Finds the splits time info into a list
-    # time = recipeInfo["time"].split(",")
-    # --- commited out with user added recipes
     time = recipeInfo["time"]
-
-    # Finds ingredients and sets it to its own list
-    ingredients = recipeInfo["ingredients"]
-
-    # Finds steps and sets it to its own list
-    #steps = enumerate(recipeInfo["steps"])
-    steps = recipeInfo["steps"]
 
     # Creates a previously viewed list
     if session["user"]:
@@ -266,19 +221,16 @@ def recipe(recipeId):
 
         # determine if favorited
         favorited = findRecent["favorites"]
-        print(favorited, "Im favorited")
         for fav in favorited:
             if len(favorited) == 0:
                 break
             if fav == recipeInfo["_id"]:
                 favoriteRecipe = True
-                print("Favorite Break!!")
                 break
             else:
-                favoriteRecipe = False
-                print("False try again!!")
+                favoriteRecipe = False          # Ive got to have a better solution
 
-        # Creates base list
+        # Creates base list for user recent
         if len(findRecent["recent"]) == 0:
             findRecent = [recipeInfo["_id"]]
         else:
@@ -307,7 +259,7 @@ def recipe(recipeId):
         return redirect(url_for("profile"))
 
     print(favoriteRecipe)
-    return render_template("recipe.html", recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps, favoriteRecipe=favoriteRecipe)
+    return render_template("recipe.html", recipeInfo=recipeInfo, time=time, favoriteRecipe=favoriteRecipe)
 
 
 # Code customized from Pretty Printed
