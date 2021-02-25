@@ -299,7 +299,7 @@ def add_edit_recipe(recipeId):
 
     # Generates the select/option for meal feature
     features = mongo.db.feature.find()
-    print(session["editRecipe"], "Im broken!!")
+    #print(session["editRecipe"], "Im broken!!")  -- I Break the page
     #try:
     if request.method == "POST" and session['editRecipe']:
         time = [request.form.get("prepTime"), request.form.get("cookTime"), request.form.get("totalTime")]
@@ -314,8 +314,6 @@ def add_edit_recipe(recipeId):
             if request.form.get(recipeStep) == "":
                 continue
             steps += [request.form.get(recipeStep)]
-    #        print(test)
-    #        print(request.form.get(test))
 
         recipeIngredientsTotal = request.form.get("recipeIngredientsTotal")
         recipeIngredientsTotal = int(recipeIngredientsTotal)
@@ -325,8 +323,6 @@ def add_edit_recipe(recipeId):
             if request.form.get(ingredientStep) == "":
                 continue
             ingredients += [request.form.get(ingredientStep)]
-    #        print(test)
-    #        print(request.form.get(test))
         try:
             if recipeInfo["avatar"]:
                 delPrevImg = recipeInfo["avatar_id"]
@@ -372,16 +368,12 @@ def add_edit_recipe(recipeId):
         for step in range(1, recipeStepsTotal + 1):
             recipeStep = "recipeSteps-" + str(step)
             steps += [request.form.get(recipeStep)]
-    #        print(test)
-    #        print(request.form.get(test))
 
         recipeIngredientsTotal = request.form.get("recipeIngredientsTotal")
         recipeIngredientsTotal = int(recipeIngredientsTotal)
         for step in range(1, recipeIngredientsTotal + 1):
             ingredientStep = "recipeIngredients-" + str(step)
             ingredients += [request.form.get(ingredientStep)]
-    #        print(test)
-    #        print(request.form.get(test))
 
         add_recipe = {
             "name": request.form.get("recipeName"),
@@ -396,8 +388,6 @@ def add_edit_recipe(recipeId):
             "created_by": session["user"]
         }
 
-    #    print(steps)
-    #    print(add_recipe)
         print("Im Creating")
         #mongo.db.recipes.insert_one(add_recipe)
         result = mongo.db.recipes.insert_one(add_recipe)
