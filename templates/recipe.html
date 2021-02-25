@@ -50,13 +50,14 @@
             <div class="col-4">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note carousel">
-                        <div id="avatarImg" class="sticky-note-inner-div">
-                            {% if recipeInfo.avatar %}
-                            <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="">
+                        {% if recipeInfo.avatar %}
+                            <div id="avatarImg" class="sticky-note-inner-div">
+                                <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="">
                             {% else %}
-                            <h1>
-                                This is a place holder for recipes without images :'(
-                            </h1>
+                            <div class="sticky-note-inner-div">
+                                <h1>
+                                    This is a place holder for recipes without images :'(
+                                </h1>
                             {% endif %}
                         </div>
                     </div>
