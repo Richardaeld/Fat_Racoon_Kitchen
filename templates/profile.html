@@ -108,46 +108,8 @@
     </div>
 </section>
 
-<!-- carousel --> <!--   Not happy with look on profile page, change background and move to bottom of profile   -->
-<!--<aside class="row no-gutters justify-content-around align-items-center card-section picnic-pattern carousel">
-
-        <div class="col-2 col-sm-1 carousel-button carousel-left">
-            <div class="row no-gutters justify-content-center">
-                <div class="col-10">
-                    <svg  class="carousel-button-svg">
-                        <polygon points="37.5, 0 0, 37.5 37.5, 75"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        {% for feature in features %}
-            <div class="col-6 col-sm-4 col-md-3 col-lg-2 blank-carousel-recipe card-carousel ">
-                <div class="10 carousel-picture"> <i>**picture**</i></div> -----CLASS 10 WRong
-                <hr>
-                <div class="10">  -----Class 10 wrong
-                    <p>
-                        {{feature.name.title()}}
-                    </p>
-                </div>
-            </div>
-        {% endfor %}
-
-        <div class="col-2 col-sm-1 carousel-button carousel-right">
-            <div class="row no-gutters justify-content-center">
-                <div class="col-10">
-                    <svg class="carousel-button-svg">
-                        <polygon points="0, 75 37.5, 37.5 0, 0"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-</aside>-->
-
-
 {% endblock %}
 
 {% block custom_script %}
-<script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>
 {% endblock %}
