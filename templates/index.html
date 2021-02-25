@@ -160,10 +160,10 @@
                 <div>
                     <p>--{{feature.name.title()}}</p>
                     <ul>
-                        {% for feat in featurename %}
-                            {% if feat[0] == feature.name %}
+                        {% for featureRecipe in featureRecipes %}
+                            {% if featureRecipe[0] == feature.name %}
                                 <li>
-                                    <a href="{{ url_for('recipe', recipeId=feat[2]) }}"><p>{{ feat[1] }}</p></a>
+                                    <a href="{{ url_for('recipe', recipeId=featureRecipe[2]) }}"><p>{{ featureRecipe[1] }}</p></a>
                                 </li>
                             {%endif%}
                         {%endfor%}

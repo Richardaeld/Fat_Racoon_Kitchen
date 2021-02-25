@@ -23,39 +23,39 @@ mongo = PyMongo(app)
 
 @app.route("/", methods=("GET", "POST"))
 def index():
-    # Loads carousel feature items
+    # ---- Loads quick meal ideas (carousel) feature items
     features = list(mongo.db.feature.find())
 
+    # ---- Creates recipes found in carousel with a max of 3 recipes per card
     # Generates list of recipes to be presented in carousel
     iteration = 0
-    featurename = []
+    featureRecipes = []
     # gets dish features for comparason
-    featurefinder = mongo.db.feature.find()
-    for feature1 in featurefinder:
+    for feature in features:
         # gets recipe feature to compare with dish features
-        featuremongo = mongo.db.recipes.find({"feature": feature1["name"]})
+        allRecipeWithFeature = mongo.db.recipes.find({"feature": feature["name"]})  # I need refactoring
         # Compares all recipe features for matching dish feature
-        for recipename in featuremongo:
-            # first loop generates featPrev variable
+        for recipe in allRecipeWithFeature:
+            # first loop generates featurePrev variable
             if (iteration == 0):
-                featPrev = feature1["name"]
+                featurePrev = feature["name"]
             # if iteration max is reached, prevents additional recipes
             # from being posted, and resets iteration when a new dish
             # feature is used
             elif (iteration >= 3):
-                if (featPrev == feature1["name"]):
+                if (featurePrev == feature["name"]):
                     continue
-                elif (featPrev != feature1["name"]):
+                elif (featurePrev != feature["name"]):
                     iteration = 0
-                    featPrev = feature1["name"]
+                    featurePrev = feature["name"]
             # if dish feature doesnt match recipe feature it resets
             #  iteration count and updates dish feature
-            elif (featPrev != feature1["name"]):
-                featPrev = feature1["name"]
+            elif (featurePrev != feature["name"]):
+                featurePrev = feature["name"]
                 iteration = 0
             # Creates list to be used on carousel
-            if(iteration <= 3 and featPrev == feature1["name"]):
-                featurename += [[feature1["name"], recipename["name"], recipename["_id"]]]
+            if(iteration <= 3 and featurePrev == feature["name"]): #conditional iteration<= 3 not needed anymore
+                featureRecipes += [[recipe["feature"], recipe["name"], recipe["_id"]]]
                 iteration += 1
 
     # Loads recipe of the day # THIS IS THE RECIPE!!!
@@ -104,7 +104,7 @@ def index():
 
     return render_template(
         "index.html", features=features, raccoonrecipe=raccoonrecipe,
-        time=time, chef=chef, featurename=featurename)
+        time=time, chef=chef, featureRecipes=featureRecipes)
 
 
 @app.route("/logout")
