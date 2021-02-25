@@ -59,12 +59,10 @@ def index():
                 iteration += 1
 
     # Loads recipe of the day # THIS IS THE RECIPE!!!
-    raccoonrecipe = mongo.db.recipes.find_one({"_id": ObjectId("60375c0a5bcabd698d1e1750")})  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
-    # Finds, splits and loads cook time data from recipe of the day
-    time = raccoonrecipe["time"]
+    recipeOfDay = mongo.db.recipes.find_one({"_id": ObjectId("60375c0a5bcabd698d1e1750")})  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
 
     # finds and loads chefs information from recipe of the day
-    chef = mongo.db.users.find_one({"email": raccoonrecipe["created_by"]})#['bio']
+    chef = mongo.db.users.find_one({"email": recipeOfDay["created_by"]})
 
     # --Login-- information
     if request.method == "POST" and request.form.get("name") == "":
@@ -103,8 +101,8 @@ def index():
         return redirect(url_for("index", username=session['user']))
 
     return render_template(
-        "index.html", features=features, raccoonrecipe=raccoonrecipe,
-        time=time, chef=chef, featureRecipes=featureRecipes)
+        "index.html", features=features, recipeOfDay=recipeOfDay,
+        chef=chef, featureRecipes=featureRecipes)
 
 
 @app.route("/logout")

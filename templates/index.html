@@ -69,9 +69,9 @@
                 <div class="col-sm-6 col-md-3 order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1 order-xxl-1 ">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-10 sticky-note recipe-of-day-aside-height">
-                            {% if raccoonrecipe.avatar %}
+                            {% if recipeOfDay.avatar %}
                                 <div id="avatarImg" class="sticky-note-inner-div">
-                                    <img src="{{ url_for('avatar', avatar_image=raccoonrecipe.avatar) }}" alt="">
+                                    <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="">
                                 </div>
                             {% else %}
                                 <div class="sticky-note-inner-div">
@@ -86,21 +86,21 @@
 
                 <div class="col-sm-12 col-md-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-1 order-xxl-1 sticky-note sticky-note-middle"> <!-- recipe-descript --><!-- removed recipe description to keep sticky note working properly -->
                     <div class="sticky-note-inner-div">
-                        <h1>{{ raccoonrecipe.name.title() }}</h1>
-                        <h6>Features <i>{{ raccoonrecipe.feature }}</i></h6>
-                        <p>{{ raccoonrecipe.text }}</p>
+                        <h1>{{ recipeOfDay.name.title() }}</h1>
+                        <h6>Features <i>{{ recipeOfDay.feature }}</i></h6>
+                        <p>{{ recipeOfDay.text }}</p>
                         <span class="row no-gutters">
                             <span class="col-4">
                                 <h6>Prep Time</h6>
-                                <p>{{ time[0] }}</p>
+                                <p>{{ recipeOfDay.time[0] }}</p>
                             </span>
                             <span class="col-4">
                                 <h6>Cook Time</h6>
-                                <p>{{ time[1] }}</p>
+                                <p>{{ recipeOfDay.time[1] }}</p>
                             </span>
                             <span class="col-4">
                                 <h6>Total Time</h6>
-                                <p>{{ time[2] }}</p>
+                                <p>{{ recipeOfDay.time[2] }}</p>
                             </span>
                         </span>
                     </div>
