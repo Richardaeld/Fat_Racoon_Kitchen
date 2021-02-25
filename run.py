@@ -211,50 +211,54 @@ def recipe(recipeId):
     time = recipeInfo["time"]
 
     # Creates a previously viewed list
-    if session["user"]:
-        userRecentFinal = []
-        findRecent = mongo.db.users.find_one({"email": session["user"]})
+    try:
+        if session["user"]:
+            userRecentFinal = []
+            findRecent = mongo.db.users.find_one({"email": session["user"]})
 
-        # determine if favorited
-        favorited = findRecent["favorites"]
-        for fav in favorited:
-            if len(favorited) == 0:
-                break
-            if fav == recipeInfo["_id"]:
-                favoriteRecipe = True
-                break
-            else:
-                favoriteRecipe = False          # Ive got to have a better solution
-
-        # Creates base list for user recent
-        if len(findRecent["recent"]) == 0:
-            findRecent = [recipeInfo["_id"]]
-        else:
-            findRecent = [recipeInfo["_id"]] + findRecent["recent"]
-
-        # Iterates through checking to duplicates
-        # For outer Loop
-        for final in findRecent:
-            checkPass = True
-            if len(userRecentFinal) == 0:
-                userRecentFinal += [final]
-            # Check for duplicates and remove them
-            for check in userRecentFinal:
-                # Im idiot prevention -- can remove post development
-                if len(userRecentFinal) > 10:
+            # determine if favorited
+            favorited = findRecent["favorites"]
+            for fav in favorited:
+                if len(favorited) == 0:
                     break
-                elif final == check:
-                    checkPass = False
-                elif check == userRecentFinal[-1] and checkPass is True:
-                    userRecentFinal += [final]
+                if fav == recipeInfo["_id"]:
+                    favoriteRecipe = True
+                    break
+                else:
+                    favoriteRecipe = False          # Ive got to have a better solution
 
-        mongo.db.users.update_one({"email": session["user"]}, {"$set": {"recent": userRecentFinal}})
+            # Creates base list for user recent
+            if len(findRecent["recent"]) == 0:
+                findRecent = [recipeInfo["_id"]]
+            else:
+                findRecent = [recipeInfo["_id"]] + findRecent["recent"]
+
+            # Iterates through checking to duplicates
+            # For outer Loop
+            for final in findRecent:
+                checkPass = True
+                if len(userRecentFinal) == 0:
+                    userRecentFinal += [final]
+                # Check for duplicates and remove them
+                for check in userRecentFinal:
+                    # Im idiot prevention -- can remove post development
+                    if len(userRecentFinal) > 10:
+                        break
+                    elif final == check:
+                        checkPass = False
+                    elif check == userRecentFinal[-1] and checkPass is True:
+                        userRecentFinal += [final]
+
+            mongo.db.users.update_one({"email": session["user"]}, {"$set": {"recent": userRecentFinal}})
+
+    # For a missing session user
+    except KeyError:
+        favoriteRecipe = "None"
 
     if request.method == "POST":
         mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
         return redirect(url_for("profile"))
 
-    print(favoriteRecipe)
     return render_template("recipe.html", recipeInfo=recipeInfo, time=time, favoriteRecipe=favoriteRecipe)
 
 
