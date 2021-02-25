@@ -1,6 +1,6 @@
 // ---- Set Avatar Image size
 // if Avatar exists give it a height and width
-if (document.getElementById("avatarImg").getElementsByTagName("img")[0]){
+if (document.getElementById("avatarImg") != null){
     // find height and width of container
     let loc = document.getElementById("avatarImg");
     let avatarHeight = loc.clientHeight;
