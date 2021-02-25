@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block section %}
+<section class="row no-gutters notebook-paper">
+    <!-- recipe ingredients and steps -->
+    <div class="col-12">
+        <div class="row no-gutters">
+            <!-- Recipe Ingredients -->
+            <div class="col-6 ">
+                <div class="row no-gutters justify-content-center">
+                    <div class="col-10 sticky-note">
+                        <div class="sticky-note-inner-div">
+                            <ul class="recipe-lists">
+                                <h1>{{ feature.title() }} Recipes </h1>
+                                <hr>
+                                {% for recipe in oddRecipes %}
+                                    <li>
+                                        <h6>{{ recipe.name.title() }}</h6>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Recipe Steps -->
+            <div class="col-6">
+                <div class="row no-gutters justify-content-center ">
+                    <div class="col-10 sticky-note sticky-note-right">
+                        <div class="sticky-note-inner-div ">
+                            <ul class="recipe-lists recipe-lists-steps">
+                                <h1>More {{ feature.title() }} Recipes</h1>
+                                <hr>
+                                {% for recipe in evenRecipes %}
+                                    <li>
+                                        <h6>{{ recipe.name.title() }}</h6> 
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

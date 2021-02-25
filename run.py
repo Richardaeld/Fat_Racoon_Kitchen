@@ -437,6 +437,23 @@ def edit_user_info():
     return render_template("edit_user_info.html", userInfo=userInfo)
 
 
+@app.route("/allRecipe/<feature>")
+def recipe_list(feature):
+    allRecipes = mongo.db.recipes.find({"feature": feature})
+    allRecipes = enumerate(allRecipes)
+    evenRecipes = []
+    oddRecipes = []
+    for recipe in allRecipes:
+        if recipe[0] % 2:
+            evenRecipes += [recipe[1]]
+        else:
+            oddRecipes += [recipe[1]]
+
+    return render_template(
+        "recipe_list.html", feature=feature, allRecipes=allRecipes,
+        oddRecipes=oddRecipes, evenRecipes=evenRecipes)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
