@@ -444,6 +444,7 @@ def recipe_list(feature):
     evenRecipes = []
     oddRecipes = []
     for recipe in allRecipes:
+        print(recipe[1]["name"])
         if recipe[0] % 2:
             evenRecipes += [recipe[1]]
         else:

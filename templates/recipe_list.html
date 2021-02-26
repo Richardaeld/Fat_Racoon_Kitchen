@@ -14,7 +14,7 @@
                                 <hr>
                                 {% for recipe in oddRecipes %}
                                     <li>
-                                        <h6>{{ recipe.name.title() }}</h6>
+                                        <a href="{{ url_for('recipe', recipeId=recipe._id) }}"><h6>{{ recipe.name.title() }}  --  Total Cook Time: {{ recipe.time[2] }} minutes</h6></a>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -32,7 +32,7 @@
                                 <hr>
                                 {% for recipe in evenRecipes %}
                                     <li>
-                                        <h6>{{ recipe.name.title() }}</h6> 
+                                        <a href="{{ url_for('recipe', recipeId=recipe._id) }}"><h6>{{ recipe.name.title() }}  --  Total Cook Time: {{ recipe.time[2] }} minutes</h6></a>
                                     </li>
                                 {% endfor %}
                             </ul>
