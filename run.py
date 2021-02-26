@@ -454,6 +454,11 @@ def recipe_list(feature):
         oddRecipes=oddRecipes, evenRecipes=evenRecipes)
 
 
+@app.route("/aboutUs")
+def about_us():
+    return render_template("about_us.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
