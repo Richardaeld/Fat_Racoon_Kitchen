@@ -156,6 +156,11 @@ header {
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
 
+.card-carousel li {
+    font-family: "Reenie beanie", sans-serif;
+    padding-bottom: 0rem!important; /* without important uses bottom padding from recipe-lists */
+    list-style-type: none;
+}
 /*.card-carousel p {
     font: 1.5rem "Yanone Kaffeesatz",sans-serif;
     text-shadow: 2px 2px rgba(0, 0, 0, .15 );
@@ -407,6 +412,13 @@ footer {
 /* ---------------------------------------- Profile ---------------------------------------- */
 .profile-lists p {
     text-align: left;
+    font: 1.75rem "Reenie Beanie", sans-serif;
+}
+
+.profile-lists a,
+.profile-lists a:hover {
+    color: #010203;
+    text-decoration: none;
 }
 
 .profile-sticky-height { /*------------------------------  recustomizes sticky*/
@@ -420,8 +432,19 @@ footer {
     text-align: left;
 }
 
+.recipe-lists:link,
+.recipe-lists:visited,
+.recipe-lists a {
+    color: #010203;
+}
+
+.recipe-lists a:hover {
+    text-decoration: none;
+}
+
 .recipe-lists li {
     padding-bottom: 1.5rem;
+    font-family: "Reenie Beanie", sans-serif;
 }
 
 .recipe-lists h1,
@@ -446,6 +469,10 @@ footer {
 .favorite {
     height: 2rem;
     width: 2rem;
+}
+
+.recipe-lists-no-dec {
+    list-style-type: none;
 }
 
 /* ---------------------------------------- recipe list ---------------------------------------- */

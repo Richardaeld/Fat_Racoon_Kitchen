@@ -3,18 +3,29 @@
 <section class="row no-gutters notebook-paper">
     <!-- recipe ingredients and steps -->
     <div class="col-12">
+        
+        <h1>{{ feature.title() }} Recipes </h1>
         <div class="row no-gutters">
             <!-- Recipe Ingredients -->
             <div class="col-6 ">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note recipe-list-height">
                         <div class="sticky-note-inner-div">
-                            <ul class="recipe-lists">
-                                <h1>{{ feature.title() }} Recipes </h1>
-                                <hr>
+                            <ul class="recipe-lists recipe-lists-no-dec">
+
                                 {% for recipe in oddRecipes %}
                                     <li>
-                                        <a href="{{ url_for('recipe', recipeId=recipe._id) }}"><h6>{{ recipe.name.title() }}  --  Total Cook Time: {{ recipe.time[2] }} minutes</h6></a>
+                                        <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
+                                            <span class="col-5">
+                                                <h6>{{ recipe.name.title() }}</h6>
+                                            </span>
+                                            <span class="col-2">
+                                                <h6> -- </h6>
+                                            </span>
+                                            <span class="col-5" style="text-align: center;">
+                                                <h6>Total Cook Time: {{ recipe.time[2] }} minutes</h6>
+                                            </span>                                        
+                                        </a>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -27,12 +38,21 @@
                 <div class="row no-gutters justify-content-center ">
                     <div class="col-10 sticky-note sticky-note-right recipe-list-height">
                         <div class="sticky-note-inner-div ">
-                            <ul class="recipe-lists recipe-lists-steps">
-                                <h1>More {{ feature.title() }} Recipes</h1>
-                                <hr>
+                            <ul class="recipe-lists recipe-lists-no-dec">
+
                                 {% for recipe in evenRecipes %}
                                     <li>
-                                        <a href="{{ url_for('recipe', recipeId=recipe._id) }}"><h6>{{ recipe.name.title() }}  --  Total Cook Time: {{ recipe.time[2] }} minutes</h6></a>
+                                        <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
+                                            <span class="col-5">
+                                                <h6>{{ recipe.name.title() }}</h6>
+                                            </span>
+                                            <span class="col-2">
+                                                <h6> -- </h6>
+                                            </span>
+                                            <span class="col-5" style="text-align: center;">
+                                                <h6>Total Cook Time: {{ recipe.time[2] }} minutes</h6>
+                                            </span>                                        
+                                        </a>
                                     </li>
                                 {% endfor %}
                             </ul>
