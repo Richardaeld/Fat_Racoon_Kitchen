@@ -73,24 +73,3 @@ function carouselButton (button) {
 carouselButton("carousel-right");
 carouselButton("carousel-left");
 
-// ---- login modal
-// Allows login modal to function and pop up
-let modal = document.getElementsByClassName("custom-modal")[0]; // modal
-let signInModal = document.querySelectorAll(".login-modal"); // login button
-let button = document.getElementsByClassName("custom-button")[0]; // submit button
-signInModal.forEach(popUpModal);
-function popUpModal(item, index){
-    item.addEventListener("click", function () {
-        modal.classList.remove("make-invis");
-    });
-}
-// makes modal disappear if background clicked
-document.getElementsByClassName("modal-background")[0].addEventListener("click", function() {
-    modal.classList.add("make-invis");
-})
-
-// adds a different background to button when clicked
-button.addEventListener("click", function () {
-    button.classList.add("custom-button-press");
-})
-
