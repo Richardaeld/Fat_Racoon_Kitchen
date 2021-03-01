@@ -455,9 +455,9 @@ def recipe_list(feature):
         oddRecipes=oddRecipes, evenRecipes=evenRecipes)
 
 
-@app.route("/aboutUs")
-def about_us():
-    return render_template("about_us.html")
+@app.route("/lessons")
+def lessons():
+    return render_template("lessons.html")
 
 
 if __name__ == "__main__":
