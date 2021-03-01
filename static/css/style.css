@@ -447,3 +447,8 @@ footer {
     height: 2rem;
     width: 2rem;
 }
+
+/* ---------------------------------------- recipe list ---------------------------------------- */
+.recipe-list-height {
+    min-height: 20rem;
+}
