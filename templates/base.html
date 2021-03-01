@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('lessons') }}">Lessons</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('all_recipes') }}">Recipes</a>
+                    </li>
                     {% if session.user == null %}
                     <li class="nav-item">
                         <a class="nav-link login-modal" href="#">Login</a>
@@ -80,6 +83,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('lessons') }}">Lessons</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('all_recipes') }}">Recipes</a>
             </li>
             {% if session.user == null %}
             <li class="nav-item">

@@ -460,6 +460,15 @@ def lessons():
     return render_template("lessons.html")
 
 
+@app.route("/all_recipes")
+def all_recipes():
+    allFeatures = mongo.db.feature.find({})
+    allRecipes = list(mongo.db.recipes.find({}))
+    return render_template(
+        "all_recipes.html",
+        allFeatures=allFeatures, allRecipes=allRecipes)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
