@@ -8,26 +8,30 @@
             {% for feature in allFeatures %}
             <div class="col-6 ">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note recipe-list-height">
+                    <div class="col-10 sticky-note recipe-list-height 
+                    {% if feature[0] % 2 %}
+                    sticky-note-right
+                    {% endif %}">
+                        
                         <div class="sticky-note-inner-div">
-                            <ul class="recipe-lists">
-                                <a href="{{ url_for('recipe_list', feature=feature.name) }}">
-                                    <h1>{{ feature.name.title() }} Recipes </h1>
+                            <ul class="recipe-lists recipe-lists-no-dec">
+                                <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
+                                    <h1>{{ feature[1].name.title() }} Recipes </h1>
                                 </a>
                                 <hr>
                                 {% for recipe in allRecipes %}
-                                {% if recipe.feature == feature.name %}
+                                {% if recipe.feature == feature[1].name %}
                                     <li>
                                         <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
-                                            <div class="col-5">
+                                            <span class="col-5">
                                                 <h6>{{ recipe.name }}</h6>
-                                            </div>
-                                            <div class="col-2">
+                                            </span>
+                                            <span class="col-2">
                                                 <h6> -- </h6>
-                                            </div>
-                                            <div class="col-5" style="text-align: center;">
+                                            </span>
+                                            <span class="col-5" style="text-align: center;">
                                                 <h6>Total Cook Time: {{ recipe.time[2] }} minutes</h6>
-                                            </div>
+                                            </span>
                                         </a>
                                     </li>
 

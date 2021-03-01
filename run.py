@@ -462,7 +462,7 @@ def lessons():
 
 @app.route("/all_recipes")
 def all_recipes():
-    allFeatures = mongo.db.feature.find({})
+    allFeatures = enumerate(mongo.db.feature.find({}))
     allRecipes = list(mongo.db.recipes.find({}))
     return render_template(
         "all_recipes.html",
