@@ -1,4 +1,47 @@
 {% extends "base.html" %}
+
+{% block modal %}
+<!--  login and create account modal  -->
+<aside class="row no-gutters justify-content-center custom-modal make-invis" style="background-color: transparent;">
+    <div class="col-12 modal-background"></div>
+
+    <form class="col-10 col-md-6 form-login" style="overflow: hidden;" method="POST" action="{{ url_for('index') }}">
+        <div class="row no-gutters">
+            <div class="col-12 tab-body">
+                <div class="tab tab-selected">
+                    <p>Login</p>
+                </div>
+                <div class="tab">
+                    <p>Create Account</p>
+                </div>
+            </div>
+        </div>
+
+        <fieldset class="col-10 create-account make-invis">
+            <label class="form-login-label-width" type="text" for="name">Name:</label>
+            <input type="text" id="name" name="name" value="JaneDoe" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
+        </fieldset>
+
+        <fieldset class="col-10 login-account">
+            <label class="form-login-label-width" type="email" for="email">Email:</label>
+            <input type="email" id="email" name="email" value="asdfa@aol.com" minlength="5" maxlength="20"  required>
+        </fieldset>
+
+        <fieldset class="col-10 login-account">
+            <label class="form-login-label-width" type="password" for="password">Password:</label>
+            <input  type="password" id="password" name="password" value="123456" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
+        </fieldset>
+
+        <fieldset class="col-10 create-account make-invis">
+            <label class="form-login-label-width" type="password" for="passwordCheck">Re-enter Password:</label>
+            <input type="password" id="passwordCheck" name="passwordCheck" value="123456" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
+        </fieldset>
+
+        <input class="custom-button" id="custom-button" type="submit" value="Login">
+    </form>
+</aside>
+{% endblock %}
+
 {% block section %}
 <section class="row no-gutters profile-lists notebook-paper">
     <div class="col-12">
@@ -183,4 +226,9 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block custom_script %}
+    <script src="{{ url_for('static', filename='js/loginCreateVal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>
 {% endblock %}
