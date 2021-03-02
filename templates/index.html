@@ -46,23 +46,49 @@
 
 
 {% block section %}
-    <!-- Section for 'recipe of the day' -->
-    <section class="row no-gutters" style="background-color:#fff; ">                <!--  No size given, auto sizes with size of picture/recipe description/ chef bio  -->
-        <div class="col-12">
-            <div class="row no-gutters align-items-center justify-content-center">
-                <div class="col-2 racoon">
+    <!-- header for intoduction --> 
+    <section>
+        <div class="col-12 notebook-paper">
+            <div class="row no-gutters align-items-center justify-content-around">
+                <!--<div class="col-2 raccoon">
+                    <img src=" url_for('static', filename='images/s_raccoon_face.svg') " alt="fat raccoon face">
+                </div>-->
+                    
+                <div class="col-8 independant-header-height">
+                    <div class="bubble-letters">
+                        <h1>Welcome to the Fat Raccoon!</h1>
+                    </div>
+                </div>
+                <div class="col-5 sticky-note bubble-letters">
+                    <div class="sticky-note-inner-div">
+
+                        <h2>Our mission is to help home chefs make the best of what they have in the kitchen.</h2>
+                        <h2>We offer a lessons section for new chefs, and all of our recipes are sorted by the feature of the meal so you can search by whatever you have in your kitchen</h2>
+                    </div>
+                </div>
+
+                <div class="col-5 sticky-note bubble-letters">
+                    <div class="sticky-note-inner-div">
+
+                        <h2>We also offer a random recipe for those that just need inspiration on what to make for dinner.</h2>
+                        <h2>If none of that tickles your fancy feel free to look up a recipe by: feature ingredient, who created the recipe, or specific ingredient.</h2>
+                    </div>
+                </div>
+
+
+
+                        <!--<h1>One of our Chef's Personal Favorites</h1>
+                        <p>Take a moment to browse one of our Chef's recommended recipies!</p>-->
+
+                <!--<div class="col-2 raccoon">
                     <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
-                </div>
-                <div class="col-8">
-                <h1>One of our Chef's Personal Favorites</h1>
-                <p>Take a moment to browse one of our Chef's recommended recipies!</p>
-                </div>
-                <div class="col-2 racoon">
-                    <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
-                </div>
+                </div>-->
             </div>
         </div>
+    </section>
 
+    <!-- Section for 'recipe of the day' -->
+    <section class="row no-gutters notebook-paper">                <!--  No size given, auto sizes with size of picture/recipe description/ chef bio  -->
         <div class="col-12">
             <div class="row no-gutters">
 
@@ -133,12 +159,14 @@
     </section>
 
     <!-- carousel -->
-    <aside class="row no-gutters justify-content-around align-items-center card-section carousel">
+    <aside class="row no-gutters justify-content-around align-items-center card-section carousel notebook-paper">
 
         <div class="col-12" style="height:5rem;">
             <div class="row no-gutters justify-content-center">
-                <div class="card-carousel-header index-card">
-                    <h1>Quick meal ideas</h1>
+                <div class="independant-header-height">
+                    <div class="bubble-letters">
+                        <h1>Quick meal ideas</h1>
+                    </div>
                 </div>
             </div>
         </div>
