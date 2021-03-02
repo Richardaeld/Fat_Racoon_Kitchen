@@ -15,22 +15,26 @@
                         
                         <div class="sticky-note-inner-div">
                             <ul class="recipe-lists recipe-lists-no-dec">
-                                <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
-                                    <h1>{{ feature[1].name.title() }} Recipes </h1>
-                                </a>
+                                    <a href="{{ url_for('recipe_list', feature=feature[1].name) }}" class="bubble-letters">
+                                        <h1>{{ feature[1].name.title() }} Recipes </h1>
+                                    </a>
                                 <hr>
                                 {% for recipe in allRecipes %}
                                 {% if recipe.feature == feature[1].name %}
                                     <li>
                                         <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
-                                            <span class="col-5">
-                                                <h6>{{ recipe.name }}</h6>
+                                            <span class="col-8">
+                                                <h6><strong>{{ recipe.name }}</strong>:</h6>
                                             </span>
-                                            <span class="col-2">
-                                                <h6> -- </h6>
-                                            </span>
-                                            <span class="col-5" style="text-align: center;">
-                                                <h6>Total Cook Time: {{ recipe.time[2] }} minutes</h6>
+                                            <span class="col-4" style="text-align: center;">
+                                                <div class="row no-gutters">
+                                                    <div class="col-12">
+                                                        <h6>Total Time: </h6>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <h6><strong>{{ recipe.time[2] }} Minutes</strong></h6>
+                                                    </div>
+                                                </div>
                                             </span>
                                         </a>
                                     </li>
