@@ -3,8 +3,14 @@
 <section class="row no-gutters notebook-paper">
     <!-- recipe ingredients and steps -->
     <div class="col-12">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-4  independant-header-height">
+                <div class="bubble-letters">
+                    <h1>{{ feature.title() }} Recipes </h1>
+                </div>
+            </div>
+        </div>
         
-        <h1>{{ feature.title() }} Recipes </h1>
         <div class="row no-gutters">
             <!-- Recipe Ingredients -->
             <div class="col-6 ">
@@ -16,15 +22,19 @@
                                 {% for recipe in oddRecipes %}
                                     <li>
                                         <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
-                                            <span class="col-5">
-                                                <h6>{{ recipe.name.title() }}</h6>
+                                            <span class="col-8">
+                                                <h6><strong>{{ recipe.name.title() }}</strong>: </h6>
                                             </span>
-                                            <span class="col-2">
-                                                <h6> -- </h6>
-                                            </span>
-                                            <span class="col-5" style="text-align: center;">
-                                                <h6>Total Cook Time: {{ recipe.time[2] }} minutes</h6>
-                                            </span>                                        
+                                            <span class="col-4" style="text-align: center;">
+                                                <div class="row no-gutters">
+                                                    <div class="col-12">
+                                                        <h6>Total Time: </h6>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <h6><strong>{{ recipe.time[2] }} Minutes</strong></h6>
+                                                    </div>
+                                                </div>
+                                            </span>                                      
                                         </a>
                                     </li>
                                 {% endfor %}
@@ -43,15 +53,19 @@
                                 {% for recipe in evenRecipes %}
                                     <li>
                                         <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
-                                            <span class="col-5">
-                                                <h6>{{ recipe.name.title() }}</h6>
+                                            <span class="col-8">
+                                                <h6><strong>{{ recipe.name.title() }}</strong>:</h6>
                                             </span>
-                                            <span class="col-2">
-                                                <h6> -- </h6>
-                                            </span>
-                                            <span class="col-5" style="text-align: center;">
-                                                <h6>Total Cook Time: {{ recipe.time[2] }} minutes</h6>
-                                            </span>                                        
+                                            <span class="col-4" style="text-align: center;">
+                                                <div class="row no-gutters">
+                                                    <div class="col-12">
+                                                        <h6>Total Time: </h6>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <h6><strong>{{ recipe.time[2] }} Minutes</strong></h6>
+                                                    </div>
+                                                </div>
+                                            </span>                                      
                                         </a>
                                     </li>
                                 {% endfor %}
