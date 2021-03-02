@@ -35,20 +35,28 @@
 }
 
 .bubble-letters {
-    color: #fff;
-    text-shadow: 0px 1px rgba(0, 0, 0, .75),
-                1px 0px rgba(0, 0, 0, .75),
-                0px -1px rgba(0, 0, 0, .75),
-                -1px 0px rgba(0, 0, 0, .75);
+    color: rgba(0, 0, 0, 0.5);
+    text-shadow: 0px 1px rgb(14, 255, 255),
+                1px 0px rgb(14, 255, 255),
+                0px -1px rgb(14, 255, 255),
+                -1px 0px rgb(14, 255, 255);
+}
+
+.bubble-letters h1 {
+    font-size: 4rem;
+}
+
+.bubble-letters h2 {
+    font-size: 2.5rem;
 }
 
 .index-card {
     position: relative;
-    
     background-position: 0% 50%;
-    background: repeating-linear-gradient(#fff, #fff 10%, rgba(77, 146, 211, .5)10% 11%),
+    background: repeating-linear-gradient(rgb(255, 255, 240), rgb(255, 255, 240) 10%, rgba(77, 146, 211, .5)10% 11%),
                 linear-gradient(to bottom, rgb(226, 14, 14) 12%, rgba(0,0,0,0) 12% 100%);
     background-color: #fff;
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.5));
 }
 
 .index-card p {

@@ -100,8 +100,8 @@ header {
 .custom-nav {
     font-family: "Yanone Kaffeesatz", sans-serif;
     background: #fff;
-    border-top: 2px solid rgba(14, 266, 266, .5);
-    border-bottom: 2px solid rgba(14, 266, 266, .5);
+    border-top: 2px solid rgba(14, 255, 255, .5);
+    border-bottom: 2px solid rgba(14, 255, 255, .5);
 }
 
 @media (min-width: 992px) {
@@ -125,7 +125,7 @@ header {
 .avatar {
     position: relative;
     border-radius: 50%;
-    background-color: royalblue;
+    background-color: royalblue; /*---------------------change me*/
     height: 75px;
     width: 75px;
     float: left;
@@ -138,10 +138,9 @@ header {
 
 .carousel {
     height: 30rem;
-    background-color: #fff;
+    /*background-color: #fff;*/ /*-------------- disrupts .notebook-paper*/
 }
 
-.card-carousel-header,
 .card-carousel {
     margin: .5rem 0rem;
     padding: 1rem !important;
@@ -166,7 +165,6 @@ header {
     text-shadow: 2px 2px rgba(0, 0, 0, .15 );
 }*/
 
-.card-carousel-header,
 .card-carousel-vis {
     display: block;
 }
@@ -245,13 +243,16 @@ footer {
     list-style-type: none;
 }
 
-.racoon img {
-    height: 100%;
-    width: 50%;
+/*      ------ removed from index
+.raccoon img {
+    width: 75%;
+    height: 7rem;
     position: relative;
     top:0;
     bottom:0;
-}
+    filter: drop-shadow(6px 0px white);
+} */
+
 
 @media (max-width: 767.98px) {
     .social-link-push li {
@@ -423,10 +424,21 @@ footer {
 
 .profile-sticky-height { /*------------------------------  recustomizes sticky*/
     height: 35rem;
-    font-family: "Yanone+Kaffeesatz", sans-serif;
+    font-family: "Yanone Kaffeesatz", sans-serif;
 }
 
 /* ---------------------------------------- Recipe ---------------------------------------- */
+.independant-header-height {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    height: 7rem;
+    margin-bottom: 2.5rem;
+    margin-top: 2rem;
+    text-decoration: underline;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .5 );
+}
+
+
+
 .recipe-lists {
     font-family: "Yanone Kaffeesatz", sans-serif;
     text-align: left;
