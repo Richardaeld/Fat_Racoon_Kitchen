@@ -306,64 +306,6 @@ def add_edit_recipe(recipeId):
 
     # Generates the select/option for meal feature
     features = mongo.db.feature.find()
-    #print(session["editRecipe"], "Im broken!!")  -- I Break the page
-    try:
-        if request.method == "POST" and session['editRecipe']:
-            time = [request.form.get("prepTime"), request.form.get("cookTime"), request.form.get("totalTime")]
-            ingredients = []
-            steps = []
-
-            recipeStepsTotal = (request.form.get("recipeStepsTotal"))
-            recipeStepsTotal = int(recipeStepsTotal)
-            for step in range(1, recipeStepsTotal + 1):
-                recipeStep = "recipeSteps-" + str(step)
-                # Skip columns that are empty
-                if request.form.get(recipeStep) == "":
-                    continue
-                steps += [request.form.get(recipeStep)]
-
-            recipeIngredientsTotal = request.form.get("recipeIngredientsTotal")
-            recipeIngredientsTotal = int(recipeIngredientsTotal)
-            for step in range(1, recipeIngredientsTotal + 1):
-                ingredientStep = "recipeIngredients-" + str(step)
-                # Skip columns that are empty
-                if request.form.get(ingredientStep) == "":
-                    continue
-                ingredients += [request.form.get(ingredientStep)]
-            try:
-                if recipeInfo["avatar"]:
-                    delPrevImg = recipeInfo["avatar_id"]
-                    mongo.db.fs.chunks.delete_many({"files_id": ObjectId(delPrevImg)})
-                    mongo.db.fs.files.delete_many({"_id": ObjectId(delPrevImg)})
-            except KeyError:
-                print("Avatar doesnt exist")
-
-            # Code customized from Pretty Printed
-            # https://www.youtube.com/watch?v=DsgAuceHha4
-            avatar = request.files['avatar']
-            # format filename and then file
-            mongo.save_file(request.form.get("avatar_name"), avatar)
-            imageDict = mongo.db.fs.files.find_one({"filename": request.form.get("avatar_name")})
-
-            edit_recipe = {
-                "name": request.form.get("recipeName"),
-                "feature": request.form.get("feature"),
-                "ingredients": ingredients,
-                "steps": steps,
-                "time": time,
-                "text": request.form.get("recipeDescription"),
-                "history": request.form.get("recipeHistory"),
-                "date": datetime.datetime.now(),
-                "avatar": request.form.get("avatar_name"),
-                "avatar_id": imageDict["_id"],
-                "created_by": session["user"]
-            }
-
-            mongo.db.recipes.update({"_id": ObjectId(recipeInfo["_id"])}, edit_recipe)
-            return redirect(url_for("recipe", recipeId=recipeInfo["_id"]))
-
-    except KeyError:
-        print(" Im not an edit recipe, Im a add new recipe")
 
     if request.method == "POST":
         time = [request.form.get("prepTime"), request.form.get("cookTime"), request.form.get("totalTime")]
@@ -382,6 +324,22 @@ def add_edit_recipe(recipeId):
             ingredientStep = "recipeIngredients-" + str(step)
             ingredients += [request.form.get(ingredientStep)]
 
+        if request.form.get("avatar_file_valid") == 'true':
+            print("Im creating a image")
+            # Code customized from Pretty Printed
+            # https://www.youtube.com/watch?v=DsgAuceHha4
+            avatar = request.files['avatar']
+            # format filename and then file
+            mongo.save_file(request.form.get("avatar_name"), avatar)
+            imageDict = mongo.db.fs.files.find_one({"filename": request.form.get("avatar_name")})
+            avatar_img = request.form.get("avatar_name")
+            avatar_id = imageDict["_id"]
+
+        else:
+            print("im not imageing!!!")
+            avatar_img = None
+            avatar_id = None
+
         add_recipe = {
             "name": request.form.get("recipeName"),
             "feature": request.form.get("feature"),
@@ -392,16 +350,18 @@ def add_edit_recipe(recipeId):
             "history": request.form.get("recipeHistory"),
            # "date": datetime.datetime.now().strftime("%Y-%b-%d:%H:%M"),
             "date": datetime.datetime.now(),
+            "avatar": avatar_img,
+            "avatar_id": avatar_id,
             "created_by": session["user"]
         }
-
-        print("Im Creating")
+        #print(add_recipe)
         #mongo.db.recipes.insert_one(add_recipe)
-        result = mongo.db.recipes.insert_one(add_recipe)
-        print(result.inserted_id)
-        testId = result.inserted_id
+        result = mongo.db.recipes.insert_one(add_recipe) #I setup to upllaoad to mongo
+        #print(result.inserted_id)
+        testId = result.inserted_id     #I upload to mongo
 
         return redirect(url_for("recipe", recipeId=testId))
+        #return redirect(url_for("profile")) -- For development testing
 
     return render_template(
         "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
