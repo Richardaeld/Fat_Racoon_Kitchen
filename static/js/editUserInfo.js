@@ -23,7 +23,7 @@ document.getElementById("avatar").addEventListener("change", function() {
         loc.value = null;
         loc.classList.add("invalid");
         document.getElementById("avatar_valid").classList.remove("make-invis");
-    } else if (fileSize < 100000 && loc.classList.contains("invalid")){
+    } else if (fileSize < 500000 && loc.classList.contains("invalid")){
         loc.classList.remove("invalid");
         document.getElementById("avatar_valid").classList.add("make-invis");
     }
