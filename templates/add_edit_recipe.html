@@ -42,7 +42,8 @@
                                                 <label type="text" for="prepTime"><h4>Prep Time (Minutes)</h4></label>
                                             </div>
                                             <div class="col-12">
-                                                <input style="text-align: center;" type="number" id="prepTime" name="prepTime" value="{% if recipeInfo == none %}15{% else %}{{ recipeInfo.time[0] }}{% endif %}">
+                                                <!-- class time for JS -->
+                                                <input class="time" style="text-align: center;" type="number" id="prepTime" name="prepTime" value="{% if recipeInfo == none %}15{% else %}{{ recipeInfo.time[0] }}{% endif %}">
                                             </div>
                                         </div>
                                     </span>
@@ -53,7 +54,8 @@
                                                 <label type="text" for="cookTime"><h4>Cook Time (Minutes)</h4></label>
                                             </div>
                                             <div class="col-12">
-                                                <input style="text-align: center;" type="number" id="cookTime" name="cookTime" value="{% if recipeInfo == none %}10{% else %}{{ recipeInfo.time[1] }}{% endif %}">
+                                                <!-- class time for JS -->
+                                                <input class="time" style="text-align: center;" type="number" id="cookTime" name="cookTime" value="{% if recipeInfo == none %}10{% else %}{{ recipeInfo.time[1] }}{% endif %}">
                                             </div>    
                                         </div>
                                     </span>
@@ -64,7 +66,7 @@
                                                 <label type="text" for="totalTime"><h4>Total Time (Minutes)</h4></label>
                                             </div>
                                             <div class="col-12">
-                                                <input style="text-align: center;" type="number" id="totalTime" name="totalTime" value="{% if recipeInfo == none %}25{% else %}{{ recipeInfo.time[2] }}{% endif %}">
+                                                <input style="text-align: center;" type="number" id="totalTime" name="totalTime" value="{% if recipeInfo == none %}25{% else %}{{ recipeInfo.time[2] }}{% endif %}" disabled>
                                             </div>
                                         </div>
                                     </span>

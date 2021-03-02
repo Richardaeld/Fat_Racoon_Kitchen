@@ -1,4 +1,18 @@
- // ---- Create/Remove boxes for user input of ingredients/steps
+// ---- Changing Total Time
+var findTime = document.querySelectorAll(".time");
+findTime.forEach(useTime);
+function useTime(item, index){
+    item.addEventListener("change", function () {
+        let time1 = document.getElementById("prepTime").value;
+        console.log(time1)
+        let time2 = document.getElementById("cookTime").value;
+        console.log(document.getElementById("totalTime").value)
+
+        document.getElementById("totalTime").value = parseInt(time1) + parseInt(time2);
+    })
+}
+
+// ---- Create/Remove boxes for user input of ingredients/steps
 function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, removeButton) {
     let arrayIngredientLength = document.getElementsByClassName(addRemoveLoc)[0].querySelectorAll("input").length;
     let totalLoc = document.getElementById(totalLocId).options[0];
@@ -69,6 +83,7 @@ document.getElementById("custom-button").addEventListener("click", function() {
     document.getElementById("recipeIngredientsTotal").removeAttribute("disabled");
     document.getElementById("recipeStepsTotal").removeAttribute("disabled");
     document.getElementById("avatar_name").setAttribute("value", imageName);
+    document.getElementById("totalTime").removeAttribute("disabled")
 })
 
 // Check file size
