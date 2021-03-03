@@ -131,20 +131,30 @@
         <div class="col-12">
             <div class="row no-gutters">
 
-                <div class="col-sm-6 col-md-3 order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1 order-xxl-1 ">
+                <div class="col-sm-6 col-md-3 order-3 order-sm-3 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-10 sticky-note recipe-of-day-aside-height">
-                            {% if recipeOfDay.avatar %}
-                                <div id="avatarImg" class="sticky-note-inner-div">
-                                    <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="">
-                                </div>
-                            {% else %}
-                                <div class="sticky-note-inner-div">
-                                    <p>
-                                        <i>Picture of Recipe or Featured Star</i>
-                                    </p>
-                                </div>
-                            {% endif %}
+                            
+                            <div class="sticky-note-inner-div" style="overflow: hidden;"> <!--  fix overflow with JS  -->
+                                <p> 
+                                {% if chef.avatar != none %}
+                                    <div class="avatar-image">
+                                        <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="" >
+                                    </div>
+                                {% else %}
+                                    <div class="avatar">
+                                        <svg width="50" height="50">
+                                            <circle cx="25" cy="25" r="20" stroke-width="4" fill="#010203" />
+                                        </svg>
+                                        <svg width="50" height="50">
+                                            <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203" />
+                                        </svg>
+                                    </div>
+                                {% endif %}
+                                    <p style="font-size: 1.5rem;">{{ chef.bio }}</p>
+                                    <h6>-- {{chef.username.title()}}</h6>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -172,30 +182,20 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-3 order-3 order-sm-3 order-md-1 order-lg-1 order-xl-1 order-xxl-1">
+              <div class="col-sm-6 col-md-3 order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1 order-xxl-1 ">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-10 sticky-note sticky-note-right recipe-of-day-aside-height">
-                            
-                            <div class="sticky-note-inner-div" style="overflow: hidden;"> <!--  fix overflow with JS  -->
-                                <p> 
-                                {% if chef.avatar != none %}
-                                    <div class="avatar-image">
-                                        <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="" >
-                                    </div>
-                                {% else %}
-                                    <div class="avatar">
-                                        <svg width="50" height="50">
-                                            <circle cx="25" cy="25" r="20" stroke-width="4" fill="#010203" />
-                                        </svg>
-                                        <svg width="50" height="50">
-                                            <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203" />
-                                        </svg>
-                                    </div>
-                                {% endif %}
-                                    <p>{{ chef.bio }}</p>
-                                    <h6>-- {{chef.username.title()}}</h6>
-                                </p>
-                            </div>
+                            {% if recipeOfDay.avatar %}
+                                <div id="avatarImg" class="sticky-note-inner-div">
+                                    <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="">
+                                </div>
+                            {% else %}
+                                <div class="sticky-note-inner-div">
+                                    <p>
+                                        <i>Picture of Recipe or Featured Star</i>
+                                    </p>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
