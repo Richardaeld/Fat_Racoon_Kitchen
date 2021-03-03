@@ -458,12 +458,16 @@ footer {
     text-align: left;
 }
 
+.blankAnchor:link,
+.blankAnchor:visited,
+.blankAnchor a,
 .recipe-lists:link,
 .recipe-lists:visited,
 .recipe-lists a {
     color: #010203;
 }
 
+.blankAnchor a:hover,
 .recipe-lists a:hover {
     text-decoration: none;
 }
