@@ -19,7 +19,7 @@ document.getElementById("custom-button").addEventListener("click", function() {
 document.getElementById("avatar").addEventListener("change", function() {
     let loc = document.getElementById("avatar")
     let fileSize = loc.files[0].size;
-    if (fileSize > 100000) {
+    if (fileSize > 500000) {
         loc.value = null;
         loc.classList.add("invalid");
         document.getElementById("avatar_valid").classList.remove("make-invis");
