@@ -20,9 +20,30 @@ header {
 .blank-large-recipe {
     height: 300px;
 }
+
 .blank-carousel-recipe {
     height: 250px;
 }
+
+.large-content-height {
+    min-height: 30rem;
+}
+
+.independant-header-height {
+    height: 12rem;
+}
+
+.independant-header-height h1 {
+    margin: 0;
+}
+
+.independant-header-height div {
+    height: 8rem;
+    margin-bottom: 2.5rem;
+    margin-top: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .5 );
+}
+
 
 /* ---------------------------------------- Index Page  ---------------------------------------- */
 /* ---------------------------------------- Header and Logo ---------------------------------------- */
@@ -455,13 +476,6 @@ footer {
 }
 
 /* ---------------------------------------- Recipe ---------------------------------------- */
-.independant-header-height {
-    font-family: "Yanone Kaffeesatz", sans-serif;
-    height: 7rem;
-    margin-bottom: 2.5rem;
-    margin-top: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, .5 );
-}
 
 
 

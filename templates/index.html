@@ -48,54 +48,55 @@
 {% block section %}
 
     <!-- carousel -->
-    <aside class="row no-gutters justify-content-around align-items-center card-section carousel " style="background-color: rgb(153, 220, 236);">
+    <aside class="row no-gutters align-items-center card-section" style="background-color: rgb(153, 220, 236);">
 
-        <div class="col-12" style="height:5rem;">
-            <div class="row no-gutters justify-content-center">
-                <div class="independant-header-height">
-                    <div class="bubble-letters">
-                        <h1>Quick meal ideas by featured ingredient</h1>
+        <!-- carousel header -->
+        <div class="col-12 independant-header-height">
+            <div class="row no-gutters justify-content-center align-items-center">
+                <h1>Have something on hand? Here are some ideas!</h1>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="row no-gutters align-items-center justify-content-around">
+
+                <div class="col-2 col-sm-1 carousel-button carousel-left">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-10">
+                            <svg  class="carousel-button-svg">
+                                <polygon points="37.5, 0 0, 37.5 37.5, 75"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-2 col-sm-1 carousel-button carousel-left">
-            <div class="row no-gutters justify-content-center">
-                <div class="col-10">
-                    <svg  class="carousel-button-svg">
-                        <polygon points="37.5, 0 0, 37.5 37.5, 75"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
+                {% for feature in features %}
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-3 blank-carousel-recipe card-carousel index-card">
+                        <div class="recipe-lists">
+                            <a href="{{ url_for('recipe_list', feature=feature.name) }}"><p>--{{feature.name.title()}}</p></a>
+                            <ul>
+                                {% for featureRecipe in featureRecipes %}
+                                    {% if featureRecipe[0] == feature.name %}
+                                        <li>
+                                            <a href="{{ url_for('recipe', recipeId=featureRecipe[2]) }}"><p>{{ featureRecipe[1] }}</p></a>
+                                        </li>
+                                    {%endif%}
+                                {%endfor%}
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
 
-        {% for feature in features %}
-            <div class="col-6 col-sm-4 col-md-3 col-lg-3 blank-carousel-recipe card-carousel index-card">
-            <!--    <div class="10 carousel-picture"> <i>**picture**</i></div>-->
-            <!--    <hr>-->
-                <div class="recipe-lists">
-                    <a href="{{ url_for('recipe_list', feature=feature.name) }}"><p>--{{feature.name.title()}}</p></a>
-                    <ul>
-                        {% for featureRecipe in featureRecipes %}
-                            {% if featureRecipe[0] == feature.name %}
-                                <li>
-                                    <a href="{{ url_for('recipe', recipeId=featureRecipe[2]) }}"><p>{{ featureRecipe[1] }}</p></a>
-                                </li>
-                            {%endif%}
-                        {%endfor%}
-                    </ul>
+                <div class="col-2 col-sm-1 carousel-button carousel-right">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-10">
+                            <svg class="carousel-button-svg">
+                                <polygon points="0, 75 37.5, 37.5 0, 0"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
 
-        <div class="col-2 col-sm-1 carousel-button carousel-right">
-            <div class="row no-gutters justify-content-center">
-                <div class="col-10">
-                    <svg class="carousel-button-svg">
-                        <polygon points="0, 75 37.5, 37.5 0, 0"/>
-                    </svg>
-                </div>
             </div>
         </div>
 
@@ -103,8 +104,15 @@
     
     <!--  Polaroid Classics  -->
     <section class="row no-gutters"  style="background-color: rgb(153, 220, 236);">
-        <div class="col-12">
-            <h1>Meal Selection by Fat Raccoon Chef Classics!</h1>
+
+        <!--  Polaroid classics Header  -->
+        <div class="col-12 independant-header-height">
+            <div class="row no-gutters align-items-center justify-content-center">
+                <h1>Meal Selection by Fat Raccoon's GrandParent Classics!</h1>
+            </div>
+        </div>
+
+        <div class="col-12">    
             <div class="row no-gutters justify-content-around">
 
                 {% for recipe in recipeHeader %}
@@ -128,6 +136,13 @@
 
     <!-- Section for 'recipe of the day' -->
     <section class="row no-gutters" style="background-color: rgb(153, 220, 236);">                <!--  No size given, auto sizes with size of picture/recipe description/ chef bio  -->
+
+        <div class="col-12 independant-header-height">
+            <div class="row no-gutters justify-content-center align-items-center">
+                <h1>Our favorite Lazy Fat Raccoon Recipe!</h1>
+            </div>
+        </div>
+
         <div class="col-12">
             <div class="row no-gutters">
 
@@ -139,7 +154,7 @@
                                 <p> 
                                 {% if chef.avatar != none %}
                                     <div class="avatar-image">
-                                        <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="" >
+                                        <img src="{{ url_for('avatar', avatar_image=chef.avatar) }}" alt="" >
                                     </div>
                                 {% else %}
                                     <div class="avatar">
@@ -161,7 +176,7 @@
 
                 <div class="col-sm-12 col-md-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-1 order-xxl-1 sticky-note sticky-note-middle"> <!-- recipe-descript --><!-- removed recipe description to keep sticky note working properly -->
                     <div class="sticky-note-inner-div">
-                        <h1 class="recipe-overlay-bottom">Try a Fat Raccoon Lazy Favorite!</h1>
+                        <h1 class="recipe-overlay-bottom">Our Certified Fat AND Lazy Favorite!</h1>
                         <h1>{{ recipeOfDay.name.title() }}</h1>
                         <h6>Features <i>{{ recipeOfDay.feature }}</i></h6>
                         <p>{{ recipeOfDay.text }}</p>
