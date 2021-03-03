@@ -61,6 +61,63 @@
     filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.5));
 }
 
+.index-card-new {
+    position: relative;
+    background-position: 0% 50%;
+    background: repeating-linear-gradient(rgb(255, 255, 240), rgb(255, 255, 240) 20px, rgba(77, 146, 211, .5)20px 22px),
+                linear-gradient(to bottom, rgb(226, 14, 14) 22px, rgba(0,0,0,0) 22px 100px);
+    background-color: #fff;
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.5));
+}
+
+/* outer layer */
+.rotating-card {
+    height: 17rem;
+    text-align: left;
+    perspective: 1000px;
+    margin: 2rem 3rem;
+}
+
+.rotating-card p {
+    font-size: 2rem!important;
+}
+
+.rotating-card span p {
+    text-align: right;
+}
+
+.rotating-card h2 {
+    text-decoration: underline;
+}
+
+/* rotating portion  */
+.index-rotate {
+    transition-duration:  2s;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.flip-index-card{ 
+    transform: rotateY(180deg);
+}
+
+.index-face,
+.index-back{
+    height: 17rem;
+    backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+
+}
+
+.index-face {
+    
+}
+
+.index-back {
+    transform: rotateY(180deg);
+}
+
 .index-card p {
     position: relative;
     top: 25%;
