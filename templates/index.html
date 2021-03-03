@@ -177,7 +177,12 @@
                         <div class="col-10 sticky-note sticky-note-right recipe-of-day-aside-height">
                             
                             <div class="sticky-note-inner-div" style="overflow: hidden;"> <!--  fix overflow with JS  -->
-                                <p>
+                                <p> 
+                                {% if chef.avatar != none %}
+                                    <div class="avatar-image">
+                                        <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="" >
+                                    </div>
+                                {% else %}
                                     <div class="avatar">
                                         <svg width="50" height="50">
                                             <circle cx="25" cy="25" r="20" stroke-width="4" fill="#010203" />
@@ -186,6 +191,7 @@
                                             <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203" />
                                         </svg>
                                     </div>
+                                {% endif %}
                                     <p>{{ chef.bio }}</p>
                                     <h6>-- {{chef.username.title()}}</h6>
                                 </p>

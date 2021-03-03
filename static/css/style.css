@@ -137,13 +137,24 @@ header {
     margin: 0rem;
 }
 
+.avatar,
+.avatar-image img {
+    border-radius: 50%;
+    height: 20%;
+    width: 20%;
+    float: left!important;
+
+}
+
 .avatar {
     position: relative;
-    border-radius: 50%;
-    background-color: royalblue; /*---------------------change me*/
-    height: 75px;
+    background-color: rgb(65, 105, 225);
     width: 75px;
-    float: left;
+    height: 75px;
+}
+
+.avatar-image{
+    
 }
 
 .card-section {
