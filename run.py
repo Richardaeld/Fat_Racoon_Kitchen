@@ -26,6 +26,13 @@ def index():
     # ---- Loads quick meal ideas (carousel) feature items
     features = list(mongo.db.feature.find())
 
+    recipes = mongo.db.recipes.find({"created_by": "asdfa@aol.com"})
+    recipeHeader = []
+    for recipe in recipes:
+        if len(recipeHeader) < 3:
+            print(recipe)
+            recipeHeader += [recipe]
+
     # ---- Creates recipes found in carousel with a max of 3 recipes per card
     # Generates list of recipes to be presented in carousel
     iteration = 0
@@ -59,7 +66,7 @@ def index():
                 iteration += 1
 
     # Loads recipe of the day # THIS IS THE RECIPE!!!
-    recipeOfDay = mongo.db.recipes.find_one({"_id": ObjectId("603e9496ca25f52ff3d82a85")})  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
+    recipeOfDay = mongo.db.recipes.find_one({"_id": ObjectId("603ead31010dfd474fbb718f")})  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
 
     # finds and loads chefs information from recipe of the day
     chef = mongo.db.users.find_one({"email": recipeOfDay["created_by"]})
@@ -109,7 +116,7 @@ def index():
 
     return render_template(
         "index.html", features=features, recipeOfDay=recipeOfDay,
-        chef=chef, featureRecipes=featureRecipes)
+        chef=chef, featureRecipes=featureRecipes, recipeHeader=recipeHeader)
 
 
 @app.route("/logout")
