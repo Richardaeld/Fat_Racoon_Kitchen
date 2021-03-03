@@ -49,7 +49,7 @@
             <!-- picture of recipe -->
             <div class="col-4">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note carousel">
+                    <div class="col-10 sticky-note large-content-heigh">
                         {% if recipeInfo.avatar %}
                             <div id="avatarImg" class="sticky-note-inner-div">
                                 <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="">
@@ -108,7 +108,7 @@
             <!-- Recipe description -->
             <div class="col-4">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note sticky-note-right carousel">  <!--  Im useing carousel as a height  -->
+                    <div class="col-10 sticky-note sticky-note-right large-content-height">  
                         <div class="row no-gutters align-items-center sticky-note-inner-div">
                             <p class="col">
                                 {{ recipeInfo.text }}
