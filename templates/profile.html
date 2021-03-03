@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block section %}
 <!--  User basic information  -->
-<section class="row no-gutters justify-content-around align-items-center notebook-paper" style="background-color:  #010203;"> <!--  used carousel height  -->
+<section class="row no-gutters justify-content-around align-items-center" style="background-color: rgb(153, 220, 236);"> <!--  used carousel height  -->
     <div class="col-12">
         <div class="row no-gutters justify-content-around">
             <div class="col-2 custom-button sticky-note-no-shadow">
@@ -12,9 +12,9 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="" style="position: relative; top: 10%;">
-                    <h1 style="font-size: 5rem; text-decoration: underline; text-shadow: 2px 2px 2px #a7a7a7;">Welcome {{ chef_info.username }}</h1>
-                </div>
+                <!--<div class="bubble-letters" style="position: relative; top: 10%;">
+                    <h1 style="font-size: 5rem; text-decoration: underline; text-shadow: 2px 2px 2px #a7a7a7;">Welcome ** chef_info.username** </h1>
+                </div>-->
             </div>
             <div class="col-2 sticky-note-no-shadow custom-button">
                 <div class="sticky-note-inner-div">
@@ -30,7 +30,7 @@
             <div class="row no-gutters sticky-note-inner-div">
                 <div class="col-12">
                     <h1>
-                        {{ chef_info.username }}
+                        {{ chef_info.username }}'s Bio
                     </h1>
                 </div>
                 <div class="col-12">
@@ -62,7 +62,7 @@
 </section>
 
 <!--  Ten most recent columns   -->
-<section class="row no-gutters justify-content-around profile-lists notebook-paper">
+<section class="row no-gutters justify-content-around profile-lists" style="background-color: rgb(153, 220, 236);">
     
     <!--  Display ten most recent recipe uploads  -->
     <div class="col-3 sticky-note profile-sticky-height">
