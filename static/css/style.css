@@ -77,12 +77,12 @@ header {
 }
 
 .header-text-2:before {
-    content: "Racoon";
+    content: "Raccoon";
 }
 
 /* -- adds a full text body shadow -- */
 .header-text-2:after {
-    content: "Racoon";
+    content: "Raccoon";
     text-shadow: 0px 0px rgba(0, 0, 0, .1);
 }
 /* ---------------------------------------- Flash messges ---------------------------------------- */
@@ -113,6 +113,21 @@ header {
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
 .recipe-of-day-aside-height {
     height: 25rem;
+}
+
+.recipe-overlay-bottom {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .25);
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+.recipe-overlay-top {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .25);
+    left:0;
+    right:0;
 }
 
 .recipe-descript {
@@ -433,7 +448,6 @@ footer {
     height: 7rem;
     margin-bottom: 2.5rem;
     margin-top: 2rem;
-    text-decoration: underline;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, .5 );
 }
 
