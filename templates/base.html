@@ -20,11 +20,13 @@
     {% endblock %}
 
     <!-- header holds "logo" and company name-->
-    <header class="row no-gutters justify-content-center picnic-pattern align-items-center">
+    <header class="row no-gutters justify-content-center picnic-pattern align-items-center blank-anchor">
         <div class="col-10 col-md-4 logo-background">
-            <h1 class="header-text-1">Fat</h1>
-            <h1 class="header-text-2">Raccoon</h1>
-            <!-- slogan -- Today's scraps are tomorrows Meals!  -->
+            <a href="{{ url_for('index') }}">
+                <h1 class="header-text-1">Fat</h1>
+                <h1 class="header-text-2">Raccoon</h1>
+                <!-- slogan -- Today's scraps are tomorrows Meals!  -->
+            </a>
         </div>
         <div>
 
@@ -119,9 +121,11 @@
             <div class="row no-gutters justify-content-center">
 
                 <!--  Logo  -->
-                <div class="col-md-4 col-lg-5 col-xl-6 d-none d-md-block logo-background">
-                    <h1 class="header-text-1">Fat</h1>
-                    <h1 class="header-text-2">Raccoon</h1>
+                <div class="col-md-4 col-lg-5 col-xl-6 d-none d-md-block logo-background blank-anchor">
+                    <a href="{{ url_for('index') }}">
+                        <h1 class="header-text-1">Fat</h1>
+                        <h1 class="header-text-2">Raccoon</h1>
+                    </a>
                 </div>
 
                 <!--  Links and Social Links  -->
@@ -129,58 +133,66 @@
                     <div class="row no-gutters">
                         <div class="col-12 col-md-12">
                             <!--  Nav Links  -->
-                            <ul class="footer-ul footer-ul-bottom napkin-link-push row no-gutters justify-content-center">
+                            <ul class="footer-ul footer-ul-bottom napkin-link-push row no-gutters justify-content-center blank-anchor">
 
                                 <li class="col-6 col-sm-3">
+                                    <a href="{{ url_for('index') }}">
                                     <div class="social-position">
-                                        <div class="napkin-out-container napkin-nav">
-                                            <p>Fat Raccoon</p>
-                                            <div class="napkin-shadow"></div>
-                                            <div class="napkin-border-lines"></div>
-                                            <div class="napkin-horizontal-lines"></div>
-                                            <div class="napkin-vertical-lines"></div>
-                                            <div class="napkin-right-triangle-corner"></div>
+                                        <div class="napkin-out-container napkin-nav ">
+                                                <p>Fat Raccoon</p>
+                                                <div class="napkin-shadow"></div>
+                                                <div class="napkin-border-lines"></div>
+                                                <div class="napkin-horizontal-lines"></div>
+                                                <div class="napkin-vertical-lines"></div>
+                                                <div class="napkin-right-triangle-corner"></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </li>
 
                                 <li class=" col-6 col-sm-3">
-                                    <div class="social-position">
-                                        <div class="napkin-out-container napkin-nav">
-                                            <p>About FR</p>
-                                            <div class="napkin-shadow"></div>
-                                            <div class="napkin-border-lines"></div>
-                                            <div class="napkin-horizontal-lines"></div>
-                                            <div class="napkin-vertical-lines"></div>
-                                            <div class="napkin-right-triangle-corner"></div>
+                                    <a href="{{ url_for('lessons') }}">
+                                        <div class="social-position">
+                                            <div class="napkin-out-container napkin-nav">
+                                                <p>FR Lessons</p>
+                                                <div class="napkin-shadow"></div>
+                                                <div class="napkin-border-lines"></div>
+                                                <div class="napkin-horizontal-lines"></div>
+                                                <div class="napkin-vertical-lines"></div>
+                                                <div class="napkin-right-triangle-corner"></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </li>
 
                                 <li class=" col-6 col-sm-3">
-                                    <div class="social-position">
-                                        <div class="napkin-out-container napkin-nav">
-                                            <p>Contact FR</p>
-                                            <div class="napkin-shadow"></div>
-                                            <div class="napkin-border-lines"></div>
-                                            <div class="napkin-horizontal-lines"></div>
-                                            <div class="napkin-vertical-lines"></div>
-                                            <div class="napkin-right-triangle-corner"></div>
+                                    <a href="{{ url_for('all_recipes') }}">
+                                        <div class="social-position">
+                                            <div class="napkin-out-container napkin-nav">
+                                                <p>FR Recipes</p>
+                                                <div class="napkin-shadow"></div>
+                                                <div class="napkin-border-lines"></div>
+                                                <div class="napkin-horizontal-lines"></div>
+                                                <div class="napkin-vertical-lines"></div>
+                                                <div class="napkin-right-triangle-corner"></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </li>
 
                                 <li class=" col-6 col-sm-3 d-none d-sm-block">
-                                    <div class="social-position">
-                                        <div class="napkin-out-container napkin-nav">
-                                            <img class="racoon-face" src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
-                                            <div class="napkin-shadow"></div>
-                                            <div class="napkin-border-lines"></div>
-                                            <div class="napkin-horizontal-lines"></div>
-                                            <div class="napkin-vertical-lines"></div>
-                                            <div class="napkin-right-triangle-corner"></div>
+                                    <a href="{{ url_for('index') }}">
+                                        <div class="social-position">
+                                            <div class="napkin-out-container napkin-nav">
+                                                <img class="racoon-face" src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
+                                                <div class="napkin-shadow"></div>
+                                                <div class="napkin-border-lines"></div>
+                                                <div class="napkin-horizontal-lines"></div>
+                                                <div class="napkin-vertical-lines"></div>
+                                                <div class="napkin-right-triangle-corner"></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </li>
 
                             </ul>
@@ -197,8 +209,8 @@
                                         <div class="glass"></div>
                                         <div class="glass-shadow"></div>
                                         <span class="ripple"></span>
-                                        <a href="#" class="">
-                                            <i class="fab fa-facebook-square social-link"></i>
+                                        <a href="https://www.facebook.com/" target="_blank" aria-label="External link to Fat Raccoon's Facebook">
+                                            <i class="fab fa-facebook-square social-link" aria-hidden="true"></i>
                                         </a>
                                         <div class="napkin-out-container">
                                             <div class="napkin-shadow"></div>
@@ -216,8 +228,8 @@
                                         <div class="glass"></div>
                                         <div class="glass-shadow"></div>
                                         <span class="ripple"></span>
-                                        <a href="#" class= "">
-                                            <i class="fab fa-instagram social-link"></i>
+                                        <a href="https://www.instagram.com/" target="_blank" aria-label="External link to Fat Raccoon's Instagram">
+                                            <i class="fab fa-instagram social-link" aria-hidden="true"></i>
                                         </a>
                                         <div class="napkin-out-container">
                                             <div class="napkin-shadow"></div>
@@ -235,8 +247,8 @@
                                         <div class="glass"></div>
                                         <div class="glass-shadow"></div>
                                         <span class="ripple create-ripple"></span>
-                                        <a href="#" class="">
-                                            <i class="fab fa-pinterest-square social-link"></i>
+                                        <a href="https://www.pinterest.com/" target="_blank" aria-label="External link to Fat Raccoon's Pinterest">
+                                            <i class="fab fa-pinterest-square social-link" aria-hidden="true"></i>
                                         </a>
                                         <div class="napkin-out-container">
                                             <div class="napkin-shadow"></div>
@@ -254,8 +266,8 @@
                                         <div class="glass"></div>
                                         <div class="glass-shadow"></div>
                                         <span class="ripple"></span>
-                                        <a href="#">
-                                            <i class="fab fa-twitter-square social-link "></i>
+                                        <a href="https://twitter.com/?lang=en" target="_blank" aria-label="External link to Fat Raccoon's Twitter">
+                                            <i class="fab fa-twitter-square social-link " aria-hidden="true"></i>
                                         </a>
                                         <div class="napkin-out-container">
                                             <div class="napkin-shadow"></div>
