@@ -45,6 +45,9 @@ header {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, .5 );
 }
 
+.generic-background {
+    background-color: rgb(153, 220, 236);
+}
 
 /* ---------------------------------------- Index Page  ---------------------------------------- */
 /* ---------------------------------------- Header and Logo ---------------------------------------- */
@@ -485,16 +488,16 @@ footer {
     text-align: left;
 }
 
-.blankAnchor:link,
-.blankAnchor:visited,
-.blankAnchor a,
+.blank-anchor:link,
+.blank-anchor:visited,
+.blank-anchor a,
 .recipe-lists:link,
 .recipe-lists:visited,
 .recipe-lists a {
     color: #010203;
 }
 
-.blankAnchor a:hover,
+.blank-anchor a:hover,
 .recipe-lists a:hover {
     text-decoration: none;
 }
