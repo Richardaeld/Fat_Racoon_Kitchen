@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block section %}
-<section class="row no-gutters notebook-paper">
+<section class="row no-gutters generic-background">
     <!-- Recipes per Feature -->
     <div class="col-12">
         <div class="row no-gutters">
@@ -15,7 +15,7 @@
                         
                         <div class="sticky-note-inner-div">
                             <ul class="recipe-lists recipe-lists-no-dec">
-                                    <a href="{{ url_for('recipe_list', feature=feature[1].name) }}" class="bubble-letters">
+                                    <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
                                         <h1>{{ feature[1].name.title() }} Recipes </h1>
                                     </a>
                                 <hr>
