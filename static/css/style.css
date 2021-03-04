@@ -34,15 +34,25 @@ header {
 }
 
 .independant-header-height h1 {
-    margin: 0;
     font-size: 3rem;
+}
+
+.independant-header-height h3 {
+    font-size: 2rem;
+}
+
+.independant-header-height h1,
+.independant-header-height h3 {
+    margin: 0;
+    color: #fff;
+    text-shadow: 2px 2px 4px #010203;;
 }
 
 .independant-header-height div {
     height: 8rem;
     margin-bottom: 2.5rem;
     margin-top: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, .5 );
+    /*text-shadow: 2px 2px 4px rgba(0, 0, 0, .5 );*/
 }
 
 .generic-background {
