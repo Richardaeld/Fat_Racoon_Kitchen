@@ -53,7 +53,10 @@
         <!-- carousel header -->
         <div class="col-12 independant-header-height">
             <div class="row no-gutters justify-content-center align-items-center">
-                <h1>Have something on hand? Here are some ideas!</h1>
+                <div class="col-12">
+                    <h1>Need some inspiration on picking a meal?</h1>
+                    <h3>Find a recipe by its feature ingredient!</h3>
+                </div>
             </div>
         </div>
 
@@ -108,7 +111,10 @@
         <!--  Polaroid classics Header  -->
         <div class="col-12 independant-header-height">
             <div class="row no-gutters align-items-center justify-content-center">
-                <h1>Meal Selection by Fat Raccoon's GrandParent Classics!</h1>
+                <div class="col-12">
+                    <h1>Impress someone with a Fat Raccoon's GrandParent Classic!</h1>
+                    <h3>The extra effort is worth it!</h3>
+                </div>
             </div>
         </div>
 
@@ -139,7 +145,9 @@
 
         <div class="col-12 independant-header-height">
             <div class="row no-gutters justify-content-center align-items-center">
-                <h1>Our favorite Lazy Fat Raccoon Recipe!</h1>
+                <div class="col-12">
+                    <h1>Our favorite Lazy Fat Raccoon Recipe!</h1>
+                </div>
             </div>
         </div>
 
@@ -175,9 +183,11 @@
                 </div>
 
                 <div class="col-sm-12 col-md-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-1 order-xxl-1 sticky-note sticky-note-middle"> <!-- recipe-descript --><!-- removed recipe description to keep sticky note working properly -->
-                    <div class="sticky-note-inner-div">
+                    <div class="sticky-note-inner-div blank-anchor">
                         <h1 class="recipe-overlay-bottom">Our Certified Fat AND Lazy Favorite!</h1>
-                        <h1>{{ recipeOfDay.name.title() }}</h1>
+                        <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
+                            <h1>{{ recipeOfDay.name.title() }}</h1>
+                        </a>
                         <h6>Features <i>{{ recipeOfDay.feature }}</i></h6>
                         <p>{{ recipeOfDay.text }}</p>
                         <span class="row no-gutters">
@@ -202,7 +212,9 @@
                         <div class="col-10 sticky-note sticky-note-right recipe-of-day-aside-height">
                             {% if recipeOfDay.avatar %}
                                 <div id="avatarImg" class="sticky-note-inner-div">
-                                    <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="">
+                                    <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
+                                        <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt=""> <!-- center me better -->
+                                    </a>
                                 </div>
                             {% else %}
                                 <div class="sticky-note-inner-div">
