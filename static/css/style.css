@@ -491,7 +491,10 @@ footer {
 
 /* ---------------------------------------- Recipe ---------------------------------------- */
 
-
+.recipe-name h1 {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    text-shadow: 2px 2px #a7a7a7;
+}
 
 .recipe-lists {
     font-family: "Yanone Kaffeesatz", sans-serif;

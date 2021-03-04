@@ -28,9 +28,9 @@
     <div class="col-12">
         <div class="row no-gutters justify-content-around">
             <div class="col-2 custom-button sticky-note-no-shadow">
-                <div class="sticky-note-inner-div" >
+                <div class="sticky-note-inner-div blank-anchor">
                     <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
-                    <h6>Edit Your Recipe</h6>
+                        <h6>Edit Your Recipe</h6>
                     </a>
                 </div>
             </div>
@@ -50,7 +50,7 @@
             <!-- picture of recipe -->
             <div class="col-4">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note large-content-heigh">
+                    <div class="col-10 sticky-note large-content-height">
                         {% if recipeInfo.avatar %}
                             <div id="avatarImg" class="sticky-note-inner-div">
                                 <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="">
@@ -71,21 +71,21 @@
                     <div class="col-10 sticky-note sticky-note-middle">
                         <div class="row no-gutters sticky-note-inner-div justify-content-center">
 
-                            <div class="col-10">
+                            <div class="col-10 recipe-name">
                                 <h1>
-                                    {{ recipeInfo.name }}
+                                    {{ recipeInfo.name.title() }}
                                 </h1>
-                                <div>
-                                    <h1> 
+                                <div class="blank-anchor">
+                                    <h3> 
                                         {% if favoriteRecipe == "None" %}
                                         {% elif favoriteRecipe == True %}
-                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">Favorite </a>
+                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">Favorite!</a>
                                         <img class="favorite" src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Im the favorite icon">
                                         {% else %}
-                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">Favorite </a>
+                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">Not a Favorite</a>
                                         <img class="favorite" src="{{ url_for('static', filename='images/star-outline.svg') }}" alt="Im not the favorite icon">
                                         {% endif %}
-                                    </h1>
+                                    </h3>
                                 </div>
                             </div>
 
