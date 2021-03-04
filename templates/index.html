@@ -48,7 +48,7 @@
 {% block section %}
 
     <!-- carousel -->
-    <aside class="row no-gutters align-items-center card-section" style="background-color: rgb(153, 220, 236);">
+    <aside class="row no-gutters align-items-center card-section generic-background">
 
         <!-- carousel header -->
         <div class="col-12 independant-header-height">
@@ -103,7 +103,7 @@
     </aside>
     
     <!--  Polaroid Classics  -->
-    <section class="row no-gutters"  style="background-color: rgb(153, 220, 236);">
+    <section class="row no-gutters generic-background">
 
         <!--  Polaroid classics Header  -->
         <div class="col-12 independant-header-height">
@@ -116,7 +116,7 @@
             <div class="row no-gutters justify-content-around">
 
                 {% for recipe in recipeHeader %}
-                <div class="col-3 polaroid-outer blankAnchor">
+                <div class="col-3 polaroid-outer blank-anchor">
                     <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
                         <div class="polaroid-picture">
                             <img src="{{ url_for('avatar', avatar_image=recipe.avatar) }}" alt="">
@@ -135,7 +135,7 @@
     </section>
 
     <!-- Section for 'recipe of the day' -->
-    <section class="row no-gutters" style="background-color: rgb(153, 220, 236);">                <!--  No size given, auto sizes with size of picture/recipe description/ chef bio  -->
+    <section class="row no-gutters generic-background">                <!--  No size given, auto sizes with size of picture/recipe description/ chef bio  -->
 
         <div class="col-12 independant-header-height">
             <div class="row no-gutters justify-content-center align-items-center">
