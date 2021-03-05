@@ -99,14 +99,11 @@
                         <a class="nav-link" href="#">
                             <form class="" method="POST" action="{{ url_for('index') }}">
                                 <label for="userSearch">Search</label>
-                                <input type="text" name="userSearch" id="userSearch" class="make-invis">
+                                <input type="text" name="userSearch" id="userSearch1" class="make-invis">
                                 <input type="text" name="formType" value="search" class="make-invis" aria-hidden="true">
                                 <input type="submit" value="Submit">
                             </form>
-
                         </a>
-                        
-
                     </li>
                 </ul>
             </nav>
@@ -153,8 +150,15 @@
                 <a class="nav-link" href="{{ url_for('logout') }}">logout</a>
             </li>
             {% endif %}
-            <li class="nav-item">
-                <a class="nav-link searchBar" href="#">Search</a>
+            <li class="nav-item searchBar search-bar">
+                <a class="nav-link" href="#">
+                    <form class="" method="POST" action="{{ url_for('index') }}">
+                        <label for="userSearch">Search</label>
+                        <input type="text" name="userSearch" id="userSearch2" class="make-invis">
+                        <input type="text" name="formType" value="search" class="make-invis" aria-hidden="true">
+                        <input type="submit" value="Submit">
+                    </form>
+                </a>
             </li>
         </ul>
     </nav>
