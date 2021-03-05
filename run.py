@@ -1,4 +1,5 @@
 import os
+import random
 import datetime
 from flask import (
     Flask, flash, render_template,
@@ -30,7 +31,7 @@ def index():
     recipeHeader = []
     for recipe in recipes:
         if len(recipeHeader) < 3:
-            print(recipe)
+    #        print(recipe)
             recipeHeader += [recipe]
 
     # ---- Creates recipes found in carousel with a max of 3 recipes per card
@@ -66,7 +67,19 @@ def index():
                 iteration += 1
 
     # Loads recipe of the day # THIS IS THE RECIPE!!!
-    recipeOfDay = mongo.db.recipes.find_one({"_id": ObjectId("603ead31010dfd474fbb718f")})  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
+    #recipeOfDay = mongo.db.recipes.find_one({"_id": ObjectId("603ead31010dfd474fbb718f")})  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
+
+    # prints a random recipe form speified chef
+    recipeRandom = mongo.db.recipes.count_documents({"created_by": "asdfa@aol.com"})
+    recipeRandom = random.randrange(1, recipeRandom+1)
+    iteration = 1
+    recipeOfDay = mongo.db.recipes.find({"created_by": "asdfa@aol.com"})
+    for recipe in recipeOfDay:
+        print(recipe)
+        if recipeRandom == iteration:
+            recipeOfDay = recipe
+            break
+        iteration += 1
 
     # finds and loads chefs information from recipe of the day
     chef = mongo.db.users.find_one({"email": recipeOfDay["created_by"]})
