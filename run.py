@@ -87,6 +87,10 @@ def index():
 
     # --Create account-- information
     if request.method == "POST":
+
+        if request.form.get("formType") == "search":
+            return redirect(url_for("search_bar_returns", search=request.form.get("userSearch")))
+
         userNameTaken = mongo.db.users.find_one({"email": request.form.get("email")})
 
         # Check to be sure email doesnt already exist in DB
@@ -441,6 +445,14 @@ def all_recipes():
     return render_template(
         "all_recipes.html",
         allFeatures=allFeatures, allRecipes=allRecipes)
+
+
+@app.route("/search_bar_returns/<search>", methods=("POST", "GET"))
+def search_bar_returns(search):
+    print("Im search", search)
+    findRecipes = mongo.db.recipes.find({"$text": {"$search": search}})
+    print("Im user inpit", findRecipes)
+    return render_template("search_bar_returns.html", recipes=findRecipes)
 
 
 if __name__ == "__main__":
