@@ -146,11 +146,30 @@ header {
 }
 
 .search-bar {
-    margin-left: 1rem;
     font-family: "Yanone Kaffeesatz", sans-serif;
+
 }
 
+.user-search-bar-input {
+}
 
+.search-icon {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.search-bar label {
+    margin-bottom: 0;
+}
+
+.user-form-search-height {
+    height: 90%;
+}
+
+.user-search-box-padding {
+}
 
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
 .recipe-of-day-aside-height {
