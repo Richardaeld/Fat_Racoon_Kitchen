@@ -70,18 +70,22 @@ def index():
     iteration = 1
     grandparentRecipeTotal = mongo.db.recipes.count_documents({"grandparent": True})
     if grandparentRecipeTotal > 0:
-        grandparentRecipes = mongo.db.recipes.find({"grandparent": True})
+        grandparentRecipes = list(mongo.db.recipes.find({"grandparent": True}))
 
-        #keeps looping to find all or set number of recipes
+        # keeps looping to find all or set number of recipes
         while True:
             # Builds a random number list
             randomRecipe = random.randrange(1, grandparentRecipeTotal + 1)
             # Gets first number
             if len(recipeRandomTotal) > 0:
+                iteration = 1
                 for recipe in recipeRandomTotal:
                     if randomRecipe == recipe:
+                        iteration += 1
                         break
-                recipeRandomTotal += [randomRecipe]
+                    elif len(recipeRandomTotal) == iteration:
+                        recipeRandomTotal += [randomRecipe]
+                    iteration += 1
             else:
                 recipeRandomTotal += [randomRecipe]
 
@@ -90,12 +94,17 @@ def index():
                 break
 
         # builds recipe list with random numbers
-        for recipe in grandparentRecipes:
-            for recipeNumber in recipeRandomTotal:
+        iteration = 1
+        for recipeNumber in recipeRandomTotal:
+            for recipe in grandparentRecipes:
                 if recipeNumber == iteration:
                     recipeHeader += [recipe]
-            iteration += 1
+                    iteration = 1
+                    break
 
+                iteration += 1
+
+    print(recipeRandomTotal)
     # Loads recipe of the day
     # prints a random recipe form speified chef
     recipeRandom = random.randrange(1, totalRecipeCount + 1)
