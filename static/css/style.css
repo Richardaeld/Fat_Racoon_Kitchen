@@ -589,3 +589,13 @@ footer {
     font-weight: bolder;
     color: #D912E7
 }
+
+/* ---------------------------------------- lessons ---------------------------------------- */
+
+.lessons-bottom-padding {
+    padding-bottom: 2rem;
+}
+
+.lessons-header {
+    padding-top: 2rem;
+}
