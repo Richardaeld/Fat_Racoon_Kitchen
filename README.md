@@ -197,6 +197,42 @@ in college, let us know!
     + copy string provided
     + paste string in env.py as the "MONGO_URI" value
     + Update the pasted string with the DBname and password by replacing <DBname> and <password> (replace angled brackets as well)
+### Create the appropiate collections
++ feature
+    + There must be a single feature in the collection for the page to function
+    + each feature is structured as 
+        + {
+        + name: "chicken"
+        + }
++ recipes
+    + There must be a single recipe in the collection for page to function amnd it must be linked with lead chefs for recipe of the day to function
+    + each recipe is structured as
+        + {
+        + name: "recipe name",
+        + feature: "chicken",
+        + ingredients: ["ingredient1", "ingredient2", "ingredient3", etc...],
+        + steps: ["step1", "step2", "step3", etc...],
+        + time: [15, 20, 35],
+        + text: "Some general information about this recipe",
+        + history: "A history or facts about this recipe" *This could be taken out*,
+        + date: *python time stamp*,
+        + avatar: null,
+        + avatar_id: null,
+        + created_by: "someonesEmail@aol.com",
+        + }
++ users
+    + each user must be structured as
+        + {
+        + username: "some name",
+        + email: "someonesEmail@aol.com",
+        + password: "someones hashed password",
+        + avatar: null,
+        + avatar_id: null,
+        + bio: "some basic infor about chef",
+        + recent: [],
+        + favorites: [],
+        + submitted: []
+        + }
 
 # Tools and Credits
 ## Tools
