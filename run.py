@@ -430,21 +430,24 @@ def edit_user_info():
 
 @app.route("/recipe_list/<feature>")
 def recipe_list(feature):
-    allRecipes = mongo.db.recipes.find({"feature": feature})
-    allRecipes = enumerate(allRecipes)
-    evenRecipes = []
-    oddRecipes = []
-    for recipe in allRecipes:
-        print(recipe[1]["name"])
-        if recipe[0] % 2:
-            evenRecipes += [recipe[1]]
-        else:
-            oddRecipes += [recipe[1]]
+    allrecipes = list(mongo.db.recipes.find({"feature": feature}))
+    #allRecipes = mongo.db.recipes.find({"feature": feature})
+    #allRecipes = enumerate(allRecipes)
+    #evenRecipes = []
+    #oddRecipes = []
+    #for recipe in allRecipes:
+    #    print(recipe[1]["name"])
+    #   if recipe[0] % 2:
+    #        evenRecipes += [recipe[1]]
+    #    else:
+    #        oddRecipes += [recipe[1]]
 
+    #return render_template(
+    #    "recipe_list.html", feature=feature, allRecipes=allRecipes,
+    #    oddRecipes=oddRecipes, evenRecipes=evenRecipes)
     return render_template(
-        "recipe_list.html", feature=feature, allRecipes=allRecipes,
-        oddRecipes=oddRecipes, evenRecipes=evenRecipes)
-
+        "recipe_list.html",
+        allrecipes=allrecipes, feature=feature)
 
 @app.route("/lessons")
 def lessons():

@@ -13,20 +13,21 @@
     <!-- recipe ingredients and steps -->
     <div class="col-12">        
         <div class="row no-gutters">
-            <!-- Recipe Ingredients -->
+
+            <!-- Recipe List 1 -->
             <div class="col-12 col-md-6 ">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note recipe-list-height">
+                    <div class="col-10 sticky-note all-recipe-max-height ">
                         <div class="sticky-note-inner-div">
                             <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec">
 
-                                {% for recipe in oddRecipes %}
-                                    <li>
+                                {% for recipe in allrecipes %}
+                                    <li class="make-invis">
                                         <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around all-features">
                                             <span class="col-12 col-sm-8">
                                                 <h6><strong>{{ recipe.name.title() }}</strong>: </h6>
                                             </span>
-                                            <span class="col-4col-12 col-sm-4">
+                                            <span class="col-12 col-sm-4">
                                                 <div class="row no-gutters">
                                                     <div class="col-12">
                                                         <h6>Total Time: </h6>
@@ -42,24 +43,25 @@
                     </div>
                 </div>
             </div>
-            <!-- Recipe Steps -->
-            <div class="col-12 col-md-6">
+
+            <!-- Recipe List 2 -->
+            <!--<div class="col-12 col-md-6">
                 <div class="row no-gutters justify-content-center ">
-                    <div class="col-10 sticky-note sticky-note-right recipe-list-height">
+                    <div class="col-10 sticky-note sticky-note-right recipe-list-height all-recipe-max-height">
                         <div class="sticky-note-inner-div ">
                             <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec">
 
                                 {% for recipe in evenRecipes %}
                                     <li>
-                                        <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around all-features">
+                                        <a href=" url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around all-features">
                                             <span class="col-12 col-sm-8">
-                                                <h6><strong>{{ recipe.name.title() }}</strong>:</h6>
+                                                <h6><strong> recipe.name.title() }}</strong>:</h6>
                                             </span>
                                             <span class="col-12 col-sm-4" >
                                                 <div class="row no-gutters">
                                                     <div class="col-12">
                                                         <h6>Total Time: </h6>
-                                                        <h6><strong>{{ recipe.time[2] }} Minutes</strong></h6>
+                                                        <h6><strong> recipe.time[2] }} Minutes</strong></h6>
                                                     </div>
                                                 </div>
                                             </span>                                      
@@ -70,9 +72,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 
 </section>
+{% endblock %}
+
+{% block custom_script %}
+<script src="{{ url_for('static', filename='js/pagination.js') }}"></script>
 {% endblock %}
