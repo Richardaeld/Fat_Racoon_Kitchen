@@ -197,6 +197,24 @@
     transform: rotateY(0deg);
 }
 
+@media (max-width: 767.98px) {
+.sticky-note p,
+.sticky-note-no-shadow p {
+    font-size: 1.5rem;
+}
+
+.sticky-note h1,
+.sticky-note-no-shadow h1 {
+    font-size: 2rem;
+}
+
+.sticky-note h6,
+.sticky-note-no-shadow h6 {
+    font-size: 1.75rem;
+}
+}
+
+
 .sticky-note:before {
     content: "";
     position: absolute;
