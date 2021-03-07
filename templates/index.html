@@ -74,7 +74,18 @@
 
         <div class="col-12">    
             <div class="row no-gutters justify-content-around">
+                <!-- incase no classics are in DB play this instead -->
+                {% if recipeHeader == [] %}
+                <div class="col-12 independant-header-height">
+                    <div class="row no-gutters align-items-center justify-content-center">
+                        <div class="col-12">
+                            <h1>Currently we have no classics in rotation!</h1>
+                            <h3>Sorry, try back later for some awesome classics!</h3>
 
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
                 {% for recipe in recipeHeader %}
                 <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer blank-anchor">
                     <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
