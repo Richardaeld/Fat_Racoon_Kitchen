@@ -656,11 +656,14 @@ footer {
 }
 
 /* ---------------------------------------- recipe_lists --> rename all features ---------------------------------------- */
+.all-features {
+    text-align: center;
+}
+/*
 @media (max-width: 575.98px) {
     .all-features {
         text-align: center;
-
     }
 }
-
+*/
 
