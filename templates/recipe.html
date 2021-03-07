@@ -26,18 +26,17 @@
     <!-- Allow a user to edit or delete their own recipes -->
     {% if recipeInfo.created_by == session["user"] %}
     <div class="col-12">
-        <div class="row no-gutters justify-content-around">
-            <div class="col-2 custom-button sticky-note-no-shadow">
+        <div class="row no-gutters justify-content-between">
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button">
                 <div class="sticky-note-inner-div blank-anchor">
                     <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
-                        <h6>Edit Your Recipe</h6>
+                        <h6>Edit Recipe</h6>
                     </a>
                 </div>
             </div>
-            <div class="col-6"></div>
-            <div class="col-2 custom-button sticky-note-no-shadow" id="deleteModal">
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button" id="deleteModal">
                 <div class="sticky-note-inner-div" >
-                    <h6>Delete Your Recipe</h6>
+                    <h6>Delete Recipe</h6>
                 </div>
             </div>
         </div>
@@ -45,10 +44,10 @@
     {% endif %}
     <!-- recipe picture, name, times, and description -->
     <div class="col-12">
-        <div class="row no-gutters">
+        <div class="row no-gutters justify-content-around">
 
             <!-- picture of recipe -->
-            <div class="col-4">
+            <div class="col-12 col-md-12 col-lg-6 col-xl-3">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note large-content-height">
                         {% if recipeInfo.avatar %}
@@ -66,7 +65,7 @@
             </div>
 
             <!-- recipe name and times -->
-            <div class="col-4">
+            <div class="col-sm-11 col-md-11 col-lg-11 col-xl-6">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note sticky-note-middle">
                         <div class="row no-gutters sticky-note-inner-div justify-content-center">
@@ -107,7 +106,7 @@
             </div>
 
             <!-- Recipe description -->
-            <div class="col-4">
+            <div class="col-12 col-md-12 col-lg-6 col-xl-3">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note sticky-note-right large-content-height">  
                         <div class="row no-gutters align-items-center sticky-note-inner-div">
@@ -126,7 +125,7 @@
     <div class="col-12">
         <div class="row no-gutters">
             <!-- Recipe Ingredients -->
-            <div class="col-6 ">
+            <div class="col-12 col-md-6">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note">
                         <div class="sticky-note-inner-div">
@@ -144,7 +143,7 @@
                 </div>
             </div>
             <!-- Recipe Steps -->
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <div class="row no-gutters justify-content-center ">
                     <div class="col-10 sticky-note sticky-note-right">
                         <div class="sticky-note-inner-div ">
