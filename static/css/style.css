@@ -41,6 +41,17 @@ header {
     font-size: 2rem;
 }
 
+@media (max-width: 767.98px) {
+    .independant-header-height h1 {
+        font-size: 2rem;
+    }
+
+    .independant-header-height h3 {
+        font-size: 1.5rem;
+    }
+}
+
+
 .independant-header-height h1,
 .independant-header-height h3 {
     margin: 0;
