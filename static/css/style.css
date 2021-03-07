@@ -573,6 +573,10 @@ footer {
 .recipe-lists-no-dec {
     list-style-type: none;
 }
+/* ---------------------------------------- all recipes *maybe dup section* ---------------------------------------- */
+.all-recipe-max-height {
+    min-height: 50rem
+}
 
 /* ---------------------------------------- recipe list ---------------------------------------- */
 .recipe-list-height {
@@ -588,6 +592,12 @@ footer {
 .pagination-selected {
     font-weight: bolder;
     color: #D912E7
+}
+
+.pagination-ul {
+    position: absolute;
+    width: 90%;
+    bottom: 20px;
 }
 
 /* ---------------------------------------- lessons ---------------------------------------- */

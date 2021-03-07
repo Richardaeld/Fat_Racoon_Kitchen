@@ -6,14 +6,14 @@
         <div class="row no-gutters">
             <!-- Feature with Recipes  -->
             {% for feature in allFeatures %}
-            <div class="col-6 ">
+            <div class="col-6">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note recipe-list-height 
                     {% if feature[0] % 2 %}
                     sticky-note-right
                     {% endif %}">
                         
-                        <div class="sticky-note-inner-div">
+                        <div class="sticky-note-inner-div all-recipe-max-height">
                             <ul class="recipe-lists recipe-lists-no-dec">
                                     <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
                                         <h1>{{ feature[1].name.title() }} Recipes </h1>
