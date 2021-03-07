@@ -428,7 +428,7 @@ def edit_user_info():
     return render_template("edit_user_info.html", userInfo=userInfo)
 
 
-@app.route("/allRecipe/<feature>")
+@app.route("/recipe_list/<feature>")
 def recipe_list(feature):
     allRecipes = mongo.db.recipes.find({"feature": feature})
     allRecipes = enumerate(allRecipes)
