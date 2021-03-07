@@ -3,20 +3,16 @@
 <!--  User basic information  -->
 <section class="row no-gutters justify-content-around align-items-center" style="background-color: rgb(153, 220, 236);"> <!--  used carousel height  -->
     <div class="col-12">
-        <div class="row no-gutters justify-content-around">
-            <div class="col-2 custom-button sticky-note-no-shadow">
+        <div class="row no-gutters justify-content-between">
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button">
                 <div class="sticky-note-inner-div blank-anchor">
                     <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
-                    <h6>Share a Recipe</h6>
+                    <h6>Share Recipe</h6>
                     </a>
                 </div>
             </div>
-            <div class="col-6">
-                <!--<div class="bubble-letters" style="position: relative; top: 10%;">
-                    <h1 style="font-size: 5rem; text-decoration: underline; text-shadow: 2px 2px 2px #a7a7a7;">Welcome ** chef_info.username** </h1>
-                </div>-->
-            </div>
-            <div class="col-2 sticky-note-no-shadow custom-button">
+
+            <div class="col-4 col-lg-2 sticky-note-no-shadow custom-button profile-button">
                 <div class="sticky-note-inner-div blank-anchor">
                     <a href="{{ url_for('edit_user_info') }}">
                         <h6>Update Profile</h6>
@@ -25,14 +21,17 @@
             </div>
         </div>
     </div>
-    <!--  Chef Name and Bio  -->
-        <div class="col-6 sticky-note profile-sticky-height">
-            <div class="row no-gutters sticky-note-inner-div">
+        <!--  Chef Name and Bio  -->
+        <!-- Bio header -->
+        <div class="col-12 profile-header-height">
+            <div class="row no-gutters justify-content-center align-items-center">
                 <div class="col-12">
-                    <h1>
-                        {{ chef_info.username }}'s Bio
-                    </h1>
+                    <h1>{{ chef_info.username }}'s Bio</h1>
                 </div>
+            </div>
+        </div>
+        <div class="col-11 col-lg-6 sticky-note profile-avatar-bio-height">
+            <div class="row no-gutters sticky-note-inner-div">
                 <div class="col-12">
                     <h6>
                         {{ chef_info.bio }}
@@ -41,7 +40,7 @@
             </div>
         </div>
         <!--  Avatar of chef or basic stand in  -->
-        <div class="col-4 align-items-center sticky-note sticky-note-right profile-sticky-height">
+        <div class="col-11 col-lg-4 align-items-center sticky-note sticky-note-right profile-avatar-bio-height">
             {% if chef_info.avatar == none %}
             <div class="row no-gutters justify-content-center sticky-note-inner-div">
                 <div class="avatar">
@@ -65,7 +64,7 @@
 <section class="row no-gutters justify-content-around profile-lists" style="background-color: rgb(153, 220, 236);">
     
     <!--  Display ten most recent recipe uploads  -->
-    <div class="col-3 sticky-note profile-sticky-height">
+    <div class="col-11 col-md-5 col-xl-3 sticky-note profile-sticky-height">
         <div class="sticky-note-inner-div">
             <h3>10 Recently Uploaded Recipes</h3>
             <hr>
@@ -78,7 +77,7 @@
     </div>
 
     <!--  Display ten most recent favorited recipes  -->
-    <div class="col-3 sticky-note sticky-note-middle profile-sticky-height">
+    <div class="col-11 col-md-5 col-xl-3 sticky-note sticky-note-right profile-sticky-height">
         <div class="sticky-note-inner-div">
             <h3>10 Recently Favorited Recipes</h3>
             <hr>
@@ -93,7 +92,7 @@
     </div>
     
     <!--  Display ten most recently viewed recipes  -->
-    <div class="col-3 sticky-note sticky-note-right profile-sticky-height">
+    <div class="col-11 col-md-5 col-xl-3 sticky-note profile-sticky-height">
         <div class="sticky-note-inner-div">            
             <h3>10 Recently Viewed Recipes</h3>
             <hr>

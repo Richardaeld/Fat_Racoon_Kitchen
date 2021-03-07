@@ -56,7 +56,7 @@ header {
 .independant-header-height h3 {
     margin: 0;
     color: #fff;
-    text-shadow: 2px 2px 4px #010203;;
+    text-shadow: 2px 2px 4px #010203;
 }
 
 .independant-header-height div {
@@ -512,7 +512,8 @@ footer {
 /* ---------------------------------------- Profile ---------------------------------------- */
 .profile-lists p {
     text-align: left;
-    font: 1.75rem "Reenie Beanie", sans-serif;
+    /*font: 1.75rem "Reenie Beanie", sans-serif;*/
+    font-family: "Reenie Beanie", sans-serif;
 }
 
 .profile-lists a,
@@ -521,9 +522,38 @@ footer {
     text-decoration: none;
 }
 
+.profile-avatar-bio-height {
+    height: 30rem;
+}
+
 .profile-sticky-height { /*------------------------------  recustomizes sticky*/
-    height: 35rem;
+    height: 40rem;
     font-family: "Yanone Kaffeesatz", sans-serif;
+}
+
+@media (max-width: 575.98px) {
+    .profile-avatar-bio-height {
+        height: 20rem;
+    }
+
+    .profile-sticky-height { /*------------------------------  recustomizes sticky*/
+        height: 30rem;
+        font-family: "Yanone Kaffeesatz", sans-serif;
+    } 
+}
+
+.profile-header-height {
+    height: 3rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px #010203;
+}
+
+.profile-header-height div {
+    height: 7rem;
+}
+
+.profile-button {
+    margin: 1.5rem;
 }
 
 /* ---------------------------------------- Recipe ---------------------------------------- */
