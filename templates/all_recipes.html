@@ -21,7 +21,7 @@
                                 <hr>
                                 {% for recipe in allRecipes %}
                                 {% if recipe.feature == feature[1].name %}
-                                    <li>
+                                    <li class="make-invis">
                                         <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
                                             <span class="col-8">
                                                 <h6><strong>{{ recipe.name }}</strong>:</h6>
@@ -51,4 +51,8 @@
     </div>
 
 </section>
+{% endblock %}
+
+{% block custom_script %}
+<script src="{{ url_for('static', filename='js/pagination.js') }}"></script>
 {% endblock %}

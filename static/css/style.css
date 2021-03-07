@@ -578,3 +578,14 @@ footer {
 .recipe-list-height {
     min-height: 20rem;
 }
+
+.pagination-content {
+    font-size: 2rem;
+    height: 3rem;
+    padding: 0;
+}
+
+.pagination-selected {
+    font-weight: bolder;
+    color: #D912E7
+}
