@@ -30,7 +30,7 @@ def index():
     recipes = mongo.db.recipes.find({"created_by": "asdfa@aol.com"})
     recipeHeader = []
     for recipe in recipes:
-        if len(recipeHeader) < 3:
+        if len(recipeHeader) < 4:
     #        print(recipe)
             recipeHeader += [recipe]
 
