@@ -12,29 +12,37 @@
                         
                         <div class="sticky-note-inner-div">
                             <ul class="recipe-lists recipe-lists-no-dec">
-                                    <a href="#">
-                                        <h1>{{ recipe.name.title() }} Recipes </h1>
+                                    <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
+                                        <h1>{{ recipe.name.title() }}</h1>
                                     </a>
                                 <hr>
 
                                     <li>
-                                        <a href="#" class="row no-gutters">
-                                            <span class="col-8">
-                                                <h6><strong>{{ recipe.name }}</strong>:</h6>
-                                            </span>
-                                            <span class="col-4" style="text-align: center;">
+                                        <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
+                                            <span class="col-12" style="text-align: center;">
                                                 <div class="row no-gutters">
+                                                    
                                                     <div class="col-12">
+                                                        <h6>Featuring: <strong>{{ recipe.feature }}</strong></h6>
+                                                    </div>
+
+                                                    <div class="col-4">
+                                                        <h6>Prep Time: </h6>
+                                                        <p><strong>{{ recipe.time[0] }} Minutes</strong></p>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <h6>Cook Time: </h6>
+                                                        <p><strong>{{ recipe.time[1] }} Minutes</strong></p>
+                                                    </div>
+                                                    <div class="col-4">
                                                         <h6>Total Time: </h6>
+                                                        <p><strong>{{ recipe.time[2] }} Minutes</strong></p>
                                                     </div>
-                                                    <div class="col-12">
-                                                        <h6><strong>{{ recipe.time[2] }} Minutes</strong></h6>
-                                                    </div>
+
                                                 </div>
                                             </span>
                                         </a>
                                     </li>
-
 
                                 </ul>
                         </div>
