@@ -566,7 +566,10 @@ footer {
 .recipe-lists {
     font-family: "Yanone Kaffeesatz", sans-serif;
     text-align: left;
+    padding-left: 0;
 }
+
+
 
 .blank-anchor:link,
 .blank-anchor:visited,
@@ -650,3 +653,13 @@ footer {
 .lessons-header {
     padding-top: 2rem;
 }
+
+/* ---------------------------------------- recipe_lists --> rename all features ---------------------------------------- */
+@media (max-width: 575.98px) {
+    .all-features {
+        text-align: center;
+
+    }
+}
+
+
