@@ -27,12 +27,9 @@ def index():
     # ---- Loads quick meal ideas (carousel) feature items
     features = list(mongo.db.feature.find())
 
-    recipes = mongo.db.recipes.find({"created_by": "asdfa@aol.com"})
-    recipeHeader = []
-    for recipe in recipes:
-        if len(recipeHeader) < 4:
-    #        print(recipe)
-            recipeHeader += [recipe]
+    # counts total recipes from specified chef
+    totalRecipeCount = mongo.db.recipes.count_documents({"created_by": "asdfa@aol.com"})
+    totalRecipes = list(mongo.db.recipes.find({"created_by": "asdfa@aol.com"}))
 
     # ---- Creates recipes found in carousel with a max of 3 recipes per card
     # Generates list of recipes to be presented in carousel
@@ -66,23 +63,50 @@ def index():
                 featureRecipes += [[recipe["feature"], recipe["name"], recipe["_id"]]]
                 iteration += 1
 
-    # Loads recipe of the day # THIS IS THE RECIPE!!!
-    #recipeOfDay = mongo.db.recipes.find_one({"_id": ObjectId("603ead31010dfd474fbb718f")})  # --------------------- CHANGE ME TO SOMETHING LESS HARDCODE
-
-    # prints a random recipe form speified chef
-    recipeRandom = mongo.db.recipes.count_documents({"created_by": "asdfa@aol.com"})
-    recipeRandom = random.randrange(1, recipeRandom+1)
+    # ---- Im grandmother classics
+    # I add random grandmother classics
+    recipeHeader = []
+    recipeRandomTotal = []
     iteration = 1
-    recipeOfDay = mongo.db.recipes.find({"created_by": "asdfa@aol.com"})
-    for recipe in recipeOfDay:
-        print(recipe)
+    grandparentRecipeTotal = mongo.db.recipes.count_documents({"grandparent": True})
+    if grandparentRecipeTotal > 0:
+        grandparentRecipes = mongo.db.recipes.find({"grandparent": True})
+
+        #keeps looping to find all or set number of recipes
+        while True:
+            # Builds a random number list
+            randomRecipe = random.randrange(1, grandparentRecipeTotal + 1)
+            # Gets first number
+            if len(recipeRandomTotal) > 0:
+                for recipe in recipeRandomTotal:
+                    if randomRecipe == recipe:
+                        break
+                recipeRandomTotal += [randomRecipe]
+            else:
+                recipeRandomTotal += [randomRecipe]
+
+            # breaks random number generation with conditions are met
+            if len(recipeRandomTotal) > 3 or len(recipeRandomTotal) == grandparentRecipeTotal:
+                break
+
+        # builds recipe list with random numbers
+        for recipe in grandparentRecipes:
+            for recipeNumber in recipeRandomTotal:
+                if recipeNumber == iteration:
+                    recipeHeader += [recipe]
+            iteration += 1
+
+    # Loads recipe of the day
+    # prints a random recipe form speified chef
+    recipeRandom = random.randrange(1, totalRecipeCount + 1)
+    iteration = 1
+    for recipe in totalRecipes:
+        # Random selects recipe and loads its chef info
         if recipeRandom == iteration:
             recipeOfDay = recipe
+            chef = mongo.db.users.find_one({"email": recipeOfDay["created_by"]})
             break
         iteration += 1
-
-    # finds and loads chefs information from recipe of the day
-    chef = mongo.db.users.find_one({"email": recipeOfDay["created_by"]})
 
     # --Login-- information
     if request.method == "POST" and request.form.get("name") == "":
