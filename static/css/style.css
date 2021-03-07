@@ -640,11 +640,11 @@ footer {
 }
 
 .pagination-ul {
+    padding: 0rem 1rem;
     position: absolute;
-    width: 90%;
+    width: 100%;
     bottom: 20px;
-    left: 0;
-    right: 0;
+    right:0;
 }
 
 /* ---------------------------------------- lessons ---------------------------------------- */

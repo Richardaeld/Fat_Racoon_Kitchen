@@ -24,14 +24,14 @@ function selectFeature(item, index){
             // Makes start ellipses
             if (i == 0){
                 let createLi = document.createElement("li");
-                createLi.className = "col-2 col-md-3 list-group-item pagination-content first-ellipses make-invis"
+                createLi.className = "col list-group-item pagination-content first-ellipses make-invis"
                 createLi.textContent = "..."
                 createUl.appendChild(createLi)
             }
 
             // Makes content of pagination
             let createLi = document.createElement("li");
-            createLi.className = "col-2 col-md-3 list-group-item pagination-content pagination-number"
+            createLi.className = "col list-group-item pagination-content pagination-number"
             createLi.textContent = i + 1
             createUl.appendChild(createLi)
 
@@ -39,7 +39,7 @@ function selectFeature(item, index){
             console.log(Math.floor(liLength/5))
             if (i == Math.floor(liLength/5) ){
                 let createLi = document.createElement("li");
-                createLi.className = "col-2 col-md-3 list-group-item pagination-content last-ellipses make-invis"
+                createLi.className = "col list-group-item pagination-content last-ellipses make-invis"
                 createLi.textContent = "..."
                 createUl.appendChild(createLi)
             }
