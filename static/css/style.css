@@ -465,7 +465,7 @@ footer {
     border: 2px solid #474747;
     box-shadow: 4px 4px 2px rgba(0, 0, 0, .5 );
 }
-
+#custom-button-login,
 #custom-button {
     width: auto;
 }
