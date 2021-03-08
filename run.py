@@ -348,63 +348,57 @@ def add_edit_recipe(recipeId):
     # if editing recipe, populate the page with recipe information
     # if gets all existing recipe information
     # else populates blanks
-    print(recipeId)
     if (recipeId != 'new'):
         recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
         recipeIngEnum = enumerate(recipeInfo["ingredients"])
         recipeSteEnum = enumerate(recipeInfo["steps"])
-        session['editRecipe'] = recipeId
-        print(recipeId)
-        print(True)
     else:
-        try:
-            if session['editRecipe']:
-                print("Im popping aosdjfh;asdjf;lsakjflkajshd;lfja;sjf")
-                session.pop('editRecipe')
-        except KeyError:
-            print("I ran a KeyError for console because editRecipe has been poped")
-
         recipeInfo = None
         recipeIngEnum = None
         recipeSteEnum = None
-        print(False)
 
     # Generates the select/option for meal feature
     features = mongo.db.feature.find()
 
     if request.method == "POST":
-        time = [request.form.get("prepTime"), request.form.get("cookTime"), request.form.get("totalTime")]
-        ingredients = []
-        steps = []
+        # Creates list of times to upload
+        time = [
+            request.form.get("prepTime"),
+            request.form.get("cookTime"),
+            request.form.get("totalTime")]
 
+        # Creates list of steps to upload
+        steps = []
         recipeStepsTotal = (request.form.get("recipeStepsTotal"))
         recipeStepsTotal = int(recipeStepsTotal)
         for step in range(1, recipeStepsTotal + 1):
             recipeStep = "recipeSteps-" + str(step)
             steps += [request.form.get(recipeStep)]
 
+        # Creates list of ingredents to upload
+        ingredients = []
         recipeIngredientsTotal = request.form.get("recipeIngredientsTotal")
         recipeIngredientsTotal = int(recipeIngredientsTotal)
         for step in range(1, recipeIngredientsTotal + 1):
             ingredientStep = "recipeIngredients-" + str(step)
             ingredients += [request.form.get(ingredientStep)]
 
+        # Sets variables for avatar and avatar_id and uploads avatar if needed
         if request.form.get("avatar_file_valid") == 'true':
-            print("Im creating a image")
             # Code customized from Pretty Printed
             # https://www.youtube.com/watch?v=DsgAuceHha4
             avatar = request.files['avatar']
             # format filename and then file
             mongo.save_file(request.form.get("avatar_name"), avatar)
-            imageDict = mongo.db.fs.files.find_one({"filename": request.form.get("avatar_name")})
+            imageDict = mongo.db.fs.files.find_one(
+                {"filename": request.form.get("avatar_name")})
             avatar_img = request.form.get("avatar_name")
             avatar_id = imageDict["_id"]
-
         else:
-            print("im not imageing!!!")
             avatar_img = None
             avatar_id = None
 
+        # Builds upload document
         add_recipe = {
             "name": request.form.get("recipeName"),
             "feature": request.form.get("feature"),
@@ -413,20 +407,23 @@ def add_edit_recipe(recipeId):
             "time": time,
             "text": request.form.get("recipeDescription"),
             "history": request.form.get("recipeHistory"),
-           # "date": datetime.datetime.now().strftime("%Y-%b-%d:%H:%M"),
             "date": datetime.datetime.now(),
             "avatar": avatar_img,
             "avatar_id": avatar_id,
             "created_by": session["user"]
         }
-        #print(add_recipe)
-        #mongo.db.recipes.insert_one(add_recipe)
-        result = mongo.db.recipes.insert_one(add_recipe) #I setup to upllaoad to mongo
-        #print(result.inserted_id)
-        testId = result.inserted_id     #I upload to mongo
 
-        return redirect(url_for("recipe", recipeId=testId))
-        #return redirect(url_for("profile")) -- For development testing
+        if recipeId == "new":
+            # Uploads to mongo and sets up to pull ID
+            result = mongo.db.recipes.insert_one(add_recipe)
+            # Grabs ID of mongo upload
+            uploadedId = result.inserted_id
+        else:
+            result = mongo.db.recipes.update_one(
+                {"_id": ObjectId(recipeId)}, {'$set': add_recipe})
+            uploadedId = recipeId
+
+        return redirect(url_for("recipe", recipeId=uploadedId))
 
     return render_template(
         "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
