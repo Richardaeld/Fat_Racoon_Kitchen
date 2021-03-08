@@ -75,6 +75,7 @@
                                     {{ recipeInfo.name.title() }}
                                 </h1>
                                 <div class="blank-anchor">
+                                    <!--  Recipe favorite button  -->
                                     <h3> 
                                         {% if favoriteRecipe == "None" %}
                                         {% elif favoriteRecipe == True %}
@@ -90,15 +91,15 @@
 
                             <span class="col-4">
                                 <h6>Prep Time</h6>
-                                <p>{{ time[0] }}</p>
+                                <p>{{ recipeInfo.time[0] }}</p>
                             </span>
                             <span class="col-4">
                                 <h6>Cook Time</h6>
-                                <p>{{ time[1] }}</p>
+                                <p>{{ recipeInfo.time[1] }}</p>
                             </span>
                             <span class="col-4">
                                 <h6>Total Time</h6>
-                                <p>{{ time[2] }}</p>
+                                <p>{{ recipeInfo.time[2] }}</p>
                             </span>
                         </div>
                     </div>

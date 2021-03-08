@@ -282,35 +282,35 @@ def recipe(recipeId):
     # Finds recipe to display
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
 
-    # Finds the splits time info into a list
-    time = recipeInfo["time"]
-
-    # Creates a previously viewed list
+    # Find if recipe is favorite and adds recipes
+    # to a previously viewed list for signed in users
     try:
         if session["user"]:
-            userRecentFinal = []
-            findRecent = mongo.db.users.find_one({"email": session["user"]})
+            findUserRecents = (
+                mongo.db.users.find_one(
+                    {"email": session["user"]}))
 
-            # determine if favorited
-            favorited = findRecent["favorites"]
+            # determine if recipe is favorited
+            favorited = findUserRecents["favorites"]
             if len(favorited) == 0:
                 favoriteRecipe = False
+            favoriteRecipe = False
             for fav in favorited:
                 if fav == recipeInfo["_id"]:
                     favoriteRecipe = True
                     break
-                else:
-                    favoriteRecipe = False          # Ive got to have a better solution
 
             # Creates base list for user recent
-            if len(findRecent["recent"]) == 0:
-                findRecent = [recipeInfo["_id"]]
+            if len(findUserRecents["recent"]) == 0:
+                findUserRecents = [recipeInfo["_id"]]
             else:
-                findRecent = [recipeInfo["_id"]] + findRecent["recent"]
+                findUserRecents = (
+                    [recipeInfo["_id"]] + findUserRecents["recent"])
 
-            # Iterates through checking to duplicates
+            # Iterates through checking for duplicates to remove
             # For outer Loop
-            for final in findRecent:
+            userRecentFinal = []
+            for final in findUserRecents:
                 checkPass = True
                 if len(userRecentFinal) == 0:
                     userRecentFinal += [final]
@@ -321,10 +321,13 @@ def recipe(recipeId):
                         break
                     elif final == check:
                         checkPass = False
+                        break
                     elif check == userRecentFinal[-1] and checkPass is True:
                         userRecentFinal += [final]
 
-            mongo.db.users.update_one({"email": session["user"]}, {"$set": {"recent": userRecentFinal}})
+            mongo.db.users.update_one(
+                {"email": session["user"]},
+                {"$set": {"recent": userRecentFinal}})
 
     # For a missing session user
     except KeyError:
@@ -334,7 +337,9 @@ def recipe(recipeId):
         mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
         return redirect(url_for("profile"))
 
-    return render_template("recipe.html", recipeInfo=recipeInfo, time=time, favoriteRecipe=favoriteRecipe)
+    return render_template(
+        "recipe.html",
+        recipeInfo=recipeInfo, favoriteRecipe=favoriteRecipe)
 
 
 # Code customized from Pretty Printed
