@@ -240,18 +240,14 @@ def profile():
 def addFavorite(recipeId, favoriteChange):
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
     user = mongo.db.users.find_one({"email": session["user"]})
+    # Changes string to boolean
     if favoriteChange == "True":
         favoriteChange = True
     else:
         favoriteChange = False
 
-    if favoriteChange is False:
-        newFav = user["favorites"] + [recipeInfo["_id"]]
-        print("False ", newFav)
-        mongo.db.users.update_one({"_id": user["_id"]}, {"$set": {"favorites": newFav}})
-        favoriteChange = True
-
-    elif favoriteChange is True:
+    # Creates user favorite list to upload to DB
+    if favoriteChange:
         newFav = []
         changeFav = user["favorites"]
         for fav in changeFav:
@@ -260,21 +256,17 @@ def addFavorite(recipeId, favoriteChange):
             else:
                 newFav += [fav]
         favoriteChange = False
-        mongo.db.users.update_one({"_id": user["_id"]}, {"$set": {"favorites": newFav}})
+    else:
+        newFav = user["favorites"] + [recipeInfo["_id"]]
+        favoriteChange = True
 
-        print("True ", newFav)
-        print(" Im truye")
-
-    print(" imafter if statements")
-    time = recipeInfo["time"]
-    ingredients = recipeInfo["ingredients"]
-    steps = recipeInfo["steps"]
-
-    #recipeInfo = mongo.db.recipes.fine_one({"_id": recipeId})
-    #print("Im recipe info from add favorites ", recipeInfo['_id'])
-    #userInfo = mongo.db.users.find_one({"email": session["user"]})
-    #userInfo = userInfo["favorites"]
-    return render_template("recipe.html", recipeId=recipeInfo["_id"], recipeInfo=recipeInfo, time=time, ingredients=ingredients, steps=steps, favoriteRecipe=favoriteChange, favoriteChange=favoriteChange)
+    mongo.db.users.update_one(
+        {"_id": user["_id"]},
+        {"$set": {"favorites": newFav}})
+    return render_template(
+        "recipe.html",
+        recipeId=recipeInfo["_id"], recipeInfo=recipeInfo,
+        favoriteRecipe=favoriteChange)
 
 
 @app.route("/recipe/<recipeId>", methods=("GET", "POST"))
