@@ -435,32 +435,41 @@ def edit_user_info():
     userInfo = mongo.db.users.find_one({"email": session["user"]})
 
     if request.method == "POST":
-        if userInfo["avatar"]:
+        # Replaces Avatar if new image present
+        if request.form.get("avatar_file_valid") == 'true':
             delPrevImg = userInfo["avatar_id"]
             mongo.db.fs.chunks.delete_many({"files_id": ObjectId(delPrevImg)})
             mongo.db.fs.files.delete_many({"_id": ObjectId(delPrevImg)})
 
-        # Code customized from Pretty Printed
-        # https://www.youtube.com/watch?v=DsgAuceHha4
-        avatar = request.files['avatar']
-        
-        # format filename and then file
-        mongo.save_file(request.form.get("avatar_name"), avatar)
-        imageDict = mongo.db.fs.files.find_one({"filename": request.form.get("avatar_name")})
-        imgUpdate = {"$set": {
-            "avatar": request.form.get("avatar_name"),
-            "avatar_id": imageDict["_id"]
-        }}
-        mongo.db.users.update({"_id": ObjectId(userInfo["_id"])}, imgUpdate)
+            # Code customized from Pretty Printed
+            # https://www.youtube.com/watch?v=DsgAuceHha4
+            avatar = request.files['avatar']
 
-        update = {"$set": {
-            "username": request.form.get("username"),
-            "email": request.form.get("email"),
-        #    "password": request.form.get("newPassword"),
+            # format filename and then file
+            mongo.save_file(request.form.get("avatar_name"), avatar)
+            imageDict = mongo.db.fs.files.find_one(
+                {"filename": request.form.get("avatar_name")})
+            imgUpdate = {
+                "avatar": request.form.get("avatar_name"),
+                "avatar_id": imageDict["_id"]
+            }
+            mongo.db.users.update_one(
+                {"_id": ObjectId(userInfo["_id"])}, {"$set":  imgUpdate})
 
+        update = {
+            "username": request.form.get("usernameEdit"),
+            "email": request.form.get("emailEdit"),
+            "password": request.form.get("NewPasswordCheckEdit"),
             "bio": request.form.get("bio")
-        }}
-    #    mongo.db.users.update({"_id": ObjectId(userInfo["_id"])}, update)
+        }
+
+        emailCheck = mongo.db.users.find_one({"email": request.form.get("emailEdit")})
+        if emailCheck == None:
+            flash("Profile information has been updated!")
+            #mongo.db.users.update({"_id": ObjectId(userInfo["_id"])},{"$set": update})
+        else:
+            flash("Email already exists!  Try Again!")
+
         return redirect(url_for("profile"))
 
     return render_template("edit_user_info.html", userInfo=userInfo)

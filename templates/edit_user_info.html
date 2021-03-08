@@ -14,10 +14,10 @@
                     <fieldset class="col-12">
                         <div class="row no-gutters justify-content-center align-items-center">
                             <div class="col-6 recipe-form-label">
-                                <label  type="text" for="username">Name</label>
+                                <label  type="text" for="usernameEdit">Name</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="username" name="username" value="{{ userInfo.username }}">
+                                <input type="text" id="usernameEdit" name="usernameEdit" value="{{ userInfo.username }}">
                             </div>
                         </div>
                     </fieldset>
@@ -26,10 +26,10 @@
                     <fieldset class="col-12">
                         <div class="row no-gutters justify-content-center align-items-center">
                             <div class="col-6 recipe-form-label">
-                                <label  type="text" for="email">Email</label>
+                                <label  type="text" for="emailEdit">Email</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="email" name="email" value="{{ userInfo.email }}">
+                                <input type="text" id="emailEdit" name="emailEdit" value="{{ userInfo.email }}">
                             </div>
                         </div>
                     </fieldset>
@@ -38,22 +38,22 @@
                     <fieldset class="col-12">
                         <div class="row no-gutters justify-content-center align-items-center">
                             <div class="col-6 recipe-form-label">
-                                <label  type="text" for="password">Current Password</label>
+                                <label  type="text" for="passwordEdit">Current Password</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="password" name="password" value="">
+                                <input type="text" id="passwordEdit" name="passwordEdit" value="">
                             </div>
                             <div class="col-6 recipe-form-label">
-                                <label  type="text" for="newPassword">New Password</label>
+                                <label  type="text" for="newPasswordEdit">New Password</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="newPassword" name="newPassword" value="">
+                                <input type="text" id="newPasswordEdit" name="newPasswordEdit" value="">
                             </div>
                             <div class="col-6 recipe-form-label">
-                                <label  type="text" for="ConNewPassword">Confirm New Password</label>
+                                <label  type="text" for="NewPasswordCheckEdit">Confirm New Password</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="ConNewPassword" name="ConNewPassword" value="">
+                                <input type="text" id="NewPasswordCheckEdit" name="NewPasswordCheckEdit" value="">
                             </div>
                         </div>
                     </fieldset>
@@ -79,7 +79,8 @@
                             <div class="col-6 recipe-form-input">
                                 <input type="file" name="avatar" id="avatar">
                                 <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
-                                <p id="avatar_valid" class="make-invis">Please select a file of 100KB or less. Server space is limited!</p>
+                                <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
+                                <p id="avatar_valid" class="make-invis">Please select a file of 500KB or less. Server space is limited!</p>
                             </div>
                         </div>
                     </fieldset>                    

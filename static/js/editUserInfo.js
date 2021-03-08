@@ -12,6 +12,9 @@ for (let i=0; i<20; i++){
 // Adds randomly generated image name
 document.getElementById("custom-button").addEventListener("click", function() {
     document.getElementById("avatar_name").setAttribute("value", imageName);
+    if (document.getElementById("avatar").value != ""){
+        document.getElementById("avatar_file_valid").value = true;
+    }
 })
 
 // ---- Avatar Image Validation
