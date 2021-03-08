@@ -435,27 +435,6 @@ def edit_user_info():
     userInfo = mongo.db.users.find_one({"email": session["user"]})
 
     if request.method == "POST":
-        # Replaces Avatar if new image present
-        if request.form.get("avatar_file_valid") == 'true':
-            delPrevImg = userInfo["avatar_id"]
-            mongo.db.fs.chunks.delete_many({"files_id": ObjectId(delPrevImg)})
-            mongo.db.fs.files.delete_many({"_id": ObjectId(delPrevImg)})
-
-            # Code customized from Pretty Printed
-            # https://www.youtube.com/watch?v=DsgAuceHha4
-            avatar = request.files['avatar']
-
-            # format filename and then file
-            mongo.save_file(request.form.get("avatar_name"), avatar)
-            imageDict = mongo.db.fs.files.find_one(
-                {"filename": request.form.get("avatar_name")})
-            imgUpdate = {
-                "avatar": request.form.get("avatar_name"),
-                "avatar_id": imageDict["_id"]
-            }
-            mongo.db.users.update_one(
-                {"_id": ObjectId(userInfo["_id"])}, {"$set":  imgUpdate})
-
         update = {
             "username": request.form.get("usernameEdit"),
             "email": request.form.get("emailEdit"),
@@ -463,14 +442,56 @@ def edit_user_info():
             "bio": request.form.get("bio")
         }
 
-        emailCheck = mongo.db.users.find_one({"email": request.form.get("emailEdit")})
-        if emailCheck == None:
-            flash("Profile information has been updated!")
-            #mongo.db.users.update({"_id": ObjectId(userInfo["_id"])},{"$set": update})
-        else:
+        # ----Validation
+        # Validates email for current email or availability of new email
+        # Validates current password before allowing changes to be made
+        emailCheck = mongo.db.users.find_one(
+            {"email": request.form.get("emailEdit")})
+        passwordCheck = check_password_hash(
+            userInfo["password"], request.form.get('passwordEdit'))
+        if emailCheck is not None and (
+                request.form.get("emailEdit") != userInfo["email"]):
             flash("Email already exists!  Try Again!")
+            return(redirect(url_for("edit_user_info")))
 
-        return redirect(url_for("profile"))
+        # If all checks pass uploads new profile data to DB
+        elif (passwordCheck):
+            flash("Profile updated successfully!")
+            # Replaces Avatar if new image present
+            if request.form.get("avatar_file_valid") == 'true':
+                delPrevImg = userInfo["avatar_id"]
+                mongo.db.fs.chunks.delete_many(
+                    {"files_id": ObjectId(delPrevImg)})
+                mongo.db.fs.files.delete_many({"_id": ObjectId(delPrevImg)})
+
+                # Code customized from Pretty Printed
+                # https://www.youtube.com/watch?v=DsgAuceHha4
+                avatar = request.files['avatar']
+
+                # format filename and then file
+                mongo.save_file(request.form.get("avatar_name"), avatar)
+                imageDict = mongo.db.fs.files.find_one(
+                    {"filename": request.form.get("avatar_name")})
+                imgUpdate = {
+                    "avatar": request.form.get("avatar_name"),
+                    "avatar_id": imageDict["_id"]
+                }
+                mongo.db.users.update_one(
+                    {"_id": ObjectId(userInfo["_id"])}, {"$set":  imgUpdate})
+            mongo.db.users.update(
+                {"_id": ObjectId(userInfo["_id"])}, {"$set": update})
+            return(redirect(url_for("profile")))
+
+        # Password validation fail
+        elif (passwordCheck is False):
+            flash("Current password does not match your login password")
+            return(redirect(url_for("edit_user_info")))
+
+        # Unexpected unknown error
+        else:
+            flash("An unexpected error occurred!")
+            flash(" please enter your information again!")
+            return(redirect(url_for("edit_user_info")))
 
     return render_template("edit_user_info.html", userInfo=userInfo)
 
