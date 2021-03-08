@@ -24,43 +24,55 @@ mongo = PyMongo(app)
 
 @app.route("/", methods=("GET", "POST"))
 def index():
-    # ---- Loads quick meal ideas (carousel) feature items
-    features = list(mongo.db.feature.find())
-
     # counts total recipes from specified chef
     totalRecipeCount = mongo.db.recipes.count_documents({"created_by": "asdfa@aol.com"})
     totalRecipes = list(mongo.db.recipes.find({"created_by": "asdfa@aol.com"}))
 
+    # ---- Loads quick meal ideas (carousel) feature items
+    features = list(mongo.db.feature.find())
+
     # ---- Creates recipes found in carousel with a max of 3 recipes per card
-    # Generates list of recipes to be presented in carousel
-    iteration = 0
+    # Builds a list of recipes with matching feature
     featureRecipes = []
-    # gets dish features for comparason
     for feature in features:
-        # gets recipe feature to compare with dish features
-        allRecipeWithFeature = mongo.db.recipes.find({"feature": feature["name"]})  # I need refactoring
-        # Compares all recipe features for matching dish feature
-        for recipe in allRecipeWithFeature:
-            # first loop generates featurePrev variable
-            if (iteration == 0):
-                featurePrev = feature["name"]
-            # if iteration max is reached, prevents additional recipes
-            # from being posted, and resets iteration when a new dish
-            # feature is used
-            elif (iteration >= 3):
-                if (featurePrev == feature["name"]):
-                    continue
-                elif (featurePrev != feature["name"]):
-                    iteration = 0
-                    featurePrev = feature["name"]
-            # if dish feature doesnt match recipe feature it resets
-            #  iteration count and updates dish feature
-            elif (featurePrev != feature["name"]):
-                featurePrev = feature["name"]
-                iteration = 0
-            # Creates list to be used on carousel
-            if(iteration <= 3 and featurePrev == feature["name"]): #conditional iteration<= 3 not needed anymore
-                featureRecipes += [[recipe["feature"], recipe["name"], recipe["_id"]]]
+        recipeRandomTotal = []
+        recipesWithFeature = []
+        for recipe in totalRecipes:
+            if recipe['feature'] == feature['name']:
+                recipesWithFeature += [recipe]
+        print(len(recipesWithFeature), feature['name']  )
+        randomtotal = len(recipesWithFeature)
+
+        # Build a set of random numbers to pull recipes
+        # with matching features in a random order
+        iteration = 1
+        while True:
+            if randomtotal == 0:
+                break
+            randomRecipeNumber = random.randrange(1, randomtotal + 1)
+            if len(recipeRandomTotal) > 0:
+                iteration = 1
+                for recipeNumber in recipeRandomTotal:
+                    if randomRecipeNumber == recipeNumber:
+                        iteration += 1
+                        break
+                    elif len(recipeRandomTotal) == iteration:
+                        recipeRandomTotal += [randomRecipeNumber]
+                    iteration += 1
+            else:
+                recipeRandomTotal += [randomRecipeNumber]
+            # breaks random number generation with conditions are met
+            if len(recipeRandomTotal) >= 3 or len(recipeRandomTotal) == randomtotal:
+                break
+
+        # builds recipe list to be displayed in a random order
+        iteration = 1
+        for recipeNumber in recipeRandomTotal:
+            for recipe in recipesWithFeature:
+                if recipeNumber == iteration:
+                    featureRecipes += [[recipe["feature"], recipe["name"], recipe["_id"]]]
+                    iteration = 1
+                    break
                 iteration += 1
 
     # ---- Im grandmother classics
@@ -104,7 +116,6 @@ def index():
 
                 iteration += 1
 
-    print(recipeRandomTotal)
     # Loads recipe of the day
     # prints a random recipe form speified chef
     recipeRandom = random.randrange(1, totalRecipeCount + 1)
