@@ -7,7 +7,7 @@
 
                     <!-- header -->
                     <div class="col-12">
-                        <h1>Update {{userInfo.username}}'s' Information</h1>
+                        <h1>Update {{userInfo.username}}'s Information</h1>
                     </div>
 
                     <!-- User Name -->
@@ -17,7 +17,11 @@
                                 <label  type="text" for="usernameEdit">Name</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="usernameEdit" name="usernameEdit" value="{{ userInfo.username }}">
+                                <input type="text" id="usernameEdit" name="usernameEdit" value="{{ userInfo.username }}" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{5,20}$" invalid required>
+                            <div class="invalid-form make-invis">
+                                    <p class="invalid-form make-invis">Can only contain letters or numbers or '$%&#_' </p>
+                                    <p></p>
+                            </div>
                             </div>
                         </div>
                     </fieldset>
@@ -29,31 +33,48 @@
                                 <label  type="text" for="emailEdit">Email</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="emailEdit" name="emailEdit" value="{{ userInfo.email }}">
+                                <input type="email" id="emailEdit" name="emailEdit" value="{{ userInfo.email }}" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9@._&%$#]{6,30}$" invalid required>
+                                <div class="invalid-form make-invis">
+                                    <p class="invalid-form">Must be your current Email or an available email</p>
+                                    <p></p>
+                                </div>
+
                             </div>
                         </div>
                     </fieldset>
 
                     <!-- Password -->
-                    <fieldset class="col-12">
+                    <fieldset class="col-12 passwordSets"> <!-- passwordSets JS target -->
                         <div class="row no-gutters justify-content-center align-items-center">
                             <div class="col-6 recipe-form-label">
-                                <label  type="text" for="passwordEdit">Current Password</label>
+                                <label for="passwordEdit">Current Password</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="passwordEdit" name="passwordEdit" value="">
+                                <input class="form-invalid-view" type="password" id="passwordEdit" name="passwordEdit" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" invalid required>
+                                <div class="invalid-form make-invis">
+                                    <p>Password must contain upper case letter, lower case letter, a number, and be between 8 and 20 characters</p>
+                                    <p class="make-invis"></p>
+                                </div>
                             </div>
                             <div class="col-6 recipe-form-label">
-                                <label  type="text" for="newPasswordEdit">New Password</label>
+                                <label for="newPasswordEdit">New Password</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="newPasswordEdit" name="newPasswordEdit" value="">
+                                <input class="form-invalid-view passwordCompare" type="password" id="newPasswordEdit" name="newPasswordEdit" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" invalid required>
+                                <div class="invalid-form make-invis">
+                                    <p>Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                                    <p class="make-invis">New password and confirm new password must match</p>
+                                </div>
                             </div>
                             <div class="col-6 recipe-form-label">
-                                <label  type="text" for="NewPasswordCheckEdit">Confirm New Password</label>
+                                <label for="newPasswordCheckEdit">Confirm New Password</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <input type="text" id="NewPasswordCheckEdit" name="NewPasswordCheckEdit" value="">
+                                <input class="form-invalid-view passwordCompare" type="password" id="newPasswordCheckEdit" name="newPasswordCheckEdit" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" invalid required>
+                                <div class="invalid-form make-invis">
+                                    <p>Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                                    <p class="make-invis">New password and confirm new password must match</p>
+                                </div>
                             </div>
                         </div>
                     </fieldset>
@@ -65,7 +86,7 @@
                                 <label  type="text" for="Bio">Bio</label>
                             </div>
                             <div class="col-6 recipe-form-input">
-                                <textarea name="bio" id="bio" cols="30" rows="5">{{ userInfo.bio }}</textarea>
+                                <textarea name="bio" id="bio" cols="30" rows="5" minlength="8" maxlength="120" pattern="^[a-zA-Z0-9_&%$#]{8,120}$" required>{{ userInfo.bio }}</textarea>
                             </div>
                         </div>
                     </fieldset>

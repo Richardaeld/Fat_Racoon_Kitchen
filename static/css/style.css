@@ -367,6 +367,17 @@ footer {
 }
 
 /* ---------------------------------------- form ---------------------------------------- */
+input:invalid {
+   /* border: 2px solid rgb(255, 0, 0);*/
+}
+
+.form-invalid-view {
+    border: 2px solid rgb(255, 0, 0);
+
+}
+
+
+
 .custom-modal {
     position: absolute;
     left: 0;
@@ -424,6 +435,7 @@ footer {
 
 .form-login {
     background-color: #ebebeb;
+    background-color: rgba(235, 235, 235, .75);
     font-family: "Yanone+Kaffeesatz", sans-serif;
     margin: 2rem;
     border-radius: 5%;
@@ -475,8 +487,13 @@ footer {
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
 
+.recipe-form-input,
+.recipe-form-label {
+    padding-top:3rem;
+
+}
+
 .recipe-form label {
-    padding-top: .5rem;
 }
 
 .recipe-form-label {
@@ -485,8 +502,16 @@ footer {
     right: 1.5rem;
 }
 
+.recipe-form-input input {
+    height: 100%;
+    position: relative;
+    top: 0;
+    bottom: 0;
+}
+
 .recipe-form-input {
     text-align: start;
+    position: relative;
 }
 
 .recipe-form-select {
@@ -506,8 +531,47 @@ footer {
 }
 
 .invalid {
-    border: 2px solid rgb(255, 0, 0);
+    border: 2px solid rgb(14, 255, 255);
 }
+
+.invalid-form {
+    margin-top: 1rem;
+    width: 100%;
+    border: 2px solid rgb(14, 255, 255);
+    background-color: #eeeded;
+    position: absolute;
+    z-index: 4;
+}
+
+.form-is-valid {
+    display: none;
+}
+
+.invalid-form:before {
+    content: "";
+    z-index: 4;
+    position: absolute;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-top: 10px solid rgb(14, 255, 255);
+    border-bottom: 10px solid transparent;
+    transform: rotate(180deg);
+    top: -22px;
+    left: 2rem;
+}
+
+/*.invalid-form:after {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    border-right: 10px solid black;
+    border-left: 10px solid black;
+    border-top: 10px solid black;
+    border-bottom: 10px solid black;
+    height:20px;
+    width: 20px;
+}*/
+
 
 /* ---------------------------------------- Profile ---------------------------------------- */
 .profile-lists p {
