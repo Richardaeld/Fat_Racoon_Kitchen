@@ -53,9 +53,8 @@ function selectPasswordComapre(item, index) {
             newPassword.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
             newPasswordCheck.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
         }
-        let checkLengthPass = newPassword.parentElement.getElementsByTagName("p")
-        let checkLengthPassCheck = newPasswordCheck.parentElement.getElementsByTagName("p")
-        
+        let checkLengthPass = newPassword.getElementsByTagName("p")
+        let checkLengthPassCheck = newPasswordCheck.getElementsByTagName("p")
         finalValidation(newPassword, checkLengthPass)
         finalValidation(newPasswordCheck, checkLengthPassCheck)
     })
@@ -66,20 +65,20 @@ function selectPasswordComapre(item, index) {
 const  matchTypeUpper = /[A-Z]/
 const  matchTypeLower = /[a-z]/
 const  matchTypeNumber = /[0-9]/
-var findPasswords = document.getElementsByClassName("passwordSets")[0].querySelectorAll("input");
+var findPasswords = document.getElementsByClassName("passwordSets")[0].querySelectorAll(".recipe-form-input");
 findPasswords.forEach(selectPasswords);
 function selectPasswords(item, index){
 
     // Makes validation bubble visible on focus reverse on blur // -----------------move to bottom should be last check to see if all elements are invisible
-    item.addEventListener("focus", function() {
-        item.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
+    item.getElementsByTagName("input")[0].addEventListener("focus", function() {
+        item.getElementsByTagName("div")[0].classList.remove("make-invis")
     })
-    item.addEventListener("blur", function() {
-        item.parentElement.getElementsByTagName("div")[0].classList.add("make-invis")
+    item.getElementsByTagName("input")[0].addEventListener("blur", function() {
+        item.getElementsByTagName("div")[0].classList.add("make-invis")
     })
 
-    item.addEventListener("keyup", function () {
-        loc = item
+    item.getElementsByTagName("input")[0].addEventListener("keyup", function () {
+        loc = item.getElementsByTagName("input")[0]
 
         // I invalidate the form for base validation and reveal appropiate "p" tag
         if(loc.value.match(matchTypeUpper) == null || loc.value.match(matchTypeLower) == null || loc.value.match(matchTypeNumber) == null || loc.value.length < 8 || loc.value.length > 20){
@@ -100,7 +99,7 @@ function selectPasswords(item, index){
         //}
 
         //enables and disables validation bubble according to if input is valid or not
-        let checkLength = item.parentElement.getElementsByTagName("p")
+        let checkLength = item.getElementsByTagName("p")
         //final validation of form
         finalValidation(item, checkLength)
         
@@ -110,21 +109,20 @@ function selectPasswords(item, index){
 function finalValidation(item, checkPLength) {
     var formIsValid = true
     for (i=0; i< checkPLength.length; i++){
-        console.log(item)
         // Sets a validation variable as it checks over all possible invalidation points
-        if(item.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis") == false){                
+        if(item.getElementsByTagName("p")[i].classList.contains("make-invis") == false){                
             formIsValid = false
         }
 
         // Makes bubble visible or invisible according to fromIsValid variable
         if(formIsValid){
-            item.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid")
-            item.removeAttribute("invalid")
-            item.classList.remove("form-invalid-view")
+            item.getElementsByTagName("div")[0].classList.add("form-is-valid")
+            item.getElementsByTagName("input")[0].removeAttribute("invalid")
+            item.getElementsByTagName("input")[0].classList.remove("form-invalid-view")
         } else if(formIsValid == false){
-            item.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid")
-            item.setAttribute("invalid", "")
-            item.classList.add("form-invalid-view")
+            item.getElementsByTagName("div")[0].classList.remove("form-is-valid")
+            item.getElementsByTagName("input")[0].setAttribute("invalid", "")
+            item.getElementsByTagName("input")[0].classList.add("form-invalid-view")
             break
         }
     }
