@@ -105,6 +105,7 @@
 .index-back{
     min-height: 20rem;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     position: absolute;
     width: 100%;
 }
