@@ -367,16 +367,17 @@ footer {
 }
 
 /* ---------------------------------------- form ---------------------------------------- */
+fieldset {
+    display: inline-block;
+}
+
 input:invalid {
    /* border: 2px solid rgb(255, 0, 0);*/
 }
 
 .form-invalid-view {
     border: 2px solid rgb(255, 0, 0);
-
 }
-
-
 
 .custom-modal {
     position: absolute;
@@ -457,8 +458,8 @@ input:invalid {
     text-align: right;
 /*    width: 30%;*/
     padding-top: 1rem;
-    font-size: 1.5rem;
-    text-shadow: 2px 2px #fff;
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 2px #a7a7a7;
 }
 
 .form-login input {
@@ -492,6 +493,10 @@ input:invalid {
     padding-top:3rem;
 
 }
+
+
+
+
 
 .recipe-form label {
 }
@@ -572,7 +577,17 @@ input:invalid {
     width: 20px;
 }*/
 
+@media (max-width: 767.98px) {
+.recipe-form-input{
+    padding-top: 1rem;
+}
+.recipe-form-input,
+.recipe-form-label {
+    text-align: center;
+    right: 0;
 
+} 
+}
 /* ---------------------------------------- Profile ---------------------------------------- */
 .profile-lists p {
     text-align: left;

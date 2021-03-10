@@ -58,6 +58,7 @@ function selectPasswordComapre(item, index) {
 }
 
 // ---- Form Validation for passwords
+//Set by a class name at fieldset and query alled with input 
 //form REGEX
 const  matchTypeUpper = /[A-Z]/
 const  matchTypeLower = /[a-z]/
