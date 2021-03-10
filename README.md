@@ -93,6 +93,7 @@ in college, let us know!
 ### Live Demo
 
 ## Scalability
++ backend varify of image size and type instead of JS validation
 
 # Technology Languages
 + HTML - Skeleton frame of the application.
