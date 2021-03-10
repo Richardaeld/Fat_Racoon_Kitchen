@@ -42,17 +42,13 @@ findPasswordComapre.forEach(selectPasswordComapre);
 function selectPasswordComapre(item, index) {
     item.addEventListener("keyup", function () {
         if(newPassword.value == newPasswordCheck.value){
-        //    newPassword.removeAttribute("invalid")
-         //   newPasswordCheck.removeAttribute("invalid")
             newPassword.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
             newPasswordCheck.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
-            
         }else{
-        //    newPassword.setAttribute("invalid", "")
-        //    newPasswordCheck.setAttribute("invalid", "")
             newPassword.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
             newPasswordCheck.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
         }
+
         let checkLengthPass = newPassword.parentElement.getElementsByTagName("p")
         let checkLengthPassCheck = newPasswordCheck.parentElement.getElementsByTagName("p")
         
@@ -70,7 +66,7 @@ var findPasswords = document.getElementsByClassName("passwordSets")[0].querySele
 findPasswords.forEach(selectPasswords);
 function selectPasswords(item, index){
 
-    // Makes validation bubble visible on focus reverse on blur // -----------------move to bottom should be last check to see if all elements are invisible
+    // Makes validation bubble visible on focus reverse on blur 
     item.addEventListener("focus", function() {
         item.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
     })
@@ -84,26 +80,17 @@ function selectPasswords(item, index){
         // I invalidate the form for base validation and reveal appropiate "p" tag
         if(loc.value.match(matchTypeUpper) == null || loc.value.match(matchTypeLower) == null || loc.value.match(matchTypeNumber) == null || loc.value.length < 8 || loc.value.length > 20){
             loc.parentElement.getElementsByTagName("p")[0].classList.remove("make-invis")
-        //    loc.classList.add("form-invalid-view")
         }
 
         // If all base requirements are met I validate the form for base validation and remove the appropiate "p" tag
         if(loc.value.match(matchTypeUpper) && loc.value.match(matchTypeLower) && loc.value.match(matchTypeNumber) && loc.value.length >= 8 && loc.value.length <= 20){
-           // loc.removeAttribute("invalid") /// ---------move to bottom should be last check ----should check for visible elements
             loc.parentElement.getElementsByTagName("p")[0].classList.add("make-invis")
-        //    loc.classList.remove("form-invalid-view")
-            
-        }//else{
-          //  loc.parentElement.getElementsByTagName("p")[0].classList.remove("make-invis")
-          //  loc.classList.add("form-invalid-view")
-
-        //}
+        }
 
         //enables and disables validation bubble according to if input is valid or not
         let checkLength = item.parentElement.getElementsByTagName("p")
         //final validation of form
         finalValidation(item, checkLength)
-        
     })
 }
 
