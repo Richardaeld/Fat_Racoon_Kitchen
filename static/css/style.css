@@ -70,6 +70,10 @@ header {
     background-color: rgb(153, 220, 236);
 }
 
+.make-invis {
+    display: none;
+}
+
 /* ---------------------------------------- Index Page  ---------------------------------------- */
 /* ---------------------------------------- Header and Logo ---------------------------------------- */
 .logo-background {
@@ -366,19 +370,70 @@ footer {
     }
 }
 
-/* ---------------------------------------- form ---------------------------------------- */
+/* ---------------------------------------- form for both login AND add/edit user input ---------------------------------------- */
 fieldset {
     display: inline-block;
 }
 
+
 input:invalid {
    /* border: 2px solid rgb(255, 0, 0);*/
+}
+
+.invalid {  /*------------------------------------do I work??*/
+    border: 2px solid rgb(14, 255, 255);
 }
 
 .form-invalid-view {
     border: 2px solid rgb(255, 0, 0);
 }
 
+.invalid-form {
+    margin-top: 1rem;
+    width: 100%;
+    border: 2px solid rgb(14, 255, 255);
+    background-color: #eeeded;
+    position: absolute;
+    z-index: 4;
+}
+
+.form-is-valid {
+    display: none;
+}
+
+.invalid-form:before {
+    content: "";
+    z-index: 4;
+    position: absolute;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-top: 10px solid rgb(14, 255, 255);
+    border-bottom: 10px solid transparent;
+    transform: rotate(180deg);
+    top: -22px;
+    left: 2rem;
+}
+
+.custom-button {
+    width: auto;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    border: 2px solid #474747;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, .5 );
+}
+
+#custom-button-login,
+#custom-button {
+    width: auto;
+}
+
+.custom-button-press {
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25 ),
+                inset -2px -2px 2px rgba(0, 0, 0, .25 );
+}
+
+
+/* ---------------------------------------- login form ---------------------------------------- */
 .custom-modal {
     position: absolute;
     left: 0;
@@ -400,10 +455,6 @@ input:invalid {
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, .75);
-}
-
-.make-invis {
-    display: none;
 }
 
 .tab-body {
@@ -434,9 +485,9 @@ input:invalid {
     margin-right: 1.5rem;
 }
 
-.form-login {
+.form-base {
     background-color: #ebebeb;
-    background-color: rgba(235, 235, 235, .75);
+    background-color: rgba(235, 235, 235, 0.75);
     font-family: "Yanone+Kaffeesatz", sans-serif;
     margin: 2rem;
     border-radius: 5%;
@@ -446,7 +497,7 @@ input:invalid {
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
 
-.form-login h1 {
+.form-base h1 {
     padding: 1rem;
 }
 
@@ -454,51 +505,33 @@ input:invalid {
     width: 30%
 } 
 
-.form-login label {
-    text-align: right;
+.form-base label {
+/*    text-align: right; */ /*--------------------------------I need to be added more directly to avoid problems*/
 /*    width: 30%;*/
     padding-top: 1rem;
     font-size: 1.25rem;
     text-shadow: 1px 1px 2px #a7a7a7;
 }
 
-.form-login input {
-    text-align: left;
-    width: 60%;
+.form-base input,
+.form-base textarea {
     box-shadow: 1px 1px 2px rgba(0, 0, 0, .25 ),
                 -1px -1px 2px rgba(0, 0, 0, .15 ),
                 inset 1px 1px 2px rgba(0, 0, 0, .25),
                 inset -1px -1px 2px rgba(0, 0, 0, .25 );
 }
 
-.custom-button {
-    width: auto;
-    margin-bottom: 1.5rem;
-    margin-top: 1rem;
-    border: 2px solid #474747;
-    box-shadow: 4px 4px 2px rgba(0, 0, 0, .5 );
-}
-#custom-button-login,
-#custom-button {
-    width: auto;
+.form-base input {
+    text-align: left;
+    width: 60%;
+
 }
 
-.custom-button-press {
-    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25 ),
-                inset -2px -2px 2px rgba(0, 0, 0, .25 );
-}
-
+/* ---------------------------------------- add/edit userform ---------------------------------------- */
 .recipe-form-input,
 .recipe-form-label {
     padding-top:3rem;
 
-}
-
-
-
-
-
-.recipe-form label {
 }
 
 .recipe-form-label {
@@ -535,59 +568,44 @@ input:invalid {
     text-align: right;
 }
 
-.invalid {
-    border: 2px solid rgb(14, 255, 255);
+.recipe-time label,
+.recipe-time input {
+    text-align: center;
+    margin-top: 0rem;
 }
 
-.invalid-form {
-    margin-top: 1rem;
-    width: 100%;
-    border: 2px solid rgb(14, 255, 255);
-    background-color: #eeeded;
-    position: absolute;
-    z-index: 4;
+.recipe-time {
+    margin-top: 1.5rem;
 }
 
-.form-is-valid {
-    display: none;
+.recipe-time p {
+    padding-top: 0.25rem;
+    font-size: 1.25rem;
 }
 
-.invalid-form:before {
-    content: "";
-    z-index: 4;
-    position: absolute;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    border-top: 10px solid rgb(14, 255, 255);
-    border-bottom: 10px solid transparent;
-    transform: rotate(180deg);
-    top: -22px;
-    left: 2rem;
+.form-header {
+    padding-top: 1.5rem;
 }
-
-/*.invalid-form:after {
-    content: "";
-    position: absolute;
-    z-index: 4;
-    border-right: 10px solid black;
-    border-left: 10px solid black;
-    border-top: 10px solid black;
-    border-bottom: 10px solid black;
-    height:20px;
-    width: 20px;
-}*/
+.step-ingredient-spacing {
+    padding-bottom: 0.5rem;
+}
 
 @media (max-width: 767.98px) {
-.recipe-form-input{
-    padding-top: 1rem;
-}
-.recipe-form-input,
-.recipe-form-label {
-    text-align: center;
-    right: 0;
+    .recipe-form-input{
+       /* padding-top: 1rem;*/
+    }
 
-} 
+    .recipe-form-input,
+    .recipe-form-label {
+        text-align: center;
+        right: 0;
+        padding-top: 1rem;
+    } 
+    .recipe-form fieldset {
+        margin-bottom: 1rem;
+    }
 }
+
 /* ---------------------------------------- Profile ---------------------------------------- */
 .profile-lists p {
     text-align: left;

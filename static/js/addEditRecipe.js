@@ -13,9 +13,10 @@ function useTime(item, index){
 }
 
 // ---- Create/Remove boxes for user input of ingredients/steps
-function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, removeButton) {
-    let arrayIngredientLength = document.getElementsByClassName(addRemoveLoc)[0].querySelectorAll("input").length;
-    let totalLoc = document.getElementById(totalLocId).options[0];
+function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, removeButton, inputOrTextarea) {
+    let arrayIngredientLength = document.getElementsByClassName(addRemoveLoc)[0].querySelectorAll(inputOrTextarea).length;
+    //let totalLoc = document.getElementById(totalLocId).options[0]; //-----------------------------------number location
+    let totalLoc = document.getElementById(totalLocId).getElementsByTagName("span")[0]; //-----------------------------------number location
     let addRemoveLocation = document.getElementsByClassName(addRemoveLoc)[0];
     totalLoc.value = arrayIngredientLength;
     totalLoc.textContent = arrayIngredientLength;
@@ -26,17 +27,22 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         arrayIngredientLength++;
         // Creation of elements and adding of content
         let createDivCol = document.createElement("div");
-        createDivCol.className = "col-6 step-ingredient-number"
+        createDivCol.className = "col-12 col-md-6 step-ingredient-number"
         let createDivRow = document.createElement("div");
-        createDivRow.className = "row no-gutters"
+        createDivRow.className = "row no-gutters align-items-center step-ingredient-spacing"
         let createSpan = document.createElement("span");
         createSpan.textContent = arrayIngredientLength + ". ";
-        createSpan.className = "col-1"
-        let createInput = document.createElement("input");
+        createSpan.className = ""
+        let createInput = document.createElement(inputOrTextarea);
+
         createInput.className = "col-11"
         createInput.id = arrayClass + arrayIngredientLength
         createInput.name = arrayClass + arrayIngredientLength
         createInput.type = "text"
+        if(inputOrTextarea == "textarea"){
+            createInput.rows = "3"
+            createInput.cols = "20"
+        }
 
         // sets Value of select for user to see the number of availiable boxes
         totalLoc.value = arrayIngredientLength;
@@ -50,7 +56,7 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
     })
-
+    // Removes boxes
     document.querySelector(removeButton).addEventListener("click", function() {
         if (arrayIngredientLength > 1){
             childTotal = addRemoveLocation.children.length
@@ -64,8 +70,9 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
     })
 }
 
-createRemoveFormBoxes("ingredientAddRemoveLocation", "recipeIngredientsTotal", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton");
-createRemoveFormBoxes("stepAddRemoveLocation", "recipeStepsTotal", ".stepAddButton", "recipeSteps-", ".stepRemoveButton");
+//createRemoveFormBoxes("ingredientAddRemoveLocation", "recipeIngredientsTotal", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton");
+createRemoveFormBoxes("ingredientAddRemoveLocation", "ingredientNumber", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton", "input");
+createRemoveFormBoxes("stepAddRemoveLocation", "stepNumber", ".stepAddButton", "recipeSteps-", ".stepRemoveButton", "textarea");
 
 console.log(imageName);
 // Removes disabled attribute tag when submit button is pushed (so form can be read)
