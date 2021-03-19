@@ -27,7 +27,7 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         arrayIngredientLength++;
         // Creation of elements and adding of content
         let createDivCol = document.createElement("div");
-        createDivCol.className = "col-12 col-md-6 step-ingredient-number"
+        createDivCol.className = "col-12 col-md-6"
         let createDivRow = document.createElement("div");
         createDivRow.className = "row no-gutters align-items-center step-ingredient-spacing"
         let createSpan = document.createElement("span");
