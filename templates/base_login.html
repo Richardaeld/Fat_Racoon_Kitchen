@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Fat Racoon Kitchen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/art-background.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link rel="icon" href="{{ url_for('static', filename='images/raccoon_favicon.png') }}" type="image/gif">
+    {% block custom_style %}
+    {% endblock %}
+</head>
+<body>
+    {% block modal %}
+    {% endblock %}
+
+    <!-- header holds "logo" and company name-->
+    <header class="row no-gutters justify-content-center picnic-pattern align-items-center blank-anchor">
+        <div class="col-10 col-md-4 logo-background">
+            <a href="{{ url_for('index') }}">
+                <h1 class="header-text-1">Fat</h1>
+                <h1 class="header-text-2">Raccoon</h1>
+                <!-- slogan -- Today's scraps are tomorrows Meals!  -->
+            </a>
+        </div>
+        <div>
+
+            <!-- Site main nav bar -->
+            <nav class="custom-nav d-none d-lg-block d-xl-block d-xxl-block">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('lessons') }}">Lessons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('all_recipes') }}">Recipes</a>
+                    </li>
+                    {% if session.user == null %}
+                    <li class="nav-item">
+                        <a class="nav-link login-modal" href="#">Login</a>
+                    </li>
+                    {% endif %}
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item searchBar search-bar">
+                        <a class="nav-link" href="#" >
+                            <form class="" method="POST" action="{{ url_for('index') }}">
+                                <label for="userSearch">Search</label>
+                                <input type="text" name="userSearch" id="userSearch1" class="make-invis user-form-search-height">
+                                <input type="text" name="formType" value="search" class="make-invis" aria-hidden="true">
+                                <button class="search-icon" disabled>
+                                    <input type="submit" value="search" class="make-invis">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <aside id="flash">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="row no-gutters justify-content-center flash align-items-center">
+                    <div class="col-10">
+                        <h1> {{ message }} </h1>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {%endwith%}
+    </aside>
+
+    <!-- Site main nav bar -->
+    <nav class="custom-nav d-block d-sm-block d-md-block d-lg-none blank-anchor">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('lessons') }}">Lessons</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('all_recipes') }}">Recipes</a>
+            </li>
+            {% if session.user == null %}
+            <li class="nav-item">
+                <a class="nav-link login-modal" href="#">Login</a>
+            </li>
+            {% endif %}
+            {% if session.user %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+            {% endif %}
+            <li class="nav-item searchBar search-bar">
+                <a class="nav-link" href="#" >
+                    <form class="" method="POST" action="{{ url_for('index') }}">
+                        <label for="userSearch">Search</label>
+                        <input type="text" name="userSearch" id="userSearch2" class="make-invis user-form-search-height">
+                        <input type="text" name="formType" value="search" class="make-invis" aria-hidden="true">
+                        <button class="search-icon">
+                            <input type="submit" value="search" class="make-invis">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+    {% block section %}
+    {% endblock %}
+
+    <!--  Footer  -->
+    <footer class="row no-gutters align-items-center">
+        <div class="col-12 racoon-pattern table-runner-pattern"></div>
+        <div class="col-12">
+            <div class="row no-gutters justify-content-center">
+
+                <!--  Logo  -->
+                <div class="col-md-4 col-lg-5 col-xl-6 d-none d-md-block logo-background blank-anchor">
+                    <a href="{{ url_for('index') }}">
+                        <h1 class="header-text-1">Fat</h1>
+                        <h1 class="header-text-2">Raccoon</h1>
+                    </a>
+                </div>
+
+                <!--  Links and Social Links  -->
+                <div class="col-10 col-md-7 col-lg-6 col-xl-5">
+                    <div class="row no-gutters">
+                        <div class="col-12 col-md-12">
+                            <!--  Nav Links  -->
+                            <ul class="footer-ul footer-ul-bottom napkin-link-push row no-gutters justify-content-center blank-anchor">
+
+                                <li class="col-6 col-sm-3">
+                                    <a href="{{ url_for('index') }}">
+                                    <div class="social-position">
+                                        <div class="napkin-out-container napkin-nav ">
+                                                <p>Fat Raccoon</p>
+                                                <div class="napkin-shadow"></div>
+                                                <div class="napkin-border-lines"></div>
+                                                <div class="napkin-horizontal-lines"></div>
+                                                <div class="napkin-vertical-lines"></div>
+                                                <div class="napkin-right-triangle-corner"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class=" col-6 col-sm-3">
+                                    <a href="{{ url_for('lessons') }}">
+                                        <div class="social-position">
+                                            <div class="napkin-out-container napkin-nav">
+                                                <p>FR Lessons</p>
+                                                <div class="napkin-shadow"></div>
+                                                <div class="napkin-border-lines"></div>
+                                                <div class="napkin-horizontal-lines"></div>
+                                                <div class="napkin-vertical-lines"></div>
+                                                <div class="napkin-right-triangle-corner"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class=" col-6 col-sm-3">
+                                    <a href="{{ url_for('all_recipes') }}">
+                                        <div class="social-position">
+                                            <div class="napkin-out-container napkin-nav">
+                                                <p>FR Recipes</p>
+                                                <div class="napkin-shadow"></div>
+                                                <div class="napkin-border-lines"></div>
+                                                <div class="napkin-horizontal-lines"></div>
+                                                <div class="napkin-vertical-lines"></div>
+                                                <div class="napkin-right-triangle-corner"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class=" col-6 col-sm-3 d-none d-sm-block">
+                                    <a href="{{ url_for('index') }}">
+                                        <div class="social-position">
+                                            <div class="napkin-out-container napkin-nav">
+                                                <img class="racoon-face" src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="fat raccoon face">
+                                                <div class="napkin-shadow"></div>
+                                                <div class="napkin-border-lines"></div>
+                                                <div class="napkin-horizontal-lines"></div>
+                                                <div class="napkin-vertical-lines"></div>
+                                                <div class="napkin-right-triangle-corner"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <div class="col-12 col-md-12">
+                            <!--  Social Links  -->     
+                            <ul class=" footer-ul social-link-push row no-gutters justify-content-center">
+
+                                <li class=" col-6 col-sm-3">
+                                    <div class="social-position">
+                                        <div class="liquid"></div>
+                                        <div class="glass"></div>
+                                        <div class="glass-shadow"></div>
+                                        <span class="ripple"></span>
+                                        <a href="https://www.facebook.com/" target="_blank" aria-label="External link to Fat Raccoon's Facebook">
+                                            <i class="fab fa-facebook-square social-link" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="napkin-out-container">
+                                            <div class="napkin-shadow"></div>
+                                            <div class="napkin-border-lines"></div>
+                                            <div class="napkin-horizontal-lines"></div>
+                                            <div class="napkin-vertical-lines"></div>
+                                            <div class="napkin-right-triangle-corner"></div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class=" col-6 col-sm-3">
+                                    <div class="social-position">
+                                        <div class="liquid"></div>
+                                        <div class="glass"></div>
+                                        <div class="glass-shadow"></div>
+                                        <span class="ripple"></span>
+                                        <a href="https://www.instagram.com/" target="_blank" aria-label="External link to Fat Raccoon's Instagram">
+                                            <i class="fab fa-instagram social-link" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="napkin-out-container">
+                                            <div class="napkin-shadow"></div>
+                                            <div class="napkin-border-lines"></div>
+                                            <div class="napkin-horizontal-lines"></div>
+                                            <div class="napkin-vertical-lines"></div>
+                                            <div class="napkin-right-triangle-corner"></div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class=" col-6 col-sm-3">
+                                    <div class="social-position">
+                                        <div class="liquid"></div>
+                                        <div class="glass"></div>
+                                        <div class="glass-shadow"></div>
+                                        <span class="ripple create-ripple"></span>
+                                        <a href="https://www.pinterest.com/" target="_blank" aria-label="External link to Fat Raccoon's Pinterest">
+                                            <i class="fab fa-pinterest-square social-link" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="napkin-out-container">
+                                            <div class="napkin-shadow"></div>
+                                            <div class="napkin-border-lines"></div>
+                                            <div class="napkin-horizontal-lines"></div>
+                                            <div class="napkin-vertical-lines"></div>
+                                            <div class="napkin-right-triangle-corner"></div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class=" col-6 col-sm-3">
+                                    <div class="social-position">
+                                        <div class="liquid"></div>
+                                        <div class="glass"></div>
+                                        <div class="glass-shadow"></div>
+                                        <span class="ripple"></span>
+                                        <a href="https://twitter.com/?lang=en" target="_blank" aria-label="External link to Fat Raccoon's Twitter">
+                                            <i class="fab fa-twitter-square social-link " aria-hidden="true"></i>
+                                        </a>
+                                        <div class="napkin-out-container">
+                                            <div class="napkin-shadow"></div>
+                                            <div class="napkin-border-lines"></div>
+                                            <div class="napkin-horizontal-lines"></div>
+                                            <div class="napkin-vertical-lines"></div>
+                                            <div class="napkin-right-triangle-corner"></div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/searchBar.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/general.js') }}"></script>
+    {% block custom_script %}
+    {% endblock %}
+</body>
+</html>
