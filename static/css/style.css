@@ -70,6 +70,7 @@ header {
     background-color: rgb(153, 220, 236);
 }
 
+.form-is-valid,
 .make-invis {
     display: none;
 }
@@ -370,93 +371,8 @@ footer {
     }
 }
 
-/* ---------------------------------------- form for both login AND add/edit user input ---------------------------------------- */
-fieldset {
-    display: inline-block;
-}
-
-
-input:invalid {
-   /* border: 2px solid rgb(255, 0, 0);*/
-}
-
-.invalid {  /*------------------------------------do I work??*/
-    border: 2px solid rgb(14, 255, 255);
-}
-
-.form-invalid-view {
-    border: 2px solid rgb(255, 0, 0);
-}
-
-.invalid-form {
-    margin-top: 1rem;
-    width: 100%;
-    border: 2px solid rgb(14, 255, 255);
-    background-color: #eeeded;
-    position: absolute;
-    z-index: 4;
-}
-
-.form-is-valid {
-    display: none;
-}
-
-.invalid-form:before {
-    content: "";
-    z-index: 4;
-    position: absolute;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    border-top: 10px solid rgb(14, 255, 255);
-    border-bottom: 10px solid transparent;
-    transform: rotate(180deg);
-    top: -22px;
-    left: 2rem;
-}
-
-.custom-button {
-    width: auto;
-    margin-bottom: 1.5rem;
-    margin-top: 1rem;
-    border: 2px solid #474747;
-    box-shadow: 4px 4px 2px rgba(0, 0, 0, .5 );
-}
-
-#custom-button-login,
-#custom-button {
-    width: auto;
-}
-
-.custom-button-press {
-    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25 ),
-                inset -2px -2px 2px rgba(0, 0, 0, .25 );
-}
-
-
-/* ---------------------------------------- login form ---------------------------------------- */
-.custom-modal {
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 3;
-}
-
-.custom-modal h1 {
-    display: inline-block;
-}
-
-.custom-modal p{
-    display: inline-block;
-    transform: skew(0deg);
-}
-
-.modal-background {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, .75);
-}
-
+/* ---------------------------------------- Form general styles  ---------------------------------------- */
+/* tabs are header (login & create account) for user login */
 .tab-body {
     font: 1.5rem "Yanone+Kaffeesatz", sans-serif;
     border-bottom: 2px solid #010203;
@@ -485,9 +401,77 @@ input:invalid {
     margin-right: 1.5rem;
 }
 
+fieldset {
+    display: inline-block;
+}
+
+/* Form validation styles */
+.invalid {  /*------------------------------------do I work??*/
+    border: 2px solid rgb(14, 255, 255);
+}
+
+.form-invalid-view {
+    border: 2px solid rgb(255, 0, 0);
+}
+
+/* parent popup box */
+.invalid-form {
+    margin-top: 1rem;
+    width: 100%;
+    border: 2px solid rgb(14, 255, 255);
+    background-color: #eeeded;
+    position: relative;
+    z-index: 4;
+    right: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* pointer triangle */
+.invalid-form:before {
+    content: "";
+    z-index: 4;
+    position: absolute;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-top: 10px solid rgb(14, 255, 255);
+    border-bottom: 10px solid transparent;
+    transform: rotate(180deg) translateX(50%) translateX(-1rem);
+    top: -22px;
+}
+
+/* login and create modal */
+.custom-modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.custom-modal h1 {
+    display: inline-block;
+}
+
+.custom-modal span{
+    display: inline-block;
+    transform: skew(0deg);
+}
+
+.user-modal-spacing {
+    margin-bottom: 1.5rem;
+}
+
+.modal-background {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, .75);
+}
+
+/* basic form style */
 .form-base {
     background-color: #ebebeb;
-    background-color: rgba(235, 235, 235, 0.75);
+    background-color: rgba(235, 235, 235, 0.75); /*----------------------------------------- reconsider background opacity*/
+    background-color: rgba(235, 235, 235, 1);
     font-family: "Yanone+Kaffeesatz", sans-serif;
     margin: 2rem;
     border-radius: 5%;
@@ -497,113 +481,72 @@ input:invalid {
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
 
-.form-base h1 {
-    padding: 1rem;
+.form-base hr {
+    width: 50%;
+    margin-bottom: 2.5rem;
 }
 
-.form-login-label-width {
-    width: 30%
-} 
+.form-input-spacing { /*----------Im new !! AND IMPORTANT*/
+    padding-bottom: 3rem
+}
+
+.form-base h1 {
+    padding: 0rem 1rem;
+    margin-top: 1.5rem;
+}
+
+.form-base p {
+    font-size: 1.25rem;
+    padding-top: 0.25rem;
+}
 
 .form-base label {
-/*    text-align: right; */ /*--------------------------------I need to be added more directly to avoid problems*/
-/*    width: 30%;*/
-    padding-top: 1rem;
     font-size: 1.25rem;
     text-shadow: 1px 1px 2px #a7a7a7;
+    /*----------------------new*/
+    text-align: center;    
+    white-space: nowrap;
+    padding-bottom: 0.25rem;
+}
+
+.form-base input {
+    text-align: center;
 }
 
 .form-base input,
 .form-base textarea {
+    width: 80%;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, .25 ),
                 -1px -1px 2px rgba(0, 0, 0, .15 ),
                 inset 1px 1px 2px rgba(0, 0, 0, .25),
                 inset -1px -1px 2px rgba(0, 0, 0, .25 );
 }
 
-.form-base input {
-    text-align: left;
-    width: 60%;
-
+@media (max-width: 767.98px) {
+    .form-base input,
+    .form-base label {
+    } 
 }
+/* ---------------------------------------- form unique styles ---------------------------------------- */
 
-/* ---------------------------------------- add/edit userform ---------------------------------------- */
-.recipe-form-input,
-.recipe-form-label {
-    padding-top:3rem;
 
-}
-
-.recipe-form-label {
-    white-space: nowrap;
-    text-align: end;
-    right: 1.5rem;
-}
-
-.recipe-form-input input {
-    height: 100%;
-    position: relative;
-    top: 0;
-    bottom: 0;
-}
-
-.recipe-form-input {
-    text-align: start;
-    position: relative;
-}
-
-.recipe-form-select {
-    width: 100%;
-}
-
-.recipe-form fieldset {
-    margin-bottom: 2rem;
-}
-
-.recipe-form textarea {
-    width: 80%;
-}
-
-.step-ingredient-number span {
-    text-align: right;
-}
-
-.recipe-time label,
-.recipe-time input {
-    text-align: center;
-    margin-top: 0rem;
-}
-
-.recipe-time {
-    margin-top: 1.5rem;
-}
-
-.recipe-time p {
-    padding-top: 0.25rem;
-    font-size: 1.25rem;
-}
-
-.form-header {
-    padding-top: 1.5rem;
-}
+/* Form ingredient and step boxes */
 .step-ingredient-spacing {
     padding-bottom: 0.5rem;
 }
 
-@media (max-width: 767.98px) {
-    .recipe-form-input{
-       /* padding-top: 1rem;*/
-    }
+/* form and all button styles */
+.custom-button {
+    width: auto!important;
+    margin-bottom: 1.5rem;
+    border: 2px solid #474747;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, .5 );
+}
 
-    .recipe-form-input,
-    .recipe-form-label {
-        text-align: center;
-        right: 0;
-        padding-top: 1rem;
-    } 
-    .recipe-form fieldset {
-        margin-bottom: 1rem;
-    }
+
+.custom-button-press {
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .25 ),
+                inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
 
 /* ---------------------------------------- Profile ---------------------------------------- */
