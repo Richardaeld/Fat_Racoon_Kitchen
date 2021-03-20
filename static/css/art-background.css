@@ -72,19 +72,19 @@
 
 /* outer layer */
 .rotating-card {
-    min-height: 20rem;
+    height: 20rem;
     text-align: left;
     perspective: 1000px;
     margin: 2rem 3rem;
 }
 
 .rotating-card p {
-    font-size: 2rem!important;
+    font-size: 2rem;
 }
-
+/*
 .rotating-card span p {
     text-align: right;
-}
+}*/
 
 .rotating-card h2 {
     text-decoration: underline;
@@ -103,7 +103,7 @@
 
 .index-face,
 .index-back{
-    min-height: 20rem;
+    height: 20rem;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     position: absolute;
@@ -126,6 +126,32 @@
     margin-bottom: 0rem;
     text-align: left;
 }
+
+@media (max-width: 767.98px) {
+    .rotating-card p {
+        font-size: 1.25rem;
+    }
+    .rotating-card h2 {
+        font-size: 1.75rem;
+    }
+    .rotating-card {
+        height: 17rem;
+    }
+    .index-face,
+    .index-back {
+        height: 17rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .rotating-card p {
+        font-size: 1.25rem;
+    }
+    .rotating-card h2 {
+        font-size: 1.5rem;
+    }  
+}
+
 
 .woodgrain-background {
     background: url("../images/cuttingboard-90.jpg") 0% 0% / 100% 100%; /* table background image */
