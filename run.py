@@ -157,11 +157,16 @@ def index():
             flash("This email was already taken!")
             return redirect(url_for("index"))
 
+        # Checks to be sure passwords match
+        if generate_password_hash(request.form.get("passwordCheck")) != generate_password_hash(request.form.get("password")):
+            flash("Passwords do not match")
+            return redirect(url_for("index"))
+
         # Gather form information and submit to DB
         create = {
             "username": request.form.get("name"),
             "email": request.form.get("email").lower(),
-            "password": generate_password_hash(request.form.get("password")),
+            "password": generate_password_hash(request.form.get("passwordCheck")),
             "avatar": None,
             "avatar_id": None,
             "bio": "",
@@ -488,6 +493,7 @@ def edit_user_info():
         # Password validation fail
         elif (passwordCheck is False):
             flash("Current password does not match your login password")
+            flash("Could not update your profile")
             return(redirect(url_for("edit_user_info")))
 
         # Unexpected unknown error
