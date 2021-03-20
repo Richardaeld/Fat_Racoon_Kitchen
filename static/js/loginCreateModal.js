@@ -39,7 +39,7 @@ function tabSelect(item, index) {
 
             }
             //sets submit button value
-            document.getElementById("custom-button-login").value = "Login"
+            document.getElementById("custom-button").value = "Login"
             document.getElementById("password").parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
 
         } else {
@@ -49,7 +49,7 @@ function tabSelect(item, index) {
                 tabLoc[i].getElementsByTagName("input")[0].setAttribute("required", "");
             }
             // Sets submit button value
-            document.getElementById("custom-button-login").value = "Create"
+            document.getElementById("custom-button").value = "Create"
         }
 
         // Changes the filter from Login to create account on click

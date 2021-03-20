@@ -39,7 +39,7 @@
                             <label class="" type="text" for="name">Name:</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input type="text" id="name" name="name" value="JaneDoe" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
+                            <input class="nameEmailValidation" type="text" id="name" name="name" value="JaneDoe" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
                         </div>
                     </div>
                 </div>
@@ -51,19 +51,19 @@
                         </div>    
                         <div class="col-12 col-md-8">
                             <!-- -----------------------------------formbase label class is expanind me through label padding -->
-                            <input class="" type="email" id="email" name="email" value="fatraccoon@aol.com" minlength="5" maxlength="20"  required>
+                            <input class="nameEmailValidation" type="email" id="email" name="email" value="fatraccoon@aol.com" minlength="5" maxlength="20"  required>
                         </div>
 
                     </div>
                 </div>
                 
-                <fieldset class="col-12 passwordSets">
+                <fieldset class="col-12">
                     <div class="row no-gutters login-account user-modal-spacing">
                         <div class="col-12 col-md-4">
                             <label class="" type="password" for="password">Password:</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input class="form-invalid-view passwordCompare" type="password" id="password" name="password" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
+                            <input class="form-invalid-view passwordSets passwordCompare" type="password" id="password" name="password" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
                             <div class="invalid-form make-invis">
                                 <p class="">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                                 <p class="make-invis">New password and confirm new password must match</p>
@@ -76,7 +76,7 @@
                             <label class="" type="password" for="passwordCheck">Confirm Password:</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input class="form-invalid-view passwordCompare" type="password" id="passwordCheck" name="passwordCheck" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
+                            <input class="form-invalid-view passwordSets passwordCompare" type="password" id="passwordCheck" name="passwordCheck" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
                             <div class="invalid-form make-invis">
                                 <p>Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                                 <p class="make-invis">New password and confirm new password must match</p>
@@ -88,7 +88,8 @@
             </div>
 
             <input type="text" name="formType" value="login" class="make-invis" aria-hidden="true">
-            <input class="custom-button login-account" id="custom-button-login" name="custom-button-login" type="submit" value="Login">
+            <!-- -------------------------   ID USED TO BE: custom-button-login-->
+            <input class="custom-button login-account" id="custom-button" name="custom-button-login" type="submit" value="Login" disabled>
         </form>
         
     </aside>
