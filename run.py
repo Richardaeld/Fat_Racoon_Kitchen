@@ -158,7 +158,7 @@ def index():
             return redirect(url_for("index"))
 
         # Checks to be sure passwords match
-        if generate_password_hash(request.form.get("passwordCheck")) != generate_password_hash(request.form.get("password")):
+        if request.form.get("password") != request.form.get("passwordCheck"):
             flash("Passwords do not match")
             return redirect(url_for("index"))
 
