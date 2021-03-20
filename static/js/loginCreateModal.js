@@ -30,7 +30,7 @@ function tabSelect(item, index) {
         var tabLoc = document.getElementsByClassName("create-account"); // user input div
         if(item.textContent.trim() === "Login"){
             // Makes all create account material invisible and removes required when login is clicked  
-            for (i=0; i <totalCreate; i++){
+            for (i=0; i <totalCreate-1; i++){
                 let tabInputLoc = document.getElementsByClassName("create-account")[i].getElementsByTagName("input")[0]; // user input value loc
                 tabLoc[i].classList.add("make-invis");
                 tabInputLoc.removeAttribute("required");
@@ -38,12 +38,18 @@ function tabSelect(item, index) {
                 tabInputLoc.value = "";
 
             }
+            //sets submit button value
+            document.getElementById("custom-button-login").value = "Login"
+            document.getElementById("password").parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
+
         } else {
             // Makes all create account material visivle and makes adds required when create account is clicked
-            for (i=0; i <totalCreate; i++){
+            for (i=0; i <totalCreate-1; i++){
                 tabLoc[i].classList.remove("make-invis");
                 tabLoc[i].getElementsByTagName("input")[0].setAttribute("required", "");
             }
+            // Sets submit button value
+            document.getElementById("custom-button-login").value = "Create"
         }
 
         // Changes the filter from Login to create account on click

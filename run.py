@@ -24,7 +24,7 @@ mongo = PyMongo(app)
 
 @app.route("/", methods=("GET", "POST"))
 def index():
-    # counts total recipes from specified chef
+    # counts total recipes from specified chef -- AKA head chef
     totalRecipeCount = mongo.db.recipes.count_documents({"created_by": "asdfa@aol.com"})
     totalRecipes = list(mongo.db.recipes.find({"created_by": "asdfa@aol.com"}))
 
@@ -129,7 +129,8 @@ def index():
         iteration += 1
 
     # --Login-- information
-    if request.method == "POST" and request.form.get("name") == "":
+    if request.method == "POST" and request.form.get("custom-button-login") == "Login":
+        print("Im a login and not a create function running")
         userNameTaken = mongo.db.users.find_one({"email": request.form.get("email")})
         if userNameTaken:
             if check_password_hash(userNameTaken["password"], request.form.get("password")):
@@ -144,13 +145,14 @@ def index():
 
     # --Create account-- information
     if request.method == "POST":
-
+        print("Im a create function")
+        # Returns a user search
         if request.form.get("formType") == "search":
             return redirect(url_for("search_bar_returns", search=request.form.get("userSearch")))
 
-        userNameTaken = mongo.db.users.find_one({"email": request.form.get("email")})
 
         # Check to be sure email doesnt already exist in DB
+        userNameTaken = mongo.db.users.find_one({"email": request.form.get("email")})
         if userNameTaken:
             flash("This email was already taken!")
             return redirect(url_for("index"))
@@ -158,22 +160,23 @@ def index():
         # Gather form information and submit to DB
         create = {
             "username": request.form.get("name"),
-            "email": request.form.get("email"),
+            "email": request.form.get("email").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "avatar": None,
             "avatar_id": None,
             "bio": "",
             "recent": [],
             "favorites": [],
-            "submitted": [],
+            # "submitted": [],
             "date": datetime.datetime.now()
         }
         mongo.db.users.insert_one(create)
 
         # Create session for user name
         session["user"] = request.form.get("email")
-        flash("Welcome to the table!")
-        return redirect(url_for("index", username=session['user']))
+        flash("Welcome to the Fat Raccoon Family!")
+        flash("Please take a moment to update your profile with a personaized bio and image")
+        return redirect(url_for("profile", username=session['user']))
 
     return render_template(
         "index.html", features=features, recipeOfDay=recipeOfDay,
