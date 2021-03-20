@@ -417,12 +417,12 @@ fieldset {
 /* parent popup box */
 .invalid-form {
     margin-top: 1rem;
-    width: 100%;
+    width: 80%;
     border: 2px solid rgb(14, 255, 255);
     background-color: #eeeded;
     position: relative;
     z-index: 4;
-    right: 1rem;
+    left: 10%;
     margin-bottom: 1rem;
 }
 
@@ -435,7 +435,7 @@ fieldset {
     border-left: 10px solid transparent;
     border-top: 10px solid rgb(14, 255, 255);
     border-bottom: 10px solid transparent;
-    transform: rotate(180deg) translateX(50%) translateX(-1rem);
+    transform: rotate(180deg) translateX(50%);
     top: -22px;
 }
 
