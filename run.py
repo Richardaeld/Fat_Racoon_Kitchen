@@ -375,7 +375,7 @@ def add_edit_recipe(recipeId):
     # if gets all existing recipe information
     # else populates blanks
     if (recipeId != 'new'):
-        if mongo.db.recipe.find_one({"_id": ObjectId(recipeId)}) is None:
+        if mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}) is None:
             flash("Sorry this recipe has been removed")
             return(redirect(url_for("profile")))
         recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
