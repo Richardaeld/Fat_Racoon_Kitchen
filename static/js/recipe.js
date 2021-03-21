@@ -8,8 +8,11 @@ function list (item, index){
         let itemLoc =  item.getElementsByTagName("h6")[0]
         if (itemLoc.style.textDecoration == "line-through"){
             itemLoc.style.textDecoration = "none";
+            itemLoc.parentElement.getElementsByTagName("input")[0].checked = false
         } else {
             itemLoc.style.textDecoration = "line-through";
+            itemLoc.parentElement.getElementsByTagName("input")[0].checked = true
+
         }
     })
 }

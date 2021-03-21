@@ -135,7 +135,8 @@
                                 <hr>
                                 {% for ingredient in recipeInfo.ingredients %}
                                     <li>
-                                        <h6>{{ ingredient }}</h6>
+                                        <input type="checkbox" style="display:inline;"> 
+                                        <h6 style="display:inline;">{{ ingredient }}</h6>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -153,7 +154,8 @@
                                 <hr>
                                 {% for step in recipeInfo.steps %}
                                     <li>
-                                        <h6>{{ step }}</h6> 
+                                        <input type="checkbox" style="display:inline;"> 
+                                        <h6 style="display: inline;">{{ step }}</h6> 
                                     </li>
                                 {% endfor %}
                             </ul>
