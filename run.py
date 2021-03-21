@@ -143,13 +143,15 @@ def index():
         else:
             flash("*meta name*Login credentials incorrect!")
 
+    # --Search for recipes
+    # Returns a user search
+    if request.method == "POST" and request.form.get("formType") == "search":
+        print("Im a search function")
+        return redirect(url_for("search_bar_returns", search=request.form.get("userSearch")))
+
     # --Create account-- information
     if request.method == "POST":
         print("Im a create function")
-        # Returns a user search
-        if request.form.get("formType") == "search":
-            return redirect(url_for("search_bar_returns", search=request.form.get("userSearch")))
-
 
         # Check to be sure email doesnt already exist in DB
         userNameTaken = mongo.db.users.find_one({"email": request.form.get("email")})
@@ -198,6 +200,13 @@ def logout():
 
 @app.route("/profile", methods=("GET", "POST"))
 def profile():
+    # defensive code for deleted accouts
+    userExists = mongo.db.users.find_one({"email": session['user']})
+    if userExists is None:
+        flash("Your session has ended please login again")
+        session.pop("user")
+        return redirect(url_for("index"))
+
     # Loads user Info
     chef_info = mongo.db.users.find_one({"email": session['user']})
 
@@ -451,7 +460,7 @@ def edit_user_info():
         }
 
         # Checks to be sure password is present to be updated
-        if request.form.get("NewPasswordCheckEdit") != "":
+        if request.form.get("NewPasswordCheckEdit") is not None:
             update = {
                 "username": request.form.get("usernameEdit"),
                 "email": request.form.get("emailEdit"),
@@ -468,7 +477,7 @@ def edit_user_info():
             userInfo["password"], request.form.get('passwordEdit'))
         if emailCheck is not None and (
                 request.form.get("emailEdit") != userInfo["email"]):
-            flash("Email already exists!  Try Again!")
+            flash("Email already exists! Try Again!")
             return(redirect(url_for("edit_user_info")))
 
         # If all checks pass uploads new profile data to DB
@@ -508,7 +517,7 @@ def edit_user_info():
         # Unexpected unknown error
         else:
             flash("An unexpected error occurred!")
-            flash(" please enter your information again!")
+            flash("Please enter your information again!")
             return(redirect(url_for("edit_user_info")))
 
     return render_template("edit_user_info.html", userInfo=userInfo)
