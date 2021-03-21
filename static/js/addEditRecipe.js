@@ -13,7 +13,7 @@ function useTime(item, index){
 }
 
 // ---- Create/Remove boxes for user input of ingredients/steps
-function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, removeButton, inputOrTextarea) {
+function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, removeButton, inputOrTextarea, totalItemsLocation) {
     let arrayIngredientLength = document.getElementsByClassName(addRemoveLoc)[0].querySelectorAll(inputOrTextarea).length;
     //let totalLoc = document.getElementById(totalLocId).options[0]; //-----------------------------------number location
     let totalLoc = document.getElementById(totalLocId).getElementsByTagName("span")[0]; //-----------------------------------number location
@@ -47,6 +47,7 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         // sets Value of select for user to see the number of availiable boxes
         totalLoc.value = arrayIngredientLength;
         totalLoc.textContent = arrayIngredientLength;
+        document.getElementById(totalItemsLocation).value = arrayIngredientLength
 
         // Creates boxes with structure div(div(span, input))
         addRemoveLocation.appendChild(createDivCol);
@@ -71,15 +72,15 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
 }
 
 //createRemoveFormBoxes("ingredientAddRemoveLocation", "recipeIngredientsTotal", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton");
-createRemoveFormBoxes("ingredientAddRemoveLocation", "ingredientNumber", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton", "input");
-createRemoveFormBoxes("stepAddRemoveLocation", "stepNumber", ".stepAddButton", "recipeSteps-", ".stepRemoveButton", "textarea");
+createRemoveFormBoxes("ingredientAddRemoveLocation", "ingredientNumber", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton", "input","recipeStepsTotal");
+createRemoveFormBoxes("stepAddRemoveLocation", "stepNumber", ".stepAddButton", "recipeSteps-", ".stepRemoveButton", "textarea", "recipeIngredientsTotal");
 
 console.log(imageName);
 // Removes disabled attribute tag when submit button is pushed (so form can be read)
 // Adds randomly generated image name
 document.getElementById("custom-button").addEventListener("click", function() {
-    document.getElementById("recipeIngredientsTotal").removeAttribute("disabled");
-    document.getElementById("recipeStepsTotal").removeAttribute("disabled");
+    //document.getElementById("recipeIngredientsTotal").removeAttribute("disabled");
+    //document.getElementById("recipeStepsTotal").removeAttribute("disabled");
     document.getElementById("avatar_name").setAttribute("value", imageName);
     document.getElementById("totalTime").removeAttribute("disabled")
     if (document.getElementById("avatar").value != ""){
