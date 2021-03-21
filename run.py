@@ -288,6 +288,10 @@ def addFavorite(recipeId, favoriteChange):
 
 @app.route("/recipe/<recipeId>", methods=("GET", "POST"))
 def recipe(recipeId):
+    # Redirects incase recipe has been removed
+    if mongo.db.recipe.find_one({"_id": ObjectId(recipeId)}) is None:
+        flash("Sorry this recipe has been removed")
+        return(redirect(url_for("profile")))
     # Finds recipe to display
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
 
@@ -362,6 +366,7 @@ def avatar(avatar_image):
 @app.route("/add_edit_recipe/<recipeId>", methods=("GET", "POST"))
 def add_edit_recipe(recipeId):
 
+
     admin = mongo.db.users.find_one({"email": session["user"]})
     admin = admin["admin"]
     print(admin)
@@ -370,6 +375,9 @@ def add_edit_recipe(recipeId):
     # if gets all existing recipe information
     # else populates blanks
     if (recipeId != 'new'):
+        if mongo.db.recipe.find_one({"_id": ObjectId(recipeId)}) is None:
+            flash("Sorry this recipe has been removed")
+            return(redirect(url_for("profile")))
         recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
         recipeIngEnum = enumerate(recipeInfo["ingredients"])
         recipeSteEnum = enumerate(recipeInfo["steps"])
