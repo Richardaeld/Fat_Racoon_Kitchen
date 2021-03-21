@@ -289,7 +289,7 @@ def addFavorite(recipeId, favoriteChange):
 @app.route("/recipe/<recipeId>", methods=("GET", "POST"))
 def recipe(recipeId):
     # Redirects incase recipe has been removed
-    if mongo.db.recipe.find_one({"_id": ObjectId(recipeId)}) is None:
+    if mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}) is None:
         flash("Sorry this recipe has been removed")
         return(redirect(url_for("profile")))
     # Finds recipe to display
