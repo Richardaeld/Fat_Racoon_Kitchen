@@ -446,9 +446,18 @@ def edit_user_info():
         update = {
             "username": request.form.get("usernameEdit"),
             "email": request.form.get("emailEdit"),
-            "password": request.form.get("NewPasswordCheckEdit"),
+        #    "password": request.form.get("NewPasswordCheckEdit"),
             "bio": request.form.get("bio")
         }
+
+        # Checks to be sure password is present to be updated
+        if request.form.get("NewPasswordCheckEdit") != "":
+            update = {
+                "username": request.form.get("usernameEdit"),
+                "email": request.form.get("emailEdit"),
+                "password": request.form.get("NewPasswordCheckEdit"),
+                "bio": request.form.get("bio")
+            }
 
         # ----Validation
         # Validates email for current email or availability of new email
