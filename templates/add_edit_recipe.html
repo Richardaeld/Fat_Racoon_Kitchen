@@ -202,7 +202,6 @@
 
                             <div class="col-12"> <!-- removed . recipe-form-label  because of padding right -- off centering text -->
                                 <label type="text" for="recipeIngredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
-                                <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="1">
                             </div>
                             
                             <div class="col-12">
@@ -235,6 +234,7 @@
                                                 <input class="col-11" type="text" id="recipeIngredients-1" name="recipeIngredients-1">
                                         </div>
                                     </div>
+                                    <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="1">
                                     {% else %}
                                         {% for ingredient in recipeIngEnum %}
                                             <div class="col-12 col-md-6">
@@ -243,6 +243,7 @@
                                                     <input class="col-11" type="text" id="recipeIngredients-{{ingredient[0] + 1}}" name="recipeIngredients-{{ingredient[0] + 1}}" value="{{ingredient[1]}}">
                                                 </div>
                                             </div>
+                                            <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
                                         {% endfor %}
                                     {% endif %}
 
@@ -259,7 +260,6 @@
 
                             <div class="col-12">
                                 <label type="text" for="recipeSteps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
-                                <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="1">
                             </div>
 
                             <div class="col-12">
@@ -290,17 +290,20 @@
                                         <div class="row no-gutters align-items-center step-ingredient-spacing">
                                             <span>1. </span>
                                             <textarea class="col-11" type="text" id="recipeSteps-1" name="recipeSteps-1" cols="20" rows="3"></textarea>
+                                            <!-- I count for DB upload!! -->
                                         </div>
                                     </div>
+                                    <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="1">
                                     {% else %}
                                         {% for step in recipeSteEnum %}
                                             <div class="col-12 col-md-6">
                                                 <div class="row no-gutters align-items-center step-ingredient-spacing">
                                                     <span>{{step[0] + 1}}. </span>
-                                                    <textarea class="col-11" type="text" id="recipeSteps-{{step[0] + 1}}" name="recipeSteps-{{step[0] + 1}}" value="{{step[1]}}" col="20" rows="3"></textarea>
+                                                    <textarea class="col-11" type="text" id="recipeSteps-{{step[0] + 1}}" name="recipeSteps-{{step[0] + 1}}" value="" col="20" rows="3">{{step[1]}}</textarea>
                                                 </div>
                                             </div>
-                                        {% endfor %}
+                                            {% endfor %}
+                                            <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
                                     {% endif %}
 
                                 </div>

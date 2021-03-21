@@ -379,8 +379,8 @@ def add_edit_recipe(recipeId):
             flash("Sorry this recipe has been removed")
             return(redirect(url_for("profile")))
         recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
-        recipeIngEnum = enumerate(recipeInfo["ingredients"])
-        recipeSteEnum = enumerate(recipeInfo["steps"])
+        recipeIngEnum = list(enumerate(recipeInfo["ingredients"]))
+        recipeSteEnum = list(enumerate(recipeInfo["steps"]))
     else:
         recipeInfo = None
         recipeIngEnum = None
