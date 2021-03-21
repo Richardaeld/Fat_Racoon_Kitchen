@@ -155,7 +155,7 @@
                 <!-- recipe info -->
                 <div class="col-sm-11 col-md-11 col-lg-11 col-xl-6 order-3 order-sm-2 order-md-2 order-lg-3 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height"> <!-- recipe-descript --><!-- removed recipe description to keep sticky note working properly -->
                     <div class="sticky-note-inner-div blank-anchor">
-                        {% if recipeOfDar.lazy == true %}
+                        {% if recipeOfDay.lazy == true %}
                             <h6 class="recipe-overlay-bottom">A Certified FR Lazy Favorite!</h6>
                         {% endif %}
                         <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
