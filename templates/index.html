@@ -125,8 +125,7 @@
                         <div class="col-10 sticky-note recipe-of-day-aside-height">
                             
                             <div class="sticky-note-inner-div" style="overflow: hidden;"> <!--  fix overflow with JS  -->
-                                <p> 
-                                {% if chef.avatar != none %}
+                                {% if chef != none %}
                                     <div class="avatar-image">
                                         <img src="{{ url_for('avatar', avatar_image=chef.avatar) }}" alt="" >
                                     </div>
@@ -140,9 +139,14 @@
                                         </svg>
                                     </div>
                                 {% endif %}
+
+                                {% if chef != none %}
                                     <p style="font-size: 1.5rem;">{{ chef.bio }}</p>
                                     <h6>-- {{chef.username.title()}}</h6>
-                                </p>
+                                {% else %}
+                                    <p>Please create a head chef bio</p>
+                                    <h6>-- Head Chef Name</h6>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
