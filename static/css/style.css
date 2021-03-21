@@ -551,6 +551,10 @@ fieldset {
                 inset -2px -2px 2px rgba(0, 0, 0, .25 );
 }
 
+.radio-buttons input {
+    width: auto;
+}
+
 /* ---------------------------------------- Profile ---------------------------------------- */
 .profile-lists p {
     text-align: left;

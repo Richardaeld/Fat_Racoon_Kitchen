@@ -153,6 +153,31 @@
                         </div>
                     </fieldset>
 
+                    {% if admin == True %}
+                    <!--  FR Lazy Favorite and Grandparent Classic -->
+                    <fieldset class="col-12 form-input-spacing">
+                        <div class="row no-gutters">
+                            <div class="col-12">
+                                <legend type="text" for="avatar">FR Lazy Favorite or Grandparent Classic</legend>
+                            </div>
+                            <div class="col-12 radio-buttons">
+                                <div class="row no-gutters">
+                                    <div class="col-12 col-md-6">
+
+                                        <input type="checkbox" name="lazy" id="lazy" value="True">
+                                        <label for="lazy">Lazy favorite</label>
+                                    </div>
+                                   <div class="col-12 col-md-6">
+
+                                       <input type="checkbox" name="grandparent" id="grandparent" value="True">
+                                       <label for="grandparent">Grandparent Classic</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    {% endif %}
+
                     <!-- Recipe description -->
                     <fieldset class="col-12 form-input-spacing">
                         <div class="row no-gutters justify-content-center" >
@@ -177,6 +202,7 @@
 
                             <div class="col-12"> <!-- removed . recipe-form-label  because of padding right -- off centering text -->
                                 <label type="text" for="recipeIngredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
+                                <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="1">
                             </div>
                             
                             <div class="col-12">
@@ -233,6 +259,7 @@
 
                             <div class="col-12">
                                 <label type="text" for="recipeSteps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
+                                <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="1">
                             </div>
 
                             <div class="col-12">

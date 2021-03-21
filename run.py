@@ -362,6 +362,10 @@ def avatar(avatar_image):
 @app.route("/add_edit_recipe/<recipeId>", methods=("GET", "POST"))
 def add_edit_recipe(recipeId):
 
+    admin = mongo.db.users.find_one({"email": session["user"]})
+    admin = admin["admin"]
+    print(admin)
+
     # if editing recipe, populate the page with recipe information
     # if gets all existing recipe information
     # else populates blanks
@@ -415,6 +419,16 @@ def add_edit_recipe(recipeId):
             avatar_img = None
             avatar_id = None
 
+        if request.form.get("lazy") == "True":
+            lazy = True
+        else:
+            lazy = False
+
+        if request.form.get("grandparent") == "True":
+            grandparent = True
+        else:
+            grandparent = False
+
         # Builds upload document
         add_recipe = {
             "name": request.form.get("recipeName"),
@@ -427,6 +441,8 @@ def add_edit_recipe(recipeId):
             "date": datetime.datetime.now(),
             "avatar": avatar_img,
             "avatar_id": avatar_id,
+            "lazy": lazy,
+            "grandparent": grandparent,
             "created_by": session["user"]
         }
 
@@ -444,7 +460,8 @@ def add_edit_recipe(recipeId):
 
     return render_template(
         "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
-        recipeIngEnum=recipeIngEnum, recipeSteEnum=recipeSteEnum)
+        recipeIngEnum=recipeIngEnum, recipeSteEnum=recipeSteEnum,
+        admin=admin)
 
 
 @app.route("/profile/edit", methods=("GET", "POST"))
