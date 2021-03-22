@@ -614,9 +614,15 @@ fieldset {
     text-shadow: 2px 2px #a7a7a7;
 }
 
+.recipe-lists h6 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 .recipe-lists {
     font-family: "Yanone Kaffeesatz", sans-serif;
     text-align: left;
+    margin-bottom: 3rem;
 }
 
 .recipe-lists-no-padding {
@@ -670,9 +676,9 @@ fieldset {
     list-style-type: none;
 }
 /* ---------------------------------------- all recipes *maybe dup section* ---------------------------------------- */
-.all-recipe-max-height {
+/*.all-recipe-max-height { -------------------remove me from all pages (including all recipes page)
     min-height: 50rem
-}
+}*/
 
 /* ---------------------------------------- recipe list ---------------------------------------- */
 .recipe-list-height {
