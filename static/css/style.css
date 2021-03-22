@@ -26,7 +26,7 @@ header {
 }
 
 .large-content-height {
-    min-height: 30rem;
+    min-height: 20rem;
 }
 
 .independant-header-height {
@@ -650,8 +650,8 @@ fieldset {
 
 .recipe-lists h1,
 .recipe-lists hr {
-    position: relative;
-    right: 1rem;
+   /* position: relative;
+    right: 1rem;*/
 }
 
 .recipe-lists h1 {

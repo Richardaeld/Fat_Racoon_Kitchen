@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
             {% if recipes.count() == 0 %}
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note recipe-list-height">
                         
@@ -41,45 +41,44 @@
             {% endif %}
             <!-- Feature with Recipes  -->
             {% for recipe in recipes %}
-            <div class="col-6 ">
+            <div class="col-12 col-md-6">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note recipe-list-height">
                         
-                        <div class="sticky-note-inner-div">
-                            <ul class="recipe-lists recipe-lists-no-dec">
+                        <div class="row no-gutters justify-content-center sticky-note-inner-div">
+                            <ul class="recipe-lists recipe-lists-no-dec recipe-lists-no-padding">
+                                <li  class="recipe-name">
                                     <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
                                         <h1>{{ recipe.name.title() }}</h1>
                                     </a>
-                                <hr>
+                                    <hr>
+                                </li>
 
-                                    <li>
-                                        <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
-                                            <span class="col-12" style="text-align: center;">
-                                                <div class="row no-gutters">
+                                <li>
+                                    <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
+                                        <span class="col-12" style="text-align: center;">
+                                            <div class="row no-gutters">
                                                     
-                                                    <div class="col-12">
-                                                        <h6>Featuring: <strong>{{ recipe.feature }}</strong></h6>
-                                                    </div>
-
-                                                    <div class="col-4">
-                                                        <h6>Prep Time: </h6>
-                                                        <p><strong>{{ recipe.time[0] }} Minutes</strong></p>
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <h6>Cook Time: </h6>
-                                                        <p><strong>{{ recipe.time[1] }} Minutes</strong></p>
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <h6>Total Time: </h6>
-                                                        <p><strong>{{ recipe.time[2] }} Minutes</strong></p>
-                                                    </div>
-
+                                                <div class="col-12">
+                                                    <h6>Featuring: <strong>{{ recipe.feature }}</strong></h6>
                                                 </div>
-                                            </span>
-                                        </a>
-                                    </li>
 
-                                </ul>
+                                                <div class="col-12">
+                                                    <h6>Prep: <strong>{{ recipe.time[0] }} Minutes</strong></h6>                                                        
+                                                </div>
+                                                <div class="col-12">
+                                                    <h6>Cook: <strong>{{ recipe.time[1] }} Minutes</strong></h6>
+                                                </div>
+                                                <div class="col-12">
+                                                    <h6>Total: <strong>{{ recipe.time[2] }} Minutes</strong></h6>
+                                                </div>
+
+                                            </div>
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
                         </div>
                     </div>
                 </div>
