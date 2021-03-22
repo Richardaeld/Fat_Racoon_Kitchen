@@ -29,12 +29,12 @@
     <div class="col-12">
         <div class="row no-gutters justify-content-between">
             <!--  Edit recipe  -->
-            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button">
-                <div class="sticky-note-inner-div blank-anchor">
-                    <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor">
+                <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
+                    <div class="sticky-note-inner-div">
                         <h6>Edit Recipe</h6>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
             <!--  Delete recipe  -->
             <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button" id="deleteModal">
