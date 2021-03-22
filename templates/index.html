@@ -86,12 +86,16 @@
                     </div>
                 </div>
                 {% endif %}
+
+                {% if recipe != "none" %} <!-------------------------   I crashed index this -->
                 {% for recipe in recipeHeader %}
                 <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer blank-anchor">
                     <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
                         <div class="polaroid-picture">
+                            <!-- defensive layer to prevent crash -->
+                            {% if recipe.avatar != none %}
                             <img src="{{ url_for('avatar', avatar_image=recipe.avatar) }}" alt="">
-                            
+                            {% endif %}
                         </div>
                         <div class="polaroid-text">
                             <h3>{{ recipe.name }}</h3>
@@ -99,7 +103,8 @@
                         </div>
                     </a>
                 </div>               
-                {% endfor %} 
+                {% endfor %}
+                {% endif %}
 
             </div>
         </div>
