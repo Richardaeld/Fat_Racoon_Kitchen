@@ -3,7 +3,7 @@
 <section class="row no-gutters" style="background-color:rgba(14, 255, 255, 0.5);">
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
-            {% if recipeId != new %} <!--  if session.editRecipe  -->
+            {% if recipeId != 'new' %} <!--  if session.editRecipe  -->
             <!--  For editing a existing recipe  -->
                 <form class="col-10 form-base" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
             {% else %}
