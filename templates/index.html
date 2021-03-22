@@ -91,7 +91,7 @@
                 {% for recipe in recipeHeader %}
                 <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer blank-anchor">
                     <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
-                        <div class="polaroid-picture">
+                        <div class="polaroid-picture polaroid-picture-classic">
                             <!-- defensive layer to prevent crash -->
                             {% if recipe.avatar != none %}
                             <img src="{{ url_for('avatar', avatar_image=recipe.avatar) }}" alt="">
@@ -188,13 +188,15 @@
                 <!-- recipe avatar -->
                 <div class="col-12 col-md-12 col-lg-6 col-xl-3 order-2 order-sm-1 order-md-1 order-lg-2 order-xl-3 order-xxl-3">
                     <div class="row no-gutters justify-content-center">
-                        <div class="col-10 sticky-note sticky-note-right recipe-of-day-aside-height">
+                        <div class="col-10 col-md-6 col-lg-10 polaroid-outer"> <!-- sticky-note sticky-note-right recipe-of-day-aside-height -->
+
                             {% if recipeOfDay.avatar %}
-                                <div id="avatarImg" class="sticky-note-inner-div">
+                                <div id="avatarImg" class="polaroid-picture"><!-- sticky-note-inner-div -->
                                     <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
                                         <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt=""> <!-- center me better -->
                                     </a>
                                 </div>
+                                
                             {% else %}
                                 <div class="sticky-note-inner-div">
                                     <p>
@@ -214,5 +216,5 @@
 
 {% block custom_script %}
     <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>
+   <!-- <script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>-->
 {% endblock %}
