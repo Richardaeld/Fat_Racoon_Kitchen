@@ -370,11 +370,12 @@ def add_edit_recipe(recipeId):
     admin = mongo.db.users.find_one({"email": session["user"]})
     admin = admin["admin"]
     print(admin)
-
+    print(recipeId)
+    print(isinstance(recipeId, str))
     # if editing recipe, populate the page with recipe information
     # if gets all existing recipe information
     # else populates blanks
-    if (recipeId != 'new'):
+    if (recipeId != "new"):
         if mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}) is None:
             flash("Sorry this recipe has been removed")
             return(redirect(url_for("profile")))
@@ -423,9 +424,13 @@ def add_edit_recipe(recipeId):
                 {"filename": request.form.get("avatar_name")})
             avatar_img = request.form.get("avatar_name")
             avatar_id = imageDict["_id"]
-        else:
-            avatar_img = None
-            avatar_id = None
+
+            add_avatar = {
+            "avatar": avatar_img,
+            "avatar_id": avatar_id
+            }
+            mongo.db.recipes.update_one({"_id": ObjectId(recipeId)}, {'$set': add_avatar})
+
 
         if request.form.get("lazy") == "True":
             lazy = True
@@ -447,8 +452,8 @@ def add_edit_recipe(recipeId):
             "text": request.form.get("recipeDescription"),
             "history": request.form.get("recipeHistory"),
             "date": datetime.datetime.now(),
-            "avatar": avatar_img,
-            "avatar_id": avatar_id,
+        #    "avatar": avatar_img,
+        #    "avatar_id": avatar_id,
             "lazy": lazy,
             "grandparent": grandparent,
             "created_by": session["user"]
