@@ -655,7 +655,7 @@ fieldset {
 }
 
 .recipe-lists h1 {
-    /*text-align: center;*/
+    text-align: center;
 }
 
 .recipe-lists hr{
