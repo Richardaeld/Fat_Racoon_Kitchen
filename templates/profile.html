@@ -5,21 +5,21 @@
     <div class="col-12">
         <!--  Create a new recipe  -->
         <div class="row no-gutters justify-content-between">
-            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button">
-                <div class="sticky-note-inner-div blank-anchor">
-                    <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
-                    <h6>Share Recipe</h6>
-                    </a>
-                </div>
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor">
+                <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
+                    <div class="sticky-note-inner-div">
+                        <h6>Share Recipe</h6>
+                    </div>
+                </a>
             </div>
 
             <!--  Edit user profile  -->
-            <div class="col-4 col-lg-2 sticky-note-no-shadow custom-button profile-button">
-                <div class="sticky-note-inner-div blank-anchor">
-                    <a href="{{ url_for('edit_user_info') }}">
+            <div class="col-4 col-lg-2 sticky-note-no-shadow custom-button profile-button blank-anchor">
+                <a href="{{ url_for('edit_user_info') }}">
+                    <div class="sticky-note-inner-div">
                         <h6>Update Profile</h6>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
