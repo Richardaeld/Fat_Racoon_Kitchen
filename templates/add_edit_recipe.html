@@ -163,13 +163,19 @@
                             <div class="col-12 radio-buttons">
                                 <div class="row no-gutters">
                                     <div class="col-12 col-md-6">
-
+                                        {% if recipeInfo.lazy == True %}
+                                        <input type="checkbox" name="lazy" id="lazy" value="True" checked>
+                                        {% else %}
                                         <input type="checkbox" name="lazy" id="lazy" value="True">
+                                        {% endif %}
                                         <label for="lazy">Lazy favorite</label>
                                     </div>
                                    <div class="col-12 col-md-6">
-
+                                        {% if recipeInfo.grandparent == True %}
+                                       <input type="checkbox" name="grandparent" id="grandparent" value="True" checked>
+                                       {% else %}
                                        <input type="checkbox" name="grandparent" id="grandparent" value="True">
+                                        {% endif %}
                                        <label for="grandparent">Grandparent Classic</label>
                                     </div>
                                 </div>
