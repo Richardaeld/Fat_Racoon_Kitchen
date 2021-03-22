@@ -3,6 +3,7 @@
 <!--  User basic information  -->
 <section class="row no-gutters justify-content-around align-items-center" style="background-color: rgb(153, 220, 236);"> <!--  used carousel height  -->
     <div class="col-12">
+        <!--  Create a new recipe  -->
         <div class="row no-gutters justify-content-between">
             <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button">
                 <div class="sticky-note-inner-div blank-anchor">
@@ -12,6 +13,7 @@
                 </div>
             </div>
 
+            <!--  Edit user profile  -->
             <div class="col-4 col-lg-2 sticky-note-no-shadow custom-button profile-button">
                 <div class="sticky-note-inner-div blank-anchor">
                     <a href="{{ url_for('edit_user_info') }}">
@@ -24,7 +26,7 @@
         <!--  Chef Name and Bio  -->
         <!-- Bio header -->
         <div class="col-12 profile-header-height">
-            <div class="row no-gutters justify-content-center align-items-center">
+            <div class="row no-gutters justify-content-center">
                 <div class="col-12">
                     <h1>{{ chef_info.username }}'s Bio</h1>
                 </div>
@@ -55,7 +57,7 @@
         </div>
 
         {% else %}
-        <div class="col-11 col-lg-4 polaroid-outer"> <!-- profile-avatar-bio-height -->
+        <div class="col-10 col-md-6 col-lg-4 col-xl-3 polaroid-outer"> <!-- profile-avatar-bio-height -->
             <div id="avatarImg" class="polaroid-picture">
                 <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="">
             </div>
