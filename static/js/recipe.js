@@ -20,23 +20,24 @@ function list (item, index){
 // ---- Delete Modal
 // Open Delete Modal
 document.getElementById("deleteModal").addEventListener("click", function() {
-    document.getElementsByClassName("custom-modal")[0].classList.remove("make-invis");
+    document.getElementsByClassName("custom-modal-delete")[0].classList.remove("make-invis");
 })
 // Close Delete Modal
 document.getElementsByClassName("modal-background")[0].addEventListener("click", function () {
-    document.getElementsByClassName("custom-modal")[0].classList.add("make-invis");
+    document.getElementsByClassName("custom-modal-delete")[0].classList.add("make-invis");
 })
 
 // Delete form validation logic
 document.getElementById("recipeName").addEventListener("keyup", function() {
-    let modalButton = document.getElementById("custom-button");
+    let modalButton = document.getElementById("custom-button-delete");
     let check = document.getElementById("checkName").getElementsByTagName("span")[0].getAttribute("value");
     let userinput = document.getElementById("recipeName").value;
 
     // Apply disabled or ignore as needed
     if (check != userinput) {
-        if (check == userinput){
-            modalButton.removeAttribute("disabled")
-        }
+        modalButton.setAttribute("disabled", "")
+    }
+    if (check == userinput){
+        modalButton.removeAttribute("disabled")
     }
 })

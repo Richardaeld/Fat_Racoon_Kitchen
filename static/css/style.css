@@ -442,18 +442,21 @@ fieldset {
 }
 
 /* login and create modal */
-.custom-modal {
+.custom-modal,
+.custom-modal-delete {
     position: fixed;
     left: 0;
     right: 0;
     z-index: 3;
 }
 
-.custom-modal h1 {
+.custom-modal h1,
+.custom-modal-delete h1 {
     display: inline-block;
 }
 
-.custom-modal span{
+.custom-modal span,
+.custom-modal-delete span{
     display: inline-block;
     transform: skew(0deg);
 }
@@ -470,6 +473,7 @@ fieldset {
 }
 
 /* basic form style */
+.form-delete-base,
 .form-base {
     background-color: #ebebeb;
     background-color: rgba(235, 235, 235, 0.75); /*----------------------------------------- reconsider background opacity*/
@@ -538,7 +542,8 @@ fieldset {
 }
 
 /* form and all button styles */
-.custom-button {
+.custom-button,
+.custom-button-delete {
     width: auto!important;
     margin-bottom: 1.5rem;
     border: 2px solid #474747;
