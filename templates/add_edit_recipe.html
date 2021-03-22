@@ -3,12 +3,12 @@
 <section class="row no-gutters" style="background-color:rgba(14, 255, 255, 0.5);">
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
-            {% if recipeId != 'new' %} <!--  if session.editRecipe  -->
-            <!--  For editing a existing recipe  -->
-                <form class="col-10 form-base" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
-            {% else %}
+            {% if recipeId == new %} <!--  if session.editRecipe  --> <!-- I dont require apostrophe thats not right!! new is a string not variable -->
             <!--  For creating a new recipe  -->
-                <form class="col-10 form-base" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId='new') }} ">
+                <form class="col-10 form-base NEW" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId='new') }} ">
+            {% else %}
+            <!--  For editing a existing recipe  -->
+                <form class="col-10 form-base ID" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
             {% endif %}
                     <div class="row no-gutters">
 
