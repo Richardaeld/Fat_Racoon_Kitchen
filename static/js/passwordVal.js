@@ -34,7 +34,8 @@ function selectPasswordComapre(item, index) {
 const matchTypeUpper = /[A-Z]/
 const matchTypeLower = /[a-z]/
 const matchTypeNumber = /[0-9]/
-const matchTypeChatacter = /[$|.|@|%]/
+const matchTypeChatacter = /[$|.|@|%|" "]/
+const matchTypeSpaces =  /["  "]/
 
 
 // Sets or removes invalid bubble and invalid attributes
@@ -93,14 +94,19 @@ function baseValidation (inputSelector, validationSelector) {
                 }
                 
             } else if (validationSelector === "emailName"){
-                // I invalidate the form for base validation and reveal appropiate "p" tag
-                if(item.value.length < 6 || item.value.length > 30){
-                    item.parentElement.getElementsByTagName("p")[0].classList.remove("make-invis")
-                }
-
                 // If all base requirements are met I validate the form for base validation and remove the appropiate "p" tag
                 if(item.value.length >= 6 && item.value.length <= 30){
                     item.parentElement.getElementsByTagName("p")[0].classList.add("make-invis")
+                }
+                if(item.value.match(matchTypeSpaces) == null){
+                    item.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
+                }
+                // I invalidate the form for base validation and reveal appropiate "p" tag
+                if(item.value.match(matchTypeSpaces)){
+                    item.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
+                }
+                if(item.value.length < 6 || item.value.length > 30){
+                    item.parentElement.getElementsByTagName("p")[0].classList.remove("make-invis")
                 }
             }
 
