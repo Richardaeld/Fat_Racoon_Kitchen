@@ -40,8 +40,8 @@
             </div>
         </div>
         <!--  Avatar of chef or basic stand in  -->
+        {% if chef_info.avatar == none %}
         <div class="col-11 col-lg-4 align-items-center sticky-note sticky-note-right profile-avatar-bio-height">
-            {% if chef_info.avatar == none %}
             <div class="row no-gutters justify-content-center sticky-note-inner-div">
                 <div class="avatar">
                     <svg width="50" height="50">
@@ -51,13 +51,16 @@
                         <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203"/>
                     </svg>
                 </div>
-                {% else %}
-                    <div id="avatarImg" class="sticky-note-inner-div">
-                        <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="">
-                    </div>
-                {% endif %}
             </div>
         </div>
+
+        {% else %}
+        <div class="col-11 col-lg-4 polaroid-outer"> <!-- profile-avatar-bio-height -->
+            <div id="avatarImg" class="polaroid-picture">
+                <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="">
+            </div>
+        </div>
+        {% endif %}
 </section>
 
 <!--  Ten most recent columns   -->
@@ -110,5 +113,5 @@
 {% endblock %}
 
 {% block custom_script %}
-    <script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>
+    <!--<script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>-->
 {% endblock %}
