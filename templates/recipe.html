@@ -50,18 +50,21 @@
             <!-- picture of recipe -->
             <div class="col-12 col-md-12 col-lg-6 col-xl-3">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note large-content-height">
-                        {% if recipeInfo.avatar %}
-                            <div id="avatarImg" class="sticky-note-inner-div">
+                    {% if recipeInfo.avatar %}
+                        <div class="col-10 polaroid-outer">
+                            <div id="avatarImg" class="polaroid-picture">
                                 <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="">
-                            {% else %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="col-10 sticky-note large-content-height">
                             <div class="sticky-note-inner-div">
                                 <h1>
                                     My chef hasn't uploaded an image of me yet :'(
                                 </h1>
-                            {% endif %}
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
 
@@ -172,5 +175,5 @@
 
 {% block custom_script %}
 <script src="{{ url_for('static', filename='js/recipe.js') }}"></script>
-<script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>
+<!--<script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>-->
 {% endblock %}
