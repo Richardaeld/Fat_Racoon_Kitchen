@@ -23,7 +23,7 @@ document.getElementById("deleteModal").addEventListener("click", function() {
     document.getElementsByClassName("custom-modal-delete")[0].classList.remove("make-invis");
 })
 // Close Delete Modal
-document.getElementsByClassName("modal-background")[0].addEventListener("click", function () {
+document.getElementsByClassName("modal-background")[1].addEventListener("click", function () { // Im for the delete modal 
     document.getElementsByClassName("custom-modal-delete")[0].classList.add("make-invis");
 })
 
