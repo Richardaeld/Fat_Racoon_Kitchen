@@ -176,10 +176,14 @@
     margin: 0.5rem;
 }
 
-.polaroid-picture img {
-        height: 15rem;
-        width: 100%;
-        filter: grayscale(100%);
+.polaroid-picture img,
+.polaroid-picture-classic img {
+    height: 100%;
+    width: 100%;
+}
+
+.polaroid-picture-classic img {
+    filter: grayscale(100%);
 }
 
 .polaroid-text {
