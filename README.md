@@ -94,6 +94,7 @@ in college, let us know!
 
 ## Scalability
 + backend varify of image size and type instead of JS validation
++ Adding user selectable filters to search bar
 
 # Technology Languages
 + HTML - Skeleton frame of the application.
