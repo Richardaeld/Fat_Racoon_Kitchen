@@ -6,11 +6,11 @@ var carousel = document.querySelectorAll(".card-carousel");
 // This function is called by a global event handler and 
 // resizes according to the current width of screen
 var reveal; // Amount of cards to reveal per responsiveness
-var carouselArray = []
+var carouselArray = [] // Sets array for carousel
 function findWidth(){
 
-    // counts carousel item length and creates an index array
-    carouselArray = []
+    // counts carousel item length, creates an index array, and resets array
+    carouselArray = [] 
     for(i=0; i<(carousel.length); i++){
         carouselArray.push(i);
     }
@@ -30,9 +30,9 @@ function findWidth(){
 
     let visible = document.querySelectorAll(".card-carousel-vis"); // Finds the amount of visible carousel boxes
 
-    // Checks to see if boxes need to be removed
+    // Checks to see if there are visible boxes to be removed
     if (visible.length > 0) {
-        // Removes all carousel boxes
+        // Removes all visible carousel boxes
         for (let i=0; i <= visible.length-1; i++) {
             document.querySelector(".card-carousel-vis").classList.remove("card-carousel-vis");
         }
@@ -53,6 +53,7 @@ window.onresize = findWidth;
 // Carousel button function
 function carouselButton (button) {
     document.getElementsByClassName(button)[0].addEventListener("click", function () {
+        //removes all current visible elements
         for (let i=0; i < reveal; i++){
             document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.remove("card-carousel-vis");
         }
@@ -68,6 +69,7 @@ function carouselButton (button) {
                 let x = carouselArray.pop();
                 carouselArray.unshift(x);
             }
+        // Makes new elements visible
         for (let i=0; i < reveal; i++){
             document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.add("card-carousel-vis");
         }
