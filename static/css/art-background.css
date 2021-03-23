@@ -504,6 +504,8 @@
     transform: translate(50px, 65px) rotate(90deg);
     /*background-color: #e0e0e0;*/
     background-color: #fff;
+    position: relative;
+    z-index: -3;
 }
 
 .napkin-border-lines{
