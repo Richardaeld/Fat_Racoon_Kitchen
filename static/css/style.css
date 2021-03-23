@@ -270,7 +270,7 @@ header {
     text-shadow: 2px 2px rgba(0, 0, 0, .15 );
 }*/
 
-.lessons,
+.lessons,  /*        ---------------------find lesson!!*/
 .card-carousel-vis {
     display: block;
 }
