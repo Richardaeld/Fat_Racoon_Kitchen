@@ -366,26 +366,25 @@ def avatar(avatar_image):
 @app.route("/add_edit_recipe/<recipeId>", methods=("GET", "POST"))
 def add_edit_recipe(recipeId):
 
-
     admin = mongo.db.users.find_one({"email": session["user"]})
     admin = admin["admin"]
-    print(admin)
-    print(recipeId)
-    print(isinstance(recipeId, str))
     # if editing recipe, populate the page with recipe information
     # if gets all existing recipe information
     # else populates blanks
-    if (recipeId != "new"):
+    if (recipeId == "new"):
+        recipeInfo = None
+        recipeIngEnum = None
+        recipeSteEnum = None
+        creator = session["user"]
+    else:
         if mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}) is None:
             flash("Sorry this recipe has been removed")
             return(redirect(url_for("profile")))
         recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
         recipeIngEnum = list(enumerate(recipeInfo["ingredients"]))
         recipeSteEnum = list(enumerate(recipeInfo["steps"]))
-    else:
-        recipeInfo = None
-        recipeIngEnum = None
-        recipeSteEnum = None
+        creator = recipeInfo["created_by"]
+
 
     # Generates the select/option for meal feature
     features = mongo.db.feature.find()
@@ -430,13 +429,14 @@ def add_edit_recipe(recipeId):
             "avatar_id": avatar_id
             }
             mongo.db.recipes.update_one({"_id": ObjectId(recipeId)}, {'$set': add_avatar})
-
-
+        
+        # Sets lazy value 
         if request.form.get("lazy") == "True":
             lazy = True
         else:
             lazy = False
 
+        # Sets grandparent value
         if request.form.get("grandparent") == "True":
             grandparent = True
         else:
@@ -456,7 +456,7 @@ def add_edit_recipe(recipeId):
         #    "avatar_id": avatar_id,
             "lazy": lazy,
             "grandparent": grandparent,
-            "created_by": session["user"]
+            "created_by": creator
         }
 
         if recipeId == "new":
@@ -474,7 +474,7 @@ def add_edit_recipe(recipeId):
     return render_template(
         "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
         recipeIngEnum=recipeIngEnum, recipeSteEnum=recipeSteEnum,
-        admin=admin)
+        admin=admin, recipeId=recipeId)
 
 
 @app.route("/profile/edit", methods=("GET", "POST"))
