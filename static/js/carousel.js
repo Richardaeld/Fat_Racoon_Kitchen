@@ -7,6 +7,13 @@ var carousel = document.querySelectorAll(".card-carousel");
 // resizes according to the current width of screen
 var reveal; // Amount of cards to reveal per responsiveness
 function findWidth(){
+
+    // counts carousel item length and creates an index array
+    var carouselArray = []
+    for(i=0; i<(carousel.length); i++){
+        carouselArray.push(i);
+    }
+
     let screenWidth;
     screenWidth = document.body.offsetWidth; // Find screen width
     // Sets carousel number to be shown
@@ -29,10 +36,11 @@ function findWidth(){
             document.querySelector(".card-carousel-vis").classList.remove("card-carousel-vis");
         }
     }
-    // Adds in correct amount of carousel boxes
+    // Adds in correct amount of carousel boxes -- makes them visible with this class
     for (i=0; i<reveal; i++) {
         carousel[i].classList.add("card-carousel-vis");
     }
+
 }
 
 // initial setting of carousel boxes
@@ -41,12 +49,6 @@ findWidth();
 // Global event handler that catchs any resizing of 
 // screen and calls function findwidth
 window.onresize = findWidth;
-
-// counts carousel item length and creates an index array
-var carouselArray = []
-for(i=0; i<(carousel.length); i++){
-    carouselArray.push(i);
-}
 
 // Carousel button function
 function carouselButton (button) {
