@@ -501,11 +501,10 @@
     background: repeating-linear-gradient(to top, rgba(0,0,0,0)30%, rgba(124, 124, 124, 0.5) 30% 52%, rgba(0,0,0,0) 52% 100%);
     background-size: 5px 5px;
     clip-path: polygon(0% 50%, 50% 50%, 50% 0%);
+    -webkit-clip-path: polygon(0% 50%, 50% 50%, 50% 0%);
     transform: translate(50px, 65px) rotate(90deg);
     /*background-color: #e0e0e0;*/
     background-color: #fff;
-    position: relative;
-    z-index: -3;
 }
 
 .napkin-border-lines{
