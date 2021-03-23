@@ -163,23 +163,23 @@
                         {% if recipeOfDay.lazy == true %}
                             <h6 class="recipe-overlay-bottom">A Certified FR Lazy Favorite!</h6>
                         {% endif %}
-                        <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
+                        <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}" class="recipe-name">
                             <h1>{{ recipeOfDay.name.title() }}</h1>
                         </a>
-                        <h6>Features <i>{{ recipeOfDay.feature }}</i></h6>
+                        <h6>Features: <strong>{{ recipeOfDay.feature }}</strong></h6>
                         <p>{{ recipeOfDay.text }}</p>
                         <span class="row no-gutters">
                             <span class="col-4">
-                                <h6>Prep Time</h6>
-                                <p>{{ recipeOfDay.time[0] }}</p>
+                                <h6>Prep</h6>
+                                <p><strong>{{ recipeOfDay.time[0] }}</strong> minutes</p>
                             </span>
                             <span class="col-4">
-                                <h6>Cook Time</h6>
-                                <p>{{ recipeOfDay.time[1] }}</p>
+                                <h6>Cook</h6>
+                                <p><strong>{{ recipeOfDay.time[1] }}</strong> minutes</p>
                             </span>
                             <span class="col-4">
-                                <h6>Total Time</h6>
-                                <p>{{ recipeOfDay.time[2] }}</p>
+                                <h6>Total</h6>
+                                <p><strong>{{ recipeOfDay.time[2] }}</strong> minutes</p>
                             </span>
                         </span>
                     </div>
