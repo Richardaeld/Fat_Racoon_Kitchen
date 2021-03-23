@@ -6,10 +6,11 @@ var carousel = document.querySelectorAll(".card-carousel");
 // This function is called by a global event handler and 
 // resizes according to the current width of screen
 var reveal; // Amount of cards to reveal per responsiveness
+var carouselArray = []
 function findWidth(){
 
     // counts carousel item length and creates an index array
-    var carouselArray = []
+    carouselArray = []
     for(i=0; i<(carousel.length); i++){
         carouselArray.push(i);
     }
@@ -42,19 +43,12 @@ function findWidth(){
     }
 }
 
-function resetCarousel () {
-    for (let i = 0; i < carousel-1; i++){
-        document.querySelector("card-carousel")[0].classList.remove("card-carousel-vis")
-    }
-}
-
 // initial setting of carousel boxes
 findWidth();
 
 // Global event handler that catchs any resizing of 
 // screen and calls function findwidth
 window.onresize = findWidth;
-window.onresize = resetCarousel;
 
 // Carousel button function
 function carouselButton (button) {
@@ -62,11 +56,13 @@ function carouselButton (button) {
         for (let i=0; i < reveal; i++){
             document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.remove("card-carousel-vis");
         }
+        // Carousel right button
         if (button == "carousel-right")
             for (let i=0; i < reveal; i++){
                 let x = carouselArray.shift();
                 carouselArray.push(x);
             }
+        // Carousel left button
         else if (button == "carousel-left")
             for (let i=0; i < reveal; i++){
                 let x = carouselArray.pop();
