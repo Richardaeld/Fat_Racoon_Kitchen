@@ -13,7 +13,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <!-- carousel cards -->
         <div class="col-12">
             <div class="row no-gutters align-items-center justify-content-around">
 
@@ -28,7 +29,7 @@
                 </div>
 
                 {% for feature in features %}
-                    <div class="col-10 col-md-5 col-xl-3 blank-carousel-recipe card-carousel index-card">
+                    <div class="col-10 col-md-10 col-lg-5 col-xl-3 blank-carousel-recipe card-carousel index-card">
                         <div class="recipe-lists">
                             <a href="{{ url_for('recipe_list', feature=feature.name) }}"><p>--{{feature.name.title()}}</p></a>
                             <ul>
