@@ -83,30 +83,32 @@
                                 </h1>
                                 <div class="blank-anchor">
                                     <!--  Recipe favorite button  -->
-                                    <h3> 
-                                        {% if favoriteRecipe == "None" %}
-                                        {% elif favoriteRecipe == True %}
-                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">Favorite!</a>
-                                        <img class="favorite" src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Im the favorite icon">
-                                        {% else %}
-                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">Not a Favorite</a>
-                                        <img class="favorite" src="{{ url_for('static', filename='images/star-outline.svg') }}" alt="Im not the favorite icon">
-                                        {% endif %}
-                                    </h3>
+                                    {% if favoriteRecipe == "None" %}
+                                    {% elif favoriteRecipe == True %}
+                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">
+                                            <p>Favorite!</p>
+                                            <img class="favorite" src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Im the favorite icon">
+                                        </a>
+                                    {% elif favoriteRecipe == False %}
+                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">
+                                            <p>Not a Favorite</p>
+                                            <img class="favorite" src="{{ url_for('static', filename='images/star-outline.svg') }}" alt="Im not the favorite icon">
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
 
                             <span class="col-4">
-                                <h6>Prep Time</h6>
-                                <p>{{ recipeInfo.time[0] }}</p>
+                                <h6>Prep</h6>
+                                <p>{{ recipeInfo.time[0] }} minutes</p>
                             </span>
                             <span class="col-4">
-                                <h6>Cook Time</h6>
-                                <p>{{ recipeInfo.time[1] }}</p>
+                                <h6>Cook</h6>
+                                <p>{{ recipeInfo.time[1] }} minutes</p>
                             </span>
                             <span class="col-4">
-                                <h6>Total Time</h6>
-                                <p>{{ recipeInfo.time[2] }}</p>
+                                <h6>Total</h6>
+                                <p>{{ recipeInfo.time[2] }} minutes</p>
                             </span>
                         </div>
                     </div>
