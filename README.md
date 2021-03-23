@@ -136,6 +136,8 @@ in college, let us know!
 --Procfile was missing a space after colon
 -- if session only responsive outside of header, below nav bar
     -- had to call dictionary and item (ex. session.user)
+
+-- Forgot to pass a variable from backend to templates and used an indirect(unspecific) comparason so initially the function worked for editing recipes or creating new recipes --  one way and would oscillate between functioning and not.  
 ## Current Bugs
 -- profile.html carousel spills over when fixed to half screen
 -- login modal only on index
