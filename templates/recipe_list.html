@@ -24,14 +24,14 @@
                                 {% for recipe in allrecipes %}
                                     <li class="make-invis">
                                         <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around all-features">
-                                            <span class="col-12 col-sm-8">
+                                            <span class="col-12 col-lg-8">
                                                 <h6><strong>{{ recipe.name.title() }}</strong>: </h6>
                                             </span>
-                                            <span class="col-12 col-sm-4">
+                                            <span class="col-12 col-lg-4">
                                                 <div class="row no-gutters">
                                                     <div class="col-12">
-                                                        <h6>Total Time: </h6>
-                                                        <h6><strong>{{ recipe.time[2] }} Minutes</strong></h6>
+                                                        <!--<h6>Total Time: </h6>-->
+                                                        <p>{{ recipe.time[2] }} Minutes</p>
                                                     </div>
                                                 </div>
                                             </span>                                      
