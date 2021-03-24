@@ -592,6 +592,10 @@ def all_recipes():
 @app.route("/search_bar_returns/<search>", methods=("POST", "GET"))
 def search_bar_returns(search):
     print("Im search", search)
+    findChef = mongo.db.users.find_one({"$text": {"$search": search}})
+    if findChef is not None:
+        findRecipes = mongo.db.recipes.find({"created_by": findChef['email']})
+        return render_template("search_bar_returns.html", recipes=findRecipes)
     findRecipes = mongo.db.recipes.find({"$text": {"$search": search}})
     print("Im user inpit", findRecipes)
     return render_template("search_bar_returns.html", recipes=findRecipes)
