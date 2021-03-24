@@ -75,6 +75,11 @@ header {
     display: none;
 }
 
+/* add onsticky note innter line */
+.make-space div {
+    padding-bottom: 0.5rem;
+}
+
 /* ---------------------------------------- Index Page  ---------------------------------------- */
 /* ---------------------------------------- Header and Logo ---------------------------------------- */
 .logo-background {
@@ -205,9 +210,10 @@ header {
 
 
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
+/*
 .recipe-of-day-aside-height {
     height: 27.5rem;
-}
+}*/
 
 .recipe-overlay-bottom {
     position: absolute;
@@ -219,12 +225,12 @@ header {
     text-shadow: 1px 1px 2px #fff;
 }
 
-.recipe-overlay-top {
+/*.recipe-overlay-top {
     position: absolute;
     background-color: rgba(0, 0, 0, .25);
     left:0;
     right:0;
-}
+}*/
 
 .recipe-descript {
     font: 1rem "Yanone Kaffeesatz", sans-serif;
@@ -325,6 +331,9 @@ right: 0px;
     transform: translateY(7.5rem);
 }
 
+.lazy-banner-space {
+    padding-top: 1rem;
+}
 
 /* ---------------------------------------- Footer ---------------------------------------- */
 footer {
@@ -553,7 +562,7 @@ fieldset {
 /* ---------------------------------------- form unique styles ---------------------------------------- */
 
 
-/* Form ingredient and step boxes */
+/* Form ingredient and step boxes */ /* HAS A CLONE AT TOP IN GENERAL*/ 
 .step-ingredient-spacing {
     padding-bottom: 0.5rem;
 }

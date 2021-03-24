@@ -217,6 +217,7 @@
 .sticky-note-no-shadow p {
     font-size: 1.75rem;
     line-height: 1;
+    margin-bottom: 0rem;
 }
 
 .sticky-note h1,
@@ -267,7 +268,7 @@
 
     .sticky-note h6,
     .sticky-note-no-shadow h6 {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 }
 
