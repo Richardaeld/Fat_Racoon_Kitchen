@@ -129,7 +129,7 @@
             <div class="row no-gutters justify-content-around">
                             
                 <!-- chef info with mini avatar-->
-                <div class="col-12 col-md-12 col-lg-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-1 order-xxl-1">
+                <div class="col-12 col-md-6 col-lg-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-1 order-xxl-1">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-10 sticky-note recipe-of-day-aside-height">
                             
@@ -161,36 +161,57 @@
                     </div>
                 </div>
 
-                <!-- recipe info -->
+                <!-- recipe info - sticky note -->
                 <div class="col-sm-11 col-md-11 col-lg-11 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height"> <!-- recipe-descript --><!-- removed recipe description to keep sticky note working properly -->
-                    <div class="sticky-note-inner-div blank-anchor">
+                    <div class="sticky-note-inner-div blank-anchor make-space">
+                        <div class="col-12">
+                            <!-- title, feature/chef, recipe description, times -->
+                            <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}" class="recipe-name">
+                                <h1>{{ recipeOfDay.name.title() }}</h1>
+                            </a>
+                        </div>
+                        <div class="col-12">
+                            <span class="row no-gutters">
+                                <span class="col-6">
+                                    <h6>Features: <strong>{{ recipeOfDay.feature.title() }}</strong></h6>
+                                </span>
+                                <span class="col-6">
+                                    <h6>Chef: <strong>{{ chef.username }}</strong></h6>
+                                </span>
+                            </span>
+                        </div>
+                        
+                        <div class="col-12">
+                            <p>{{ recipeOfDay.text }}</p>
+                        </div>
+
+                        <div class="col-12">
+                            <span class="row no-gutters">
+                                <span class="col-4">
+                                    <h6>Prep</h6>
+                                    <p><strong>{{ recipeOfDay.time[0] }}</strong> minutes</p>
+                                </span>
+                                <span class="col-4">
+                                    <h6>Cook</h6>
+                                    <p><strong>{{ recipeOfDay.time[1] }}</strong> minutes</p>
+                                </span>
+                                <span class="col-4">
+                                    <h6>Total</h6>
+                                    <p><strong>{{ recipeOfDay.time[2] }}</strong> minutes</p>
+                                </span>
+                            </span>
+                        </div>
+                         <!-- Lazy Banner -->
                         {% if recipeOfDay.lazy == true %}
-                            <h6 class="recipe-overlay-bottom">A Certified FR Lazy Favorite!</h6>
+                            <div class="lazy-banner-space">
+                                <h6 class="recipe-overlay-bottom">A Certified FR Lazy Favorite!</h6>
+                            </div>
                         {% endif %}
-                        <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}" class="recipe-name">
-                            <h1>{{ recipeOfDay.name.title() }}</h1>
-                        </a>
-                        <h6>Features: <strong>{{ recipeOfDay.feature }}</strong></h6>
-                        <p>{{ recipeOfDay.text }}</p>
-                        <span class="row no-gutters">
-                            <span class="col-4">
-                                <h6>Prep</h6>
-                                <p><strong>{{ recipeOfDay.time[0] }}</strong> minutes</p>
-                            </span>
-                            <span class="col-4">
-                                <h6>Cook</h6>
-                                <p><strong>{{ recipeOfDay.time[1] }}</strong> minutes</p>
-                            </span>
-                            <span class="col-4">
-                                <h6>Total</h6>
-                                <p><strong>{{ recipeOfDay.time[2] }}</strong> minutes</p>
-                            </span>
-                        </span>
                     </div>
                 </div>
 
                 <!-- recipe avatar -->
-                <div class="col-12 col-md-12 col-lg-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-3 order-xxl-3">
+                <div class="col-12 col-md-6 col-lg-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-3 order-xxl-3">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-10 col-md-6 col-lg-10 polaroid-outer"> <!-- sticky-note sticky-note-right recipe-of-day-aside-height -->
 
