@@ -3,10 +3,6 @@ var findSearchBar = document.querySelectorAll(".searchBar");
 findSearchBar.forEach(selectSearchBar);
 function selectSearchBar(item, index){
 
-//    item.getElementsByTagName("input")[0].addEventListener("blur", function () {
-//        item.getElementsByTagName("input")[0].classList.add("make-invis")
-//    })
-
     // Makes search bar visible with user click
     item.addEventListener("click", function () {
         item.getElementsByTagName("input")[0].classList.remove("make-invis")
