@@ -172,6 +172,7 @@ def index():
             "avatar": None,
             "avatar_id": None,
             "bio": "",
+            "admin": False,
             "recent": [],
             "favorites": [],
             # "submitted": [],
