@@ -48,7 +48,8 @@ findWidth();
 
 // Global event handler that catchs any resizing of 
 // screen and calls function findwidth
-window.onresize = findWidth;
+//window.onresize = findWidth; -- original format
+window.addEventListener('resize', findWidth);
 
 // Carousel button function
 function carouselButton (button) {
