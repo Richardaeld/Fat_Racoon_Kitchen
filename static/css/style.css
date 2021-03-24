@@ -187,6 +187,20 @@ header {
 .user-search-box-padding {
 }
 
+@media (max-width: 575.98px) {
+    .custom-nav a,
+    .custom-nav i,
+    .custom-nav label,
+    .user-form-search-height {
+        font-size: .75rem;
+    }
+
+    .custom-nav form {
+        padding: .25rem 1rem;
+    }
+}
+
+
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
 .recipe-of-day-aside-height {
     height: 27.5rem;
