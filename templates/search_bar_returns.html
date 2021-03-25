@@ -7,78 +7,70 @@
             {% if recipes.count() == 0 %}
             <div class="col-12 col-lg-6">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note recipe-list-height">
-                        
-                        <div class="sticky-note-inner-div">
-                            <ul class="recipe-lists recipe-lists-no-dec recipe-name">
-                                    <a href="{{ url_for('index') }}">
-                                        <h1>Return to Home Page</h1>
-                                    </a>
-                                <hr>
-
-                                    <li>
-                                        <a href="{{ url_for('index') }}" class="row no-gutters">
-                                            <span class="col-12" style="text-align: center;">
-                                                <div class="row no-gutters justify-content-center">
-                                                    
-                                                    <div class="col-12">
-                                                        <h6><strong>Search Didn't Return Any Results!</strong></h6>
-                                                        <p>*hint* Search For recipe name or feature</p>
-                                                    </div>
-
-                                                </div>
-                                            </span>
-                                        </a>
-                                    </li>
-
-                                </ul>
+                    <div class="col-10 sticky-note recipe-list-height"> 
+                        <div class="sticky-note-inner-div blank-anchor make-space recipe-name">
+                            <a href="{{ url_for('index') }}">
+                                <div class="col-12">
+                                    <h1>Return to Home Page</h1>
+                                    <hr>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row no-gutters justify-content-center">        
+                                        <div class="col-12">
+                                            <h6><strong>Search Didn't Return Any Results!</strong></h6>
+                                            <p>*hint* Search For recipe name, feature, or chef</p>
+                                        </div>                
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-
 
             {% endif %}
             <!-- Feature with Recipes  -->
             {% for recipe in recipes %}
             <div class="col-12 col-md-6">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note recipe-list-height">
-                        
-                        <div class="row no-gutters justify-content-center sticky-note-inner-div">
-                            <ul class="recipe-lists recipe-lists-no-dec recipe-lists-no-padding">
-                                <li  class="recipe-name">
-                                    <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
-                                        <h1>{{ recipe.name.title() }}</h1>
-                                    </a>
+                    <div class="col-10 sticky-note"> <!-- recipe-list-height-->
+                        <div class="sticky-note-inner-div blank-anchor make-space recipe-name">
+                            <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
+
+                                <div class="col-12">
+                                    <h1>{{ recipe.name.title() }}</h1>
                                     <hr>
-                                </li>
-
-                                <li>
-                                    <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters">
-                                        <span class="col-12" style="text-align: center;">
-                                            <div class="row no-gutters">
-                                                    
-                                                <div class="col-12">
-                                                    <h6>Featuring: <strong>{{ recipe.feature }}</strong> Minutes</h6>
-                                                </div>
-
-                                                <div class="col-12">
-                                                    <h6>Prep: <strong>{{ recipe.time[0] }}</strong> Minutes</h6>                                                        
-                                                </div>
-                                                <div class="col-12">
-                                                    <h6>Cook: <strong>{{ recipe.time[1] }}</strong> Minutes</h6>
-                                                </div>
-                                                <div class="col-12">
-                                                    <h6>Total: <strong>{{ recipe.time[2] }}</strong> Minutes</h6>
-                                                </div>
-
-                                            </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <span class="row no-gutters">
+                                        <span class="col-6">
+                                            <h6>Features: <strong>{{ recipe.feature.title() }}</strong></h6>
                                         </span>
-                                    </a>
-                                </li>
+                                        <span class="col-6">
+                                            <h6>Chef: <strong>{{ recipe.created_by }}</strong></h6>
+                                        </span>
+                                    </span>
+                                </div>  
+                                
+                                <div class="col-12">
+                                    <span class="row no-gutters">
+                                        <span class="col-4">
+                                            <h6>Prep</h6>
+                                            <p><strong>{{ recipe.time[0] }}</strong> minutes</p>
+                                        </span>
+                                        <span class="col-4">
+                                            <h6>Cook</h6>
+                                            <p><strong>{{ recipe.time[1] }}</strong> minutes</p>
+                                        </span>
+                                        <span class="col-4">
+                                            <h6>Total</h6>
+                                            <p><strong>{{ recipe.time[2] }}</strong> minutes</p>
+                                        </span>
+                                    </span>
+                                </div>
+                            </a>
 
-                            </ul>
                         </div>
                     </div>
                 </div>
