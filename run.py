@@ -611,34 +611,8 @@ def all_recipes():
 
 @app.route("/search_bar_returns/<search>", methods=("POST", "GET"))
 def search_bar_returns(search):
-
-    #countRecipes = mongo.db.recipes.find({"$text": {"$search": search}}).limit(1)
-    #print("!!")
-    #print(countRecipes.count(True)) 
-    #print("!!")
-
-    #countChef = mongo.db.users.find_one({"$text": {"$search": search}}).limit(1).count(True)
-
-    #findRecipes = mongo.db.recipes.find({"$text": {"$search": search}})
-
-    #chef = mongo.db.users.find_one({"$text": {"$search": search}})
-
-#    print(findChef)
-    #if chef is not None:
-    #    findChef = mongo.db.recipes.find({"created_by": chef["email"]})
-    #    if chef.count() == 0:
-    #        findChef = None
-    #else:
-        #findChef = None
-
-    #if findRecipes is not None:
-    #    if findRecipes.count() == 0:
-    #        findRecipes = None
-
-    findRecipes = None
-    findChef = None
-
-    return render_template("search_bar_returns.html", recipes=findRecipes, chef=findChef)
+    findRecipes = mongo.db.recipes.find({"$text": {"$search": search}})
+    return render_template("search_bar_returns.html", recipes=findRecipes)
 
 
 if __name__ == "__main__":
