@@ -159,6 +159,12 @@ def index():
             flash("This email was already taken!")
             return redirect(url_for("index"))
 
+        # Check to be sure username doesnt already exist in DB
+        userNameTaken = mongo.db.users.find_one({"email": request.form.get("username")})
+        if userNameTaken:
+            flash("This username was already taken!")
+            return redirect(url_for("index"))
+
         # Checks to be sure passwords match
         if request.form.get("password") != request.form.get("passwordCheck"):
             flash("Passwords do not match")
@@ -591,14 +597,34 @@ def all_recipes():
 
 @app.route("/search_bar_returns/<search>", methods=("POST", "GET"))
 def search_bar_returns(search):
-    print("Im search", search)
-    findChef = mongo.db.users.find_one({"$text": {"$search": search}})
-    if findChef is not None:
-        findRecipes = mongo.db.recipes.find({"created_by": findChef['email']})
-        return render_template("search_bar_returns.html", recipes=findRecipes)
-    findRecipes = mongo.db.recipes.find({"$text": {"$search": search}})
-    print("Im user inpit", findRecipes)
-    return render_template("search_bar_returns.html", recipes=findRecipes)
+
+    #countRecipes = mongo.db.recipes.find({"$text": {"$search": search}}).limit(1)
+    #print("!!")
+    #print(countRecipes.count(True)) 
+    #print("!!")
+
+    #countChef = mongo.db.users.find_one({"$text": {"$search": search}}).limit(1).count(True)
+
+    #findRecipes = mongo.db.recipes.find({"$text": {"$search": search}})
+
+    #chef = mongo.db.users.find_one({"$text": {"$search": search}})
+
+#    print(findChef)
+    #if chef is not None:
+    #    findChef = mongo.db.recipes.find({"created_by": chef["email"]})
+    #    if chef.count() == 0:
+    #        findChef = None
+    #else:
+        #findChef = None
+
+    #if findRecipes is not None:
+    #    if findRecipes.count() == 0:
+    #        findRecipes = None
+
+    findRecipes = None
+    findChef = None
+
+    return render_template("search_bar_returns.html", recipes=findRecipes, chef=findChef)
 
 
 if __name__ == "__main__":
