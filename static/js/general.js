@@ -9,16 +9,27 @@ if (document.getElementById("flash").getElementsByTagName("div")[0]){
     },7000)
 }
 
-//Adds ripple effect for links
+// Function to make social links have rippling liquid effect
+function makeRipples (targetEl) {
+    targetEl.getElementsByTagName("i")[0].classList.add("dipping-ice")
+    targetEl.getElementsByTagName("span")[0].classList.add("create-ripple")
+    setTimeout(function () {
+        targetEl.getElementsByTagName("span")[0].classList.remove("create-ripple")
+        targetEl.getElementsByTagName("i")[0].classList.remove("dipping-ice")
+    },3000)
+}
+
+//Adds ripple effect to event listeners for social links
 var findLinks = document.querySelectorAll(".social-position");
 findLinks.forEach(selectLinks)
 function selectLinks (item, index) {
+    // for mouse users
     item.addEventListener("mouseenter", function() {
-        item.getElementsByTagName("i")[0].classList.add("dipping-ice")
-        item.getElementsByTagName("span")[0].classList.add("create-ripple")
-        setTimeout(function () {
-            item.getElementsByTagName("span")[0].classList.remove("create-ripple")
-            item.getElementsByTagName("i")[0].classList.remove("dipping-ice")
-        },3000)
+        makeRipples (item);
+    })
+    // for touch screenusers
+    item.addEventListener("touchmove", function() {
+        makeRipples (item);
     })
 }
+
