@@ -138,6 +138,9 @@ in college, let us know!
     -- had to call dictionary and item (ex. session.user)
 
 -- Forgot to pass a variable from backend to templates and used an indirect(unspecific) comparason so initially the function worked for editing recipes or creating new recipes --  one way and would oscillate between functioning and not.  
+
+--type: email was preventing regex replace from functioning properly added an extra layer of validation just for email to compensate for using text over email
+
 ## Current Bugs
 -- profile.html carousel spills over when fixed to half screen
 -- login modal only on index
