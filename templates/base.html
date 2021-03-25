@@ -39,10 +39,10 @@
                             <label class="" type="text" for="name">User Name:</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input class="nameEmailValidation" type="text" id="name" name="name" value="JaneDoe" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]+{5,20}$" >
+                            <input class="nameValidation" type="text" id="name" name="name" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]+{5,20}$" >
                                 <div class="invalid-form form-is-valid make-invis">
                                     <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, '@.%$'</p>
-                                    <p class="make-invis">No spaces allowed</p>
+                                    <p class="make-invis"></p>
                                 </div>
                         </div>
                     </div>
@@ -55,10 +55,11 @@
                         </div>    
                         <div class="col-12 col-md-8">
                             <!-- -----------------------------------formbase label class is expanind me through label padding -->
-                            <input class="nameEmailValidation" type="email" id="email" name="email" value="fatraccoon@aol.com" minlength="5" maxlength="20"  required>
+                            <input class="emailValidation" type="text" id="email" name="email" value="" minlength="5" maxlength="20"  required>
                                 <div class="invalid-form form-is-valid make-invis">
                                     <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, and '@.%$'</p>
-                                    <p class="make-invis"></p>
+                                    <p class="">Must contain an '@'</p>
+                                    <p class="">must contain email suffix</p>
                                 </div>
                         </div>
 

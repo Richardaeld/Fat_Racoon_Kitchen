@@ -35,8 +35,10 @@ const matchTypeUpper = /[A-Z]/
 const matchTypeLower = /[a-z]/
 const matchTypeNumber = /[0-9]/
 const matchTypeChatacter = /[$|.|@|%|" "]/
-const matchTypeSpaces =  /["  "]/
-
+const matchTypeSpaces =  /[" "]/g // Follow with g to make global
+const matchTypeAtSign = /[@]/
+const matchTypeDotCom = /.com/
+const matchTypeDotEdu = /.edu/
 
 // Sets or removes invalid bubble and invalid attributes
 function finalValidation(item, checkPLength) {
@@ -66,7 +68,7 @@ function finalValidation(item, checkPLength) {
 }
 
 // basic (start) validation function
-function baseValidation (inputSelector, validationSelector) {
+function baseValidation (inputSelector, validationSelector, userInputType) {
     var findPasswords = document.querySelectorAll(inputSelector);  //var
     findPasswords.forEach(selectPasswords);
     function selectPasswords(item, index){
@@ -92,20 +94,43 @@ function baseValidation (inputSelector, validationSelector) {
                 if(item.value.match(matchTypeUpper) && item.value.match(matchTypeLower) && item.value.match(matchTypeNumber) && item.value.length >= 8 && item.value.length <= 20){
                     item.parentElement.getElementsByTagName("p")[0].classList.add("make-invis")
                 }
-                
-            } else if (validationSelector === "emailName"){
+
+            } else if(validationSelector === "email") {
+                // looks for @ 
+                if (item.value.match(matchTypeAtSign)) {
+                    item.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
+                } else {
+                    item.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
+                }
+
+                // looks for email suffix
+                let emailLength = item.value.length
+                if  (emailLength >=4 ){
+                    var checkEmailValue = ""
+                    // Find last 4 digits
+                    for (i=3; i>=0; i--){
+                        checkEmailValue += item.value[(emailLength-1)-i]
+                    }
+                    if (checkEmailValue.match(matchTypeDotCom)){ // checks for .com
+                        item.parentElement.getElementsByTagName("p")[2].classList.add("make-invis")
+                    }else if (checkEmailValue.match(matchTypeDotEdu)){ // checks for .edu
+                        item.parentElement.getElementsByTagName("p")[2].classList.add("make-invis")
+                    } else {
+                        item.parentElement.getElementsByTagName("p")[2].classList.remove("make-invis")
+                    }
+                }
+
+            } else if (validationSelector === "name"){ //emailName
                 // If all base requirements are met I validate the form for base validation and remove the appropiate "p" tag
                 if(item.value.length >= 6 && item.value.length <= 30){
                     item.parentElement.getElementsByTagName("p")[0].classList.add("make-invis")
                 }
-                if(item.value.match(matchTypeSpaces) == null){
-                    item.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
-                }
                 // I invalidate the form for base validation and reveal appropiate "p" tag
                 if(item.value.match(matchTypeSpaces)){
-                    item.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
+                    item.value = item.value.replace(matchTypeSpaces, "_");
                 }
                 if(item.value.length < 6 || item.value.length > 30){
+                    console.log("look at me")
                     item.parentElement.getElementsByTagName("p")[0].classList.remove("make-invis")
                 }
             }
@@ -114,11 +139,17 @@ function baseValidation (inputSelector, validationSelector) {
             let checkLength = item.parentElement.getElementsByTagName("p")
             //final validation of form
             finalValidation(item, checkLength)
+            
         })
     }
 }
 
-//----------------------email and name validation
-baseValidation(".nameEmailValidation", "emailName")
+//----------------------email validation
+baseValidation(".emailValidation", "email", "keyup") // keyboard
+baseValidation(".emailValidation", "email", "touchstart") // keyboard
+//---------------------- name validation
+baseValidation(".nameValidation", "name", "keyup") // keyboard
+baseValidation(".nameValidation", "name", "touchstart") // keyboard
 //----------------------password validation
-baseValidation(".passwordSets", "password")
+baseValidation(".passwordSets", "password", "keyup") // keyboard
+baseValidation(".passwordSets", "password", "touchstart") // touchscreen
