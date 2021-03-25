@@ -58,12 +58,15 @@
                             <div id="avatarImg" class="polaroid-picture">
                                 <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="">
                             </div>
+                            <div class="polaroid-text">
+                                <h3>From: {{ recipeInfo.created_by }}</h3>
+                            </div>
                         </div>
                     {% else %}
                         <div class="col-10 sticky-note large-content-height">
                             <div class="sticky-note-inner-div">
                                 <h1>
-                                    My chef hasn't uploaded an image of me yet :'(
+                                    My chef, {{ recipeInfo.created_by }} hasn't uploaded an image of me yet :'(
                                 </h1>
                             </div>
                         </div>
@@ -75,41 +78,48 @@
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note sticky-note-middle">
-                        <div class="row no-gutters sticky-note-inner-div justify-content-center">
+                        <div class="row no-gutters sticky-note-inner-div justify-content-center make-space">
 
                             <div class="col-10 recipe-name">
                                 <h1>
                                     {{ recipeInfo.name.title() }}
                                 </h1>
+                            </div>
+                            <div class="col-10">
                                 <div class="blank-anchor">
                                     <!--  Recipe favorite button  -->
                                     {% if favoriteRecipe == "None" %}
                                     {% elif favoriteRecipe == True %}
                                         <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">
-                                            <p>Favorite!</p>
-                                            <img class="favorite" src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Im the favorite icon">
+                                            <p style="display: inline">Favorite!</p>
+                                            <img style="display: inline" class="favorite" src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Im the favorite icon">
                                         </a>
                                     {% elif favoriteRecipe == False %}
                                         <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">
-                                            <p>Not a Favorite</p>
-                                            <img class="favorite" src="{{ url_for('static', filename='images/star-outline.svg') }}" alt="Im not the favorite icon">
+                                            <p style="display: inline">Not a Favorite</p>
+                                            <img style="display: inline" class="favorite" src="{{ url_for('static', filename='images/star-outline.svg') }}" alt="Im not the favorite icon">
                                         </a>
                                     {% endif %}
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <div class="row no-gutters">
 
-                            <span class="col-4">
-                                <h6>Prep</h6>
-                                <p>{{ recipeInfo.time[0] }} minutes</p>
-                            </span>
-                            <span class="col-4">
-                                <h6>Cook</h6>
-                                <p>{{ recipeInfo.time[1] }} minutes</p>
-                            </span>
-                            <span class="col-4">
-                                <h6>Total</h6>
-                                <p>{{ recipeInfo.time[2] }} minutes</p>
-                            </span>
+                                    <span class="col-4">
+                                        <h6>Prep</h6>
+                                        <p><strong>{{ recipeInfo.time[0] }}</strong> minutes</p>
+                                    </span>
+                                    <span class="col-4">
+                                        <h6>Cook</h6>
+                                        <p><strong>{{ recipeInfo.time[1] }}</strong> minutes</p>
+                                    </span>
+                                    <span class="col-4">
+                                        <h6>Total</h6>
+                                        <p><strong>{{ recipeInfo.time[2] }}</strong> minutes</p>
+                                    </span>
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
