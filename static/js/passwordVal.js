@@ -82,6 +82,11 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
         })
 
         item.addEventListener("keyup", function () {
+            // Replaces space with _
+            if(item.value.match(matchTypeSpaces)){
+                item.value = item.value.replace(matchTypeSpaces, "_");
+            }
+            
             // Uses specified type of validation
             if(validationSelector === "password"){
 
@@ -126,11 +131,8 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                     item.parentElement.getElementsByTagName("p")[0].classList.add("make-invis")
                 }
                 // I invalidate the form for base validation and reveal appropiate "p" tag
-                if(item.value.match(matchTypeSpaces)){
-                    item.value = item.value.replace(matchTypeSpaces, "_");
-                }
+
                 if(item.value.length < 6 || item.value.length > 30){
-                    console.log("look at me")
                     item.parentElement.getElementsByTagName("p")[0].classList.remove("make-invis")
                 }
             }
