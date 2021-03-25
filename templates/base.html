@@ -41,8 +41,9 @@
                         <div class="col-12 col-md-8">
                             <input class="nameValidation" type="text" id="name" name="name" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]+{5,20}$" >
                                 <div class="invalid-form form-is-valid make-invis">
-                                    <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, '@.%$'</p>
+                                    <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, @.%</p>
                                     <p class="make-invis"></p>
+                                    <p class="make-invis">Cannot contain ' " $ ,</p>
                                 </div>
                         </div>
                     </div>
@@ -57,9 +58,9 @@
                             <!-- -----------------------------------formbase label class is expanind me through label padding -->
                             <input class="emailValidation" type="text" id="email" name="email" value="" minlength="5" maxlength="20"  required>
                                 <div class="invalid-form form-is-valid make-invis">
-                                    <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, and '@.%$'</p>
-                                    <p class="">Must contain an '@'</p>
-                                    <p class="">must contain email suffix</p>
+                                    <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, and @.%</p>
+                                    <p class="">must contain appropiate email suffix</p>
+                                    <p class="make-invis">Cannot contain ' " $ ,</p>
                                 </div>
                         </div>
 
@@ -76,6 +77,7 @@
                             <div class="invalid-form make-invis">
                                 <p class="">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                                 <p class="make-invis">New password and confirm new password must match</p>
+                                <p class="make-invis">Cannot contain ' " $ ,</p>
                             </div>
                         </div>
                     </div>
@@ -89,6 +91,7 @@
                             <div class="invalid-form make-invis">
                                 <p>Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                                 <p class="make-invis">New password and confirm new password must match</p>
+                                <p class="make-invis">Cannot contain ' " $ ,</p>
                             </div>
                         </div>
                     </div>

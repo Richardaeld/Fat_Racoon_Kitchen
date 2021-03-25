@@ -31,11 +31,13 @@ function selectPasswordComapre(item, index) {
 
 // ---- Form Validation for passwords
 //form REGEX
+const matchAcceptedInput = /[]/
 const matchTypeUpper = /[A-Z]/
 const matchTypeLower = /[a-z]/
 const matchTypeNumber = /[0-9]/
-const matchTypeChatacter = /[$|.|@|%|" "]/
-const matchTypeSpaces =  /[" "]/g // Follow with g to make global
+const matchTypeChatacter = /[.|@|%]/
+const matchTypeBadCharacter = /['|"|$|,]/
+const matchTypeSpaces =  /[ ]/g // Follow with g to make global
 const matchTypeAtSign = /[@]/
 const matchTypeDotCom = /.com/
 const matchTypeDotEdu = /.edu/
@@ -87,6 +89,13 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 item.value = item.value.replace(matchTypeSpaces, "_");
             }
             
+            // Checks for improper characters
+            if(item.value.match(matchTypeBadCharacter) != null){
+                item.parentElement.getElementsByTagName("p")[2].classList.remove("make-invis")
+            } else {
+                item.parentElement.getElementsByTagName("p")[2].classList.add("make-invis")
+            }
+
             // Uses specified type of validation
             if(validationSelector === "password"){
 
@@ -108,7 +117,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                     item.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
                 }
 
-                // looks for email suffix
+                // looks for email suffix '.com' or '.edu
                 let emailLength = item.value.length
                 if  (emailLength >=4 ){
                     var checkEmailValue = ""
@@ -148,10 +157,10 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
 
 //----------------------email validation
 baseValidation(".emailValidation", "email", "keyup") // keyboard
-baseValidation(".emailValidation", "email", "touchstart") // keyboard
+//baseValidation(".emailValidation", "email", "touchstart") // touchscreen // never implemented
 //---------------------- name validation
 baseValidation(".nameValidation", "name", "keyup") // keyboard
-baseValidation(".nameValidation", "name", "touchstart") // keyboard
+//baseValidation(".nameValidation", "name", "touchstart") // touchscreen // never implemented
 //----------------------password validation
 baseValidation(".passwordSets", "password", "keyup") // keyboard
-baseValidation(".passwordSets", "password", "touchstart") // touchscreen
+//baseValidation(".passwordSets", "password", "touchstart") // touchscreen // never implemented
