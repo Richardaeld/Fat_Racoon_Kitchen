@@ -19,14 +19,28 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 
+# Sets Head Chef
+headChef = "Fat_Raccoon"
+
+
 mongo = PyMongo(app)
 
 
 @app.route("/", methods=("GET", "POST"))
 def index():
+
+
     # counts total recipes from specified chef -- AKA head chef
-    totalRecipeCount = mongo.db.recipes.count_documents({"created_by": "asdfa@aol.com"})
-    totalRecipes = list(mongo.db.recipes.find({"created_by": "asdfa@aol.com"}))
+    totalRecipeCount = mongo.db.recipes.count_documents({"created_by": headChef})
+    totalRecipes = list(mongo.db.recipes.find({"created_by": headChef}))
+
+    # ---- For Dev -- updates all entries
+    #findchange = mongo.db.recipes.find({"created_by": "asdfa@aol.com"})
+    #for change in findchange:
+    #    update = {
+    #        "created_by": headChef
+    #    }
+    #    mongo.db.recipes.update_many({"_id": ObjectId(change["_id"])}, {"$set":  update})
 
     # ---- Loads quick meal ideas (carousel) feature items
     features = list(mongo.db.feature.find())
