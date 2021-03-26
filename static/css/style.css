@@ -287,7 +287,8 @@ header {
 .card-carousel li {
     font-family: "Reenie beanie", sans-serif;
     padding-bottom: 0rem!important; /* without important uses bottom padding from recipe-lists */
-    list-style-type: none;
+    list-style: none;
+    line-height: 1;
 }
 /*.card-carousel p {
     font: 1.5rem "Yanone Kaffeesatz",sans-serif;
@@ -666,7 +667,7 @@ fieldset {
 }
 
 .blank-anchor a:hover,
-.recipe-lists a:hover {
+.recipe-lists a:hover { /*--------------------this line has clone*/
     text-decoration: none;
 }
 
