@@ -53,10 +53,10 @@
                                     <div class="col-12">
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                            <input class="time" type="number" id="prepTime" name="prepTime" value="15">
+                                            <input class="time" type="number" id="time1" name="time1" value="15">
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                            <input class="time" type="number" id="prepTime" name="prepTime" value="{{ recipeInfo.time[0] }}">
+                                            <input class="time" type="number" id="time1" name="time1" value="{{ recipeInfo.time[0] }}">
                                         {% endif %}
                                         <p>Minutes</p>
                                     </div>
@@ -73,10 +73,10 @@
                                         <!-- Rewrite flask in value into repeating inputs -->
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                            <input class="time" type="number" id="cookTime" name="cookTime" value="10">
+                                            <input class="time" type="number" id="time2" name="time2" value="10">
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                            <input class="time" type="number" id="cookTime" name="cookTime" value="{{ recipeInfo.time[1] }}">
+                                            <input class="time" type="number" id="time2" name="time2" value="{{ recipeInfo.time[1] }}">
                                         {% endif %}
                                         <p>Minutes</p>
                                     </div>    
@@ -93,10 +93,10 @@
                                         <!-- Rewrite flask in value into repeating inputs -->
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                            <input type="number" id="totalTime" name="totalTime" value="25" disabled>
+                                            <input type="number" id="time3" name="time3" value="25" disabled>
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                            <input type="number" id="totalTime" name="totalTime" value="{{ recipeInfo.time[2] }}" disabled>
+                                            <input type="number" id="time3" name="time3" value="{{ recipeInfo.time[2] }}" disabled>
                                         {% endif %}
                                             <p>Minutes</p>
                                     </div>

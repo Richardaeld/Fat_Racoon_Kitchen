@@ -3,12 +3,12 @@ var findTime = document.querySelectorAll(".time");
 findTime.forEach(useTime);
 function useTime(item, index){
     item.addEventListener("change", function () {
-        let time1 = document.getElementById("prepTime").value;
+        let time1 = document.getElementById("time1").value;
         console.log(time1)
-        let time2 = document.getElementById("cookTime").value;
-        console.log(document.getElementById("totalTime").value)
+        let time2 = document.getElementById("time2").value;
+        console.log(document.getElementById("time3").value)
 
-        document.getElementById("totalTime").value = parseInt(time1) + parseInt(time2);
+        document.getElementById("time3").value = parseInt(time1) + parseInt(time2);
     })
 }
 
@@ -83,7 +83,7 @@ document.getElementById("custom-button").addEventListener("click", function() {
     //document.getElementById("recipeIngredientsTotal").removeAttribute("disabled");
     //document.getElementById("recipeStepsTotal").removeAttribute("disabled");
     document.getElementById("avatar_name").setAttribute("value", imageName);
-    document.getElementById("totalTime").removeAttribute("disabled")
+    document.getElementById("time3").removeAttribute("disabled")
     if (document.getElementById("avatar").value != ""){
         document.getElementById("avatar_file_valid").value = true;
     }
