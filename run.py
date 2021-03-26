@@ -515,66 +515,75 @@ def add_edit_recipe(recipeId):
 def edit_user_info():
     userInfo = mongo.db.users.find_one({"email": session["user"]})
 
-    #update = {}
+    # Creates empty dictionary to add edit information to
+    update_dict = {}
 
     if request.method == "POST":
-        #if userInfo["username"] != request.form.get("usernameEdit"):
-        #    print("")
-        update = {
-            "username": request.form.get("usernameEdit"),
-            "email": request.form.get("emailEdit"),
-        #    "password": request.form.get("passwordCheck2"),
-            "bio": request.form.get("bio")
-        }
+        if userInfo["username"] != request.form.get("usernameEdit"):
+            # Checks for validation
+            # Checks to be sure this username is not taken or
+            # returns with user error message
+            usernameCheck = mongo.db.users.find_one(
+                {"username": request.form.get("usernameEdit")})
+            if usernameCheck is not None:
+                flash("Username already exists! Try Again!")
+                return(redirect(url_for("edit_user_info")))
+            # Passes validation so adds to update dictionary
+            update_dict["username"] = request.form.get("usernameEdit")
 
-        # Checks to be sure password is present to be updated
+        # checks for new email and validates if new email exists
+        if userInfo["email"] != request.form.get("emailEdit"):
+            # Checks for validation
+            # Checks to be sure this email is not taken or
+            # returns with user error message
+            emailCheck = mongo.db.users.find_one(
+                {"email": request.form.get("emailEdit")})
+            if emailCheck is not None:
+                flash("Email already exists! Try Again!")
+                return(redirect(url_for("edit_user_info")))
+            # Passes validation so adds to update dictionary
+            update_dict["email"] = request.form.get("emailEdit")
+
         if request.form.get("passwordCheck2") != "":
-            update = {
-                "username": request.form.get("usernameEdit"),
-                "email": request.form.get("emailEdit"),
-                "password": request.form.get("passwordCheck2"),
-                "bio": request.form.get("bio")
-            }
+            update_dict["password"] = generate_password_hash(
+                request.form.get("passwordCheck2"))
 
-        # ----Validation
-        # Validates email for current email or availability of new email
+        if userInfo["bio"] != request.form.get("bio"):
+            update_dict["bio"] = request.form.get("bio")
+
         # Validates current password before allowing changes to be made
-        emailCheck = mongo.db.users.find_one(
-            {"email": request.form.get("emailEdit")})
         passwordCheck = check_password_hash(
             userInfo["password"], request.form.get('password'))
-        if emailCheck is not None and (
-                request.form.get("emailEdit") != userInfo["email"]):
-            flash("Email already exists! Try Again!")
-            return(redirect(url_for("edit_user_info")))
 
         # If all checks pass uploads new profile data to DB
-        elif (passwordCheck):
+        if (passwordCheck):
             flash("Profile updated successfully!")
+
             # Replaces Avatar if new image present
             if request.form.get("avatar_file_valid") == 'true':
+                # Finds and deletes previous avatar in BOTH chunks and files
                 delPrevImg = userInfo["avatar_id"]
                 mongo.db.fs.chunks.delete_many(
                     {"files_id": ObjectId(delPrevImg)})
                 mongo.db.fs.files.delete_many({"_id": ObjectId(delPrevImg)})
 
+                # Set save variable for new avatar
                 # Code customized from Pretty Printed
                 # https://www.youtube.com/watch?v=DsgAuceHha4
                 avatar = request.files['avatar']
 
-                # format filename and then file
+                # Saves new avatar format filename and then file
                 mongo.save_file(request.form.get("avatar_name"), avatar)
+                # Finds new save location for meta data fetch
                 imageDict = mongo.db.fs.files.find_one(
                     {"filename": request.form.get("avatar_name")})
-                imgUpdate = {
-                    "avatar": request.form.get("avatar_name"),
-                    "avatar_id": imageDict["_id"]
-                }
-                mongo.db.users.update_one(
-                    {"_id": ObjectId(userInfo["_id"])}, {"$set":  imgUpdate})
-            print(update)
-    #        mongo.db.users.update(
-    #            {"_id": ObjectId(userInfo["_id"])}, {"$set": update})
+                # Adds Avatar information to update dictionary
+                update_dict["avatar"] = request.form.get("avatar_name")
+                update_dict["avatar_id"] = imageDict["id"]
+
+            mongo.db.users.update(
+                {"_id": ObjectId(userInfo["_id"])}, {"$set": update_dict})
+            print(update_dict)
             return(redirect(url_for("profile")))
 
         # Password validation fail
