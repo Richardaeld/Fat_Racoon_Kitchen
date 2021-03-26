@@ -762,4 +762,11 @@ fieldset {
     }
 }
 */
+/* ---------------------------------------- search bar ---------------------------------------- */
 
+@media (min-width: 992px) and (max-width: 1399.98px) {
+    .search-bar-spacing h6,
+    .search-bar-spacing p{
+        display: inline;
+    }
+}

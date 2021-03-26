@@ -34,7 +34,7 @@
             <div class="col-12 col-lg-6">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note"> <!-- recipe-list-height-->
-                        <div class="sticky-note-inner-div blank-anchor make-space recipe-name">
+                        <div class="sticky-note-inner-div blank-anchor make-space recipe-name search-bar-spacing">
                             <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
 
                                 <div class="col-12">
@@ -44,10 +44,10 @@
                                 
                                 <div class="col-12">
                                     <span class="row no-gutters">
-                                        <span class="col-6">
+                                        <span class="col-6 col-lg-12 col-xl-6">
                                             <h6>Features: <strong>{{ recipe.feature.title() }}</strong></h6>
                                         </span>
-                                        <span class="col-6">
+                                        <span class="col-6 col-lg-12 col-xl-6">
                                             <h6>Chef: <strong>{{ recipe.created_by }}</strong></h6>
                                         </span>
                                     </span>
@@ -55,15 +55,15 @@
                                 
                                 <div class="col-12">
                                     <span class="row no-gutters">
-                                        <span class="col-4">
+                                        <span class="col-4 col-lg-12 col-xl-4">
                                             <h6>Prep</h6>
                                             <p><strong>{{ recipe.time[0] }}</strong> minutes</p>
                                         </span>
-                                        <span class="col-4">
+                                        <span class="col-4 col-lg-12 col-xl-4">
                                             <h6>Cook</h6>
                                             <p><strong>{{ recipe.time[1] }}</strong> minutes</p>
                                         </span>
-                                        <span class="col-4">
+                                        <span class="col-4 col-lg-12 col-xl-4">
                                             <h6>Total</h6>
                                             <p><strong>{{ recipe.time[2] }}</strong> minutes</p>
                                         </span>
