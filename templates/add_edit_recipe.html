@@ -234,14 +234,15 @@
                             <div class="col-10">
                                 <div class="row no-gutters justify-content-center ingredientAddRemoveLocation">
                                     {% if recipeInfo == none %}
+                                    <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="1">
                                     <div class="col-12 col-md-6">
                                         <div class="row no-gutters align-items-center step-ingredient-spacing">
-                                                <span>1. </span>
-                                                <input class="col-11 countIngredients" type="text" id="recipeIngredients-1" name="recipeIngredients-1">
+                                            <span>1. </span>
+                                            <input class="col-11 countIngredients" type="text" id="recipeIngredients-1" name="recipeIngredients-1">
                                         </div>
                                     </div>
-                                    <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="1">
                                     {% else %}
+                                        <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
                                         {% for ingredient in recipeIngEnum %}
                                             <div class="col-12 col-md-6">
                                                 <div class="row no-gutters align-items-center step-ingredient-spacing">
@@ -249,12 +250,9 @@
                                                     <input class="col-11 countIngredients" type="text" id="recipeIngredients-{{ingredient[0] + 1}}" name="recipeIngredients-{{ingredient[0] + 1}}" value="{{ingredient[1]}}">
                                                 </div>
                                             </div>
-                                            {% endfor %}
-                                            <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
-                                            {% endif %}
-                                            
-                                            
-                                        </div>
+                                        {% endfor %}
+                                    {% endif %}            
+                                </div>
                             </div>
                         
                         </div>
@@ -292,6 +290,7 @@
                             <div class="col-10">
                                 <div class="row no-gutters justify-content-center stepAddRemoveLocation">
                                     {% if recipeInfo == none %}
+                                    <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="1">
                                     <div class="col-12 col-md-6">
                                         <div class="row no-gutters align-items-center step-ingredient-spacing">
                                             <span>1. </span>
@@ -299,8 +298,8 @@
                                             <!-- I count for DB upload!! -->
                                         </div>
                                     </div>
-                                    <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="1">
                                     {% else %}
+                                        <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
                                         {% for step in recipeSteEnum %}
                                             <div class="col-12 col-md-6">
                                                 <div class="row no-gutters align-items-center step-ingredient-spacing">
@@ -308,11 +307,9 @@
                                                     <textarea class="col-11 countSteps" type="text" id="recipeSteps-{{step[0] + 1}}" name="recipeSteps-{{step[0] + 1}}" value="" col="20" rows="3">{{step[1]}}</textarea>
                                                 </div>
                                             </div>
-                                            {% endfor %}
-                                            <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
-                                            {% endif %}
-                                            
-                                        </div>
+                                        {% endfor %}
+                                    {% endif %}                                            
+                                </div>
                             </div>
                         </div>
                     </fieldset>

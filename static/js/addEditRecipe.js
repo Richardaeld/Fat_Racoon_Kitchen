@@ -68,13 +68,14 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
             // sets Value of select for user to see the number of availiable boxes
             totalLoc.value = arrayIngredientLength;
             totalLoc.textContent = arrayIngredientLength;
+            document.getElementById(totalItemsLocation).value = arrayIngredientLength
         }
     })
 }
 
 //createRemoveFormBoxes("ingredientAddRemoveLocation", "recipeIngredientsTotal", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton");
 createRemoveFormBoxes("ingredientAddRemoveLocation", "ingredientNumber", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton", "input", "recipeIngredientsTotal" ,".countIngredients");
-createRemoveFormBoxes("stepAddRemoveLocation", "stepNumber", ".stepAddButton", "recipeSteps-", ".stepRemoveButton", "textarea", "recipeIngredientsTotal", ".countSteps");
+createRemoveFormBoxes("stepAddRemoveLocation", "stepNumber", ".stepAddButton", "recipeSteps-", ".stepRemoveButton", "textarea", "recipeStepsTotal", ".countSteps");
 
 // Removes disabled attribute tag when submit button is pushed (so form can be read)
 // Adds randomly generated image name
