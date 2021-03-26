@@ -41,6 +41,9 @@ function tabSelect(item, index) {
             //sets submit button value
             document.getElementById("custom-button").value = "Login"
             document.getElementById("password").parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
+            // Undoes auto fail for password check so it does not disrupt user login on login mode            
+            document.getElementById("passwordCheck").parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
+
 
         } else {
             // Makes all create account material visivle and makes adds required when create account is clicked
@@ -50,6 +53,10 @@ function tabSelect(item, index) {
             }
             // Sets submit button value
             document.getElementById("custom-button").value = "Create"
+            // Disables submit on switch to create account mode
+            document.getElementById("custom-button").setAttribute("disabled", "")
+            // Makes sure confirm password does not auto validate
+            document.getElementById("passwordCheck").parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
         }
 
         // Changes the filter from Login to create account on click
