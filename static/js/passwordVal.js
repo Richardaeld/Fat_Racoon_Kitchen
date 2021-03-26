@@ -2,8 +2,8 @@
 //Validates matching new password and confirm new password
 //newPasswordEdit
 //NewPasswordCheckEdit
-let newPassword = document.getElementById("password") // ---changed loc
-let newPasswordCheck = document.getElementById("passwordCheck")  //  ---  changed loc
+let newPassword = document.getElementById("passwordCheck1") // ---changed loc
+let newPasswordCheck = document.getElementById("passwordCheck2")  //  ---  changed loc
 var findPasswordComapre = document.querySelectorAll(".passwordCompare");
 findPasswordComapre.forEach(selectPasswordComapre);
 function selectPasswordComapre(item, index) {
@@ -42,29 +42,40 @@ const matchTypeAtSign = /[@]/
 const matchTypeDotCom = /.com/
 const matchTypeDotEdu = /.edu/
 
-// Sets or removes invalid bubble and invalid attributes
-function finalValidation(item, checkPLength) {
-    var formIsValid = true
-    for (i=0; i< checkPLength.length; i++){
-        //console.log(item) ------------genereates a lot of code
-        // Sets a validation variable as it checks over all possible invalidation points
-        if(item.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis") == false){                
-            formIsValid = false
-        }
 
-        // Makes bubble visible or invisible according to fromIsValid variable
-        if(formIsValid){
-            item.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid")
-            item.removeAttribute("invalid")
-            item.classList.remove("form-invalid-view")
-            document.getElementById("custom-button").removeAttribute("disabled")
-        } else if(formIsValid == false){
-            //console.log(item)
-            item.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid")
-            item.setAttribute("invalid", "")
-            item.classList.add("form-invalid-view")
-            document.getElementById("custom-button").setAttribute("disabled", "")
-            break
+var formIsValid = false
+// Sets or removes invalid bubble and invalid attributes
+function finalValidation() {
+    
+    let findFormInputs = document.querySelectorAll(".formValidation");
+    findFormInputs.forEach(selectFormInputs)
+    function selectFormInputs(item, index) {
+
+        //enables and disables validation bubble according to if input is valid or not
+        let checkPLength = item.parentElement.getElementsByTagName("p")
+
+
+        for (i=0; i< checkPLength.length; i++){
+            //console.log(item) ------------genereates a lot of code
+            // Sets a validation variable as it checks over all possible invalidation points
+            if(item.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis") == false){                
+                formIsValid = false
+            }
+            
+            // Makes bubble visible or invisible according to fromIsValid variable
+            if(formIsValid){
+                item.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid")
+                item.removeAttribute("invalid")
+                item.classList.remove("form-invalid-view")
+                document.getElementById("custom-button").removeAttribute("disabled")
+            } else if(formIsValid == false){
+                //console.log(item)
+                item.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid")
+                item.setAttribute("invalid", "")
+                item.classList.add("form-invalid-view")
+                document.getElementById("custom-button").setAttribute("disabled", "")
+                break
+            }
         }
     }
 }
@@ -126,11 +137,11 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                         checkEmailValue += item.value[(emailLength-1)-i]
                     }
                     if (checkEmailValue.match(matchTypeDotCom)){ // checks for .com
-                        item.parentElement.getElementsByTagName("p")[2].classList.add("make-invis")
+                        item.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
                     }else if (checkEmailValue.match(matchTypeDotEdu)){ // checks for .edu
-                        item.parentElement.getElementsByTagName("p")[2].classList.add("make-invis")
+                        item.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
                     } else {
-                        item.parentElement.getElementsByTagName("p")[2].classList.remove("make-invis")
+                        item.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
                     }
                 }
 
@@ -146,10 +157,9 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 }
             }
 
-            //enables and disables validation bubble according to if input is valid or not
-            let checkLength = item.parentElement.getElementsByTagName("p")
             //final validation of form
-            finalValidation(item, checkLength)
+            formIsValid = true
+            finalValidation()
             
         })
     }
