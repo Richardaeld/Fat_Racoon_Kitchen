@@ -309,17 +309,24 @@ def addFavorite(recipeId, favoriteChange):
 
 @app.route("/recipe/<recipeId>", methods=("GET", "POST"))
 def recipe(recipeId):
+
+    chef = ""
+
     # Redirects incase recipe has been removed
     if mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}) is None:
         flash("Sorry this recipe has been removed")
         return(redirect(url_for("profile")))
+
     # Finds recipe to display
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
-
     # Find if recipe is favorite and adds recipes
     # to a previously viewed list for signed in users
     try:
         if session["user"]:
+            # Finds and sets user chef id
+            chef = mongo.db.users.find_one({"email": session['user']})
+            chef = chef['username']
+            # Updates user recents list
             findUserRecents = (
                 mongo.db.users.find_one(
                     {"email": session["user"]}))
@@ -373,7 +380,7 @@ def recipe(recipeId):
 
     return render_template(
         "recipe.html",
-        recipeInfo=recipeInfo, favoriteRecipe=favoriteRecipe)
+        recipeInfo=recipeInfo, favoriteRecipe=favoriteRecipe, chef=chef)
 
 
 # Code customized from Pretty Printed
