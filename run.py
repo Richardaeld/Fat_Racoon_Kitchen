@@ -410,7 +410,6 @@ def add_edit_recipe(recipeId):
         recipeInfo = None
         recipeIngEnum = None
         recipeSteEnum = None
-        creator = admin["username"]
     else:
         if mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}) is None:
             flash("Sorry this recipe has been removed")
@@ -418,89 +417,76 @@ def add_edit_recipe(recipeId):
         recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
         recipeIngEnum = list(enumerate(recipeInfo["ingredients"]))
         recipeSteEnum = list(enumerate(recipeInfo["steps"]))
-        creator = recipeInfo["created_by"]
 
     # Generates the select/option for meal feature
     features = mongo.db.feature.find()
 
     if request.method == "POST":
-        # Creates list of times to upload
-        time = [
-            request.form.get("prepTime"),
-            request.form.get("cookTime"),
-            request.form.get("totalTime")]
+        # Creates base dictionary and adds name and feature
+        upload_dict = {}  #current 636 see if less using this method
+        upload_dict["name"] = request.form.get("recipeName")
+        upload_dict["feature"] = request.form.get("feature")
 
-        # Creates list of steps to upload
-        steps = []
-        recipeStepsTotal = (request.form.get("recipeStepsTotal"))
-        recipeStepsTotal = int(recipeStepsTotal)
-        for step in range(1, recipeStepsTotal + 1):
-            recipeStep = "recipeSteps-" + str(step)
-            steps += [request.form.get(recipeStep)]
+        # Creates list of times and adds to dictionary
+        upload_dict["time"] = []
+        for time in range(1, 4):
+            upload_dict["time"].append(request.form.get("time" + str(time)))
 
-        # Creates list of ingredents to upload
-        ingredients = []
-        recipeIngredientsTotal = request.form.get("recipeIngredientsTotal")
-        recipeIngredientsTotal = int(recipeIngredientsTotal)
-        for step in range(1, recipeIngredientsTotal + 1):
-            ingredientStep = "recipeIngredients-" + str(step)
-            ingredients += [request.form.get(ingredientStep)]
+        # Creates list of steps and adds to dictionary
+        upload_dict["steps"] = []
+        for step in range(1, int(request.form.get("recipeStepsTotal")) + 1):
+            upload_dict["steps"].append(request.form.get("recipeSteps-" + str(step)))
 
-        # Sets variables for avatar and avatar_id and uploads avatar if needed
+        # Creates list of ingredents and adds to dictionary
+        upload_dict["ingredients"] = []
+        for ingredient in range(1, int(request.form.get("recipeIngredientsTotal")) + 1):
+            upload_dict["ingredients"].append(request.form.get("recipeIngredients-" + str(ingredient)))
+
+        # Adds recipe description and datetime to dictionary
+        upload_dict["text"] = request.form.get("recipeDescription")
+        upload_dict["date"] = datetime.datetime.now()
+
+        # Replaces Avatar if new image present
         if request.form.get("avatar_file_valid") == 'true':
+            if recipeId != "new":
+                # Finds and deletes previous avatar in BOTH chunks and files
+                delPrevImg = admin["avatar_id"]
+                mongo.db.fs.chunks.delete_many(
+                    {"files_id": ObjectId(delPrevImg)})
+                mongo.db.fs.files.delete_many({"_id": ObjectId(delPrevImg)})
+
             # Code customized from Pretty Printed
             # https://www.youtube.com/watch?v=DsgAuceHha4
             avatar = request.files['avatar']
             # format filename and then file
             mongo.save_file(request.form.get("avatar_name"), avatar)
-            imageDict = mongo.db.fs.files.find_one(
-                {"filename": request.form.get("avatar_name")})
-            avatar_img = request.form.get("avatar_name")
-            avatar_id = imageDict["_id"]
-
-            add_avatar = {
-            "avatar": avatar_img,
-            "avatar_id": avatar_id
-            }
-            mongo.db.recipes.update_one({"_id": ObjectId(recipeId)}, {'$set': add_avatar})
+            imageDict = mongo.db.fs.files.find_one({"filename": request.form.get("avatar_name")})
+            upload_dict["avatar"] = request.form.get("avatar_name")
+            upload_dict["avatar_id"] = imageDict["_id"]
 
         # Sets lazy value
         if request.form.get("lazy") == "True":
-            lazy = True
+            upload_dict["lazy"] = True
         else:
-            lazy = False
+            upload_dict["lazy"] = False
 
         # Sets grandparent value
         if request.form.get("grandparent") == "True":
-            grandparent = True
+            upload_dict["grandparent"] = True
         else:
-            grandparent = False
+            upload_dict["grandparent"] = False
 
-        # Builds upload document
-        add_recipe = {
-            "name": request.form.get("recipeName"),
-            "feature": request.form.get("feature"),
-            "ingredients": ingredients,
-            "steps": steps,
-            "time": time,
-            "text": request.form.get("recipeDescription"),
-            "history": request.form.get("recipeHistory"),
-            "date": datetime.datetime.now(),
-        #    "avatar": avatar_img,
-        #    "avatar_id": avatar_id,
-            "lazy": lazy,
-            "grandparent": grandparent,
-            "created_by": creator
-        }
-
+        # Uploads dictionary depending on if its a new recipe or edit
         if recipeId == "new":
+            upload_dict["created_by"] = admin["username"]
             # Uploads to mongo and sets up to pull ID
-            result = mongo.db.recipes.insert_one(add_recipe)
+            result = mongo.db.recipes.insert_one(upload_dict)
             # Grabs ID of mongo upload
             uploadedId = result.inserted_id
         else:
+            upload_dict["created_by"] = recipeInfo["created_by"]
             result = mongo.db.recipes.update_one(
-                {"_id": ObjectId(recipeId)}, {'$set': add_recipe})
+                {"_id": ObjectId(recipeId)}, {'$set': upload_dict})
             uploadedId = recipeId
 
         return redirect(url_for("recipe", recipeId=uploadedId))
