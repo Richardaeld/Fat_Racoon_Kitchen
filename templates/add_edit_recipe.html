@@ -240,7 +240,6 @@
                                                 <input class="col-11" type="text" id="recipeIngredients-1" name="recipeIngredients-1">
                                         </div>
                                     </div>
-                                    <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="1">
                                     {% else %}
                                         {% for ingredient in recipeIngEnum %}
                                             <div class="col-12 col-md-6">
@@ -249,12 +248,12 @@
                                                     <input class="col-11" type="text" id="recipeIngredients-{{ingredient[0] + 1}}" name="recipeIngredients-{{ingredient[0] + 1}}" value="{{ingredient[1]}}">
                                                 </div>
                                             </div>
-                                            <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
-                                        {% endfor %}
-                                    {% endif %}
-
-
-                                </div>
+                                            {% endfor %}
+                                            {% endif %}
+                                            
+                                            
+                                        </div>
+                                        <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
                             </div>
                         
                         </div>
@@ -309,10 +308,10 @@
                                                 </div>
                                             </div>
                                             {% endfor %}
-                                            <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
-                                    {% endif %}
-
-                                </div>
+                                            {% endif %}
+                                            
+                                        </div>
+                                        <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
                             </div>
                         </div>
                     </fieldset>
