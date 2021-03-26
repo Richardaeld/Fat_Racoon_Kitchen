@@ -138,7 +138,7 @@ def index():
         # Random selects recipe and loads its chef info
         if recipeRandom == iteration:
             recipeOfDay = recipe
-            chef = mongo.db.users.find_one({"email": recipeOfDay["created_by"]})
+            chef = mongo.db.users.find_one({"username": recipeOfDay["created_by"]})
             break
         iteration += 1
 
