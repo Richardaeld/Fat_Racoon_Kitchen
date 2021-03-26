@@ -13,13 +13,14 @@ function useTime(item, index){
 }
 
 // ---- Create/Remove boxes for user input of ingredients/steps
-function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, removeButton, inputOrTextarea, totalItemsLocation) {
-    let arrayIngredientLength = document.getElementsByClassName(addRemoveLoc)[0].querySelectorAll(inputOrTextarea).length;
+function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, removeButton, inputOrTextarea, totalItemsLocation, countStepsIngreds) {
+    let arrayIngredientLength = document.querySelectorAll(countStepsIngreds).length;
     //let totalLoc = document.getElementById(totalLocId).options[0]; //-----------------------------------number location
     let totalLoc = document.getElementById(totalLocId).getElementsByTagName("span")[0]; //-----------------------------------number location
     let addRemoveLocation = document.getElementsByClassName(addRemoveLoc)[0];
     totalLoc.value = arrayIngredientLength;
     totalLoc.textContent = arrayIngredientLength;
+    document.getElementById(totalItemsLocation).value = arrayIngredientLength;
 
     // ingredient Add Button -- Dynamically adds extra boxes for user input for recipe ingredients
     document.querySelector(addButton).addEventListener("click", function() {
@@ -72,10 +73,9 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
 }
 
 //createRemoveFormBoxes("ingredientAddRemoveLocation", "recipeIngredientsTotal", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton");
-createRemoveFormBoxes("ingredientAddRemoveLocation", "ingredientNumber", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton", "input","recipeStepsTotal");
-createRemoveFormBoxes("stepAddRemoveLocation", "stepNumber", ".stepAddButton", "recipeSteps-", ".stepRemoveButton", "textarea", "recipeIngredientsTotal");
+createRemoveFormBoxes("ingredientAddRemoveLocation", "ingredientNumber", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton", "input", "recipeIngredientsTotal" ,".countIngredients");
+createRemoveFormBoxes("stepAddRemoveLocation", "stepNumber", ".stepAddButton", "recipeSteps-", ".stepRemoveButton", "textarea", "recipeIngredientsTotal", ".countSteps");
 
-console.log(imageName);
 // Removes disabled attribute tag when submit button is pushed (so form can be read)
 // Adds randomly generated image name
 document.getElementById("custom-button").addEventListener("click", function() {
