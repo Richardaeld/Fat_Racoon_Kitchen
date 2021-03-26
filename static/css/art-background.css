@@ -77,7 +77,6 @@
 
 /* outer layer */
 .rotating-card {
-    height: 20rem;
     text-align: left;
     perspective: 1000px;
     margin: 2rem 3rem;
@@ -107,8 +106,14 @@
 }
 
 .index-face,
-.index-back{
+.index-back,
+.rotating-card {
     height: 20rem;
+
+}
+
+.index-face,
+.index-back{
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     position: absolute;
@@ -139,11 +144,10 @@
     .rotating-card h2 {
         font-size: 1.75rem;
     }
-    .rotating-card {
-        height: 17rem;
-    }
+
     .index-face,
-    .index-back {
+    .index-back,
+    .rotating-card {
         height: 17rem;
     }
 }
