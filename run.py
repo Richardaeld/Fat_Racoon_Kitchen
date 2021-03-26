@@ -516,16 +516,16 @@ def edit_user_info():
         update = {
             "username": request.form.get("usernameEdit"),
             "email": request.form.get("emailEdit"),
-        #    "password": request.form.get("NewPasswordCheckEdit"),
+        #    "password": request.form.get("passwordCheck2"),
             "bio": request.form.get("bio")
         }
 
         # Checks to be sure password is present to be updated
-        if request.form.get("NewPasswordCheckEdit") is not None:
+        if request.form.get("passwordCheck2") is not None:
             update = {
                 "username": request.form.get("usernameEdit"),
                 "email": request.form.get("emailEdit"),
-                "password": request.form.get("NewPasswordCheckEdit"),
+                "password": request.form.get("passwordCheck2"),
                 "bio": request.form.get("bio")
             }
 
@@ -535,7 +535,7 @@ def edit_user_info():
         emailCheck = mongo.db.users.find_one(
             {"email": request.form.get("emailEdit")})
         passwordCheck = check_password_hash(
-            userInfo["password"], request.form.get('passwordEdit'))
+            userInfo["password"], request.form.get('password'))
         if emailCheck is not None and (
                 request.form.get("emailEdit") != userInfo["email"]):
             flash("Email already exists! Try Again!")
