@@ -374,13 +374,17 @@ def recipe(recipeId):
     except KeyError:
         favoriteRecipe = "None"
 
+    # Counts steps of recipe
+    recipeSteps = list(enumerate(recipeInfo["steps"]))
+
+    # Allows admin or user to delete recipe
     if request.method == "POST":
         mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
         return redirect(url_for("profile"))
 
     return render_template(
         "recipe.html",
-        recipeInfo=recipeInfo, favoriteRecipe=favoriteRecipe, chef=chef)
+        recipeInfo=recipeInfo, favoriteRecipe=favoriteRecipe, chef=chef, recipeSteps=recipeSteps)
 
 
 # Code customized from Pretty Printed

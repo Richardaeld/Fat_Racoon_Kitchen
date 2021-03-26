@@ -5,13 +5,16 @@ AllLists.forEach(list);
 function list (item, index){
     // Event cycles through text decoration for crossout effect
     item.addEventListener("click", function() {
-        let itemLoc =  item.getElementsByTagName("h6")[0]
-        if (itemLoc.style.textDecoration == "line-through"){
-            itemLoc.style.textDecoration = "none";
-            itemLoc.parentElement.getElementsByTagName("input")[0].checked = false
+        let itemLoc1 =  item.getElementsByTagName("h6")[0]
+        let itemLoc2 =  item.getElementsByTagName("h6")[1]
+        if (itemLoc1.style.textDecoration == "line-through"){
+            itemLoc1.style.textDecoration = "none";
+            itemLoc2.style.textDecoration = "none";
+            itemLoc1.parentElement.getElementsByTagName("input")[0].checked = false
         } else {
-            itemLoc.style.textDecoration = "line-through";
-            itemLoc.parentElement.getElementsByTagName("input")[0].checked = true
+            itemLoc1.style.textDecoration = "line-through";
+            itemLoc2.style.textDecoration = "line-through";
+            itemLoc1.parentElement.getElementsByTagName("input")[0].checked = true
 
         }
     })

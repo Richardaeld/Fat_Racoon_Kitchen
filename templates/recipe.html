@@ -149,14 +149,15 @@
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note">
                         <div class="sticky-note-inner-div">
-                            <ul class="recipe-lists">
+                            <ul class="recipe-lists recipe-lists-steps recipe-lists-no-padding">
                                 <h1>Recipe Ingredients</h1>
                                 <hr>
                                 {% for ingredient in recipeInfo.ingredients %}
-                                    <li>
-                                        <input type="checkbox" style="display:inline;"> 
-                                        <h6 style="display:inline;">{{ ingredient }}</h6>
-                                    </li>
+                                <li class="row no-gutters justify-content-center">
+                                    <input class="col-1" type="checkbox" style="position:absolute; left:0rem; transform: translateY(0.75rem) translateX(1rem);" > 
+                                    <h6 class="col-10">{{ ingredient }}</h6>
+                                    <h6></h6>
+                                </li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -168,13 +169,14 @@
                 <div class="row no-gutters justify-content-center ">
                     <div class="col-10 sticky-note sticky-note-right">
                         <div class="sticky-note-inner-div ">
-                            <ul class="recipe-lists recipe-lists-steps">
+                            <ul class="recipe-lists recipe-lists-steps recipe-lists-no-padding">
                                 <h1>Recipe Steps</h1>
                                 <hr>
-                                {% for step in recipeInfo.steps %}
-                                    <li>
-                                        <input type="checkbox" style="display:inline;"> 
-                                        <h6 style="display: inline;">{{ step }}</h6> 
+                                {% for step in recipeSteps %}
+                                    <li class="row no-gutters justify-content-center">
+                                        <input class="col-1" type="checkbox" style="position:absolute; left:0rem; transform: translateY(0.75rem) translateX(1rem); ">
+                                        <h6 class="col-1">{{ step[0] }}.</h6> 
+                                        <h6 class="col-10">{{ step[1] }}</h6> 
                                     </li>
                                 {% endfor %}
                             </ul>

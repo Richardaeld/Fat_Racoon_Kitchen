@@ -692,7 +692,8 @@ fieldset {
 }
 
 .recipe-lists-steps {
-    list-style-type: decimal;
+    /*list-style-type: decimal;*/
+    list-style-type: none;
     font-size:1.75rem;
 }
 
@@ -767,6 +768,7 @@ fieldset {
 @media (min-width: 992px) and (max-width: 1399.98px) {
     .search-bar-spacing h6,
     .search-bar-spacing p{
+        font-size: 2rem;
         display: inline;
     }
 }
