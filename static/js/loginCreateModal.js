@@ -41,10 +41,12 @@ function tabSelect(item, index) {
             //sets submit button value
             document.getElementById("custom-button").value = "Login"
             // Undoes auto fail for password check so it does not disrupt user login on login mode            
-            document.getElementById("passwordCheck1").parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
+            document.getElementById("passwordCheck2").parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
             // Makes sure username does not auto fail validation
             document.getElementById("name").parentElement.getElementsByTagName("p")[0].classList.add("make-invis")
-
+            // Checks Validation
+            formIsValid = true
+            finalValidation()
 
 
         } else {
@@ -55,12 +57,12 @@ function tabSelect(item, index) {
             }
             // Sets submit button value
             document.getElementById("custom-button").value = "Create"
-            // Disables submit on switch to create account mode
-            document.getElementById("custom-button").setAttribute("disabled", "")
             // Makes sure confirm password does not auto validate
             document.getElementById("passwordCheck2").parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
             // Makes sure username does not auto validate
             document.getElementById("name").parentElement.getElementsByTagName("p")[0].classList.remove("make-invis")
+            // Checks Validation
+            finalValidation()
         }
 
         // Changes the filter from Login to create account on click
