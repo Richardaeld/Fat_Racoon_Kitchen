@@ -18,10 +18,11 @@
                                 <label  type="text" for="usernameEdit">Name</label>
                             </div>
                             <div class="col-12">
-                                <input class="nameEmailValidation" type="text" id="usernameEdit" name="usernameEdit" value="{{ userInfo.username }}" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9%$]{5,20}$" invalid required>
+                                <input class="formValidation nameValidation" type="text" id="usernameEdit" name="usernameEdit" value="{{ userInfo.username }}" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9%_$]{5,20}$" invalid required>
                                 <div class="invalid-form form-is-valid make-invis">
                                     <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, and '@.%$'</p>
                                     <p class="make-invis"></p>
+                                    <p class="make-invis">Cannot contain ' " $ ,</p>
                                 </div>
                             </div>
                         </div>
@@ -34,10 +35,11 @@
                                 <label  type="text" for="emailEdit">Email</label>
                             </div>
                             <div class="col-12">
-                                <input class="nameEmailValidation" type="email" id="emailEdit" name="emailEdit" value="{{ userInfo.email }}" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9@.%$]{6,30}$" invalid required>
+                                <input class="formValidation emailValidation" type="email" id="emailEdit" name="emailEdit" value="{{ userInfo.email }}" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9@.%$]{6,30}$" invalid required>
                                 <div class="invalid-form form-is-valid make-invis">
                                     <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, and '@.%$'</p>
-                                    <p class="make-invis"></p>
+                                    <p class="make-invis">must contain appropiate email suffix</p>
+                                    <p class="make-invis">Cannot contain ' " $ ,</p>
                                 </div>
 
                             </div>
@@ -87,10 +89,11 @@
                                         <label for="passwordEdit">Current Password</label>
                                     </div>
                                     <div class="col-12">
-                                        <input class="passwordSets form-invalid-view" type="password" id="passwordEdit" name="passwordEdit" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" invalid required>
+                                        <input class="formValidation passwordSets form-invalid-view" type="password" id="password" name="password" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" invalid required>
                                         <div class="invalid-form make-invis">
                                             <p>Password must contain upper case letter, lower case letter, a number, and be between 8 and 20 characters</p>
-                                            <p class="make-invis"></p>
+                                            <p class="make-invis">New password and confirm new password must match</p>
+                                            <p class="make-invis">Cannot contain ' " $ ,</p>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -109,10 +112,11 @@
                                         <label for="newPasswordEdit">New Password</label>
                                     </div>
                                     <div class="col-12">
-                                        <input class="passwordSets passwordCompare" type="password" id="newPasswordEdit" name="newPasswordEdit" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
+                                        <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck1" name="passwordCheck1" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
                                         <div class="invalid-form form-is-valid make-invis">
                                             <p class="make-invis">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                                             <p class="make-invis">New password and confirm new password must match</p>
+                                            <p class="make-invis">Cannot contain ' " $ ,</p>                                        
                                         </div>
                                     </div>
                                 </div>
@@ -125,10 +129,11 @@
                                         <label for="newPasswordCheckEdit">Confirm New Password</label>
                                     </div>
                                     <div class="col-12">
-                                        <input class="passwordSets passwordCompare" type="password" id="newPasswordCheckEdit" name="newPasswordCheckEdit" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
+                                        <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck2" name="passwordCheck2" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
                                         <div class="invalid-form form-is-valid make-invis">
                                             <p class="make-invis">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                                             <p class="make-invis">New password and confirm new password must match</p>
+                                            <p class="make-invis">Cannot contain ' " $ ,</p>
                                         </div>
                                     </div>
                                 </div>
@@ -166,4 +171,5 @@
 
 {% block custom_script %}
 <script src="{{ url_for('static', filename='js/editUserInfo.js') }}"></script>
+<script src="{{ url_for('static', filename='js/passwordVal.js') }}"></script>
 {% endblock %}
