@@ -379,6 +379,9 @@ def recipe(recipeId):
 
     # Allows admin or user to delete recipe
     if request.method == "POST":
+        # Flash accepts a single string, not combined inline
+        flashStr = "You've removed your recipe " + recipeInfo['name']
+        flash(flashStr)
         mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
         return redirect(url_for("profile"))
 
@@ -512,7 +515,11 @@ def add_edit_recipe(recipeId):
 def edit_user_info():
     userInfo = mongo.db.users.find_one({"email": session["user"]})
 
+    #update = {}
+
     if request.method == "POST":
+        #if userInfo["username"] != request.form.get("usernameEdit"):
+        #    print("")
         update = {
             "username": request.form.get("usernameEdit"),
             "email": request.form.get("emailEdit"),
@@ -566,8 +573,8 @@ def edit_user_info():
                 mongo.db.users.update_one(
                     {"_id": ObjectId(userInfo["_id"])}, {"$set":  imgUpdate})
             print(update)
-            mongo.db.users.update(
-                {"_id": ObjectId(userInfo["_id"])}, {"$set": update})
+    #        mongo.db.users.update(
+    #            {"_id": ObjectId(userInfo["_id"])}, {"$set": update})
             return(redirect(url_for("profile")))
 
         # Password validation fail
