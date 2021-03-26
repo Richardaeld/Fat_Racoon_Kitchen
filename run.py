@@ -521,7 +521,7 @@ def edit_user_info():
         }
 
         # Checks to be sure password is present to be updated
-        if request.form.get("passwordCheck2") is not None:
+        if request.form.get("passwordCheck2") != "":
             update = {
                 "username": request.form.get("usernameEdit"),
                 "email": request.form.get("emailEdit"),
@@ -565,6 +565,7 @@ def edit_user_info():
                 }
                 mongo.db.users.update_one(
                     {"_id": ObjectId(userInfo["_id"])}, {"$set":  imgUpdate})
+            print(update)
             mongo.db.users.update(
                 {"_id": ObjectId(userInfo["_id"])}, {"$set": update})
             return(redirect(url_for("profile")))
