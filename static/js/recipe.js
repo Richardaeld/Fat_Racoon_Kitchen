@@ -22,10 +22,12 @@ function list (item, index){
 
 // ---- Delete Modal
 // Open Delete Modal
-document.getElementById("deleteModal").addEventListener("click", function() {
-    document.getElementsByClassName("custom-modal-delete")[0].classList.remove("make-invis");
-    document.getElementById("recipeName").focus()
-})
+if (document.getElementById("deleteModal") != null){
+    document.getElementById("deleteModal").addEventListener("click", function() {
+        document.getElementsByClassName("custom-modal-delete")[0].classList.remove("make-invis");
+        document.getElementById("recipeName").focus()
+    })
+}
 // Close Delete Modal
 document.getElementsByClassName("modal-background")[1].addEventListener("click", function () { // Im for the delete modal 
     document.getElementsByClassName("custom-modal-delete")[0].classList.add("make-invis");
