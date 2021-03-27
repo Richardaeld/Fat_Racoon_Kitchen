@@ -239,37 +239,16 @@ def profile():
         submitteds += [[submitted["_id"], submitted["name"]]]
     submitteds = list(enumerate(submitteds))
 
-    # # Find user selected favorites by '_id' and add them to a list
-    # favorites = []
-    # if len(chef_info["favorites"]) > 0:
-    #     for fav in chef_info["favorites"]:
-    #         fav = mongo.db.recipes.find_one({"_id": ObjectId(fav)})
-    #         if fav:
-    #             favorites += [[fav["_id"], fav["name"]]]
-    # favorites = list(enumerate(favorites))
-
-    # # Find ten previously user viewed recipies
-    # recents = []
-    # if len(chef_info["recent"]) > 0:
-    #     for rec in chef_info["recent"]:
-    #         rec = mongo.db.recipes.find_one({"_id": ObjectId(rec)})
-    #         if rec:
-    #             recents += [[rec["_id"], rec["name"]]]
-    # recents = list(enumerate(recents))
-
+    # Creates list of recipes to display
     def create_user_recipe_list(recent_fav):
-        lists = []
+        recipe_list = []
         if len(chef_info[recent_fav]) > 0:
             for rec in chef_info[recent_fav]:
                 rec = mongo.db.recipes.find_one({"_id": ObjectId(rec)})
                 if rec:
-                    lists += [[rec["_id"], rec["name"]]]
-        lists = list(enumerate(lists))
-        print(lists)
-        return (lists)
-
-    #print(recents)
-    #print(favorites)
+                    recipe_list += [[rec["_id"], rec["name"]]]
+        recipe_list = list(enumerate(recipe_list))
+        return (recipe_list)
 
     return render_template(
         "profile.html", chef_info=chef_info,
