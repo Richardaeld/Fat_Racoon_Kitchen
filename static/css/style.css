@@ -80,7 +80,11 @@ header {
 .make-space div {
     padding-bottom: 0.5rem;
 }
-
+@media (max-width: 767.98px) {
+    .make-space div {
+        padding-bottom: 1rem;
+    }
+}
 /* ---------------------------------------- Index Page  ---------------------------------------- */
 /* ---------------------------------------- Header and Logo ---------------------------------------- */
 .logo-background {
@@ -353,10 +357,10 @@ footer {
 
 @media (max-width: 575.98px) {
     .table-runner-pattern {
-        height: 15rem;
+        height: 13rem;
     }
     footer {
-        height:20rem;
+        height:17rem;
     }
 }
 
