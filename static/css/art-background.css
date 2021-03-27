@@ -150,6 +150,9 @@
     .rotating-card {
         height: 17rem;
     }
+    .index-card p {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 575.98px) {
