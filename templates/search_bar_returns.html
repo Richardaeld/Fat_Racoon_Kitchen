@@ -4,7 +4,8 @@
     <!-- Recipes per Feature -->
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
-            {% if recipes.count() == 0 %}
+            <!-- if recipes.count() == 0 %}-->
+            {% if findRecipes|length() == 0 %}
             <div class="col-12 col-lg-6">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note recipe-list-height"> 
@@ -30,14 +31,14 @@
 
             {% endif %}
             <!-- Feature with Recipes  -->
-            {% for recipe in displayRecipes %}
+            {% for recipe in findRecipes %}
             <div class="col-12 col-lg-6">
                 <div class="row no-gutters justify-content-center">
                     <!-- Creates a section error -->
                     {% if recipe[0] % 2 %}
-                    <div class="col-10 sticky-note"> <!-- recipe-list-height-->
-                    {% else %}
                     <div class="col-10 sticky-note sticky-note-right"> <!-- recipe-list-height-->
+                    {% else %}
+                    <div class="col-10 sticky-note"> <!-- recipe-list-height-->
                     {% endif %}
                         <div class="sticky-note-inner-div blank-anchor make-space recipe-name search-bar-spacing">
                             <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
