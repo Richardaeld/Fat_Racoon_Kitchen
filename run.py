@@ -612,7 +612,11 @@ def all_recipes():
 @app.route("/search_bar_returns/<search>", methods=("POST", "GET"))
 def search_bar_returns(search):
     findRecipes = mongo.db.recipes.find({"$text": {"$search": search}})
-    return render_template("search_bar_returns.html", recipes=findRecipes)
+    displayRecipes = list(enumerate(findRecipes))
+
+    return render_template(
+        "search_bar_returns.html",
+        recipes=findRecipes, displayRecipes=displayRecipes)
 
 
 if __name__ == "__main__":
