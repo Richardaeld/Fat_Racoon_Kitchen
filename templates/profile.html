@@ -71,11 +71,13 @@
     <!--  Display ten most recent recipe uploads  -->
     <div class="col-11 col-md-5 col-xl-3 sticky-note profile-sticky-height">
         <div class="sticky-note-inner-div">
-            <h3>10 Recently Uploaded Recipes</h3>
+            <a href="{{ url_for('search_user_recipes', search=recipeId) }}">
+                <h3>10 Recently Uploaded Recipes</h3>
+            </a>
             <hr>
             {% for submitted in submitteds %}
                 {% if submitted[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
-                    <p><a href="{{ url_for('recipe', recipeId=submittedId[submitted[0]]) }}">{{  submitted[0] + 1 }}. {{ submitted[1] }}</p></a>
+                    <p><a href="{{ url_for('recipe', recipeId=submitted[0][1]) }}">{{  submitted[0] + 1 }}. {{ submitted[1][1] }}</a></p>
                 {% endif %}
             {% endfor %}
         </div>
@@ -84,12 +86,14 @@
     <!--  Display ten most recent favorited recipes  -->
     <div class="col-11 col-md-5 col-xl-3 sticky-note sticky-note-right profile-sticky-height">
         <div class="sticky-note-inner-div">
-            <h3>10 Recently Favorited Recipes</h3>
+            <a href="{{ url_for('search_user_recipes', search=favoriteId) }}">
+                <h3>10 Recently Favorited Recipes</h3>
+            </a>
             <hr>
             {% for favorite in favorites %}
                 {% if favorite %}
                     {% if favorite[0] + 1 < 11 %}
-                        <p><a href="{{ url_for('recipe', recipeId=favoriteId[favorite[0]] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1] }}</a></p>
+                        <p><a href="{{ url_for('recipe', recipeId=favorite[0][1] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a></p>
                     {% endif %}
                 {% endif %}
             {% endfor %}
@@ -98,13 +102,15 @@
     
     <!--  Display ten most recently viewed recipes  -->
     <div class="col-11 col-md-5 col-xl-3 sticky-note profile-sticky-height">
-        <div class="sticky-note-inner-div">            
-            <h3>10 Recently Viewed Recipes</h3>
+        <div class="sticky-note-inner-div">
+            <a href="{{ url_for('search_user_recipes', search=recentId) }}">
+                <h3>10 Recently Viewed Recipes</h3>
+            </a>
             <hr>
             {% for recent in recents %}
                 {% if recent %}
                     {% if recent[0] + 1 < 11 %}
-                        <p><a href="{{ url_for('recipe', recipeId=recentId[recent[0]] ) }}">{{ recent[0] + 1 }}. {{ recent[1] }}</a></p>
+                        <p><a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a></p>
                     {% endif %}
                 {% endif %}
             {% endfor %}
