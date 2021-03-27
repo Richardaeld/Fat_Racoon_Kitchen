@@ -161,7 +161,7 @@ header {
     border-bottom: 2px solid rgba(14, 255, 255, .5);
     position: sticky; 
     top:0; 
-    z-index: 4;
+    z-index: 2;
 }
 
 @media (min-width: 992px) {
@@ -475,7 +475,7 @@ fieldset {
     position: fixed;
     left: 0;
     right: 0;
-    z-index: 5;
+    z-index: 3;
 }
 
 .custom-modal h1,
