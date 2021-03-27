@@ -221,6 +221,9 @@
     z-index: 1;
     margin: 1.5rem 0rem;
     font-family: "Reenie Beanie", sans-serif;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
 }
 /* Creates internal box */
 .sticky-note-inner-div {
