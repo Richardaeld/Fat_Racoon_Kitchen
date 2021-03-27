@@ -234,50 +234,55 @@ def profile():
     # Find Chef submitted recipies, change them into
     # a list, and give each iteration a number
     submitteds = []
-    submittedId = []
     submittedAll = mongo.db.recipes.find({"created_by": session["user"]})
     for submitted in submittedAll:
-        submitteds += [submitted["name"]]
-        submittedId += [submitted["_id"]]
+        submitteds += [[submitted["_id"], submitted["name"]]]
+    submitteds = list(enumerate(submitteds))
 
-    submitteds = enumerate(submitteds)
+    # # Find user selected favorites by '_id' and add them to a list
+    # favorites = []
+    # if len(chef_info["favorites"]) > 0:
+    #     for fav in chef_info["favorites"]:
+    #         fav = mongo.db.recipes.find_one({"_id": ObjectId(fav)})
+    #         if fav:
+    #             favorites += [[fav["_id"], fav["name"]]]
+    # favorites = list(enumerate(favorites))
 
-    # Find user selected favorites by '_id' and add them to a list
-    favorites = []
-    favoriteId = []
-    userFavorites = chef_info["favorites"]
-    if len(userFavorites) > 0:
-        for fav in userFavorites:
-            fav = mongo.db.recipes.find_one({"_id": ObjectId(fav)})
-            if fav:
-                favorites += [fav["name"]]
-                favoriteId += [fav["_id"]]
+    # # Find ten previously user viewed recipies
+    # recents = []
+    # if len(chef_info["recent"]) > 0:
+    #     for rec in chef_info["recent"]:
+    #         rec = mongo.db.recipes.find_one({"_id": ObjectId(rec)})
+    #         if rec:
+    #             recents += [[rec["_id"], rec["name"]]]
+    # recents = list(enumerate(recents))
 
-    favorites = enumerate(favorites)
+    def create_user_recipe_list(recent_fav):
+        lists = []
+        if len(chef_info[recent_fav]) > 0:
+            for rec in chef_info[recent_fav]:
+                rec = mongo.db.recipes.find_one({"_id": ObjectId(rec)})
+                if rec:
+                    lists += [[rec["_id"], rec["name"]]]
+        lists = list(enumerate(lists))
+        print(lists)
+        return (lists)
 
-    # Find ten previously user viewed recipies
-    recents = []
-    recentId = []
-    userRecents = chef_info["recent"]
-    if len(userRecents) > 0:
-        for rec in userRecents:
-            rec = mongo.db.recipes.find_one({"_id": ObjectId(rec)})
-            if rec:
-                recents += [rec["name"]]
-                recentId += [rec["_id"]]
-    recents = enumerate(recents)
+    #print(recents)
+    #print(favorites)
 
     return render_template(
         "profile.html", chef_info=chef_info,
-        submitteds=submitteds, submittedId=submittedId,
-        favorites=favorites, favoriteId=favoriteId,
-        recents=recents, recentId=recentId)
+        submitteds=submitteds,
+        favorites=create_user_recipe_list("favorites"),
+        recents=create_user_recipe_list("recents"))
 
 
 @app.route("/recipe/<recipeId>/<favoriteChange>", methods=("GET", "POST"))
 def addFavorite(recipeId, favoriteChange):
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
     user = mongo.db.users.find_one({"email": session["user"]})
+    chef = user["username"]
     # Changes string to boolean
     if favoriteChange == "True":
         favoriteChange = True
@@ -304,12 +309,12 @@ def addFavorite(recipeId, favoriteChange):
     return render_template(
         "recipe.html",
         recipeId=recipeInfo["_id"], recipeInfo=recipeInfo,
-        favoriteRecipe=favoriteChange)
+        favoriteRecipe=favoriteChange, chef=chef)
 
 
 @app.route("/recipe/<recipeId>", methods=("GET", "POST"))
 def recipe(recipeId):
-
+    # place me better--------------
     chef = ""
 
     # Redirects incase recipe has been removed
@@ -611,12 +616,32 @@ def all_recipes():
 
 @app.route("/search_bar_returns/<search>", methods=("POST", "GET"))
 def search_bar_returns(search):
-    findRecipes = mongo.db.recipes.find({"$text": {"$search": search}})
-    displayRecipes = list(enumerate(findRecipes))
-
+    # User's search
+    displayRecipes = list(enumerate(
+        mongo.db.recipes.find({"$text": {"$search": search}})))
     return render_template(
-        "search_bar_returns.html",
-        recipes=findRecipes, displayRecipes=displayRecipes)
+        "search_bar_returns.html", findRecipes=displayRecipes)
+
+
+@app.route("/search_user_recipes/<search>", methods=("POST", "GET"))
+def search_user_recipes(search):
+
+    if search == "False":
+        displayRecipes = ""
+    else:
+        # Compile dictionary from user favorites, created, or viewed recipes
+        findUserSelectedRecipes = {}
+        findUserSelectedRecipes["$or"] = []
+        for recipe in search.strip('[]"').split("'"):
+            if recipe.find("O") == -1 and recipe.find(")") == -1:
+                findUserSelectedRecipes["$or"].append(
+                    {"_id": ObjectId(recipe)})
+
+            # Find list of recipes user has favorites, created, or viewed
+            displayRecipes = list(enumerate(
+                mongo.db.recipes.find(findUserSelectedRecipes)))
+    return render_template(
+        "search_bar_returns.html", displayRecipes=displayRecipes)
 
 
 if __name__ == "__main__":
