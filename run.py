@@ -193,7 +193,7 @@ def index():
             "avatar_id": None,
             "bio": "",
             "admin": False,
-            "recent": [],
+            "recents": [],
             "favorites": [],
             # "submitted": [],
             "date": datetime.datetime.now()
