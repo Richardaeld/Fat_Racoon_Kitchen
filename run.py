@@ -326,11 +326,11 @@ def recipe(recipeId):
                     break
 
             # Creates base list for user recent
-            if len(findUserRecents["recent"]) == 0:
+            if len(findUserRecents["recents"]) == 0:
                 findUserRecents = [recipeInfo["_id"]]
             else:
                 findUserRecents = (
-                    [recipeInfo["_id"]] + findUserRecents["recent"])
+                    [recipeInfo["_id"]] + findUserRecents["recents"])
 
             # Iterates through checking for duplicates to remove
             # For outer Loop
@@ -352,7 +352,7 @@ def recipe(recipeId):
 
             mongo.db.users.update_one(
                 {"email": session["user"]},
-                {"$set": {"recent": userRecentFinal}})
+                {"$set": {"recents": userRecentFinal}})
 
     # For a missing session user
     except KeyError:
