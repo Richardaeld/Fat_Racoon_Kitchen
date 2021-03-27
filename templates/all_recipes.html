@@ -8,38 +8,38 @@
             {% for feature in allFeatures %}
             <div class="col-12 col-lg-6">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note recipe-list-height 
+                    <!-- I create a fake section error -->
                     {% if feature[0] % 2 %}
-                    sticky-note-right
-                    {% endif %}">
-                        
+                        <div class="col-10 sticky-note recipe-list-height">
+                    {% else %}
+                        <div class="col-10 sticky-note recipe-list-height sticky-note-right">
+                    {% endif %}
                         <div class="sticky-note-inner-div all-recipe-max-height">
                             <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec recipe-name">
-                                    <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
-                                        <h1>{{ feature[1].name.title() }} Recipes </h1>
-                                    </a>
+                                <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
+                                    <h1>{{ feature[1].name.title() }} Recipes </h1>
+                                </a>
                                 <hr>
                                 {% for recipe in allRecipes %}
-                                {% if recipe.feature == feature[1].name %}
-                                    <li class="make-invis">
-                                        <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around all-features">
-                                            <span class="col-12 col-lg-8">
-                                                <h6><strong>{{ recipe.name.title() }}</strong>:</h6>
-                                            </span>
-                                            <span class="col-12 col-lg-4">
-                                                <div class="row no-gutters">
-                                                    <div class="col-12">
-                                                        <!--<h6>Total Time: </h6>-->
-                                                        <p>{{ recipe.time[2] }} Minutes</p>
+                                    {% if recipe.feature == feature[1].name %}
+                                        <li class="make-invis">
+                                            <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around all-features">
+                                                <span class="col-12 col-lg-8">
+                                                    <h6><strong>{{ recipe.name.title() }}</strong>:</h6>
+                                                </span>
+                                                <span class="col-12 col-lg-4">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-12">
+                                                            <!--<h6>Total Time: </h6>-->
+                                                            <p>{{ recipe.time[2] }} Minutes</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </span>
-                                        </a>
-                                    </li>
-
+                                                </span>
+                                            </a>
+                                        </li>
                                     {% endif %}
-                                    {% endfor %}
-                                </ul>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,6 @@
             {% endfor %}
         </div>
     </div>
-
 </section>
 {% endblock %}
 
