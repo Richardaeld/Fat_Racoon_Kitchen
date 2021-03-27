@@ -201,7 +201,7 @@
 
 @media (max-width: 767.98px) {
     .polaroid-outer h3 {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -281,17 +281,17 @@
 @media (max-width: 575.98px) {
     .sticky-note p,
     .sticky-note-no-shadow p {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 
     .sticky-note h1,
     .sticky-note-no-shadow h1 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
     .sticky-note h6,
     .sticky-note-no-shadow h6 {
-        font-size: 1rem;
+        font-size: 1.75rem;
     }
 }
 /* Different lifting Shadows */
@@ -328,10 +328,6 @@
 .sticky-note-right {
     transform: rotateY(180deg);
 }
-
-
-
-
 
 /* ---------------------------------------- Social 'drink' link with ripple animation (start) ---------------------------------------- */
 /* -- Ripple effect over 'drink' social links -- */
