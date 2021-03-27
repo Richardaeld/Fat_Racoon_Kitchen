@@ -405,6 +405,19 @@ footer {
     }
 }
 
+@media (max-width: 575.98px) {
+    .social-link-push li {
+        top: 2rem;
+        left: 1rem;
+        height: 90px;
+    }
+
+    .napkin-link-push li{
+        left:-10px;
+        top: 40px;
+    }
+}
+
 /* ---------------------------------------- Form general styles  ---------------------------------------- */
 /* tabs are header (login & create account) for user login */
 .tab-body {
