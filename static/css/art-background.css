@@ -213,15 +213,29 @@
 /* sticky-note-right goes with sticky-note to generate a reverse shadow  */
 /*  sticky-note-middle goes with sticky-note to generate a bottom shadow  */
 /*  *sticky-note-no-shadow* can replace sticky-note to remove lifting shadow  */
+/* Creates external box */
 .sticky-note-no-shadow,
 .sticky-note {
     position: relative;
     /*background-color: #e7d912;*/
-    z-index: 3;
+    z-index: 1;
     margin: 1.5rem 0rem;
     font-family: "Reenie Beanie", sans-serif;
 }
-
+/* Creates internal box */
+.sticky-note-inner-div {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 1.5rem;
+    /*background: #e7d912;*/
+    background: #e7d912;
+    color: #010203;
+    z-index: 1;
+    box-shadow: inset -2px -2px 2px  rgba(0, 0, 0, .25),
+                -1px -1px 2px 0px rgba(0, 0, 0, .25);
+}
+/* Text fonts */
 .sticky-note p,
 .sticky-note-no-shadow p {
     font-size: 1.75rem;
@@ -280,72 +294,42 @@
         font-size: 1rem;
     }
 }
-
-
-
-.sticky-note:before {
+/* Different lifting Shadows */
+.sticky-note:before,
+.sticky-note-middle:before,
+.sticky-note-middle:after {
     content: "";
     position: absolute;
+    background-color: transparent;
     left: 0;
     right: 0;
-    background-color: transparent;
     z-index: 0;
-    /*height: 95%;  --original  */
+    box-shadow: -20px 45px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+.sticky-note:before {
     height: 90%;
     width: 50%;
-    /*box-shadow: -20px 20px 20px 0px rgba(0, 0, 0, .25 ); --original */
-    box-shadow: -20px 45px 20px 0px rgba(0, 0, 0, .25 );
     transform: translateX(0px) translateY(-7px) rotate(-10deg) skewX(-10deg);
 }
 
 .sticky-note-middle:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    background-color: transparent;
-    z-index: 0;
-    /*height: 95%;  --original  */
     height: 100%;
     width: 100%;
-    /*box-shadow: -20px 20px 20px 0px rgba(0, 0, 0, .25 ); --original */
-    box-shadow: -20px 45px 20px 0px rgba(0, 0, 0, .25 );
     transform: translateX(0%) translateY(-10%) rotate(-3deg) skewX(-5deg) scale(.95);
-    z-index: 0;
 }
 
 .sticky-note-middle:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    background-color: transparent;
-    z-index: 0;
-    /*height: 95%;  --original  */
     height: 100%;
     width: 100%;
-    /*box-shadow: -20px 20px 20px 0px rgba(0, 0, 0, .25 ); --original */
-    box-shadow: -20px 45px 20px 0px rgba(0, 0, 0, .25 );
     transform: rotateY(180deg) translateX(0%) translateY(-110%) rotate(-3deg) skewX(-5deg) scale(.95);
-    z-index: 0;
 }
 
 .sticky-note-right {
     transform: rotateY(180deg);
 }
 
-.sticky-note-inner-div {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    padding: 1.5rem;
-    /*background: #e7d912;*/
-    background: #e7d912;
-    color: #010203;
-    z-index: 2;
-    box-shadow: inset -2px -2px 2px  rgba(0, 0, 0, .25),
-                -1px -1px 2px 0px rgba(0, 0, 0, .25);
-}
+
 
 
 
