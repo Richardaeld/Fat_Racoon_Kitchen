@@ -28,10 +28,10 @@ mongo = PyMongo(app)
 
 @app.route("/", methods=("GET", "POST"))
 def index():
-
-
     # counts total recipes from specified chef -- AKA head chef
-    totalRecipeCount = mongo.db.recipes.count_documents({"created_by": headChef})
+    chef = mongo.db.users.find_one({"username": headChef})
+    totalRecipeCount = mongo.db.recipes.count_documents(
+        {"created_by": headChef})
     totalRecipes = list(mongo.db.recipes.find({"created_by": headChef}))
 
     # ---- For Dev -- updates all entries
@@ -42,7 +42,7 @@ def index():
     #    }
     #    mongo.db.recipes.update_many({"_id": ObjectId(change["_id"])}, {"$set":  update})
 
-    # ---- Loads quick meal ideas (carousel) feature items
+    # ---- Loads quick meal ideas (carousel) features
     features = list(mongo.db.feature.find())
 
     # ---- Creates recipes found in carousel with a max of 3 recipes per card
@@ -54,7 +54,7 @@ def index():
         for recipe in totalRecipes:
             if recipe['feature'] == feature['name']:
                 recipesWithFeature += [recipe]
-        print(len(recipesWithFeature), feature['name']  )
+        print(len(recipesWithFeature), feature['name'])
         randomtotal = len(recipesWithFeature)
 
         # Build a set of random numbers to pull recipes
@@ -76,7 +76,8 @@ def index():
             else:
                 recipeRandomTotal += [randomRecipeNumber]
             # breaks random number generation with conditions are met
-            if len(recipeRandomTotal) >= 3 or len(recipeRandomTotal) == randomtotal:
+            if len(recipeRandomTotal) >= 3 or len(
+                    recipeRandomTotal) == randomtotal:
                 break
 
         # builds recipe list to be displayed in a random order
@@ -84,7 +85,8 @@ def index():
         for recipeNumber in recipeRandomTotal:
             for recipe in recipesWithFeature:
                 if recipeNumber == iteration:
-                    featureRecipes += [[recipe["feature"], recipe["name"], recipe["_id"]]]
+                    featureRecipes += (
+                        [[recipe["feature"], recipe["name"], recipe["_id"]]])
                     iteration = 1
                     break
                 iteration += 1
@@ -94,7 +96,8 @@ def index():
     recipeHeader = []
     recipeRandomTotal = []
     iteration = 1
-    grandparentRecipeTotal = mongo.db.recipes.count_documents({"grandparent": True})
+    grandparentRecipeTotal = mongo.db.recipes.count_documents(
+        {"grandparent": True})
     if grandparentRecipeTotal > 0:
         grandparentRecipes = list(mongo.db.recipes.find({"grandparent": True}))
 
@@ -116,7 +119,8 @@ def index():
                 recipeRandomTotal += [randomRecipe]
 
             # breaks random number generation with conditions are met
-            if len(recipeRandomTotal) > 3 or len(recipeRandomTotal) == grandparentRecipeTotal:
+            if len(recipeRandomTotal) > 3 or len(
+                    recipeRandomTotal) == grandparentRecipeTotal:
                 break
 
         # builds recipe list with random numbers
@@ -130,24 +134,33 @@ def index():
 
                 iteration += 1
 
-    # Loads recipe of the day
-    # prints a random recipe form speified chef
+    # prints a random recipe form head chef
     recipeRandom = random.randrange(1, totalRecipeCount + 1)
     iteration = 1
     for recipe in totalRecipes:
         # Random selects recipe and loads its chef info
         if recipeRandom == iteration:
             recipeOfDay = recipe
-            chef = mongo.db.users.find_one({"username": recipeOfDay["created_by"]})
             break
         iteration += 1
 
+    # --Search for recipes
+    # Returns a user search
+    if request.method == "POST" and request.form.get("formType") == "search":
+        print("Im a search function")
+        return redirect(url_for(
+            "search_bar_returns", search=request.form.get("userSearch")))
+
     # --Login-- information
-    if request.method == "POST" and request.form.get("custom-button-login") == "Login":
+    if request.method == "POST" and request.form.get(
+            "custom-button-login") == "Login":
         print("Im a login and not a create function running")
-        userNameTaken = mongo.db.users.find_one({"email": request.form.get("email")})
-        if userNameTaken:
-            if check_password_hash(userNameTaken["password"], request.form.get("password")):
+        username = mongo.db.users.find_one(
+            {"email": request.form.get("email")})
+        # If username exists, checks password
+        if username:
+            if check_password_hash(
+                    username["password"], request.form.get("password")):
                 session["user"] = request.form.get("email")
                 flash("Welcome back!")
                 return redirect(url_for("index"))
@@ -157,24 +170,20 @@ def index():
         else:
             flash("*meta name*Login credentials incorrect!")
 
-    # --Search for recipes
-    # Returns a user search
-    if request.method == "POST" and request.form.get("formType") == "search":
-        print("Im a search function")
-        return redirect(url_for("search_bar_returns", search=request.form.get("userSearch")))
-
     # --Create account-- information
     if request.method == "POST":
         print("Im a create function")
 
         # Check to be sure email doesnt already exist in DB
-        userNameTaken = mongo.db.users.find_one({"email": request.form.get("email")})
+        userNameTaken = mongo.db.users.find_one(
+            {"email": request.form.get("email")})
         if userNameTaken:
             flash("This email was already taken!")
             return redirect(url_for("index"))
 
         # Check to be sure username doesnt already exist in DB
-        userNameTaken = mongo.db.users.find_one({"email": request.form.get("username")})
+        userNameTaken = mongo.db.users.find_one(
+            {"email": request.form.get("username")})
         if userNameTaken:
             flash("This username was already taken!")
             return redirect(url_for("index"))
@@ -184,18 +193,18 @@ def index():
             flash("Passwords do not match")
             return redirect(url_for("index"))
 
-        # Gather form information and submit to DB
+        # Gather form and blank information
         create = {
             "username": request.form.get("name"),
             "email": request.form.get("email").lower(),
-            "password": generate_password_hash(request.form.get("passwordCheck")),
+            "password": generate_password_hash(
+                request.form.get("passwordCheck")),
             "avatar": None,
             "avatar_id": None,
             "bio": "",
             "admin": False,
             "recents": [],
             "favorites": [],
-            # "submitted": [],
             "date": datetime.datetime.now()
         }
         mongo.db.users.insert_one(create)
@@ -211,6 +220,7 @@ def index():
         chef=chef, featureRecipes=featureRecipes, recipeHeader=recipeHeader)
 
 
+# Removes user's session
 @app.route("/logout")
 def logout():
     # Removes session for user
@@ -219,6 +229,7 @@ def logout():
     return redirect(url_for("index"))
 
 
+# Returns users personal profile
 @app.route("/profile", methods=("GET", "POST"))
 def profile():
     # defensive code for deleted accouts
@@ -231,7 +242,7 @@ def profile():
     # Loads user Info
     chef_info = mongo.db.users.find_one({"email": session['user']})
 
-    # Find Chef submitted recipies, change them into
+    # Find recipies submitted by this user, change them into
     # a list, and give each iteration a number
     submitteds = []
     submittedAll = mongo.db.recipes.find({"created_by": session["user"]})
@@ -240,13 +251,14 @@ def profile():
     submitteds = list(enumerate(submitteds))
 
     # Creates list of recipes to display
+    # Used with favorite and recent recipes lists
     def create_user_recipe_list(recent_fav):
         recipe_list = []
         if len(chef_info[recent_fav]) > 0:
-            for rec in chef_info[recent_fav]:
-                rec = mongo.db.recipes.find_one({"_id": ObjectId(rec)})
-                if rec:
-                    recipe_list += [[rec["_id"], rec["name"]]]
+            for recipe in chef_info[recent_fav]:
+                recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
+                if recipe:
+                    recipe_list += [[recipe["_id"], recipe["name"]]]
         recipe_list = list(enumerate(recipe_list))
         return (recipe_list)
 
@@ -257,6 +269,7 @@ def profile():
         recents=create_user_recipe_list("recents"))
 
 
+# Chaanges favorite status of recipe and returns user to recipe's page
 @app.route("/recipe/<recipeId>/<favoriteChange>", methods=("GET", "POST"))
 def addFavorite(recipeId, favoriteChange):
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
@@ -272,14 +285,16 @@ def addFavorite(recipeId, favoriteChange):
     if favoriteChange:
         newFav = []
         changeFav = user["favorites"]
+        # removes an unfavorited recipe
         for fav in changeFav:
             if fav == recipeInfo["_id"]:
                 continue
             else:
                 newFav += [fav]
         favoriteChange = False
+    # Adds new favorite recipe
     else:
-        newFav = user["favorites"] + [recipeInfo["_id"]]
+        newFav = [recipeInfo["_id"]] + user["favorites"]
         favoriteChange = True
 
     mongo.db.users.update_one(
@@ -291,11 +306,9 @@ def addFavorite(recipeId, favoriteChange):
         favoriteRecipe=favoriteChange, chef=chef)
 
 
+# Returns recipe and auto adjusts recent list for logged in users
 @app.route("/recipe/<recipeId>", methods=("GET", "POST"))
 def recipe(recipeId):
-    # place me better--------------
-    chef = ""
-
     # Redirects incase recipe has been removed
     if mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}) is None:
         flash("Sorry this recipe has been removed")
@@ -303,20 +316,21 @@ def recipe(recipeId):
 
     # Finds recipe to display
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
-    # Find if recipe is favorite and adds recipes
-    # to a previously viewed list for signed in users
+    # If user is singed in, finds recipe favorite status and
+    # adds recipe to user previously viewed list
     try:
         if session["user"]:
             # Finds and sets user chef id
             chef = mongo.db.users.find_one({"email": session['user']})
             chef = chef['username']
-            # Updates user recents list
-            findUserRecents = (
+
+            # For updating favorite and user recents list
+            findRecentFav = (
                 mongo.db.users.find_one(
                     {"email": session["user"]}))
 
             # determine if recipe is favorited
-            favorited = findUserRecents["favorites"]
+            favorited = findRecentFav["favorites"]
             if len(favorited) == 0:
                 favoriteRecipe = False
             favoriteRecipe = False
@@ -326,23 +340,24 @@ def recipe(recipeId):
                     break
 
             # Creates base list for user recent
-            if len(findUserRecents["recents"]) == 0:
-                findUserRecents = [recipeInfo["_id"]]
+            if len(findRecentFav["recents"]) == 0:
+                findRecentFav = [recipeInfo["_id"]]
             else:
-                findUserRecents = (
-                    [recipeInfo["_id"]] + findUserRecents["recents"])
+                findRecentFav = (
+                    [recipeInfo["_id"]] + findRecentFav["recents"])
 
             # Iterates through checking for duplicates to remove
             # For outer Loop
             userRecentFinal = []
-            for final in findUserRecents:
+            for final in findRecentFav:
                 checkPass = True
                 if len(userRecentFinal) == 0:
                     userRecentFinal += [final]
                 # Check for duplicates and remove them
+                # For inner loop
                 for check in userRecentFinal:
-                    # Im idiot prevention -- can remove post development
-                    if len(userRecentFinal) > 10:
+                    # Breaks when recent list is 10 entries
+                    if len(userRecentFinal) > 9:
                         break
                     elif final == check:
                         checkPass = False
@@ -354,16 +369,18 @@ def recipe(recipeId):
                 {"email": session["user"]},
                 {"$set": {"recents": userRecentFinal}})
 
-    # For a missing session user
+    # Except is for a missing session user
+    # Sets chef and favorite status to blank if user isnt signed in
     except KeyError:
         favoriteRecipe = "None"
+        chef = ""
 
     # Counts steps of recipe
     recipeSteps = list(enumerate(recipeInfo["steps"]))
 
     # Allows admin or user to delete recipe
     if request.method == "POST":
-        # Flash accepts a single string, not combined inline
+        # Flash accepts a single string, not mutiple
         flashStr = "You've removed your recipe " + recipeInfo['name']
         flash(flashStr)
         mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
@@ -371,7 +388,8 @@ def recipe(recipeId):
 
     return render_template(
         "recipe.html",
-        recipeInfo=recipeInfo, favoriteRecipe=favoriteRecipe, chef=chef, recipeSteps=recipeSteps)
+        recipeInfo=recipeInfo, favoriteRecipe=favoriteRecipe,
+        chef=chef, recipeSteps=recipeSteps)
 
 
 # Code customized from Pretty Printed
@@ -382,18 +400,18 @@ def avatar(avatar_image):
     return mongo.send_file(avatar_image)
 
 
+# Returns a blank recipe or prepopulates a recipe to edit
 @app.route("/add_edit_recipe/<recipeId>", methods=("GET", "POST"))
 def add_edit_recipe(recipeId):
     # Finds user data
     admin = mongo.db.users.find_one({"email": session["user"]})
 
-    # if editing recipe, populate the page with recipe information
-    # if gets all existing recipe information
-    # else populates blanks
+    # Sets new recipe with blanks
     if (recipeId == "new"):
         recipeInfo = None
         recipeIngEnum = None
         recipeSteEnum = None
+    # Sets edit recipe with recipe data
     else:
         if mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}) is None:
             flash("Sorry this recipe has been removed")
@@ -402,12 +420,12 @@ def add_edit_recipe(recipeId):
         recipeIngEnum = list(enumerate(recipeInfo["ingredients"]))
         recipeSteEnum = list(enumerate(recipeInfo["steps"]))
 
-    # Generates the select/option for meal feature
+    # Generates the select/option for feature
     features = mongo.db.feature.find()
 
     if request.method == "POST":
         # Creates base dictionary and adds name and feature
-        upload_dict = {}  #current 636 see if less using this method
+        upload_dict = {}
         upload_dict["name"] = request.form.get("recipeName")
         upload_dict["feature"] = request.form.get("feature")
 
@@ -419,12 +437,15 @@ def add_edit_recipe(recipeId):
         # Creates list of steps and adds to dictionary
         upload_dict["steps"] = []
         for step in range(1, int(request.form.get("recipeStepsTotal")) + 1):
-            upload_dict["steps"].append(request.form.get("recipeSteps-" + str(step)))
+            upload_dict["steps"].append(
+                request.form.get("recipeSteps-" + str(step)))
 
         # Creates list of ingredents and adds to dictionary
         upload_dict["ingredients"] = []
-        for ingredient in range(1, int(request.form.get("recipeIngredientsTotal")) + 1):
-            upload_dict["ingredients"].append(request.form.get("recipeIngredients-" + str(ingredient)))
+        for ingredient in range(1, int(
+                request.form.get("recipeIngredientsTotal")) + 1):
+            upload_dict["ingredients"].append(
+                request.form.get("recipeIngredients-" + str(ingredient)))
 
         # Adds recipe description and datetime to dictionary
         upload_dict["text"] = request.form.get("recipeDescription")
@@ -444,7 +465,8 @@ def add_edit_recipe(recipeId):
             avatar = request.files['avatar']
             # format filename and then file
             mongo.save_file(request.form.get("avatar_name"), avatar)
-            imageDict = mongo.db.fs.files.find_one({"filename": request.form.get("avatar_name")})
+            imageDict = mongo.db.fs.files.find_one(
+                {"filename": request.form.get("avatar_name")})
             upload_dict["avatar"] = request.form.get("avatar_name")
             upload_dict["avatar_id"] = imageDict["_id"]
 
@@ -465,9 +487,10 @@ def add_edit_recipe(recipeId):
             upload_dict["created_by"] = admin["username"]
             # Uploads to mongo and sets up to pull ID
             result = mongo.db.recipes.insert_one(upload_dict)
-            # Grabs ID of mongo upload
+            # Grabs ID of mongo upload for redirect
             uploadedId = result.inserted_id
         else:
+            # Grabs original chef name if admin edits recipe
             upload_dict["created_by"] = recipeInfo["created_by"]
             result = mongo.db.recipes.update_one(
                 {"_id": ObjectId(recipeId)}, {'$set': upload_dict})
@@ -481,6 +504,7 @@ def add_edit_recipe(recipeId):
         admin=admin["admin"], recipeId=recipeId)
 
 
+# Returns a page for users to edit their user info
 @app.route("/profile/edit", methods=("GET", "POST"))
 def edit_user_info():
     userInfo = mongo.db.users.find_one({"email": session["user"]})
@@ -489,35 +513,34 @@ def edit_user_info():
     update_dict = {}
 
     if request.method == "POST":
+        # Updates user name if different and validates
         if userInfo["username"] != request.form.get("usernameEdit"):
-            # Checks for validation
-            # Checks to be sure this username is not taken or
-            # returns with user error message
+            # Checks if new user name is unique
             usernameCheck = mongo.db.users.find_one(
                 {"username": request.form.get("usernameEdit")})
+            # Returns error if name is taken and redirects
             if usernameCheck is not None:
                 flash("Username already exists! Try Again!")
                 return(redirect(url_for("edit_user_info")))
-            # Passes validation so adds to update dictionary
             update_dict["username"] = request.form.get("usernameEdit")
 
-        # checks for new email and validates if new email exists
+        # Updates user email if different and validates
         if userInfo["email"] != request.form.get("emailEdit"):
-            # Checks for validation
-            # Checks to be sure this email is not taken or
-            # returns with user error message
+            # Checks if new email is unique
             emailCheck = mongo.db.users.find_one(
                 {"email": request.form.get("emailEdit")})
+            # Returns error if email is taken and redirects
             if emailCheck is not None:
                 flash("Email already exists! Try Again!")
                 return(redirect(url_for("edit_user_info")))
-            # Passes validation so adds to update dictionary
             update_dict["email"] = request.form.get("emailEdit")
 
+        # Checks if password confirm is blank
         if request.form.get("passwordCheck2") != "":
             update_dict["password"] = generate_password_hash(
                 request.form.get("passwordCheck2"))
 
+        # Checks if bio is blank
         if userInfo["bio"] != request.form.get("bio"):
             update_dict["bio"] = request.form.get("bio")
 
@@ -525,11 +548,11 @@ def edit_user_info():
         passwordCheck = check_password_hash(
             userInfo["password"], request.form.get('password'))
 
-        # If all checks pass uploads new profile data to DB
+        # If password validates proceeds with last checks
         if (passwordCheck):
             flash("Profile updated successfully!")
 
-            # Replaces Avatar if new image present
+            # Replaces Avatar if new image present and deletes previous
             if request.form.get("avatar_file_valid") == 'true':
                 # Finds and deletes previous avatar in BOTH chunks and files
                 delPrevImg = userInfo["avatar_id"]
@@ -551,18 +574,18 @@ def edit_user_info():
                 update_dict["avatar"] = request.form.get("avatar_name")
                 update_dict["avatar_id"] = imageDict["id"]
 
+            # Uploads all new edit data dictionary to mongo DB
             mongo.db.users.update(
                 {"_id": ObjectId(userInfo["_id"])}, {"$set": update_dict})
-            print(update_dict)
             return(redirect(url_for("profile")))
 
-        # Password validation fail
+        # If Password validation fails returns error and redirects
         elif (passwordCheck is False):
             flash("Current password does not match your login password")
             flash("Could not update your profile")
             return(redirect(url_for("edit_user_info")))
 
-        # Unexpected unknown error
+        # If Unexpected unknown error happens returns error and redirects
         else:
             flash("An unexpected error occurred!")
             flash("Please enter your information again!")
@@ -571,6 +594,7 @@ def edit_user_info():
     return render_template("edit_user_info.html", userInfo=userInfo)
 
 
+# Returns all recipes that have a feature in common
 @app.route("/recipe_list/<feature>")
 def recipe_list(feature):
     allrecipes = list(mongo.db.recipes.find({"feature": feature}))
@@ -584,6 +608,7 @@ def lessons():
     return render_template("lessons.html")
 
 
+# Returns all recipes paired by their feature
 @app.route("/all_recipes")
 def all_recipes():
     allFeatures = enumerate(mongo.db.feature.find({}))
@@ -593,6 +618,7 @@ def all_recipes():
         allFeatures=allFeatures, allRecipes=allRecipes)
 
 
+# Returns a search based on key words user uses, for: name, feature, or chef
 @app.route("/search_bar_returns/<search>", methods=("POST", "GET"))
 def search_bar_returns(search):
     # User's search
@@ -602,25 +628,32 @@ def search_bar_returns(search):
         "search_bar_returns.html", findRecipes=displayRecipes)
 
 
+# Returns a search based on users favorites, recents, or uploaded recipes
 @app.route("/search_user_recipes/<search>", methods=("POST", "GET"))
 def search_user_recipes(search):
+    # Find User Info
+    chef = mongo.db.users.find_one({"email": session["user"]})
 
-    if search == "False":
-        displayRecipes = ""
+    # Pulls list from individual recipes
+    if search == "submitted":
+        displayRecipes = list(enumerate(
+            mongo.db.recipes.find({"createdby": chef["username"]})))
+
     else:
-        # Compile dictionary from user favorites, created, or viewed recipes
+        # Selects if favorites or recent list
+        search = chef[search]
+        # Builds id dictionary to search mongo with
         findUserSelectedRecipes = {}
         findUserSelectedRecipes["$or"] = []
-        for recipe in search.strip('[]"').split("'"):
-            if recipe.find("O") == -1 and recipe.find(")") == -1:
-                findUserSelectedRecipes["$or"].append(
-                    {"_id": ObjectId(recipe)})
-
+        for recipe in search:
+            findUserSelectedRecipes["$or"].append({"_id": ObjectId(recipe)})
             # Find list of recipes user has favorites, created, or viewed
+
             displayRecipes = list(enumerate(
                 mongo.db.recipes.find(findUserSelectedRecipes)))
+
     return render_template(
-        "search_bar_returns.html", displayRecipes=displayRecipes)
+        "search_bar_returns.html", findRecipes=displayRecipes)
 
 
 if __name__ == "__main__":
