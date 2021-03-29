@@ -71,7 +71,8 @@
     <!--  Display ten most recent recipe uploads  -->
     <div class="col-11 col-md-5 col-xl-3 sticky-note profile-sticky-height">
         <div class="sticky-note-inner-div">
-            <a href="{{ url_for('search_user_recipes', search=recipeId) }}">
+
+            <a href="{{ url_for('search_user_recipes', search='submitted') }}">
                 <h3>10 Recently Uploaded Recipes</h3>
             </a>
             <hr>
@@ -86,7 +87,7 @@
     <!--  Display ten most recent favorited recipes  -->
     <div class="col-11 col-md-5 col-xl-3 sticky-note sticky-note-right profile-sticky-height">
         <div class="sticky-note-inner-div">
-            <a href="{{ url_for('search_user_recipes', search=favoriteId) }}">
+            <a href="{{ url_for('search_user_recipes', search='favorites') }}">
                 <h3>10 Recently Favorited Recipes</h3>
             </a>
             <hr>
@@ -103,7 +104,7 @@
     <!--  Display ten most recently viewed recipes  -->
     <div class="col-11 col-md-5 col-xl-3 sticky-note profile-sticky-height">
         <div class="sticky-note-inner-div">
-            <a href="{{ url_for('search_user_recipes', search=recentId) }}">
+            <a href="{{ url_for('search_user_recipes', search='recents') }}">
                 <h3>10 Recently Viewed Recipes</h3>
             </a>
             <hr>
