@@ -19,20 +19,19 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 
-# Sets Head Chef
-headChef = "Fat_Raccoon"
-
-
 mongo = PyMongo(app)
 
 
 @app.route("/", methods=("GET", "POST"))
 def index():
+    # Sets Head Chef
+    headChef = "Fat_Raccoon"
+
     # counts total recipes from specified chef -- AKA head chef
     chef = mongo.db.users.find_one({"username": headChef})
     totalRecipeCount = mongo.db.recipes.count_documents(
         {"created_by": headChef})
-    totalRecipes = list(mongo.db.recipes.find({"created_by": headChef}))
+    totalRecipes = list(mongo.db.recipes.find({"created_by": headChef},{"name": 1, "feature": 1, "time": 1, "avatar":1, "grandparent": 1, "lazy": 1, "created_by": 1}))
 
     # ---- For Dev -- updates all entries
     #findchange = mongo.db.recipes.find({"created_by": "asdfa@aol.com"})
@@ -45,104 +44,181 @@ def index():
     # ---- Loads quick meal ideas (carousel) features
     features = list(mongo.db.feature.find())
 
-    # ---- Creates recipes found in carousel with a max of 3 recipes per card
-    # Builds a list of recipes with matching feature
+    # for grandparent call
+    # allRecipes = list(mongo.db.recipes.count_documents({"grandparent": True}))
+    # create_random_recipe_lists("whole_recipe", 3, allrecipes)
+    def create_random_recipe_lists(multiple_lists, total_return, allRecipes):
+        # In no recipes provided returns a empty list
+        if len(allRecipes) == 0:
+            return allRecipes
+        return_list = []  # return list
+        interimTotal = []  # holds random indexes
+        if len(allRecipes) > 0:
+            # keeps looping to find all or set number of recipes
+            while True:
+                # Builds a random number list
+                randomRecipeIndex = random.randrange(1, len(allRecipes) + 1)
+                # Gets numbers
+                if len(interimTotal) > 0:
+                    iteration = 1
+                    for recipe in interimTotal:
+                        # skip matching indexes
+                        if randomRecipeIndex == recipe:
+                            iteration += 1
+                            break
+                        # Add unique indexes to list
+                        elif len(interimTotal) == iteration:
+                            interimTotal += [randomRecipeIndex]
+                        iteration += 1
+                else:
+                    interimTotal += [randomRecipeIndex]
+
+                # breaks random number generation with conditions are met
+                # print(len(interimTotal), " ",   total_return)
+                # print("--------------------------------------")
+                # print(len(interimTotal), " ", len(allRecipes))
+                # print("========================================")
+                if len(interimTotal) > total_return or len(interimTotal) == len(allRecipes):
+                    break
+
+            # builds recipe list with random numbers
+            iteration = 1
+            for recipeNumber in interimTotal:
+                for recipe in allRecipes:
+                    if recipeNumber == iteration:
+                        return_list += [recipe]
+                        iteration = 1
+                        break
+
+                    iteration += 1
+        return return_list
+    # ---------------------------------------------------------------------------
+    #I print out grandparent classics
+    allRecipes = list(mongo.db.recipes.find({"grandparent": True}))
+    recipeHeader = create_random_recipe_lists(False, 3, allRecipes)
+
+    #allRecipes = list(mongo.db.recipes.find({"created_by": headChef})) #----Im a duplicate!!
+    # featureRecipes = create_random_recipe_lists(True, 2, allRecipes) #-----whole recipe can be removed
+    allRecipes = totalRecipes
     featureRecipes = []
     for feature in features:
-        recipeRandomTotal = []
-        recipesWithFeature = []
-        for recipe in totalRecipes:
-            if recipe['feature'] == feature['name']:
-                recipesWithFeature += [recipe]
-        print(len(recipesWithFeature), feature['name'])
-        randomtotal = len(recipesWithFeature)
+        tempRecipes = []
+        for recipe in allRecipes:
+            if(recipe["feature"] == feature["name"]):
+    #             # use feature to call mongodb lists
+                tempRecipes += [recipe]
 
-        # Build a set of random numbers to pull recipes
-        # with matching features in a random order
-        iteration = 1
-        while True:
-            if randomtotal == 0:
-                break
-            randomRecipeNumber = random.randrange(1, randomtotal + 1)
-            if len(recipeRandomTotal) > 0:
-                iteration = 1
-                for recipeNumber in recipeRandomTotal:
-                    if randomRecipeNumber == recipeNumber:
-                        iteration += 1
-                        break
-                    elif len(recipeRandomTotal) == iteration:
-                        recipeRandomTotal += [randomRecipeNumber]
-                    iteration += 1
-            else:
-                recipeRandomTotal += [randomRecipeNumber]
-            # breaks random number generation with conditions are met
-            if len(recipeRandomTotal) >= 3 or len(
-                    recipeRandomTotal) == randomtotal:
-                break
+        featureRecipes += create_random_recipe_lists(feature["name"], 2, tempRecipes)
+        # print(create_random_recipe_lists(feature["name"], 1, tempRecipes))
 
-        # builds recipe list to be displayed in a random order
-        iteration = 1
-        for recipeNumber in recipeRandomTotal:
-            for recipe in recipesWithFeature:
-                if recipeNumber == iteration:
-                    featureRecipes += (
-                        [[recipe["feature"], recipe["name"], recipe["_id"]]])
-                    iteration = 1
-                    break
-                iteration += 1
+    print(featureRecipes)
+    # print(featureRecipes)
+    # allRecipes = list(mongo.db.recipes.find({"created_by": headChef})) #----Im a duplicate!!
 
-    # ---- Im grandmother classics
-    # I add random grandmother classics
-    recipeHeader = []
-    recipeRandomTotal = []
-    iteration = 1
-    grandparentRecipeTotal = mongo.db.recipes.count_documents(
-        {"grandparent": True})
-    if grandparentRecipeTotal > 0:
-        grandparentRecipes = list(mongo.db.recipes.find({"grandparent": True}))
+    #I print out recipe of day
+    allrecipes = totalRecipes
+    recipeOfDay = create_random_recipe_lists(False, 0, allRecipes)
 
-        # keeps looping to find all or set number of recipes
-        while True:
-            # Builds a random number list
-            randomRecipe = random.randrange(1, grandparentRecipeTotal + 1)
-            # Gets first number
-            if len(recipeRandomTotal) > 0:
-                iteration = 1
-                for recipe in recipeRandomTotal:
-                    if randomRecipe == recipe:
-                        iteration += 1
-                        break
-                    elif len(recipeRandomTotal) == iteration:
-                        recipeRandomTotal += [randomRecipe]
-                    iteration += 1
-            else:
-                recipeRandomTotal += [randomRecipe]
+    print(recipeOfDay)
 
-            # breaks random number generation with conditions are met
-            if len(recipeRandomTotal) > 3 or len(
-                    recipeRandomTotal) == grandparentRecipeTotal:
-                break
+    # # ---- Creates recipes found in carousel with a max of 3 recipes per card
+    # # Builds a list of recipes with matching feature
+    # featureRecipes = []
+    # for feature in features:
+    #     recipeRandomTotal = []
+    #     recipesWithFeature = []
+    #     for recipe in totalRecipes:
+    #         if recipe['feature'] == feature['name']:
+    #             recipesWithFeature += [recipe]
+    #     print(len(recipesWithFeature), feature['name'])
+    #     randomtotal = len(recipesWithFeature)
 
-        # builds recipe list with random numbers
-        iteration = 1
-        for recipeNumber in recipeRandomTotal:
-            for recipe in grandparentRecipes:
-                if recipeNumber == iteration:
-                    recipeHeader += [recipe]
-                    iteration = 1
-                    break
+    #     # Build a set of random numbers to pull recipes
+    #     # with matching features in a random order
+    #     iteration = 1
+    #     while True:
+    #         if randomtotal == 0:
+    #             break
+    #         randomRecipeNumber = random.randrange(1, randomtotal + 1)
+    #         if len(recipeRandomTotal) > 0:
+    #             iteration = 1
+    #             for recipeNumber in recipeRandomTotal:
+    #                 if randomRecipeNumber == recipeNumber:
+    #                     iteration += 1
+    #                     break
+    #                 elif len(recipeRandomTotal) == iteration:
+    #                     recipeRandomTotal += [randomRecipeNumber]
+    #                 iteration += 1
+    #         else:
+    #             recipeRandomTotal += [randomRecipeNumber]
+    #         # breaks random number generation with conditions are met
+    #         if len(recipeRandomTotal) >= 3 or len(
+    #                 recipeRandomTotal) == randomtotal:
+    #             break
 
-                iteration += 1
+    #     # builds recipe list to be displayed in a random order
+    #     iteration = 1
+    #     for recipeNumber in recipeRandomTotal:
+    #         for recipe in recipesWithFeature:
+    #             if recipeNumber == iteration:
+    #                 featureRecipes += (
+    #                     [[recipe["feature"], recipe["name"], recipe["_id"]]])
+    #                 iteration = 1
+    #                 break
+    #             iteration += 1
 
-    # prints a random recipe form head chef
-    recipeRandom = random.randrange(1, totalRecipeCount + 1)
-    iteration = 1
-    for recipe in totalRecipes:
-        # Random selects recipe and loads its chef info
-        if recipeRandom == iteration:
-            recipeOfDay = recipe
-            break
-        iteration += 1
+    # # ---- Im grandmother classics
+    # # I add random grandmother classics
+    # recipeHeader = []
+    # recipeRandomTotal = []
+    # iteration = 1
+    # grandparentRecipeTotal = mongo.db.recipes.count_documents(
+    #     {"grandparent": True})
+    # if grandparentRecipeTotal > 0:
+    #     grandparentRecipes = list(mongo.db.recipes.find({"grandparent": True}))
+
+    #     # keeps looping to find all or set number of recipes
+    #     while True:
+    #         # Builds a random number list
+    #         randomRecipe = random.randrange(1, grandparentRecipeTotal + 1)
+    #         # Gets first number
+    #         if len(recipeRandomTotal) > 0:
+    #             iteration = 1
+    #             for recipe in recipeRandomTotal:
+    #                 if randomRecipe == recipe:
+    #                     iteration += 1
+    #                     break
+    #                 elif len(recipeRandomTotal) == iteration:
+    #                     recipeRandomTotal += [randomRecipe]
+    #                 iteration += 1
+    #         else:
+    #             recipeRandomTotal += [randomRecipe]
+
+    #         # breaks random number generation with conditions are met
+    #         if len(recipeRandomTotal) > 3 or len(
+    #                 recipeRandomTotal) == grandparentRecipeTotal:
+    #             break
+
+    #     # builds recipe list with random numbers
+    #     iteration = 1
+    #     for recipeNumber in recipeRandomTotal:
+    #         for recipe in grandparentRecipes:
+    #             if recipeNumber == iteration:
+    #                 recipeHeader += [recipe]
+    #                 iteration = 1
+    #                 break
+
+    #             iteration += 1
+
+    # # prints a random recipe form head chef
+    # recipeRandom = random.randrange(1, totalRecipeCount + 1)
+    # iteration = 1
+    # for recipe in totalRecipes:
+    #     # Random selects recipe and loads its chef info
+    #     if recipeRandom == iteration:
+    #         recipeOfDay = recipe
+    #         break
+    #     iteration += 1
 
     # --Search for recipes
     # Returns a user search
@@ -216,7 +292,7 @@ def index():
         return redirect(url_for("profile", username=session['user']))
 
     return render_template(
-        "index.html", features=features, recipeOfDay=recipeOfDay,
+        "index.html", features=features, randomRecipe=recipeOfDay,
         chef=chef, featureRecipes=featureRecipes, recipeHeader=recipeHeader)
 
 

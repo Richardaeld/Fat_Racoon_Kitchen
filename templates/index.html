@@ -36,9 +36,9 @@
                             <a href="{{ url_for('recipe_list', feature=feature.name) }}"><p>{{feature.name.title()}}</p></a>
                             <ul>
                                 {% for featureRecipe in featureRecipes %}
-                                    {% if featureRecipe[0] == feature.name %}
+                                    {% if featureRecipe.feature == feature.name %}
                                         <li>
-                                            <a href="{{ url_for('recipe', recipeId=featureRecipe[2]) }}"><p>--{{ featureRecipe[1] }}</p></a>
+                                            <a href="{{ url_for('recipe', recipeId=featureRecipe._id) }}"><p>--{{ featureRecipe.name }}</p></a>
                                         </li>
                                     {%endif%}
                                 {%endfor%}
@@ -126,6 +126,7 @@
             </div>
         </div>
 
+        {% for recipeOfDay in randomRecipe %}
         <div class="col-12">
             <div class="row no-gutters justify-content-around">
                             
@@ -236,6 +237,7 @@
 
             </div>
         </div>
+        {% endfor %}
     </section>
 
 {% endblock %}
