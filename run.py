@@ -175,7 +175,7 @@ def index():
 # Removes user's session
 @app.route("/logout")
 def logout():
-    # Removes session for user
+    # --Removes-- session for user
     session.pop("user")
     flash("You've been logged out!")
     return redirect(url_for("index"))
@@ -184,26 +184,24 @@ def logout():
 # Returns users personal profile
 @app.route("/profile", methods=("GET", "POST"))
 def profile():
-    # defensive code for deleted accouts
+    # --defensive code-- for deleted accouts
     userExists = mongo.db.users.find_one({"email": session['user']})
     if userExists is None:
         flash("Your session has ended please login again")
         session.pop("user")
         return redirect(url_for("index"))
 
-    # Loads user Info
+    # --Loads-- user Info
     chef_info = mongo.db.users.find_one({"email": session['user']})
 
-    # Find recipies submitted by this user, change them into
-    # a list, and give each iteration a number
+    # --Creates and Loads-- user uploaded recipe list
     submitteds = []
-    submittedAll = mongo.db.recipes.find({"created_by": session["user"]})
+    submittedAll = mongo.db.recipes.find({"created_by": session["user"]},{})
     for submitted in submittedAll:
         submitteds += [[submitted["_id"], submitted["name"]]]
     submitteds = list(enumerate(submitteds))
 
-    # Creates list of recipes to display
-    # Used with favorite and recent recipes lists
+    # --Creates(function)-- lists for user favorites and recents
     def create_user_recipe_list(recent_fav):
         recipe_list = []
         if len(chef_info[recent_fav]) > 0:
