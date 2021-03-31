@@ -128,6 +128,13 @@ in college, let us know!
 
 # Bugs and Other Problems
 ## Previous Bugs
+--generated 504 error hd to remove entirely
+    --Crashed flask app index page
+    --while loop never broken
+    -- missed a len in a compare if for breaking while loop
+
+
+
 -- jagged edges after using a transform-rotate fixed by using a recommended line of code -webkit-backface-visibility:hidden -- reccomdation found here https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome
     -- for napkins edge
 
