@@ -185,8 +185,8 @@ def logout():
 @app.route("/profile", methods=("GET", "POST"))
 def profile():
     # --defensive code-- for deleted accouts
-    userExists = mongo.db.users.find_one({"email": session['user']})
-    if userExists is None:
+    chef = mongo.db.users.find_one({"email": session['user']})
+    if chef is None:
         flash("Your session has ended please login again")
         session.pop("user")
         return redirect(url_for("index"))
@@ -194,14 +194,12 @@ def profile():
     # --Loads-- user Info
     chef_info = mongo.db.users.find_one({"email": session['user']})
 
-    # --Creates and Loads-- user uploaded recipe list
-    submitteds = []
-    submittedAll = mongo.db.recipes.find({"created_by": session["user"]},{})
-    for submitted in submittedAll:
-        submitteds += [[submitted["_id"], submitted["name"]]]
-    submitteds = list(enumerate(submitteds))
+    # --Creates and Loads-- user uploaded recipe list with a date sort
+    uploaded = list(enumerate(mongo.db.recipes.find(
+        {"created_by": chef["username"]}, {"name": 1}).sort("date", -1)))
 
     # --Creates(function)-- lists for user favorites and recents
+    # Keeps Items in order opposed to mongo "$or" operator
     def create_user_recipe_list(recent_fav):
         recipe_list = []
         if len(chef_info[recent_fav]) > 0:
@@ -214,7 +212,7 @@ def profile():
 
     return render_template(
         "profile.html", chef_info=chef_info,
-        submitteds=submitteds,
+        submitteds=uploaded,
         favorites=create_user_recipe_list("favorites"),
         recents=create_user_recipe_list("recents"))
 
