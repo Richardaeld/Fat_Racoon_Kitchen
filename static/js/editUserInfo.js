@@ -1,15 +1,16 @@
 // ---- Create Random Avatar name
 // Creates a random string for image name assignment
-const characterLibrary = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_@!&,?0123456789"
+const characterLibrary = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_@!&,?0123456789";
 const characterLibraryLength = characterLibrary.length;
-var imageName = ""
+var imageName = "";
+// Creates a random 20 character Image name
 for (let i=0; i<20; i++){
     let characterLibraryIndex = Math.floor(Math.random()*(characterLibraryLength));
     imageName += characterLibrary[characterLibraryIndex];
 }
 
 // ---- Apply Random Avatar Name to Avatar Image
-// Adds randomly generated image name
+// Adds randomly generated image name if new image present
 document.getElementById("custom-button").addEventListener("click", function() {
     document.getElementById("avatar_name").setAttribute("value", imageName);
     if (document.getElementById("avatar").value != ""){
@@ -20,8 +21,9 @@ document.getElementById("custom-button").addEventListener("click", function() {
 // ---- Avatar Image Validation
 // Check file size
 document.getElementById("avatar").addEventListener("change", function() {
-    let loc = document.getElementById("avatar")
+    let loc = document.getElementById("avatar");
     let fileSize = loc.files[0].size;
+    // Validates according to filsize
     if (fileSize > 500000) {
         loc.value = null;
         loc.classList.add("invalid");
@@ -32,7 +34,8 @@ document.getElementById("avatar").addEventListener("change", function() {
     }
 })
 
-// Reveal new password button 
+// Reveal new password button
+// Defensive code to keep users from starting the validation of new passwords
 var revealPassword = document.getElementsByClassName("hidePassword");
 revealPassword[0].addEventListener("click", function() {
     revealPassword[0].classList.add("make-invis");
