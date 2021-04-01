@@ -4,15 +4,15 @@ var carousel = document.querySelectorAll(".card-carousel");
 
 // Find width of screen and sets amount of carousel boxes
 // This function is called by a global event handler and 
-// resizes according to the current width of screen
+// resizes according to the current width of screen further down
 var reveal; // Amount of cards to reveal per responsiveness
-var carouselArray = [] // Sets array for carousel
+var carouselArray = []; // Sets array for carousel
 function findWidth(){
 
-    // counts carousel item length, creates an index array, and resets array
+    // Counts carousel item length, creates an index array, and resets array
     carouselArray = [] 
-    for(i=0; i<(carousel.length); i++){
-        carouselArray.push(i);
+    for(let arrayCount = 0; arrayCount < carousel.length; arrayCount++){
+        carouselArray.push(arrayCount);
     }
 
     let screenWidth;
@@ -33,13 +33,13 @@ function findWidth(){
     // Checks to see if there are visible boxes to be removed
     if (visible.length > 0) {
         // Removes all visible carousel boxes
-        for (let i=0; i <= visible.length-1; i++) {
+        for (let removeBoxes = 0; removeBoxes <= visible.length - 1; removeBoxes++) {
             document.querySelector(".card-carousel-vis").classList.remove("card-carousel-vis");
         }
     }
     // Adds in correct amount of carousel boxes -- makes them visible with this class
-    for (i=0; i<reveal; i++) {
-        carousel[i].classList.add("card-carousel-vis");
+    for (let addBoxes = 0; addBoxes < reveal; addBoxes++) {
+        carousel[addBoxes].classList.add("card-carousel-vis");
     }
 }
 
@@ -48,35 +48,35 @@ findWidth();
 
 // Global event handler that catchs any resizing of 
 // screen and calls function findwidth
-//window.onresize = findWidth; -- original format
 window.addEventListener('resize', findWidth);
 
 // Carousel button function
 function carouselButton (button) {
     document.getElementsByClassName(button)[0].addEventListener("click", function () {
         //removes all current visible elements
-        for (let i=0; i < reveal; i++){
-            document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.remove("card-carousel-vis");
+        for (let removeVisible = 0; removeVisible < reveal; removeVisible++){
+            document.getElementsByClassName("card-carousel")[carouselArray[removeVisible]].classList.remove("card-carousel-vis");
         }
         // Carousel right button
         if (button == "carousel-right")
-            for (let i=0; i < reveal; i++){
-                let x = carouselArray.shift();
-                carouselArray.push(x);
+            for (let buttonRight=0; buttonRight < reveal; buttonRight++){
+                let moveCarouselRight = carouselArray.shift();
+                carouselArray.push(moveCarouselRight);
             }
         // Carousel left button
         else if (button == "carousel-left")
-            for (let i=0; i < reveal; i++){
-                let x = carouselArray.pop();
-                carouselArray.unshift(x);
+            for (let buttonLeft = 0; buttonLeft < reveal; buttonLeft++){
+                let moveCarouselLeft = carouselArray.pop();
+                carouselArray.unshift(moveCarouselLeft);
             }
         // Makes new elements visible
-        for (let i=0; i < reveal; i++){
-            document.getElementsByClassName("card-carousel")[carouselArray[i]].classList.add("card-carousel-vis");
+        for (let addVisible = 0; addVisible < reveal; addVisible++){
+            document.getElementsByClassName("card-carousel")[carouselArray[addVisible]].classList.add("card-carousel-vis");
         }
     })
 }
-
+// Calls carousel to move right
 carouselButton("carousel-right");
+// Calls carousel to move left
 carouselButton("carousel-left");
 
