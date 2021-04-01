@@ -545,7 +545,8 @@ def edit_user_info():
 # Returns all recipes that have a feature in common
 @app.route("/recipe_list/<feature>")
 def recipe_list(feature):
-    allrecipes = list(mongo.db.recipes.find({"feature": feature}))
+    allrecipes = list(mongo.db.recipes.find(
+        {"feature": feature},{"name": 1, "time": 1}))
     return render_template(
         "recipe_list.html",
         allrecipes=allrecipes, feature=feature)
