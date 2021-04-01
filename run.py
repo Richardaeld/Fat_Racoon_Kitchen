@@ -457,50 +457,52 @@ def add_edit_recipe(recipeId):
 def edit_user_info():
     userInfo = mongo.db.users.find_one({"email": session["user"]})
 
-    # Creates empty dictionary to add edit information to
+    # --Creates-- empty dictionary to add edit information to
     update_dict = {}
 
     if request.method == "POST":
-        # Updates user name if different and validates
+        # --Update/Validate-- user name if different and validates
         if userInfo["username"] != request.form.get("usernameEdit"):
             # Checks if new user name is unique
             usernameCheck = mongo.db.users.find_one(
-                {"username": request.form.get("usernameEdit")})
+                {"username": request.form.get("usernameEdit")},
+                {"username": 1})
             # Returns error if name is taken and redirects
             if usernameCheck is not None:
                 flash("Username already exists! Try Again!")
                 return(redirect(url_for("edit_user_info")))
             update_dict["username"] = request.form.get("usernameEdit")
 
-        # Updates user email if different and validates
+        # --Update/Validate-- user email if different and validates
         if userInfo["email"] != request.form.get("emailEdit"):
             # Checks if new email is unique
             emailCheck = mongo.db.users.find_one(
-                {"email": request.form.get("emailEdit")})
+                {"email": request.form.get("emailEdit")},
+                {"email": 1})
             # Returns error if email is taken and redirects
             if emailCheck is not None:
                 flash("Email already exists! Try Again!")
                 return(redirect(url_for("edit_user_info")))
             update_dict["email"] = request.form.get("emailEdit")
 
-        # Checks if password confirm is blank
+        # --Update-- if password confirm is blank
         if request.form.get("passwordCheck2") != "":
             update_dict["password"] = generate_password_hash(
                 request.form.get("passwordCheck2"))
 
-        # Checks if bio is blank
+        # --Update-- if bio is blank
         if userInfo["bio"] != request.form.get("bio"):
             update_dict["bio"] = request.form.get("bio")
 
-        # Validates current password before allowing changes to be made
+        # --Validates-- current password before allowing changes to be made
         passwordCheck = check_password_hash(
             userInfo["password"], request.form.get('password'))
 
-        # If password validates proceeds with last checks
+        # --Updates-- If password validates
         if (passwordCheck):
             flash("Profile updated successfully!")
 
-            # Replaces Avatar if new image present and deletes previous
+            # --Updates-- Replaces Avatar w/ new image if present
             if request.form.get("avatar_file_valid") == 'true':
                 # Finds and deletes previous avatar in BOTH chunks and files
                 delPrevImg = userInfo["avatar_id"]
@@ -522,18 +524,20 @@ def edit_user_info():
                 update_dict["avatar"] = request.form.get("avatar_name")
                 update_dict["avatar_id"] = imageDict["id"]
 
-            # Uploads all new edit data dictionary to mongo DB
+            # --Uploads-- all new edit data dictionary to mongo DB
             mongo.db.users.update(
                 {"_id": ObjectId(userInfo["_id"])}, {"$set": update_dict})
             return(redirect(url_for("profile")))
 
-        # If Password validation fails returns error and redirects
+        # --Validation/Error-- If Password validation
+        # fails redirect w/ error message
         elif (passwordCheck is False):
             flash("Current password does not match your login password")
             flash("Could not update your profile")
             return(redirect(url_for("edit_user_info")))
 
-        # If Unexpected unknown error happens returns error and redirects
+        # --Unknown/error-- If Unexpected unknown error
+        # happens returns error and redirects
         else:
             flash("An unexpected error occurred!")
             flash("Please enter your information again!")
