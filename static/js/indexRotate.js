@@ -1,3 +1,4 @@
+// Makes index card flippable
 var findIndexCards = document.querySelectorAll(".rotating-card");
 findIndexCards.forEach(flipIndex);
 function flipIndex(item, index) {
