@@ -583,7 +583,7 @@ def search_user_recipes(search):
     chef = mongo.db.users.find_one({"email": session["user"]})
 
     # Pulls list from individual recipes
-    if search == "submitted":
+    if search == "uploaded":
         displayRecipes = list(enumerate(
             mongo.db.recipes.find({"createdby": chef["username"]})))
 
@@ -597,8 +597,8 @@ def search_user_recipes(search):
             findUserSelectedRecipes["$or"].append({"_id": ObjectId(recipe)})
             # Find list of recipes user has favorites, created, or viewed
 
-            displayRecipes = list(enumerate(
-                mongo.db.recipes.find(findUserSelectedRecipes)))
+        displayRecipes = list(enumerate(
+            mongo.db.recipes.find(findUserSelectedRecipes)))
 
     return render_template(
         "search_bar_returns.html", findRecipes=displayRecipes)
