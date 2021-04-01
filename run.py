@@ -546,7 +546,7 @@ def edit_user_info():
 @app.route("/recipe_list/<feature>")
 def recipe_list(feature):
     allrecipes = list(mongo.db.recipes.find(
-        {"feature": feature},{"name": 1, "time": 1}))
+        {"feature": feature}, {"name": 1, "time": 1}))
     return render_template(
         "recipe_list.html",
         allrecipes=allrecipes, feature=feature)
