@@ -354,55 +354,56 @@ def avatar(avatar_image):
 # Returns a blank recipe or prepopulates a recipe to edit
 @app.route("/add_edit_recipe/<recipeId>", methods=("GET", "POST"))
 def add_edit_recipe(recipeId):
-    # Finds user data
+    # --Loads-- user data
     admin = mongo.db.users.find_one({"email": session["user"]})
 
-    # Sets new recipe with blanks
+    # --Creates-- blanks for new recipe
     if (recipeId == "new"):
         recipeInfo = None
         recipeIngEnum = None
         recipeSteEnum = None
-    # Sets edit recipe with recipe data
+    # --Loads-- form with with existing recipe data
     else:
-        if mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}) is None:
+        if mongo.db.recipes.find_one(
+                {"_id": ObjectId(recipeId)}, {"_id": 1}) is None:
             flash("Sorry this recipe has been removed")
             return(redirect(url_for("profile")))
         recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
         recipeIngEnum = list(enumerate(recipeInfo["ingredients"]))
         recipeSteEnum = list(enumerate(recipeInfo["steps"]))
 
-    # Generates the select/option for feature
+    # --Loads-- the select/option for feature
     features = mongo.db.feature.find()
 
     if request.method == "POST":
-        # Creates base dictionary and adds name and feature
+        # --Creates-- base dictionary and adds name and feature to dictionary
         upload_dict = {}
         upload_dict["name"] = request.form.get("recipeName")
         upload_dict["feature"] = request.form.get("feature")
 
-        # Creates list of times and adds to dictionary
+        # --Creates-- list of times and adds to dictionary
         upload_dict["time"] = []
         for time in range(1, 4):
             upload_dict["time"].append(request.form.get("time" + str(time)))
 
-        # Creates list of steps and adds to dictionary
+        # --Creates-- list of steps and adds to dictionary
         upload_dict["steps"] = []
         for step in range(1, int(request.form.get("recipeStepsTotal")) + 1):
             upload_dict["steps"].append(
                 request.form.get("recipeSteps-" + str(step)))
 
-        # Creates list of ingredents and adds to dictionary
+        # --Creates-- list of ingredents and adds to dictionary
         upload_dict["ingredients"] = []
         for ingredient in range(1, int(
                 request.form.get("recipeIngredientsTotal")) + 1):
             upload_dict["ingredients"].append(
                 request.form.get("recipeIngredients-" + str(ingredient)))
 
-        # Adds recipe description and datetime to dictionary
+        # --Creates-- recipe description and datetime and adds to dictionary
         upload_dict["text"] = request.form.get("recipeDescription")
         upload_dict["date"] = datetime.datetime.now()
 
-        # Replaces Avatar if new image present
+        # --Updates-- Avatar if new image present
         if request.form.get("avatar_file_valid") == 'true':
             if recipeId != "new":
                 # Finds and deletes previous avatar in BOTH chunks and files
@@ -421,19 +422,19 @@ def add_edit_recipe(recipeId):
             upload_dict["avatar"] = request.form.get("avatar_name")
             upload_dict["avatar_id"] = imageDict["_id"]
 
-        # Sets lazy value
+        # --Creates-- lazy boolean value
         if request.form.get("lazy") == "True":
             upload_dict["lazy"] = True
         else:
             upload_dict["lazy"] = False
 
-        # Sets grandparent value
+        # --Creates-- grandparent boolean value
         if request.form.get("grandparent") == "True":
             upload_dict["grandparent"] = True
         else:
             upload_dict["grandparent"] = False
 
-        # Uploads dictionary depending on if its a new recipe or edit
+        # --Uploads-- dictionary depending on if its a new recipe or edit
         if recipeId == "new":
             upload_dict["created_by"] = admin["username"]
             # Uploads to mongo and sets up to pull ID
