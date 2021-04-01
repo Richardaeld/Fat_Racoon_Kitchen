@@ -580,12 +580,16 @@ def search_bar_returns(search):
 @app.route("/search_user_recipes/<search>", methods=("POST", "GET"))
 def search_user_recipes(search):
     # Find User Info
-    chef = mongo.db.users.find_one({"email": session["user"]})
-
+    chef = mongo.db.users.find_one({
+        "email": session["user"]}, {"username": 1, "recente": 1})
+    print(chef)
     # Pulls list from individual recipes
     if search == "uploaded":
         displayRecipes = list(enumerate(
-            mongo.db.recipes.find({"createdby": chef["username"]})))
+            mongo.db.recipes.find(
+                {"created_by": chef["username"]},
+                {"name": 1, "feature": 1, "created_by": 1, "time": 1}).sort(
+                    "date", -1)))
 
     else:
         # Selects if favorites or recent list
