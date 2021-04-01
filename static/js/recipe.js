@@ -2,11 +2,12 @@
 // Finds all list items under class .recipe-lists and assigns text decoration line-through or none
 AllLists = document.querySelectorAll(".recipe-lists > li");
 AllLists.forEach(list);
-function list (item, index){
+function list (listItem){
     // Event cycles through text decoration for crossout effect
-    item.addEventListener("click", function() {
-        let itemLoc1 =  item.getElementsByTagName("h6")[0]
-        let itemLoc2 =  item.getElementsByTagName("h6")[1]
+    listItem.addEventListener("click", function(crossOut) {
+        let itemLoc1 =  listItem.getElementsByTagName("h6")[0]
+        let itemLoc2 =  listItem.getElementsByTagName("h6")[1]
+        //Crossout and uncrossout list items
         if (itemLoc1.style.textDecoration == "line-through"){
             itemLoc1.style.textDecoration = "none";
             itemLoc2.style.textDecoration = "none";
@@ -21,15 +22,15 @@ function list (item, index){
 }
 
 // ---- Delete Modal
-// Open Delete Modal
+// Open Delete Modal and focus on it
 if (document.getElementById("deleteModal") != null){
     document.getElementById("deleteModal").addEventListener("click", function() {
         document.getElementsByClassName("custom-modal-delete")[0].classList.remove("make-invis");
         document.getElementById("recipeName").focus()
     })
 }
-// Close Delete Modal
-document.getElementsByClassName("modal-background")[1].addEventListener("click", function () { // Im for the delete modal 
+// Close Delete Modal with background click
+document.getElementsByClassName("modal-background")[1].addEventListener("click", function () {
     document.getElementsByClassName("custom-modal-delete")[0].classList.add("make-invis");
 })
 
@@ -39,10 +40,11 @@ document.getElementById("recipeName").addEventListener("keyup", function() {
     let check = document.getElementById("checkName").getElementsByTagName("span")[0].getAttribute("value");
     let userinput = document.getElementById("recipeName").value;
 
-    // Apply disabled or ignore as needed
+    // Apply disabled if validation fails
     if (check != userinput) {
         modalButton.setAttribute("disabled", "")
     }
+    // Removes disable if validation succeeds
     if (check == userinput){
         modalButton.removeAttribute("disabled")
     }
