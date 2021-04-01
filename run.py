@@ -260,59 +260,55 @@ def addFavorite(recipeId, favoriteChange):
 # Returns recipe and auto adjusts recent list for logged in users
 @app.route("/recipe/<recipeId>", methods=("GET", "POST"))
 def recipe(recipeId):
-    # Redirects incase recipe has been removed
+    # --Defensive-- Redirects incase recipe has been removed
     if mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}) is None:
         flash("Sorry this recipe has been removed")
         return(redirect(url_for("profile")))
 
-    # Finds recipe to display
+    # --Loads-- recipe to display
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
-    # If user is singed in, finds recipe favorite status and
-    # adds recipe to user previously viewed list
+
+    # --Defensive-- Keeps page from crashing if user isnt signed in
     try:
+        # --Loads-- Extra user signed in information
         if session["user"]:
-            # Finds and sets user chef id
-            chef = mongo.db.users.find_one({"email": session['user']})
-            chef = chef['username']
+            # --Loads-- user information
+            userInfo = mongo.db.users.find_one({"email": session['user']})
+            chef = userInfo['username']
 
-            # For updating favorite and user recents list
-            findRecentFav = (
-                mongo.db.users.find_one(
-                    {"email": session["user"]}))
-
-            # determine if recipe is favorited
-            favorited = findRecentFav["favorites"]
-            if len(favorited) == 0:
+            # --Loads/Updates-- if recipe is favorite of user
+            if len(userInfo["favorites"]) == 0:
                 favoriteRecipe = False
             favoriteRecipe = False
-            for fav in favorited:
+            for fav in userInfo["favorites"]:
                 if fav == recipeInfo["_id"]:
                     favoriteRecipe = True
                     break
 
-            # Creates base list for user recent
-            if len(findRecentFav["recents"]) == 0:
-                findRecentFav = [recipeInfo["_id"]]
+            # --Creates-- base list for user recents
+            findRecent = []
+            if len(userInfo["recents"]) == 0:
+                findRecent = [recipeInfo["_id"]]
             else:
-                findRecentFav = (
-                    [recipeInfo["_id"]] + findRecentFav["recents"])
+                findRecent = (
+                    [recipeInfo["_id"]] + userInfo["recents"])
 
-            # Iterates through checking for duplicates to remove
-            # For outer Loop
+            # --Updates-- recents list by removing duplicates
+            # and giving ceiling of 10 entries
             userRecentFinal = []
-            for final in findRecentFav:
+            for final in findRecent:
                 checkPass = True
                 if len(userRecentFinal) == 0:
                     userRecentFinal += [final]
-                # Check for duplicates and remove them
-                # For inner loop
                 for check in userRecentFinal:
                     # Breaks when recent list is 10 entries
                     if len(userRecentFinal) > 9:
                         break
+                    # Skips when dupicate
                     elif final == check:
                         checkPass = False
                         break
+                    # Adds to list if passes other checks
                     elif check == userRecentFinal[-1] and checkPass is True:
                         userRecentFinal += [final]
 
@@ -320,16 +316,15 @@ def recipe(recipeId):
                 {"email": session["user"]},
                 {"$set": {"recents": userRecentFinal}})
 
-    # Except is for a missing session user
-    # Sets chef and favorite status to blank if user isnt signed in
+    # --Defensive-- Sets blank values if user isnt signed in
     except KeyError:
         favoriteRecipe = "None"
         chef = ""
 
-    # Counts steps of recipe
+    # --Loads-- steps of recipe
     recipeSteps = list(enumerate(recipeInfo["steps"]))
 
-    # Allows admin or user to delete recipe
+    # --Uploads-- Allows user to delete recipe
     if request.method == "POST":
         # Flash accepts a single string, not mutiple
         flashStr = "You've removed your recipe " + recipeInfo['name']
