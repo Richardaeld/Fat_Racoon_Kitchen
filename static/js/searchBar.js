@@ -6,17 +6,17 @@ function selectSearchBar(searchBar){
     // Makes search bar visible with user click
     searchInput = searchBar.getElementsByTagName("input")[0]
     searchBar.addEventListener("click", function () {
-        searchInput.classList.remove("make-invis")
-        searchInput.focus()
+        searchInput.classList.remove("make-invis");
+        searchInput.focus();
     })
 
     // Makes sure users are unable to submit blank queries
     searchButton = searchBar.getElementsByTagName("button")[0]
     searchInput.addEventListener("keyup", function () {
         if(searchInput.value != "") {
-            searchButton.removeAttribute("disabled")
+            searchButton.removeAttribute("disabled");
         }else if(searchInput.value == "") {
-            searchButton.setAttribute("disabled", "")
+            searchButton.setAttribute("disabled", "");
         }
     })
 
