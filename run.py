@@ -571,7 +571,9 @@ def all_recipes():
 def search_bar_returns(search):
     # User's search
     displayRecipes = list(enumerate(
-        mongo.db.recipes.find({"$text": {"$search": search}})))
+        mongo.db.recipes.find(
+            {"$text": {"$search": search}},
+            {"name": 1, "feature": 1, "created_by": 1, "time": 1})))
     return render_template(
         "search_bar_returns.html", findRecipes=displayRecipes)
 
