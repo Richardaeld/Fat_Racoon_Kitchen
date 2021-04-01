@@ -217,23 +217,26 @@ def profile():
         recents=create_user_recipe_list("recents"))
 
 
-# Chaanges favorite status of recipe and returns user to recipe's page
+# Changes favorite status of recipe and returns user to recipe's page
 @app.route("/recipe/<recipeId>/<favoriteChange>", methods=("GET", "POST"))
 def addFavorite(recipeId, favoriteChange):
+    # --Loads-- Recipe and user info
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
-    user = mongo.db.users.find_one({"email": session["user"]})
+    user = mongo.db.users.find_one({"email": session["user"]}, {
+        "username": 1, "favorites": 1})
     chef = user["username"]
-    # Changes string to boolean
+
+    # --Updates-- string to boolean
     if favoriteChange == "True":
         favoriteChange = True
     else:
         favoriteChange = False
 
-    # Creates user favorite list to upload to DB
+    # --Creates-- user favorite list to upload to DB
     if favoriteChange:
         newFav = []
         changeFav = user["favorites"]
-        # removes an unfavorited recipe
+        # Removes an unfavorited recipe
         for fav in changeFav:
             if fav == recipeInfo["_id"]:
                 continue
