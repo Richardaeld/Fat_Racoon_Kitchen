@@ -9,27 +9,30 @@ if (document.getElementById("flash").getElementsByTagName("div")[0]){
     },7000)
 }
 
-// Function to make social links have rippling liquid effect
-function makeRipples (targetEl) {
-    targetEl.getElementsByTagName("i")[0].classList.add("dipping-ice")
-    targetEl.getElementsByTagName("span")[0].classList.add("create-ripple")
+// Function to make social links have rippling liquid effect with dipping ice
+function makeRipples (targetLink) {
+    targetLiquid = targetLink.getElementsByTagName("span")[0]
+    targetIce = targetLink.getElementsByTagName("i")[0]
+    targetIce.classList.add("dipping-ice")
+    targetLiquid.classList.add("create-ripple")
+    // Resets animation after 3 seconds
     setTimeout(function () {
-        targetEl.getElementsByTagName("span")[0].classList.remove("create-ripple")
-        targetEl.getElementsByTagName("i")[0].classList.remove("dipping-ice")
+        targetIce.classList.remove("dipping-ice")
+        targetLiquid.classList.remove("create-ripple")
     },3000)
 }
 
-//Adds ripple effect to event listeners for social links
+//Adds ripple effect to mouse over event listeners for social links
 var findLinks = document.querySelectorAll(".social-position");
 findLinks.forEach(selectLinks)
-function selectLinks (item, index) {
+function selectLinks (link) {
     // for mouse users
-    item.addEventListener("mouseenter", function() {
-        makeRipples (item);
+    link.addEventListener("mouseenter", function() {
+        makeRipples (link);
     })
-    // for touch screenusers
-    item.addEventListener("touchmove", function() {
-        makeRipples (item);
+    // for touch screen users
+    link.addEventListener("touchmove", function() {
+        makeRipples (link);
     })
 }
 
