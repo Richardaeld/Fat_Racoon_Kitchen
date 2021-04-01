@@ -212,7 +212,7 @@ def profile():
 
     return render_template(
         "profile.html", chef_info=chef_info,
-        submitteds=uploaded,
+        uploaded=uploaded,
         favorites=create_user_recipe_list("favorites"),
         recents=create_user_recipe_list("recents"))
 

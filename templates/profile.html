@@ -76,9 +76,9 @@
                 <h3>10 Recently Uploaded Recipes</h3>
             </a>
             <hr>
-            {% for submitted in submitteds %}
-                {% if submitted[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
-                    <p><a href="{{ url_for('recipe', recipeId=submitted[1][0]) }}">{{  submitted[0] + 1 }}. {{ submitted[1][1] }}</a></p>
+            {% for upload in uploaded %}
+                {% if upload[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
+                    <p><a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a></p>
                 {% endif %}
             {% endfor %}
         </div>
