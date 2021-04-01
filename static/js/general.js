@@ -2,7 +2,7 @@
 if (document.getElementById("flash").getElementsByTagName("div")[0]){
     setTimeout( function () {
         flashRm = document.querySelectorAll(".flash").length;
-        for (i=0; i<flashRm; i++){
+        for (flashCount = 0; flashCount < flashRm; flashCount++){
             var divRemove = document.getElementsByClassName("flash")[0];
             divRemove.remove();
         }
