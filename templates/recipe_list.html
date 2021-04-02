@@ -1,37 +1,29 @@
 {% extends "base.html" %}
 {% block section %}
 <section class="row no-gutters generic-background">
-    <!-- feature lists header -->
-        <!--<div class="col-12 profile-header-height">
-            <div class="row no-gutters justify-content-center align-items-center">
-                <div class="col-12">
-                    <h1> feature.title() }} Recipes</h1>
-                </div>
-            </div>
-        </div>-->
-
-    <!-- recipe ingredients and steps -->
     <div class="col-12">        
         <div class="row no-gutters justify-content-center">
-
-            <!-- Recipe List 1 -->
+            <!-- Recipe List per feature -->
             <div class="col-12 col-md-10 ">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note recipe-list-height">
                         <div class="sticky-note-inner-div all-recipe-max-height">
                             <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec recipe-name">
+                                <!-- Feature header -->
                                 <h1>{{ feature.title() }} Recipes</h1>
                                 <hr>
+                                <!-- List of recipes that share this feature -->
                                 {% for recipe in allrecipes %}
                                     <li class="make-invis">
                                         <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around all-features">
+                                            <!-- Recipe name -->
                                             <span class="col-12 col-lg-8">
                                                 <h6><strong>{{ recipe.name.title() }}</strong>: </h6>
                                             </span>
                                             <span class="col-12 col-lg-4">
                                                 <div class="row no-gutters">
+                                                    <!-- Recipe total time -->
                                                     <div class="col-12">
-                                                        <!--<h6>Total Time: </h6>-->
                                                         <p>{{ recipe.time[2] }} Minutes</p>
                                                     </div>
                                                 </div>
@@ -44,36 +36,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Recipe List 2 -->
-            <!--<div class="col-12 col-md-6">
-                <div class="row no-gutters justify-content-center ">
-                    <div class="col-10 sticky-note sticky-note-right recipe-list-height all-recipe-max-height">
-                        <div class="sticky-note-inner-div ">
-                            <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec">
-
-                                {% for recipe in evenRecipes %}
-                                    <li>
-                                        <a href=" url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around all-features">
-                                            <span class="col-12 col-sm-8">
-                                                <h6><strong> recipe.name.title() }}</strong>:</h6>
-                                            </span>
-                                            <span class="col-12 col-sm-4" >
-                                                <div class="row no-gutters">
-                                                    <div class="col-12">
-                                                        <h6>Total Time: </h6>
-                                                        <h6><strong> recipe.time[2] }} Minutes</strong></h6>
-                                                    </div>
-                                                </div>
-                                            </span>                                      
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
         </div>
     </div>
 
