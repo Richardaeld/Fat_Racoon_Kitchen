@@ -226,6 +226,9 @@ def addFavorite(recipeId, favoriteChange):
         "username": 1, "favorites": 1})
     chef = user["username"]
 
+    # --Loads-- steps of recipe
+    recipeSteps = list(enumerate(recipeInfo["steps"]))
+
     # --Updates-- string to boolean
     if favoriteChange == "True":
         favoriteChange = True
@@ -254,7 +257,7 @@ def addFavorite(recipeId, favoriteChange):
     return render_template(
         "recipe.html",
         recipeId=recipeInfo["_id"], recipeInfo=recipeInfo,
-        favoriteRecipe=favoriteChange, chef=chef)
+        favoriteRecipe=favoriteChange, chef=chef, recipeSteps=recipeSteps)
 
 
 # Returns recipe and auto adjusts recent list for logged in users
