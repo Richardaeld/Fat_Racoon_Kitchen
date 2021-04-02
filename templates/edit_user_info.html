@@ -41,32 +41,14 @@
                                     <p class="make-invis">must contain appropiate email suffix</p>
                                     <p class="make-invis">Cannot contain ' " $ ,</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
 
-
-                    <!-- Avatar -->
-                    <!--<fieldset class="col-12">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-12 col-md-6 recipe-form-label">
-                                <label type="text" for="avatar">Avatar</label>
-                            </div>
-                            <div class="col-12 col-md-6 recipe-form-input">
-                                <input type="file" name="avatar" id="avatar">
-                                <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
-                                <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
-                                <p id="avatar_valid" class="make-invis">Please select a file of 500KB or less. Server space is limited!</p>
-                            </div>
-                        </div>
-                    </fieldset> -->
-
-
                     <!-- Password and avatar -->
                     <div class="col-12"> <!-- passwordSets JS target -->
                         <div class="row no-gutters justify-content-center">
-                            
+
                             <!--  avatar  -->
                             <div class="col-12 col-md-6 form-input-spacing">
                                 <div class="row no-gutters">
@@ -93,54 +75,54 @@
                                         <div class="invalid-form make-invis">
                                             <p>Password must contain upper case letter, lower case letter, a number, and be between 8 and 20 characters</p>
                                             <p class="make-invis">New password and confirm new password must match</p>
-                                            <p class="make-invis">Cannot contain ' " $ ,</p>                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="row no-gutters justify-content-center">
-                                    <div class="col-4 hidePassword">
-                                        <p class="custom-button">Create new password</p>
-                                    </div>
-                                
-                            <!--  new passwod  -->
-                            <div class="col-12 col-md-6 form-input-spacing make-invis hidePassword">
-                                <div class="row no-gutters">
-                                    <div class="col-12">
-                                        <label for="newPasswordEdit">New Password</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck1" name="passwordCheck1" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
-                                        <div class="invalid-form form-is-valid make-invis">
-                                            <p class="make-invis">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
-                                            <p class="make-invis">New password and confirm new password must match</p>
-                                            <p class="make-invis">Cannot contain ' " $ ,</p>                                        
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            <!--  Confirm new password  -->
-                            <div class="col-12 col-md-6 form-input-spacing make-invis hidePassword">
-                                <div class="row no-gutters">
-                                    <div class="col-12">
-                                        <label for="newPasswordCheckEdit">Confirm New Password</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck2" name="passwordCheck2" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
-                                        <div class="invalid-form form-is-valid make-invis">
-                                            <p class="make-invis">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
-                                            <p class="make-invis">New password and confirm new password must match</p>
                                             <p class="make-invis">Cannot contain ' " $ ,</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            </div>
 
+                            <!-- Reveal creating of new password inputs -->
+                            <div class="col-12">
+                                <div class="row no-gutters justify-content-center">
+                                    <div class="col-4 hidePassword">
+                                        <p class="custom-button">Create new password</p>
+                                    </div>
+
+                                    <!--  new passwod  -->
+                                    <div class="col-12 col-md-6 form-input-spacing make-invis hidePassword">
+                                        <div class="row no-gutters">
+                                            <div class="col-12">
+                                                <label for="newPasswordEdit">New Password</label>
+                                            </div>
+                                            <div class="col-12">
+                                                <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck1" name="passwordCheck1" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
+                                                <div class="invalid-form form-is-valid make-invis">
+                                                    <p class="make-invis">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                                                    <p class="make-invis">New password and confirm new password must match</p>
+                                                    <p class="make-invis">Cannot contain ' " $ ,</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--  Confirm new password  -->
+                                    <div class="col-12 col-md-6 form-input-spacing make-invis hidePassword">
+                                        <div class="row no-gutters">
+                                            <div class="col-12">
+                                                <label for="newPasswordCheckEdit">Confirm New Password</label>
+                                            </div>
+                                            <div class="col-12">
+                                                <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck2" name="passwordCheck2" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
+                                                <div class="invalid-form form-is-valid make-invis">
+                                                    <p class="make-invis">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                                                    <p class="make-invis">New password and confirm new password must match</p>
+                                                    <p class="make-invis">Cannot contain ' " $ ,</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -154,7 +136,7 @@
                                 <textarea name="bio" id="bio" cols="30" rows="5" minlength="8" maxlength="400" pattern="^[a-zA-Z0-9_&%$#]{8,120}$">{{ userInfo.bio }}</textarea>
                             </div>
                         </div>
-                    </div>                   
+                    </div>
 
                     <!-- submit button -->
                     <div class="col">
@@ -166,7 +148,6 @@
         </div>
     </div>
 </section>
-
 {% endblock %}
 
 {% block custom_script %}
