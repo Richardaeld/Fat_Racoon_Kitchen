@@ -23,59 +23,61 @@
             </div>
         </div>
     </div>
-        <!--  Chef Name and Bio  -->
-        <!-- Bio header -->
-        <div class="col-12 profile-header-height">
-            <div class="row no-gutters justify-content-center">
-                <div class="col-12">
-                    <h1>{{ chef_info.username }}'s Bio</h1>
-                </div>
+    <!--  Username and Bio  -->
+    <!-- Bio header -->
+    <div class="col-12 profile-header-height">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12">
+                <h1>{{ chef_info.username }}'s Bio</h1>
             </div>
         </div>
-        <div class="col-11 col-lg-6 sticky-note profile-avatar-bio-height">
-            <div class="row no-gutters sticky-note-inner-div align-items-center">
-                <div class="col-12">
-                    <h6>
-                        {{ chef_info.bio }}
-                    </h6>
-                </div>
+    </div>
+    <!-- Bio information -->
+    <div class="col-11 col-lg-6 sticky-note profile-avatar-bio-height">
+        <div class="row no-gutters sticky-note-inner-div align-items-center">
+            <div class="col-12">
+                <h6>
+                    {{ chef_info.bio }}
+                </h6>
             </div>
         </div>
-        <!--  Avatar of chef or basic stand in  -->
-        {% if chef_info.avatar == none %}
-        <div class="col-11 col-lg-4 align-items-center sticky-note sticky-note-right profile-avatar-bio-height">
-            <div class="row no-gutters justify-content-center sticky-note-inner-div">
-                <div class="avatar">
-                    <svg width="50" height="50">
-                        <circle cx="25" cy="25" r="20" stroke-width="4" fill="#010203"/>
-                    </svg>
-                    <svg width="50" height="50">
-                        <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203"/>
-                    </svg>
-                </div>
+    </div>
+    <!--  Avatar of user or basic stand in  -->
+    {% if chef_info.avatar == none %}
+    <div class="col-11 col-lg-4 align-items-center sticky-note sticky-note-right profile-avatar-bio-height">
+        <div class="row no-gutters justify-content-center sticky-note-inner-div">
+            <div class="avatar">
+                <svg width="50" height="50">
+                    <circle cx="25" cy="25" r="20" stroke-width="4" fill="#010203"/>
+                </svg>
+                <svg width="50" height="50">
+                    <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203"/>
+                </svg>
             </div>
         </div>
-
-        {% else %}
-        <div class="col-10 col-md-6 col-lg-4 col-xl-3 polaroid-outer"> <!-- profile-avatar-bio-height -->
-            <div id="avatarImg" class="polaroid-picture">
-                <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="">
-            </div>
+    </div>
+    <!-- User Image -->
+    {% else %}
+    <div class="col-10 col-md-6 col-lg-4 col-xl-3 polaroid-outer"> <!-- profile-avatar-bio-height -->
+        <div id="avatarImg" class="polaroid-picture">
+            <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="Polaroid picture of chef {{ chef_info.username }}">
         </div>
-        {% endif %}
+    </div>
+    {% endif %}
 </section>
 
-<!--  Ten most recent columns   -->
+<!--  Ten most recent columns, 3 in total   -->
 <section class="row no-gutters justify-content-around profile-lists" style="background-color: rgb(153, 220, 236);">
     
     <!--  Display ten most recent recipe uploads  -->
     <div class="col-11 col-md-5 col-xl-3 sticky-note profile-sticky-height">
         <div class="sticky-note-inner-div">
-
+            <!-- Search user upload link -->
             <a href="{{ url_for('search_user_recipes', search='uploaded') }}">
                 <h3>10 Recently Uploaded Recipes</h3>
             </a>
             <hr>
+            <!-- List location of uploads -->
             {% for upload in uploaded %}
                 {% if upload[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
                     <p><a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a></p>
@@ -87,10 +89,12 @@
     <!--  Display ten most recent favorited recipes  -->
     <div class="col-11 col-md-5 col-xl-3 sticky-note sticky-note-right profile-sticky-height">
         <div class="sticky-note-inner-div">
+            <!-- Search user favorite link -->
             <a href="{{ url_for('search_user_recipes', search='favorites') }}">
                 <h3>10 Recently Favorited Recipes</h3>
             </a>
             <hr>
+            <!-- List location of favorites -->
             {% for favorite in favorites %}
                 {% if favorite %}
                     {% if favorite[0] + 1 < 11 %}
@@ -104,10 +108,12 @@
     <!--  Display ten most recently viewed recipes  -->
     <div class="col-11 col-md-5 col-xl-3 sticky-note profile-sticky-height">
         <div class="sticky-note-inner-div">
+            <!-- Search user recent link -->
             <a href="{{ url_for('search_user_recipes', search='recents') }}">
                 <h3>10 Recently Viewed Recipes</h3>
             </a>
             <hr>
+            <!-- List location of Recents -->
             {% for recent in recents %}
                 {% if recent %}
                     {% if recent[0] + 1 < 11 %}
@@ -118,9 +124,7 @@
         </div>
     </div>
 </section>
-
 {% endblock %}
 
 {% block custom_script %}
-    <!--<script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>-->
 {% endblock %}
