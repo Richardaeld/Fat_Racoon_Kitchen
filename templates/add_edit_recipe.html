@@ -5,28 +5,27 @@
         <div class="row no-gutters justify-content-center">
             {% if recipeId == "new" %} <!--  if session.editRecipe  --> <!-- I dont require apostrophe thats not right!! new is a string not variable -->
             <!--  For creating a new recipe  -->
-                <form class="col-10 form-base NEW" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId='new') }} ">
+            <form class="col-10 form-base NEW" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId='new') }} ">
             {% else %}
             <!--  For editing a existing recipe  -->
-                <form class="col-10 form-base ID" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
+            <form class="col-10 form-base ID" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
             {% endif %}
-                    <div class="row no-gutters">
+                <div class="row no-gutters">
 
-                    
                     <!-- Section Description Header -->
                     <div class="col-12">
                         {% if recipeInfo == none %}
                         <!--  For creating a new recipe  -->
-                            <h1>Add New Recipe</h1>
+                        <h1>Add New Recipe</h1>
                         {% else %}
                         <!--  For editing a existing recipe  -->
-                            <h1>{{ recipeInfo.name }}</h1>
+                        <h1>{{ recipeInfo.name }}</h1>
                         {% endif %}
                     </div>
                     <hr>
 
                     <!-- Recipe Header - name and times -->
-                    <fieldset class="col-12">
+                    <div class="col-12">
                         <div class="row no-gutters justify-content-center form-input-spacing">
                             <!--  Recipe Name  -->
                             <div class="col-12">
@@ -35,14 +34,14 @@
                             <div class="col-12">
                                 {% if recipeInfo == none %}
                                 <!--  For creating a new recipe  -->
-                                    <input type="text" id="recipeName" name="recipeName" value="Recipe Name">
+                                <input type="text" id="recipeName" name="recipeName" value="Recipe Name">
                                 {% else %}
                                 <!--  For editing a existing recipe  -->
-                                    <input type="text" id="recipeName" name="recipeName" value="{{ recipeInfo.name }}">
+                                <input type="text" id="recipeName" name="recipeName" value="{{ recipeInfo.name }}">
                                 {% endif %}
                             </div>
                         </div>
-                        
+
                         <div class="row no-gutters justify-content-center">
                             <!--  Prep Time  -->
                             <span class="col-12 col-md-3 form-input-spacing">
@@ -53,10 +52,10 @@
                                     <div class="col-12">
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                            <input class="time" type="number" id="time1" name="time1" value="15">
+                                        <input class="time" type="number" id="time1" name="time1" value="15">
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                            <input class="time" type="number" id="time1" name="time1" value="{{ recipeInfo.time[0] }}">
+                                        <input class="time" type="number" id="time1" name="time1" value="{{ recipeInfo.time[0] }}">
                                         {% endif %}
                                         <p>Minutes</p>
                                     </div>
@@ -73,16 +72,16 @@
                                         <!-- Rewrite flask in value into repeating inputs -->
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                            <input class="time" type="number" id="time2" name="time2" value="10">
+                                        <input class="time" type="number" id="time2" name="time2" value="10">
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                            <input class="time" type="number" id="time2" name="time2" value="{{ recipeInfo.time[1] }}">
+                                        <input class="time" type="number" id="time2" name="time2" value="{{ recipeInfo.time[1] }}">
                                         {% endif %}
                                         <p>Minutes</p>
                                     </div>    
                                 </div>
                             </span>
-                        
+
                             <!--  Total Time  -->
                             <span class="col-12 col-md-3 form-input-spacing">
                                 <div class="row no-gutters">
@@ -93,53 +92,47 @@
                                         <!-- Rewrite flask in value into repeating inputs -->
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                            <input type="number" id="time3" name="time3" value="25" disabled>
+                                        <input type="number" id="time3" name="time3" value="25" disabled>
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                            <input type="number" id="time3" name="time3" value="{{ recipeInfo.time[2] }}" disabled>
+                                        <input type="number" id="time3" name="time3" value="{{ recipeInfo.time[2] }}" disabled>
                                         {% endif %}
-                                            <p>Minutes</p>
+                                        <p>Minutes</p>
                                     </div>
                                 </div>
                             </span>
-
                         </div>
-                    </fieldset>
+                    </div>
 
                     <!-- Recipe Feature -->
-                    <fieldset class="col-12 col-md-6 form-input-spacing">
+                    <div class="col-12 col-md-6 form-input-spacing">
                         <div class="row no-gutters justify-content-center">
                             <div class="col-12">
                                 <label type="text" for="feature">Featured Ingredient</label>
                             </div>
                             <div class="col-12">
-
+                                <!-- Recipe feature select/option -->
                                 <select name="feature" id="feature" style="font-size: 1.5rem;">
+                                    <!-- Adds selected attribute -->
                                     {% for feature in features %}
-                                        <!--<option value="{{feature.name}}" {% if recipeInfo == none and feature.name == 'chicken' %}selected{% elif feature.name == recipeInfo.feature %}selected{% endif %}>{{ feature.name.title() }}</option>-->
-                                        
                                         {% if recipeInfo == none and feature.name == 'chicken' %}
                                         <!--  For creating a new recipe  -->
-                                            <option value="{{feature.name}}" selected>{{ feature.name.title() }}</option>
+                                        <option value="{{feature.name}}" selected>{{ feature.name.title() }}</option>
                                         {% elif feature.name == recipeInfo.feature %}
                                         <!--  For editing a existing recipe  -->
-                                            <option value="{{feature.name}}" selected>{{ feature.name.title() }}</option>
+                                        <option value="{{feature.name}}" selected>{{ feature.name.title() }}</option>
                                         {% else %}
                                         <!--  For all none selected catagories  -->
-                                            <option value="{{feature.name}}">{{ feature.name.title() }}</option>
+                                        <option value="{{feature.name}}">{{ feature.name.title() }}</option>
                                         {% endif %}
-                                    
                                     {% endfor %}
                                 </select>
-                                
-                                <!--<input type="text" id="feature" name="feature">-->
-                            
                             </div>
                         </div>
-                    </fieldset>
+                    </div>
 
                     <!-- Recipe Image -->
-                    <fieldset class="col-12 col-md-6 form-input-spacing">
+                    <div class="col-12 col-md-6 form-input-spacing">
                         <div class="row no-gutters">
                             <div class="col-12">
                                 <label type="text" for="avatar">Recipe Image</label>
@@ -151,11 +144,11 @@
                                 <p id="avatar_valid" class="make-invis">Please select a file of 500KB or less. Server space is limited!</p>
                             </div>
                         </div>
-                    </fieldset>
+                    </div>
 
                     {% if admin == True %}
-                    <!--  FR Lazy Favorite and Grandparent Classic -->
-                    <fieldset class="col-12 form-input-spacing">
+                    <!--  FR Lazy Favorite and Grandparent Classic checkboxes -->
+                    <div class="col-12 form-input-spacing">
                         <div class="row no-gutters">
                             <div class="col-12">
                                 <legend type="text" for="avatar">FR Lazy Favorite or Grandparent Classic</legend>
@@ -163,6 +156,7 @@
                             <div class="col-12 radio-buttons">
                                 <div class="row no-gutters">
                                     <div class="col-12 col-md-6">
+                                        <!-- Sets checkbox for lazy -->
                                         {% if recipeInfo.lazy == True %}
                                         <input type="checkbox" name="lazy" id="lazy" value="True" checked>
                                         {% else %}
@@ -171,6 +165,7 @@
                                         <label for="lazy">Lazy favorite</label>
                                     </div>
                                    <div class="col-12 col-md-6">
+                                       <!-- Sets checkboxe for grandparent -->
                                         {% if recipeInfo.grandparent == True %}
                                        <input type="checkbox" name="grandparent" id="grandparent" value="True" checked>
                                        {% else %}
@@ -181,11 +176,11 @@
                                 </div>
                             </div>
                         </div>
-                    </fieldset>
+                    </div>
                     {% endif %}
 
                     <!-- Recipe description -->
-                    <fieldset class="col-12 form-input-spacing">
+                    <div class="col-12 form-input-spacing">
                         <div class="row no-gutters justify-content-center" >
                             <div class="col-12">
                                 <label type="text" for="recipeDescription">Recipe Description</label>
@@ -200,19 +195,19 @@
                                 {% endif %}
                             </div>
                         </div>
-                    </fieldset>
+                    </div>
 
                     <!-- Recipe ingredients -->
-                    <fieldset class="col-12 form-input-spacing">
+                    <div class="col-12 form-input-spacing">
                         <div class="row no-gutters justify-content-center">
-
+                            <!-- Recipe ingredient header -->
                             <div class="col-12"> <!-- removed . recipe-form-label  because of padding right -- off centering text -->
                                 <label type="text" for="recipeIngredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
                             </div>
-                            
+
                             <div class="col-12">
                                 <div class="row no-gutters justify-content-center">
-
+                                    <!-- Add button -->
                                     <div class="col-4 col-md-2">
                                         <div class="row no-gutters">
                                             <div class="col-12 custom-button recipeAddButton">
@@ -220,6 +215,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Remove button -->
                                     <div class="col-4 col-md-2">
                                         <div class="row no-gutters">
                                             <div class="col-12 custom-button recipeRemoveButton">
@@ -227,12 +223,12 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
 
                             <div class="col-10">
                                 <div class="row no-gutters justify-content-center ingredientAddRemoveLocation">
+                                    <!-- Creation and remove location for ingredient boxes -->
                                     {% if recipeInfo == none %}
                                     <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="1">
                                     <div class="col-12 col-md-6">
@@ -251,24 +247,23 @@
                                                 </div>
                                             </div>
                                         {% endfor %}
-                                    {% endif %}            
+                                    {% endif %}
                                 </div>
                             </div>
-                        
                         </div>
-                    </fieldset>
+                    </div>
 
                     <!-- Recipe steps -->
-                    <fieldset class="col-12 form-input-spacing">
+                    <div class="col-12 form-input-spacing">
                         <div class="row no-gutters justify-content-center">
-
+                            <!-- Recipe step header -->
                             <div class="col-12">
                                 <label type="text" for="recipeSteps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
                             </div>
 
                             <div class="col-12">
                                 <div class="row no-gutters justify-content-center">
-
+                                    <!-- Add Button -->
                                     <div class="col-4 col-md-2">
                                         <div class="row no-gutters justify-content-end">
                                             <div class="col-12 custom-button stepAddButton">
@@ -276,6 +271,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Remove button -->
                                     <div class="col-4 col-md-2">
                                         <div class="row no-gutters">
                                             <div class="col-12 custom-button stepRemoveButton">
@@ -289,6 +285,7 @@
 
                             <div class="col-10">
                                 <div class="row no-gutters justify-content-center stepAddRemoveLocation">
+                                    <!-- Creation and remove location for step boxes -->
                                     {% if recipeInfo == none %}
                                     <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="1">
                                     <div class="col-12 col-md-6">
@@ -308,27 +305,11 @@
                                                 </div>
                                             </div>
                                         {% endfor %}
-                                    {% endif %}                                            
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
-                    </fieldset>
-
-                    <!-- Recipe history --><!--
-                    <fieldset class="col-12">
-                        <div class="row no-gutters justify-content-center align-items-center">
-                            <div class="col-12 col-md-6 recipe-form-label">
-                                <label type="text" for="recipeHistory">Recipe History</label>
-                            </div>
-                            <div class="col-12 col-md-6 recipe-form-input">
-                                 if recipeInfo == none %}
-                                    <textarea type="text" name="recipeHistory" id="recipeHistory" cols="20" rows="5">recipeHistory</textarea>
-                                 else %}
-                                    <textarea type="text" name="recipeHistory" id="recipeHistory" cols="20" rows="5"> recipeInfo.history }}</textarea>
-                                 endif %}
-                            </div>
-                        </div>
-                    </fieldset>-->
+                    </div>
 
                     <!-- submit button -->
                     <div class="col">
