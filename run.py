@@ -588,7 +588,8 @@ def search_bar_returns(search):
 def search_user_recipes(search):
     # Find User Info
     chef = mongo.db.users.find_one({
-        "email": session["user"]}, {"username": 1, "recente": 1})
+        "email": session["user"]},
+        {"username": 1, "recents": 1, "favorites": 1})
     print(chef)
     # Pulls list from individual recipes
     if search == "uploaded":
