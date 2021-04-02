@@ -157,7 +157,7 @@ header {
     margin-bottom: 0;
 }
 
-/* ---------------------------------------- Nav Bar ---------------------------------------- */
+/* ---------------------------------------- Main Nav Bar ---------------------------------------- */
 .custom-nav {
     font-family: "Yanone Kaffeesatz", sans-serif;
     background: #fff;
@@ -179,9 +179,6 @@ header {
 
 }
 
-.user-search-bar-input {
-}
-
 .search-icon {
     padding-top: 0;
     padding-bottom: 0;
@@ -197,8 +194,6 @@ header {
     height: 90%;
 }
 
-/* .user-search-box-padding {
-} */
 
 @media (max-width: 575.98px) {
     .custom-nav a,
@@ -213,13 +208,7 @@ header {
     }
 }
 
-
 /* ---------------------------------------- Recommended Recipe and Carousel  ---------------------------------------- */
-/*
-.recipe-of-day-aside-height {
-    height: 27.5rem;
-}*/
-
 .recipe-overlay-bottom {
     position: absolute;
     background-color: rgba(0, 0, 0, .25);
@@ -229,13 +218,6 @@ header {
     right:0;
     text-shadow: 1px 1px 2px #fff;
 }
-
-/*.recipe-overlay-top {
-    position: absolute;
-    background-color: rgba(0, 0, 0, .25);
-    left:0;
-    right:0;
-}*/
 
 .recipe-descript {
     font: 1rem "Yanone Kaffeesatz", sans-serif;
@@ -260,25 +242,14 @@ header {
     height: 75px;
 }
 
-.avatar-image{
-    
-}
-
-.card-section {
-  /*  border-top: 2px solid rgba(226, 14, 14, .5);*/
-  /*  border-bottom: 2px solid rgba(226, 14, 14, .5);*/
-}
-
 .carousel {
     height: 30rem;
-    /*background-color: #fff;*/ /*-------------- disrupts .notebook-paper*/
 }
 
 .card-carousel {
     margin: .5rem 0rem;
     padding: 1rem !important;
     display: none;
-    /*border-radius: 15%;*/
     border-radius: 5%;
     background-color: #e2e2e2;
     color: #010203;
@@ -294,12 +265,8 @@ header {
     list-style: none;
     line-height: 1;
 }
-/*.card-carousel p {
-    font: 1.5rem "Yanone Kaffeesatz",sans-serif;
-    text-shadow: 2px 2px rgba(0, 0, 0, .15 );
-}*/
 
-.lessons,  /*        ---------------------find lesson!!*/
+.lessons,
 .card-carousel-vis {
     display: block;
 }
@@ -324,15 +291,15 @@ header {
     height: 20rem; /* -----------------------------------------   set with JS  or set as carousel height*/
     z-index: 1;
 }
-
+/* Carousel left button */
 .carousel-left {
-left: 0;
+left: 0px;
 }
-
+/* Carousel right button*/
 .carousel-right {
 right: 0px;
 }
-
+/* Carousel button svg */
 .carousel-button svg {
     transform: translateY(7.5rem);
 }
@@ -368,7 +335,7 @@ footer {
     position: relative;
     width: 55px;
     height: 55px;
-    top: 105%;       /*-------------------JS assign me*/
+    top: 105%;
 }
 
 @media (max-width: 767.98px) {
@@ -380,17 +347,6 @@ footer {
 .footer-ul li { 
     list-style-type: none;
 }
-
-/*      ------ removed from index
-.raccoon img {
-    width: 75%;
-    height: 7rem;
-    position: relative;
-    top:0;
-    bottom:0;
-    filter: drop-shadow(6px 0px white);
-} */
-
 
 @media (max-width: 767.98px) {
     .social-link-push li {
@@ -426,6 +382,10 @@ footer {
     background-color: rgba(14, 255, 255, 0.5);
     overflow: hidden;
 }
+/* Cancels out form-base */
+#login-create-modal {
+    border-radius: 0%;
+}
 
 .tab {
     margin-top: .5rem;
@@ -433,23 +393,28 @@ footer {
 }
 
 .tab p {
-    margin: 0;
+    margin-bottom: 0;
 }
 
 .tab-selected {
+    color: #fff!important;
+    text-shadow: 0px 1px #010203,
+                1px 0px #010203,
+                0px -1px #010203,
+                -1px 0px #010203;
     border-top-right-radius: 25%;
     border-top-left-radius: 25%;
-    transform: skew(-10deg);
     background-color: rgba(0, 0, 0, .25);
-    font-size: 1.75rem;
-    border-top: 2px solid #010203;
     padding: 1rem;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
 }
 
-fieldset {
-    display: inline-block;
+@media (max-width: 767.98px) {
+    .tab-body {
+        font-size: 1rem;
+    }
+    .tab-selected {
+        font-size: 1.25rem;
+    }
 }
 
 /* Form validation styles */
@@ -587,11 +552,6 @@ fieldset {
     font-size: 1.25rem;
 }
 
-@media (max-width: 767.98px) {
-    /* .form-base input,
-    .form-base label { */
-    /* }  */
-}
 /* ---------------------------------------- form unique styles ---------------------------------------- */
 
 
@@ -680,7 +640,6 @@ fieldset {
 
 .recipe-lists {
     font-family: "Yanone Kaffeesatz", sans-serif;
-    /* text-align: left; */
     margin-bottom: 3rem;
 }
 
@@ -690,10 +649,7 @@ fieldset {
 
 .blank-anchor:link,
 .blank-anchor:visited,
-.blank-anchor a,
-.recipe-lists:link,
-.recipe-lists:visited,
-.recipe-lists a {
+.blank-anchor a{
     color: #010203;
 }
 
@@ -708,22 +664,7 @@ fieldset {
     text-align: center;
 }
 
-/* .recipe-lists h1,
-.recipe-lists hr { */
-   /* position: relative;
-    right: 1rem;*/
-/* } */
-
-/* .recipe-lists h1 {
-    text-align: center;
-} */
-
-/* .recipe-lists hr{
-    width: 40%;
-} */
-
 .recipe-lists-steps {
-    /*list-style-type: decimal;*/
     list-style-type: none;
     font-size:1.75rem;
 }
@@ -756,16 +697,12 @@ fieldset {
     left:0rem;
     transform: translateY(0.75rem) translateX(1rem);
 }
-/* ---------------------------------------- all recipes *maybe dup section* ---------------------------------------- */
-/*.all-recipe-max-height { -------------------remove me from all pages (including all recipes page)
-    min-height: 50rem
-}*/
-
 /* ---------------------------------------- recipe list ---------------------------------------- */
-.recipe-list-height {
+.recipe-list-height { /*-----------------checked height*/
     min-height: 20rem;
 }
 
+/* ---------------------------------------- Pagination Content ---------------------------------------- */
 .pagination-content {
     font-size: 2rem;
     height: 3rem;
@@ -795,17 +732,6 @@ fieldset {
     padding-top: 2rem;
 }
 
-/* ---------------------------------------- recipe_lists --> rename all features ---------------------------------------- */
-.all-features {
-    text-align: center;
-}
-/*
-@media (max-width: 575.98px) {
-    .all-features {
-        text-align: center;
-    }
-}
-*/
 /* ---------------------------------------- search bar ---------------------------------------- */
 
 @media (min-width: 992px) and (max-width: 1399.98px) {
