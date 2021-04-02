@@ -16,10 +16,12 @@
                     {% endif %}
                         <div class="sticky-note-inner-div all-recipe-max-height">
                             <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec recipe-name">
+                                <!-- Feature name -->
                                 <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
                                     <h1>{{ feature[1].name.title() }} Recipes </h1>
                                 </a>
                                 <hr>
+                                <!-- If recipes Share feature, display them -->
                                 {% for recipe in allRecipes %}
                                     {% if recipe.feature == feature[1].name %}
                                         <li class="make-invis">
@@ -30,7 +32,6 @@
                                                 <span class="col-12 col-lg-4">
                                                     <div class="row no-gutters">
                                                         <div class="col-12">
-                                                            <!--<h6>Total Time: </h6>-->
                                                             <p>{{ recipe.time[2] }} Minutes</p>
                                                         </div>
                                                     </div>
