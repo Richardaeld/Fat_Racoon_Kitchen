@@ -54,7 +54,7 @@
                     <!-- Displays recipe avatar -->
                     {% if recipeInfo.avatar %}
                         <div class="col-10 polaroid-outer">
-                            <div id="avatarImg" class="polaroid-picture">
+                            <div class="polaroid-picture">
                                 <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="Polaroid picture of {{ recipeInfo.name }}">
                             </div>
                             <div class="polaroid-text">

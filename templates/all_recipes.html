@@ -14,7 +14,7 @@
                     {% else %}
                         <div class="col-10 sticky-note recipe-list-height sticky-note-right">
                     {% endif %}
-                        <div class="sticky-note-inner-div all-recipe-max-height">
+                        <div class="sticky-note-inner-div">
                             <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec recipe-name">
                                 <!-- Feature name -->
                                 <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
@@ -25,7 +25,7 @@
                                 {% for recipe in allRecipes %}
                                     {% if recipe.feature == feature[1].name %}
                                         <li class="make-invis">
-                                            <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around all-features">
+                                            <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around">
                                                 <span class="col-12 col-lg-8">
                                                     <h6><strong>{{ recipe.name.title() }}</strong>:</h6>
                                                 </span>

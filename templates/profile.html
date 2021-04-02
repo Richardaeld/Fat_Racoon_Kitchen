@@ -59,7 +59,7 @@
     <!-- User Image -->
     {% else %}
     <div class="col-10 col-md-6 col-lg-4 col-xl-3 polaroid-outer"> <!-- profile-avatar-bio-height -->
-        <div id="avatarImg" class="polaroid-picture">
+        <div class="polaroid-picture">
             <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="Polaroid picture of chef {{ chef_info.username }}">
         </div>
     </div>
