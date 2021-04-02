@@ -1,166 +1,165 @@
-//--------------------------------------------------------------------------------------------------------------------------
-//Validates matching new password and confirm new password
-//newPasswordEdit
-//NewPasswordCheckEdit
-let newPassword = document.getElementById("passwordCheck1") // ---changed loc
-let newPasswordCheck = document.getElementById("passwordCheck2")  //  ---  changed loc
+// ---- Validation ----
+// ----Validates matching passwords -- passwordCheck1 and passwordCheck2
+let passwordCheck1 = document.getElementById("passwordCheck1"); // Compare location 1
+let passwordCheck2 = document.getElementById("passwordCheck2"); // Compare location 2
 var findPasswordComapre = document.querySelectorAll(".passwordCompare");
 findPasswordComapre.forEach(selectPasswordComapre);
-function selectPasswordComapre(item, index) {
-    item.addEventListener("keyup", function () {
-        if(document.getElementById("custom-button").value === "Create"){ //----new
-
-            if(newPassword.value == newPasswordCheck.value){
-                newPassword.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
-                newPasswordCheck.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
-            }else{
-                newPassword.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
-                newPasswordCheck.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
+function selectPasswordComapre(comparePassLoc) {
+    comparePassLoc.addEventListener("keyup", function () {
+        if(document.getElementById("custom-button").value === "Create" || document.getElementById("custom-button").value === "Update"){
+            let passCheck1Val = passwordCheck1.parentElement.getElementsByTagName("p")[1];
+            let passCheck2Val = passwordCheck2.parentElement.getElementsByTagName("p")[1];
+            // Compares passwordCheck1 and passwordCheck2, if they match it remove invalid bubble
+            if(passwordCheck1.value == passwordCheck2.value){
+                passCheck1Val.classList.add("make-invis");
+                passCheck2Val.classList.add("make-invis");
+            }else{ // Adds invalid bubble if passwords dont match
+                passCheck1Val.classList.remove("make-invis");
+                passCheck2Val.classList.remove("make-invis");
             }
-            
-            let checkLengthPass = newPassword.parentElement.getElementsByTagName("p")
-            let checkLengthPassCheck = newPasswordCheck.parentElement.getElementsByTagName("p")
-            
-            finalValidation(newPassword, checkLengthPass)
-            finalValidation(newPasswordCheck, checkLengthPassCheck)
+
+            let checkLengthPass = passwordCheck1.parentElement.getElementsByTagName("p");
+            let checkLengthPassCheck = passwordCheck2.parentElement.getElementsByTagName("p");
+
+            finalValidation(passwordCheck1, checkLengthPass);
+            finalValidation(passwordCheck2, checkLengthPassCheck);
         }
-
-
     })
 }
 
 // ---- Form Validation for passwords
 //form REGEX
-const matchAcceptedInput = /[]/
-const matchTypeUpper = /[A-Z]/
-const matchTypeLower = /[a-z]/
-const matchTypeNumber = /[0-9]/
-const matchTypeChatacter = /[.|@|%]/
-const matchTypeBadCharacter = /['|"|$|,]/
-const matchTypeSpaces =  /[ ]/g // Follow with g to make global
-const matchTypeAtSign = /[@]/
-const matchTypeDotCom = /.com/
-const matchTypeDotEdu = /.edu/
-
+// const matchAcceptedInput = /[]/;
+const matchTypeUpper = /[A-Z]/;
+const matchTypeLower = /[a-z]/;
+const matchTypeNumber = /[0-9]/;
+// const matchTypeChatacter = /[.|@|%]/;
+const matchTypeBadCharacter = /['|"|$|,]/;
+const matchTypeSpaces =  /[ ]/g; // Follow with g to make global
+const matchTypeAtSign = /[@]/;
+const matchTypeDotCom = /.com/;
+const matchTypeDotEdu = /.edu/;
 
 var formIsValid = false
+// ----- Final Validation check
 // Sets or removes invalid bubble and invalid attributes
 function finalValidation() {
     
     let findFormInputs = document.querySelectorAll(".formValidation");
-    findFormInputs.forEach(selectFormInputs)
-    function selectFormInputs(item, index) {
+    findFormInputs.forEach(selectFormInputs);
+    function selectFormInputs(finalVal) {
 
+        let checkPLength = finalVal.parentElement.getElementsByTagName("p");
         //enables and disables validation bubble according to if input is valid or not
-        let checkPLength = item.parentElement.getElementsByTagName("p")
-
-
         for (i=0; i< checkPLength.length; i++){
-            //console.log(item) ------------genereates a lot of code
             // Sets a validation variable as it checks over all possible invalidation points
-            if(item.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis") == false){                
-                formIsValid = false
+            if(finalVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis") == false){
+                formIsValid = false;
             }
-            
+
             // Makes bubble visible or invisible according to fromIsValid variable
             if(formIsValid){
-                item.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid")
-                item.removeAttribute("invalid")
-                item.classList.remove("form-invalid-view")
-                document.getElementById("custom-button").removeAttribute("disabled")
+                finalVal.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid");
+                finalVal.removeAttribute("invalid");
+                finalVal.classList.remove("form-invalid-view");
+                document.getElementById("custom-button").removeAttribute("disabled");
             } else if(formIsValid == false){
-                //console.log(item)
-                item.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid")
-                item.setAttribute("invalid", "")
-                item.classList.add("form-invalid-view")
-                document.getElementById("custom-button").setAttribute("disabled", "")
-                break
+                finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid");
+                finalVal.setAttribute("invalid", "");
+                finalVal.classList.add("form-invalid-view");
+                document.getElementById("custom-button").setAttribute("disabled", "");
+                break;
             }
         }
     }
 }
 
+// ---- Base Validation starting point
 // basic (start) validation function
 function baseValidation (inputSelector, validationSelector, userInputType) {
-    var findPasswords = document.querySelectorAll(inputSelector);  //var
+    var findPasswords = document.querySelectorAll(inputSelector);
     findPasswords.forEach(selectPasswords);
-    function selectPasswords(item, index){
-
-        // Makes validation bubble visible on focus reverse on blur 
-        item.addEventListener("focus", function() {
-            item.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
+    function selectPasswords(baseVal){
+        let baseValPara = baseVal.parentElement.getElementsByTagName("p");
+        // Makes validation bubble visible on focus 
+        baseVal.addEventListener("focus", function() {
+            baseVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis");
         })
-        item.addEventListener("blur", function() {
-            item.parentElement.getElementsByTagName("div")[0].classList.add("make-invis")
+        // Makes validation bubble hidden on blur
+        baseVal.addEventListener("blur", function() {
+            baseVal.parentElement.getElementsByTagName("div")[0].classList.add("make-invis");
         })
 
-        item.addEventListener("keyup", function () {
-            // Replaces space with _
-            if(item.value.match(matchTypeSpaces)){
-                item.value = item.value.replace(matchTypeSpaces, "_");
+        // Applies validation check on every keyup stroke
+        baseVal.addEventListener("keyup", function () {
+            // Replaces all spaces with _
+            if(baseVal.value.match(matchTypeSpaces)){
+                baseVal.value = baseVal.value.replace(matchTypeSpaces, "_");
             }
             
-            // Checks for improper characters
-            if(item.value.match(matchTypeBadCharacter) != null){
-                item.parentElement.getElementsByTagName("p")[2].classList.remove("make-invis")
+            // Checks for improper characters and invalidates if found
+            if(baseVal.value.match(matchTypeBadCharacter) != null){
+                baseValPara[2].classList.remove("make-invis");
             } else {
-                item.parentElement.getElementsByTagName("p")[2].classList.add("make-invis")
+                baseValPara[2].classList.add("make-invis");
             }
 
-            // Uses specified type of validation
+            // Validation for password
             if(validationSelector === "password"){
 
-                // I invalidate the form for base validation and reveal appropiate "p" tag
-                if(item.value.match(matchTypeUpper) == null || item.value.match(matchTypeLower) == null || item.value.match(matchTypeNumber) == null || item.value.length < 8 || item.value.length > 20){
-                    item.parentElement.getElementsByTagName("p")[0].classList.remove("make-invis")
-                }
-                
-                // If all base requirements are met I validate the form for base validation and remove the appropiate "p" tag
-                if(item.value.match(matchTypeUpper) && item.value.match(matchTypeLower) && item.value.match(matchTypeNumber) && item.value.length >= 8 && item.value.length <= 20){
-                    item.parentElement.getElementsByTagName("p")[0].classList.add("make-invis")
+                // // Invalidates the form if incorrect amount of upper character, total characters and number are found
+                // if(baseVal.value.match(matchTypeUpper) == null || baseVal.value.match(matchTypeLower) == null || baseVal.value.match(matchTypeNumber) == null || baseVal.value.length < 8 || baseVal.value.length > 20){
+                //     baseVal.parentElement.getElementsByTagName("p")[0].classList.remove("make-invis");
+                // }
+
+                // Validates the form if correct amount of upper character, total characters and number are found
+                if(baseVal.value.match(matchTypeUpper) && baseVal.value.match(matchTypeLower) && baseVal.value.match(matchTypeNumber) && baseVal.value.length >= 8 && baseVal.value.length <= 20){
+                    baseValPara[0].classList.add("make-invis");
+                }else{
+                    baseValPara[0].classList.remove("make-invis");
                 }
 
+            // Validation for email
             } else if(validationSelector === "email") {
-                // looks for @ 
-                if (item.value.match(matchTypeAtSign)) {
-                    item.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
+                // Validates for @ 
+                if (baseVal.value.match(matchTypeAtSign)) {
+                    baseValPara[1].classList.add("make-invis");
                 } else {
-                    item.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
+                    baseValPara[1].classList.remove("make-invis");
                 }
 
-                // looks for email suffix '.com' or '.edu
-                let emailLength = item.value.length
+                // Validates for email suffix '.com' or '.edu'
+                let emailLength = baseVal.value.length
                 if  (emailLength >=4 ){
-                    var checkEmailValue = ""
+                    var checkEmailValue = "";
                     // Find last 4 digits
                     for (i=3; i>=0; i--){
-                        checkEmailValue += item.value[(emailLength-1)-i]
+                        checkEmailValue += baseVal.value[(emailLength-1)-i];
                     }
                     if (checkEmailValue.match(matchTypeDotCom)){ // checks for .com
-                        item.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
+                        baseValPara[1].classList.add("make-invis");
                     }else if (checkEmailValue.match(matchTypeDotEdu)){ // checks for .edu
-                        item.parentElement.getElementsByTagName("p")[1].classList.add("make-invis")
+                        baseValPara[1].classList.add("make-invis");
                     } else {
-                        item.parentElement.getElementsByTagName("p")[1].classList.remove("make-invis")
+                        baseValPara[1].classList.remove("make-invis");
                     }
                 }
-
-            } else if (validationSelector === "name"){ //emailName
-                // If all base requirements are met I validate the form for base validation and remove the appropiate "p" tag
-                if(item.value.length >= 6 && item.value.length <= 30){
-                    item.parentElement.getElementsByTagName("p")[0].classList.add("make-invis")
+            //Validates for name/username
+            } else if (validationSelector === "name"){
+                // Validates if correct amount of characters present
+                if(baseVal.value.length >= 6 && baseVal.value.length <= 30){
+                    baseValPara[0].classList.add("make-invis");
                 }
-                // I invalidate the form for base validation and reveal appropiate "p" tag
-
-                if(item.value.length < 6 || item.value.length > 30){
-                    item.parentElement.getElementsByTagName("p")[0].classList.remove("make-invis")
+                // Invalidates if incorrect amount of characters present
+                if(baseVal.value.length < 6 || baseVal.value.length > 30){
+                    baseValPara[0].classList.remove("make-invis");
                 }
             }
 
-            //final validation of form
-            formIsValid = true
-            finalValidation()
-            
+            // final validation of form
+            formIsValid = true;
+            finalValidation();
+
         })
     }
 }
