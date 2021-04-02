@@ -1,6 +1,6 @@
 {% extends "base_login.html" %}
 {% block section %}
-<section class="row no-gutters" style="background-color:rgba(14, 255, 255, 0.5);">
+<section class="row no-gutters generic-background">
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
             {% if recipeId == "new" %} <!--  if session.editRecipe  --> <!-- I dont require apostrophe thats not right!! new is a string not variable -->
@@ -110,9 +110,9 @@
                             <div class="col-12">
                                 <label type="text" for="feature">Featured Ingredient</label>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 select-option-size">
                                 <!-- Recipe feature select/option -->
-                                <select name="feature" id="feature" style="font-size: 1.5rem;">
+                                <select name="feature" id="feature">
                                     <!-- Adds selected attribute -->
                                     {% for feature in features %}
                                         {% if recipeInfo == none and feature.name == 'chicken' %}
@@ -138,7 +138,7 @@
                                 <label type="text" for="avatar">Recipe Image</label>
                             </div>
                             <div class="col-12">
-                                <input type="file" name="avatar" id="avatar">
+                                <input type="file" name="avatar" id="avatar" class="avatar-upload">
                                 <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
                                 <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
                                 <p id="avatar_valid" class="make-invis">Please select a file of 500KB or less. Server space is limited!</p>
