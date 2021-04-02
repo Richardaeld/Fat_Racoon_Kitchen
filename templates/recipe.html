@@ -16,8 +16,6 @@
         <br>
         <input class="custom-button" id="custom-button-delete" type="submit" value="Delete" disabled>
     </form>
-
-
 </aside>
 {% endblock %}
 
@@ -28,7 +26,7 @@
     {% if recipeInfo.created_by == chef %}
     <div class="col-12">
         <div class="row no-gutters justify-content-between">
-            <!--  Edit recipe  -->
+            <!--  Edit recipe button -->
             <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor">
                 <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
                     <div class="sticky-note-inner-div">
@@ -36,7 +34,7 @@
                     </div>
                 </a>
             </div>
-            <!--  Delete recipe  -->
+            <!--  Delete recipe button -->
             <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button" id="deleteModal">
                 <div class="sticky-note-inner-div" >
                     <h6>Delete Recipe</h6>
@@ -53,15 +51,17 @@
             <!-- picture of recipe -->
             <div class="col-8 col-md-6 col-lg-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-1 order-xxl-1">
                 <div class="row no-gutters justify-content-center">
+                    <!-- Displays recipe avatar -->
                     {% if recipeInfo.avatar %}
                         <div class="col-10 polaroid-outer">
                             <div id="avatarImg" class="polaroid-picture">
-                                <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="">
+                                <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="Polaroid picture of {{ recipeInfo.name }}">
                             </div>
                             <div class="polaroid-text">
                                 <h3>From: {{ recipeInfo.created_by }}</h3>
                             </div>
                         </div>
+                    <!-- Displays placeholder if recipe avatar missing -->
                     {% else %}
                         <div class="col-10 sticky-note large-content-height">
                             <div class="sticky-note-inner-div">
@@ -74,12 +74,12 @@
                 </div>
             </div>
 
-            <!-- recipe name and times -->
+            <!-- Recipe general info -->
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note sticky-note-middle">
                         <div class="row no-gutters sticky-note-inner-div justify-content-center make-space">
-
+                            <!-- Recipe name -->
                             <div class="col-10 recipe-name">
                                 <h1>
                                     {{ recipeInfo.name.title() }}
@@ -102,9 +102,9 @@
                                     {% endif %}
                                 </div>
                             </div>
+                            <!-- Recipe times -->
                             <div class="col-12">
                                 <div class="row no-gutters">
-
                                     <span class="col-4">
                                         <h6>Prep</h6>
                                         <p><strong>{{ recipeInfo.time[0] }}</strong> minutes</p>
@@ -117,7 +117,6 @@
                                         <h6>Total</h6>
                                         <p><strong>{{ recipeInfo.time[2] }}</strong> minutes</p>
                                     </span>
-
                                 </div>
                             </div>
                         </div>
@@ -137,7 +136,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -192,5 +190,4 @@
 
 {% block custom_script %}
 <script src="{{ url_for('static', filename='js/recipe.js') }}"></script>
-<!--<script src="{{ url_for('static', filename='js/avatarImageSize.js') }}"></script>-->
 {% endblock %}
