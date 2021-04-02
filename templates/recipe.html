@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block modal %}
 <!--  delete carousel  -->
-<aside class="row no-gutters justify-content-center custom-modal-delete make-invis" style="background-color: transparent;">
+<aside class="row no-gutters justify-content-center custom-modal-delete make-invis">
     <div class="col-12 modal-background"></div>
 
-    <form class="col-10 col-md-6 form-login form-delete-base" style="overflow: hidden;" method="POST" action="{{ url_for('recipe', recipeId=recipeInfo._id) }}">
+    <form class="col-10 col-md-6 form-login form-delete-base" method="POST" action="{{ url_for('recipe', recipeId=recipeInfo._id) }}">
         <div class="row no-gutters">
             <div class="col-12 tab-body">
                 <div class="">
@@ -90,14 +90,14 @@
                                     <!--  Recipe favorite button  -->
                                     {% if favoriteRecipe == "None" %}
                                     {% elif favoriteRecipe == True %}
-                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">
-                                            <p style="display: inline">Favorite!</p>
-                                            <img style="display: inline" class="favorite" src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Im the favorite icon">
+                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}" class="favorite">
+                                            <p>Favorite!</p>
+                                            <img src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Favorite icon">
                                         </a>
                                     {% elif favoriteRecipe == False %}
-                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}">
-                                            <p style="display: inline">Not a Favorite</p>
-                                            <img style="display: inline" class="favorite" src="{{ url_for('static', filename='images/star-outline.svg') }}" alt="Im not the favorite icon">
+                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}" class="favorite">
+                                            <p>Not a Favorite</p>
+                                            <img src="{{ url_for('static', filename='images/star-outline.svg') }}" alt="Unfavorite icon">
                                         </a>
                                     {% endif %}
                                 </div>
@@ -152,7 +152,7 @@
                                 <hr>
                                 {% for ingredient in recipeInfo.ingredients %}
                                 <li class="row no-gutters justify-content-center">
-                                    <input class="col-1" type="checkbox" style="position:absolute; left:0rem; transform: translateY(0.75rem) translateX(1rem);" > 
+                                    <input class="col-1 checkbox-input" type="checkbox">
                                     <h6 class="col-10">{{ ingredient }}</h6>
                                     <h6></h6>
                                 </li>
@@ -172,7 +172,7 @@
                                 <hr>
                                 {% for step in recipeSteps %}
                                     <li class="row no-gutters justify-content-center">
-                                        <input class="col-1" type="checkbox" style="position:absolute; left:0rem; transform: translateY(0.75rem) translateX(1rem); ">
+                                        <input class="col-1" type="checkbox">
                                         <h6 class="col-1">{{ step[0] + 1 }}.</h6> 
                                         <h6 class="col-10">{{ step[1] }}</h6> 
                                     </li>
