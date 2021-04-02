@@ -39,6 +39,7 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         createDivRow.className = "row no-gutters align-items-center step-ingredient-spacing";
         let createSpan = document.createElement("span");
         createSpan.textContent = arrayIngredientLength + ". ";
+        createSpan.className = "col-1"
         let createInput = document.createElement(inputOrTextarea);
         createInput.className = "col-11";
         createInput.id = arrayClass + arrayIngredientLength;
