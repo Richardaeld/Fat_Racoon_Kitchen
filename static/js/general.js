@@ -1,7 +1,7 @@
 // ----Removes all flash messages after 7 seconds
 if (document.getElementById("flash").getElementsByTagName("div")[0]){
     setTimeout( function () {
-        flashRm = document.querySelectorAll(".flash").length;
+        let flashRm = document.querySelectorAll(".flash").length;
         for (flashCount = 0; flashCount < flashRm; flashCount++){
             var divRemove = document.getElementsByClassName("flash")[0];
             divRemove.remove();
@@ -44,14 +44,14 @@ findSearchBar.forEach(selectSearchBar);
 function selectSearchBar(searchBar){
 
     // Makes search bar visible with user click
-    searchInput = searchBar.getElementsByTagName("input")[0]
+    let searchInput = searchBar.getElementsByTagName("input")[0];
     searchBar.addEventListener("click", function () {
         searchInput.classList.remove("make-invis");
         searchInput.focus();
     })
 
     // Makes sure users are unable to submit blank queries
-    searchButton = searchBar.getElementsByTagName("button")[0]
+    let searchButton = searchBar.getElementsByTagName("button")[0];
     searchInput.addEventListener("keyup", function () {
         if(searchInput.value != "") {
             searchButton.removeAttribute("disabled");
