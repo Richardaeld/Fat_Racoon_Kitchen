@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 {% block section %}
 <section class="row no-gutters generic-background">
-    <!-- Recipes per Feature -->
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
-            <!-- if recipes.count() == 0 %}-->
+            <!--  If search returns no results  -->
             {% if findRecipes|length() == 0 %}
             <div class="col-12 col-lg-6">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note recipe-list-height"> 
                         <div class="sticky-note-inner-div blank-anchor make-space recipe-name">
                             <a href="{{ url_for('index') }}">
+                                <!-- Search, no results header -->
                                 <div class="col-12">
                                     <h1>Return to Home Page</h1>
                                     <hr>
                                 </div>
                                 <div class="col-12">
-                                    <div class="row no-gutters justify-content-center">        
+                                    <div class="row no-gutters justify-content-center">
                                         <div class="col-12">
                                             <h6><strong>Search Didn't Return Any Results!</strong></h6>
                                             <p>*hint* Search For recipe name, feature, or chef</p>
-                                        </div>                
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -28,9 +28,8 @@
                     </div>
                 </div>
             </div>
-
             {% endif %}
-            <!-- Feature with Recipes  -->
+            <!-- If search returns results  -->
             {% for recipe in findRecipes %}
             <div class="col-12 col-lg-6">
                 <div class="row no-gutters justify-content-center">
@@ -42,12 +41,12 @@
                     {% endif %}
                         <div class="sticky-note-inner-div blank-anchor make-space recipe-name search-bar-spacing">
                             <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
-
+                                <!-- Recipe Name -->
                                 <span class="col-12">
                                     <h1>{{ recipe[1].name.title() }}</h1>
                                     <hr>
                                 </span>
-                                
+                                <!-- Recipe chef name and feature -->
                                 <span class="col-12">
                                     <span class="row no-gutters">
                                         <span class="col-6 col-lg-12 col-xl-6">
@@ -57,8 +56,8 @@
                                             <h6>Chef: <strong>{{ recipe[1].created_by }}</strong></h6>
                                         </span>
                                     </span>
-                                </span>  
-                                
+                                </span>
+                                <!-- recipe time -->
                                 <span class="col-12">
                                     <span class="row no-gutters">
                                         <span class="col-4 col-lg-12 col-xl-4">
@@ -83,6 +82,5 @@
             {% endfor %}
         </div>
     </div>
-
 </section>
 {% endblock %}
