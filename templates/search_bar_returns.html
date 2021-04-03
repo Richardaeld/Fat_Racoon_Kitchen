@@ -7,8 +7,8 @@
             {% if findRecipes|length() == 0 %}
             <div class="col-12 col-lg-6">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note recipe-list-height"> 
-                        <div class="sticky-note-inner-div blank-anchor make-space recipe-name">
+                    <div class="col-10 sticky-note large-content-height"> 
+                        <div class="sticky-note-inner-div blank-anchor make-space recipe-name yanone-text">
                             <a href="{{ url_for('index') }}">
                                 <!-- Search, no results header -->
                                 <div class="col-12">
@@ -35,11 +35,11 @@
                 <div class="row no-gutters justify-content-center">
                     <!-- Creates a section error -->
                     {% if recipe[0] % 2 %}
-                    <div class="col-10 sticky-note sticky-note-right"> <!-- recipe-list-height-->
+                    <div class="col-10 sticky-note sticky-note-right">
                     {% else %}
-                    <div class="col-10 sticky-note"> <!-- recipe-list-height-->
+                    <div class="col-10 sticky-note">
                     {% endif %}
-                        <div class="sticky-note-inner-div blank-anchor make-space recipe-name search-bar-spacing">
+                        <div class="sticky-note-inner-div blank-anchor make-space recipe-name yanone-text search-bar-spacing">
                             <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
                                 <!-- Recipe Name -->
                                 <span class="col-12">

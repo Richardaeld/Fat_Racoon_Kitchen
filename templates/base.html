@@ -21,13 +21,13 @@
         <form class="col-11 col-lg-10 form-base" id="login-create-modal" method="POST" action="{{ url_for('index') }}">
             <div class="row no-gutters justify-content-around user-modal-spacing">
                 <!-- Header for login/create modal -->
-                <div class="col-12 tab-body">
+                <div class="col-12 tab-body yanone-text">
                     <div class="row no-gutters justify-content-around align-items-center">
                         <div class="tab tab-selected">
-                            <span>Login</span>
+                            <span><p>Login</p></span>
                         </div>
                         <div class="tab">
-                            <span>Create Account</span>
+                            <span><p>Create Account</p></span>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
         <!-- <div> -->
 
         <!-- Site main nav bar -->
-        <nav class="custom-nav d-none d-lg-block d-xl-block d-xxl-block">
+        <nav class="custom-nav yanone-text d-none d-lg-block d-xl-block d-xxl-block">
             <ul class="nav justify-content-center">
                 <!-- Home-->
                 <li class="nav-item">
@@ -168,7 +168,7 @@
     </header>
 
     <!-- Flash Message -->
-    <aside id="flash">
+    <aside id="flash" class="yanone-text">
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -183,7 +183,7 @@
     </aside>
 
     <!-- Site main nav bar -->
-    <nav class="custom-nav d-block d-sm-block d-md-block d-lg-none blank-anchor">
+    <nav class="custom-nav yanone-text d-block d-sm-block d-md-block d-lg-none blank-anchor">
         <ul class="nav justify-content-center">
             <!-- Home -->
             <li class="nav-item">

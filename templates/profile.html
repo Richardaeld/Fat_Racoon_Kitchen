@@ -33,7 +33,7 @@
         </div>
     </div>
     <!-- Bio information -->
-    <div class="col-11 col-lg-6 sticky-note profile-avatar-bio-height">
+    <div class="col-11 col-lg-6 sticky-note xl-content-height">**
         <div class="row no-gutters sticky-note-inner-div align-items-center">
             <div class="col-12">
                 <h6>
@@ -44,7 +44,7 @@
     </div>
     <!--  Avatar of user or basic stand in  -->
     {% if chef_info.avatar == none %}
-    <div class="col-11 col-lg-4 align-items-center sticky-note sticky-note-right profile-avatar-bio-height">
+    <div class="col-11 col-lg-4 align-items-center sticky-note sticky-note-right xl-content-height">**
         <div class="row no-gutters justify-content-center sticky-note-inner-div">
             <div class="avatar">
                 <svg width="50" height="50">
@@ -58,7 +58,7 @@
     </div>
     <!-- User Image -->
     {% else %}
-    <div class="col-10 col-md-6 col-lg-4 col-xl-3 polaroid-outer"> <!-- profile-avatar-bio-height -->
+    <div class="col-10 col-md-6 col-lg-4 col-xl-3 polaroid-outer">
         <div class="polaroid-picture">
             <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="Polaroid picture of chef {{ chef_info.username }}">
         </div>
@@ -70,7 +70,7 @@
 <section class="row no-gutters justify-content-around profile-lists generic-background">
     
     <!--  Display ten most recent recipe uploads  -->
-    <div class="col-11 col-md-5 col-xl-3 sticky-note profile-sticky-height">
+    <div class="col-11 col-md-5 col-xl-3 sticky-note xxl-content-height yanone-text">
         <div class="sticky-note-inner-div">
             <!-- Search user upload link -->
             <a href="{{ url_for('search_user_recipes', search='uploaded') }}">
@@ -80,14 +80,14 @@
             <!-- List location of uploads -->
             {% for upload in uploaded %}
                 {% if upload[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
-                    <p><a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a></p>
+                    <p class="reenie-text"><a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a></p>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
 
     <!--  Display ten most recent favorited recipes  -->
-    <div class="col-11 col-md-5 col-xl-3 sticky-note sticky-note-right profile-sticky-height">
+    <div class="col-11 col-md-5 col-xl-3 sticky-note sticky-note-right xxl-content-height yanone-text">
         <div class="sticky-note-inner-div">
             <!-- Search user favorite link -->
             <a href="{{ url_for('search_user_recipes', search='favorites') }}">
@@ -98,7 +98,7 @@
             {% for favorite in favorites %}
                 {% if favorite %}
                     {% if favorite[0] + 1 < 11 %}
-                        <p><a href="{{ url_for('recipe', recipeId=favorite[1][0] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a></p>
+                        <p class="reenie-text"><a href="{{ url_for('recipe', recipeId=favorite[1][0] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a></p>
                     {% endif %}
                 {% endif %}
             {% endfor %}
@@ -106,7 +106,7 @@
     </div>
     
     <!--  Display ten most recently viewed recipes  -->
-    <div class="col-11 col-md-5 col-xl-3 sticky-note profile-sticky-height">
+    <div class="col-11 col-md-5 col-xl-3 sticky-note xxl-content-height yanone-text">
         <div class="sticky-note-inner-div">
             <!-- Search user recent link -->
             <a href="{{ url_for('search_user_recipes', search='recents') }}">
@@ -117,7 +117,7 @@
             {% for recent in recents %}
                 {% if recent %}
                     {% if recent[0] + 1 < 11 %}
-                        <p><a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a></p>
+                        <p class="reenie-text"><a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a></p>
                     {% endif %}
                 {% endif %}
             {% endfor %}

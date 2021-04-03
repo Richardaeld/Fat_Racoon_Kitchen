@@ -30,10 +30,10 @@
 
             <!-- carousel index cards -->
             {% for feature in features %}
-                <div class="col-10 col-md-10 col-lg-5 col-xl-3 blank-carousel-recipe card-carousel index-card">
+                <div class="col-10 col-md-10 col-lg-5 col-xl-3 medium-content-height card-carousel index-card">
                     <div class="recipe-lists blank-anchor">
                         <a href="{{ url_for('recipe_list', feature=feature.name) }}">
-                            <p>{{feature.name.title()}}</p>
+                            <h6 class="index-card-feature yanone-text">{{feature.name.title()}}</h6>
                         </a>
                         <ul>
                             {% for featureRecipe in featureRecipes %}
@@ -107,8 +107,8 @@
                         {% endif %}
                     </div>
                     <!-- Name of Recipe -->
-                    <div class="polaroid-text">
-                        <h3>{{ recipe.name }}</h3>
+                    <div>
+                        <h6>{{ recipe.name }}</h6>
                     </div>
                 </a>
             </div>
@@ -169,11 +169,11 @@
             </div>
 
             <!-- Recipe info - sticky note -->
-            <div class="col-11 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height"> <!-- recipe-descript --><!-- removed recipe description to keep sticky note working properly -->
+            <div class="col-11 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height">
                 <div class="sticky-note-inner-div blank-anchor make-space">
                     <div class="col-12">
                         <!-- Recipe name -->
-                        <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}" class="recipe-name">
+                        <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}" class="recipe-name yanone-text">
                             <h1>{{ recipeOfDay.name.title() }}</h1>
                         </a>
                     </div>

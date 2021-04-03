@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block modal %}
-<!--  delete carousel  -->
+<!--  Delete Modal  -->
 <aside class="row no-gutters justify-content-center custom-modal-delete make-invis">
     <div class="col-12 modal-background"></div>
 
@@ -57,8 +57,8 @@
                             <div class="polaroid-picture">
                                 <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="Polaroid picture of {{ recipeInfo.name }}">
                             </div>
-                            <div class="polaroid-text">
-                                <h3>From: {{ recipeInfo.created_by }}</h3>
+                            <div>
+                                <h6>From: {{ recipeInfo.created_by }}</h6>
                             </div>
                         </div>
                     <!-- Displays placeholder if recipe avatar missing -->
@@ -81,9 +81,7 @@
                         <div class="row no-gutters sticky-note-inner-div justify-content-center make-space">
                             <!-- Recipe name -->
                             <div class="col-10 recipe-name">
-                                <h1>
-                                    {{ recipeInfo.name.title() }}
-                                </h1>
+                                <h1 class="yanone-text">{{ recipeInfo.name.title() }}</h1>
                             </div>
                             <div class="col-10">
                                 <div class="blank-anchor">
@@ -129,9 +127,7 @@
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note sticky-note-right large-content-height">  
                         <div class="row no-gutters align-items-center sticky-note-inner-div">
-                            <p class="col">
-                                {{ recipeInfo.text }}
-                            </p>
+                            <p class="col">{{ recipeInfo.text }}</p>
                         </div>
                     </div>
                 </div>
@@ -147,8 +143,8 @@
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note">
                         <div class="sticky-note-inner-div">
-                            <ul class="recipe-lists recipe-lists-steps recipe-lists-no-padding">
-                                <h1>Recipe Ingredients</h1>
+                            <ul class="recipe-lists recipe-lists-no-padding">
+                                <h1 class="yanone-text">Recipe Ingredients</h1>
                                 <hr>
                                 {% for ingredient in recipeInfo.ingredients %}
                                 <li class="row no-gutters justify-content-center">
@@ -167,8 +163,8 @@
                 <div class="row no-gutters justify-content-center ">
                     <div class="col-10 sticky-note sticky-note-right">
                         <div class="sticky-note-inner-div ">
-                            <ul class="recipe-lists recipe-lists-steps recipe-lists-no-padding">
-                                <h1>Recipe Steps</h1>
+                            <ul class="recipe-lists recipe-lists-no-padding">
+                                <h1 class="yanone-text">Recipe Steps</h1>
                                 <hr>
                                 {% for step in recipeSteps %}
                                     <li class="row no-gutters justify-content-center">
