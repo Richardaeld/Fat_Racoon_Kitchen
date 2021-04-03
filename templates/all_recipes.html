@@ -10,15 +10,16 @@
                 <div class="row no-gutters justify-content-center">
                     <!-- Creates a fake section error -->
                     {% if feature[0] % 2 %}
-                        <div class="col-10 sticky-note large-content-height">
-                    {% else %}
                         <div class="col-10 sticky-note large-content-height sticky-note-right">
+                            <div class="sticky-note-inner-div sticky-note-right-shadow">
+                    {% else %}
+                        <div class="col-10 sticky-note large-content-height">
+                            <div class="sticky-note-inner-div">
                     {% endif %}
-                        <div class="sticky-note-inner-div">
-                            <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec recipe-name blank-anchor">
+                            <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec blank-anchor">
                                 <!-- Feature name -->
                                 <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
-                                    <h1 class="yanone-text">{{ feature[1].name.title() }} Recipes </h1>
+                                    <h1 class="yanone-text recipe-name">{{ feature[1].name.title() }} Recipes </h1>
                                 </a>
                                 <hr>
                                 <!-- If recipes Share feature, display them -->

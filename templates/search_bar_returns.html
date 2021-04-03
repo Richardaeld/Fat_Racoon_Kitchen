@@ -8,11 +8,11 @@
             <div class="col-12 col-lg-6">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note large-content-height"> 
-                        <div class="sticky-note-inner-div blank-anchor make-space recipe-name yanone-text">
+                        <div class="sticky-note-inner-div blank-anchor make-space">
                             <a href="{{ url_for('index') }}">
                                 <!-- Search, no results header -->
                                 <div class="col-12">
-                                    <h1>Return to Home Page</h1>
+                                    <h1 class="recipe-name yanone-text">Return to Home Page</h1>
                                     <hr>
                                 </div>
                                 <div class="col-12">
@@ -36,14 +36,15 @@
                     <!-- Creates a section error -->
                     {% if recipe[0] % 2 %}
                     <div class="col-10 sticky-note sticky-note-right">
+                        <div class="sticky-note-inner-div sticky-note-right-shadow blank-anchor make-space  search-bar-spacing">
                     {% else %}
                     <div class="col-10 sticky-note">
+                        <div class="sticky-note-inner-div blank-anchor make-space  search-bar-spacing">
                     {% endif %}
-                        <div class="sticky-note-inner-div blank-anchor make-space recipe-name yanone-text search-bar-spacing">
                             <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
                                 <!-- Recipe Name -->
                                 <span class="col-12">
-                                    <h1>{{ recipe[1].name.title() }}</h1>
+                                    <h1 class="recipe-name yanone-text">{{ recipe[1].name.title() }}</h1>
                                     <hr>
                                 </span>
                                 <!-- Recipe chef name and feature -->

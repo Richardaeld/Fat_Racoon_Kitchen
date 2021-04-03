@@ -38,8 +38,9 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         let createDivRow = document.createElement("div");
         createDivRow.className = "row no-gutters align-items-center step-ingredient-spacing";
         let createSpan = document.createElement("span");
-        createSpan.textContent = arrayIngredientLength + ". ";
         createSpan.className = "col-1"
+        let createSpanP = document.createElement("p")
+        createSpanP.textContent = arrayIngredientLength + ". ";
         let createInput = document.createElement(inputOrTextarea);
         createInput.className = "col-11";
         createInput.id = arrayClass + arrayIngredientLength;
@@ -56,7 +57,13 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         // Creates Variable for insert location and inserts complete box structure
         let innerDivLoc = addRemoveLocation.getElementsByTagName("div").length;
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow);
+        
+
+
+
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
+        addRemoveLocation.getElementsByTagName("div")[innerDivLoc].getElementsByTagName("span")[0].appendChild(createSpanP);
+        
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
     })
 

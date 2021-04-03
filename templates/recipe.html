@@ -4,7 +4,7 @@
 <aside class="row no-gutters justify-content-center custom-modal-delete make-invis">
     <div class="col-12 modal-background"></div>
 
-    <form class="col-10 col-md-6 form-login form-delete-base" method="POST" action="{{ url_for('recipe', recipeId=recipeInfo._id) }}">
+    <form class="col-10 col-md-6 form-login form-delete-base generic-box-shadow" method="POST" action="{{ url_for('recipe', recipeId=recipeInfo._id) }}">
         <div class="row no-gutters">
             <div class="col-12 tab-body">
                 <div class="">
@@ -30,14 +30,14 @@
             <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor">
                 <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
                     <div class="sticky-note-inner-div">
-                        <h6>Edit Recipe</h6>
+                        <h6 class="reenie-text">Edit Recipe</h6>
                     </div>
                 </a>
             </div>
             <!--  Delete recipe button -->
             <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button" id="deleteModal">
                 <div class="sticky-note-inner-div" >
-                    <h6>Delete Recipe</h6>
+                    <h6 class="reenie-text">Delete Recipe</h6>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
                 <div class="row no-gutters justify-content-center">
                     <!-- Displays recipe avatar -->
                     {% if recipeInfo.avatar %}
-                        <div class="col-10 polaroid-outer">
+                        <div class="col-10 polaroid-outer generic-box-shadow">
                             <div class="polaroid-picture">
                                 <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="Polaroid picture of {{ recipeInfo.name }}">
                             </div>
@@ -78,10 +78,10 @@
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note sticky-note-middle">
-                        <div class="row no-gutters sticky-note-inner-div justify-content-center make-space">
+                        <div class="row no-gutters sticky-note-inner-div sticky-note-middle-shadow justify-content-center make-space">
                             <!-- Recipe name -->
-                            <div class="col-10 recipe-name">
-                                <h1 class="yanone-text">{{ recipeInfo.name.title() }}</h1>
+                            <div class="col-10">
+                                <h1 class="yanone-text recipe-name">{{ recipeInfo.name.title() }}</h1>
                             </div>
                             <div class="col-10">
                                 <div class="blank-anchor">
@@ -126,7 +126,7 @@
             <div class="col-12 col-md-12 col-lg-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-3 order-xxl-3">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-10 sticky-note sticky-note-right large-content-height">  
-                        <div class="row no-gutters align-items-center sticky-note-inner-div">
+                        <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow">
                             <p class="col">{{ recipeInfo.text }}</p>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
             <div class="col-12 col-md-6">
                 <div class="row no-gutters justify-content-center ">
                     <div class="col-10 sticky-note sticky-note-right">
-                        <div class="sticky-note-inner-div ">
+                        <div class="sticky-note-inner-div sticky-note-right-shadow">
                             <ul class="recipe-lists recipe-lists-no-padding">
                                 <h1 class="yanone-text">Recipe Steps</h1>
                                 <hr>

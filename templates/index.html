@@ -30,10 +30,10 @@
 
             <!-- carousel index cards -->
             {% for feature in features %}
-                <div class="col-10 col-md-10 col-lg-5 col-xl-3 medium-content-height card-carousel index-card">
+                <div class="col-10 col-md-10 col-lg-5 col-xl-3 medium-content-height card-carousel generic-box-shadow index-card index-card-pattern index-card-bold">
                     <div class="recipe-lists blank-anchor">
                         <a href="{{ url_for('recipe_list', feature=feature.name) }}">
-                            <h6 class="index-card-feature yanone-text">{{feature.name.title()}}</h6>
+                            <h6 class="yanone-text header-text-spacing">{{feature.name.title()}}</h6>
                         </a>
                         <ul>
                             {% for featureRecipe in featureRecipes %}
@@ -97,7 +97,7 @@
             <!-- {% if recipe != "none" %} -----------------------   I crashed index this -->
             <!-- Polaroid picture -->
             {% for recipe in recipeHeader %}
-            <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer blank-anchor">
+            <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer generic-box-shadow blank-anchor">
                 <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
                     <div class="polaroid-picture polaroid-picture-classic">
                         <!-- defensive layer to prevent crash -->
@@ -170,11 +170,11 @@
 
             <!-- Recipe info - sticky note -->
             <div class="col-11 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height">
-                <div class="sticky-note-inner-div blank-anchor make-space">
+                <div class="sticky-note-inner-div sticky-note-middle-shadow blank-anchor make-space">
                     <div class="col-12">
                         <!-- Recipe name -->
-                        <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}" class="recipe-name yanone-text">
-                            <h1>{{ recipeOfDay.name.title() }}</h1>
+                        <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
+                            <h1 class="recipe-name yanone-text">{{ recipeOfDay.name.title() }}</h1>
                         </a>
                     </div>
                     <!-- Recipe Feature and author -->
@@ -221,19 +221,21 @@
             <!-- recipe avatar -->
             <div class="col-12 col-md-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-3 order-xxl-3">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 col-md-6 col-lg-10 polaroid-outer"> <!-- sticky-note sticky-note-right recipe-of-day-aside-height -->
+                    <div class="col-10 col-md-6 col-lg-10 polaroid-outer generic-box-shadow"> <!-- sticky-note sticky-note-right recipe-of-day-aside-height -->
                         <!-- Picture of random recipe -->
                         {% if recipeOfDay.avatar %}
-                            <div class="polaroid-picture"><!-- sticky-note-inner-div -->
+                            <div class="polaroid-picture">
                                 <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
-                                    <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="Polaroid picture of {{ recipeOfDay.name }}"> <!-- center me better -->
+                                    <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="Polaroid picture of {{ recipeOfDay.name }}">
                                 </a>
                             </div>
                         <!-- Filler for missing picture -->
                         {% else %}
-                            <div class="sticky-note-inner-div">
+                        <div class="sticky-note sticky-note-right">
+                            <div class="sticky-note-inner-div sticky-note-right-shadow">
                                 <p>My chef, {{ recipeOfDay.created_by }} hasn't uploaded an image of me yet :'(</p>
                             </div>
+                        </div>
                         {% endif %}
                     </div>
                 </div>

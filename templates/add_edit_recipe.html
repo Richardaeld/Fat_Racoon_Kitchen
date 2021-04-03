@@ -5,10 +5,10 @@
         <div class="row no-gutters justify-content-center">
             {% if recipeId == "new" %} <!--  if session.editRecipe  --> <!-- I dont require apostrophe thats not right!! new is a string not variable -->
             <!--  For creating a new recipe  -->
-            <form class="col-10 form-base NEW" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId='new') }} ">
+            <form class="col-10 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId='new') }} ">
             {% else %}
-            <!--  For editing a existing recipe  -->
-            <form class="col-10 form-base ID" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
+            <!--  For editing a existing recipe  -->  
+            <form class="col-10 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
             {% endif %}
                 <div class="row no-gutters">
 
@@ -29,15 +29,15 @@
                         <div class="row no-gutters justify-content-center form-input-spacing">
                             <!--  Recipe Name  -->
                             <div class="col-12">
-                                <label  type="text" for="recipeName">Recipe Name</label>
+                                <label type="text" for="recipeName">Recipe Name</label>
                             </div>
                             <div class="col-12">
                                 {% if recipeInfo == none %}
                                 <!--  For creating a new recipe  -->
-                                <input type="text" id="recipeName" name="recipeName" value="Recipe Name">
+                                <input class="form-center-text" type="text" id="recipeName" name="recipeName" value="Recipe Name">
                                 {% else %}
                                 <!--  For editing a existing recipe  -->
-                                <input type="text" id="recipeName" name="recipeName" value="{{ recipeInfo.name }}">
+                                <input class="form-center-text" type="text" id="recipeName" name="recipeName" value="{{ recipeInfo.name }}">
                                 {% endif %}
                             </div>
                         </div>
@@ -52,10 +52,10 @@
                                     <div class="col-12">
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                        <input class="time" type="number" id="time1" name="time1" value="15">
+                                        <input class="time form-center-text" type="number" id="time1" name="time1" value="15">
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                        <input class="time" type="number" id="time1" name="time1" value="{{ recipeInfo.time[0] }}">
+                                        <input class="time form-center-text" type="number" id="time1" name="time1" value="{{ recipeInfo.time[0] }}">
                                         {% endif %}
                                         <p>Minutes</p>
                                     </div>
@@ -72,10 +72,10 @@
                                         <!-- Rewrite flask in value into repeating inputs -->
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                        <input class="time" type="number" id="time2" name="time2" value="10">
+                                        <input class="time form-center-text" type="number" id="time2" name="time2" value="10">
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                        <input class="time" type="number" id="time2" name="time2" value="{{ recipeInfo.time[1] }}">
+                                        <input class="time form-center-text" type="number" id="time2" name="time2" value="{{ recipeInfo.time[1] }}">
                                         {% endif %}
                                         <p>Minutes</p>
                                     </div>    
@@ -156,22 +156,34 @@
                             <div class="col-12 checkboxes">
                                 <div class="row no-gutters">
                                     <div class="col-12 col-md-6">
-                                        <!-- Sets checkbox for lazy -->
-                                        {% if recipeInfo.lazy == True %}
-                                        <input type="checkbox" name="lazy" id="lazy" value="True" checked>
-                                        {% else %}
-                                        <input type="checkbox" name="lazy" id="lazy" value="True">
-                                        {% endif %}
-                                        <label for="lazy">Lazy favorite</label>
+                                        <div class="row no-gutters">
+                                            <!-- Sets checkbox for lazy -->
+                                            <label class="col-12" for="lazy">Lazy favorite</label>
+                                            <div class="col-12">
+                                                <div class="row no-gutters justify-content-center">
+                                                    {% if recipeInfo.lazy == True %}
+                                                    <input type="checkbox" name="lazy" id="lazy" value="True" checked>
+                                                    {% else %}
+                                                    <input type="checkbox" name="lazy" id="lazy" value="True">
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                    <div class="col-12 col-md-6">
-                                       <!-- Sets checkboxe for grandparent -->
-                                        {% if recipeInfo.grandparent == True %}
-                                       <input type="checkbox" name="grandparent" id="grandparent" value="True" checked>
-                                       {% else %}
-                                       <input type="checkbox" name="grandparent" id="grandparent" value="True">
-                                        {% endif %}
-                                       <label for="grandparent">Grandparent Classic</label>
+                                       <div class="row no-gutters">
+                                           <!-- Sets checkboxe for grandparent -->
+                                           <label class="col-12" for="grandparent">Grandparent Classic</label>
+                                           <div class="col-12">
+                                               <div class="row no-gutters justify-content-center">
+                                                {% if recipeInfo.grandparent == True %}
+                                                   <input type="checkbox" name="grandparent" id="grandparent" value="True" checked>
+                                                   {% else %}
+                                                   <input type="checkbox" name="grandparent" id="grandparent" value="True">
+                                                   {% endif %}
+                                                </div>
+                                            </div>
+                                       </div>
                                     </div>
                                 </div>
                             </div>
@@ -233,7 +245,9 @@
                                     <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="1">
                                     <div class="col-12 col-md-6">
                                         <div class="row no-gutters align-items-center step-ingredient-spacing">
-                                            <span class="col-1">1. </span>
+                                            <span class="col-1">
+                                                <p>1. </p>
+                                            </span>
                                             <input class="col-11 countIngredients" type="text" id="recipeIngredients-1" name="recipeIngredients-1">
                                         </div>
                                     </div>
@@ -242,7 +256,9 @@
                                         {% for ingredient in recipeIngEnum %}
                                             <div class="col-12 col-md-6">
                                                 <div class="row no-gutters align-items-center step-ingredient-spacing">
-                                                    <span class="col-1">{{ingredient[0] + 1}}. </span>
+                                                    <span class="col-1">
+                                                        <p>{{ingredient[0] + 1}}. </p>
+                                                    </span>
                                                     <input class="col-11 countIngredients" type="text" id="recipeIngredients-{{ingredient[0] + 1}}" name="recipeIngredients-{{ingredient[0] + 1}}" value="{{ingredient[1]}}">
                                                 </div>
                                             </div>
@@ -290,7 +306,9 @@
                                     <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="1">
                                     <div class="col-12 col-md-6">
                                         <div class="row no-gutters align-items-center step-ingredient-spacing">
-                                            <span class="col-1">1. </span>
+                                            <span class="col-1">
+                                                <p>1. </p>
+                                            </span>
                                             <textarea class="col-11 countSteps" type="text" id="recipeSteps-1" name="recipeSteps-1" cols="20" rows="3"></textarea>
                                             <!-- I count for DB upload!! -->
                                         </div>
@@ -300,7 +318,9 @@
                                         {% for step in recipeSteEnum %}
                                             <div class="col-12 col-md-6">
                                                 <div class="row no-gutters align-items-center step-ingredient-spacing">
-                                                    <span class="col-1">{{step[0] + 1}}. </span>
+                                                    <span class="col-1">
+                                                        <p>{{step[0] + 1}}. </p>
+                                                    </span>
                                                     <textarea class="col-11 countSteps" type="text" id="recipeSteps-{{step[0] + 1}}" name="recipeSteps-{{step[0] + 1}}" value="" col="20" rows="3">{{step[1]}}</textarea>
                                                 </div>
                                             </div>
