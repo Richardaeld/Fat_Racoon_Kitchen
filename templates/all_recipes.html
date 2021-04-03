@@ -15,7 +15,7 @@
                         <div class="col-10 sticky-note recipe-list-height sticky-note-right">
                     {% endif %}
                         <div class="sticky-note-inner-div">
-                            <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec recipe-name">
+                            <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec recipe-name blank-anchor">
                                 <!-- Feature name -->
                                 <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
                                     <h1>{{ feature[1].name.title() }} Recipes </h1>

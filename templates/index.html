@@ -31,7 +31,7 @@
             <!-- carousel index cards -->
             {% for feature in features %}
                 <div class="col-10 col-md-10 col-lg-5 col-xl-3 blank-carousel-recipe card-carousel index-card">
-                    <div class="recipe-lists">
+                    <div class="recipe-lists blank-anchor">
                         <a href="{{ url_for('recipe_list', feature=feature.name) }}">
                             <p>{{feature.name.title()}}</p>
                         </a>
