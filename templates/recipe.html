@@ -63,8 +63,8 @@
                         </div>
                     <!-- Displays placeholder if recipe avatar missing -->
                     {% else %}
-                        <div class="col-10 sticky-note large-content-height">
-                            <div class="sticky-note-inner-div">
+                        <div class="col-10 sticky-note">
+                            <div class="sticky-note-inner-div large-content-height">
                                 <h1>
                                     My chef, {{ recipeInfo.created_by.title() }} hasn't uploaded an image of me yet :'(
                                 </h1>
@@ -125,8 +125,8 @@
             <!-- Recipe description -->
             <div class="col-12 col-md-12 col-lg-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-3 order-xxl-3">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note sticky-note-right large-content-height">  
-                        <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow">
+                    <div class="col-10 sticky-note sticky-note-right">  
+                        <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow large-content-height">
                             <p class="col">{{ recipeInfo.text }}</p>
                         </div>
                     </div>
