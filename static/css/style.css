@@ -385,7 +385,8 @@ header {
 }
 
 .xl-content-height {
-    height: 30rem;
+    /* height: 30rem;  changed for cell, profile page, chef bio*/
+    min-height: 30rem;
 }
 
 .large-content-height {
@@ -1056,7 +1057,8 @@ h6 {
         height: 30rem;
     } 
     .xl-content-height {
-        height: 20rem;
+        /* height: 20rem;  --------Changed for cell, profile page, chef bio*/
+        min-height: 20rem;
     }
     /* main nav bar */
     .custom-nav a,
