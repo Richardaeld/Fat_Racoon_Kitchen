@@ -680,7 +680,8 @@ footer {
     background-color: rgba(14, 255, 255, 0.5);
     overflow: hidden;
 }
-/* Cancels out form-base */
+/* Cancels out form-base border-radius */
+#delete-modal,
 #login-create-modal {
     border-radius: 0%;
 }
