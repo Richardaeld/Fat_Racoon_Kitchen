@@ -543,19 +543,6 @@ header {
 .user-form-search-height {
     height: 90%;
 }
-
-@media (max-width: 575.98px) {
-    .custom-nav a,
-    .custom-nav i,
-    .custom-nav label,
-    .user-form-search-height {
-        font-size: .75rem;
-    }
-
-    .custom-nav form {
-        padding: .25rem 1rem;
-    }
-}
 /* ------------------------------------------------------- Carousel Section  ---------------------------------------------------------------- */
 .recipe-overlay-bottom {
     position: absolute;
@@ -983,7 +970,8 @@ footer {
     }
 }
 /* ------------------------------------------------------- General Text and Breakpoint Section  ---------------------------------------------------------------- */
-i {
+i,
+.custom-nav input {
     font-size: 1rem;
 }
 
@@ -1068,5 +1056,16 @@ h6 {
     } 
     .xl-content-height {
         height: 20rem;
+    }
+    /* main nav bar */
+    .custom-nav a,
+    .custom-nav i,
+    .custom-nav label,
+    .user-form-search-height {
+        font-size: .75rem;
+    }
+
+    .custom-nav form {
+        padding: .25rem 1rem;
     }
 }
