@@ -82,10 +82,15 @@
 }
 /* ---------------------------------------- Polaroid Picture Art */
 .polaroid-outer {
-    height: 20rem;
+    min-height: 20rem;
     background-color: rgb(242, 243, 229);
     margin-top: 1.5rem;
     margin-bottom: 1rem;
+}
+
+.polaroid-outer h6 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 .polaroid-picture {
