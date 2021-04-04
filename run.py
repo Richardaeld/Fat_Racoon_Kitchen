@@ -230,25 +230,26 @@ def addFavorite(recipeId, favoriteChange):
     recipeSteps = list(enumerate(recipeInfo["steps"]))
 
     # --Updates-- string to boolean
+    newFav = []
     if favoriteChange == "True":
         favoriteChange = True
     else:
         favoriteChange = False
+        newFav += [recipeInfo["_id"]]
 
+    checkFav = user["favorites"]
     # --Creates-- user favorite list to upload to DB
+    # Removes any duplicated or unfavorited recipe
+    for removeFav in checkFav:
+        if removeFav == recipeInfo["_id"]:
+            continue
+        else:
+            newFav += [removeFav]
+
+    # --updates-- boolean to opposite value for return
     if favoriteChange:
-        newFav = []
-        changeFav = user["favorites"]
-        # Removes an unfavorited recipe
-        for fav in changeFav:
-            if fav == recipeInfo["_id"]:
-                continue
-            else:
-                newFav += [fav]
         favoriteChange = False
-    # Adds new favorite recipe
     else:
-        newFav = [recipeInfo["_id"]] + user["favorites"]
         favoriteChange = True
 
     mongo.db.users.update_one(
