@@ -180,11 +180,17 @@
                     <!-- Recipe Feature and author -->
                     <div class="col-12">
                         <span class="row no-gutters">
-                            <span class="col-6">
-                                <h6>Features: <strong>{{ recipeOfDay.feature.title() }}</strong></h6>
+                            <span class="col-12 col-sm-6">
+                                <span class="row no-gutters">
+                                    <h6 class="col-6 col-sm-12">Features: </h6>
+                                    <h6 class="col-6 col-sm-12"><strong>{{ recipeOfDay.feature.title() }}</strong></h6>
+                                </span>
                             </span>
-                            <span class="col-6">
-                                <h6>Chef: <strong>{{ chef.username.title() }}</strong></h6>
+                            <span class="col-12 col-sm-6">
+                                <span class="row no-gutters">
+                                    <h6 class="col-6 col-sm-12">Chef: </h6>
+                                    <h6 class="col-6 col-sm-12"><strong>{{ chef.username.title() }}</strong></h6>
+                                </span>
                             </span>
                         </span>
                     </div>
@@ -195,17 +201,23 @@
                     <!-- Recipe time -->
                     <div class="col-12">
                         <span class="row no-gutters">
-                            <span class="col-4">
-                                <h6>Prep</h6>
-                                <p><strong>{{ recipeOfDay.time[0] }}</strong> minutes</p>
+                            <span class="col-12 col-sm-4">
+                                <span class="row no-gutters">
+                                    <h6 class="col-6 col-sm-12">Prep</h6>
+                                    <p class="col-6 col-sm-12"><strong>{{ recipeOfDay.time[0] }}</strong> minutes</p>
+                                </span>
                             </span>
-                            <span class="col-4">
-                                <h6>Cook</h6>
-                                <p><strong>{{ recipeOfDay.time[1] }}</strong> minutes</p>
+                            <span class="col-12 col-sm-4">
+                                <span class="row no-gutters">
+                                    <h6 class="col-6 col-sm-12">Cook</h6>
+                                    <p class="col-6 col-sm-12"><strong>{{ recipeOfDay.time[1] }}</strong> minutes</p>
+                                </span>
                             </span>
-                            <span class="col-4">
-                                <h6>Total</h6>
-                                <p><strong>{{ recipeOfDay.time[2] }}</strong> minutes</p>
+                            <span class="col-12 col-sm-4">
+                                <span class="row no-gutters">
+                                    <h6 class="col-6 col-sm-12">Total</h6>
+                                    <p class="col-6 col-sm-12"><strong>{{ recipeOfDay.time[2] }}</strong> minutes</p>
+                                </span>
                             </span>
                         </span>
                     </div>
