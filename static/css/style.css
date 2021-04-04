@@ -692,6 +692,14 @@ footer {
 }
 /* Cancels out form-base border-radius */
 /* -----------------------------------------added a max width to allow  */
+#delete-modal input {
+    margin-top: 1rem;
+}
+
+#delete-modal p {
+    margin: 1rem;
+}
+
 #delete-modal,
 #login-create-modal {
     border-radius: 0%; 
