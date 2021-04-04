@@ -25,7 +25,7 @@ mongo = PyMongo(app)
 @app.route("/", methods=("GET", "POST"))
 def index():
     # --Sets Head Chef--
-    headChef = "Fat_Raccoon"
+    headChef = "fat_raccoon"
     # --Counts and Loads-- total recipes from head chef
     chef = mongo.db.users.find_one({"username": headChef})
     allRecipes = list(mongo.db.recipes.find(
