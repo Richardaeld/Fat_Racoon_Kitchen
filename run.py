@@ -136,7 +136,7 @@ def index():
 
         # Check to be sure username doesnt already exist in DB
         userNameTaken = mongo.db.users.find_one(
-            {"username": request.form.get("username")})
+            {"username": request.form.get("username").lower()})
         if userNameTaken:
             flash("This username was already taken!")
             return redirect(url_for("index"))
@@ -148,7 +148,7 @@ def index():
 
         # Gather form and blank information
         create = {
-            "username": request.form.get("name"),
+            "username": request.form.get("name").lower(),
             "email": request.form.get("email").lower(),
             "password": generate_password_hash(
                 request.form.get("passwordCheck")),
@@ -163,7 +163,7 @@ def index():
         mongo.db.users.insert_one(create)
 
         # Create session for user name
-        session["user"] = request.form.get("email")
+        session["user"] = request.form.get("email").lower()
         flash("Welcome to the Fat Raccoon Family!")
         flash("Please take a moment to update your profile with a personaized bio and image")
         return redirect(url_for("profile", username=session['user']))
@@ -466,28 +466,28 @@ def edit_user_info():
 
     if request.method == "POST":
         # --Update/Validate-- user name if different and validates
-        if userInfo["username"] != request.form.get("usernameEdit"):
+        if userInfo["username"] != request.form.get("usernameEdit").lower():
             # Checks if new user name is unique
             usernameCheck = mongo.db.users.find_one(
-                {"username": request.form.get("usernameEdit")},
+                {"username": request.form.get("usernameEdit").lower()},
                 {"username": 1})
             # Returns error if name is taken and redirects
             if usernameCheck is not None:
                 flash("Username already exists! Try Again!")
                 return(redirect(url_for("edit_user_info")))
-            update_dict["username"] = request.form.get("usernameEdit")
+            update_dict["username"] = request.form.get("usernameEdit").lower()
 
         # --Update/Validate-- user email if different and validates
-        if userInfo["email"] != request.form.get("emailEdit"):
+        if userInfo["email"] != request.form.get("emailEdit").lower():
             # Checks if new email is unique
             emailCheck = mongo.db.users.find_one(
-                {"email": request.form.get("emailEdit")},
+                {"email": request.form.get("emailEdit").lower()},
                 {"email": 1})
             # Returns error if email is taken and redirects
             if emailCheck is not None:
                 flash("Email already exists! Try Again!")
                 return(redirect(url_for("edit_user_info")))
-            update_dict["email"] = request.form.get("emailEdit")
+            update_dict["email"] = request.form.get("emailEdit").lower()
 
         # --Update-- if password confirm is blank
         if request.form.get("passwordCheck2") != "":
