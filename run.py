@@ -113,7 +113,7 @@ def index():
         if username:
             if check_password_hash(
                     username["password"], request.form.get("password")):
-                session["user"] = request.form.get("email")
+                session["user"] = request.form.get("email").lower()
                 flash("Welcome back!")
                 return redirect(url_for("index"))
             else:
