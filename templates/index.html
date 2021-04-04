@@ -142,7 +142,7 @@
                             <!-- Avatar picture -->
                             {% if chef != none %}
                                 <div class="avatar-image">
-                                    <img src="{{ url_for('avatar', avatar_image=chef.avatar) }}" alt="Picture of chef {{ chef.username }}" >
+                                    <img src="{{ url_for('avatar', avatar_image=chef.avatar) }}" alt="Picture of chef {{ chef.username.title() }}" >
                                 </div>
                             <!-- Filler for blank avatar picture -->
                             {% else %}
@@ -174,7 +174,7 @@
                     <div class="col-12">
                         <!-- Recipe name -->
                         <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
-                            <h1 class="recipe-name yanone-text">{{ recipeOfDay.name.title() }}</h1>
+                            <h1 class="recipe-name yanone-text">{{ recipeOfDay.name }}</h1>
                         </a>
                     </div>
                     <!-- Recipe Feature and author -->
@@ -184,7 +184,7 @@
                                 <h6>Features: <strong>{{ recipeOfDay.feature.title() }}</strong></h6>
                             </span>
                             <span class="col-6">
-                                <h6>Chef: <strong>{{ chef.username }}</strong></h6>
+                                <h6>Chef: <strong>{{ chef.username.title() }}</strong></h6>
                             </span>
                         </span>
                     </div>
@@ -233,7 +233,7 @@
                         {% else %}
                         <div class="sticky-note sticky-note-right">
                             <div class="sticky-note-inner-div sticky-note-right-shadow">
-                                <p>My chef, {{ recipeOfDay.created_by }} hasn't uploaded an image of me yet :'(</p>
+                                <p>My chef, {{ recipeOfDay.created_by.title() }} hasn't uploaded an image of me yet :'(</p>
                             </div>
                         </div>
                         {% endif %}

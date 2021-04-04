@@ -19,7 +19,7 @@
                 <div class="row no-gutters justify-content-around">
                     <!-- header -->
                     <div class="col-12 form-input-spacing">
-                        <h1>Update {{userInfo.username}}'s Information</h1>
+                        <h1>Update {{ userInfo.username.title() }}'s Information</h1>
                         <hr>
                     </div>
 
@@ -30,7 +30,7 @@
                                 <label  type="text" for="usernameEdit">Name</label>
                             </div>
                             <div class="col-12">
-                                <input class="formValidation nameValidation" type="text" id="usernameEdit" name="usernameEdit" value="{{ userInfo.username }}" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9%_$]{5,20}$" invalid required>
+                                <input class="formValidation nameValidation" type="text" id="usernameEdit" name="usernameEdit" value="{{ userInfo.username.title() }}" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9%_$]{5,20}$" invalid required>
                                 <div class="invalid-form form-is-valid make-invis">
                                     <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, and '@.%$'</p>
                                     <p class="make-invis"></p>

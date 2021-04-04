@@ -8,7 +8,7 @@
         <div class="row no-gutters">
             <div class="col-12 tab-body">
                 <div class="tab">
-                    <p id="checkName">Type in recipe name <span value="{{recipeInfo.name}}">*{{recipeInfo.name}}*</span> and click delete to remove entery</p>
+                    <p id="checkName">Type in recipe name <span value="{{recipeInfo.name}}">*{{ recipeInfo.name }}*</span> and click delete to remove entery</p>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
                                 <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="Polaroid picture of {{ recipeInfo.name }}">
                             </div>
                             <div>
-                                <h6>From: {{ recipeInfo.created_by }}</h6>
+                                <h6>From: {{ recipeInfo.created_by.title() }}</h6>
                             </div>
                         </div>
                     <!-- Displays placeholder if recipe avatar missing -->
@@ -66,7 +66,7 @@
                         <div class="col-10 sticky-note large-content-height">
                             <div class="sticky-note-inner-div">
                                 <h1>
-                                    My chef, {{ recipeInfo.created_by }} hasn't uploaded an image of me yet :'(
+                                    My chef, {{ recipeInfo.created_by.title() }} hasn't uploaded an image of me yet :'(
                                 </h1>
                             </div>
                         </div>

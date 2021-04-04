@@ -44,7 +44,7 @@
                             <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
                                 <!-- Recipe Name -->
                                 <span class="col-12">
-                                    <h1 class="recipe-name yanone-text">{{ recipe[1].name.title() }}</h1>
+                                    <h1 class="recipe-name yanone-text">{{ recipe[1].name }}</h1>
                                     <hr>
                                 </span>
                                 <!-- Recipe chef name and feature -->
@@ -54,7 +54,7 @@
                                             <h6>Features: <strong>{{ recipe[1].feature.title() }}</strong></h6>
                                         </span>
                                         <span class="col-6 col-lg-12 col-xl-6">
-                                            <h6>Chef: <strong>{{ recipe[1].created_by }}</strong></h6>
+                                            <h6>Chef: <strong>{{ recipe[1].created_by.title() }}</strong></h6>
                                         </span>
                                     </span>
                                 </span>
