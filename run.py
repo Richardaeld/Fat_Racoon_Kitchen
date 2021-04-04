@@ -123,7 +123,8 @@ def index():
             flash("*meta name*Login credentials incorrect!")
 
     # --Create Account-- information
-    if request.method == "POST":
+    if request.method == "POST" and request.form.get(
+            "custom-button-login") == "Create":
         print("Im a create function")
 
         # Check to be sure email doesnt already exist in DB
