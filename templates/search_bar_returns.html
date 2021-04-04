@@ -36,7 +36,7 @@
                     <!-- Creates a section error -->
                     {% if recipe[0] % 2 %}
                     <div class="col-10 sticky-note sticky-note-right">
-                        <div class="sticky-note-inner-div sticky-note-right-shadow blank-anchor make-space  search-bar-spacing">
+                        <div class="sticky-note-inner-div sticky-note-right-shadow blank-anchor make-space search-bar-spacing">
                     {% else %}
                     <div class="col-10 sticky-note">
                         <div class="sticky-note-inner-div blank-anchor make-space  search-bar-spacing">
@@ -50,28 +50,40 @@
                                 <!-- Recipe chef name and feature -->
                                 <span class="col-12">
                                     <span class="row no-gutters">
-                                        <span class="col-6 col-lg-12 col-xl-6">
-                                            <h6>Features: <strong>{{ recipe[1].feature.title() }}</strong></h6>
+                                        <span class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                                            <span class="row no-gutters">
+                                                <h6 class="col-6 col-sm-12 col-lg-6 col-xl-12">Features: </h6>
+                                                <h6 class="col-6 col-sm-12 col-lg-6 col-xl-12"><strong>{{ recipe[1].feature.title() }}</strong></h6>
+                                            </span>
                                         </span>
-                                        <span class="col-6 col-lg-12 col-xl-6">
-                                            <h6>Chef: <strong>{{ recipe[1].created_by.title() }}</strong></h6>
+                                        <span class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                                            <span class="row no-gutters">
+                                                <h6 class="col-6 col-sm-12 col-lg-6 col-xl-12">Chef: </h6>
+                                                <h6 class="col-6 col-sm-12 col-lg-6 col-xl-12"><strong>{{ recipe[1].created_by.title() }}</strong></h6>
+                                            </span>
                                         </span>
                                     </span>
                                 </span>
                                 <!-- recipe time -->
                                 <span class="col-12">
                                     <span class="row no-gutters">
-                                        <span class="col-4 col-lg-12 col-xl-4">
-                                            <h6>Prep </h6>
-                                            <p><strong>{{ recipe[1].time[0] }}</strong> minutes</p>
+                                        <span class="col-12 col-sm-4 col-lg-12 col-xl-4">
+                                            <span class="row no-gutters">
+                                                <h6 class="col-6 col-sm-12 col-lg-6 col-xl-12">Prep </h6>
+                                                <p class="col-6 col-sm-12 col-lg-6 col-xl-12"><strong>{{ recipe[1].time[0] }}</strong> minutes</p>
+                                            </span>
                                         </span>
-                                        <span class="col-4 col-lg-12 col-xl-4">
-                                            <h6>Cook </h6>
-                                            <p><strong>{{ recipe[1].time[1] }}</strong> minutes</p>
+                                        <span class="col-12 col-sm-4 col-lg-12 col-xl-4">
+                                            <span class="row no-gutters">
+                                                <h6 class="col-6 col-sm-12 col-lg-6 col-xl-12">Cook </h6>
+                                                <p class="col-6 col-sm-12 col-lg-6 col-xl-12"><strong>{{ recipe[1].time[1] }}</strong> minutes</p>
+                                            </span>
                                         </span>
-                                        <span class="col-4 col-lg-12 col-xl-4">
-                                            <h6>Total </h6>
-                                            <p><strong>{{ recipe[1].time[2] }}</strong> minutes</p>
+                                        <span class="col-12 col-sm-4 col-lg-12 col-xl-4">
+                                            <span class="row no-gutters">
+                                                <h6 class="col-6 col-sm-12 col-lg-6 col-xl-12">Total </h6>
+                                                <p class="col-6 col-sm-12 col-lg-6 col-xl-12"><strong>{{ recipe[1].time[2] }}</strong> minutes</p>
+                                            </span>
                                         </span>
                                     </span>
                                 </span>
