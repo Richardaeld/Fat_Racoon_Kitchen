@@ -983,6 +983,8 @@ input,
 textarea,
 legend,
 select {
+    padding-left: 0.5rem!important;
+    padding-right: 0.5rem!important;
     font-size: 1.75rem;
     font-size: 2rem;  /* just an after thought  */
 }
