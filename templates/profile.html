@@ -5,7 +5,7 @@
     <div class="col-12">
         <!--  Create a new recipe  -->
         <div class="row no-gutters justify-content-between">
-            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor">
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
                 <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
                     <div class="sticky-note-inner-div">
                         <h6 class="reenie-text">Share Recipe</h6>
@@ -14,7 +14,7 @@
             </div>
 
             <!--  Edit user profile  -->
-            <div class="col-4 col-lg-2 sticky-note-no-shadow custom-button profile-button blank-anchor">
+            <div class="col-4 col-lg-2 sticky-note-no-shadow custom-button profile-button blank-anchor custom-js-button">
                 <a href="{{ url_for('edit_user_info') }}">
                     <div class="sticky-note-inner-div">
                         <h6 class="reenie-text">Update Profile</h6>
@@ -127,4 +127,5 @@
 {% endblock %}
 
 {% block custom_script %}
+<script src="{{ url_for('static', filename='js/button.js') }}"></script>
 {% endblock %}

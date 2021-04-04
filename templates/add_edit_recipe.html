@@ -1,6 +1,26 @@
 {% extends "base_login.html" %}
 {% block section %}
 <section class="row no-gutters generic-background">
+    <!-- Back Button -->
+        <div class="col-12">
+        <div class="row no-gutters justify-content-start">
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
+                {% if recipeId == "new"%}
+                <a href="{{ url_for('profile') }}">
+                    <div class="sticky-note-inner-div">
+                        <h6 class="reenie-text">Back</h6>
+                    </div>
+                </a>
+                {% else %}
+                <a href="{{ url_for('recipe', recipeId=recipeId) }}">
+                    <div class="sticky-note-inner-div">
+                        <h6 class="reenie-text">Back</h6>
+                    </div>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
             {% if recipeId == "new" %} <!--  if session.editRecipe  --> <!-- I dont require apostrophe thats not right!! new is a string not variable -->
@@ -346,4 +366,5 @@
 {% block custom_script %}
 <script src="{{ url_for('static', filename='js/addEditRecipe.js') }}"></script>
 <script src="{{ url_for('static', filename='js/avatarValidation.js') }}"></script>
+<script src="{{ url_for('static', filename='js/button.js') }}"></script>
 {% endblock %}

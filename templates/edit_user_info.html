@@ -1,6 +1,18 @@
 {% extends "base_login.html" %}
 {% block section %}
 <section class="row no-gutters generic-background">
+    <!-- Back Button -->
+    <div class="col-12">
+        <div class="row no-gutters justify-content-start">
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
+                <a href="{{ url_for('profile') }}">
+                    <div class="sticky-note-inner-div">
+                        <h6 class="reenie-text">Back</h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="col-12">
         <div class="row no-gutters justify-content-center">
             <form class="col-10 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('edit_user_info', userInfo=userInfo) }}">
@@ -154,4 +166,5 @@
 <script src="{{ url_for('static', filename='js/editUserInfo.js') }}"></script>
 <script src="{{ url_for('static', filename='js/passwordVal.js') }}"></script>
 <script src="{{ url_for('static', filename='js/avatarValidation.js') }}"></script>
+<script src="{{ url_for('static', filename='js/button.js') }}"></script>
 {% endblock %}
