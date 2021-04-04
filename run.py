@@ -127,15 +127,15 @@ def index():
         print("Im a create function")
 
         # Check to be sure email doesnt already exist in DB
-        userNameTaken = mongo.db.users.find_one(
-            {"email": request.form.get("email")})
-        if userNameTaken:
+        userEmailTaken = mongo.db.users.find_one(
+            {"email": request.form.get("email").lower()})
+        if userEmailTaken:
             flash("This email was already taken!")
             return redirect(url_for("index"))
 
         # Check to be sure username doesnt already exist in DB
         userNameTaken = mongo.db.users.find_one(
-            {"email": request.form.get("username")})
+            {"username": request.form.get("username")})
         if userNameTaken:
             flash("This username was already taken!")
             return redirect(url_for("index"))
