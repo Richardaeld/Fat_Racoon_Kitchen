@@ -108,7 +108,7 @@ def index():
             "custom-button-login") == "Login":
         print("Im a login and not a create function running")
         username = mongo.db.users.find_one(
-            {"email": request.form.get("email")})
+            {"email": request.form.get("email").lower()})
         # If username exists, checks password
         if username:
             if check_password_hash(
