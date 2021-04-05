@@ -77,7 +77,7 @@
                                         <!--  For editing a existing recipe  -->
                                         <input class="time form-center-text" type="number" id="time1" name="time1" value="{{ recipeInfo.time[0] }}">
                                         {% endif %}
-                                        <p>Minutes</p>
+                                        <p class="remove-p-margin">Minutes</p>
                                     </div>
                                 </div>
                             </span>
@@ -97,7 +97,7 @@
                                         <!--  For editing a existing recipe  -->
                                         <input class="time form-center-text" type="number" id="time2" name="time2" value="{{ recipeInfo.time[1] }}">
                                         {% endif %}
-                                        <p>Minutes</p>
+                                        <p class="remove-p-margin">Minutes</p>
                                     </div>    
                                 </div>
                             </span>
@@ -117,7 +117,7 @@
                                         <!--  For editing a existing recipe  -->
                                         <input type="number" id="time3" name="time3" value="{{ recipeInfo.time[2] }}" disabled>
                                         {% endif %}
-                                        <p>Minutes</p>
+                                        <p class="remove-p-margin">Minutes</p>
                                     </div>
                                 </div>
                             </span>
@@ -176,7 +176,7 @@
                             <div class="col-12 checkboxes">
                                 <div class="row no-gutters">
 
-                                    <div class="col-6 col-md-6">
+                                    <div class="col-12 col-md-6">
                                         <div class="row no-gutters">
                                             <!-- Sets checkbox for lazy -->
                                             <label class="col-12" for="lazy">Lazy favorite</label>
@@ -191,7 +191,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   <div class="col-6 col-md-6">
+                                   <div class="col-12 col-md-6">
                                        <div class="row no-gutters">
                                            <!-- Sets checkboxe for grandparent -->
                                            <label class="col-12" for="grandparent">Grandparent Classic</label>
