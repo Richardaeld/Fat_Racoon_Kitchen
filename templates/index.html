@@ -30,7 +30,7 @@
 
             <!-- carousel index cards -->
             {% for feature in features %}
-                <div class="col-10 col-md-10 col-lg-5 col-xl-3 medium-content-height card-carousel generic-box-shadow index-card index-card-pattern index-card-bold">
+                <div class="col-10 col-md-10 col-lg-5 col-xl-3 medium-content-height card-carousel generic-box-shadow index-card index-card-pattern index-card-bold transition-fade-out">
                     <div class="recipe-lists blank-anchor">
                         <a href="{{ url_for('recipe_list', feature=feature.name) }}">
                             <h6 class="yanone-text header-text-spacing">{{feature.name.title()}}</h6>
@@ -244,8 +244,8 @@
                         <!-- Filler for missing picture -->
                         {% else %}
                         <div class="sticky-note sticky-note-right">
-                            <div class="sticky-note-inner-div sticky-note-right-shadow">
-                                <p>My chef, {{ recipeOfDay.created_by.title() }} hasn't uploaded an image of me yet :'(</p>
+                            <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow">  <!-- ---------------Check me and add container height if needed  -->
+                                <p class="col">My chef, {{ recipeOfDay.created_by.title() }} hasn't uploaded an image of me yet :'(</p>
                             </div>
                         </div>
                         {% endif %}

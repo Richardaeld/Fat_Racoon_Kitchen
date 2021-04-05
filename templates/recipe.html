@@ -64,10 +64,8 @@
                     <!-- Displays placeholder if recipe avatar missing -->
                     {% else %}
                         <div class="col-10 sticky-note">
-                            <div class="sticky-note-inner-div large-content-height">
-                                <h1>
-                                    My chef, {{ recipeInfo.created_by.title() }} hasn't uploaded an image of me yet :'(
-                                </h1>
+                            <div class="row no-gutters align-items-center sticky-note-inner-div large-content-height">
+                                <p class="col">My chef, {{ recipeInfo.created_by.title() }} hasn't uploaded an image of me yet :'(</p>
                             </div>
                         </div>
                     {% endif %}

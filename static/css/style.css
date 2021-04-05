@@ -567,6 +567,7 @@ header {
     margin: .5rem 0rem;
     padding: 1rem !important;
     display: none;
+    transition-duration: 0.5s;
     border-radius: 5%;
     background-color: #e2e2e2;
     color: #010203;
@@ -576,10 +577,14 @@ header {
     list-style: none;
     line-height: 1;
 }
-
+/* Allows carousel items to be switched  */
 .lessons,
 .card-carousel-vis {
     display: block;
+}
+/* Gives carousel a transition effect */
+.transition-fade-out {
+    opacity: 0;
 }
 
 .carousel-button-svg {
@@ -1112,3 +1117,4 @@ h6 {
         /* transform: translateY(1.25rem) translateX(1rem); */
     }
 }
+
