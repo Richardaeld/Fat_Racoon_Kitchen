@@ -45,10 +45,20 @@ function selectFeature(pagination){
         // Inserts UL to DOM with all appropiate LI
         pagination.insertAdjacentElement('afterend', createUl);
 
-        // Creates Pagination functionality
+        // Finds all points where a pagination li was created
         var findPagination = pagination.parentElement.querySelectorAll(".pagination-number");
+        
+        // Sets max amount of pagination visible at start
+        if(findPagination.length > 3){
+            for(let paginationMax = 3; paginationMax < findPagination.length; paginationMax++){
+                pagination.parentElement.getElementsByClassName("pagination-number")[paginationMax].classList.add("make-invis");
+            }
+            pagination.parentElement.getElementsByClassName("last-ellipses")[0].classList.remove("make-invis")
+        } 
+        
+        // Creates Pagination functionality
         findPagination.forEach(selectPagination);
-        function selectPagination(paginationNumber){;
+        function selectPagination(paginationNumber){
             paginationNumber.addEventListener("click", function () {
                 // Find pagination number position
                 paginationPosition = 5 * (parseInt(paginationNumber.textContent)- 1);
@@ -99,7 +109,7 @@ function selectFeature(pagination){
                 } else if(pagNumLoc[parseInt(paginationTotal)-1].classList.contains('make-invis') != true){
                     lastEllipLoc.classList.add("make-invis");
                 }
-            })
+            })        
         }
     }
 }
