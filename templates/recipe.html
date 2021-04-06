@@ -65,7 +65,7 @@
                     {% else %}
                         <div class="col-10 sticky-note">
                             <div class="row no-gutters align-items-center sticky-note-inner-div large-content-height">
-                                <p class="col">My chef, {{ recipeInfo.created_by.title() }} hasn't uploaded an image of me yet :'(</p>
+                                <p class="col">My chef, {{ recipeInfo.created_by.title() }}, hasn't uploaded an image of me yet :'(</p>
                             </div>
                         </div>
                     {% endif %}
@@ -101,24 +101,24 @@
                             <!-- Recipe times -->
                             <div class="col-12">
                                 <div class="row no-gutters">
-                                        <span class="col-12 col-sm-4">
-                                            <span class="row no-gutters">
-                                                <h6 class="col-6 col-sm-12">Prep </h6>
-                                                <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[0] }}</strong> minutes</p>
-                                            </span>
+                                    <span class="col-12 col-sm-4">
+                                        <span class="row no-gutters">
+                                            <h6 class="col-6 col-sm-12">Prep </h6>
+                                            <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[0] }}</strong> minutes</p>
                                         </span>
-                                        <span class="col-12 col-sm-4">
-                                            <span class="row no-gutters">
-                                                <h6 class="col-6 col-sm-12">Cook </h6>
-                                                <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[1] }}</strong> minutes</p>
-                                            </span>
+                                    </span>
+                                    <span class="col-12 col-sm-4">
+                                        <span class="row no-gutters">
+                                            <h6 class="col-6 col-sm-12">Cook </h6>
+                                            <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[1] }}</strong> minutes</p>
                                         </span>
-                                        <span class="col-12 col-sm-4">
-                                            <span class="row no-gutters">
-                                                <h6 class="col-6 col-sm-12">Total </h6>
-                                                <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[2] }}</strong> minutes</p>
-                                            </span>
+                                    </span>
+                                    <span class="col-12 col-sm-4">
+                                        <span class="row no-gutters">
+                                            <h6 class="col-6 col-sm-12">Total </h6>
+                                            <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[2] }}</strong> minutes</p>
                                         </span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
