@@ -1,3 +1,43 @@
+# Contents
+[Fat Raccoon - Introduction](#fat-racoon-kitchen---introduction)
+
+[UX](#ux)
++ [Goals](#goals)
+    + [User Goals](#user-goals)
+    + [Developer Goals](#developer-goals)
++ [Client Stories and Experience Provided](#client-stories-and-experience-provided)
+    + [Client Stories](#client-stories)
+    + [Experience Provided](#experience-provided)
+[Design Choices](#design-choices)
++ [Scalability](#scalability)
+
+[Technology Languages](#technology-languages)
+
+[Testing](#testing)
+
+[Bugs and Other Problems](#bugs-and-other-problems)
++ [Previous Bugs](#previous-bugs)
++ [CurrentBugs](#current-bugs)
++ [Other Problems](#other-problems)
+
+[Deployment](#deployment)
++ [Setup structure on GitPod for developers](#setup-structure-on-gitpod-for-developers)
+    + [Flask](#flask)
+    + [Pymongo](#pymongo)
++ [Deploy Clone from GitHub](#deploy-clone-from-github)
++ [Heroku Deployment](#heroku-deployment)
++ [Database build](#database-build)
+    + [Database structure](#database-structure)
+    + [Connecting to DB](#connecting-to-db)
+    + [Create the appropiate collections](#create-the-appropiate-collections)
+
+[Tools and Credits](#tools-and-credits)
++ [Tools](#tools)
++ [Credits](#credits)
+    + [Code Citations](#code-citations)
+    + [References and Ideas](#references-and-ideas)
+
+
 # Fat Racoon Kitchen - Introduction
 The Fat Racoon Kitchen is devoted to helping home cooks provide better meals to friends, family, and/or yourself. We provide a network of user uploaded 
 recipies that can be searched through with our "Ingredience on Hand" or "Garbage" search, which is a favorite for our chefs. We stoutly believe that even 
@@ -160,7 +200,7 @@ techniques to remove it, including !important. Changing the layer or to mouseove
 ## Other Problems
 
 # Deployment
-## Setup structure on GitPod (developer only)
+## Setup structure on GitPod for developers
 ### Flask
 + install Flask
     + in bash type "pip3 install Flask"
