@@ -128,29 +128,35 @@ in college, let us know!
 
 # Bugs and Other Problems
 ## Previous Bugs
---generated 504 error hd to remove entirely
-    --Crashed flask app index page
-    --while loop never broken
-    -- missed a len in a compare if for breaking while loop
-
-
-
--- jagged edges after using a transform-rotate fixed by using a recommended line of code -webkit-backface-visibility:hidden -- reccomdation found here https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome
-    -- for napkins edge
-
---have a triangle shapped container to hold a repeating linear gradient.  Found solution at MDN using a clip-path:polygon https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path 
-
---Procfile was missing a space after colon
--- if session only responsive outside of header, below nav bar
-    -- had to call dictionary and item (ex. session.user)
-
--- Forgot to pass a variable from backend to templates and used an indirect(unspecific) comparason so initially the function worked for editing recipes or creating new recipes --  one way and would oscillate between functioning and not.  
-
---type: email was preventing regex replace from functioning properly added an extra layer of validation just for email to compensate for using text over email
++ Flask was generating a 504 gateway timeout error
+    + A previously harmless while began to loop infinitely when a if comparason value was improper
+    + Fix was being sure the if comparason values were both int, previously one had been a html location because of a missed len
++ Corner of napkin css art was improper size in safari
+    + Had to add -webkit- to clip-path for saafari
++ index card art had jagged edges after transform: rotateY(180deg) was applied.
+    + Fix was a recommended line of code -webkit-backface-visibility:hidden -- reccomdation found here https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome
++ Needed a nonstandard shapped container to hold a repeating linear gradient.
+    + Found solution at MDN using a clip-path:polygon https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path 
++ Program wouldnt upload to heroku properly
+    + Fix was to add the missing space after colon in Procfile
++ Numerous occasions used unspecific python if arguments leading to undesired and often difficult to find Bugs
+    + Ex. without specific arguments incorrect add edit recipe page would not edit recipes it would only generate new recipes
+    + An extra operator and arguemnt was added to all if post conditions
++ Email wouldnt JS validate properly
+    + Type: email was preventing the regex from functioning properly.
+    + Fix was changing type to text and added an extra layer of validation to email, email suffix
++ Login modal wouldnt operate appropiately on any page other than the index
+    + Login modal was added to base and removed from index
+    + base_login was created to replace base for pages user had to be logged in for and needed the modal to NOT be present
 
 ## Current Bugs
--- profile.html carousel spills over when fixed to half screen
--- login modal only on index
++ Social links on footer have a triggering bug. They use JS mouseenter to trigger and trigger improperly due to multiple css layers and a margin. The margin is persisting through multiple
+techniques to remove it, including !important. Changing the layer or to mouseover does not fix the excessive triggering. 
++ User search box, on medium and small responsiveness, creates a line below the main navigation bar and drops the search bar down to that new line 
++ Safari browser Bugs
+    + When safari decides sticky-note-right's height is to large the box shadow of its :before has a layer error and overlaps the content of sticky-note-right
+    + Input of user search bar is larger than it should be, giving the item bad UX
+
 ## Other Problems
 
 # Deployment
@@ -213,13 +219,15 @@ in college, let us know!
     + Update the pasted string with the DBname and password by replacing <DBname> and <password> (replace angled brackets as well)
 ### Create the appropiate collections
 + feature
+    + Feature is for a recipes feature ingredient
     + There must be a single feature in the collection for the page to function
     + each feature is structured as 
         + {
         + name: "chicken"
         + }
 + recipes
-    + There must be a single recipe in the collection for page to function amnd it must be linked with lead chefs for recipe of the day to function
+    + Recipe is where the sites recipes are stored
+    + There must be a single recipe in the collection for page to function and it must be linked with lead chefs for recipe of the day to function**May have updated to accept no recipes
     + each recipe is structured as
         + {
         + name: "recipe name",
@@ -228,25 +236,34 @@ in college, let us know!
         + steps: ["step1", "step2", "step3", etc...],
         + time: [15, 20, 35],
         + text: "Some general information about this recipe",
-        + history: "A history or facts about this recipe" *This could be taken out*,
         + date: *python time stamp*,
         + avatar: null,
         + avatar_id: null,
         + created_by: "someonesEmail@aol.com",
+        + grandparent: false,
+        + lazy: false
         + }
 + users
+    + Users is where the sites user information is stored
     + each user must be structured as
         + {
-        + username: "some name",
-        + email: "someonesEmail@aol.com",
-        + password: "someones hashed password",
+        + username: "some_name",
+        + email: "Email@gmail.com",
+        + password: "*hashed password*",
         + avatar: null,
         + avatar_id: null,
-        + bio: "some basic infor about chef",
+        + bio: "",
+        + admin: false
         + recent: [],
         + favorites: [],
-        + submitted: []
+        + date: *python tim stamp*
         + }
++ fs.chunks
+    + Will be created automatically after first image is uploaded
+    + fs.chunks is for storage of images
++ fs.files 
+    + Will be created automatically after first image is uploaded
+    + fs.files is for storage of images
 
 # Tools and Credits
 ## Tools
