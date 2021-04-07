@@ -106,24 +106,16 @@ in college, let us know!
 - Use a rating system for dishes - [[*star amount*, *users rated this count*], [*star amount*, *users rated this count*], ...] - using this frame a 5 star rating system could be build. Take the total number of ratings and average them together for overall rating  
 
 # Design Choices
-## Base Jinja (Python) Template
-
-## Content Blocks
-### Template 1
-#### Index
-- 
-
-### Template 2
-#### About Us
-
-### Template 3
-#### Sign in
-#### Register
-#### Update User Profile
-- Modal Pop up
-    - allows DB to be updated one item at a time to prevent user error (Could be replaced with a "Save changed" button on the update user profile page) 
-#### Create Recipe
-
+## Base/login_base -- Header and Footer and login/create modal
+## Index
+## Lessons
+## Profile
+## Recipe
+## Recipe List
+## All Recipes 
+## Add Edit Recipes
+## Edit User Info
+## Search Bar Returns
 
 ## Page Performance
 
