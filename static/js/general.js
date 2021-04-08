@@ -21,7 +21,7 @@ function makeRipples (targetLink) {
     setTimeout(function () {
         targetIce.classList.remove("dipping-ice");
         targetLiquid.classList.remove("create-ripple");
-    },3000)
+    },3500)
 }
 
 //Adds ripple effect to mouse over event listeners for social links
