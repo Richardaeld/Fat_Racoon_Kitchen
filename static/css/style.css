@@ -154,7 +154,7 @@
 }
 /* add on sticky note inner line for better spacing */
 .make-space div {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
 }
 /* Lifting Shadows */
 .sticky-note:before,
@@ -1064,7 +1064,7 @@ h6 {
     }
     /* art -- sticky note -- add on sticky note inner line for better spacing */
     .make-space div {
-        padding-bottom: 1rem;
+        padding-bottom: 1.25rem;
     }
     /* art -- index-card -- resize card with smaller devices*/
     .index-face,
