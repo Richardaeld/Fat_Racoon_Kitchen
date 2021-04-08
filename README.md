@@ -64,7 +64,6 @@ Let us help preserve the history of a recipe. Its important to us and to those t
 in college, let us know!
 
 # UX
-
 ## Goals
 ### User Goals
 + I want to find a recipe for dinner.
@@ -168,8 +167,32 @@ in college, let us know!
 # Testing
 ## Developer Testing Specifications
 ### Developer Tested Systems
++ Windows 10 (Chrome 87**, Edge 87**, Firefox 84**)
+    + Chrome
+        + Developed in Chrome
+        + Initially tested in every bootstrap breakpoint during development.
+        + Tested in landscape, which is desktop responsiveness level.
+        + Tested in portrait, which is tablet responsiveness level.
+    + Edge
+        + Tested in landscape, which is desktop responsiveness level.
+        + Tested in portrait, which is tablet responsiveness level.
+    + Firefox
+        + Tested in landscape, which is desktop responsiveness level.
+        + Tested in portrait, which is tablet responsiveness level.
++ G8 ThinQ (Chrome 87**)
+    + Chrome
+        + Tested in landscape, which is desktop responsiveness level.
+        + Tested in portrait, which is tablet responsiveness level.
++ iPad, 5th gen 13.3(Safari 13**)
+    + Safari
+        + Tested in landscape, which is desktop responsiveness level.
+        + Tested in portrait, which is tablet responsiveness level.
 
 ### Developer Testing Methods
++ Every test of **Developer Tests** was preformed on the above listed systems ar the specified screen orientation.
++ Between landscape and portrait tests, the application was not refreshed. This is a critical part of the test! Part of these tests is that the application is **never** 
+refreshed between tests. This helps test for stability and ensure tablet and mobile users a good experience.
++ After completion of all of the **Developer Tests** on each system, the system was tested again with random moments of spam clicking and switching between landscape/portrait. 
 
 ## Developer Tests
 
@@ -179,16 +202,21 @@ in college, let us know!
 ### Lighthouse
 
 ### JigSaw
++ Identifies errors in CSS
 
 ### W3C Validator
++ Identifies errors in HTML
 
 ### JSHint
++ Identifies errors in JS
 
 # Bugs and Other Problems
 ## Previous Bugs
 + Flask was generating a 504 gateway timeout error
     + A previously harmless while began to loop infinitely when a if comparason value was improper
     + Fix was being sure the if comparason values were both int, previously one had been a html location because of a missed len
++ Carousel would put up improper amount of items when changing from landscape to portrait.
+    + The carousel 'memory' array and position had to be completely reset each time the screen switched between landscape and portrait.
 + Corner of napkin css art was improper size in safari
     + Had to add -webkit- to clip-path for saafari
 + index card art had jagged edges after transform: rotateY(180deg) was applied.
