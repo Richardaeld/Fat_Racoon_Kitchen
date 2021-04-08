@@ -8,12 +8,38 @@
 + [Client Stories and Experience Provided](#client-stories-and-experience-provided)
     + [Client Stories](#client-stories)
     + [Experience Provided](#experience-provided)
+
 [Design Choices](#design-choices)
++ [Header and Footer](#header-and-footer)
++ [Login and Create Account Modal](#login-and-create-account-modal)
++ [Index](#index)
++ [Lessons](#lessons)
++ [Profile](#profile)
++ [Recipe](#recipe)
++ [Recipe List](#recipe-list)
++ [All Recipes](#all-recipes)
++ [Add Edit Recipes](#add-edit-recipes)
++ [Edit User Info](#edit-user-info)
++ [Search Bar Returns](#search-bar-returns)
++ [Page Performance](#page-performance)
++ [Wireframe and Live Demo](#wireframe-and-live-demo)
+    + [Wireframe](#wireframe)
+    + [Live Demo](#live-demo)
 + [Scalability](#scalability)
 
 [Technology Languages](#technology-languages)
 
 [Testing](#testing)
++ [Developer Testing Specifications](#developer-testing-specifications)
+    + [Developer Tested Systems](#developer-tested-systems)
+    + [Developer Testing Methods](#developer-testing-methods)
++ [Developer Tests](#developer-tests)
++ [Program Tests](#program-tests)
+    + [BrowserStack](#browserstack)
+    + [Lighthouse](#lighthouse)
+    + [JigSaw](#jigsaw)
+    + [W3C Validator](#w3c-validator)
+    + [JSHint](#jshint)
 
 [Bugs and Other Problems](#bugs-and-other-problems)
 + [Previous Bugs](#previous-bugs)
@@ -36,6 +62,8 @@
 + [Credits](#credits)
     + [Code Citations](#code-citations)
     + [References and Ideas](#references-and-ideas)
+
++ [Acknowledgements](#acknowledgements)
 
 
 # Fat Racoon Kitchen - Introduction
@@ -127,7 +155,8 @@ in college, let us know!
 + Users can submit their own recipes 
 
 # Design Choices
-## Base/login_base -- Header and Footer and login/create modal
+## Header and Footer
+## Login and Create Account Modal
 ## Index
 ## Lessons
 ## Profile
