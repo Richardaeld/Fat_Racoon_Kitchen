@@ -14,9 +14,10 @@ if (document.getElementById("flash").getElementsByTagName("div")[0]){
 function makeRipples (targetLink) {
     targetLiquid = targetLink.getElementsByTagName("span")[0];
     targetIce = targetLink.getElementsByTagName("i")[0];
+    // Start animation
     targetIce.classList.add("dipping-ice");
     targetLiquid.classList.add("create-ripple");
-    // Resets animation after 3 seconds
+    // Reset animation after 3 seconds
     setTimeout(function () {
         targetIce.classList.remove("dipping-ice");
         targetLiquid.classList.remove("create-ripple");
