@@ -1118,3 +1118,12 @@ h6 {
     }
 }
 
+/* test for ingredient/step fix of recipe.html */
+.remove-container-margin {
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+/* test for ingredient/step fix of recipe.html */
+.full-width {
+    width: 100%;
+}
