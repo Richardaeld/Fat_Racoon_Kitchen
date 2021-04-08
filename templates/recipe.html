@@ -50,7 +50,7 @@
 
             <!-- picture of recipe -->
             <div class="col-8 col-md-6 col-lg-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-1 order-xxl-1">
-                <div class="row no-gutters justify-content-center">
+                <div class="row no-gutters justify-content-center blank-anchor">
                     <!-- Displays recipe avatar -->
                     {% if recipeInfo.avatar %}
                         <div class="col-10 polaroid-outer generic-box-shadow">
@@ -58,14 +58,18 @@
                                 <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="Polaroid picture of {{ recipeInfo.name }}">
                             </div>
                             <div>
-                                <h6>From: {{ recipeInfo.created_by.title() }}</h6>
+                                <a href="{{ url_for('search_bar_returns', search=recipeInfo.created_by) }}">
+                                    <h6>From: {{ recipeInfo.created_by.title() }}</h6>
+                                </a>
                             </div>
                         </div>
                     <!-- Displays placeholder if recipe avatar missing -->
                     {% else %}
                         <div class="col-10 sticky-note">
                             <div class="row no-gutters align-items-center sticky-note-inner-div large-content-height">
-                                <p class="col">My chef, {{ recipeInfo.created_by.title() }}, hasn't uploaded an image of me yet :'(</p>
+                                <a href="{{ url_for('search_bar_returns', search=recipeInfo.created_by) }}">
+                                    <p class="col">My chef, {{ recipeInfo.created_by.title() }}, hasn't uploaded an image of me yet :'(</p>
+                                </a>
                             </div>
                         </div>
                     {% endif %}
