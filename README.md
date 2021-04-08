@@ -53,17 +53,16 @@ conventional cooking practice and recipe guidance to help them along the way. Th
 of home cooks and their recipies in an intuitive search engine will be a boon to home chefs everywhere. It helps newer chefs see that not every 
 recipe has to be complicated or convoluted.
 
-** rephrase ** -- specific ingredients search now in scalability
-We offer home cooking fundamentals along with a search engine where you can list all of your "garbage"(ingredience on hand) and see if we have a 
-recipe that contains all that you have. If not we have a *star* search where you can look for a recipe that takes the star component of your meal 
-into account and renders a search result based on that. 
-**
-** Rephrase ** -- history now in scalability
-For our home cooks that submit recipes, we even offer a place to put in a recipes background. Cooking has more meaning that just preparing 
-food. For many it is a connection to your history or life experience.  We encourage our users to give us a little history on the recipes they submit. 
+** continue rephrasing **
+We offer a brief home cooking fundamental section this section can help home chefs make the best of the "garbage"(feature ingredient) they have to cook. Users can search 
+recipes by feature ingredient to find that one recipe that they want to try. This can be accomplished through the use of our search bar or by searching all of our recipes by 
+feature.
+
+For our home cooks that submit recipes, we offer a place to put in a recipes description, background, history, etc.... Cooking has more meaning than just preparing 
+food. For many it is a connection to your history or life experience.  We encourage our users to give us a little history in the recipes they submit. 
 Let us help preserve the history of a recipe. Its important to us and to those that submitted it. From a family recipe to this is all I could afford 
 in college, let us know!
-**
+
 # UX
 
 ## Goals
@@ -72,10 +71,8 @@ in college, let us know!
 + I want to use my cell phone to look up a recipe.
 + I want a pasta dish Ive never tried before.
 + I want a place to leave a recipe I can easiy find.
-+ I want a well rated recipe.** scalability
 + I dont know what I want for dinner.
 + My significant other wants a chicken dish for dinner.
-+ *consider* having a form for users to commit on others recipies. This could ustablish a sense of cooking community.** scalability
 + *theme* homecooking *southern home style* **rephrase
 
 ### Developer Goals
@@ -127,11 +124,8 @@ in college, let us know!
 + User search able to look up recipes by chef name, feature, or recipe name
 + Have a "random recipe" from the Fat Raccoon chefs for those that dont know what they want.
 + Recipes can be favorited by logged in users. This will allow users to quickly and easily find them.
-+ Create a form to allow others to commit on recipies to establish a sense of community and fellowship.**scalability
-+ Allow users to submit their own recipies to be rated and used by others. ** scalability
 + Site is fully responsive so users can use recipes on their phones while cooking.
-+ Use a rating system for dishes - [[*star amount*, *users rated this count*], [*star amount*, *users rated this count*], ...] - using this frame a 5 star 
-rating system could be build. Take the total number of ratings and average them together for overall rating  ** scalability
++ Users can submit their own recipes 
 
 # Design Choices
 ## Base/login_base -- Header and Footer and login/create modal
@@ -155,6 +149,8 @@ rating system could be build. Take the total number of ratings and average them 
 ## Scalability
 + backend varify of image size and type instead of JS validation
 + Adding user selectable filters to search bar
++ Create a user commit form for the recipes. This would give a better sense of community for returning users
++ Allows users to rate each others recipes
 
 # Technology Languages
 + HTML - Skeleton frame of the application.
