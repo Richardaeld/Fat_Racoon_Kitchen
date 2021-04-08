@@ -81,10 +81,9 @@ conventional cooking practice and recipe guidance to help them along the way. Th
 of home cooks and their recipies in an intuitive search engine will be a boon to home chefs everywhere. It helps newer chefs see that not every 
 recipe has to be complicated or convoluted.
 
-** continue rephrasing **
 We offer a brief home cooking fundamental section this section can help home chefs make the best of the "garbage"(feature ingredient) they have to cook. Users can search 
-recipes by feature ingredient to find that one recipe that they want to try. This can be accomplished through the use of our search bar or by searching all of our recipes by 
-feature.
+recipes by feature ingredient to find that one recipe that they want to try. This can be accomplished through the use of our search bar or by searching through our recipe 
+database.
 
 For our home cooks that submit recipes, we offer a place to put in a recipes description, background, history, etc.... Cooking has more meaning than just preparing 
 food. For many it is a connection to your history or life experience.  We encourage our users to give us a little history in the recipes they submit. 
@@ -96,13 +95,20 @@ in college, let us know!
 ### User Goals
 + I want to find a recipe for dinner.
 + I want to use my cell phone to look up a recipe.
-+ I want a pasta dish Ive never tried before.
-+ I want a place to leave a recipe I can easiy find.
-+ I dont know what I want for dinner.
-+ My significant other wants a chicken dish for dinner.
++ I was to use a tablet as a "recipe book".
++ I want to make a pasta dish I dont know.
++ I want a place to leave a recipe so I can easiy find.
++ I want help deciding what to cook for dinner.
++ I want a easy to make recipe.
++ I want a recipe to surprise my significant other with
++ I want the aplication to remember a list of recipes I like
 + *theme* homecooking *southern home style* **rephrase
 
 ### Developer Goals
++ As a school project, this site was developed using as little 3rd party code as possible (ex. carousel logic was written by developer and bootstraps version was not used). This 
+was a deliberate choice to help the developer gain a better understanding of how languages such as JS and python function and not done out of ignorance. Understanding the time it 
+takes to develope such code is important.
+
 + I want to showcase my python abilities.
     + Datetime (python)
     + Flask (flash, render_template, redirect, request, session, url_for)
@@ -175,6 +181,7 @@ in college, let us know!
 ### Live Demo
 
 ## Scalability
++ Add ability to search for lazy or grandparent classic
 + backend varify of image size and type instead of JS validation
 + Adding user selectable filters to search bar
 + Create a user commit form for the recipes. This would give a better sense of community for returning users
