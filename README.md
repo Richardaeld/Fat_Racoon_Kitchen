@@ -40,9 +40,10 @@
 
 # Fat Racoon Kitchen - Introduction
 The Fat Racoon Kitchen is devoted to helping home cooks provide better meals to friends, family, and/or yourself. We provide a network of user uploaded 
-recipies that can be searched through with our "Ingredience on Hand" or "Garbage" search, which is a favorite for our chefs. We stoutly believe that even 
-without the ideal ingredience on hand, a little taste pairing or extra spice can help make any meal provide a savory experience. Our end goal is to 
-help home chefs make the jump from recipe depentent to taste depentent. Our chefs know the importance of making the best out of what we have on hand 
+recipies that can be searched through with our "Ingredience" or "Garbage" search, which is a favorite for our chefs. We stoutly believe that even 
+without the ideal ingredience on hand, a little taste pairing or extra spice can help make any meal provide a savory experience. We eve go out of our way 
+to provide new chefs with some basic cooking lessons in our lessons section. Our end goal is to help home chefs make the jump from recipe depentent to 
+taste depentent. Our chefs know the importance of making the best out of what we have on hand 
 and want to share that liberating experience with other home chefs.
 
 The chefs of the Fat Racoon Kitchen started as sleep deprived, nocturnal home chefs that would use the "garbage", leftovers, or that one thing 
@@ -52,58 +53,85 @@ conventional cooking practice and recipe guidance to help them along the way. Th
 of home cooks and their recipies in an intuitive search engine will be a boon to home chefs everywhere. It helps newer chefs see that not every 
 recipe has to be complicated or convoluted.
 
+** rephrase ** -- specific ingredients search now in scalability
 We offer home cooking fundamentals along with a search engine where you can list all of your "garbage"(ingredience on hand) and see if we have a 
 recipe that contains all that you have. If not we have a *star* search where you can look for a recipe that takes the star component of your meal 
 into account and renders a search result based on that. 
-
-For our home cooks that submit recipes, we even offer a place to put in a recipes background or history. Cooking has more meaning that just preparing 
+**
+** Rephrase ** -- history now in scalability
+For our home cooks that submit recipes, we even offer a place to put in a recipes background. Cooking has more meaning that just preparing 
 food. For many it is a connection to your history or life experience.  We encourage our users to give us a little history on the recipes they submit. 
 Let us help preserve the history of a recipe. Its important to us and to those that submitted it. From a family recipe to this is all I could afford 
 in college, let us know!
-
+**
 # UX
 
 ## Goals
 ### User Goals
-- I want to find a recipe for dinner.
-- I want to use my cell phone to look up a recipe.
-- I want a pasta dish Ive never tried before.
-- I want a place to leave a recipe I can easiy find.
-- I want a well rated recipe.
-- I dont know what I want for dinner.
-- My significant other wants a new chicken dish for dinner.
-- *consider* having a form for users to commit on others recipies. This could ustablish a sense of cooking community.
-- *theme* homecooking *southern home style*
++ I want to find a recipe for dinner.
++ I want to use my cell phone to look up a recipe.
++ I want a pasta dish Ive never tried before.
++ I want a place to leave a recipe I can easiy find.
++ I want a well rated recipe.** scalability
++ I dont know what I want for dinner.
++ My significant other wants a chicken dish for dinner.
++ *consider* having a form for users to commit on others recipies. This could ustablish a sense of cooking community.** scalability
++ *theme* homecooking *southern home style* **rephrase
 
 ### Developer Goals
-- I want to showcase my python abilities.
-    - Datetime (python)
-    - Flask (flash, render_template, redirect, request, session, url_for)
-    - Jinja (Templates)
-    - Python Day Time 
-    - Pymongo (Flask - mongo DB)
++ I want to showcase my python abilities.
+    + Datetime (python)
+    + Flask (flash, render_template, redirect, request, session, url_for)
+    + Jinja (Templates)
+        + Allowing one page to have multiple functions
+            + Add edit recipe
+            + base - login/create modal
+    + Python Day Time 
+    + Pymongo (Flask - mongo DB)
+    + Validation
+    + Using callable functions over repeating code
+    + Using if expressions: to replace blank sections(missing DB data) with filler Templates, to add the lazy banner on random recipe, etc...
+    + Using for expressions: to generate list data ex. recipe lists, recipe ingredient lists, recipe step lists, etc...
+    + Use random number generator to randomly pick recipes
 
-- I want to showcase my DB abilites.
-    - Mongo DB
-    - Pymongo (Flask - mongo DB)
++ I want to showcase my JS abilities
+    + Created carousel JS logic
+    + Created pagination JS logic
+    + Created Validation JS logic
+        + Character length
+        + Compare two passwords to be sure they match
+        + Make sure email has appropriate suffix
+        + Replace spaces with _ using a regex
 
-- I want to showcase my artistic diversity
-    - css art
-    - svg art
++ I want to showcase my DB abilites.
+    + Mongo DB
+        + Searches use restricted results
+        + searches use operator if applicable
+        + Building DB upload dictionary piece by piece for edits rather than always relying on a generic upload template
+        + Allow users to upload images (avatar)
+    + Pymongo (Flask - mongo DB)
+
++ I want to showcase my artistic ability
+    + css art
+        + Sticky Notes with lifting effect
+        + Social Drinks (Links) - stylized as a drink with ice in it with a ripping and ice dipping effect 
+        + Polaroid Picture
+        + Table Runner(Header footer)
+    + svg art** favicon - blank place holder - arrow for carousel
 
 ## Client Stories and Experience Provided
 ### Client Stories
 
 ### Experience Provided
-- A meal star carousel on the front page (cycles through meal stars, proetin, bread, pasta, ...).
-- Be able to look up recipies by meal(brakefast, lunch, ...) or star type (protein, bread, pasta, ...).
-- Have a random, "recipe of the day" (more likely a random recipe).
-- Recipies can be favorited by users to allow them to quickly and easily find them.
-- Create a form to allow others to commit on recipies to establish a sense of community and fellowship.
-- Allow users to submit their own recipies to be rated and used by others.
-- Make site fully responsive.
-- Have a search bar for to find recipe name (or maybe use it to search ingredience?) .
-- Use a rating system for dishes - [[*star amount*, *users rated this count*], [*star amount*, *users rated this count*], ...] - using this frame a 5 star rating system could be build. Take the total number of ratings and average them together for overall rating  
++ A meal feature for carousel on the front page: Offers 3 recipes per feature
++ User search able to look up recipes by chef name, feature, or recipe name
++ Have a "random recipe" from the Fat Raccoon chefs for those that dont know what they want.
++ Recipes can be favorited by logged in users. This will allow users to quickly and easily find them.
++ Create a form to allow others to commit on recipies to establish a sense of community and fellowship.**scalability
++ Allow users to submit their own recipies to be rated and used by others. ** scalability
++ Site is fully responsive so users can use recipes on their phones while cooking.
++ Use a rating system for dishes - [[*star amount*, *users rated this count*], [*star amount*, *users rated this count*], ...] - using this frame a 5 star 
+rating system could be build. Take the total number of ratings and average them together for overall rating  ** scalability
 
 # Design Choices
 ## Base/login_base -- Header and Footer and login/create modal
@@ -135,8 +163,10 @@ in college, let us know!
 + Python - Allows back end programs to run. These programs are:
     + Flask - Allows use of Templating, security, user searching, and other critical functions.
     + Pymongo - Allows flask (python) to communicate with Mongo DB.
+    + PythonDNS
     + Werkzeug - Encrypts data as it is sent between the user and server.
     + Datetime - Allows python to take a date/time stamp.
+    + Random - Allows a for a random number generator.
 + Mongo DB - Database that application communicates with and stores information on.
 
 # Testing
