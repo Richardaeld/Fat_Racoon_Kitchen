@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+{% block modal %}
+<!--  Delete Modal  -->
+<aside class="row no-gutters justify-content-center custom-modal-delete make-invis">
+    <div class="col-12 modal-background"></div>
+
+    <form class="col-10 col-md-10 form-login form-delete-base generic-box-shadow yanone-text" id="delete-modal" method="POST" action="{{ url_for('recipe', recipeId=recipeInfo._id) }}">
+        <div class="row no-gutters">
+            <div class="col-12 tab-body">
+                <div class="tab">
+                    <p id="checkName">Type in recipe name <span value="{{recipeInfo.name}}">* {{ recipeInfo.name }} *</span> and click delete to remove entery</p>
+                </div>
+            </div>
+        </div>
+        <input type="text" name="recipeName" id="recipeName" invalid>
+        <br>
+        <input class="custom-button" id="custom-button-delete" type="submit" value="Delete" disabled>
+    </form>
+</aside>
+{% endblock %}
+
+{% block section %}
+<section class="row no-gutters generic-background">
+
+    <!-- Allow a user to edit or delete their own recipes -->
+    {% if recipeInfo.created_by == chef %}
+    <div class="col-12">
+        <div class="row no-gutters justify-content-between">
+            <!--  Edit recipe button -->
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
+                <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
+                    <div class="sticky-note-inner-div">
+                        <h6 class="reenie-text">Edit Recipe</h6>
+                    </div>
+                </a>
+            </div>
+            <!--  Delete recipe button -->
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button custom-js-button" id="deleteModal">
+                <div class="sticky-note-inner-div" >
+                    <h6 class="reenie-text">Delete Recipe</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- recipe picture, name, times, and description -->
+    <div class="col-12">
+        <div class="row no-gutters justify-content-around">
+
+            <!-- picture of recipe -->
+            <div class="col-8 col-md-6 col-lg-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-1 order-xxl-1">
+                <div class="row no-gutters justify-content-center">
+                    <!-- Displays recipe avatar -->
+                    {% if recipeInfo.avatar %}
+                        <div class="col-10 polaroid-outer generic-box-shadow">
+                            <div class="polaroid-picture">
+                                <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="Polaroid picture of {{ recipeInfo.name }}">
+                            </div>
+                            <div>
+                                <h6>From: {{ recipeInfo.created_by.title() }}</h6>
+                            </div>
+                        </div>
+                    <!-- Displays placeholder if recipe avatar missing -->
+                    {% else %}
+                        <div class="col-10 sticky-note">
+                            <div class="row no-gutters align-items-center sticky-note-inner-div large-content-height">
+                                <p class="col">My chef, {{ recipeInfo.created_by.title() }}, hasn't uploaded an image of me yet :'(</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Recipe general info -->
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2">
+                <div class="row no-gutters justify-content-center">
+                    <div class="col-10 sticky-note sticky-note-middle">
+                        <div class="row no-gutters sticky-note-inner-div sticky-note-middle-shadow justify-content-center make-space">
+                            <!-- Recipe name -->
+                            <div class="col-10">
+                                <h1 class="yanone-text recipe-name">{{ recipeInfo.name.title() }}</h1>
+                            </div>
+                            <div class="col-10">
+                                <div class="blank-anchor">
+                                    <!--  Recipe favorite button  -->
+                                    {% if favoriteRecipe == "None" %}
+                                    {% elif favoriteRecipe == True %}
+                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}" class="favorite">
+                                            <p>Favorite!</p>
+                                            <img src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Favorite icon">
+                                        </a>
+                                    {% elif favoriteRecipe == False %}
+                                        <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}" class="favorite">
+                                            <p>Not a Favorite</p>
+                                            <img src="{{ url_for('static', filename='images/star-outline.svg') }}" alt="Unfavorite icon">
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <!-- Recipe times -->
+                            <div class="col-12">
+                                <div class="row no-gutters">
+                                    <span class="col-12 col-sm-4">
+                                        <span class="row no-gutters">
+                                            <h6 class="col-6 col-sm-12">Prep </h6>
+                                            <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[0] }}</strong> minutes</p>
+                                        </span>
+                                    </span>
+                                    <span class="col-12 col-sm-4">
+                                        <span class="row no-gutters">
+                                            <h6 class="col-6 col-sm-12">Cook </h6>
+                                            <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[1] }}</strong> minutes</p>
+                                        </span>
+                                    </span>
+                                    <span class="col-12 col-sm-4">
+                                        <span class="row no-gutters">
+                                            <h6 class="col-6 col-sm-12">Total </h6>
+                                            <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[2] }}</strong> minutes</p>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe description -->
+            <div class="col-12 col-md-12 col-lg-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-3 order-xxl-3">
+                <div class="row no-gutters justify-content-center">
+                    <div class="col-10 sticky-note sticky-note-right">  
+                        <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow large-content-height">
+                            <p class="col">{{ recipeInfo.text }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- recipe ingredients and steps -->
+    <div class="container col-12 remove-container-margin">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12 col-lg-6">
+            <div class="row no-gutters justify-content-center">
+
+            <!-- Recipe Ingredients -->
+            {% for iteration in recipeIngredientsCount[0] %}
+            <div class="col-12">
+                <div class="row no-gutters justify-content-center">
+                    <div class="col-10 sticky-note">
+                        <div class="sticky-note-inner-div">
+                            <ul class="recipe-lists recipe-lists-no-padding">
+                            {% if iteration == 0 %}
+                                <h1 class="yanone-text">Recipe Ingredients 1</h1>
+                            {% else %}
+                                <h1 class="yanone-text">Recipe Ingredients {{ ((iteration / 4)|round|int) + 1 }}</h1>
+                            {% endif %}
+                                <hr>
+                                {% for counter in range(iteration, iteration + 4) %}
+                                {% if iteration == recipeIngredientsCount[0][-1] and counter < recipeIngredientsCount[1][0] %}
+                                <li class="row no-gutters justify-content-center">
+                                    <input class="col-1 checkbox-input" type="checkbox">
+                                    <h6 class="col-1 checkbox-h6">{{ recipeIngredients[counter][0] + 1 }}.</h6>
+                                    <h6 class="col-10 checkbox-h6">{{ recipeIngredients[counter][1] }}</h6>
+                                </li>
+                                {% elif iteration == recipeIngredientsCount[0][-1] and counter >= recipeIngredientsCount[1][0] %}
+                                {% else %}
+                                <li class="row no-gutters justify-content-center">
+                                    <input class="col-1 checkbox-input" type="checkbox">
+                                    <h6 class="col-1 checkbox-h6">{{ recipeIngredients[counter][0] + 1 }}.</h6>
+                                    <h6 class="col-10 checkbox-h6">{{ recipeIngredients[counter][1] }}</h6>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+            </div>
+
+
+            <div class="col-12 col-lg-6">
+            <div class="row no-gutters">
+            <!-- Recipe steps -->
+            {% for iteration in recipeStepsCount[0] %}
+            <div class="col-12">
+                <div class="row no-gutters justify-content-center ">
+                    <div class="col-10 sticky-note sticky-note-right">
+                        <div class="sticky-note-inner-div sticky-note-right-shadow">
+                            <ul class="recipe-lists recipe-lists-no-padding">
+                                {% if iteration == 0 %}
+                                <h1 class="yanone-text">Recipe Steps 1</h1>
+                                {% else %}
+                                <h1 class="yanone-text">Recipe Steps {{ ((iteration / 4)|round|int) + 1 }}</h1>
+                                {% endif %}
+                                <hr>
+                                {% for counter in range(iteration, iteration+4) %}
+                                {% if iteration == recipeStepsCount[0][-1] and counter < recipeStepsCount[1][0] %}
+                                <li class="row no-gutters justify-content-center">
+                                    <input class="col-1 checkbox-input" type="checkbox">
+                                    <h6 class="col-1 checkbox-h6">{{ recipeSteps[counter][0] + 1 }}.</h6>
+                                    <h6 class="col-10 checkbox-h6">{{ recipeSteps[counter][1] }}</h6>
+                                </li>
+                                {% elif iteration == recipeStepsCount[0][-1] and counter >= recipeStepsCount[1][0] %}
+                                {% else %}
+                                <li class="row no-gutters justify-content-center">
+                                    <input class="col-1 checkbox-input" type="checkbox">
+                                    <h6 class="col-1 checkbox-h6">{{ recipeSteps[counter][0] + 1 }}.</h6>
+                                    <h6 class="col-10 checkbox-h6">{{ recipeSteps[counter][1] }}</h6>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+                </div>
+                </div>
+
+
+
+
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
+{% block custom_script %}
+<script src="{{ url_for('static', filename='js/recipe.js') }}"></script>
+<script src="{{ url_for('static', filename='js/button.js') }}"></script>
+{% endblock %}
