@@ -42,6 +42,9 @@ function selectFeature(pagination){
             }
         }
 
+        // Sets inline height to stop collapsing on last pagination number
+        pagination.style.height = pagination.offsetHeight + "px"
+
         // Inserts UL to DOM with all appropiate LI
         pagination.insertAdjacentElement('afterend', createUl);
 
