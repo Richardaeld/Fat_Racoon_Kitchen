@@ -576,6 +576,18 @@ def all_recipes():
         allFeatures=allFeatures, allRecipes=allRecipes)
 
 
+# Returns a search based on lazy or grandparent
+@app.route("/search_bool_returns/<search>", methods=("POST", "GET"))
+def search_bool_returns(search):
+    # User's search
+    displayRecipes = list(enumerate(
+        mongo.db.recipes.find(
+            {search: {"$eq": True}},
+            {"name": 1, "feature": 1, "created_by": 1, "time": 1})))
+    return render_template(
+        "search_bar_returns.html", findRecipes=displayRecipes)
+
+
 # Returns a search based on key words user uses, for: name, feature, or chef
 @app.route("/search_bar_returns/<search>", methods=("POST", "GET"))
 def search_bar_returns(search):
