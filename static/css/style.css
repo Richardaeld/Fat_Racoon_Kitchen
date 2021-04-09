@@ -402,22 +402,16 @@ header {
 .medium-content-height {
     min-height: 17.5rem;
 }
-/* ---------------------------------------- Container for section headers on index */
-.independant-header-height {
-    height: 12rem;
+/* ---------------------------------------- Container for section headers on index and lessons*/
+.header-height {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
 }
 
-.independant-header-height h1,
-.independant-header-height h3 {
-    margin: 0;
-    color: #fff;
+.header-height h1,
+.header-height h3 {
     text-shadow: 2px 2px 4px #010203;
-}
-/* Adds height to give headers good UX  */
-.independant-header-height div {
-    height: 8rem;
-    margin-bottom: 2.5rem;
-    margin-top: 2rem;
+    color: #fff;
 }
 /* ---------------------------------------- Repetative class calls */
 .yanone-text {
@@ -1126,4 +1120,14 @@ h6 {
 /* test for ingredient/step fix of recipe.html */
 .full-width {
     width: 100%;
+}
+
+.reduce-padding {
+    padding: 0.25rem;
+}
+.remove-margin {
+    margin: 0 0 0.5rem 0;
+}
+.remove-top-margin {
+    margin-top: 0rem;
 }
