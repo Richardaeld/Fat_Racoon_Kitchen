@@ -4,12 +4,12 @@
 <aside class="row no-gutters align-items-center card-section generic-background">
 
     <!-- Carousel header -->
-    <div class="col-12 independant-header-height">
-        <div class="row no-gutters justify-content-center align-items-center">
+    <div class="col-12 header-height">
+        <div class="row no-gutters justify-content-center align-items-center ">
             <div class="col-12">
-                <h1>Need some inspiration on picking a meal?</h1>
-                <h3>Find a recipe by its feature ingredient!</h3>
+                <h1>Pick a recipe based on its featured ingredient</h1>
             </div>
+
         </div>
     </div>
 
@@ -71,12 +71,12 @@
 <section class="row no-gutters generic-background">
 
     <!--  Polaroid classics Header  -->
-    <div class="col-12 independant-header-height">
+    <div class="col-12 header-height">
         <div class="row no-gutters align-items-center justify-content-center">
             <div class="col-12">
-                <h1>Impress someone with a Fat Raccoon's GrandParent Classic!</h1>
-                <h3>The extra effort is worth it!</h3>
+                <h1>Impress someone with a Fat Raccoon's GrandParent Classic</h1>
             </div>
+
         </div>
     </div>
 
@@ -84,10 +84,10 @@
         <div class="row no-gutters justify-content-around">
             <!-- incase no classics are in DB display this -->
             {% if recipeHeader == [] %}
-            <div class="col-12 independant-header-height">
+            <div class="col-12 header-height">
                 <div class="row no-gutters align-items-center justify-content-center">
                     <div class="col-12">
-                        <h1>Currently we have no classics in rotation!</h1>
+                        <h1>Currently we have no classics in rotation</h1>
                         <h3>Sorry, try back later for some awesome classics!</h3>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
             <!-- {% if recipe != "none" %} -----------------------   I crashed index this -->
             <!-- Polaroid picture -->
             {% for recipe in recipeHeader %}
-            <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer generic-box-shadow blank-anchor">
+            <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer generic-box-shadow blank-anchor remove-top-margin">
                 <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
                     <div class="polaroid-picture polaroid-picture-classic">
                         <!-- defensive layer to prevent crash -->
@@ -121,12 +121,36 @@
 <!-- Random recipe -->
 <section class="row no-gutters generic-background">
     <!-- Random recipe header -->
-    <div class="col-12 independant-header-height">
-        <div class="row no-gutters justify-content-center align-items-center">
+    <div class="col-12 header-height">
+        <div class="row no-gutters justify-content-around align-items-center">
             <div class="col-12">
-                <h1>Try a random recipe!</h1>
-                <h3>These are from the Fat Raccoon's personal kitchen!</h3>
+                <h1>Try a random recipe or browse the Fat Raccoon's collection of recipes</h1>
             </div>
+
+            <a href="{{ url_for('search_bool_returns', search='lazy') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button remove-margin">
+                <div class="sticky-note-inner-div reduce-padding">
+                    <p>Browse our lazy favorites!</p>
+                </div>
+            </a>
+
+            <a href="{{ url_for('search_bar_returns', search='fat_raccoon') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button remove-margin">
+                <div class="sticky-note-inner-div reduce-padding">
+                    <p>Browse our recipes!</p>
+                </div>
+            </a>
+
+            <a href="{{ url_for('all_recipes') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button remove-margin">
+                <div class="sticky-note-inner-div reduce-padding">
+                    <p>Browse by feature!</p>
+                </div>
+            </a>
+
+            <a href="{{ url_for('search_bool_returns', search='grandparent') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button remove-margin">
+                <div class="sticky-note-inner-div reduce-padding ">
+                    <p>Browse our classics!</p>
+                </div>
+            </a>
+
         </div>
     </div>
 
@@ -137,7 +161,7 @@
             <!-- Chef info with mini avatar-->
             <div class="col-12 col-md-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-1 order-xxl-1">
                 <div class="row no-gutters justify-content-center">
-                    <div class="col-10 sticky-note">
+                    <div class="col-10 sticky-note remove-top-margin">
                         <div class="sticky-note-inner-div blank-anchor" style="overflow: hidden;"> <!--  fix overflow with JS  -->
                             <!-- Avatar picture -->
                             {% if chef.avatar != none %}
@@ -171,7 +195,7 @@
             </div>
 
             <!-- Recipe info - sticky note -->
-            <div class="col-11 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height">
+            <div class="col-11 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height remove-top-margin">
                 <div class="sticky-note-inner-div sticky-note-middle-shadow blank-anchor make-space">
                     <div class="col-12">
                         <!-- Recipe name -->
@@ -241,7 +265,7 @@
                 <div class="row no-gutters justify-content-center">
                     <!-- Picture of random recipe -->
                     {% if recipeOfDay.avatar %}
-                    <div class="col-10 col-md-6 col-lg-10 polaroid-outer generic-box-shadow"> <!-- sticky-note sticky-note-right recipe-of-day-aside-height -->
+                    <div class="col-10 col-md-6 col-lg-10 polaroid-outer generic-box-shadow remove-top-margin"> <!-- sticky-note sticky-note-right recipe-of-day-aside-height -->
                         <div class="polaroid-picture">
                             <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
                                 <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="Polaroid picture of {{ recipeOfDay.name }}">
@@ -267,4 +291,5 @@
 
 {% block custom_script %}
     <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/button.js') }}"></script>
 {% endblock %}
