@@ -87,6 +87,26 @@
                                         </span>
                                     </span>
                                 </span>
+                                 <!-- Banner Lazy or grandparent classic if present-->
+                                 <!-- Both lazy and grandparent classic -->
+                                {% if recipe[1].lazy == true and recipe[1].grandparent == true %}
+                                <div><!-- Space maker --></div>
+                                <span class="lazy-banner-space">
+                                    <h6 class="recipe-overlay-bottom">Fat Raccoon Lazy and Grandparent Classic!</h6>
+                                </span>
+                                {% elif recipe[1].lazy == true %}
+                                <!-- lazy favorite -->
+                                <div><!-- Space maker --></div>
+                                <span class="lazy-banner-space">
+                                    <h6 class="recipe-overlay-bottom">Fat Raccoon Lazy Favorite!</h6>
+                                </span>    
+                                {% elif recipe[1].grandparent == true %}
+                                <!-- Grandparent Classic -->
+                                <div><!-- Space maker --></div>
+                                <span class="lazy-banner-space">
+                                    <h6 class="recipe-overlay-bottom">Fat Raccoon Grandparent Classic!</h6>
+                                </span>
+                                {% endif %}
                             </a>
                         </div>
                     </div>
