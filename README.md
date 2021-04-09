@@ -102,6 +102,7 @@ in college, let us know!
 + I want a easy to make recipe.
 + I want a recipe to surprise my significant other with
 + I want the aplication to remember a list of recipes I like
++ I want an easy to read recipe layout while Im cooking
 + *theme* homecooking *southern home style* **rephrase
 
 ### Developer Goals
@@ -153,12 +154,16 @@ takes to develope such code is important.
 ### Client Stories
 
 ### Experience Provided
-+ A meal feature for carousel on the front page: Offers 3 recipes per feature
-+ User search able to look up recipes by chef name, feature, or recipe name
++ Users can search the entire recipe DB for the recipe they want to use
 + Have a "random recipe" from the Fat Raccoon chefs for those that dont know what they want.
-+ Recipes can be favorited by logged in users. This will allow users to quickly and easily find them.
-+ Site is fully responsive so users can use recipes on their phones while cooking.
-+ Users can submit their own recipes 
++ Site is fully responsive so users can use recipes on their phones or tablets while cooking.
++ Site allows for users to "scratch through" ingredients or steps on recipe page as they gather or accomplish parts
++ Users can use user search bar to search for features (also for: chef name and recipe name)
++ Users can upload their own recipes to have a safe place to keep a recipe they like
++ Users can use carousel, grnadparent classics or random recipe to help get an idea what to cook
++ Users search results returns total time it takes to cook a meal 
++ Grandparent classic was designed to offer users a choice of recipes that are considered classical in the Fat Raccoon
++ Recipe pages layout is designed specifically for mobile and tablet users.  Providing the best UX possible
 
 # Design Choices
 ## Header and Footer
@@ -280,6 +285,8 @@ techniques to remove it, including !important. Changing the layer or to mouseove
     + Input of user search bar is larger than it should be, giving the item bad UX
 
 ## Other Problems
++ Searching mongo DB using collection.db.find("$text": "$search": <value>) unable to return booleans.  This is an issue with users being 
+able to search "lazy" or "grandparent" tags. 
 
 # Deployment
 ## Setup structure on GitPod for developers
