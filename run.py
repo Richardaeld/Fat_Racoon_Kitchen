@@ -583,7 +583,7 @@ def search_bool_returns(search):
     displayRecipes = list(enumerate(
         mongo.db.recipes.find(
             {search: {"$eq": True}},
-            {"name": 1, "feature": 1, "created_by": 1, "time": 1})))
+            {"name": 1, "feature": 1, "created_by": 1, "time": 1, "lazy": 1, "grandparent": 1})))
     return render_template(
         "search_bar_returns.html", findRecipes=displayRecipes)
 
@@ -595,7 +595,7 @@ def search_bar_returns(search):
     displayRecipes = list(enumerate(
         mongo.db.recipes.find(
             {"$text": {"$search": search}},
-            {"name": 1, "feature": 1, "created_by": 1, "time": 1})))
+            {"name": 1, "feature": 1, "created_by": 1, "time": 1, "lazy": 1, "grandparent": 1})))
     return render_template(
         "search_bar_returns.html", findRecipes=displayRecipes)
 
@@ -613,7 +613,7 @@ def search_user_recipes(search):
         displayRecipes = list(enumerate(
             mongo.db.recipes.find(
                 {"created_by": chef["username"]},
-                {"name": 1, "feature": 1, "created_by": 1, "time": 1}).sort(
+                {"name": 1, "feature": 1, "created_by": 1, "time": 1, "lazy": 1, "grandparent": 1}).sort(
                     "date", -1)))
 
     else:
