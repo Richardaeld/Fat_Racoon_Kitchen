@@ -251,10 +251,21 @@
                             </span>
                         </span>
                     </div>
-                     <!-- Lazy Banner  if present-->
-                    {% if recipeOfDay.lazy == true %}
+                     <!-- Banner Lazy or grandparent classic if present-->
+                     <!-- Both lazy and grandparent classic -->
+                    {% if recipeOfDay.lazy == true and recipeOfDay.grandparent == true %}
                         <div class="lazy-banner-space">
-                            <h6 class="recipe-overlay-bottom">A Certified FR Lazy Favorite!</h6>
+                            <h6 class="recipe-overlay-bottom">Fat Raccoon Lazy and Grandparent Classic!</h6>
+                        </div>
+                    <!-- lazy favorite -->
+                    {% elif recipeOfDay.lazy == true %}
+                        <div class="lazy-banner-space">
+                            <h6 class="recipe-overlay-bottom">Fat Raccoon Lazy Favorite!</h6>
+                        </div>
+                     <!-- Grandparent Classic -->
+                    {% elif recipeOfDay.grandparent == true %}
+                        <div class="lazy-banner-space">
+                            <h6 class="recipe-overlay-bottom">Fat Raccoon Grandparent Classic!</h6>
                         </div>
                     {% endif %}
                 </div>

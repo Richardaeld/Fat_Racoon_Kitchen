@@ -555,7 +555,8 @@ header {
     bottom:0;
     left:0;
     right:0;
-    text-shadow: 1px 1px 2px #fff;
+    text-shadow: 2px 2px #010203;
+    color: #fff;
 }
 .card-carousel {
     margin: .5rem 0rem;
@@ -1130,4 +1131,8 @@ h6 {
 }
 .remove-top-margin {
     margin-top: 0rem;
+}
+
+.search-returns-banner {
+    text-decoration: underline;
 }
