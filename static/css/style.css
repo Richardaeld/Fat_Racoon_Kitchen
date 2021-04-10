@@ -551,7 +551,7 @@ header {
 /* ------------------------------------------------------- Carousel Section  ---------------------------------------------------------------- */
 .recipe-overlay-bottom {
     position: absolute;
-    background-color: rgba(18, 138, 231, .75);
+    /* background-color: rgba(18, 138, 231, .75); */
     bottom:0;
     left:0;
     right:0;
@@ -609,6 +609,15 @@ right: 0px;
 
 .lazy-banner-space {
     padding-top: 1rem;
+}
+.lazy {
+    background-color: rgba(18, 138, 231, .75);
+}
+.classic {
+    background-color: rgba(18, 31, 231, 0.75);
+}
+.lazy-classic {
+    background-color: rgba(111, 18, 231, 0.75);
 }
 /* ------------------------------------------------------- Random Recipe Section  ---------------------------------------------------------------- */
 .avatar,
