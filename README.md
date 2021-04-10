@@ -103,7 +103,7 @@ in college, let us know!
 + I want a recipe to surprise my significant other with
 + I want the aplication to remember a list of recipes I like
 + I want an easy to read recipe layout while Im cooking
-+ *theme* homecooking *southern home style* **rephrase
++ I want a site that has a welcoming feeling
 
 ### Developer Goals
 + As a school project, this site was developed using as little 3rd party code as possible (ex. carousel logic was written by developer and bootstraps version was not used). This 
@@ -164,19 +164,99 @@ takes to develope such code is important.
 + Users search results returns total time it takes to cook a meal 
 + Grandparent classic was designed to offer users a choice of recipes that are considered classical in the Fat Raccoon
 + Recipe pages layout is designed specifically for mobile and tablet users.  Providing the best UX possible
++ Site has a welcoming southern homecooking feeling
 
 # Design Choices
 ## Header and Footer
++ Southern theme
+    + Cutting board logo with engraved text
+    + Southern table runner fot background
+    + Links are stylized drinks
++ Plan easy to see nav bar
++ search bar is collapsed in nav bar
+
 ## Login and Create Account Modal
++ Both login and create account combined into single modal to save space
++ validation prevents users from submitting improper form details
++ validation also automatically adds '_' in place of a space
+
 ## Index
++ index card carousel
+    + Recipes added to index cards for a home made, I can do this feeling
+    + carousel offers three ransomly selected recipes from head chef to display per feature item
+    + Designed to help give users options based on the feature item they wayt to cook
++ Grandparent classic polaroids
+    + Recipe's image used on a polaroid picture design with a grey filter to give them a 'classic' appearance
+    + The design is used to give people the nostalgia feeling of a recipe their grandparents might have made
+    + The recipe's name is added to the bottom of the picture to let users know what recipe they are viewing
++ Random Recipe section
+    + Quick browsing links provided to give users ample ideas if they dont know what to cook
+    + A random recipe with basic information and a image is provided to give users an idea of what to cook
+    + This is followed with a banner if the recipe is a lazy favorite, grandparent classic, or both
+    + This section also houses the head chef's Bio and image to help give the site a welcoming feeling
+
 ## Lessons
++ A simple header that lets users know the cards are clickable was used
++ Index cards
+    + Each index card is flippable with most of them containing information on both sides
+    + The information provided gives new chefs some hints and tricks at getting started in the kitchen and making the best of what they have on hand
+
 ## Profile
++ Two clean buttons on top that allow users to either create a recipe they want to preserve  or update their own profile
++ Users can clearly see their own bio and avatar image
++ Users have access to their entire uplaoded/favorited recipe history with a single click
+    + Users can also see their ten most recently uploaded/favorited as well
++ Users can see their 10 recently viewed recipes 
+
 ## Recipe
++ If a user has submitted a recipe they view:
+    + They can modify or delete that recipe
++ Logged in users:
+    + Can favorite a recipe so they can return to it easier
++ clearly displays avatar image so users can see what dish looks like
++ All general recipe information is displayed and easiy viewed
++ Recipe's ingredients and steps: 
+    + each labeled in their own lists
+    + Each item has its own check box
+    + Users can click on any part of the item and it will check the box and cross out the item clicked
+
+## All Recipes
++ Lists entire DB of recipes by their featured ingredient
++ When a feature contains more than 5 entires the list updates to have pagination at the bottom of the list
++ Each list is given a header of the feature type that is the basis for which recipes follow
++ Each Recipe displays the name and total recipe time to help users decide what they want to make
+
 ## Recipe List
-## All Recipes 
++ When a list contains more than 5 entires the list updates to have pagination at the bottom of the list
++ Each Recipe displays the name and total recipe time to help users decide what they want to make
+
 ## Add Edit Recipes
++ A form that is less frills than the rest of the page.  This is to give a more serious feeling when creating/editing recipes
++ Users can update every part of a recipe except the boolean tags: Lazy Favorite and Grandparent Classic (Which is reserved for the HeadChef of the site to make this decision)
++ There is basic HTML validation for the form except for the recipe image which has an additional level of validation to prevent users from upload to large of an image
++ Total cook time updates automatically as prep and cook times are adjusted
++ Recipe Ingerdients and Recipe Steps:
+    + Each uses a JS add/remove set of buttons for users to create and remove boxes as they need
+    + Each box is numbered to help users keep track of the step they are at
+    + The header keeps an active count of visible boxes so users know how many are visible
+
 ## Edit User Info
++ A form that is less frills than the rest of the page.  This is to give a more serious feeling when creating/editing recipes
++ Uses are able to update their password, username, email, avatar, and bio
++ JS Character # validation is used on name
++ JS email validation 
+    + Email validation is limited with suffixes allowed
+    + checks for the email suffix .com or .edu
+    + This is detailed in **previous bugs** section
++ Users wishing to create a new password, must click on the create new password button. This keeps users from accidently invalidating the form by starting its validation
++ New password validation is JS and uses must type the same password into both boxes
+
 ## Search Bar Returns
++ This page is used to return 3 different search results
++ it returns:
+    + all user searches from search bar: for recipe name, feature, and chef
+    + Profile page searches: all uplaoded, favorited, and recently viewed sections
+    + Index browse buttons for grandparent classics and lazy favorites
 
 ## Page Performance
 
