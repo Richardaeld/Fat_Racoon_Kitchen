@@ -39,6 +39,7 @@ const matchTypeSpaces =  /[ ]/g; // Follow with g to make global
 const matchTypeAtSign = /[@]/;
 const matchTypeDotCom = /.com/;
 const matchTypeDotEdu = /.edu/;
+const matchTypeDotNet = /.net/;
 
 var formIsValid = false
 // ----- Final Validation check
@@ -140,7 +141,9 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                         baseValPara[1].classList.add("make-invis");
                     }else if (checkEmailValue.match(matchTypeDotEdu)){ // checks for .edu
                         baseValPara[1].classList.add("make-invis");
-                    } else {
+                    } else if (checkEmailValue.match(matchTypeDotNet)) {
+                        baseValPara[1].classList.add("make-invis");
+                    }else {
                         baseValPara[1].classList.remove("make-invis");
                     }
                 }
