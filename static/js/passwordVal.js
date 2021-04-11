@@ -40,6 +40,7 @@ const matchTypeAtSign = /[@]/;
 const matchTypeDotCom = /.com/;
 const matchTypeDotEdu = /.edu/;
 const matchTypeDotNet = /.net/;
+const matchTypeDotOrg = /.org/;
 
 var formIsValid = false
 // ----- Final Validation check
@@ -141,8 +142,10 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                         baseValPara[1].classList.add("make-invis");
                     }else if (checkEmailValue.match(matchTypeDotEdu)){ // checks for .edu
                         baseValPara[1].classList.add("make-invis");
-                    } else if (checkEmailValue.match(matchTypeDotNet)) {
+                    } else if (checkEmailValue.match(matchTypeDotNet)) {// checks for .net
                         baseValPara[1].classList.add("make-invis");
+                    }else if (checkEmailValue.match(matchTypeDotOrg)) {// checks for .org
+                        baseValPara[1].classList.add("make-invis")
                     }else {
                         baseValPara[1].classList.remove("make-invis");
                     }
