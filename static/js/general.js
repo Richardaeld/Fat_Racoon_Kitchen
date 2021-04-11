@@ -35,7 +35,7 @@ function selectLinks (link) {
     // for touch screen users
     link.addEventListener("touchmove", function() {
         makeRipples (link);
-    });
+    },{passive:true});
 }
 
 // ----Search bar
