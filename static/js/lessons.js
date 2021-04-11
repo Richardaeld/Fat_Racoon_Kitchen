@@ -20,5 +20,5 @@ function selectIndexCards(card){
         }else{
             rotateLoc.add("flip-index-card");
         }
-    })
+    });
 }

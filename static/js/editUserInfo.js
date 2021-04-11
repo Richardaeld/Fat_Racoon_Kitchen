@@ -5,7 +5,7 @@ revealPassword[0].addEventListener("click", function() {
     revealPassword[0].classList.add("make-invis");
     revealPassword[1].classList.remove("make-invis");
     revealPassword[2].classList.remove("make-invis");
-})
+});
 
 // ---- Apply Random Avatar Name to Avatar Image
 // Adds randomly generated image name if new image present
@@ -14,4 +14,4 @@ document.getElementById("custom-button").addEventListener("click", function() {
     if (document.getElementById("avatar").value != ""){
         document.getElementById("avatar_file_valid").value = true;
     }
-})
+});

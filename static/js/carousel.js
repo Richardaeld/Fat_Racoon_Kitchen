@@ -10,7 +10,7 @@ var carouselArray = []; // Sets array for carousel
 function findWidth(){
 
     // Counts carousel item length, creates an index array, and resets array
-    carouselArray = [] 
+    carouselArray = [];
     for(let arrayCount = 0; arrayCount < carousel.length; arrayCount++){
         carouselArray.push(arrayCount);
     }
@@ -40,7 +40,7 @@ function findWidth(){
     // Adds in correct amount of carousel boxes -- makes them visible with this class
     for (let addBoxes = 0; addBoxes < reveal; addBoxes++) {
         carousel[addBoxes].classList.add("card-carousel-vis");
-        carousel[addBoxes].classList.remove("transition-fade-out")
+        carousel[addBoxes].classList.remove("transition-fade-out");
     }
 }
 
@@ -83,8 +83,8 @@ function carouselButton (button) {
                 document.getElementsByClassName("card-carousel")[carouselArray[addVisible]].classList.add("card-carousel-vis");
                 document.getElementsByClassName("card-carousel")[carouselArray[addVisible]].classList.remove("transition-fade-out");
             }
-        },500)
-    })
+        },500);
+    });
 }
 // Calls carousel to move right
 carouselButton("carousel-right");

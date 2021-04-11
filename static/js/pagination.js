@@ -43,7 +43,7 @@ function selectFeature(pagination){
         }
 
         // Sets inline height to stop collapsing on last pagination number
-        pagination.style.height = pagination.offsetHeight + "px"
+        pagination.style.height = pagination.offsetHeight + "px";
 
         // Inserts UL to DOM with all appropiate LI
         pagination.insertAdjacentElement('afterend', createUl);
@@ -56,7 +56,7 @@ function selectFeature(pagination){
             for(let paginationMax = 3; paginationMax < findPagination.length; paginationMax++){
                 pagination.parentElement.getElementsByClassName("pagination-number")[paginationMax].classList.add("make-invis");
             }
-            pagination.parentElement.getElementsByClassName("last-ellipses")[0].classList.remove("make-invis")
+            pagination.parentElement.getElementsByClassName("last-ellipses")[0].classList.remove("make-invis");
         } 
         
         // Creates Pagination functionality
@@ -64,7 +64,7 @@ function selectFeature(pagination){
         function selectPagination(paginationNumber){
             paginationNumber.addEventListener("click", function () {
                 // Find pagination number position
-                paginationPosition = 5 * (parseInt(paginationNumber.textContent)- 1);
+                let paginationPosition = 5 * (parseInt(paginationNumber.textContent)- 1);
                 let paginationLi = pagination.getElementsByTagName("li");
                 // Hides all items that are invisible
                 for(let allInvis = 0; allInvis < liLength; allInvis++ ){
@@ -88,8 +88,8 @@ function selectFeature(pagination){
 
                 // Adds seleceted class to clicked pagination number
                 paginationNumber.classList.add("pagination-selected");
-                let firstEllipLoc = paginationNumber.parentElement.getElementsByClassName("first-ellipses")[0]
-                let lastEllipLoc = paginationNumber.parentElement.getElementsByClassName("last-ellipses")[0]
+                let firstEllipLoc = paginationNumber.parentElement.getElementsByClassName("first-ellipses")[0];
+                let lastEllipLoc = paginationNumber.parentElement.getElementsByClassName("last-ellipses")[0];
                 //hides unused pagination and reveals appropiate ellipses
                 for(let invisPagNum = 0; invisPagNum < paginationTotal; invisPagNum++){
 
@@ -112,7 +112,7 @@ function selectFeature(pagination){
                 } else if(pagNumLoc[parseInt(paginationTotal)-1].classList.contains('make-invis') != true){
                     lastEllipLoc.classList.add("make-invis");
                 }
-            })        
+            });     
         }
     }
 }

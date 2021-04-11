@@ -8,7 +8,7 @@ function useTime(updateTime){
         let time2 = document.getElementById("time2").value;
         // Updates total time by adding prep and cook time
         document.getElementById("time3").value = parseInt(time1) + parseInt(time2);
-    })
+    });
 }
 
 // ---- Create/Remove boxes for user input of ingredients/steps
@@ -38,8 +38,8 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         let createDivRow = document.createElement("div");
         createDivRow.className = "row no-gutters align-items-center step-ingredient-spacing";
         let createSpan = document.createElement("span");
-        createSpan.className = "col-1"
-        let createSpanP = document.createElement("p")
+        createSpan.className = "col-1";
+        let createSpanP = document.createElement("p");
         createSpanP.textContent = arrayIngredientLength + ". ";
         let createInput = document.createElement(inputOrTextarea);
         createInput.className = "col-11";
@@ -65,19 +65,19 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].getElementsByTagName("span")[0].appendChild(createSpanP);
         
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
-    })
+    });
 
     // Removes last box in list and updates total box count when remove button is clicked
     document.querySelector(removeButton).addEventListener("click", function() {
         // Defensive, forces users to keep a single box on page
         if (arrayIngredientLength > 1){
-            childTotal = addRemoveLocation.children.length;
+            let  childTotal = addRemoveLocation.children.length;
             addRemoveLocation.children[childTotal-1].remove();
             // Updates box count variable and counters
             arrayIngredientLength--;
             updateBoxCounters();
         }
-    })
+    });
 }
 //Creates functionality for ingredient add/remove buttons
 createRemoveFormBoxes("ingredientAddRemoveLocation", "ingredientNumber", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton", "input", "recipeIngredientsTotal" ,".countIngredients");
@@ -93,4 +93,4 @@ document.getElementById("custom-button").addEventListener("click", function(subm
     if (document.getElementById("avatar").value != ""){
         document.getElementById("avatar_file_valid").value = true;
     }
-})
+});

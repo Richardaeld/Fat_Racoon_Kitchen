@@ -23,4 +23,4 @@ document.getElementById("avatar").addEventListener("change", function() {
         loc.classList.remove("invalid");
         document.getElementById("avatar_valid").classList.add("make-invis");
     }
-})
+});

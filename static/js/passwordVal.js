@@ -24,7 +24,7 @@ function selectPasswordComapre(comparePassLoc) {
             finalValidation(passwordCheck1, checkLengthPass);
             finalValidation(passwordCheck2, checkLengthPassCheck);
         }
-    })
+    });
 }
 
 // ---- Form Validation for passwords
@@ -42,7 +42,7 @@ const matchTypeDotEdu = /.edu/;
 const matchTypeDotNet = /.net/;
 const matchTypeDotOrg = /.org/;
 
-var formIsValid = false
+var formIsValid = false;
 // ----- Final Validation check
 // Sets or removes invalid bubble and invalid attributes
 function finalValidation() {
@@ -53,7 +53,7 @@ function finalValidation() {
 
         let checkPLength = finalVal.parentElement.getElementsByTagName("p");
         //enables and disables validation bubble according to if input is valid or not
-        for (i=0; i< checkPLength.length; i++){
+        for (let i=0; i< checkPLength.length; i++){
             // Sets a validation variable as it checks over all possible invalidation points
             if(finalVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis") == false){
                 formIsValid = false;
@@ -86,11 +86,11 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
         // Makes validation bubble visible on focus 
         baseVal.addEventListener("focus", function() {
             baseVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis");
-        })
+        });
         // Makes validation bubble hidden on blur
         baseVal.addEventListener("blur", function() {
             baseVal.parentElement.getElementsByTagName("div")[0].classList.add("make-invis");
-        })
+        });
 
         // Applies validation check on every keyup stroke
         baseVal.addEventListener("keyup", function () {
@@ -131,11 +131,11 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 }
 
                 // Validates for email suffix '.com' or '.edu'
-                let emailLength = baseVal.value.length
+                let emailLength = baseVal.value.length;
                 if  (emailLength >=4 ){
                     var checkEmailValue = "";
                     // Find last 4 digits
-                    for (i=3; i>=0; i--){
+                    for (let i=3; i>=0; i--){
                         checkEmailValue += baseVal.value[(emailLength-1)-i];
                     }
                     if (checkEmailValue.match(matchTypeDotCom)){ // checks for .com
@@ -145,7 +145,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                     } else if (checkEmailValue.match(matchTypeDotNet)) {// checks for .net
                         baseValPara[1].classList.add("make-invis");
                     }else if (checkEmailValue.match(matchTypeDotOrg)) {// checks for .org
-                        baseValPara[1].classList.add("make-invis")
+                        baseValPara[1].classList.add("make-invis");
                     }else {
                         baseValPara[1].classList.remove("make-invis");
                     }
@@ -166,16 +166,16 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
             formIsValid = true;
             finalValidation();
 
-        })
+        });
     }
 }
 
 //----------------------email validation
-baseValidation(".emailValidation", "email", "keyup") // keyboard
+baseValidation(".emailValidation", "email", "keyup"); // keyboard
 //baseValidation(".emailValidation", "email", "touchstart") // touchscreen // never implemented
 //---------------------- name validation
-baseValidation(".nameValidation", "name", "keyup") // keyboard
+baseValidation(".nameValidation", "name", "keyup"); // keyboard
 //baseValidation(".nameValidation", "name", "touchstart") // touchscreen // never implemented
 //----------------------password validation
-baseValidation(".passwordSets", "password", "keyup") // keyboard
+baseValidation(".passwordSets", "password", "keyup"); // keyboard
 //baseValidation(".passwordSets", "password", "touchstart") // touchscreen // never implemented

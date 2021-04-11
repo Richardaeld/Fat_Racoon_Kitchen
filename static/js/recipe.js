@@ -1,6 +1,6 @@
 // ---- Cross out ingredients and steps
 // Finds all list items under class .recipe-lists and assigns text decoration line-through or none
-AllLists = document.querySelectorAll(".recipe-lists > li");
+var AllLists = document.querySelectorAll(".recipe-lists > li");
 AllLists.forEach(list);
 function list (listItem){
     // Event cycles through text decoration for crossout effect
@@ -18,7 +18,7 @@ function list (listItem){
             itemLoc1.parentElement.getElementsByTagName("input")[0].checked = true;
 
         }
-    })
+    });
 }
 
 // ---- Delete Modal
@@ -27,12 +27,12 @@ if (document.getElementById("deleteModal") != null){
     document.getElementById("deleteModal").addEventListener("click", function() {
         document.getElementsByClassName("custom-modal-delete")[0].classList.remove("make-invis");
         document.getElementById("recipeName").focus();
-    })
+    });
 }
 // Close Delete Modal with background click
 document.getElementsByClassName("modal-background")[1].addEventListener("click", function () {
     document.getElementsByClassName("custom-modal-delete")[0].classList.add("make-invis");
-})
+});
 
 // Delete form validation logic
 document.getElementById("recipeName").addEventListener("keyup", function() {
@@ -48,4 +48,4 @@ document.getElementById("recipeName").addEventListener("keyup", function() {
     if (check == userinput){
         modalButton.removeAttribute("disabled");
     }
-})
+});

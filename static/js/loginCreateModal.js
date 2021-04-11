@@ -12,16 +12,16 @@ function popUpModal(openModal){
 // Removes login/create modal if background clicked
 document.getElementsByClassName("modal-background")[0].addEventListener("click", function() {
     modal.classList.add("make-invis");
-})
+});
 
 // Creates a depressed look if button clicked
 button.addEventListener("click", function () {
     button.classList.add("custom-button-press");
-})
+});
 
 // ---- Login modal tab selector (login or create)
 // Makes the tab for login and create account clickable and switch between login and create account areas
-modaltabs = document.querySelectorAll(".tab");
+var modaltabs = document.querySelectorAll(".tab");
 modaltabs.forEach(tabSelect);
 function tabSelect(modalTab) {
     modalTab.addEventListener("click", function () {
@@ -30,7 +30,7 @@ function tabSelect(modalTab) {
         // Applies login settings
         if(modalTab.textContent.trim() === "Login"){
             // Removes all create account material form modal
-            for (removeCreate = 0; removeCreate < totalCreate - 1; removeCreate++){
+            for (let removeCreate = 0; removeCreate < totalCreate - 1; removeCreate++){
                 let tabInputLoc = document.getElementsByClassName("create-account")[removeCreate].getElementsByTagName("input")[0]; // user input value loc
                 tabLoc[removeCreate].classList.add("make-invis");
                 tabInputLoc.removeAttribute("required");
@@ -44,13 +44,13 @@ function tabSelect(modalTab) {
             // Makes sure username does not auto fail validation
             document.getElementById("name").parentElement.getElementsByTagName("p")[0].classList.add("make-invis");
             // Checks Validation
-            formIsValid = true;
+            var formIsValid = true;
             finalValidation();
 
         // Applies create settings
         } else {
             // Adds all create account material to modal
-            for (addCreate = 0; addCreate < totalCreate - 1; addCreate++){
+            for (let addCreate = 0; addCreate < totalCreate - 1; addCreate++){
                 tabLoc[addCreate].classList.remove("make-invis");
                 tabLoc[addCreate].getElementsByTagName("input")[0].setAttribute("required", "");
             }
