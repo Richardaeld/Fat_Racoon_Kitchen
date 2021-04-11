@@ -276,7 +276,7 @@ takes to develope such code is important.
 + GitHub houses the master branch, [here](https://github.com/Richardaeld/Fat_Racoon_Kitchen)
 
 ## Scalability
-+ Add ability to search for lazy or grandparent classic
++ Add ability to search for lazy or grandparent classic**
 + backend varify of image size and type instead of JS validation
 + Adding user selectable filters to search bar
 + Create a user commit form for the recipes. This would give a better sense of community for returning users
@@ -382,6 +382,8 @@ techniques to remove it, including !important. Changing the layer or to mouseove
     + Suffix validation had to be expanded to include ".net" and ".org".
 + Searching mongo DB using collection.db.find("$text": "$search": <value>) unable to return booleans.  This is an issue with users being 
 able to search "lazy" or "grandparent" tags. 
+    + A browse button was added that searches for "lazy" and "grandparent" using the equals operator ("$eq")
+    + This search requires a specific operator so a button was designed for users. This would allow users to search for these tags and doesnt make the search engine unnecessarily complex
 
 # Deployment
 ## Setup structure on GitPod for developers
