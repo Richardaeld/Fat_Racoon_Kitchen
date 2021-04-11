@@ -266,7 +266,7 @@ takes to develope such code is important.
 + [Balsamiq](https://balsamiq.com/) was used for the planning process.
 + Wireframes were made for all predetermined size variations of the webpage.
 + Each wireframe contains curly brackets that give a description of its contents.
-+ [Click here to view all wireframes associated to this project.](assets/readme/wireframe "Location of wireframes")
++ [Click here to view all wireframes associated to this project.](static/readme/wireframe "Location of wireframes")
 
 
 ### Live Demo
