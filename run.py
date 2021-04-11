@@ -280,6 +280,7 @@ def recipe(recipeId):
             # --Loads-- user information
             userInfo = mongo.db.users.find_one({"email": session['user']})
             chef = userInfo['username']
+            admin = userInfo['admin']
 
             # --Loads/Updates-- if recipe is favorite of user
             if len(userInfo["favorites"]) == 0:
@@ -323,6 +324,7 @@ def recipe(recipeId):
 
     # --Defensive-- Sets blank values if user isnt signed in
     except KeyError:
+        admin = False
         favoriteRecipe = "None"
         chef = ""
 
@@ -340,7 +342,7 @@ def recipe(recipeId):
     return render_template(
         "recipe.html",
         recipeInfo=recipeInfo, favoriteRecipe=favoriteRecipe,
-        chef=chef, recipeSteps=recipeSteps)
+        chef=chef, recipeSteps=recipeSteps, admin=admin)
 
 
 # Code customized from Pretty Printed
