@@ -270,7 +270,10 @@ takes to develope such code is important.
 
 
 ### Live Demo
-*insert image of live demo*
+![Demo of the Index page](static/readme/demo/demo_index-large.png "Demo of the Index page")
++ A fully functioning demo can be found on Heroku, [here](https://fat-raccoon.herokuapp.com/ "Deplayment location").
++ [GitHub's](https://github.com/) IDE [GitPod](https://www.gitpod.io/) was used for the construction process.
++ GitHub houses the master branch, [here](https://github.com/Richardaeld/Fat_Racoon_Kitchen)
 
 ## Scalability
 + Add ability to search for lazy or grandparent classic
@@ -278,6 +281,7 @@ takes to develope such code is important.
 + Adding user selectable filters to search bar
 + Create a user commit form for the recipes. This would give a better sense of community for returning users
 + Allows users to rate each others recipes
++ Improve email validation to accept a wider ranger of email suffixes (ex. regional suffix, .uk, .fr, .de)
 
 # Technology Languages
 + HTML - Skeleton frame of the application.
@@ -367,11 +371,15 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 + Social links on footer have a triggering bug. They use JS mouseenter to trigger and trigger improperly due to multiple css layers and a margin. The margin is persisting through multiple
 techniques to remove it, including !important. Changing the layer or to mouseover does not fix the excessive triggering. 
 + User search box, on medium and small responsiveness, creates a line below the main navigation bar and drops the search bar down to that new line 
+    + A Solution to have search bar collapse has been attempted however this generated poor UX and various targeting bugs 
 + Safari browser Bugs
     + When safari decides sticky-note-right's height is to large the box shadow of its :before has a layer error and overlaps the content of sticky-note-right
     + Input of user search bar is larger than it should be, giving the item bad UX
 
 ## Other Problems
++ Email validation
+    + Validation origianlly used suffix validation of ".com" and ".edu". However this validation alienated users from making accounts  
+    + Suffix validation had to be expanded to include ".net" and ".org".
 + Searching mongo DB using collection.db.find("$text": "$search": <value>) unable to return booleans.  This is an issue with users being 
 able to search "lazy" or "grandparent" tags. 
 
@@ -423,7 +431,7 @@ able to search "lazy" or "grandparent" tags.
 + create index (**notes**)
     + in bash "python3"
     + in bash "from *app name* import mongo"
-    + mongo.db.*collection*create_index([("name", "text"), ("name2","text")])
+    + mongo.db.*collection*.create_index([("name", "text"), ("name2","text")])
 ### Connecting to DB
 + find URI
     + go to cluster
