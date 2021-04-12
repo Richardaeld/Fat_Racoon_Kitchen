@@ -375,6 +375,11 @@ techniques to remove it, including !important. Changing the layer or to mouseove
 + Safari browser Bugs
     + When safari decides sticky-note-right's height is to large the box shadow of its :before has a layer error and overlaps the content of sticky-note-right
     + Input of user search bar is larger than it should be, giving the item bad UX
++ Sticky Note shadow - depending on the magnification used (with a range of 50% - 200%) the :before shadow used will show bad UX ( currently: 80% <)
+    + Previously Created "standard" container sizes styles "*size*-container-height" and have them scale with the responsiveness of the site
+    + Give empty containers a mininum height
+    + Give full containers a set max height 
+        + Recipe steps and recipe ingredients of recipes page have no max height set but have been scrutinized until they provided a good UX aside from bug labeled in **Safari browser Bugs**
 
 ## Other Problems
 + Email validation
