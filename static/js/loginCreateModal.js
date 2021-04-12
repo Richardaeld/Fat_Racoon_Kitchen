@@ -40,11 +40,18 @@ function tabSelect(modalTab) {
             //sets submit button value
             document.getElementById("custom-button").value = "Login";
             // Undoes auto fail for password check so it does not disrupt user login on login mode
+            document.getElementById("passwordCheck1").parentElement.getElementsByTagName("p")[1].classList.add("make-invis");
+            document.getElementById("passwordCheck2").parentElement.getElementsByTagName("p")[0].classList.add("make-invis");
             document.getElementById("passwordCheck2").parentElement.getElementsByTagName("p")[1].classList.add("make-invis");
             // Makes sure username does not auto fail validation
             document.getElementById("name").parentElement.getElementsByTagName("p")[0].classList.add("make-invis");
             // Checks Validation
-            var formIsValid = true;
+            formIsValid = true;
+            
+            // baseValidation(".emailValidation", "email", "keyup"); // keyboard
+            // baseValidation(".nameValidation", "name", "keyup"); // keyboard
+            // baseValidation(".passwordSets", "password", "keyup"); // keyboard
+
             finalValidation();
 
         // Applies create settings
@@ -58,10 +65,15 @@ function tabSelect(modalTab) {
             document.getElementById("custom-button").value = "Create";
             // Makes sure confirm password does not auto validate
             document.getElementById("passwordCheck2").parentElement.getElementsByTagName("p")[1].classList.remove("make-invis");
+            document.getElementById("passwordCheck2").parentElement.getElementsByTagName("p")[0].classList.remove("make-invis");
             // Makes sure username does not auto validate
             document.getElementById("name").parentElement.getElementsByTagName("p")[0].classList.remove("make-invis");
             // Checks Validation
+            formIsValid = true;
             finalValidation();
+            // baseValidation(".emailValidation", "email", "keyup"); // keyboard
+            // baseValidation(".nameValidation", "name", "keyup"); // keyboard
+            // baseValidation(".passwordSets", "password", "keyup"); // keyboard
         }
 
         // Changes the filter from Login to create account on click
