@@ -96,7 +96,10 @@
 
             <!-- {% if recipe != "none" %} -----------------------   I crashed index this -->
             <!-- Polaroid picture -->
+
+            
             {% for recipe in recipeHeader %}
+            {% if recipe.avatar %}
             <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer generic-box-shadow blank-anchor remove-top-margin">
                 <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
                     <div class="polaroid-picture polaroid-picture-classic">
@@ -112,6 +115,13 @@
                     </div>
                 </a>
             </div>
+            {% else %}
+            <div class="col-5 col-md-5 col-lg-2 col-xl-2 sticky-note sticky-note-right">
+                <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow">  <!-- ---------------Check me and add container height if needed  -->
+                    <p class="col">My chef, {{ recipe.created_by.title() }}, hasn't uploaded an image of {{ recipe.name }} yet :'(</p>
+                </div>
+            </div>
+            {%endif%}
             {% endfor %}
             <!-- {% endif %} -->
         </div>
