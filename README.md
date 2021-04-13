@@ -379,7 +379,6 @@ techniques to remove it, including !important. Changing the layer or to mouseove
     + Previously Created "standard" container sizes styles "*size*-container-height" and have them scale with the responsiveness of the site
     + Give empty containers a mininum height
     + Give full containers a set max height 
-        + Recipe steps and recipe ingredients of recipes page have no max height set but have been scrutinized until they provided a good UX aside from bug labeled in **Safari browser Bugs**
 
 ## Other Problems
 + Email validation
