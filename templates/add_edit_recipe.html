@@ -8,13 +8,13 @@
                 {% if recipeId == "new"%}
                 <a href="{{ url_for('profile') }}">
                     <div class="sticky-note-inner-div">
-                        <h6 class="reenie-text">Back</h6>
+                        <h6>Back</h6>
                     </div>
                 </a>
                 {% else %}
                 <a href="{{ url_for('recipe', recipeId=recipeId) }}">
                     <div class="sticky-note-inner-div">
-                        <h6 class="reenie-text">Back</h6>
+                        <h6>Back</h6>
                     </div>
                 </a>
                 {% endif %}
