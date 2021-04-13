@@ -90,7 +90,7 @@ def index():
 
     # --Grandparent Classics--
     classicRecipes = list(mongo.db.recipes.find(
-        {"grandparent": True}, {"name": 1, "avatar": 1}))
+        {"grandparent": True}, {"name": 1, "avatar": 1, "created_by": 1}))
     recipeHeader = create_random_recipe_lists(3, classicRecipes)
 
     # --Random Recipe--
