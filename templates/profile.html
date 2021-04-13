@@ -8,7 +8,7 @@
             <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
                 <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
                     <div class="sticky-note-inner-div">
-                        <h6 class="reenie-text">Share Recipe</h6>
+                        <h6>Share Recipe</h6>
                     </div>
                 </a>
             </div>
@@ -17,7 +17,7 @@
             <div class="col-4 col-lg-2 sticky-note-no-shadow custom-button profile-button blank-anchor custom-js-button">
                 <a href="{{ url_for('edit_user_info') }}">
                     <div class="sticky-note-inner-div">
-                        <h6 class="reenie-text">Update Profile</h6>
+                        <h6>Update Profile</h6>
                     </div>
                 </a>
             </div>
@@ -80,7 +80,7 @@
             <!-- List location of uploads -->
             {% for upload in uploaded %}
                 {% if upload[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
-                    <p class="reenie-text"><a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a></p>
+                    <p class="indie-text"><a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a></p>
                 {% endif %}
             {% endfor %}
         </div>
@@ -98,7 +98,7 @@
             {% for favorite in favorites %}
                 {% if favorite %}
                     {% if favorite[0] + 1 < 11 %}
-                        <p class="reenie-text"><a href="{{ url_for('recipe', recipeId=favorite[1][0] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a></p>
+                        <p class="indie-text"><a href="{{ url_for('recipe', recipeId=favorite[1][0] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a></p>
                     {% endif %}
                 {% endif %}
             {% endfor %}
@@ -117,7 +117,7 @@
             {% for recent in recents %}
                 {% if recent %}
                     {% if recent[0] + 1 < 11 %}
-                        <p class="reenie-text"><a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a></p>
+                        <p class="indie-text"><a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a></p>
                     {% endif %}
                 {% endif %}
             {% endfor %}
