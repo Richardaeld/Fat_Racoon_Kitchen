@@ -41,7 +41,7 @@
                                 {% if featureRecipe.feature == feature.name %}
                                     <li>
                                         <a href="{{ url_for('recipe', recipeId=featureRecipe._id) }}">
-                                            <p>--{{ featureRecipe.name }}</p>
+                                            <p>--{{ featureRecipe.name.title() }}</p>
                                         </a>
                                     </li>
                                 {%endif%}
@@ -97,28 +97,28 @@
             <!-- {% if recipe != "none" %} -----------------------   I crashed index this -->
             <!-- Polaroid picture -->
 
-            
+
             {% for recipe in recipeHeader %}
-            {% if recipe.avatar %}
+            {% if recipe[1].avatar %}
             <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer generic-box-shadow blank-anchor remove-top-margin">
-                <a href="{{ url_for('recipe', recipeId=recipe._id) }}">
+                <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
                     <div class="polaroid-picture polaroid-picture-classic">
                         <!-- defensive layer to prevent crash -->
-                        {% if recipe.avatar != none %}
+                        {% if recipe[1].avatar != none %}
                             <!-- Image of recipe -->
-                            <img src="{{ url_for('avatar', avatar_image=recipe.avatar) }}" alt="Polaroid picture of {{ recipe.name }}">
+                            <img src="{{ url_for('avatar', avatar_image=recipe[1].avatar) }}" alt="Polaroid picture of {{ recipe[1].name }}">
                         {% endif %}
                     </div>
                     <!-- Name of Recipe -->
                     <div>
-                        <h6>{{ recipe.name }}</h6>
+                        <h6>{{ recipe[1].name }}</h6>
                     </div>
                 </a>
             </div>
             {% else %}
             <div class="col-5 col-md-5 col-lg-2 col-xl-2 sticky-note sticky-note-right">
                 <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow">  <!-- ---------------Check me and add container height if needed  -->
-                    <p class="col">My chef, {{ recipe.created_by.title() }}, hasn't uploaded an image of {{ recipe.name }} yet :'(</p>
+                    <p class="col">My chef, {{ recipe[1].created_by.title() }}, hasn't uploaded an image of {{ recipe[1].name }} yet :'(</p>
                 </div>
             </div>
             {%endif%}
@@ -244,19 +244,19 @@
                             <span class="col-12 col-sm-4">
                                 <span class="row no-gutters">
                                     <h6 class="col-6 col-sm-12">Prep</h6>
-                                    <p class="col-6 col-sm-12"><strong>{{ recipeOfDay.time[0] }}</strong> minutes</p>
+                                    <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeOfDay.time[0] }}</strong> minutes</p>
                                 </span>
                             </span>
                             <span class="col-12 col-sm-4">
                                 <span class="row no-gutters">
                                     <h6 class="col-6 col-sm-12">Cook</h6>
-                                    <p class="col-6 col-sm-12"><strong>{{ recipeOfDay.time[1] }}</strong> minutes</p>
+                                    <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeOfDay.time[1] }}</strong> minutes</p>
                                 </span>
                             </span>
                             <span class="col-12 col-sm-4">
                                 <span class="row no-gutters">
                                     <h6 class="col-6 col-sm-12">Total</h6>
-                                    <p class="col-6 col-sm-12"><strong>{{ recipeOfDay.time[2] }}</strong> minutes</p>
+                                    <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeOfDay.time[2] }}</strong> minutes</p>
                                 </span>
                             </span>
                         </span>
