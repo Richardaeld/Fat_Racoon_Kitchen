@@ -7,6 +7,7 @@ signInModal.forEach(popUpModal);
 function popUpModal(openModal){
     openModal.addEventListener("click", function () {
         modal.classList.remove("make-invis");
+        document.getElementById("email").focus()
     });
 }
 // Removes login/create modal if background clicked
@@ -37,6 +38,7 @@ function tabSelect(modalTab) {
                 tabInputLoc.setAttribute("value", "");
                 tabInputLoc.value = "";
             }
+            document.getElementById("email").focus();
             //sets submit button value
             document.getElementById("custom-button").value = "Login";
             // Undoes auto fail for password check so it does not disrupt user login on login mode
@@ -61,6 +63,7 @@ function tabSelect(modalTab) {
                 tabLoc[addCreate].classList.remove("make-invis");
                 tabLoc[addCreate].getElementsByTagName("input")[0].setAttribute("required", "");
             }
+            document.getElementById("name").focus();
             // Sets submit button to create value
             document.getElementById("custom-button").value = "Create";
             // Makes sure confirm password does not auto validate
