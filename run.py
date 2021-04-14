@@ -11,6 +11,12 @@ if os.path.exists("env.py"):
     import env
 
 
+# Custom library made for this project
+import rae
+# --Sets Head Chef--
+head_chef = "fat_raccoon"
+
+
 app = Flask(__name__)
 
 
@@ -24,159 +30,76 @@ mongo = PyMongo(app)
 
 @app.route("/", methods=("GET", "POST"))
 def index():
-    # --Sets Head Chef--
-    headChef = "fat_raccoon"
-    # --Counts and Loads-- total recipes from head chef
-    chef = mongo.db.users.find_one({"username": headChef})
-    allRecipes = list(mongo.db.recipes.find(
-        {"created_by": headChef},
-        {"name": 1, "feature": 1, "time": 1, "avatar": 1,
-            "text": 1, "lazy": 1, "created_by": 1}))
+    # --Loads-- head chef and all recipes from head chef
+    chef = mongo.db.users.find_one({"username": head_chef})
+    allRecipes = rae.search_mongo_recipes_no_bloat(
+        "list", "created_by", head_chef)
 
     # --Loads-- features for carousel
     features = list(mongo.db.feature.find())
 
-    # --Creates(function) a randomized list for display
-    def create_random_recipe_lists(total_return, allRecipes):
-        # In no recipes provided returns a empty list
-        if len(allRecipes) == 0:
-            return allRecipes
-        return_list = []  # return list
-        interimTotal = []  # holds random indexes
-        if len(allRecipes) > 0:
-            # keeps looping to find all or set number of recipes
-            while True:
-                # Builds a random number list
-                randomRecipeIndex = random.randrange(1, len(allRecipes) + 1)
-                # Gets numbers
-                if len(interimTotal) > 0:
-                    iteration = 1
-                    for recipe in interimTotal:
-                        # skip matching indexes
-                        if randomRecipeIndex == recipe:
-                            iteration += 1
-                            break
-                        # Add unique indexes to list
-                        elif len(interimTotal) == iteration:
-                            interimTotal += [randomRecipeIndex]
-                        iteration += 1
-                else:
-                    interimTotal += [randomRecipeIndex]
-
-                if len(interimTotal) > total_return or len(interimTotal) == len(allRecipes):
-                    break
-
-            # builds recipe list with random numbers
-            iteration = 1
-            for recipeNumber in interimTotal:
-                for recipe in allRecipes:
-                    if recipeNumber == iteration:
-                        return_list += [recipe]
-                        iteration = 1
-                        break
-
-                    iteration += 1
-        return return_list
-
-    # --Index Card Carousel-- creates a list for each feature ingredient
+    # --Loads-- Index Card Carousel-- creates a list for each feature
     featureRecipes = []  # List for all recipes used
-    for feature in features:  # Loops through all features
-        tempRecipes = []
-        for recipe in allRecipes:  # Matches recipes with feature
-            if(recipe["feature"] == feature["name"]):
-                tempRecipes += [recipe]
-        # Adds recipe/feature matches to list in random order
-        featureRecipes += create_random_recipe_lists(2, tempRecipes)
+    featureRecipes = rae.match_mongo_cursors(features, "name", allRecipes, "feature")
 
-    # --Grandparent Classics--
-    classicRecipes = list(mongo.db.recipes.find(
-        {"grandparent": True}, {"name": 1, "avatar": 1, "created_by": 1}))
-    recipeHeader = create_random_recipe_lists(3, classicRecipes)
+    # --Loads-- Grandparent Classics--
+    classicRecipes = rae.search_bool_return("grandparent")
+    recipeHeader = rae.create_random_recipe_lists(3, classicRecipes)
 
-    # --Random Recipe--
-    recipeOfDay = create_random_recipe_lists(0, allRecipes)
-
-    # --Search-- for recipes
-    # Returns a user search
-    if request.method == "POST" and request.form.get("formType") == "search":
-        print("Im a search function")
-        return redirect(url_for(
-            "search_bar_returns", search=request.form.get("userSearch")))
-
-    # --Login-- information
-    if request.method == "POST" and request.form.get(
-            "custom-button-login") == "Login":
-        print("Im a login and not a create function running")
-        username = mongo.db.users.find_one(
-            {"email": request.form.get("email").lower()})
-        # If username exists, checks password
-        if username:
-            if check_password_hash(
-                    username["password"], request.form.get("password")):
-                session["user"] = request.form.get("email").lower()
-                flash("Welcome back!")
-                return redirect(url_for("index"))
-            else:
-                flash("*meta password* Login credentials incorrect!")
-                return redirect(url_for("index"))
-        else:
-            flash("*meta name*Login credentials incorrect!")
-
-    # --Create Account-- information
-    if request.method == "POST" and request.form.get(
-            "custom-button-login") == "Create":
-        print("Im a create function")
-
-        # Check to be sure email doesnt already exist in DB
-        userEmailTaken = mongo.db.users.find_one(
-            {"email": request.form.get("email").lower()})
-        if userEmailTaken:
-            flash("This email was already taken!")
-            return redirect(url_for("index"))
-
-        # Check to be sure username doesnt already exist in DB
-        userNameTaken = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-        if userNameTaken:
-            flash("This username was already taken!")
-            return redirect(url_for("index"))
-
-        # Checks to be sure passwords match
-        if request.form.get("password") != request.form.get("passwordCheck"):
-            flash("Passwords do not match")
-            return redirect(url_for("index"))
-
-        # Gather form and blank information
-        create = {
-            "username": request.form.get("name").lower(),
-            "email": request.form.get("email").lower(),
-            "password": generate_password_hash(
-                request.form.get("passwordCheck")),
-            "avatar": None,
-            "avatar_id": None,
-            "bio": "",
-            "admin": False,
-            "recents": [],
-            "favorites": [],
-            "date": datetime.datetime.now()
-        }
-        mongo.db.users.insert_one(create)
-
-        # Create session for user name
-        session["user"] = request.form.get("email").lower()
-        flash("Welcome to the Fat Raccoon Family!")
-        flash("Please take a moment to update your profile with a personaized bio and image")
-        return redirect(url_for("profile", username=session['user']))
+    # -- Loads-- Random Recipe-
+    recipeOfDay = rae.create_random_recipe_lists(0, allRecipes)
 
     return render_template(
         "index.html", features=features, randomRecipe=recipeOfDay,
         chef=chef, featureRecipes=featureRecipes, recipeHeader=recipeHeader)
 
 
+# --Login-- users
+@app.route("/login", methods=("GET", "POST"))
+def login():
+    if request.method == "POST" and request.form.get(
+            "custom-button-login") == "Login":
+        # Find user name and check password
+        user = rae.check_mongo_user(True, "email", "email")
+        if user[0]:
+            password = rae.check_user_password(user[2])
+        # Log user in or redirect
+        if user[0] and password:
+            session["user"] = request.form.get("email").lower()
+            flash("Welcome back!")
+            return redirect(url_for("profile", username=session['user']))
+        else:
+            flash("login credentials incorrect!")
+            return redirect(url_for("index"))
+
+
+    # ----------------------------------------------------------------------------------------I need to be made into a new create area
+    # --Create Account-- information
+    if request.method == "POST" and request.form.get(
+            "custom-button-login") == "Create":
+        # Checks submitted info to be sure values are acceptiable
+        username = rae.check_mongo_user(True, "name", "username")
+        user_email = rae.check_mongo_user(True, "email", "email")
+
+        if username and user_email:
+            # Create new user account w/out avatar
+            rae.upload_user_info("new", False)
+            # Create session for user name
+            session["user"] = request.form.get("email").lower()
+            flash("Welcome to the Fat Raccoon Family!")
+            flash("Please take a moment to personaize your profile")
+            return redirect(url_for("profile", username=session['user']))
+
+        # redirects if email or username already exist
+        else:
+            flash("Login credentials are in correct")
+            flash(username[1])
+            return redirect(url_for("index"))
+
+
 # Removes user's session
 @app.route("/logout")
 def logout():
-    # --Removes-- session for user
     session.pop("user")
     flash("You've been logged out!")
     return redirect(url_for("index"))
@@ -185,81 +108,47 @@ def logout():
 # Returns users personal profile
 @app.route("/profile", methods=("GET", "POST"))
 def profile():
+    user = rae.check_mongo_user(False, "email", session["user"])
     # --defensive code-- for deleted accouts
-    chef = mongo.db.users.find_one({"email": session['user']})
-    if chef is None:
+    if user[0]:
+        # --Creates and Loads-- user uploaded recipe list with a date sort
+        uploaded = list(enumerate(mongo.db.recipes.find(
+            {"created_by": user[2]["username"]},
+            {"name": 1}).sort("date", -1)))
+        return render_template(
+            "profile.html",
+            chef_info=user[2], uploaded=uploaded,
+            favorites=rae.create_user_recipe_list("favorites", user[2]),
+            recents=rae.create_user_recipe_list("recents", user[2]))
+    else:
         flash("Your session has ended please login again")
         session.pop("user")
         return redirect(url_for("index"))
-
-    # --Loads-- user Info
-    chef_info = mongo.db.users.find_one({"email": session['user']})
-
-    # --Creates and Loads-- user uploaded recipe list with a date sort
-    uploaded = list(enumerate(mongo.db.recipes.find(
-        {"created_by": chef["username"]}, {"name": 1}).sort("date", -1)))
-
-    # --Creates(function)-- lists for user favorites and recents
-    # Keeps Items in order opposed to mongo "$or" operator
-    def create_user_recipe_list(recent_fav):
-        recipe_list = []
-        if len(chef_info[recent_fav]) > 0:
-            for recipe in chef_info[recent_fav]:
-                recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
-                if recipe:
-                    recipe_list += [[recipe["_id"], recipe["name"]]]
-        recipe_list = list(enumerate(recipe_list))
-        return (recipe_list)
-
-    return render_template(
-        "profile.html", chef_info=chef_info,
-        uploaded=uploaded,
-        favorites=create_user_recipe_list("favorites"),
-        recents=create_user_recipe_list("recents"))
 
 
 # Changes favorite status of recipe and returns user to recipe's page
 @app.route("/recipe/<recipeId>/<favoriteChange>", methods=("GET", "POST"))
 def addFavorite(recipeId, favoriteChange):
-    # --Loads-- Recipe and user info
+    # --Loads-- Recipe, user, favorite info
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
-    user = mongo.db.users.find_one({"email": session["user"]}, {
-        "username": 1, "favorites": 1})
-    chef = user["username"]
+    userInfo = mongo.db.users.find_one({"email": session["user"]})
+    favoriteChange = (
+        rae.check_for_dups(userInfo["favorites"], recipeInfo["_id"]))[0]
+    newFav = userInfo["favorites"]
 
-    # --Loads-- steps of recipe
-    recipeSteps = list(enumerate(recipeInfo["steps"]))
-
-    # --Updates-- string to boolean
-    newFav = []
-    if favoriteChange == "True":
-        favoriteChange = True
-    else:
-        favoriteChange = False
-        newFav += [recipeInfo["_id"]]
-
-    checkFav = user["favorites"]
-    # --Creates-- user favorite list to upload to DB
-    # Removes any duplicated or unfavorited recipe
-    for removeFav in checkFav:
-        if removeFav == recipeInfo["_id"]:
-            continue
-        else:
-            newFav += [removeFav]
-
-    # --updates-- boolean to opposite value for return
     if favoriteChange:
-        favoriteChange = False
-    else:
+        newFav.insert(0, recipeInfo["_id"])
         favoriteChange = True
+    else:
+        newFav.remove(recipeInfo["_id"])
+        favoriteChange = False
 
-    mongo.db.users.update_one(
-        {"_id": user["_id"]},
-        {"$set": {"favorites": newFav}})
+    rae.update_mongo("user", userInfo["_id"], "favorites", newFav)
     return render_template(
         "recipe.html",
         recipeId=recipeInfo["_id"], recipeInfo=recipeInfo,
-        favoriteRecipe=favoriteChange, chef=chef, recipeSteps=recipeSteps)
+        favoriteRecipe=favoriteChange, recipeSteps=list(enumerate(recipeInfo["steps"])),
+        userInfo=userInfo)
 
 
 # Returns recipe and auto adjusts recent list for logged in users
@@ -273,76 +162,35 @@ def recipe(recipeId):
     # --Loads-- recipe to display
     recipeInfo = mongo.db.recipes.find_one({"_id": ObjectId(recipeId)})
 
-    # --Defensive-- Keeps page from crashing if user isnt signed in
+    # --Defensive-- Sets blank values if user isnt signed in
     try:
-        # --Loads-- Extra user signed in information
         if session["user"]:
             # --Loads-- user information
             userInfo = mongo.db.users.find_one({"email": session['user']})
-            chef = userInfo['username']
-            admin = userInfo['admin']
 
-            # --Loads/Updates-- if recipe is favorite of user
-            if len(userInfo["favorites"]) == 0:
-                favoriteRecipe = False
-            favoriteRecipe = False
-            for fav in userInfo["favorites"]:
-                if fav == recipeInfo["_id"]:
-                    favoriteRecipe = True
-                    break
+            # --Loads-- if recipe is favorite of user
+            favoriteRecipe = not rae.check_for_dups(
+                userInfo["favorites"], recipeInfo["_id"])[0]
 
-            # --Creates-- base list for user recents
-            findRecent = []
-            if len(userInfo["recents"]) == 0:
-                findRecent = [recipeInfo["_id"]]
+            # --Creates-- Updated list for user recents
+            non_dup = rae.check_for_dups(
+                userInfo["recents"], recipeInfo["_id"])
+            if non_dup[0]:
+                findRecent = ([recipeInfo["_id"]] + userInfo["recents"])
             else:
-                findRecent = (
-                    [recipeInfo["_id"]] + userInfo["recents"])
+                findRecent = userInfo["recents"]
+                findRecent.remove(non_dup[1])
+                findRecent.insert(0, non_dup[1])
+            rae.update_mongo("user", userInfo["_id"], "recents", findRecent)
 
-            # --Updates-- recents list by removing duplicates
-            # and giving ceiling of 10 entries
-            userRecentFinal = []
-            for final in findRecent:
-                checkPass = True
-                if len(userRecentFinal) == 0:
-                    userRecentFinal += [final]
-                for check in userRecentFinal:
-                    # Breaks when recent list is 10 entries
-                    if len(userRecentFinal) > 9:
-                        break
-                    # Skips when dupicate
-                    elif final == check:
-                        checkPass = False
-                        break
-                    # Adds to list if passes other checks
-                    elif check == userRecentFinal[-1] and checkPass is True:
-                        userRecentFinal += [final]
-
-            mongo.db.users.update_one(
-                {"email": session["user"]},
-                {"$set": {"recents": userRecentFinal}})
-
-    # --Defensive-- Sets blank values if user isnt signed in
     except KeyError:
-        admin = False
         favoriteRecipe = "None"
-        chef = ""
-
-    # --Loads-- steps of recipe
-    recipeSteps = list(enumerate(recipeInfo["steps"]))
-
-    # --Uploads-- Allows user to delete recipe
-    if request.method == "POST":
-        # Flash accepts a single string, not mutiple
-        flashStr = "You've removed your recipe " + recipeInfo['name']
-        flash(flashStr)
-        mongo.db.recipes.delete_one({"_id": ObjectId(recipeInfo["_id"])})
-        return redirect(url_for("profile"))
+        userInfo = ""
 
     return render_template(
         "recipe.html",
         recipeInfo=recipeInfo, favoriteRecipe=favoriteRecipe,
-        chef=chef, recipeSteps=recipeSteps, admin=admin)
+        userInfo=userInfo, recipeSteps=list(enumerate(recipeInfo["steps"])))
 
 
 # Code customized from Pretty Printed
@@ -351,6 +199,15 @@ def recipe(recipeId):
 @app.route('/avatar/<avatar_image>')
 def avatar(avatar_image):
     return mongo.send_file(avatar_image)
+
+
+# --Delets-- Allows user to delete recipe
+@app.route("/delete_recipe/<recipe_id>", methods=("GET", "POST"))
+def delete_recipe(recipe_id):
+    flashStr = "You've removed your recipe " + session["user"]
+    flash(flashStr)
+    mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
+    return redirect(url_for("profile"))
 
 
 # Returns a blank recipe or prepopulates a recipe to edit
@@ -578,16 +435,20 @@ def all_recipes():
         allFeatures=allFeatures, allRecipes=allRecipes)
 
 
+# --Search-- for recipes
+@app.route("/user_search", methods=("GET", "POST"))
+def user_search():
+    # Returns a user search
+    return redirect(url_for(
+        "search_bar_returns", search=request.form.get("userSearch")))
+
+
 # Returns a search based on lazy or grandparent
 @app.route("/search_bool_returns/<search>", methods=("POST", "GET"))
 def search_bool_returns(search):
-    # User's search
-    displayRecipes = list(enumerate(
-        mongo.db.recipes.find(
-            {search: {"$eq": True}},
-            {"name": 1, "feature": 1, "created_by": 1, "time": 1, "lazy": 1, "grandparent": 1})))
     return render_template(
-        "search_bar_returns.html", findRecipes=displayRecipes)
+        "search_bar_returns.html",
+        findRecipes=rae.search_bool_return(search))
 
 
 # Returns a search based on key words user uses, for: name, feature, or chef
