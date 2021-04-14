@@ -60,7 +60,7 @@
                 {% endif %}
                 <!-- Search Bar -->
                 <li class="nav-item searchBar search-bar">
-                    <form class="nav-link" method="POST" action="{{ url_for('index') }}">
+                    <form class="nav-link" method="POST" action="{{ url_for('user_search') }}">
                         <label for="userSearch">Search</label>
                         <input type="text" name="userSearch" id="userSearch1" class="make-invis user-form-search-height">
                         <input type="text" name="formType" value="search" class="make-invis" aria-hidden="true">
@@ -123,7 +123,7 @@
             {% endif %}
             <!-- Search Bar -->
             <li class="nav-item searchBar search-bar">
-                <form class="nav-link" method="POST" action="{{ url_for('index') }}">
+                <form class="nav-link" method="POST" action="{{ url_for('user_search') }}">
                     <label for="userSearch">Search</label>
                     <input type="text" name="userSearch" id="userSearch2" class="make-invis user-form-search-height">
                     <input type="text" name="formType" value="search" class="make-invis" aria-hidden="true">
