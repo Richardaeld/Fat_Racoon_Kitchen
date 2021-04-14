@@ -4,7 +4,7 @@
 <aside class="row no-gutters justify-content-center custom-modal-delete make-invis">
     <div class="col-12 modal-background"></div>
 
-    <form class="col-10 col-md-10 form-login form-delete-base generic-box-shadow yanone-text" id="delete-modal" method="POST" action="{{ url_for('recipe', recipeId=recipeInfo._id) }}">
+    <form class="col-10 col-md-10 form-login form-delete-base generic-box-shadow yanone-text" id="delete-modal" method="POST" action="{{ url_for('delete_recipe', recipe_id=recipeInfo._id) }}">
         <div class="row no-gutters">
             <div class="col-12 tab-body">
                 <div class="tab">
@@ -23,7 +23,7 @@
 <section class="row no-gutters generic-background">
 
     <!-- Allow a user to edit or delete their own recipes -->
-    {% if recipeInfo.created_by == chef or admin%}
+    {% if recipeInfo.created_by == userInfo.username or userInfo.admin %}
     <div class="col-12">
         <div class="row no-gutters justify-content-between">
             <!--  Edit recipe button -->
@@ -108,19 +108,19 @@
                                     <span class="col-12 col-sm-4">
                                         <span class="row no-gutters">
                                             <h6 class="col-6 col-sm-12">Prep </h6>
-                                            <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[0] }}</strong> minutes</p>
+                                            <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeInfo.time[0] }}</strong> minutes</p>
                                         </span>
                                     </span>
                                     <span class="col-12 col-sm-4">
                                         <span class="row no-gutters">
                                             <h6 class="col-6 col-sm-12">Cook </h6>
-                                            <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[1] }}</strong> minutes</p>
+                                            <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeInfo.time[1] }}</strong> minutes</p>
                                         </span>
                                     </span>
                                     <span class="col-12 col-sm-4">
                                         <span class="row no-gutters">
                                             <h6 class="col-6 col-sm-12">Total </h6>
-                                            <p class="col-6 col-sm-12"><strong>{{ recipeInfo.time[2] }}</strong> minutes</p>
+                                            <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeInfo.time[2] }}</strong> minutes</p>
                                         </span>
                                     </span>
                                 </div>
@@ -177,7 +177,7 @@
                                 {% for step in recipeSteps %}
                                     <li class="row no-gutters justify-content-center">
                                         <input class="col-1 checkbox-input" type="checkbox">
-                                        <h6 class="col-1 checkbox-h6">{{ step[0] + 1 }}.</h6>
+                                        <h6 class="col-1 checkbox-h6 yanone-text">{{ step[0] + 1 }}.</h6>
                                         <h6 class="col-10 checkbox-h6">{{ step[1] }}</h6>
                                     </li>
                                 {% endfor %}
