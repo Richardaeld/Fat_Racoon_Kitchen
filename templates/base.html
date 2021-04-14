@@ -18,7 +18,7 @@
     <aside class="row no-gutters justify-content-center custom-modal make-invis yanone-text">
         <div class="col-12 modal-background"></div>
 
-        <form class="col-11 col-lg-10 form-base generic-box-shadow" id="login-create-modal" method="POST" action="{{ url_for('index') }}">
+        <form class="col-11 col-lg-10 form-base generic-box-shadow" id="login-create-modal" method="POST" action="{{ url_for('login') }}">
             <div class="row no-gutters justify-content-around user-modal-spacing">
                 <!-- Header for login/create modal -->
                 <div class="col-12 tab-body yanone-text">
@@ -152,7 +152,7 @@
                 {% endif %}
                 <!-- Search Bar -->
                 <li class="nav-item searchBar search-bar">
-                    <form class="nav-link" method="POST" action="{{ url_for('index') }}">
+                    <form class="nav-link" method="POST" action="{{ url_for('user_search') }}">
                         <label for="userSearch">Search</label>
                         <input type="text" name="userSearch" id="userSearch1" class="make-invis user-form-search-height">
                         <input type="text" name="formType" value="search" class="make-invis" aria-hidden="true">
@@ -215,7 +215,7 @@
             {% endif %}
             <!-- Search Bar -->
             <li class="nav-item searchBar search-bar">
-                <form class="nav-link" method="POST" action="{{ url_for('index') }}">
+                <form class="nav-link" method="POST" action="{{ url_for('user_search') }}">
                     <label for="userSearch">Search</label>
                     <input type="text" name="userSearch" id="userSearch2" class="make-invis user-form-search-height">
                     <input type="text" name="formType" value="search" class="make-invis" aria-hidden="true">
