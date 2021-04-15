@@ -49,15 +49,15 @@
                         <div class="row no-gutters justify-content-center form-input-spacing">
                             <!--  Recipe Name  -->
                             <div class="col-12">
-                                <label type="text" for="recipeName">Recipe Name</label>
+                                <label type="text" for="name">Recipe Name</label>
                             </div>
                             <div class="col-12">
                                 {% if recipeInfo == none %}
                                 <!--  For creating a new recipe  -->
-                                <input class="form-center-text" type="text" id="recipeName" name="recipeName" value="Recipe Name">
+                                <input class="form-center-text" type="text" id="name" name="name" value="Recipe Name">
                                 {% else %}
                                 <!--  For editing a existing recipe  -->
-                                <input class="form-center-text" type="text" id="recipeName" name="recipeName" value="{{ recipeInfo.name }}">
+                                <input class="form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
                                 {% endif %}
                             </div>
                         </div>
@@ -216,15 +216,15 @@
                     <div class="col-12 form-input-spacing">
                         <div class="row no-gutters justify-content-center" >
                             <div class="col-12">
-                                <label type="text" for="recipeDescription">Recipe Description</label>
+                                <label type="text" for="text">Recipe Description</label>
                             </div>
                             <div class="col-12">
                                 {% if recipeInfo == none %}
                                 <!--  For creating a new recipe  -->
-                                    <textarea type="text" id="recipeDescription" name="recipeDescription" cols="20" rows="5">Recipe Description</textarea>
+                                    <textarea type="text" id="text" name="text" cols="20" rows="5">Recipe Description</textarea>
                                 {% else %}
                                 <!--  For editing a existing recipe  -->
-                                    <textarea type="text" id="recipeDescription" name="recipeDescription" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
+                                    <textarea type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
                                 {% endif %}
                             </div>
                         </div>
