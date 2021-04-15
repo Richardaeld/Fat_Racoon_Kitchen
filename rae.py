@@ -22,12 +22,16 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-# create a random number
+# total_number - max number(index) random can choose
+# Creates a random number starting at 1
 def get_random_number(total_numbers):
     return random.randrange(1, total_numbers + 1)
 
 
-# Remove Duplicate
+# add_item - item to check list for duplicates
+# full_list - entire list to check through
+# Finds if a duplicate exists
+# *note* duplicates return False
 def check_for_dups(full_list, add_item):
     for item in full_list:
         if item == add_item:
@@ -89,48 +93,89 @@ def create_user_recipe_list(recent_fav, chef_info):
     return (recipe_list)
 
 
-# Creates/Edits user information
-def upload_user_info(update_type, avatar):
-    # Gather form and blank information
-    user_info = {
-        "username": request.form.get("name").lower(),
-        "email": request.form.get("email").lower(),
-        "password": generate_password_hash(
-            request.form.get("passwordCheck")),
-        "avatar": None,
-        "avatar_id": None,
-        "bio": "",
-        "admin": False,
-        "recents": [],
-        "favorites": [],
-        "date": datetime.datetime.now()
-    }
-
-    if update_type:
-        mongo.db.users.insert_one(user_info)
-
-    else:
-        print("Im an edit")
+# Delete previous image
+def delete_avatar(avatar):
+    try:
+        mongo.db.fs.chunks.delete_many({"files_id": ObjectId(avatar)})
+        mongo.db.fs.files.delete_many({"_id": ObjectId(avatar)})
+    except KeyError:
+        pass
+    return
 
 
+# Upload new image
+def upload_avatar():
+    mongo.save_file(request.form.get("avatar_name"), request.files['avatar'])
+    imageDict = mongo.db.fs.files.find_one(
+        {"filename": request.form.get("avatar_name")})
+    return request.form.get("avatar_name"), imageDict["_id"]
+
+
+def create_new_password(dict_key, form_key, dictioanry):
+    dictioanry[dict_key] = generate_password_hash(
+            request.form.get(form_key))
+    return
+
+
+# avatar_tuple - return form upload_avatar
+# Create avatar dictioanry
+def create_avatar_dict(avatar_tuple):
+    return dict(avatar=avatar_tuple[0], avatar_id=avatar_tuple[1])
+
+
+# iterate_list - list of bools to get from form and add to dictionary
+# dictionary - dictioanry to add list to
+# Get bool from form
+def get_form_bool(iterate_list, dictionary):
+    for item in iterate_list:
+        dictionary[item] = bool(request.form.get(item))
+    return
+
+
+# range_total - Total of range to on form
+# dict_key - key to add list items to in dictionary
+# form_key - key to find items in form
+# dictionary - dictioanry to add list to
+# Pulls list from form and adds it to dictionary as list
+def get_form_list(range_total, dict_key, form_key, dictionary):
+    dictionary[dict_key] = []
+    for item in range(1, range_total):
+        dictionary[dict_key].append(request.form.get(form_key + str(item)))
+    return
+
+
+# pull_list - all items to pull from form
+# dictionary - dictioanry to add items to
+# Pulls multiple items from list at one time and adds to dictionary
+def get_form_items(pull_list, dictionary, is_lower):
+    for item in pull_list:
+        if is_lower:
+            dictionary[item] = request.form.get(item).lower()
+        else:
+            dictionary[item] = request.form.get(item)
+    return
+
+
+# recipe_user - str recipe or user
+# object_id - id of object to update
+# upload_dict - dictionary to be uploaded
 # Update mongo info
-def update_mongo(recipe_user, object_id, dict_key, dict_value):
+def update_mongo(
+        recipe_user, object_id, upload_dict):
     if recipe_user == "user":
         mongo.db.users.update_one(
-            {"_id": ObjectId(object_id)},
-            {"$set": {dict_key: dict_value}})
+            {"_id": ObjectId(object_id)}, {"$set": upload_dict})
+    elif recipe_user == "recipe":
+        mongo.db.recipe.update_one(
+            {"_id": ObjectId(object_id)}, {"$set": upload_dict})
     return
 
 
 # Login function
 # validate, redirect_val, redirect_inval
 def check_user_password(user):
-    # If username exists, checks password
-    if user:
-        if check_password_hash(user["password"], request.form.get("password")):
-            return True
-        else:
-            return False
+    if check_password_hash(user["password"], request.form.get("password")):
+        return True
     else:
         return False
 
@@ -153,6 +198,19 @@ def check_mongo_user(is_form, key, value):
         return False, key
 
 
+# mongo_cursor - cursor to pull dictionary entry with dict_key
+# dict_key - dictionary key of item to check
+# dict_value - dictionary value to update
+def form_check_diff(mongo_cursor, dict_key, dict_value):
+    if mongo_cursor[dict_key] != request.form.get(dict_value).lower():
+        exist = check_mongo_user(True, dict_key, dict_value)
+        if exist[0]:
+            flash_mes = dict_key.title() + " already exists! Try Again!"
+            flash(flash_mes)
+            return False
+    return True
+
+
 def search_bool_return(search):
     recipes = list(enumerate(mongo.db.recipes.find(
         {search: {"$eq": True}},
@@ -160,6 +218,10 @@ def search_bool_return(search):
     return recipes
 
 
+# match#_cur - two cursors to compare values
+# match#_dict - two keys used to compare values
+# Takes two mongo cursors with keys and compares their values
+# If values match match2_dict is added to a returned list
 def match_mongo_cursors(match1_cur, match1_dict, match2_cur, match2_dict):
     return_list = []
     for match1 in match1_cur:
@@ -183,3 +245,9 @@ def search_mongo_recipes_no_bloat(list_enumerate, key, value):
     if list_enumerate == "both":
         return list(enumerate(mongo.db.recipes.find(
             {key: value}, {"ingredients": 0, "steps": 0})))
+
+
+def call_user():
+    userInfo = mongo.db.users.find_one({"email": session["user"]}, (
+        {"username": 1, "recents": 1, "favorites": 1}))
+    return userInfo

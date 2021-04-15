@@ -73,7 +73,7 @@ def login():
             return redirect(url_for("index"))
 
 
-    # ----------------------------------------------------------------------------------------I need to be made into a new create area
+    # ----------------------------------------------------------------------------------------I need to be made into a new create area but base.html and JS will need to be altered
     # --Create Account-- information
     if request.method == "POST" and request.form.get(
             "custom-button-login") == "Create":
@@ -82,8 +82,19 @@ def login():
         user_email = rae.check_mongo_user(True, "email", "email")
 
         if username and user_email:
+
+            dictionary = {}
+            rae.get_form_items(["username", "email"], dictionary, True)
+            rae.create_new_password("password", "passwordCheck", dictionary)
+            dictionary.update(dict(
+                avatar=None, avatar_id=None, bio="", admin=False,
+                recents=[], favorites=[], date=datetime.datetime.now()))
+            print(dictionary)
+
+            mongo.db.users.insert_one(dictionary)
+
             # Create new user account w/out avatar
-            rae.upload_user_info("new", False)
+            # rae.upload_user_info("new", False)
             # Create session for user name
             session["user"] = request.form.get("email").lower()
             flash("Welcome to the Fat Raccoon Family!")
@@ -143,7 +154,7 @@ def addFavorite(recipeId, favoriteChange):
         newFav.remove(recipeInfo["_id"])
         favoriteChange = False
 
-    rae.update_mongo("user", userInfo["_id"], "favorites", newFav)
+    rae.update_mongo("user", userInfo["_id"], dict(favorites=newFav))
     return render_template(
         "recipe.html",
         recipeId=recipeInfo["_id"], recipeInfo=recipeInfo,
@@ -181,7 +192,7 @@ def recipe(recipeId):
                 findRecent = userInfo["recents"]
                 findRecent.remove(non_dup[1])
                 findRecent.insert(0, non_dup[1])
-            rae.update_mongo("user", userInfo["_id"], "recents", findRecent)
+            rae.update_mongo("user", userInfo["_id"], dict(recents=findRecent))
 
     except KeyError:
         favoriteRecipe = "None"
@@ -204,6 +215,11 @@ def avatar(avatar_image):
 # --Delets-- Allows user to delete recipe
 @app.route("/delete_recipe/<recipe_id>", methods=("GET", "POST"))
 def delete_recipe(recipe_id):
+    recipeInfo = mongo.db.recipe({"_id": ObjectId(recipe_id)})
+    try:
+        rae.delete_avatar(recipeInfo["avatar_id"])
+    except KeyError:
+        pass
     flashStr = "You've removed your recipe " + session["user"]
     flash(flashStr)
     mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
@@ -214,7 +230,7 @@ def delete_recipe(recipe_id):
 @app.route("/add_edit_recipe/<recipeId>", methods=("GET", "POST"))
 def add_edit_recipe(recipeId):
     # --Loads-- user data
-    admin = mongo.db.users.find_one({"email": session["user"]})
+    userInfo = mongo.db.users.find_one({"email": session["user"]})
 
     # --Creates-- blanks for new recipe
     if (recipeId == "new"):
@@ -235,76 +251,32 @@ def add_edit_recipe(recipeId):
     features = mongo.db.feature.find()
 
     if request.method == "POST":
-        # --Creates-- base dictionary and adds name and feature to dictionary
-        upload_dict = {}
-        upload_dict["name"] = request.form.get("recipeName")
-        upload_dict["feature"] = request.form.get("feature")
-
-        # --Creates-- list of times and adds to dictionary
-        upload_dict["time"] = []
-        for time in range(1, 4):
-            upload_dict["time"].append(request.form.get("time" + str(time)))
-
-        # --Creates-- list of steps and adds to dictionary
-        upload_dict["steps"] = []
-        for step in range(1, int(request.form.get("recipeStepsTotal")) + 1):
-            upload_dict["steps"].append(
-                request.form.get("recipeSteps-" + str(step)))
-
-        # --Creates-- list of ingredents and adds to dictionary
-        upload_dict["ingredients"] = []
-        for ingredient in range(1, int(
-                request.form.get("recipeIngredientsTotal")) + 1):
-            upload_dict["ingredients"].append(
-                request.form.get("recipeIngredients-" + str(ingredient)))
-
-        # --Creates-- recipe description and datetime and adds to dictionary
-        upload_dict["text"] = request.form.get("recipeDescription")
-        upload_dict["date"] = datetime.datetime.now()
+        # --Creates-- base dictionary, adds name, feature,
+        # text, time, steps, ingredients, date, lazy, grandparent
+        dictionary = {}
+        rae.get_form_items(["name"], dictionary, True)
+        rae.get_form_items(["feature", "text"], dictionary, False)
+        rae.get_form_list(4, "time", "time", dictionary)
+        rae.get_form_list(int(request.form.get("recipeStepsTotal")) + 1, "steps",  "recipeSteps-", dictionary)
+        rae.get_form_list(int(request.form.get("recipeIngredientsTotal")) + 1, "ingredients", "recipeIngredients-", dictionary)
+        dictionary["date"] = datetime.datetime.now()
+        rae.get_form_bool(["lazy", "grandparent"], dictionary)
 
         # --Updates-- Avatar if new image present
         if request.form.get("avatar_file_valid") == 'true':
-            if recipeId != "new":
-                # Finds and deletes previous avatar in BOTH chunks and files
-                delPrevImg = admin["avatar_id"]
-                mongo.db.fs.chunks.delete_many(
-                    {"files_id": ObjectId(delPrevImg)})
-                mongo.db.fs.files.delete_many({"_id": ObjectId(delPrevImg)})
-
-            # Code customized from Pretty Printed
-            # https://www.youtube.com/watch?v=DsgAuceHha4
-            avatar = request.files['avatar']
-            # format filename and then file
-            mongo.save_file(request.form.get("avatar_name"), avatar)
-            imageDict = mongo.db.fs.files.find_one(
-                {"filename": request.form.get("avatar_name")})
-            upload_dict["avatar"] = request.form.get("avatar_name")
-            upload_dict["avatar_id"] = imageDict["_id"]
-
-        # --Creates-- lazy boolean value
-        if request.form.get("lazy") == "True":
-            upload_dict["lazy"] = True
-        else:
-            upload_dict["lazy"] = False
-
-        # --Creates-- grandparent boolean value
-        if request.form.get("grandparent") == "True":
-            upload_dict["grandparent"] = True
-        else:
-            upload_dict["grandparent"] = False
+            rae.delete_avatar(recipeInfo["avatar_id"])
+            dictionary.update(rae.create_avatar_dict(rae.upload_avatar()))
 
         # --Uploads-- dictionary depending on if its a new recipe or edit
         if recipeId == "new":
-            upload_dict["created_by"] = admin["username"]
+            dictionary["created_by"] = userInfo["username"]
             # Uploads to mongo and sets up to pull ID
-            result = mongo.db.recipes.insert_one(upload_dict)
+            result = mongo.db.recipes.insert_one(dictionary)
             # Grabs ID of mongo upload for redirect
             uploadedId = result.inserted_id
         else:
-            # Grabs original chef name if admin edits recipe
-            upload_dict["created_by"] = recipeInfo["created_by"]
             result = mongo.db.recipes.update_one(
-                {"_id": ObjectId(recipeId)}, {'$set': upload_dict})
+                {"_id": ObjectId(recipeId)}, {'$set': dictionary})
             uploadedId = recipeId
 
         return redirect(url_for("recipe", recipeId=uploadedId))
@@ -312,7 +284,7 @@ def add_edit_recipe(recipeId):
     return render_template(
         "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
         recipeIngEnum=recipeIngEnum, recipeSteEnum=recipeSteEnum,
-        admin=admin["admin"], recipeId=recipeId)
+        admin=userInfo["admin"], recipeId=recipeId)
 
 
 # Returns a page for users to edit their user info
@@ -320,90 +292,42 @@ def add_edit_recipe(recipeId):
 def edit_user_info():
     userInfo = mongo.db.users.find_one({"email": session["user"]})
 
-    # --Creates-- empty dictionary to add edit information to
-    update_dict = {}
-
     if request.method == "POST":
-        # --Update/Validate-- user name if different and validates
-        if userInfo["username"] != request.form.get("usernameEdit").lower():
-            # Checks if new user name is unique
-            usernameCheck = mongo.db.users.find_one(
-                {"username": request.form.get("usernameEdit").lower()},
-                {"username": 1})
-            # Returns error if name is taken and redirects
-            if usernameCheck is not None:
-                flash("Username already exists! Try Again!")
-                return(redirect(url_for("edit_user_info")))
-            update_dict["username"] = request.form.get("usernameEdit").lower()
+        # --Creates-- empty dictionary to add edit information to
+        dictionary = {}
 
-        # --Update/Validate-- user email if different and validates
-        if userInfo["email"] != request.form.get("emailEdit").lower():
-            # Checks if new email is unique
-            emailCheck = mongo.db.users.find_one(
-                {"email": request.form.get("emailEdit").lower()},
-                {"email": 1})
-            # Returns error if email is taken and redirects
-            if emailCheck is not None:
-                flash("Email already exists! Try Again!")
-                return(redirect(url_for("edit_user_info")))
-            update_dict["email"] = request.form.get("emailEdit").lower()
+        # --Update/Validate-- username and email if different and validates
+        if not rae.form_check_diff(userInfo, "username", "username") or (
+                not rae.form_check_diff(userInfo, "email", "email")):
+            return (redirect(url_for("edit_user_info")))
 
         # --Update-- if password confirm is blank
         if request.form.get("passwordCheck2") != "":
-            update_dict["password"] = generate_password_hash(
+            dictionary["password"] = generate_password_hash(
                 request.form.get("passwordCheck2"))
 
-        # --Update-- if bio is blank
-        if userInfo["bio"] != request.form.get("bio"):
-            update_dict["bio"] = request.form.get("bio")
-
-        # --Validates-- current password before allowing changes to be made
-        passwordCheck = check_password_hash(
-            userInfo["password"], request.form.get('password'))
-
         # --Updates-- If password validates
-        if (passwordCheck):
+        if rae.check_user_password(userInfo):
             flash("Profile updated successfully!")
+
+            rae.get_form_items(["username", "email"], dictionary, True)
+            rae.get_form_items(["bio"], dictionary, True)
 
             # --Updates-- Replaces Avatar w/ new image if present
             if request.form.get("avatar_file_valid") == 'true':
-                # Finds and deletes previous avatar in BOTH chunks and files
-                delPrevImg = userInfo["avatar_id"]
-                mongo.db.fs.chunks.delete_many(
-                    {"files_id": ObjectId(delPrevImg)})
-                mongo.db.fs.files.delete_many({"_id": ObjectId(delPrevImg)})
+                print(userInfo["avatar_id"]) 
+                rae.delete_avatar(userInfo["avatar_id"])
+                dictionary.update(rae.create_avatar_dict(rae.upload_avatar()))
 
-                # Set save variable for new avatar
-                # Code customized from Pretty Printed
-                # https://www.youtube.com/watch?v=DsgAuceHha4
-                avatar = request.files['avatar']
-
-                # Saves new avatar format filename and then file
-                mongo.save_file(request.form.get("avatar_name"), avatar)
-                # Finds new save location for meta data fetch
-                imageDict = mongo.db.fs.files.find_one(
-                    {"filename": request.form.get("avatar_name")})
-                # Adds Avatar information to update dictionary
-                update_dict["avatar"] = request.form.get("avatar_name")
-                update_dict["avatar_id"] = imageDict["id"]
-
+            print(dictionary)
             # --Uploads-- all new edit data dictionary to mongo DB
-            mongo.db.users.update(
-                {"_id": ObjectId(userInfo["_id"])}, {"$set": update_dict})
+            rae.update_mongo("user", userInfo["_id"], dictionary)
             return(redirect(url_for("profile")))
 
-        # --Validation/Error-- If Password validation
-        # fails redirect w/ error message
-        elif (passwordCheck is False):
+        # --Validation/Error-- fails w/ error message
+        else:
             flash("Current password does not match your login password")
             flash("Could not update your profile")
-            return(redirect(url_for("edit_user_info")))
-
-        # --Unknown/error-- If Unexpected unknown error
-        # happens returns error and redirects
-        else:
-            flash("An unexpected error occurred!")
-            flash("Please enter your information again!")
             return(redirect(url_for("edit_user_info")))
 
     return render_template("edit_user_info.html", userInfo=userInfo)
@@ -435,14 +359,6 @@ def all_recipes():
         allFeatures=allFeatures, allRecipes=allRecipes)
 
 
-# --Search-- for recipes
-@app.route("/user_search", methods=("GET", "POST"))
-def user_search():
-    # Returns a user search
-    return redirect(url_for(
-        "search_bar_returns", search=request.form.get("userSearch")))
-
-
 # Returns a search based on lazy or grandparent
 @app.route("/search_bool_returns/<search>", methods=("POST", "GET"))
 def search_bool_returns(search):
@@ -452,48 +368,38 @@ def search_bool_returns(search):
 
 
 # Returns a search based on key words user uses, for: name, feature, or chef
-@app.route("/search_bar_returns/<search>", methods=("POST", "GET"))
-def search_bar_returns(search):
-    # User's search
-    displayRecipes = list(enumerate(
-        mongo.db.recipes.find(
-            {"$text": {"$search": search}},
-            {"name": 1, "feature": 1, "created_by": 1, "time": 1, "lazy": 1, "grandparent": 1})))
+@app.route("/search_bar_returns/", methods=("POST", "GET"))
+def search_bar_returns():
     return render_template(
-        "search_bar_returns.html", findRecipes=displayRecipes)
+        "search_bar_returns.html",
+        findRecipes=list(enumerate(mongo.db.recipes.find(
+            {"$text": {"$search": request.form.get("userSearch")}},
+            {"ingedients": 0, "steps": 0, "text": 0}))))
 
 
-# Returns a search based on users favorites, recents, or uploaded recipes
+# Returns a search based on users favorites or recents
 @app.route("/search_user_recipes/<search>", methods=("POST", "GET"))
 def search_user_recipes(search):
-    # Find User Info
-    chef = mongo.db.users.find_one({
-        "email": session["user"]},
-        {"username": 1, "recents": 1, "favorites": 1})
-    print(chef)
-    # Pulls list from individual recipes
-    if search == "uploaded":
-        displayRecipes = list(enumerate(
-            mongo.db.recipes.find(
-                {"created_by": chef["username"]},
-                {"name": 1, "feature": 1, "created_by": 1, "time": 1, "lazy": 1, "grandparent": 1}).sort(
-                    "date", -1)))
-
-    else:
-        # Selects if favorites or recent list
-        search = chef[search]
-        # Builds id dictionary to search mongo with
-        findUserSelectedRecipes = {}
-        findUserSelectedRecipes["$or"] = []
-        for recipe in search:
-            findUserSelectedRecipes["$or"].append({"_id": ObjectId(recipe)})
-            # Find list of recipes user has favorites, created, or viewed
-
-        displayRecipes = list(enumerate(
-            mongo.db.recipes.find(findUserSelectedRecipes)))
+    userInfo = rae.call_user()
+    # Builds id dictionary to search mongo with
+    findUserSelectedRecipes = {}
+    findUserSelectedRecipes["$or"] = []
+    for recipe in userInfo[search]:
+        findUserSelectedRecipes["$or"].append({"_id": ObjectId(recipe)})
 
     return render_template(
-        "search_bar_returns.html", findRecipes=displayRecipes)
+        "search_bar_returns.html", findRecipes=list(enumerate(
+            mongo.db.recipes.find(findUserSelectedRecipes))))
+
+
+# Returns a search based on users uploaded recipes
+@app.route("/search_user_recipes", methods=("POST", "GET"))
+def search_user_uploads():
+    userInfo = rae.call_user()
+    return render_template(
+        "search_bar_returns.html", findRecipes=list(enumerate(
+            mongo.db.recipes.find({"created_by": userInfo["username"]}, (
+                {"ingedients": 0, "steps": 0, "text": 0})))))
 
 
 if __name__ == "__main__":
