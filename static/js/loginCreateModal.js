@@ -63,7 +63,7 @@ function tabSelect(modalTab) {
                 tabLoc[addCreate].classList.remove("make-invis");
                 tabLoc[addCreate].getElementsByTagName("input")[0].setAttribute("required", "");
             }
-            document.getElementById("name").focus();
+            document.getElementById("username").focus();
             // Sets submit button to create value
             document.getElementById("custom-button").value = "Create";
             // Makes sure confirm password does not auto validate
