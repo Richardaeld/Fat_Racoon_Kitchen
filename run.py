@@ -27,7 +27,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+# Returns Landing page 
 @app.route("/", methods=("GET", "POST"))
 def index():
     # --Loads-- head chef and all recipes from head chef
@@ -54,7 +54,7 @@ def index():
         chef=chef, featureRecipes=featureRecipes, recipeHeader=recipeHeader)
 
 
-# --Login-- users
+# Logins user in or creates a new user account
 @app.route("/login", methods=("GET", "POST"))
 def login():
     if request.method == "POST" and request.form.get(
@@ -206,13 +206,13 @@ def recipe(recipeId):
 
 # Code customized from Pretty Printed
 # https://www.youtube.com/watch?v=DsgAuceHha4
-# This allows picture to be displayed
+# This allows picture to be uploaded
 @app.route('/avatar/<avatar_image>')
 def avatar(avatar_image):
     return mongo.send_file(avatar_image)
 
 
-# --Delets-- Allows user to delete recipe
+# Deletes user recipe
 @app.route("/delete_recipe/<recipe_id>", methods=("GET", "POST"))
 def delete_recipe(recipe_id):
     recipeInfo = mongo.db.recipe({"_id": ObjectId(recipe_id)})
@@ -226,7 +226,7 @@ def delete_recipe(recipe_id):
     return redirect(url_for("profile"))
 
 
-# Returns a blank recipe or prepopulates a recipe to edit
+# Returns a blank recipe or an existing recipe to edit
 @app.route("/add_edit_recipe/<recipeId>", methods=("GET", "POST"))
 def add_edit_recipe(recipeId):
     # --Loads-- user data
@@ -333,7 +333,7 @@ def edit_user_info():
     return render_template("edit_user_info.html", userInfo=userInfo)
 
 
-# Returns all recipes that have a feature in common
+# Returns all recipes that match feature argument
 @app.route("/recipe_list/<feature>")
 def recipe_list(feature):
     allrecipes = list(mongo.db.recipes.find(
@@ -343,6 +343,7 @@ def recipe_list(feature):
         allrecipes=allrecipes, feature=feature)
 
 
+# Retuens lessons page
 @app.route("/lessons")
 def lessons():
     return render_template("lessons.html")
@@ -359,7 +360,7 @@ def all_recipes():
         allFeatures=allFeatures, allRecipes=allRecipes)
 
 
-# Returns a search based on lazy or grandparent
+# Returns a search based on lazy or grandparent bool
 @app.route("/search_bool_returns/<search>", methods=("POST", "GET"))
 def search_bool_returns(search):
     return render_template(
@@ -367,7 +368,7 @@ def search_bool_returns(search):
         findRecipes=rae.search_bool_return(search))
 
 
-# Returns a search based on key words user uses, for: name, feature, or chef
+# Returns a search based on user input for recipe name, feature, or chef name
 @app.route("/search_bar_returns/", methods=("POST", "GET"))
 def search_bar_returns():
     return render_template(
@@ -392,7 +393,7 @@ def search_user_recipes(search):
             mongo.db.recipes.find(findUserSelectedRecipes))))
 
 
-# Returns a search based on users uploaded recipes
+# Returns a search based on user's uploaded recipes
 @app.route("/search_user_recipes", methods=("POST", "GET"))
 def search_user_uploads():
     userInfo = rae.call_user()
