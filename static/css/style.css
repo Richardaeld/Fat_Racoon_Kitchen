@@ -110,7 +110,7 @@
 }
 
 .polaroid-picture-classic img {
-    filter: grayscale(100%);
+    /* filter: grayscale(100%); */
 }
 /* ---------------------------------------- Sticky Note Art */
 /* structure of sticky note is important!*/
