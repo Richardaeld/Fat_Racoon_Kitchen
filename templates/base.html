@@ -15,10 +15,10 @@
 </head>
 <body>
     <!--  login and create account modal  -->
-    <aside class="row no-gutters justify-content-center custom-modal make-invis yanone-text">
+    <aside class="row no-gutters justify-content-center custom-modal make-invis yanone-text" id="modalAside">
         <div class="col-12 modal-background"></div>
 
-        <form class="col-11 col-lg-10 form-base generic-box-shadow" id="login-create-modal" method="POST" action="{{ url_for('login') }}">
+        <form class="col-11 col-lg-10 form-base generic-box-shadow" id="login-modal" method="POST" action="{{ url_for('login') }}">
             <div class="row no-gutters justify-content-around user-modal-spacing">
                 <!-- Header for login/create modal -->
                 <div class="col-12 tab-body yanone-text">
@@ -34,15 +34,71 @@
             </div>
 
             <div class="row no-gutters justify-content-center">
-                <div class="col-12 create-account user-modal-spacing make-invis">
+                
+                <div class="col-12 login-account user-modal-spacing">
+                    <div class="row no-gutters justify-content-center">
+                        <!-- Email -->
+                        <div class="col-12 col-md-4">
+                            <label class="" type="email" for="email">Email:</label>
+                        </div>    
+                        <div class="col-12 col-md-8">
+                            <!-- -----------------------------------formbase label class is expanind me through label padding -->
+                            <input class="formValidation emailValidation loginValidation" type="text" id="email" name="email" value="" minlength="5" maxlength="50"  required>
+                            <div class="invalid-form make-invis">
+                                <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, and @.%</p>
+                                <p class="">must contain appropiate email suffix *hint* must end in .com, .edu, .net</p>
+                                <p class="make-invis">Cannot contain ' " $ ,</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row no-gutters login-account user-modal-spacing">
+                        <!-- Password -->
+                        <div class="col-12 col-md-4">
+                            <label class="" type="password" for="password">Password:</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <input class="formValidation passwordSets loginValidation" type="password" id="password" name="password" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
+                            <div class="invalid-form make-invis">
+                                <p class="">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                                <p class="make-invis">New password and confirm new password must match</p>
+                                <p class="make-invis">Cannot contain ' " $ ,</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="text" name="formType" value="login" class="make-invis" aria-hidden="true">
+            <input class="custom-button login-account" id="custom-button-login" name="custom-button-login" type="submit" value="Login" disabled>
+        </form>
+<!------------------------------------------------------------------------------------------------------------------------------------------------->
+        <form class="col-11 col-lg-10 form-base generic-box-shadow make-invis" id="create-modal" method="POST" action="{{ url_for('create') }}">
+            <div class="row no-gutters justify-content-around user-modal-spacing">
+                <!-- Header for login/create modal -->
+                <div class="col-12 tab-body yanone-text">
+                    <div class="row no-gutters justify-content-around align-items-center">
+                        <div class="tab">
+                            <span><p>Login</p></span>
+                        </div>
+                        <div class="tab tab-selected">
+                            <span><p>Create Account</p></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row no-gutters justify-content-center">
+                <div class="col-12 create-account user-modal-spacing">
                     <div class="row no-gutters justify-content-center">
                         <!-- User name -->
                         <div class="col-12 col-md-4">
                             <label class="" type="text" for="username">User Name:</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input class="formValidation nameValidation" type="text" id="username" name="username" value="" minlength="5" maxlength="30" pattern="^[a-zA-Z0-9_]+{5,30}$" >
-                                <div class="invalid-form form-is-valid make-invis">
+                            <input class="formValidation nameValidation createValidation" type="text" id="usernameCreate" name="username" value="" minlength="5" maxlength="30" pattern="^[a-zA-Z0-9_]+{5,30}$" required>
+                                <div class="invalid-form make-invis">
                                     <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, @.%</p>
                                     <p class="make-invis"></p>
                                     <p class="make-invis">Cannot contain ' " $ ,</p>
@@ -59,7 +115,7 @@
                         </div>    
                         <div class="col-12 col-md-8">
                             <!-- -----------------------------------formbase label class is expanind me through label padding -->
-                            <input class="formValidation emailValidation" type="text" id="email" name="email" value="" minlength="5" maxlength="50"  required>
+                            <input class="formValidation emailValidation createValidation" type="text" id="emailCreate" name="email" value="" minlength="5" maxlength="50"  required>
                                 <div class="invalid-form make-invis">
                                     <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, and @.%</p>
                                     <p class="">must contain appropiate email suffix *hint* must end in .com, .edu, .net</p>
@@ -77,7 +133,7 @@
                             <label class="" type="password" for="password">Password:</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck1" name="password" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
+                            <input class="formValidation passwordSets passwordCompare createValidation" type="password" id="passwordCheck1" name="password" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
                             <div class="invalid-form make-invis">
                                 <p class="">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                                 <p class="make-invis">New password and confirm new password must match</p>
@@ -86,13 +142,13 @@
                         </div>
                     </div>
 
-                    <div class="row no-gutters create-account user-modal-spacing make-invis">
+                    <div class="row no-gutters create-account user-modal-spacing">
                         <!-- password check -->
                         <div class="col-12 col-md-4">
                             <label class="" type="password" for="passwordCheck">Confirm Password:</label>
                         </div>
                         <div class="col-12 col-md-8">
-                            <input class="formValidation form-invalid-view passwordSets passwordCompare" type="password" id="passwordCheck2" name="passwordCheck" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" >
+                            <input class="formValidation form-invalid-view passwordSets passwordCompare createValidation" type="password" id="passwordCheck2" name="passwordCheck" value="" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$" required>
                             <div class="invalid-form make-invis">
                                 <p class="make-invis">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                                 <p class="make-invis">New password and confirm new password must match</p>
@@ -103,8 +159,16 @@
                 </fieldset>
             </div>
             <input type="text" name="formType" value="login" class="make-invis" aria-hidden="true">
-            <input class="custom-button login-account" id="custom-button" name="custom-button-login" type="submit" value="Login" disabled>
+            <input class="custom-button login-account" id="custom-button-create" name="custom-button-login" type="submit" value="Create" disabled>
         </form>
+
+
+
+
+
+
+
+
     </aside>
     {% block modal %}
     {% endblock %}
