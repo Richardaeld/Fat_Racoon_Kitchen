@@ -1,8 +1,7 @@
 // ---- login modal
-// Allows login/create modal to open
-let modal = document.getElementsByClassName("custom-modal")[0]; // modal
+// Opens/closes modal's aside
+let modal = document.getElementById("modalAside"); // modal
 let signInModal = document.querySelectorAll(".login-modal"); // login button
-let button = document.getElementsByClassName("custom-button")[0]; // submit button
 signInModal.forEach(popUpModal);
 function popUpModal(openModal){
     openModal.addEventListener("click", function () {
@@ -10,13 +9,16 @@ function popUpModal(openModal){
         document.getElementById("email").focus()
     });
 }
-// Removes login/create modal if background clicked
 document.getElementsByClassName("modal-background")[0].addEventListener("click", function() {
     modal.classList.add("make-invis");
 });
 
 // Creates a depressed look if button clicked
-button.addEventListener("click", function () {
+let button = document.getElementsByClassName("custom-button")[0]; // submit button
+document.getElementById("custom-button-create").addEventListener("click", function () {
+    button.classList.add("custom-button-press");
+});
+document.getElementById("custom-button-login").addEventListener("click", function () {
     button.classList.add("custom-button-press");
 });
 
@@ -26,61 +28,25 @@ var modaltabs = document.querySelectorAll(".tab");
 modaltabs.forEach(tabSelect);
 function tabSelect(modalTab) {
     modalTab.addEventListener("click", function () {
-        var totalCreate = document.querySelectorAll(".login-account").length;
-        var tabLoc = document.getElementsByClassName("create-account"); // user input div
-        // Applies login settings
+        var totalCreate = document.querySelectorAll(".formValidation").length;
+        // Opens login/create modal
         if(modalTab.textContent.trim() === "Login"){
-            // Removes all create account material form modal
-            for (let removeCreate = 0; removeCreate < totalCreate - 1; removeCreate++){
-                let tabInputLoc = document.getElementsByClassName("create-account")[removeCreate].getElementsByTagName("input")[0]; // user input value loc
-                tabLoc[removeCreate].classList.add("make-invis");
-                tabInputLoc.removeAttribute("required");
-                tabInputLoc.setAttribute("value", "");
-                tabInputLoc.value = "";
-            }
             document.getElementById("email").focus();
-            //sets submit button value
-            document.getElementById("custom-button").value = "Login";
-            // Undoes auto fail for password check so it does not disrupt user login on login mode
-            document.getElementById("passwordCheck1").parentElement.getElementsByTagName("p")[1].classList.add("make-invis");
-            document.getElementById("passwordCheck2").parentElement.getElementsByTagName("p")[0].classList.add("make-invis");
-            document.getElementById("passwordCheck2").parentElement.getElementsByTagName("p")[1].classList.add("make-invis");
-            // Makes sure username does not auto fail validation
-            document.getElementById("name").parentElement.getElementsByTagName("p")[0].classList.add("make-invis");
-            // Checks Validation
+            document.getElementById("login-modal").classList.remove("make-invis");
+            document.getElementById("create-modal").classList.add("make-invis");
             formIsValid = true;
-            
-            // baseValidation(".emailValidation", "email", "keyup"); // keyboard
-            // baseValidation(".nameValidation", "name", "keyup"); // keyboard
-            // baseValidation(".passwordSets", "password", "keyup"); // keyboard
-
-            finalValidation();
-
-        // Applies create settings
-        } else {
-            // Adds all create account material to modal
-            for (let addCreate = 0; addCreate < totalCreate - 1; addCreate++){
-                tabLoc[addCreate].classList.remove("make-invis");
-                tabLoc[addCreate].getElementsByTagName("input")[0].setAttribute("required", "");
-            }
-            document.getElementById("username").focus();
-            // Sets submit button to create value
-            document.getElementById("custom-button").value = "Create";
-            // Makes sure confirm password does not auto validate
-            document.getElementById("passwordCheck2").parentElement.getElementsByTagName("p")[1].classList.remove("make-invis");
-            document.getElementById("passwordCheck2").parentElement.getElementsByTagName("p")[0].classList.remove("make-invis");
-            // Makes sure username does not auto validate
-            document.getElementById("name").parentElement.getElementsByTagName("p")[0].classList.remove("make-invis");
-            // Checks Validation
+            finalValidation(".loginValidation");
+        } else if(modalTab.textContent.trim() === "Create Account"){
+            document.getElementById("usernameCreate").focus();
+            document.getElementById("login-modal").classList.add("make-invis");
+            document.getElementById("create-modal").classList.remove("make-invis");
             formIsValid = true;
-            finalValidation();
-            // baseValidation(".emailValidation", "email", "keyup"); // keyboard
-            // baseValidation(".nameValidation", "name", "keyup"); // keyboard
-            // baseValidation(".passwordSets", "password", "keyup"); // keyboard
+            finalValidation(".createValidation");
         }
-
-        // Changes the filter from Login to create account on click
-        document.querySelector(".tab-selected").classList.remove("tab-selected");
-        modalTab.classList.add("tab-selected");
+        // Removes all user inputed information
+        for (let removeInputIndex = 0; removeInputIndex < totalCreate; removeInputIndex++){
+            let userInputLoc = document.getElementsByClassName("formValidation")[removeInputIndex];
+            userInputLoc.value = "";
+        }
     });
 }
