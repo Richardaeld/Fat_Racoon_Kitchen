@@ -6,7 +6,7 @@ var findPasswordComapre = document.querySelectorAll(".passwordCompare");
 findPasswordComapre.forEach(selectPasswordComapre);
 function selectPasswordComapre(comparePassLoc) {
     comparePassLoc.addEventListener("keyup", function () {
-        if(document.getElementById("custom-button").value === "Create" || document.getElementById("custom-button").value === "Update"){
+        // if(document.getElementById("custom-button").value === "Create" || document.getElementById("custom-button").value === "Update"){
             let passCheck1Val = passwordCheck1.parentElement.getElementsByTagName("p")[1];
             let passCheck2Val = passwordCheck2.parentElement.getElementsByTagName("p")[1];
             // Compares passwordCheck1 and passwordCheck2, if they match it remove invalid bubble
@@ -21,9 +21,16 @@ function selectPasswordComapre(comparePassLoc) {
             let checkLengthPass = passwordCheck1.parentElement.getElementsByTagName("p");
             let checkLengthPassCheck = passwordCheck2.parentElement.getElementsByTagName("p");
 
-            finalValidation(passwordCheck1, checkLengthPass);
-            finalValidation(passwordCheck2, checkLengthPassCheck);
-        }
+            if (comparePassLoc.classList.contains("createValidation")) {
+                finalValidation(".createValidation");
+
+            } else {
+                finalValidation(".formValidation");
+            }
+
+            // finalValidation(passwordCheck1, checkLengthPass);
+            // finalValidation(passwordCheck2, checkLengthPassCheck);
+        // }
     });
 }
 
@@ -45,9 +52,9 @@ const matchTypeDotOrg = /.org/;
 var formIsValid = false;
 // ----- Final Validation check
 // Sets or removes invalid bubble and invalid attributes
-function finalValidation() {
+function finalValidation(validationLoc) {
     
-    let findFormInputs = document.querySelectorAll(".formValidation");
+    let findFormInputs = document.querySelectorAll(validationLoc);
     findFormInputs.forEach(selectFormInputs);
     function selectFormInputs(finalVal) {
 
@@ -64,17 +71,29 @@ function finalValidation() {
                 finalVal.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid");
                 finalVal.removeAttribute("invalid");
                 finalVal.classList.remove("form-invalid-view");
-                document.getElementById("custom-button").removeAttribute("disabled");
+                if (document.getElementById("custom-button-login")){
+                    document.getElementById("custom-button-login").removeAttribute("disabled");
+                    document.getElementById("custom-button-create").removeAttribute("disabled");
+                }else{
+                    document.getElementById("custom-button").removeAttribute("disabled");
+                }
             } else if(formIsValid == false){
                 finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid");
                 finalVal.setAttribute("invalid", "");
                 finalVal.classList.add("form-invalid-view");
-                document.getElementById("custom-button").setAttribute("disabled", "");
+                if(document.getElementById("custom-button-login")){
+                    document.getElementById("custom-button-login").setAttribute("disabled", "");
+                    document.getElementById("custom-button-create").setAttribute("disabled", "");
+                }else{
+                    document.getElementById("custom-button").setAttribute("disabled", "");
+                }
                 break;
             }
         }
     }
 }
+
+
 
 // ---- Base Validation starting point
 // basic (start) validation function
@@ -164,8 +183,15 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
 
             // final validation of form
             formIsValid = true;
-            finalValidation();
+            if(baseVal.classList.contains("loginValidation")){
+                finalValidation(".loginValidation");
 
+            } else if (baseVal.classList.contains("createValidation")) {
+                finalValidation(".createValidation");
+
+            } else {
+                finalValidation(".formValidation");
+            }
         });
     }
 }
