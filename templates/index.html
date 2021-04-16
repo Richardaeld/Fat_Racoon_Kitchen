@@ -36,12 +36,12 @@
                             <h6 class="yanone-text header-text-spacing">{{feature.name.title()}}</h6>
                         </a>
                         <ul>
-                            {% for featureRecipe in featureRecipes %}
+                            {% for card in card_carousel %}
                                 <!-- If recipe feature matches the card feature -->
-                                {% if featureRecipe.feature == feature.name %}
+                                {% if card.feature == feature.name %}
                                     <li>
-                                        <a href="{{ url_for('recipe', recipeId=featureRecipe._id) }}">
-                                            <p>--{{ featureRecipe.name.title() }}</p>
+                                        <a href="{{ url_for('recipe', recipeId=card._id) }}">
+                                            <p>--{{ card.name.title() }}</p>
                                         </a>
                                     </li>
                                 {%endif%}
@@ -83,7 +83,7 @@
     <div class="col-12">
         <div class="row no-gutters justify-content-around">
             <!-- incase no classics are in DB display this -->
-            {% if recipeHeader == [] %}
+            {% if classics == [] %}
             <div class="col-12 header-height">
                 <div class="row no-gutters align-items-center justify-content-center">
                     <div class="col-12">
@@ -98,7 +98,7 @@
             <!-- Polaroid picture -->
 
 
-            {% for recipe in recipeHeader %}
+            {% for recipe in classics %}
             {% if recipe[1].avatar %}
             <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer generic-box-shadow blank-anchor remove-top-margin">
                 <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
@@ -164,7 +164,7 @@
         </div>
     </div>
 
-    {% for recipeOfDay in randomRecipe %}
+    {% for recipeOfDay in random_recipe %}
     <div class="col-12">
         <div class="row no-gutters justify-content-around">
 
