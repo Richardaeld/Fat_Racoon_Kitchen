@@ -108,17 +108,17 @@ def upload_avatar():
     return request.form.get("avatar_name"), imageDict["_id"]
 
 
-#Creates new hashed, unsalted password
-def create_new_password(dict_key, form_key, dictioanry):
-    dictioanry[dict_key] = generate_password_hash(
-            request.form.get(form_key))
-    return
-
-
 # avatar_tuple - avatar name[0], avatar id[1]
 # Create avatar dictioanry
 def create_avatar_dict(avatar_tuple):
     return dict(avatar=avatar_tuple[0], avatar_id=avatar_tuple[1])
+
+
+# Creates new hashed, unsalted password
+def create_new_password(dict_key, form_key, dictioanry):
+    dictioanry[dict_key] = generate_password_hash(
+            request.form.get(form_key))
+    return
 
 
 # Request bool from form and add to dict
@@ -150,42 +150,43 @@ def get_form_items(pull_list, dictionary, is_lower):
 def update_mongo(
         recipe_user, object_id, upload_dict):
     if recipe_user == "user":
-        mongo.db.users.update_one(
+        return mongo.db.users.update_one(
             {"_id": ObjectId(object_id)}, {"$set": upload_dict})
     elif recipe_user == "recipe":
-        mongo.db.recipe.update_one(
+        return mongo.db.recipes.update_one(
             {"_id": ObjectId(object_id)}, {"$set": upload_dict})
-    return
 
 
 # Checks user password against server hash
 def check_user_password(user):
-    if check_password_hash(user["password"], request.form.get("password")):
-        return True
-    else:
+    try:
+        if check_password_hash(user["password"], request.form.get("password")):
+            return True
+        else:
+            return False
+    except TypeError:
         return False
 
 
 # Checks if user value exists in mongo
-def check_mongo_user(is_form, key, value):
-    try:
-        if is_form:
-            exists = mongo.db.users.find_one(
-                {key: request.form.get(value).lower()})
-        else:
-            exists = mongo.db.users.find_one(
-                {key: value})
-        return True, key, exists
-
-    except AttributeError:
-        return False, key
+def check_mongo_user_unique(is_form, key, value):
+    if is_form:
+        exists = mongo.db.users.find_one(
+            {key: request.form.get(value).lower()})
+    else:
+        exists = mongo.db.users.find_one(
+            {key: value})
+    if exists is not None:
+        return False, value, exists
+    else:
+        return True, value, None
 
 
 # Checks if mongo information matches user's email or name
 def form_check_diff(mongo_cursor, dict_key, form_key):
     if mongo_cursor[dict_key] != request.form.get(form_key).lower():
-        exist = check_mongo_user(True, dict_key, form_key)
-        if exist[0]:
+        exist = check_mongo_user_unique(True, dict_key, form_key)
+        if not exist[0]:
             flash_mes = dict_key.title() + " already exists! Try Again!"
             flash(flash_mes)
             return False
@@ -227,7 +228,17 @@ def search_mongo_recipes_no_bloat(list_enumerate, key, value):
             {key: value}, {"ingredients": 0, "steps": 0})))
 
 
+# Gathers basic user info
 def call_user():
     userInfo = mongo.db.users.find_one({"email": session["user"]}, (
         {"username": 1, "recents": 1, "favorites": 1}))
     return userInfo
+
+
+# Checks if inputs are false and outputs false item
+# boolean_list - [bool_value[0], item_name[1]]
+def check_boolean(boolean_list):
+    for item in boolean_list:
+        if not item[0]:
+            return False, item[1]
+    return True, None
