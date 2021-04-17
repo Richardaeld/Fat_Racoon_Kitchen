@@ -90,11 +90,20 @@ def create_user_recipe_list(recent_fav, chef_info):
     return (recipe_list)
 
 
+def update_avatar(form_key, avatar_mongo_id, dictionary):
+    if request.form.get(form_key) == 'true':
+        delete_avatar(avatar_mongo_id)
+        create_avatar_dict(upload_avatar(), dictionary)
+    if avatar_mongo_id is None:
+        dictionary.update(dict(avatar=None, avatar_id=None))
+    return
+
+
 # Deletes previous image
-def delete_avatar(avatar):
+def delete_avatar(avatar_id):
     try:
-        mongo.db.fs.chunks.delete_many({"files_id": ObjectId(avatar)})
-        mongo.db.fs.files.delete_many({"_id": ObjectId(avatar)})
+        mongo.db.fs.chunks.delete_many({"files_id": ObjectId(avatar_id)})
+        mongo.db.fs.files.delete_many({"_id": ObjectId(avatar_id)})
     except KeyError:
         pass
     return
@@ -110,8 +119,9 @@ def upload_avatar():
 
 # avatar_tuple - avatar name[0], avatar id[1]
 # Create avatar dictioanry
-def create_avatar_dict(avatar_tuple):
-    return dict(avatar=avatar_tuple[0], avatar_id=avatar_tuple[1])
+def create_avatar_dict(avatar_tuple, dictionary):
+    dictionary.update(dict(avatar=avatar_tuple[0], avatar_id=avatar_tuple[1]))
+    return
 
 
 # Creates new hashed, unsalted password
@@ -129,10 +139,11 @@ def get_form_bool(bool_request_list, dictionary):
 
 
 # Pulls list from form and adds it to dictionary as list
-def get_form_list(range_total, dict_key, form_key, dictionary):
+def get_form_list(range_total, alter_range, dict_key, dictionary):
     dictionary[dict_key] = []
-    for item in range(1, range_total):
-        dictionary[dict_key].append(request.form.get(form_key + str(item)))
+    for item in range(1, (int(request.form.get(range_total)) + int(alter_range) ) ):
+        dictionary[dict_key].append(str(request.form.get(
+            dict_key + "-" + (str(item)))))
     return
 
 
@@ -182,13 +193,25 @@ def check_mongo_user_unique(is_form, key, value):
         return True, value, None
 
 
+# Checks if recipe value exists in mongo
+def check_mongo_recipe_exists(id):
+    try:
+        exists = mongo.db.recipes.find_one({"_id": ObjectId(id)})
+    except ValueError:
+        return False, id, None
+    if exists is not None:
+        return True, id, exists
+    else:
+        return False, id, None
+
+
 # Checks if mongo information matches user's email or name
 def form_check_diff(mongo_cursor, dict_key, form_key):
     if mongo_cursor[dict_key] != request.form.get(form_key).lower():
         exist = check_mongo_user_unique(True, dict_key, form_key)
         if not exist[0]:
-            flash_mes = dict_key.title() + " already exists! Try Again!"
-            flash(flash_mes)
+            # flash_mes = dict_key.title() + " already exists! Try Again!"
+            flash(f"{dict_key.title()} already exists! Try Again!")
             return False
     return True
 
@@ -212,20 +235,6 @@ def match_mongo_cursors(match1_cur, match1_dict, match2_cur, match2_dict):
                 matched_list += [match2]
         return_list += create_random_recipe_lists(2, matched_list)
     return return_list
-
-
-def search_mongo_recipes_no_bloat(list_enumerate, key, value):
-    if list_enumerate == "list":
-        return list(mongo.db.recipes.find(
-            {key: value}, {"ingredients": 0, "steps": 0}))
-
-    if list_enumerate == "enumerate":
-        return enumerate(mongo.db.recipes.find(
-            {key: value}, {"ingredients": 0, "steps": 0}))
-
-    if list_enumerate == "both":
-        return list(enumerate(mongo.db.recipes.find(
-            {key: value}, {"ingredients": 0, "steps": 0})))
 
 
 # Gathers basic user info
