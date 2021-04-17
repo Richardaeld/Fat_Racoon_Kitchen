@@ -25,10 +25,10 @@
         <div class="row no-gutters justify-content-center">
             {% if recipeId == "new" %} <!--  if session.editRecipe  --> <!-- I dont require apostrophe thats not right!! new is a string not variable -->
             <!--  For creating a new recipe  -->
-            <form class="col-10 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId='new') }} ">
+            <form class="col-10 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }} ">
             {% else %}
             <!--  For editing a existing recipe  -->  
-            <form class="col-10 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}">
+            <form class="col-10 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }}">
             {% endif %}
                 <div class="row no-gutters">
 
@@ -72,10 +72,10 @@
                                     <div class="col-12">
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                        <input class="time form-center-text" type="number" id="time1" name="time1" value="15">
+                                        <input class="time form-center-text" type="number" id="time1" name="time-1" value="15">
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                        <input class="time form-center-text" type="number" id="time1" name="time1" value="{{ recipeInfo.time[0] }}">
+                                        <input class="time form-center-text" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
                                         {% endif %}
                                         <p class="remove-p-margin">Minutes</p>
                                     </div>
@@ -92,10 +92,10 @@
                                         <!-- Rewrite flask in value into repeating inputs -->
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                        <input class="time form-center-text" type="number" id="time2" name="time2" value="10">
+                                        <input class="time form-center-text" type="number" id="time2" name="time-2" value="10">
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                        <input class="time form-center-text" type="number" id="time2" name="time2" value="{{ recipeInfo.time[1] }}">
+                                        <input class="time form-center-text" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
                                         {% endif %}
                                         <p class="remove-p-margin">Minutes</p>
                                     </div>    
@@ -110,12 +110,13 @@
                                     </div>
                                     <div class="col-12">
                                         <!-- Rewrite flask in value into repeating inputs -->
+                                        <input class="make-invis" type="text" name="timeTotal" id="timeTotal" value="4">
                                         {% if recipeInfo == none %}
                                         <!--  For creating a new recipe  -->
-                                        <input type="number" id="time3" name="time3" value="25" disabled>
+                                        <input type="number" id="time3" name="time-3" value="25" disabled>
                                         {% else %}
                                         <!--  For editing a existing recipe  -->
-                                        <input type="number" id="time3" name="time3" value="{{ recipeInfo.time[2] }}" disabled>
+                                        <input type="number" id="time3" name="time-3" value="{{ recipeInfo.time[2] }}" disabled>
                                         {% endif %}
                                         <p class="remove-p-margin">Minutes</p>
                                     </div>
@@ -235,7 +236,7 @@
                         <div class="row no-gutters justify-content-center">
                             <!-- Recipe ingredient header -->
                             <div class="col-12"> <!-- removed . recipe-form-label  because of padding right -- off centering text -->
-                                <label type="text" for="recipeIngredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
+                                <label type="text" for="ingredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
                             </div>
 
                             <div class="col-12">
@@ -263,24 +264,24 @@
                                 <div class="row no-gutters justify-content-center ingredientAddRemoveLocation">
                                     <!-- Creation and remove location for ingredient boxes -->
                                     {% if recipeInfo == none %}
-                                    <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="1">
+                                    <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="1">
                                     <div class="col-12 col-md-6">
                                         <div class="row no-gutters align-items-center step-ingredient-spacing">
                                             <span class="col-1">
                                                 <p>1. </p>
                                             </span>
-                                            <input class="col-11 countIngredients" type="text" id="recipeIngredients-1" name="recipeIngredients-1">
+                                            <input class="col-11 countIngredients" type="text" id="ingredients-1" name="ingredients-1">
                                         </div>
                                     </div>
                                     {% else %}
-                                        <input class="make-invis" type="text" name="recipeIngredientsTotal" id="recipeIngredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
+                                        <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
                                         {% for ingredient in recipeIngEnum %}
                                             <div class="col-12 col-md-6">
                                                 <div class="row no-gutters align-items-center step-ingredient-spacing">
                                                     <span class="col-1">
                                                         <p>{{ingredient[0] + 1}}. </p>
                                                     </span>
-                                                    <input class="col-11 countIngredients" type="text" id="recipeIngredients-{{ingredient[0] + 1}}" name="recipeIngredients-{{ingredient[0] + 1}}" value="{{ingredient[1]}}">
+                                                    <input class="col-11 countIngredients" type="text" id="ingredients-{{ingredient[0] + 1}}" name="ingredients-{{ingredient[0] + 1}}" value="{{ingredient[1]}}">
                                                 </div>
                                             </div>
                                         {% endfor %}
@@ -295,7 +296,7 @@
                         <div class="row no-gutters justify-content-center">
                             <!-- Recipe step header -->
                             <div class="col-12">
-                                <label type="text" for="recipeSteps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
+                                <label type="text" for="steps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
                             </div>
 
                             <div class="col-12">
@@ -324,25 +325,25 @@
                                 <div class="row no-gutters justify-content-center stepAddRemoveLocation">
                                     <!-- Creation and remove location for step boxes -->
                                     {% if recipeInfo == none %}
-                                    <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="1">
+                                    <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="1">
                                     <div class="col-12 col-md-6">
                                         <div class="row no-gutters align-items-center step-ingredient-spacing">
                                             <span class="col-1">
                                                 <p>1. </p>
                                             </span>
-                                            <textarea class="col-11 countSteps" type="text" id="recipeSteps-1" name="recipeSteps-1" cols="20" rows="3"></textarea>
+                                            <textarea class="col-11 countSteps" type="text" id="steps-1" name="steps-1" cols="20" rows="3"></textarea>
                                             <!-- I count for DB upload!! -->
                                         </div>
                                     </div>
                                     {% else %}
-                                        <input class="make-invis" type="text" name="recipeStepsTotal" id="recipeStepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
+                                        <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
                                         {% for step in recipeSteEnum %}
                                             <div class="col-12 col-md-6">
                                                 <div class="row no-gutters align-items-center step-ingredient-spacing">
                                                     <span class="col-1">
                                                         <p>{{step[0] + 1}}. </p>
                                                     </span>
-                                                    <textarea class="col-11 countSteps" type="text" id="recipeSteps-{{step[0] + 1}}" name="recipeSteps-{{step[0] + 1}}" value="" col="20" rows="3">{{step[1]}}</textarea>
+                                                    <textarea class="col-11 countSteps" type="text" id="steps-{{step[0] + 1}}" name="steps-{{step[0] + 1}}" value="" col="20" rows="3">{{step[1]}}</textarea>
                                                 </div>
                                             </div>
                                         {% endfor %}
