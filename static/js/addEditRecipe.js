@@ -4,10 +4,10 @@ findTime.forEach(useTime);
 function useTime(updateTime){
     updateTime.addEventListener("change", function (changeTime) {
         //Finds prep and cook time
-        let time1 = document.getElementById("time1").value;
-        let time2 = document.getElementById("time2").value;
+        let time1 = document.getElementById("time-1").value;
+        let time2 = document.getElementById("time-2").value;
         // Updates total time by adding prep and cook time
-        document.getElementById("time3").value = parseInt(time1) + parseInt(time2);
+        document.getElementById("time-3").value = parseInt(time1) + parseInt(time2);
     });
 }
 
@@ -80,9 +80,9 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
     });
 }
 //Creates functionality for ingredient add/remove buttons
-createRemoveFormBoxes("ingredientAddRemoveLocation", "ingredientNumber", ".recipeAddButton", "recipeIngredients-", ".recipeRemoveButton", "input", "recipeIngredientsTotal" ,".countIngredients");
+createRemoveFormBoxes("ingredientAddRemoveLocation", "ingredientNumber", ".recipeAddButton", "ingredients-", ".recipeRemoveButton", "input", "ingredientsTotal" ,".countIngredients");
 //Creates functionality for step add/remove buttons
-createRemoveFormBoxes("stepAddRemoveLocation", "stepNumber", ".stepAddButton", "recipeSteps-", ".stepRemoveButton", "textarea", "recipeStepsTotal", ".countSteps");
+createRemoveFormBoxes("stepAddRemoveLocation", "stepNumber", ".stepAddButton", "steps-", ".stepRemoveButton", "textarea", "stepsTotal", ".countSteps");
 
 // Removes disabled attribute tag when submit button is pushed so information can be accessed
 // If new avatar image present sdds randomly generated image name
