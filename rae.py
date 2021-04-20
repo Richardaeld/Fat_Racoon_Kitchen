@@ -22,7 +22,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-# Creates a random number starting at 1 
+# Creates a random number starting at 1
 def get_random_number(total_numbers):
     return random.randrange(1, total_numbers + 1)
 
@@ -53,50 +53,24 @@ def random_list(random_indexes, item_list):
 
 
 # --Creates(function) a randomized list for display
-def create_random_recipe_lists(total_return, allRecipes):
-    # --Defensive-- for a empty list
-    if len(allRecipes) == 0:
-        return allRecipes
+def create_random_recipe_lists(total_return, cursor):
     random_indexes = []  # holds random indexes
-    if len(allRecipes) > 0:
-        # keeps looping to find all or set number of recipes
+    if len(cursor) > 0:
         while True:
-            # Builds a random number list without dups
             non_dup = check_for_dups(
-                random_indexes, get_random_number(len(allRecipes)))
-            if len(random_indexes) > 0:
-                if non_dup[0]:
-                    random_indexes += [non_dup[1]]
-            else:
+                random_indexes, get_random_number(len(cursor)))
+            if non_dup[0]:
                 random_indexes += [non_dup[1]]
-            # Breaks while when max # of recipes reached
             if len(random_indexes) > total_return or (
-                    len(random_indexes) == len(allRecipes)):
+                    len(random_indexes) == len(cursor)):
                 break
-
-    return random_list(random_indexes, allRecipes)
-
-
-# --Creates(function)-- lists for user favorites and recents
-# Keeps Items in order opposed to mongo "$or" operator
-def create_user_recipe_list(recent_fav, chef_info):
-    recipe_list = []
-    if len(chef_info[recent_fav]) > 0:
-        for recipe in chef_info[recent_fav]:
-            recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe)})
-            if recipe:
-                recipe_list += [[recipe["_id"], recipe["name"]]]
-    recipe_list = list(enumerate(recipe_list))
-    return (recipe_list)
+    return random_list(random_indexes, cursor)
 
 
 def update_avatar(form_key, avatar_mongo_id, dictionary):
     if request.form.get(form_key) == 'true':
         delete_avatar(avatar_mongo_id)
         create_avatar_dict(upload_avatar(), dictionary)
-    if avatar_mongo_id is None:
-        dictionary.update(dict(avatar=None, avatar_id=None))
-    return
 
 
 # Deletes previous image
@@ -106,7 +80,6 @@ def delete_avatar(avatar_id):
         mongo.db.fs.files.delete_many({"_id": ObjectId(avatar_id)})
     except KeyError:
         pass
-    return
 
 
 # Uploads new image
@@ -121,51 +94,6 @@ def upload_avatar():
 # Create avatar dictioanry
 def create_avatar_dict(avatar_tuple, dictionary):
     dictionary.update(dict(avatar=avatar_tuple[0], avatar_id=avatar_tuple[1]))
-    return
-
-
-# Creates new hashed, unsalted password
-def create_new_password(dict_key, form_key, dictioanry):
-    dictioanry[dict_key] = generate_password_hash(
-            request.form.get(form_key))
-    return
-
-
-# Request bool from form and add to dict
-def get_form_bool(bool_request_list, dictionary):
-    for item in bool_request_list:
-        dictionary[item] = bool(request.form.get(item))
-    return
-
-
-# Pulls list from form and adds it to dictionary as list
-def get_form_list(range_total, alter_range, dict_key, dictionary):
-    dictionary[dict_key] = []
-    for item in range(1, (int(request.form.get(range_total)) + int(alter_range) ) ):
-        dictionary[dict_key].append(str(request.form.get(
-            dict_key + "-" + (str(item)))))
-    return
-
-
-# Pulls multiple items from forms and adds to dictionary
-def get_form_items(pull_list, dictionary, is_lower):
-    for item in pull_list:
-        if is_lower:
-            dictionary[item] = request.form.get(item).lower()
-        else:
-            dictionary[item] = request.form.get(item)
-    return
-
-
-# Update mongo recipe/user info with $set operator and dictionary
-def update_mongo(
-        recipe_user, object_id, upload_dict):
-    if recipe_user == "user":
-        return mongo.db.users.update_one(
-            {"_id": ObjectId(object_id)}, {"$set": upload_dict})
-    elif recipe_user == "recipe":
-        return mongo.db.recipes.update_one(
-            {"_id": ObjectId(object_id)}, {"$set": upload_dict})
 
 
 # Checks user password against server hash
@@ -177,6 +105,49 @@ def check_user_password(user):
             return False
     except TypeError:
         return False
+
+
+# Creates new hashed, unsalted password
+def create_new_password(dict_key, form_key, dictioanry):
+    dictioanry[dict_key] = generate_password_hash(
+            request.form.get(form_key))
+
+
+# Request bool from form and add to dict
+def get_form_bool(bool_request_list, dictionary):
+    for item in bool_request_list:
+        dictionary[item] = bool(request.form.get(item))
+
+
+# [time, 0], [ingredients, 1], [steps, 1]
+# # Pulls list from form and adds it to dictionary as list
+def get_form_list(scrub_list, dictionary):
+    for item_list in scrub_list:
+        dictionary[item_list[0]] = []
+        for item in range(1, (int(request.form.get(
+                item_list[0] + "Total")) + int(item_list[1]))):
+            dictionary[item_list[0]].append(str(
+                request.form.get(item_list[0] + "-" + (str(item)))))
+
+
+# Pulls multiple items from forms and adds to dictionary
+def get_form_items(pull_list, dictionary, is_lower):
+    for item in pull_list:
+        if is_lower:
+            dictionary[item] = request.form.get(item).lower()
+        else:
+            dictionary[item] = request.form.get(item)
+
+
+# Update mongo recipe/user info with $set operator and dictionary
+def update_mongo(
+        recipe_user, object_id, upload_dict):
+    if recipe_user == "user":
+        mongo.db.users.update_one(
+            {"_id": ObjectId(object_id)}, {"$set": upload_dict})
+    elif recipe_user == "recipe":
+        mongo.db.recipes.update_one(
+            {"_id": ObjectId(object_id)}, {"$set": upload_dict})
 
 
 # Checks if user value exists in mongo
@@ -206,13 +177,13 @@ def check_mongo_recipe_exists(id):
 
 
 # Checks if mongo information matches user's email or name
-def form_check_diff(mongo_cursor, dict_key, form_key):
-    if mongo_cursor[dict_key] != request.form.get(form_key).lower():
-        exist = check_mongo_user_unique(True, dict_key, form_key)
-        if not exist[0]:
-            # flash_mes = dict_key.title() + " already exists! Try Again!"
-            flash(f"{dict_key.title()} already exists! Try Again!")
-            return False
+def check_diff_unique(mongo_cursor, key_list):
+    for key in key_list:
+        if mongo_cursor[key] != request.form.get(key).lower():
+            exist = check_mongo_user_unique(True, key, key)
+            if not exist[0]:
+                flash(f"{key.title()} already exists! Try Again!")
+                return False
     return True
 
 
@@ -226,22 +197,19 @@ def search_bool_return(dict_key):
 
 # Compares dictionary values of mongo cursors and adds second cursor item
 # to output list if they match and randomizes list
-def match_mongo_cursors(match1_cur, match1_dict, match2_cur, match2_dict):
+def match_mongo_cursors(cursor1, dict1, cursor2, dict2):
     return_list = []
-    for match1 in match1_cur:
-        matched_list = []
-        for match2 in match2_cur:
-            if(match2[match2_dict] == match1[match1_dict]):
-                matched_list += [match2]
+    for match1 in cursor1:
+        matched_list = [
+            match2 for match2 in cursor2 if match2[dict2] == match1[dict1]]
         return_list += create_random_recipe_lists(2, matched_list)
     return return_list
 
 
 # Gathers basic user info
 def call_user():
-    userInfo = mongo.db.users.find_one({"email": session["user"]}, (
+    return mongo.db.users.find_one({"email": session["user"]}, (
         {"username": 1, "recents": 1, "favorites": 1}))
-    return userInfo
 
 
 # Checks if inputs are false and outputs false item
