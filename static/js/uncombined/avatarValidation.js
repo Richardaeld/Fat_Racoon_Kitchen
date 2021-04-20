@@ -1,3 +1,4 @@
+// ----avatar validation ----
 // ---- Create Random Avatar name
 // Creates a random string for image name assignment
 const characterLibrary = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_@!&,?0123456789";

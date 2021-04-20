@@ -1,3 +1,4 @@
+// ---- Login Create Modal ----
 // ---- login modal
 // Opens/closes modal's aside
 let modal = document.getElementById("modalAside"); // modal

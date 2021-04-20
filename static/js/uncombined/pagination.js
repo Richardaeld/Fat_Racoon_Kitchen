@@ -1,4 +1,4 @@
-// ---- Pagination
+// ---- Pagination ----
 // Creates Pagination's frame
 var findFeature = document.querySelectorAll(".recipe-lists");
 findFeature.forEach(selectFeature);

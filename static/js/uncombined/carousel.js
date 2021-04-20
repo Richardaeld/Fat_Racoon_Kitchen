@@ -1,4 +1,4 @@
-// ---- Carousel 
+// ---- Carousel ----
 // builds an array of carousel data
 var carousel = document.querySelectorAll(".card-carousel");
 

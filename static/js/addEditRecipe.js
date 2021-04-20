@@ -1,3 +1,70 @@
+// ---- General ----
+// ----Removes all flash messages after 7 seconds
+if (document.getElementById("flash").getElementsByTagName("div")[0]){
+    setTimeout( function () {
+        let flashRm = document.querySelectorAll(".flash").length;
+        for (let flashCount = 0; flashCount < flashRm; flashCount++){
+            var divRemove = document.getElementsByClassName("flash")[0];
+            divRemove.remove();
+        }
+    },7000);
+}
+
+// ----Social link animation
+// Function to make social links have rippling liquid effect with dipping ice
+function makeRipples (targetLink) {
+    let targetLiquid = targetLink.getElementsByTagName("span")[0];
+    let targetIce = targetLink.getElementsByTagName("i")[0];
+    // Start animation
+    targetIce.classList.add("dipping-ice");
+    targetLiquid.classList.add("create-ripple");
+    // Reset animation after 3 seconds
+    setTimeout(function () {
+        targetIce.classList.remove("dipping-ice");
+        targetLiquid.classList.remove("create-ripple");
+    },3500);
+}
+
+//Adds ripple effect to mouse over event listeners for social links
+var findLinks = document.querySelectorAll(".social-position");
+findLinks.forEach(selectLinks);
+function selectLinks (link) {
+    // for mouse users
+    link.addEventListener("mouseenter", function() {
+        makeRipples (link);
+    });
+    // for touch screen users
+    link.addEventListener("touchmove", function() {
+        makeRipples (link);
+    },{passive:true});
+}
+
+// ----Search bar
+// Makes search bar visible wen user clicks on it and adds defensive code
+var findSearchBar = document.querySelectorAll(".searchBar");
+findSearchBar.forEach(selectSearchBar);
+function selectSearchBar(searchBar){
+
+    // Makes search bar visible with user click
+    let searchInput = searchBar.getElementsByTagName("input")[0];
+    searchBar.addEventListener("click", function () {
+        searchInput.classList.remove("make-invis");
+        searchInput.focus();
+    });
+
+    // Makes sure users are unable to submit blank queries
+    let searchButton = searchBar.getElementsByTagName("button")[0];
+    searchInput.addEventListener("keyup", function () {
+        if(searchInput.value != "") {
+            searchButton.removeAttribute("disabled");
+        }else if(searchInput.value == "") {
+            searchButton.setAttribute("disabled", "");
+        }
+    });
+
+}
+
+// ----addeditrecipe ----
 // ---- Changes Total Time acording to prep and cook times being changed
 var findTime = document.querySelectorAll(".time");
 findTime.forEach(useTime);
@@ -94,3 +161,49 @@ document.getElementById("custom-button").addEventListener("click", function(subm
         document.getElementById("avatar_file_valid").value = true;
     }
 });
+
+
+// ----avatar validation ----
+// ---- Create Random Avatar name
+// Creates a random string for image name assignment
+const characterLibrary = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_@!&,?0123456789";
+const characterLibraryLength = characterLibrary.length;
+var imageName = "";
+// Creates a random 20 character Image name
+for (let i=0; i<20; i++){
+    let characterLibraryIndex = Math.floor(Math.random()*(characterLibraryLength));
+    imageName += characterLibrary[characterLibraryIndex];
+}
+
+// ---- Avatar Image Validation
+// Check file size
+document.getElementById("avatar").addEventListener("change", function() {
+    let loc = document.getElementById("avatar");
+    let fileSize = loc.files[0].size;
+    // Validates according to filsize
+    if (fileSize > 500000) {
+        loc.value = null;
+        loc.classList.add("invalid");
+        document.getElementById("avatar_valid").classList.remove("make-invis");
+    } else if (fileSize < 500000 && loc.classList.contains("invalid")){
+        loc.classList.remove("invalid");
+        document.getElementById("avatar_valid").classList.add("make-invis");
+    }
+});
+
+
+// ----button ----
+let jsButtonFind = document.querySelectorAll(".custom-js-button");
+jsButtonFind.forEach(jsButtonSelect);
+function jsButtonSelect(button) {
+    button.addEventListener("click", function(pushButton){
+        button.classList.add("custom-button-press-outer");
+        button.getElementsByClassName("sticky-note-inner-div")[0].classList.add("custom-button-press");
+        if(button.id == "deleteModal"){
+            setTimeout(function(unpushButton){
+                button.classList.remove("custom-button-press-outer");
+                button.getElementsByClassName("sticky-note-inner-div")[0].classList.remove("custom-button-press");
+            },3000);
+        }
+    });
+}

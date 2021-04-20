@@ -1,3 +1,4 @@
+// ----button ----
 let jsButtonFind = document.querySelectorAll(".custom-js-button");
 jsButtonFind.forEach(jsButtonSelect);
 function jsButtonSelect(button) {

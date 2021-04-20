@@ -1,3 +1,4 @@
+// ---- Password Validation ----
 // ---- Validation ----
 // ----Validates matching passwords -- passwordCheck1 and passwordCheck2
 let passwordCheck1 = document.getElementById("passwordCheck1"); // Compare location 1
