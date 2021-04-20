@@ -344,6 +344,7 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 
 # Bugs and Other Problems
 ## Previous Bugs
++ Improper variable passed into addfavorite page if user refreshes page -- check_for_dups used to check boolean status even in refresh -- list comprehension used to remove more lines
 + Flask was generating a 504 gateway timeout error
     + A previously harmless while began to loop infinitely when a if comparason value was improper
     + Fix was being sure the if comparason values were both int, previously one had been a html location because of a missed len
