@@ -456,7 +456,7 @@ header {
 }
 /* ------------------------------------------------------- Logo Section  ---------------------------------------------------------------- */
 .logo-background {
-    background: url("../images/grain-1-90-small.jpg") 0% 0% / 100% 100%;
+    background: url("../images/grain-1-90-xs.jpg") 0% 0% / 100% 100%;
     z-index: 0;
     border-radius: 5%;
     margin: 2rem 0rem;
@@ -478,7 +478,7 @@ header {
 .header-text-1,
 .header-text-2 {
     font: 3.5rem "Indie Flower", sans-serif;
-    background: url("../images/grain-1-90-small.jpg") no-repeat center top;
+    background: url("../images/grain-1-90-xs.jpg") no-repeat center top;
     text-shadow: 0px 0px rgba(0, 0, 0, 0);
     color: transparent;
     -webkit-background-clip: text; /* allows image to be shown in text, 'background-clip' not used because it has a different effect */
