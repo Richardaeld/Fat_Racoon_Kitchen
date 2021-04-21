@@ -5,7 +5,7 @@
         <div class="col-12">
         <div class="row no-gutters justify-content-start">
             <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
-                {% if recipeId == "new"%}
+                {% if recipeInfo.name == "Recipe"%}
                 <a href="{{ url_for('profile') }}">
                     <div class="sticky-note-inner-div">
                         <h6>Back</h6>
