@@ -281,7 +281,7 @@ def search_user_recipes(search):
     findUserSelectedRecipes = {}
     findUserSelectedRecipes["$or"] = []
     for recipe in userInfo[search]:
-        findUserSelectedRecipes["$or"].append({"_id": ObjectId(recipe)})
+        findUserSelectedRecipes["$or"].append({"_id": ObjectId(recipe[0])})
     return render_template(
         "search_bar_returns.html", findRecipes=list(enumerate(
             mongo.db.recipes.find(findUserSelectedRecipes))))
