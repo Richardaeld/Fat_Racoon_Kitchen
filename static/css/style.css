@@ -530,42 +530,47 @@ header {
 }
 /* ------------------------------------------------------- Main Nav Bar Section  ---------------------------------------------------------------- */
 .custom-nav {
-    background: #fff;
-    border-top: 2px solid rgba(14, 255, 255, .5);
-    border-bottom: 2px solid rgba(14, 255, 255, .5);
+    /* background: #fff; */
+    /* border-top: 2px solid rgba(14, 255, 255, .5); */
+    /* border-bottom: 2px solid rgba(14, 255, 255, .5); */
+    border-bottom: 2px solid #6F9FAB;
     top:0; 
     z-index: 2;
-}
-
-.custom-nav-sticky {
     position: sticky; 
-
 }
 
-.custom-nav label {
+.custom-nav{
+    font-size: 1.5em;
+}
+
+/* .custom-nav-select {
+    color: #99DCEC!important;
+} */
+
+/* .custom-nav label {
     font-size: 1rem;
-}
+} */
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
     .custom-nav {
         border-right: 2px solid rgba(14, 266, 266, .5);
     }
-}
+} */
 
-.search-icon {
+/* .search-icon {
     padding-top: 0;
     padding-bottom: 0;
     background-color: transparent;
     border: none;
-}
+} */
 
-.search-bar label {
+/* .search-bar label {
     margin-bottom: 0;
-}
+} */
 
-.user-form-search-height {
+/* .user-form-search-height {
     height: 90%;
-}
+} */
 /* ------------------------------------------------------- Carousel Section  ---------------------------------------------------------------- */
 .recipe-overlay-bottom {
     position: absolute;
