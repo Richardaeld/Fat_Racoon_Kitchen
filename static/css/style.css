@@ -390,6 +390,14 @@ hr {
 header {
     border-bottom: 2px solid rgba(226, 14, 14, .5);
 }
+
+.clickable {
+    cursor: pointer;
+}
+
+.not-clickable {
+    cursor: context-menu;
+}
 /* ---------------------------------------- Various container sizes */
 .xxl-content-height {
     min-height: 40rem;
@@ -441,6 +449,7 @@ header {
 .blank-anchor a:hover{
     color: #010203;
     text-decoration: none;
+    cursor:pointer;
 }
 
 .generic-box-shadow {
@@ -719,7 +728,7 @@ footer {
     margin: 1rem;
 }
 
-#delete-modal,
+#delete-modal
 #login-create-modal {
     border-radius: 0%; 
 }
@@ -1006,6 +1015,7 @@ footer {
     width: 100%;
     bottom: 20px;
     right:0;
+    cursor: pointer
 }
 /* ------------------------------------------------------- Lessons Section  ---------------------------------------------------------------- */
 .lessons-bottom-padding {

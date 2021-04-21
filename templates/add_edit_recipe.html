@@ -149,9 +149,9 @@
                                             <div class="col-12">
                                                 <div class="row no-gutters justify-content-center">
                                                     {% if recipeInfo.lazy == True %}
-                                                    <input type="checkbox" name="lazy" id="lazy" value="True" checked>
+                                                    <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True" checked>
                                                     {% else %}
-                                                    <input type="checkbox" name="lazy" id="lazy" value="True">
+                                                    <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True">
                                                     {% endif %}
                                                 </div>
                                             </div>
@@ -164,9 +164,9 @@
                                            <div class="col-12">
                                                <div class="row no-gutters justify-content-center">
                                                 {% if recipeInfo.grandparent == True %}
-                                                   <input type="checkbox" name="grandparent" id="grandparent" value="True" checked>
+                                                   <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True" checked>
                                                    {% else %}
-                                                   <input type="checkbox" name="grandparent" id="grandparent" value="True">
+                                                   <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True">
                                                    {% endif %}
                                                 </div>
                                             </div>
@@ -204,7 +204,7 @@
                                     <!-- Add button -->
                                     <div class="col-4 col-md-2">
                                         <div class="row no-gutters">
-                                            <div class="col-12 custom-button recipeAddButton">
+                                            <div class="col-12 custom-button recipeAddButton clickable">
                                                 <p>add</p>
                                             </div>
                                         </div>
@@ -212,7 +212,7 @@
                                     <!-- Remove button -->
                                     <div class="col-4 col-md-2">
                                         <div class="row no-gutters">
-                                            <div class="col-12 custom-button recipeRemoveButton">
+                                            <div class="col-12 custom-button recipeRemoveButton clickable">
                                                 <p>Remove</p>
                                             </div>
                                         </div>
@@ -253,7 +253,7 @@
                                     <!-- Add Button -->
                                     <div class="col-4 col-md-2">
                                         <div class="row no-gutters justify-content-end">
-                                            <div class="col-12 custom-button stepAddButton">
+                                            <div class="col-12 custom-button stepAddButton clickable">
                                                 <p>add</p>
                                             </div>
                                         </div>
@@ -261,7 +261,7 @@
                                     <!-- Remove button -->
                                     <div class="col-4 col-md-2">
                                         <div class="row no-gutters">
-                                            <div class="col-12 custom-button stepRemoveButton">
+                                            <div class="col-12 custom-button stepRemoveButton clickable">
                                                 <p>remove</p>
                                             </div>
                                         </div>

@@ -35,7 +35,7 @@
                 </a>
             </div>
             <!--  Delete recipe button -->
-            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button custom-js-button" id="deleteModal">
+            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button clickable custom-js-button" id="deleteModal">
                 <div class="sticky-note-inner-div" >
                     <h6 class="">Delete Recipe</h6>
                 </div>
@@ -154,7 +154,7 @@
                                 <h1 class="yanone-text">Recipe Ingredients</h1>
                                 <hr>
                                 {% for ingredient in recipeInfo.ingredients %}
-                                <li class="row no-gutters justify-content-center">
+                                <li class="row no-gutters justify-content-center clickable">
                                     <input class="col-1 checkbox-input" type="checkbox">
                                     <h6 class="col-10 checkbox-h6">{{ ingredient }}</h6>
                                     <h6></h6>
@@ -174,7 +174,7 @@
                                 <h1 class="yanone-text">Recipe Steps</h1>
                                 <hr>
                                 {% for step in recipeSteps %}
-                                    <li class="row no-gutters justify-content-center">
+                                    <li class="row no-gutters justify-content-center clickable">
                                         <input class="col-1 checkbox-input" type="checkbox">
                                         <h6 class="col-1 checkbox-h6 yanone-text">{{ step[0] + 1 }}.</h6>
                                         <h6 class="col-10 checkbox-h6">{{ step[1] }}</h6>
