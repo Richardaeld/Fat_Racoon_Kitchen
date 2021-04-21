@@ -354,7 +354,7 @@ function selectFeature(pagination){
             // Creates start ellipses
             if (pagNumFrame == 0){
                 let createLi = document.createElement("li");
-                createLi.className = "col list-group-item pagination-content first-ellipses make-invis";
+                createLi.className = "col list-group-item pagination-content first-ellipses make-invis not-clickable";
                 createLi.textContent = "...";
                 createUl.appendChild(createLi);
             }
@@ -368,7 +368,7 @@ function selectFeature(pagination){
             // Creates end ellipses
             if (pagNumFrame == Math.floor(liLength/5) ){
                 let createLi = document.createElement("li");
-                createLi.className = "col list-group-item pagination-content last-ellipses make-invis";
+                createLi.className = "col list-group-item pagination-content last-ellipses make-invis not-clickable";
                 createLi.textContent = "...";
                 createUl.appendChild(createLi);
             }
@@ -445,6 +445,8 @@ function selectFeature(pagination){
                     lastEllipLoc.classList.add("make-invis");
                 }
             });     
+        // Selects first pagination number
+        pagination.parentElement.getElementsByClassName("pagination-number")[0].classList.add("pagination-selected")
         }
     }
 }
