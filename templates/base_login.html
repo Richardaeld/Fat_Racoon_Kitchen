@@ -42,26 +42,58 @@
     {%endwith%}
     </aside>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: sticky; top:0; z-index:2">
-        <a class="navbar-brand" href="{{ url_for('index') }}">Fat Raccoon</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-nav yanone-text" >
+        <a class="navbar-brand" href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="Fat raccoon face" style="width:50px;">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                {% if request.endpoint == "index" %}
+                <li class="nav-item active custom-nav-select">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
+                {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('lessons') }}">Lesson</a>
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
                 </li>
+                {% endif %}
+                {% if request.endpoint == "lessons" %}
+                <li class="nav-item active custom-nav-select">
+                    <a class="nav-link" href="{{ url_for('lessons', nav='lessons') }}">Lesson <span class="sr-only">(current)</span></a>
+                </li>
+                {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('all_recipes') }}">Recipes</a>
+                    <a class="nav-link" href="{{ url_for('lessons', nav='lessons') }}">Lesson</a>
                 </li>
+                {% endif %}
+                {% if request.endpoint == "all_recipes" or request.endpoint == "recipe_list" %}
+                <li class="nav-item active custom-nav-select">
+                    <a class="nav-link" href="{{ url_for('all_recipes', nav='recipes') }}">Recipes <span class="sr-only">(current)</span></a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('all_recipes', nav='recipes') }}">Recipes</a>
+                </li>
+                {% endif %}
+                {% if request.endpoint == "recipe" or request.endpoint == "add_edit_recipe" %}
+                <li class="nav-item active custom-nav-select">
+                    <a class="nav-link" href="{{ url_for('all_recipes', nav='recipes') }}">{{ recipeInfo.name.title() }} <span class="sr-only">(current)</span></a>
+                </li>
+                {% endif %}
                 {% if session.user == null %}
                 <li class="nav-item">
                     <a class="nav-link login-modal" href="#">Login</a>
+                </li>
+                {% elif session.user and request.endpoint == "profile" or request.endpoint == "edit_user_info" %}
+                <li class="nav-item active custom-nav-select">
+                    <a class="nav-link" href="{{ url_for('profile') }}">Profile  <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                 </li>
                 {% elif session.user %}
                 <li class="nav-item">
@@ -72,12 +104,13 @@
                 </li>
                 {% endif %}
             </ul>
-            <form style="padding-left:1rem; padding-right:1rem;" class="form-inline my-2 my-lg-0 row justify-content-center" method="POST" action="{{ url_for('search_bar_returns') }}">
+            <form class="form-inline my-2 my-lg-0" method="POST" action="{{ url_for('search_bar_returns') }}">
                 <input class="form-control mr-sm-2" name="userSearch" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </nav>
+
 
     {% block section %}
     {% endblock %}
