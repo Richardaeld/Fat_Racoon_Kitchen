@@ -7,7 +7,7 @@
             <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec">
                 <!-- Feature header -->
                 <h1 class="yanone-text recipe-name">{{ feature.title() }} Recipes</h1>
-                <hr>
+                <hr class="make-space">
                 <!-- List of recipes that share this feature -->
                 {% for recipe in allrecipes %}
                     <li class="make-invis blank-anchor">
@@ -16,14 +16,10 @@
                             <div class="col-12 col-lg-8">
                                 <h6><strong>{{ recipe.name }}</strong>: </h6>
                             </div>
+                            <!-- Recipe total time -->
                             <div class="col-12 col-lg-4">
-                                <div class="row no-gutters">
-                                    <!-- Recipe total time -->
-                                    <div class="col-12">
-                                        <p>{{ recipe.time[2] }} Minutes</p>
-                                    </div>
-                                </div>
-                            </div>                                      
+                                <p>{{ recipe.time[2] }} Minutes</p>
+                            </div>
                         </a>
                     </li>
                 {% endfor %}
