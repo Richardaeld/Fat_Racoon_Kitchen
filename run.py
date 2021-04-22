@@ -82,7 +82,7 @@ def logout():
 
 
 # Returns users personal profile
-@app.route("/profile", methods=("GET", "POST"))
+@app.route("/profile")
 def profile():
     userInfo = rae.check_mongo_user_unique(False, "email", session["user"])
     if not userInfo[0]:
@@ -164,7 +164,7 @@ def delete_recipe(recipe_id):
     return redirect(url_for("profile"))
 
 
-@app.route("/add_edit_recipe/<recipeId>", methods=("GET", "POST"))
+@app.route("/add_edit_recipe/<recipeId>")
 def add_edit_recipe(recipeId):
     userInfo = mongo.db.users.find_one({"email": session["user"]})
     features = mongo.db.feature.find()
@@ -202,7 +202,7 @@ def upload_recipe(recipeId, username):
 
 
 # Returns a page for users to edit their user info
-@app.route("/edit_user_info", methods=("GET", "POST"))
+@app.route("/edit_user_info")
 def edit_user_info():
     userInfo = mongo.db.users.find_one({"email": session["user"]})
     return render_template("edit_user_info.html", userInfo=userInfo)
@@ -257,7 +257,7 @@ def all_recipes():
 
 
 # Returns a search based on lazy or grandparent bool
-@app.route("/search_bool_returns/<search>", methods=("POST", "GET"))
+@app.route("/search_bool_returns/<search>")
 def search_bool_returns(search):
     return render_template(
         "search_bar_returns.html",
@@ -275,7 +275,7 @@ def search_bar_returns():
 
 
 # Returns a search based on users favorites or recents lists
-@app.route("/search_user_recipes/<search>", methods=("POST", "GET"))
+@app.route("/search_user_recipes/<search>")
 def search_user_recipes(search):
     userInfo = rae.call_user()
     findUserSelectedRecipes = {}
@@ -288,7 +288,7 @@ def search_user_recipes(search):
 
 
 # Returns a search based on user's uploaded recipes
-@app.route("/search_user_recipes", methods=("POST", "GET"))
+@app.route("/search_user_recipes")
 def search_user_uploads():
     userInfo = rae.call_user()
     return render_template(
