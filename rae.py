@@ -39,17 +39,17 @@ def check_for_dups(full_list, added_item):
 
 
 # builds randomized item list from random indexes
-def random_list(random_indexes, item_list):
+def random_list(random_index_list, item_list):
     iteration = 1
-    return_list = []
-    for index in random_indexes:
+    return_random_list = []
+    for random_index in random_index_list:
         for item in item_list:
-            if index == iteration:
-                return_list += [item]
+            if random_index == iteration:
+                return_random_list += [item]
                 iteration = 1
                 break
             iteration += 1
-    return return_list
+    return return_random_list
 
 
 # --Creates(function) a randomized list for display
