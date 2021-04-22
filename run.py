@@ -265,12 +265,14 @@ def search_bool_returns(search):
 
 
 # Returns a search based on user input for recipe name, feature, or chef name
-@app.route("/search_bar_returns/", methods=("POST", "GET"))
-def search_bar_returns():
+@app.route("/search_bar_returns/<search>", methods=("POST", "GET"))
+def search_bar_returns(search):
+    if search == "user_search":
+        search = request.form.get("userSearch")
     return render_template(
         "search_bar_returns.html",
         findRecipes=list(enumerate(mongo.db.recipes.find(
-            {"$text": {"$search": request.form.get("userSearch")}},
+            {"$text": {"$search": search}},
             {"ingedients": 0, "steps": 0, "text": 0}))))
 
 
