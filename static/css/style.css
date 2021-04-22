@@ -163,9 +163,19 @@
     transform: rotateY(0deg);
 }
 /* add on sticky note inner line for better spacing */
-.make-space div {
+/* .make-space div {
     padding-bottom: 0.75rem;
+} */
+
+
+.make-space {
+    padding-bottom: 1.5rem;
 }
+
+
+
+
+
 /* Lifting Shadows */
 .sticky-note:before,
 .sticky-note-middle:before,
@@ -654,9 +664,9 @@ right: 0px;
     transform: translateY(7.5rem);
 }
 
-.lazy-banner-space {
-    padding-top: 1rem;
-}
+/* .lazy-banner-space {
+    padding-top: 1.25rem;
+} */
 .lazy {
     background-color: rgba(18, 138, 231, .75);
 }
@@ -1055,13 +1065,13 @@ footer {
     padding-top: 2rem;
 }
 /* ------------------------------------------------------- Search Bar Section  ---------------------------------------------------------------- */
-@media (min-width: 992px) and (max-width: 1399.98px) {
+/* @media (min-width: 992px) and (max-width: 1399.98px) {
     .search-bar-spacing h6,
     .search-bar-spacing p{
         font-size: 2rem;
         display: inline;
     }
-}
+} */
 /* ------------------------------------------------------- General Text and Breakpoint Section  ---------------------------------------------------------------- */
 i,
 .custom-nav input {
@@ -1077,7 +1087,7 @@ select {
     padding-left: 0.5rem!important;
     padding-right: 0.5rem!important;
     font-size: 1.75rem;
-    font-size: 2rem;  /* just an after thought  */
+    font-size: 1.75rem;  /* just an after thought  */
 }
 
 h1 {
@@ -1096,7 +1106,7 @@ h6 {
     textarea,
     legend,
     select {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     h1 {
@@ -1105,7 +1115,7 @@ h6 {
 
     h3,
     h6 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
 
     /* recipe -- favorite recipe icon (star) */
@@ -1115,9 +1125,13 @@ h6 {
         bottom:0.1rem;
     }
     /* art -- sticky note -- add on sticky note inner line for better spacing */
-    .make-space div {
+    /* .make-space div {
         padding-bottom: 1.25rem;
+    } */
+    .make-space {
+        padding-bottom: 2rem;
     }
+
     /* art -- index-card -- resize card with smaller devices*/
     .index-face,
     .index-back,
@@ -1134,7 +1148,7 @@ h6 {
     textarea,
     legend,
     select {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     h1 {
@@ -1143,7 +1157,7 @@ h6 {
 
     h3,
     h6 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
 
     .xxl-content-height {
@@ -1156,8 +1170,9 @@ h6 {
     /* main nav bar */
     .custom-nav a,
     .custom-nav i,
-    .custom-nav label,
-    .user-form-search-height {
+    .custom-nav label
+    /* .user-form-search-height*/ 
+    {
         font-size: .75rem;
     }
 
