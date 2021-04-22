@@ -27,21 +27,6 @@
         </div>
     </header>
 
-    <!-- Flash Message -->
-    <aside id="flash" class="yanone-text">
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="row no-gutters justify-content-center flash align-items-center">
-                    <div class="col-10">
-                        <h1> {{ message }} </h1>
-                    </div>
-                </div>
-            {% endfor %}
-        {% endif %}
-    {%endwith%}
-    </aside>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-nav yanone-text" >
         <a class="navbar-brand" href="{{ url_for('index') }}">
             <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="Fat raccoon face" style="width:50px;">
@@ -104,13 +89,27 @@
                 </li>
                 {% endif %}
             </ul>
-            <form class="form-inline my-2 my-lg-0" method="POST" action="{{ url_for('search_bar_returns') }}">
+            <form class="form-inline my-2 my-lg-0" method="POST" action="{{ url_for('search_bar_returns', search='user_search') }}">
                 <input class="form-control mr-sm-2" name="userSearch" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </nav>
 
+        <!-- Flash Message -->
+    <aside id="flash" class="yanone-text">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="row no-gutters justify-content-center flash align-items-center">
+                    <div class="col-10">
+                        <h1> {{ message }} </h1>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {%endwith%}
+    </aside>
 
     {% block section %}
     {% endblock %}
