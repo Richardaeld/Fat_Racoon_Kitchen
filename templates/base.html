@@ -176,21 +176,6 @@
         </div>
     </header>
 
-    <!-- Flash Message -->
-    <aside id="flash" class="yanone-text">
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="row no-gutters justify-content-center flash align-items-center">
-                    <div class="col-10">
-                        <h1> {{ message }} </h1>
-                    </div>
-                </div>
-            {% endfor %}
-        {% endif %}
-    {%endwith%}
-    </aside>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-nav yanone-text" >
         <a class="navbar-brand" href="{{ url_for('index') }}">
             <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="Fat raccoon face" style="width:50px;">
@@ -259,6 +244,21 @@
             </form>
         </div>
     </nav>
+
+    <!-- Flash Message -->
+    <aside id="flash" class="yanone-text">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="row no-gutters justify-content-center flash align-items-center">
+                    <div class="col-10">
+                        <h1> {{ message }} </h1>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {%endwith%}
+    </aside>
 
     {% block section %}
     {% endblock %}
