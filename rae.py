@@ -28,7 +28,6 @@ def get_random_number(total_numbers):
 
 
 # Finds if a duplicate exists
-# *note* duplicates return False
 def check_for_dups(full_list, added_item):
     for dup_check in full_list:
         if dup_check == added_item:
@@ -38,7 +37,7 @@ def check_for_dups(full_list, added_item):
     return True, added_item
 
 
-# builds randomized item list from random indexes
+# Builds randomized item list from random indexes
 def random_list(random_index_list, item_list):
     iteration = 1
     return_random_list = []
@@ -52,28 +51,29 @@ def random_list(random_index_list, item_list):
     return return_random_list
 
 
-# --Creates(function) a randomized list for display
-def create_random_recipe_lists(total_return, cursor):
-    random_indexes = []  # holds random indexes
-    if len(cursor) > 0:
+# Creates a randomized list
+def create_random_recipe_lists(total_return, cursor_dict):
+    random_indexes = []
+    if len(cursor_dict) > 0:
         while True:
             non_dup = check_for_dups(
-                random_indexes, get_random_number(len(cursor)))
+                random_indexes, get_random_number(len(cursor_dict)))
             if non_dup[0]:
                 random_indexes += [non_dup[1]]
             if len(random_indexes) > total_return or (
-                    len(random_indexes) == len(cursor)):
+                    len(random_indexes) == len(cursor_dict)):
                 break
-    return random_list(random_indexes, cursor)
+    return random_list(random_indexes, cursor_dict)
 
 
+# Removes old avatar/image and adds new avatar to upload dictionary
 def update_avatar(form_key, avatar_mongo_id, dictionary):
     if request.form.get(form_key) == 'true':
         delete_avatar(avatar_mongo_id)
         create_avatar_dict(upload_avatar(), dictionary)
 
 
-# Deletes previous image
+# Deletes previous avatar/image
 def delete_avatar(avatar_id):
     try:
         mongo.db.fs.chunks.delete_many({"files_id": ObjectId(avatar_id)})
@@ -82,7 +82,7 @@ def delete_avatar(avatar_id):
         pass
 
 
-# Uploads new image
+# Uploads new avatar/image
 def upload_avatar():
     mongo.save_file(request.form.get("avatar_name"), request.files['avatar'])
     imageDict = mongo.db.fs.files.find_one(
@@ -107,13 +107,13 @@ def check_user_password(user):
         return False
 
 
-# Creates new hashed, unsalted password
+# Creates new hashed, unsalted password and adds to upload dictionary
 def create_new_password(dict_key, form_key, dictioanry):
     dictioanry[dict_key] = generate_password_hash(
             request.form.get(form_key))
 
 
-# Request bool from form and add to dict
+# Request bool from form and adds to upload dictionary
 def get_form_bool(bool_request_list, dictionary):
     for item in bool_request_list:
         dictionary[item] = bool(request.form.get(item))
@@ -121,8 +121,8 @@ def get_form_bool(bool_request_list, dictionary):
 
 # [time, 0], [ingredients, 1], [steps, 1]
 # # Pulls list from form and adds it to dictionary as list
-def get_form_list(scrub_list, dictionary):
-    for item_list in scrub_list:
+def get_form_list(pull_list, dictionary):
+    for item_list in pull_list:
         dictionary[item_list[0]] = []
         for item in range(1, (int(request.form.get(
                 item_list[0] + "Total")) + int(item_list[1]))):
@@ -130,7 +130,7 @@ def get_form_list(scrub_list, dictionary):
                 request.form.get(item_list[0] + "-" + (str(item)))))
 
 
-# Pulls multiple items from forms and adds to dictionary
+# Pulls multiple items from form and adds to dictionary
 def get_form_items(pull_list, dictionary, is_lower):
     for item in pull_list:
         if is_lower:
@@ -139,15 +139,15 @@ def get_form_items(pull_list, dictionary, is_lower):
             dictionary[item] = request.form.get(item)
 
 
-# Update mongo recipe/user info with $set operator and dictionary
+# Update mongo recipe/user info with $set operator and adds to dictionary
 def update_mongo(
-        recipe_user, object_id, upload_dict):
+        recipe_user, object_id, dictionary):
     if recipe_user == "user":
         mongo.db.users.update_one(
-            {"_id": ObjectId(object_id)}, {"$set": upload_dict})
+            {"_id": ObjectId(object_id)}, {"$set": dictionary})
     elif recipe_user == "recipe":
         mongo.db.recipes.update_one(
-            {"_id": ObjectId(object_id)}, {"$set": upload_dict})
+            {"_id": ObjectId(object_id)}, {"$set": dictionary})
 
 
 # Checks if user value exists in mongo
@@ -196,7 +196,7 @@ def search_bool_return(dict_key):
 
 
 # Compares dictionary values of mongo cursors and adds second cursor item
-# to output list if they match and randomizes list
+# to output list if they match and then randomizes list
 def match_mongo_cursors(cursor1, dict1, cursor2, dict2):
     return_list = []
     for match1 in cursor1:
@@ -206,14 +206,14 @@ def match_mongo_cursors(cursor1, dict1, cursor2, dict2):
     return return_list
 
 
-# Gathers basic user info
+# Gathers basic user info for user search
 def call_user():
     return mongo.db.users.find_one({"email": session["user"]}, (
         {"username": 1, "recents": 1, "favorites": 1}))
 
 
 # Checks if inputs are false and outputs false item
-# boolean_list - [bool_value[0], item_name[1]]
+# boolean_list == [bool_value[0], item_name[1]]
 def check_boolean(boolean_list):
     for item in boolean_list:
         if not item[0]:
