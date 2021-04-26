@@ -1,10 +1,10 @@
 {% extends "base_login.html" %}
 {% block section %}
 <!--  User basic information  -->
-<section class="row no-gutters justify-content-around align-items-center generic-background"> <!--  used carousel height  -->
-    <div class="col-12">
-        <!--  Create a new recipe  -->
+<section class="row no-gutters justify-content-around align-items-center generic-background">
+    <div class="col-12 make-space">
         <div class="row no-gutters justify-content-between">
+            <!--  Create a new recipe  -->
             <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
                 <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
                     <div class="sticky-note-inner-div">
@@ -12,7 +12,6 @@
                     </div>
                 </a>
             </div>
-
             <!--  Edit user profile  -->
             <div class="col-4 col-lg-2 sticky-note-no-shadow custom-button profile-button blank-anchor custom-js-button">
                 <a href="{{ url_for('edit_user_info') }}">
@@ -25,21 +24,13 @@
     </div>
     <!--  Username and Bio  -->
     <!-- Bio header -->
-    <div class="col-12 profile-header-height">
-        <div class="row no-gutters justify-content-center">
-            <div class="col-12">
-                <h1>{{ chef_info.username.title() }}'s Profile</h1>
-            </div>
-        </div>
+    <div class="col-12 profile-header make-space">
+        <h1>{{ chef_info.username.title() }}'s Profile</h1>
     </div>
     <!-- Bio information -->
     <div class="col-11 col-lg-6 col-xl-4 sticky-note">
         <div class="row no-gutters sticky-note-inner-div align-items-center xl-content-height">
-            <div class="col-12">
-                <h6>
-                    {{ chef_info.bio }}
-                </h6>
-            </div>
+            <h6>{{ chef_info.bio }}</h6>
         </div>
     </div>
     <!--  Avatar of user or basic stand in  -->
