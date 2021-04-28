@@ -101,16 +101,16 @@
 
 .polaroid-picture img,
 .polaroid-picture-classic img {
-    /* height: 100%; */
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    object-fit: cover;
 }
 
 .polaroid-picture-classic img {
-    filter: grayscale(60%);
+    /* filter: grayscale(60%); */
 }
 /* ---------------------------------------- Sticky Note Art */
 /* structure of sticky note is important!*/
@@ -874,6 +874,15 @@ footer {
     /* font-family: "Yanone+Kaffeesatz", sans-serif; */
     margin: 2rem;
 }
+
+.form-base textarea {
+    /* width: 100%!important; */
+}
+
+.form-base label {
+    width: 100%
+}
+
 /* Curved edges only look appeasing on larger screens */
 @media (min-width: 1200px) {
     .form-delete-base,
@@ -882,9 +891,9 @@ footer {
     }
 }
 
-.form-base hr {
+/* .form-base hr {
     margin-bottom: 2.5rem;
-}
+} */
 
 .form-input-spacing { /*----------Im new !! AND IMPORTANT*/
     padding-bottom: 3rem
@@ -975,14 +984,9 @@ footer {
     text-decoration: none;
 }
 
-.profile-header-height {
-    height: 3rem;
+.profile-header {
     color: #fff;
     text-shadow: 2px 2px 4px #010203;
-}
-
-.profile-header-height div {
-    height: 7rem;
 }
 
 .profile-button {
