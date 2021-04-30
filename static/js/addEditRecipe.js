@@ -39,30 +39,6 @@ function selectLinks (link) {
     },{passive:true});
 }
 
-// ----Search bar
-// Makes search bar visible wen user clicks on it and adds defensive code
-var findSearchBar = document.querySelectorAll(".searchBar");
-findSearchBar.forEach(selectSearchBar);
-function selectSearchBar(searchBar){
-
-    // Makes search bar visible with user click
-    let searchInput = searchBar.getElementsByTagName("input")[0];
-    searchBar.addEventListener("click", function () {
-        searchInput.classList.remove("make-invis");
-        searchInput.focus();
-    });
-
-    // Makes sure users are unable to submit blank queries
-    let searchButton = searchBar.getElementsByTagName("button")[0];
-    searchInput.addEventListener("keyup", function () {
-        if(searchInput.value != "") {
-            searchButton.removeAttribute("disabled");
-        }else if(searchInput.value == "") {
-            searchButton.setAttribute("disabled", "");
-        }
-    });
-
-}
 
 // ----addeditrecipe ----
 // ---- Changes Total Time acording to prep and cook times being changed
@@ -84,7 +60,7 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
     let totalLoc = document.getElementById(totalLocId).getElementsByTagName("span")[0]; // User visible box number counter location
     let addRemoveLocation = document.getElementsByClassName(addRemoveLoc)[0]; // Parent of all boxes to be added/removed
 
-    // Updates box counters for from input and user UX
+    // Updates box counters for form input and user experience
     function updateBoxCounters() {
         totalLoc.textContent = arrayIngredientLength;
         document.getElementById(totalItemsLocation).value = arrayIngredientLength;
@@ -103,9 +79,9 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         let createDivCol = document.createElement("div");
         createDivCol.className = "col-12 col-md-6";
         let createDivRow = document.createElement("div");
-        createDivRow.className = "row no-gutters align-items-center step-ingredient-spacing";
+        createDivRow.className = "row no-gutters align-items-center step-ingredient-spacing step-ingredient-input";
         let createSpan = document.createElement("span");
-        createSpan.className = "col-1";
+        // createSpan.className = "";
         let createSpanP = document.createElement("p");
         createSpanP.textContent = arrayIngredientLength + ". ";
         let createInput = document.createElement(inputOrTextarea);
@@ -124,13 +100,8 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         // Creates Variable for insert location and inserts complete box structure
         let innerDivLoc = addRemoveLocation.getElementsByTagName("div").length;
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow);
-        
-
-
-
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].getElementsByTagName("span")[0].appendChild(createSpanP);
-        
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
     });
 

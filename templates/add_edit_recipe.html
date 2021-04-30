@@ -1,304 +1,210 @@
 {% extends "base_login.html" %}
 {% block section %}
-<section class="row no-gutters generic-background">
+<section class="generic-background">
+    
     <!-- Back Button -->
-        <div class="col-12">
-        <div class="row no-gutters justify-content-start">
-            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
-                {% if recipeInfo.name == "Recipe"%}
-                <a href="{{ url_for('profile') }}">
-                    <div class="sticky-note-inner-div">
-                        <h6>Back</h6>
-                    </div>
-                </a>
-                {% else %}
-                <a href="{{ url_for('recipe', recipeId=recipeId) }}">
-                    <div class="sticky-note-inner-div">
-                        <h6>Back</h6>
-                    </div>
-                </a>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="row no-gutters justify-content-center">
-            <!--  For creating a new recipe  -->
-            <form class="col-10 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }} ">
-                <div class="row no-gutters">
-
-                    <!-- Section Description Header -->
-                    <div class="col-12">
-                        {% if recipeInfo.name == "Recipe" %}
-                        <h1>New Recipe</h1>
-                        {% else %}
-                        <h1>{{ recipeInfo.name }}</h1>
-                        {% endif %}
-                    </div>
-                    <hr>
-
-                    <!-- Recipe Header - name and times -->
-                    <div class="col-12">
-                        <div class="row no-gutters justify-content-center form-input-spacing">
-                            <!--  Recipe Name  -->
-                            <div class="col-12">
-                                <label type="text" for="name">Recipe Name</label>
-                            </div>
-                            <div class="col-12">
-                                <input class="form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
-                            </div>
-                        </div>
-
-                        <div class="row no-gutters justify-content-center">
-                            <!--  Prep Time  -->
-                            <span class="col-12 col-md-3 form-input-spacing">
-                                <div class="row no-gutters">
-                                    <div class="col-12 ">
-                                        <label type="text" for="prepTime">Prep Time</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="time form-center-text" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
-                                        <p class="remove-p-margin">Minutes</p>
-                                    </div>
-                                </div>
-                            </span>
-                        
-                            <!--  Cook Time  -->
-                            <span class="col-12 col-md-3 form-input-spacing">
-                                <div class="row no-gutters">
-                                    <div class="col-12">
-                                        <label type="text" for="cookTime">Cook Time</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <input class="time form-center-text" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
-                                        <p class="remove-p-margin">Minutes</p>
-                                    </div>    
-                                </div>
-                            </span>
-
-                            <!--  Total Time  -->
-                            <span class="col-12 col-md-3 form-input-spacing">
-                                <div class="row no-gutters">
-                                    <div class="col-12">
-                                        <label type="text" for="totalTime">Total Time</label>
-                                    </div>
-                                    <div class="col-12">
-                                        <!-- Rewrite flask in value into repeating inputs -->
-                                        <input class="make-invis" type="text" name="timeTotal" id="timeTotal" value="4">
-                                        <input type="number" id="time3" name="time-3" value="{{ recipeInfo.time[2] }}" disabled>
-                                        <p class="remove-p-margin">Minutes</p>
-                                    </div>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Recipe Feature -->
-                    <div class="col-12 col-md-6 form-input-spacing">
-                        <div class="row no-gutters justify-content-center">
-                            <div class="col-12">
-                                <label type="text" for="feature">Featured Ingredient</label>
-                            </div>
-                            <div class="col-12 select-option-size">
-                                <!-- Recipe feature select/option -->
-                                <select name="feature" id="feature">
-                                    <!-- Adds selected attribute -->
-                                    {% for feature in features %}
-                                        {% if feature.name == recipeInfo.feature %}
-                                        <!--  For editing a existing recipe  -->
-                                        <option value="{{feature.name}}" selected>{{ feature.name.title() }}</option>
-                                        {% else %}
-                                        <!--  For all none selected catagories  -->
-                                        <option value="{{feature.name}}">{{ feature.name.title() }}</option>
-                                        {% endif %}
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recipe Image -->
-                    <div class="col-12 col-md-6 form-input-spacing">
-                        <div class="row no-gutters">
-                            <div class="col-12">
-                                <label type="text" for="avatar">Recipe Image</label>
-                            </div>
-                            <div class="col-12">
-                                <input type="file" name="avatar" id="avatar" class="avatar-upload">
-                                <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
-                                <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
-                                <p id="avatar_valid" class="make-invis">Please select a file of 500KB or less. Server space is limited!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {% if admin == True %}
-                    <!--  FR Lazy Favorite and Grandparent Classic checkboxes -->
-                    <div class="col-12 form-input-spacing">
-                        <div class="row no-gutters">
-                            <div class="col-12">
-                                <legend type="text" for="avatar">FR Lazy Favorite or Grandparent Classic</legend>
-                            </div>
-                            <div class="col-12 checkboxes">
-                                <div class="row no-gutters">
-
-                                    <div class="col-12 col-md-6">
-                                        <div class="row no-gutters">
-                                            <!-- Sets checkbox for lazy -->
-                                            <label class="col-12" for="lazy">Lazy favorite</label>
-                                            <div class="col-12">
-                                                <div class="row no-gutters justify-content-center">
-                                                    {% if recipeInfo.lazy == True %}
-                                                    <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True" checked>
-                                                    {% else %}
-                                                    <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True">
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                   <div class="col-12 col-md-6">
-                                       <div class="row no-gutters">
-                                           <!-- Sets checkboxe for grandparent -->
-                                           <label class="col-12" for="grandparent">Grandparent Classic</label>
-                                           <div class="col-12">
-                                               <div class="row no-gutters justify-content-center">
-                                                {% if recipeInfo.grandparent == True %}
-                                                   <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True" checked>
-                                                   {% else %}
-                                                   <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True">
-                                                   {% endif %}
-                                                </div>
-                                            </div>
-                                       </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-
-                    <!-- Recipe description -->
-                    <div class="col-12 form-input-spacing">
-                        <div class="row no-gutters justify-content-center" >
-                            <div class="col-12">
-                                <label type="text" for="text">Recipe Description</label>
-                            </div>
-                            <div class="col-12">
-                                <!--  For editing a existing recipe  -->
-                                    <textarea type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recipe ingredients -->
-                    <div class="col-12 form-input-spacing">
-                        <div class="row no-gutters justify-content-center">
-                            <!-- Recipe ingredient header -->
-                            <div class="col-12"> <!-- removed . recipe-form-label  because of padding right -- off centering text -->
-                                <label type="text" for="ingredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
-                            </div>
-
-                            <div class="col-12">
-                                <div class="row no-gutters justify-content-center">
-                                    <!-- Add button -->
-                                    <div class="col-4 col-md-2">
-                                        <div class="row no-gutters">
-                                            <div class="col-12 custom-button recipeAddButton clickable">
-                                                <p>add</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Remove button -->
-                                    <div class="col-4 col-md-2">
-                                        <div class="row no-gutters">
-                                            <div class="col-12 custom-button recipeRemoveButton clickable">
-                                                <p>Remove</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-10">
-                                <div class="row no-gutters justify-content-center ingredientAddRemoveLocation">
-                                    <!-- Creation and remove location for ingredient boxes -->
-
-                                        <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
-                                        {% for ingredient in recipeIngEnum %}
-                                            <div class="col-12 col-md-6">
-                                                <div class="row no-gutters align-items-center step-ingredient-spacing">
-                                                    <span class="col-1">
-                                                        <p>{{ingredient[0] + 1}}. </p>
-                                                    </span>
-                                                    <input class="col-11 countIngredients" type="text" id="ingredients-{{ingredient[0] + 1}}" name="ingredients-{{ingredient[0] + 1}}" value="{{ingredient[1]}}">
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recipe steps -->
-                    <div class="col-12 form-input-spacing">
-                        <div class="row no-gutters justify-content-center">
-                            <!-- Recipe step header -->
-                            <div class="col-12">
-                                <label type="text" for="steps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
-                            </div>
-
-                            <div class="col-12">
-                                <div class="row no-gutters justify-content-center">
-                                    <!-- Add Button -->
-                                    <div class="col-4 col-md-2">
-                                        <div class="row no-gutters justify-content-end">
-                                            <div class="col-12 custom-button stepAddButton clickable">
-                                                <p>add</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Remove button -->
-                                    <div class="col-4 col-md-2">
-                                        <div class="row no-gutters">
-                                            <div class="col-12 custom-button stepRemoveButton clickable">
-                                                <p>remove</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-10">
-                                <div class="row no-gutters justify-content-center stepAddRemoveLocation">
-                                    <!-- Creation and remove location for step boxes -->
-
-                                        <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
-                                        {% for step in recipeSteEnum %}
-                                            <div class="col-12 col-md-6">
-                                                <div class="row no-gutters align-items-center step-ingredient-spacing">
-                                                    <span class="col-1">
-                                                        <p>{{step[0] + 1}}. </p>
-                                                    </span>
-                                                    <textarea class="col-11 countSteps" type="text" id="steps-{{step[0] + 1}}" name="steps-{{step[0] + 1}}" value="" col="20" rows="3">{{step[1]}}</textarea>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- submit button -->
-                    <div class="col">
-                        <input class="custom-button" id="custom-button" type="submit" value="Submit">
-                    </div>
-
+    <div class="row no-gutters justify-content-start">
+        <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
+            <!-- back to profile for new recipes -->
+            {% if recipeInfo.name == "Recipe"%}
+            <a href="{{ url_for('profile') }}">
+                <div class="sticky-note-inner-div">
+                    <h6>Back</h6>
                 </div>
-            </form>
+            </a>
+            <!-- Back to recipe page for existing recipes -->
+            {% else %}
+            <a href="{{ url_for('recipe', recipeId=recipeId) }}">
+                <div class="sticky-note-inner-div">
+                    <h6>Back</h6>
+                </div>
+            </a>
+            {% endif %}
         </div>
     </div>
+
+    <!--  For creating a new recipe  -->
+    <div class="row no-gutters justify-content-center">
+
+        <form class="col-10 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }} ">
+            <div class="row no-gutters justify-content-center">
+                        
+                <!-- Form Title Header -->
+                <div class="col-12">
+                    {% if recipeInfo.name == "Recipe" %}
+                    <h1>New Recipe</h1>
+                    {% else %}
+                    <h1>{{ recipeInfo.name }}</h1>
+                    {% endif %}
+                </div>
+                <hr class="make-space">
+                        
+                <!--  Recipe Name  -->
+                <div class="col-12 form-input-spacing">
+                    <label type="text" for="name">Recipe Name</label>
+                    <input class="form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
+                </div>
+                            
+                <!--  Prep Time  -->
+                <div class="col-12 col-md-3 form-input-spacing">
+                    <label type="text" for="prepTime">Prep Time</label>
+                    <input class="time form-center-text" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
+                    <p class="remove-p-margin">Minutes</p>
+                </div>
+                                
+                <!--  Cook Time  -->
+                <div class="col-12 col-md-3 form-input-spacing">
+                    <label type="text" for="cookTime">Cook Time</label>
+                    <input class="time form-center-text" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
+                    <p class="remove-p-margin">Minutes</p>
+                </div>
+
+                <!--  Total Time  -->
+                <div class="col-12 col-md-3 form-input-spacing">
+                    <label type="text" for="totalTime">Total Time</label>
+                    <input class="make-invis" type="text" name="timeTotal" id="timeTotal" value="4">
+                    <input type="number" id="time3" name="time-3" value="{{ recipeInfo.time[2] }}" disabled>
+                    <p class="remove-p-margin">Minutes</p>
+                </div>                    
+
+                <!-- Recipe Feature -->
+                <div class="col-12 col-md-6 form-input-spacing">
+                    <label type="text" for="feature">Featured Ingredient</label>
+                    <div class="select-option-size">
+                        <!-- Recipe feature select/option -->
+                        <select name="feature" id="feature">
+                            <!-- Adds selected attribute -->
+                            {% for feature in features %}
+                            {% if feature.name == recipeInfo.feature %}
+                            <!--  For editing a existing recipe  -->
+                            <option value="{{ feature.name }}" selected>{{ feature.name.title() }}</option>
+                            {% else %}
+                            <!--  For all none selected catagories  -->
+                            <option value="{{ feature.name }}">{{ feature.name.title() }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                        
+                <!-- Recipe Image -->
+                <div class="col-12 col-md-6 form-input-spacing">
+                    <label type="text" for="avatar">Recipe Image</label>
+                    <input type="file" name="avatar" id="avatar" class="avatar-upload">
+                    <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
+                    <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
+                    <p id="avatar_valid" class="make-invis">Please select a file of 500KB or less. Server space is limited!</p>
+                </div>
+                    
+                {% if admin == True %}
+                <!--  FR Lazy Favorite and Grandparent Classic checkboxes -->
+                <div class="col-12 form-input-spacing">
+                    <legend type="text" for="avatar">FR Lazy Favorite or Grandparent Classic</legend>
+                    <div class="row no-gutters">
+                                
+                        <!-- Sets checkbox for lazy -->
+                        <div class="checkboxes">
+                        <label for="lazy">Lazy favorite</label>
+                        {% if recipeInfo.lazy == True %}
+                        <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True" checked>
+                        {% else %}
+                        <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True">
+                        {% endif %}
+                        </div>
+
+                        <!-- Sets checkboxe for grandparent -->
+                        <div class="checkboxes">
+                        <label for="grandparent">Grandparent Classic</label>
+                        {% if recipeInfo.grandparent == True %}
+                        <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True" checked>
+                        {% else %}
+                        <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True">
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                        
+                <!-- Recipe description -->
+                <div class="col-12 form-input-spacing">
+                    <label type="text" for="text">Recipe Description</label>
+                    <textarea type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
+                </div>
+                        
+                <!-- Recipe ingredients -->
+                <div class="col-12 form-input-spacing step-ingredient-formating">
+                    <div class="row no-gutters justify-content-center">
+                        <!-- Header -->
+                        <label type="text" for="ingredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>
+                        <!-- Add Button -->
+                        <div class="col-4 col-md-2 custom-button recipeAddButton clickable">
+                            <p>add</p>
+                        </div>
+                        <!-- Remove Button -->
+                        <div class="col-4 col-md-2 custom-button recipeRemoveButton clickable">
+                            <p>Remove</p>
+                        </div>
+                                
+                        <div class="col-10">
+                            <!-- add/remove location for ingredient boxes -->
+                            <div class="row no-gutters justify-content-center ingredientAddRemoveLocation">
+                                <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
+                                {% for ingredient in recipeIngEnum %}
+                                <div class="col-12 col-md-6">
+                                    <div class="row no-gutters align-items-center step-ingredient-spacing">
+                                        <span class="remove-p-margin">
+                                            <p>{{ ingredient[0] + 1 }}. </p>
+                                        </span>
+                                        <input class="col-11 countIngredients" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}">
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        
+                <!-- Recipe steps -->
+                <div class="col-12 form-input-spacing step-ingredient-formating">
+                    <div class="row no-gutters justify-content-center">
+                        <!-- Header -->
+                        <label type="text" for="steps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
+                        <!-- Add Button -->
+                        <div class="col-4 col-md-2 custom-button stepAddButton clickable">
+                            <p>add</p>
+                        </div>
+                        <!-- Remove button -->
+                        <div class="col-4 col-md-2 custom-button stepRemoveButton clickable">
+                            <p>remove</p>
+                        </div>
+
+                <div class="col-10">
+                <!-- Creation and remove location for step boxes -->
+                <div class="row no-gutters justify-content-center stepAddRemoveLocation">
+                    <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
+                    {% for step in recipeSteEnum %}
+                    <div class="col-12 col-md-6 ">
+                        <div class="row no-gutters align-items-center step-ingredient-spacing step-ingredient-input">
+                            <span class="">
+                                <p>{{ step[0] + 1 }}. </p>
+                            </span>
+                            <textarea class="col-11 countSteps" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+            </div>    
+            </div>
+            </div>
+                        
+            <!-- submit button -->
+            <div class="col">
+                <input class="custom-button" id="custom-button" type="submit" value="Submit">
+            </div>
+                        
+        </form>
+    </div>         
 </section>
 {% endblock %}
 
