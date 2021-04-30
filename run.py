@@ -1,4 +1,4 @@
-import os  #308 total 562 day4(start) # 321 total 583 day 3 # 403 day2
+import os
 import random
 import datetime
 from flask import (
