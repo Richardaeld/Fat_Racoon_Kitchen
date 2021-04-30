@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
-/* 791 lines total start -- 1340*/  /*1095*/
-/* 743 lines total start -- 1292*/ 
 /* ------------------------------------------------------- art and background section  ---------------------------------------------------------------- */
 /* ---------------------------------------- gradient Patterns  */
 .picnic-pattern { /* red traditional southen table linen pattern (square pattern) */
@@ -168,12 +166,18 @@
 } */
 
 
+.make-space-top {
+    padding-top: 1.5rem;
+}
+
 .make-space {
     padding-bottom: 1.5rem;
 }
 
 
-
+.make-space-margin {
+    margin-bottom: 1.5rem;
+}
 
 
 /* Lifting Shadows */
@@ -388,9 +392,9 @@
     border-right: 3px double rgba(124, 124, 124, 0.5);
 }
 
-.footer-ul-bottom li {
+/* .footer-ul-bottom li {
     padding: 0rem 2rem 0rem 2rem;
-}
+} */
 
 .napkin-nav {
     transform:  translateX(-0%) translateY(-65%) rotate(135deg);
@@ -448,6 +452,7 @@ header {
 .medium-content-height {
     min-height: 17.5rem;
 }
+
 /* ---------------------------------------- Container for section headers on index and lessons*/
 .header-height {
     margin-top: 5rem;
@@ -508,6 +513,7 @@ header {
                 inset 0px 2px 2px  rgba(0, 0, 0, .75);
 }
 
+
 .header-text-1:before,
 .header-text-1:after,
 .header-text-2:before,
@@ -516,6 +522,7 @@ header {
     right: 0;
     left: 0;
 }
+
 /* -- wood grain image for text -- */
 .header-text-1,
 .header-text-2 {
@@ -709,7 +716,8 @@ footer {
     position: relative;
     width: 55px;
     height: 55px;
-    top: 105%;
+    top: 25%;
+    left: 50%;
 }
 
 .footer-ul li { 
@@ -718,17 +726,19 @@ footer {
 
 @media (max-width: 767.98px) {
     .social-position {
-        top: 0%;
+        left: 35%;
+        /* top: -25%; */
     }
     .social-link-push li {
-        top: 50px;
-        left: 10px;
-        height: 90px;
+
+        /* top: 50px; */
+        /* left: 10px; */
+        /* height: 90px; */
     }
 
     .napkin-link-push li{
-        left:-10px;
-        top: 40px;
+        /* left:-10px; */
+        /* top: 40px; */
     }
 }
 
@@ -739,15 +749,21 @@ footer {
     footer {
         height:17rem;
     }
+
+    .social-position {
+        top: 35%;
+        left: 40%;
+    }
+
     .social-link-push li {
-        top: 2rem;
-        left: 1rem;
+        /* top: 25%; */
+        /* left: 20px; */
         height: 90px;
     }
 
     .napkin-link-push li{
-        left:-10px;
-        top: 40px;
+        /* left:-10px;
+        top: 40px; */
     }
 }
 /* ------------------------------------------------------- Form Section  ---------------------------------------------------------------- */
@@ -756,6 +772,7 @@ footer {
     border-bottom: 2px solid #010203;
     background-color: rgba(14, 255, 255, 0.5);
     overflow: hidden;
+    width: 100%;
 }
 /* Cancels out form-base border-radius */
 /* -----------------------------------------added a max width to allow  */
@@ -772,9 +789,18 @@ footer {
     border-radius: 0%; 
 }
 
+
+
 .tab {
     margin-top: .5rem;
     display: inline-block;
+    padding: 1rem;
+    width:49%
+
+}
+
+.tab span {
+    text-align: center;
 }
 
 .tab p {
@@ -808,6 +834,12 @@ footer {
 
 .form-invalid-view {
     border: 2px solid rgb(255, 0, 0);
+}
+
+.form-invalid-view:focus {
+    outline: none;
+    border: 2px solid rgb(255, 0, 0);
+
 }
 
 /* popup box (parent) */
@@ -854,9 +886,9 @@ footer {
     transform: skew(0deg);
 }
 
-.user-modal-spacing {
+/* .user-modal-spacing {
     margin-bottom: 1.5rem;
-}
+} */
 
 .modal-background {
     position: absolute;
@@ -931,6 +963,14 @@ footer {
 
 .avatar-upload {
     background-color: #fff;
+    padding-left: 0!important;
+}
+
+@media (min-width: 768px) {
+    .avatar-upload {
+        position: relative;
+        right: 10%;
+    }
 }
 /* Corrects box size of select/option */
 .select-option-size select {
@@ -939,9 +979,34 @@ footer {
 
 /* ---------------------------------------- specific (unique) form styles */
 /* Form ingredient and step boxe spacing */ 
-.step-ingredient-spacing {
+.step-ingredient-spacing { /* change name to step-ingredient-formating */
     padding-bottom: 0.5rem;
 }
+
+/* .step-ingredient-formating input,
+.step-ingredient-formating textarea {
+    width:90%!important;
+}
+
+.step-ingredient-formating span {
+    width: 8.33%;
+
+}
+.step-ingredient-formating p {
+    margin-bottom: 0;
+}
+
+.step-ingredient-formating {
+    
+} */
+
+.step-ingredient-input {
+    /* width: 80%; */
+    position: relative;
+    /* left: 0%; */
+    right: 0%;
+}
+
 /* form and all button styles */
 .custom-button,
 .custom-button-delete {
@@ -959,6 +1024,10 @@ footer {
 .custom-button-press {
     box-shadow: inset 4px 4px 2px rgba(0, 0, 0, .25 ),
                 inset -4px -4px 2px rgba(0, 0, 0, .25 );
+}
+
+.checkboxes {
+    width: 50%;
 }
 
 .checkboxes input {
@@ -1132,8 +1201,17 @@ h6 {
     /* .make-space div {
         padding-bottom: 1.25rem;
     } */
+    
+    .make-space-top {
+        padding-top: 2rem;
+    }
+
     .make-space {
         padding-bottom: 2rem;
+    }
+
+    .make-space-margin {
+        margin-bottom: 2rem;
     }
 
     /* art -- index-card -- resize card with smaller devices*/
