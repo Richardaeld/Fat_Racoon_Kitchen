@@ -73,15 +73,13 @@ function finalValidation(validationLoc) {
                 finalVal.classList.remove("form-invalid-view");
                 document.getElementById("custom-button-login").removeAttribute("disabled");
                 document.getElementById("custom-button-create").removeAttribute("disabled");
-                console.log("if")
             } else if (formIsValid == false ) {
                 finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid");
                 finalVal.setAttribute("invalid", "");
                 finalVal.classList.add("form-invalid-view");
                 document.getElementById("custom-button-login").setAttribute("disabled", "");
                 document.getElementById("custom-button-create").setAttribute("disabled", "");
-                // invalidOnlyOne = true
-                console.log("else if 1")
+                // Reveals box if form unvalidates
                 if (document.activeElement == finalVal){
                     finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
                 }
@@ -90,7 +88,6 @@ function finalValidation(validationLoc) {
                 finalVal.classList.remove("form-invalid-view")
                 document.getElementById("custom-button-login").setAttribute("disabled", "");
                 document.getElementById("custom-button-create").setAttribute("disabled", "");
-                console.log("else if 2")                
             } 
         }
     }
