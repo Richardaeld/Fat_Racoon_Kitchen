@@ -740,7 +740,7 @@ footer {
 }
 /* ---------------------------------------- Form validation */
 .form-invalid-view {
-    border: 2px solid rgb(255, 0, 0);
+    border: 2px solid rgb(255, 0, 0)!important;
 }
 
 .form-invalid-view:focus {
@@ -862,7 +862,8 @@ footer {
     background-color: #fff;
 }
 
-.avatar-upload {
+.avatar-upload,
+.avatar-upload-user {
     background-color: #fff;
     padding-left: 0!important;
 }
@@ -892,7 +893,7 @@ footer {
 .custom-button-delete {
     width: auto!important;
     margin-bottom: 1.5rem;
-    border: 2px solid #474747;
+    border: 2px solid #010203;
     box-shadow: 4px 4px 2px rgba(0, 0, 0, .5 );
     font-family: "Yanone Kaffeesatz", sans-serif;
 }
