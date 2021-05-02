@@ -126,8 +126,9 @@ def get_form_list(pull_list, dictionary):
         dictionary[item_list[0]] = []
         for item in range(1, (int(request.form.get(
                 item_list[0] + "Total")) + int(item_list[1]))):
-            dictionary[item_list[0]].append(str(
-                request.form.get(item_list[0] + "-" + (str(item)))))
+            if str(request.form.get(item_list[0] + "-" + (str(item)))) != "":
+                dictionary[item_list[0]].append(str(
+                    request.form.get(item_list[0] + "-" + (str(item)))))
 
 
 # Pulls multiple items from form and adds to dictionary
