@@ -97,8 +97,7 @@
     margin: 0.5rem;
 }
 
-.polaroid-picture img,
-.polaroid-picture-classic img {
+.polaroid-picture img {
     width: 100%;
     height: 100%;
     position: relative;
@@ -107,9 +106,6 @@
     object-fit: cover;
 }
 
-.polaroid-picture-classic img {
-    /* filter: grayscale(60%); */
-}
 /* ---------------------------------------- Sticky Note Art */
 /* structure of sticky note is important!*/
 /* > == one level deeper ||  This effect requires a height to be set at the sticky-note level*/ 

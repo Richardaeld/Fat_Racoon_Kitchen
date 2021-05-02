@@ -67,7 +67,7 @@
                 {% if recipe[1].avatar %}
                 <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer generic-box-shadow blank-anchor remove-top-margin">
                     <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
-                        <div class="polaroid-picture polaroid-picture-classic">
+                        <div class="polaroid-picture">
                             <!-- Avatar Image -->
                             {% if recipe[1].avatar != none %}
                             <img src="{{ url_for('avatar', avatar_image=recipe[1].avatar) }}" alt="Polaroid picture of {{ recipe[1].name }}">
