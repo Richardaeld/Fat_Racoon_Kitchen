@@ -155,7 +155,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
             } else if(validationSelector === "email") {
 
                 // Validates for length
-                if (baseVal.value.length >= 5 && baseVal.value.length <= 255){
+                if (baseVal.value.length >= 4 && baseVal.value.length <= 255){
                     baseValPara[0].classList.add("make-invis");
                 } else {
                     baseValPara[0].classList.remove("make-invis");
