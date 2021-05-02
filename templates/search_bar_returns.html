@@ -26,10 +26,10 @@
             <!-- Creates a section error -->
             {% if recipe[0] % 2 %}
             <div class="col-10 sticky-note sticky-note-right">
-                <div class="sticky-note-inner-div sticky-note-right-shadow blank-anchor make-space search-bar-spacing">
+                <div class="sticky-note-inner-div sticky-note-right-shadow blank-anchor make-space">
             {% else %}
             <div class="col-10 sticky-note">
-                <div class="sticky-note-inner-div blank-anchor make-space  search-bar-spacing">
+                <div class="sticky-note-inner-div blank-anchor make-space">
             {% endif %}
                     <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}" class="row no-gutters">
                         <!-- Recipe Name -->

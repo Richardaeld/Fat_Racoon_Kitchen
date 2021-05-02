@@ -148,23 +148,12 @@
 /* Add on sticky-note for as for right side shadow */
 .sticky-note-right.sticky-note:before{
     right: 0;
-    /* transform: rotateY(180deg) translateX(0px) translateY(-1rem) rotate(-4deg) skewX(-4deg) scaleX(1) scaleY(0.9); */
-    /* transform: rotateY(180deg) translateX(0px) translateY(-15%) rotate(-10deg) skewX(-10deg); */
     transform: rotateY(180deg) translateX(0px) translateY(0rem) rotate(0deg) skewX(-2deg) skewY(-2deg) scaleX(.95) scaleY(0.9);
 }
-
-/* .sticky-note-right div {
-    transform: rotateY(180deg);
-} */
 
 .sticky-note-right p {
     transform: rotateY(0deg);
 }
-/* add on sticky note inner line for better spacing */
-/* .make-space div {
-    padding-bottom: 0.75rem;
-} */
-
 
 .make-space-top {
     padding-top: 1.5rem;
@@ -187,46 +176,25 @@
     content: "";
     position: absolute;
     background-color: transparent;
-    /* left: 0;
-    right: 0; */
     z-index: 0;
-    /* box-shadow: -20px 45px 20px 0px rgba(0, 0, 0, 0.25); */
     box-shadow: -25px 30px 20px 0px rgba(0, 0, 0, 0.25);
-    /* -webkit-box-shadow: -20px 45px 20px 0px rgba(0, 0, 0, 0.25); */
-    /* z-index: 4; */
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .sticky-note:before {
-    /* background-color: rgba(150, 0, 0, .25); */
-    left: 0;
-    height: 100%;
-    /* width: 50%; */
-    width: 100%;
     bottom:0;
-    /* transform: translateX(0px) translateY(-7px) rotate(-10deg) skewX(-10deg); */
-    /* transform: translateX(0px) translateY(-1rem) rotate(-4deg) skewX(-4deg) scaleX(1) scaleY(0.9); */
     transform: translateX(0px) translateY(-2.5%) rotate(0deg) skewX(0deg) skewY(-2deg) scaleX(.95) scaleY(.95);
 }
 
 .sticky-note-middle:before {
-    /* background-color: rgba(0, 150, 0, .25); */
-    left: 0;
-    height: 100%;
-    width: 100%;
     box-shadow: -30px 30px 20px 0px rgba(0, 0, 0, 0.25);
-    /* transform: translateX(0%) translateY(-10%) rotate(-3deg) skewX(-5deg) scale(.95); */
     transform:  translateX(0%) translateY(-2%) rotate(0deg) skewX(-2deg) skewY(-2deg) scaleX(.95) scaleY(.90);
 }
 
 .sticky-note-middle:after {
-    /* background-color: rgba(150, 0, 0, .25); */
-    left: 0;
-    height: 100%;
-    width: 100%;
     box-shadow: -30px 30px 20px 0px rgba(0, 0, 0, 0.25);
-
-    /* transform: rotateY(180deg) translateX(0%) translateY(-110%) rotate(-3deg) skewX(-5deg) scale(.90); */
-    /* transform: rotateY(180deg) translateX(0%) translateY(-102%) rotate(4deg) skewX(-4deg) scaleX(1) scaleY(.90); */
     transform: rotateY(180deg) translateX(0%) translateY(-102%) rotate(0deg) skewX(-2deg) skewY(-2deg) scaleX(.95) scaleY(.90);
 }
 /* Text font corrections */
@@ -391,10 +359,6 @@
     border-bottom: 3px double rgba(124, 124, 124, 0.5);
     border-right: 3px double rgba(124, 124, 124, 0.5);
 }
-
-/* .footer-ul-bottom li {
-    padding: 0rem 2rem 0rem 2rem;
-} */
 
 .napkin-nav {
     transform:  translateX(-0%) translateY(-65%) rotate(135deg);
@@ -571,9 +535,6 @@ header {
 }
 /* ------------------------------------------------------- Main Nav Bar Section  ---------------------------------------------------------------- */
 .custom-nav {
-    /* background: #fff; */
-    /* border-top: 2px solid rgba(14, 255, 255, .5); */
-    /* border-bottom: 2px solid rgba(14, 255, 255, .5); */
     border-bottom: 2px solid #6F9FAB;
     top:0; 
     z-index: 2;
@@ -583,39 +544,9 @@ header {
 .custom-nav{
     font-size: 1.5em;
 }
-
-/* .custom-nav-select {
-    color: #99DCEC!important;
-} */
-
-/* .custom-nav label {
-    font-size: 1rem;
-} */
-
-/* @media (min-width: 992px) {
-    .custom-nav {
-        border-right: 2px solid rgba(14, 266, 266, .5);
-    }
-} */
-
-/* .search-icon {
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: transparent;
-    border: none;
-} */
-
-/* .search-bar label {
-    margin-bottom: 0;
-} */
-
-/* .user-form-search-height {
-    height: 90%;
-} */
 /* ------------------------------------------------------- Carousel Section  ---------------------------------------------------------------- */
 .recipe-overlay-bottom {
     position: absolute;
-    /* background-color: rgba(18, 138, 231, .75); */
     bottom:0;
     left:0;
     right:0;
@@ -671,9 +602,6 @@ right: 0px;
     transform: translateY(7.5rem);
 }
 
-/* .lazy-banner-space {
-    padding-top: 1.25rem;
-} */
 .lazy {
     background-color: rgba(18, 138, 231, .75);
 }
@@ -682,6 +610,15 @@ right: 0px;
 }
 .lazy-classic {
     background-color: rgba(111, 18, 231, 0.75);
+}
+.reduce-padding {
+    padding: 0.25rem;
+}
+.remove-margin {
+    margin: 0 0 0.5rem 0;
+}
+.remove-top-margin {
+    margin-top: 0rem;
 }
 /* ------------------------------------------------------- Random Recipe Section  ---------------------------------------------------------------- */
 .avatar,
@@ -727,18 +664,6 @@ footer {
 @media (max-width: 767.98px) {
     .social-position {
         left: 35%;
-        /* top: -25%; */
-    }
-    .social-link-push li {
-
-        /* top: 50px; */
-        /* left: 10px; */
-        /* height: 90px; */
-    }
-
-    .napkin-link-push li{
-        /* left:-10px; */
-        /* top: 40px; */
     }
 }
 
@@ -756,14 +681,7 @@ footer {
     }
 
     .social-link-push li {
-        /* top: 25%; */
-        /* left: 20px; */
         height: 90px;
-    }
-
-    .napkin-link-push li{
-        /* left:-10px;
-        top: 40px; */
     }
 }
 /* ------------------------------------------------------- Form Section  ---------------------------------------------------------------- */
@@ -789,14 +707,11 @@ footer {
     border-radius: 0%; 
 }
 
-
-
 .tab {
     margin-top: .5rem;
     display: inline-block;
     padding: 1rem;
     width:49%
-
 }
 
 .tab span {
@@ -828,10 +743,6 @@ footer {
     }
 }
 /* ---------------------------------------- Form validation */
-.invalid {  /*------------------------------------do I work??*/
-    border: 2px solid rgb(14, 255, 255);
-}
-
 .form-invalid-view {
     border: 2px solid rgb(255, 0, 0);
 }
@@ -839,7 +750,6 @@ footer {
 .form-invalid-view:focus {
     outline: none;
     border: 2px solid rgb(255, 0, 0);
-
 }
 
 /* popup box (parent) */
@@ -886,10 +796,6 @@ footer {
     transform: skew(0deg);
 }
 
-/* .user-modal-spacing {
-    margin-bottom: 1.5rem;
-} */
-
 .modal-background {
     position: absolute;
     height: 100vh;
@@ -899,16 +805,9 @@ footer {
 /* ---------------------------------------- basic form styles */
 .form-delete-base,
 .form-base {
-    /* overflow: hidden; */
     background-color: #ebebeb;
-    /*background-color: rgba(235, 235, 235, 0.75);*/ /*----------------------------------------- reconsider background opacity*/
     background-color: rgba(235, 235, 235, 1);
-    /* font-family: "Yanone+Kaffeesatz", sans-serif; */
     margin: 2rem;
-}
-
-.form-base textarea {
-    /* width: 100%!important; */
 }
 
 .form-base label {
@@ -922,10 +821,6 @@ footer {
         border-radius: 5%;
     }
 }
-
-/* .form-base hr {
-    margin-bottom: 2.5rem;
-} */
 
 .form-input-spacing { /*----------Im new !! AND IMPORTANT*/
     padding-bottom: 3rem
@@ -976,37 +871,16 @@ footer {
 .select-option-size select {
     padding: 0.5rem;
 }
-
 /* ---------------------------------------- specific (unique) form styles */
 /* Form ingredient and step boxe spacing */ 
 .step-ingredient-spacing { /* change name to step-ingredient-formating */
     padding-bottom: 0.5rem;
 }
 
-/* .step-ingredient-formating input,
-.step-ingredient-formating textarea {
-    width:90%!important;
-}
-
-.step-ingredient-formating span {
-    width: 8.33%;
-
-}
-.step-ingredient-formating p {
-    margin-bottom: 0;
-}
-
-.step-ingredient-formating {
-    
-} */
-
 .step-ingredient-input {
-    /* width: 80%; */
     position: relative;
-    /* left: 0%; */
     right: 0%;
 }
-
 /* form and all button styles */
 .custom-button,
 .custom-button-delete {
@@ -1137,14 +1011,6 @@ footer {
 .lessons-header {
     padding-top: 2rem;
 }
-/* ------------------------------------------------------- Search Bar Section  ---------------------------------------------------------------- */
-/* @media (min-width: 992px) and (max-width: 1399.98px) {
-    .search-bar-spacing h6,
-    .search-bar-spacing p{
-        font-size: 2rem;
-        display: inline;
-    }
-} */
 /* ------------------------------------------------------- General Text and Breakpoint Section  ---------------------------------------------------------------- */
 i,
 .custom-nav input {
@@ -1190,17 +1056,12 @@ h6 {
     h6 {
         font-size: 1.5rem;
     }
-
     /* recipe -- favorite recipe icon (star) */
     .favorite img {
         height: 0.75rem;
         width: 0.75rem;
         bottom:0.1rem;
     }
-    /* art -- sticky note -- add on sticky note inner line for better spacing */
-    /* .make-space div {
-        padding-bottom: 1.25rem;
-    } */
     
     .make-space-top {
         padding-top: 2rem;
@@ -1213,14 +1074,12 @@ h6 {
     .make-space-margin {
         margin-bottom: 2rem;
     }
-
     /* art -- index-card -- resize card with smaller devices*/
     .index-face,
     .index-back,
     .rotating-card {
         height: 17rem;
     }
-
 }
 
 @media (max-width: 575.98px) {
@@ -1253,7 +1112,6 @@ h6 {
     .custom-nav a,
     .custom-nav i,
     .custom-nav label
-    /* .user-form-search-height*/ 
     {
         font-size: .75rem;
     }
@@ -1261,32 +1119,4 @@ h6 {
     .custom-nav form {
         padding: .25rem 1rem;
     }
-    /* positioning checkboxes in recipe page for ingredients/steps */
-    .checkbox-input {
-        /* transform: translateY(1.25rem) translateX(1rem); */
-    }
-}
-
-/* test for ingredient/step fix of recipe.html */
-.remove-container-margin {
-    margin-left: 0rem;
-    margin-right: 0rem;
-}
-/* test for ingredient/step fix of recipe.html */
-.full-width {
-    width: 100%;
-}
-
-.reduce-padding {
-    padding: 0.25rem;
-}
-.remove-margin {
-    margin: 0 0 0.5rem 0;
-}
-.remove-top-margin {
-    margin-top: 0rem;
-}
-
-.search-returns-banner {
-    text-decoration: underline;
 }

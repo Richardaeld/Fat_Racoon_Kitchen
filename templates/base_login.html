@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 {% if request.endpoint == "index" %}
-                <li class="nav-item active custom-nav-select">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 {% else %}
@@ -47,7 +47,7 @@
                 </li>
                 {% endif %}
                 {% if request.endpoint == "lessons" %}
-                <li class="nav-item active custom-nav-select">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{ url_for('lessons') }}">Lesson <span class="sr-only">(current)</span></a>
                 </li>
                 {% else %}
@@ -56,7 +56,7 @@
                 </li>
                 {% endif %}
                 {% if request.endpoint == "all_recipes" or request.endpoint == "recipe_list" %}
-                <li class="nav-item active custom-nav-select">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{ url_for('all_recipes') }}">Recipes <span class="sr-only">(current)</span></a>
                 </li>
                 {% else %}
@@ -65,7 +65,7 @@
                 </li>
                 {% endif %}
                 {% if request.endpoint == "recipe" or request.endpoint == "add_edit_recipe" or request.endpoint == "addFavorite" %}
-                <li class="nav-item active custom-nav-select">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{ url_for('all_recipes') }}">{{ recipeInfo.name.title() }} <span class="sr-only">(current)</span></a>
                 </li>
                 {% endif %}
@@ -74,7 +74,7 @@
                     <a class="nav-link login-modal" href="#">Login</a>
                 </li>
                 {% elif session.user and request.endpoint == "profile" or request.endpoint == "edit_user_info" %}
-                <li class="nav-item active custom-nav-select">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{ url_for('profile') }}">Profile  <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">

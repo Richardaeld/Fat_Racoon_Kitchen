@@ -132,7 +132,7 @@
                 </div>
                         
                 <!-- Recipe ingredients -->
-                <div class="col-12 form-input-spacing step-ingredient-formating">
+                <div class="col-12 form-input-spacing">
                     <div class="row no-gutters justify-content-center">
                         <!-- Header -->
                         <label type="text" for="ingredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>
@@ -155,7 +155,7 @@
                                         <span class="remove-p-margin">
                                             <p>{{ ingredient[0] + 1 }}. </p>
                                         </span>
-                                        <input class="col-11 countIngredients" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}">
+                                        <input class="col-11 countIngredients" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" pattern="[a-zA-z0-9!,.?=+-_/#%&]{0,255}">
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -165,7 +165,7 @@
                 </div>
                         
                 <!-- Recipe steps -->
-                <div class="col-12 form-input-spacing step-ingredient-formating">
+                <div class="col-12 form-input-spacing">
                     <div class="row no-gutters justify-content-center">
                         <!-- Header -->
                         <label type="text" for="steps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
