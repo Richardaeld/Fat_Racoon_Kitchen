@@ -22,9 +22,9 @@
                 <!-- User Name -->
                 <div class="col-12 col-md-6 form-input-spacing">
                     <label  type="text" for="username">Name</label>
-                    <input class="formValidation nameValidation" type="text" id="username" name="username" value="{{ userInfo.username.title() }}" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9%_$]{5,20}$" invalid required>
+                    <input class="formValidation nameValidation" type="text" id="username" name="username" value="{{ userInfo.username.title() }}" minlength="5" maxlength="100" pattern="^[a-zA-Z0-9%_$]{5,100}$" invalid required>
                     <div class="invalid-form form-is-valid make-invis">
-                        <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, and '@.%$'</p>
+                        <p class="make-invis">Must be between 5 and 100 characters, can contain letters, numbers, and '@.%$'</p>
                         <p class="make-invis"></p>
                         <p class="make-invis">Cannot contain ' " $ ,</p>
                     </div>
@@ -33,9 +33,9 @@
                 <!-- Email -->
                 <div class="col-12 col-md-6 form-input-spacing">
                     <label  type="text" for="email">Email</label>
-                    <input class="formValidation emailValidation" type="email" id="email" name="email" value="{{ userInfo.email }}" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9@.%$]{6,30}$" invalid required>
+                    <input class="formValidation emailValidation" type="email" id="email" name="email" value="{{ userInfo.email }}" minlength="5" maxlength="255" pattern="^[a-zA-Z0-9@.%$]{5,255}$" invalid required>
                     <div class="invalid-form form-is-valid make-invis">
-                        <p class="make-invis">Must be between 6 and 30 characters, can contain letters, numbers, and '@.%$'</p>
+                        <p class="make-invis">Must be between 5 and 255 characters, can contain letters, numbers, and '@.%$'</p>
                         <p class="make-invis">must contain appropiate email suffix *hint* must end in .com, .edu, .net, .org</p>
                         <p class="make-invis">Cannot contain ' " $ ,</p>
                     </div>
