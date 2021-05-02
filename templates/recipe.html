@@ -171,8 +171,7 @@
                         {% for step in recipeSteps %}
                             <li class="row no-gutters justify-content-center clickable">
                                 <input class="col-1 checkbox-input" type="checkbox">
-                                <h6 class="col-1 checkbox-h6 yanone-text">{{ step[0] + 1 }}.</h6>
-                                <h6 class="col-10 checkbox-h6">{{ step[1] }}</h6>
+                                <h6 class="col-10 checkbox-h6"><span class="yanone-text">{{ step[0] + 1 }}. </span>{{ step[1] }}</h6>
                             </li>
                         {% endfor %}
                     </ul>
