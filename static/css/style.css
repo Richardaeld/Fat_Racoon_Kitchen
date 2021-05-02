@@ -860,7 +860,7 @@ footer {
 @media (min-width: 768px) {
     .avatar-upload {
         position: relative;
-        right: 10%;
+        width: 60%!important;
     }
 }
 /* Corrects box size of select/option */
