@@ -47,10 +47,10 @@ findTime.forEach(useTime);
 function useTime(updateTime){
     updateTime.addEventListener("change", function (changeTime) {
         //Finds prep and cook time
-        let time1 = document.getElementById("time-1").value;
-        let time2 = document.getElementById("time-2").value;
+        let time1 = document.getElementById("time1").value;
+        let time2 = document.getElementById("time2").value;
         // Updates total time by adding prep and cook time
-        document.getElementById("time-3").value = parseInt(time1) + parseInt(time2);
+        document.getElementById("time3").value = parseInt(time1) + parseInt(time2);
     });
 }
 
