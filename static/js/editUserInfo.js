@@ -59,6 +59,7 @@ document.getElementById("custom-button").addEventListener("click", function() {
     }
 });
 
+//--------------------------------------------------------update validation and change variables  -------------------------------------------------
 
 // ---- Password Validation ----
 // ---- Validation ----
@@ -81,19 +82,8 @@ function selectPasswordComapre(comparePassLoc) {
                 passCheck2Val.classList.remove("make-invis");
             }
 
-            let checkLengthPass = passwordCheck1.parentElement.getElementsByTagName("p");
-            let checkLengthPassCheck = passwordCheck2.parentElement.getElementsByTagName("p");
+            finalValidation(".formValidation");
 
-            if (comparePassLoc.classList.contains("createValidation")) {
-                finalValidation(".createValidation");
-
-            } else {
-                finalValidation(".formValidation");
-            }
-
-            // finalValidation(passwordCheck1, checkLengthPass);
-            // finalValidation(passwordCheck2, checkLengthPassCheck);
-        // }
     });
 }
 
@@ -112,46 +102,53 @@ const matchTypeDotEdu = /.edu/;
 const matchTypeDotNet = /.net/;
 const matchTypeDotOrg = /.org/;
 
-var formIsValid = false;
+var formIsValid = false;  // Presets validation for initial run
+var invalidOnlyOne = false;  // Presets validation for initial run // not needed as initial
+
 // ----- Final Validation check
 // Sets or removes invalid bubble and invalid attributes
 function finalValidation(validationLoc) {
-    
+
     let findFormInputs = document.querySelectorAll(validationLoc);
     findFormInputs.forEach(selectFormInputs);
     function selectFormInputs(finalVal) {
 
-        let checkPLength = finalVal.parentElement.getElementsByTagName("p");
+    formIsValid = true 
+
+    // let finalVal = validationLoc
+
+        let checkPLength = finalVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
         //enables and disables validation bubble according to if input is valid or not
         for (let i=0; i< checkPLength.length; i++){
             // Sets a validation variable as it checks over all possible invalidation points
-            if(finalVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis") == false){
+            // formIsValid = true 
+
+            let validCheck = finalVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")
+            if(validCheck == false){
                 formIsValid = false;
             }
 
-            // Makes bubble visible or invisible according to fromIsValid variable
+            // Makes invalid bubble visible/invisible
+            //Enables/disables submit button
             if(formIsValid){
                 finalVal.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid");
                 finalVal.removeAttribute("invalid");
                 finalVal.classList.remove("form-invalid-view");
-                if (document.getElementById("custom-button-login")){
-                    document.getElementById("custom-button-login").removeAttribute("disabled");
-                    document.getElementById("custom-button-create").removeAttribute("disabled");
-                }else{
-                    document.getElementById("custom-button").removeAttribute("disabled");
-                }
-            } else if(formIsValid == false){
+                document.getElementById("custom-button").removeAttribute("disabled");
+            } else if (formIsValid == false ) {
                 finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid");
                 finalVal.setAttribute("invalid", "");
                 finalVal.classList.add("form-invalid-view");
-                if(document.getElementById("custom-button-login")){
-                    document.getElementById("custom-button-login").setAttribute("disabled", "");
-                    document.getElementById("custom-button-create").setAttribute("disabled", "");
-                }else{
-                    document.getElementById("custom-button").setAttribute("disabled", "");
+                document.getElementById("custom-button").setAttribute("disabled", "");
+                // Reveals box if form unvalidates
+                if (document.activeElement == finalVal){
+                    finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
                 }
                 break;
-            }
+            } else {
+                finalVal.classList.remove("form-invalid-view")
+                document.getElementById("custom-button").setAttribute("disabled", "");
+            } 
         }
     }
 }
@@ -167,8 +164,23 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
         let baseValPara = baseVal.parentElement.getElementsByTagName("p");
         // Makes validation bubble visible on focus 
         baseVal.addEventListener("focus", function() {
-            baseVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis");
+            validCheck = true
+            let checkPLengthTemp = baseVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
+            
+            //enables and disables validation bubble according to if input is valid or not
+            for (let i=0; i< checkPLengthTemp.length; i++){
+                // Sets a validation variable as it checks over all possible invalidation points
+                validCheck = baseVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")
+                if(validCheck == false){
+                    formIsValid = false;
+                }
+            }
+
+            if (formIsValid == false) {
+                baseVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis");
+            }
         });
+
         // Makes validation bubble hidden on blur
         baseVal.addEventListener("blur", function() {
             baseVal.parentElement.getElementsByTagName("div")[0].classList.add("make-invis");
@@ -191,11 +203,6 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
             // Validation for password
             if(validationSelector === "password"){
 
-                // // Invalidates the form if incorrect amount of upper character, total characters and number are found
-                // if(baseVal.value.match(matchTypeUpper) == null || baseVal.value.match(matchTypeLower) == null || baseVal.value.match(matchTypeNumber) == null || baseVal.value.length < 8 || baseVal.value.length > 20){
-                //     baseVal.parentElement.getElementsByTagName("p")[0].classList.remove("make-invis");
-                // }
-
                 // Validates the form if correct amount of upper character, total characters and number are found
                 if(baseVal.value.match(matchTypeUpper) && baseVal.value.match(matchTypeLower) && baseVal.value.match(matchTypeNumber) && baseVal.value.length >= 8 && baseVal.value.length <= 20){
                     baseValPara[0].classList.add("make-invis");
@@ -205,69 +212,63 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
 
             // Validation for email
             } else if(validationSelector === "email") {
-                // Validates for @ 
-                if (baseVal.value.match(matchTypeAtSign)) {
-                    baseValPara[1].classList.add("make-invis");
+
+                // Validates for length
+                if (baseVal.value.length >= 4 && baseVal.value.length <= 255){
+                    baseValPara[0].classList.add("make-invis");
                 } else {
-                    baseValPara[1].classList.remove("make-invis");
+                    baseValPara[0].classList.remove("make-invis");
                 }
 
-                // Validates for email suffix '.com' or '.edu'
+                // Validates for email suffix ('.com', '.edu', '.net') and '@'
                 let emailLength = baseVal.value.length;
-                if  (emailLength >=4 ){
+                if  (emailLength >= 4 ){
                     var checkEmailValue = "";
-                    // Find last 4 digits
-                    for (let i=3; i>=0; i--){
-                        checkEmailValue += baseVal.value[(emailLength-1)-i];
+                    // Uses last 4 digits to check for suffix
+                    for (let i = 3; i >= 0; i--){
+                        checkEmailValue += baseVal.value[(emailLength - 1) - i];
                     }
                     if (checkEmailValue.match(matchTypeDotCom)){ // checks for .com
                         baseValPara[1].classList.add("make-invis");
-                    }else if (checkEmailValue.match(matchTypeDotEdu)){ // checks for .edu
+                    } else if (checkEmailValue.match(matchTypeDotEdu)){ // checks for .edu
                         baseValPara[1].classList.add("make-invis");
                     } else if (checkEmailValue.match(matchTypeDotNet)) {// checks for .net
                         baseValPara[1].classList.add("make-invis");
-                    }else if (checkEmailValue.match(matchTypeDotOrg)) {// checks for .org
+                    } else if (checkEmailValue.match(matchTypeDotOrg)) {// checks for .org
                         baseValPara[1].classList.add("make-invis");
-                    }else {
+                    } else {
+                        baseValPara[1].classList.remove("make-invis");
+                    }
+
+                    if (baseVal.value.match(matchTypeAtSign) == null) { // Checks for @
                         baseValPara[1].classList.remove("make-invis");
                     }
                 }
+
             //Validates for name/username
             } else if (validationSelector === "name"){
                 // Validates if correct amount of characters present
-                if(baseVal.value.length >= 6 && baseVal.value.length <= 30){
+                if(baseVal.value.length >= 6 && baseVal.value.length <= 100){
                     baseValPara[0].classList.add("make-invis");
-                }
-                // Invalidates if incorrect amount of characters present
-                if(baseVal.value.length < 6 || baseVal.value.length > 30){
+                } else {
                     baseValPara[0].classList.remove("make-invis");
                 }
             }
 
             // final validation of form
             formIsValid = true;
-            if(baseVal.classList.contains("loginValidation")){
-                finalValidation(".loginValidation");
+            finalValidation(".formValidation");
 
-            } else if (baseVal.classList.contains("createValidation")) {
-                finalValidation(".createValidation");
-
-            } else {
-                finalValidation(".formValidation");
-            }
         });
     }
 }
 
 //----------------------email validation
 baseValidation(".emailValidation", "email", "keyup"); // keyboard
-//baseValidation(".emailValidation", "email", "touchstart") // touchscreen // never implemented
 //---------------------- name validation
 baseValidation(".nameValidation", "name", "keyup"); // keyboard
-//baseValidation(".nameValidation", "name", "touchstart") // touchscreen // never implemented
 //----------------------password validation
 baseValidation(".passwordSets", "password", "keyup"); // keyboard
-//baseValidation(".passwordSets", "password", "touchstart") // touchscreen // never implemented
 
 
 // ----avatar validation ----
