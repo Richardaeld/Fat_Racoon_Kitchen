@@ -40,7 +40,7 @@ const matchTypeDotNet = /.net/;
 const matchTypeDotOrg = /.org/;
 
 var formIsValid = false;  // Presets validation for initial run
-var invalidOnlyOne = false;  // Presets validation for initial run // not needed as initial
+// var invalidOnlyOne = false;  // Presets validation for initial run // not needed as initial
 
 // ----- Final Validation check
 // Sets or removes invalid bubble and invalid attributes
@@ -50,45 +50,39 @@ function finalValidation(validationLoc) {
     findFormInputs.forEach(selectFormInputs);
     function selectFormInputs(finalVal) {
 
-    formIsValid = true 
-
-    // let finalVal = validationLoc
+        currentFormValid = true // Sets macro form validation setting
 
         let checkPLength = finalVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
         //enables and disables validation bubble according to if input is valid or not
         for (let i=0; i< checkPLength.length; i++){
-            // Sets a validation variable as it checks over all possible invalidation points
-            // formIsValid = true 
-
             let validCheck = finalVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")
             if(validCheck == false){
                 formIsValid = false;
+                currentFormValid = false;
             }
+        }
 
-            // Makes invalid bubble visible/invisible
-            //Enables/disables submit button
-            if(formIsValid){
-                finalVal.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid");
-                finalVal.removeAttribute("invalid");
-                finalVal.classList.remove("form-invalid-view");
-                document.getElementById("custom-button-login").removeAttribute("disabled");
-                document.getElementById("custom-button-create").removeAttribute("disabled");
-            } else if (formIsValid == false ) {
-                finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid");
-                finalVal.setAttribute("invalid", "");
-                finalVal.classList.add("form-invalid-view");
-                document.getElementById("custom-button-login").setAttribute("disabled", "");
-                document.getElementById("custom-button-create").setAttribute("disabled", "");
-                // Reveals box if form unvalidates
-                if (document.activeElement == finalVal){
-                    finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
-                }
-                break;
-            } else {
-                finalVal.classList.remove("form-invalid-view")
-                document.getElementById("custom-button-login").setAttribute("disabled", "");
-                document.getElementById("custom-button-create").setAttribute("disabled", "");
-            } 
+        // Validates on global form
+        if(formIsValid) {
+            document.getElementById("custom-button-login").removeAttribute("disabled");
+            document.getElementById("custom-button-create").removeAttribute("disabled");
+        } else {
+            document.getElementById("custom-button-login").setAttribute("disabled", "");
+            document.getElementById("custom-button-create").setAttribute("disabled", "");
+        }
+        // Validates on macro level
+        if (currentFormValid) {
+            finalVal.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid");
+            finalVal.removeAttribute("invalid");
+            finalVal.classList.remove("form-invalid-view");
+        } else {
+            // Reveals box if form invalidates
+            if (document.activeElement == finalVal){
+                finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
+            }
+            finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid");
+            finalVal.setAttribute("invalid", "");
+            finalVal.classList.add("form-invalid-view"); 
         }
     }
 }
@@ -199,7 +193,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
 
             // final validation of form
             formIsValid = true;
-            invalidOnlyOne = false;
+            // invalidOnlyOne = false;
             if(baseVal.classList.contains("loginValidation")){
                 finalValidation(".loginValidation");
             } else if (baseVal.classList.contains("createValidation")) {
