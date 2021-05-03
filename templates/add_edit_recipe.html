@@ -152,10 +152,10 @@
                                 {% for ingredient in recipeIngEnum %}
                                 <div class="col-12 col-md-6">
                                     <div class="row no-gutters align-items-center step-ingredient-spacing">
-                                        <span class="remove-p-margin">
+                                        <span class="col-2">
                                             <p>{{ ingredient[0] + 1 }}. </p>
                                         </span>
-                                        <input class="col-11 countIngredients" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" pattern="[a-zA-z0-9!,.?=+-_/#%&]{0,255}">
+                                        <input class="col-10 countIngredients" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" pattern="[a-zA-z0-9!,.?=+-_/#%&]{0,255}">
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -185,10 +185,10 @@
                     {% for step in recipeSteEnum %}
                     <div class="col-12 col-md-6 ">
                         <div class="row no-gutters align-items-center step-ingredient-spacing step-ingredient-input">
-                            <span class="">
+                            <span class="col-2">
                                 <p>{{ step[0] + 1 }}. </p>
                             </span>
-                            <textarea class="col-11 countSteps" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                            <textarea class="col-10 countSteps" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
                         </div>
                     </div>
                     {% endfor %}
