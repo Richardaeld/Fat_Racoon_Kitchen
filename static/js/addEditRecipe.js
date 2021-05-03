@@ -81,11 +81,11 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         let createDivRow = document.createElement("div");
         createDivRow.className = "row no-gutters align-items-center step-ingredient-spacing step-ingredient-input";
         let createSpan = document.createElement("span");
-        // createSpan.className = "";
+        createSpan.className = "col-2";
         let createSpanP = document.createElement("p");
         createSpanP.textContent = arrayIngredientLength + ". ";
         let createInput = document.createElement(inputOrTextarea);
-        createInput.className = "col-11";
+        createInput.className = "col-10";
         createInput.id = arrayClass + arrayIngredientLength;
         createInput.name = arrayClass + arrayIngredientLength;
         createInput.type = "text";
