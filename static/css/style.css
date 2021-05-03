@@ -822,7 +822,7 @@ footer {
     padding-bottom: 3rem
 }
 
-.remove-p-margin {
+.remove-p-margin {   /*-----------------------------check if im in use*/
     margin-bottom: 0rem;
 }
 
@@ -887,6 +887,10 @@ footer {
 .step-ingredient-input {
     position: relative;
     right: 0%;
+}
+
+.step-ingredient-spacing p {
+    margin-bottom: 0;
 }
 /* form and all button styles */
 .custom-button,
