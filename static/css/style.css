@@ -390,6 +390,10 @@ header {
     border-bottom: 2px solid rgba(226, 14, 14, .5);
 }
 
+input {
+    background-color: #faf9f6;
+}
+
 .clickable {
     cursor: pointer;
 }
@@ -766,20 +770,25 @@ footer {
 }
 /* ---------------------------------------- Form validation */
 .form-invalid-view {
-    border: 2px solid rgb(255, 0, 0)!important;
+    /* border: 2px solid rgb(255, 0, 0)!important; */
+    border: 2px solid #e60000!important;
 }
 
 .form-invalid-view:focus {
     outline: none;
-    border: 2px solid rgb(255, 0, 0);
+    /* border: 2px solid rgb(255, 0, 0); */
+    border: 2px solid #e60000;
 }
 
 /* popup box (parent) */
 .invalid-form {
     margin-top: 1rem;
     width: 80%;
-    border: 2px solid rgb(14, 255, 255);
-    background-color: #eeeded;
+    /* border: 2px solid rgb(14, 255, 255); */
+    border: 2px solid #e60000;
+    /* background-color: #eeeded; */
+    background-color: #BDAABD;
+    color: #444;
     position: relative;
     z-index: 4;
     left: 10%;
@@ -793,7 +802,8 @@ footer {
     position: absolute;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
-    border-top: 10px solid rgb(14, 255, 255);
+    /* border-top: 10px solid rgb(14, 255, 255); */
+    border-top: 10px solid #e60000;
     border-bottom: 10px solid transparent;
     transform: rotate(180deg) translateX(50%);
     top: -22px;
@@ -894,6 +904,12 @@ footer {
     padding-left: 0!important;
 }
 
+.avatar-upload::-webkit-file-upload-button,
+.avatar-upload-user::-webkit-file-upload-button {
+    cursor: pointer;
+    background-color: #EFF592;
+}
+
 @media (min-width: 768px) {
     .avatar-upload {
         position: relative;
@@ -957,7 +973,7 @@ footer {
 
 .custom-button:disabled,
 .custom-button-delete:disabled {
-    background-color: #fff;
+    background-color: #faf9f6;
 } 
 
 .custom-button-press-outer {
@@ -984,6 +1000,10 @@ footer {
 /* Overrides default input (because of disable attribute) */
 #time3 {
     text-align: center;
+}
+
+.time::-webkit-inner-spin-button {
+    cursor: pointer;
 }
 /* ------------------------------------------------------- User Profile Section  ---------------------------------------------------------------- */
 .profile-lists p {
