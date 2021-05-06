@@ -25,189 +25,187 @@
 
     <!--  For creating a new recipe  -->
     <div class="container-fluid" >
+        <div class="row no-gutters justify-content-center" >
+            <!-- Form -->
+            <form class="col-10 form-base generic-box-shadow yanone-text"  method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }} ">
+                <div class="row no-gutters justify-content-center" >
+                            
+                    <!-- Form Title Header -->
+                    <div class="col-12 recipe-name">
+                        {% if recipeInfo.name == "Recipe" %}
+                        <h1>New Recipe</h1>
+                        {% else %}
+                        <h1>{{ recipeInfo.name }}</h1>
+                        {% endif %}
+                    </div>
+                    <hr class="make-space">
+                            
+                    <!--  Recipe Name  -->
+                    <div class="col-12 form-input-spacing">
+                        <label type="text" for="name">Recipe Name</label>
+                        <input class="form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
+                    </div>
+                                
+                    <!--  Prep Time  -->
+                    <div class="col-12 col-md-3 form-input-spacing">
+                        <label type="text" for="prepTime">Prep (Mins)</label>
+                        <input class="time form-center-text" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
+                        <!-- <p class="remove-p-margin">Minutes</p> -->
+                    </div>
+                                    
+                    <!--  Cook Time  -->
+                    <div class="col-12 col-md-3 form-input-spacing">
+                        <label type="text" for="cookTime">Cook (Mins)</label>
+                        <input class="time form-center-text" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
+                        <!-- <p class="remove-p-margin">Minutes</p> -->
+                    </div>
 
-    
-    <div class="row no-gutters justify-content-center" >
+                    <!--  Total Time  -->
+                    <div class="col-12 col-md-3 form-input-spacing">
+                        <label type="text" for="totalTime">Total (Mins)</label>
+                        <input class="make-invis" type="text" name="timeTotal" id="timeTotal" value="4">
+                        <input type="number" id="time3" name="time-3" value="{{ recipeInfo.time[2] }}" disabled>
+                        <!-- <p class="remove-p-margin">Minutes</p> -->
+                    </div>                    
 
-        <form class="col-10 form-base generic-box-shadow yanone-text"  method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }} ">
-            <div class="row no-gutters justify-content-center" >
+                    <!-- Recipe Feature -->
+                    <div class="col-12 col-md-6 form-input-spacing">
+                        <label type="text" for="feature">Featured Ingredient</label>
+                        <div class="select-option-size">
+                            <!-- Recipe feature select/option -->
+                            <select name="feature" id="feature">
+                                <!-- Adds selected attribute -->
+                                {% for feature in features %}
+                                {% if feature.name == recipeInfo.feature %}
+                                <!--  For editing a existing recipe  -->
+                                <option value="{{ feature.name }}" selected>{{ feature.name.title() }}</option>
+                                {% else %}
+                                <!--  For all none selected catagories  -->
+                                <option value="{{ feature.name }}">{{ feature.name.title() }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                            
+                    <!-- Recipe Image -->
+                    <div class="col-12 col-md-6 form-input-spacing">
+                        <label type="text" for="avatar">Recipe Image</label>
+                        <input type="file" name="avatar" id="avatar" class="avatar-upload">
+                        <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
+                        <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
+                        <p id="avatar_valid" class="make-invis">Please select a file of 500KB or less. Server space is limited!</p>
+                    </div>
                         
-                <!-- Form Title Header -->
-                <div class="col-12 recipe-name">
-                    {% if recipeInfo.name == "Recipe" %}
-                    <h1>New Recipe</h1>
-                    {% else %}
-                    <h1>{{ recipeInfo.name }}</h1>
+                    {% if admin == True %}
+                    <!--  FR Lazy Favorite and Grandparent Classic checkboxes -->
+                    <div class="col-12 form-input-spacing">
+                        <legend type="text" for="avatar">FR Lazy Favorite or Grandparent Classic</legend>
+                        <div class="row no-gutters">
+                                    
+                            <!-- Sets checkbox for lazy -->
+                            <div class="checkboxes">
+                            <label for="lazy">Lazy favorite</label>
+                            {% if recipeInfo.lazy == True %}
+                            <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True" checked>
+                            {% else %}
+                            <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True">
+                            {% endif %}
+                            </div>
+
+                            <!-- Sets checkboxe for grandparent -->
+                            <div class="checkboxes">
+                            <label for="grandparent">Grandparent Classic</label>
+                            {% if recipeInfo.grandparent == True %}
+                            <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True" checked>
+                            {% else %}
+                            <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True">
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
                     {% endif %}
-                </div>
-                <hr class="make-space">
-                        
-                <!--  Recipe Name  -->
-                <div class="col-12 form-input-spacing">
-                    <label type="text" for="name">Recipe Name</label>
-                    <input class="form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
+                            
+                    <!-- Recipe description -->
+                    <div class="col-12 form-input-spacing">
+                        <label type="text" for="text">Recipe Description</label>
+                        <textarea type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
+                    </div>
+                            
+                    <!-- Recipe ingredients -->
+                    <div class="col-12">
+                        <!-- Header -->
+                        <label type="text" for="ingredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>
+                        <!-- Add Button -->
+                        <div class="recipeAddButton clickable form-button">
+                            <p class="remove-p-margin">Add</p>
+                        </div>
+                        <!-- Remove Button -->
+                        <div class="recipeRemoveButton clickable form-button">
+                            <p class="remove-p-margin">Remove</p>
+                        </div>
+                    </div>
+
+                    <!-- add/remove location for ingredient input boxes -->
+                    <div class="col-12 ingredientAddRemoveLocation form-input-spacing">
+                        {% if recipeIngEnum|length != 0 %}
+                        <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
+                        {% for ingredient in recipeIngEnum %}
+                            <div class="step-ingredient-spacing">
+                                <p>Ingredient {{ ingredient[0] + 1 }} </p>
+                                <input class="countIngredients" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}">
+                            </div>
+                        {% endfor %}
+                        {% else %}
+                        <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="1">
+                            <div class="step-ingredient-spacing">
+                                <p>Ingredient 1 </p>
+                                <input class="countIngredients" type="text" id="ingredients-1" name="ingredients-1" value="" pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}">
+                            </div>
+                        {% endif %}
+                    </div>
+                            
+                    <!-- Recipe steps -->
+                    <div class="col-12">
+                        <!-- Header -->
+                        <label type="text" for="steps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
+                        <!-- Add Button -->
+                        <div class="stepAddButton clickable form-button">
+                            <p class="remove-p-margin ">Add</p>
+                        </div>
+                        <!-- Remove button -->
+                        <div class="stepRemoveButton clickable form-button">
+                            <p class="remove-p-margin">Remove</p>
+                        </div>
+                    </div>
+
+                    <!-- add/remove location for step input boxes -->
+                    <div class="col-12 stepAddRemoveLocation form-input-spacing">
+                        {% if recipeSteEnum|length != 0 %}
+                        <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
+                        {% for step in recipeSteEnum %}
+                            <div class="step-ingredient-spacing">
+                                <p>Step {{ step[0] + 1 }} </p>
+                                <textarea class="countSteps" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="1">
+                            <div class="step-ingredient-spacing">
+                                <p>Step 1 </p>
+                                <textarea class="countSteps" type="text" id="steps-1" name="steps-1" value="" col="20" rows="3"></textarea>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- submit button -->
+                    <div class="col">
+                        <input class="custom-button" id="custom-button" type="submit" value="Submit">
+                    </div>
                 </div>
                             
-                <!--  Prep Time  -->
-                <div class="col-12 col-md-3 form-input-spacing">
-                    <label type="text" for="prepTime">Prep (Mins)</label>
-                    <input class="time form-center-text" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
-                    <!-- <p class="remove-p-margin">Minutes</p> -->
-                </div>
-                                
-                <!--  Cook Time  -->
-                <div class="col-12 col-md-3 form-input-spacing">
-                    <label type="text" for="cookTime">Cook (Mins)</label>
-                    <input class="time form-center-text" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
-                    <!-- <p class="remove-p-margin">Minutes</p> -->
-                </div>
-
-                <!--  Total Time  -->
-                <div class="col-12 col-md-3 form-input-spacing">
-                    <label type="text" for="totalTime">Total (Mins)</label>
-                    <input class="make-invis" type="text" name="timeTotal" id="timeTotal" value="4">
-                    <input type="number" id="time3" name="time-3" value="{{ recipeInfo.time[2] }}" disabled>
-                    <!-- <p class="remove-p-margin">Minutes</p> -->
-                </div>                    
-
-                <!-- Recipe Feature -->
-                <div class="col-12 col-md-6 form-input-spacing">
-                    <label type="text" for="feature">Featured Ingredient</label>
-                    <div class="select-option-size">
-                        <!-- Recipe feature select/option -->
-                        <select name="feature" id="feature">
-                            <!-- Adds selected attribute -->
-                            {% for feature in features %}
-                            {% if feature.name == recipeInfo.feature %}
-                            <!--  For editing a existing recipe  -->
-                            <option value="{{ feature.name }}" selected>{{ feature.name.title() }}</option>
-                            {% else %}
-                            <!--  For all none selected catagories  -->
-                            <option value="{{ feature.name }}">{{ feature.name.title() }}</option>
-                            {% endif %}
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
-                        
-                <!-- Recipe Image -->
-                <div class="col-12 col-md-6 form-input-spacing">
-                    <label type="text" for="avatar">Recipe Image</label>
-                    <input type="file" name="avatar" id="avatar" class="avatar-upload">
-                    <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
-                    <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
-                    <p id="avatar_valid" class="make-invis">Please select a file of 500KB or less. Server space is limited!</p>
-                </div>
-                    
-                {% if admin == True %}
-                <!--  FR Lazy Favorite and Grandparent Classic checkboxes -->
-                <div class="col-12 form-input-spacing">
-                    <legend type="text" for="avatar">FR Lazy Favorite or Grandparent Classic</legend>
-                    <div class="row no-gutters">
-                                
-                        <!-- Sets checkbox for lazy -->
-                        <div class="checkboxes">
-                        <label for="lazy">Lazy favorite</label>
-                        {% if recipeInfo.lazy == True %}
-                        <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True" checked>
-                        {% else %}
-                        <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True">
-                        {% endif %}
-                        </div>
-
-                        <!-- Sets checkboxe for grandparent -->
-                        <div class="checkboxes">
-                        <label for="grandparent">Grandparent Classic</label>
-                        {% if recipeInfo.grandparent == True %}
-                        <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True" checked>
-                        {% else %}
-                        <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True">
-                        {% endif %}
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                        
-                <!-- Recipe description -->
-                <div class="col-12 form-input-spacing">
-                    <label type="text" for="text">Recipe Description</label>
-                    <textarea type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
-                </div>
-                        
-                <!-- Recipe ingredients -->
-                <div class="col-12">
-                    <!-- Header -->
-                    <label type="text" for="ingredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>
-                    <!-- Add Button -->
-                    <div class="recipeAddButton clickable form-button">
-                        <p class="remove-p-margin">Add</p>
-                    </div>
-                    <!-- Remove Button -->
-                    <div class="recipeRemoveButton clickable form-button">
-                        <p class="remove-p-margin">Remove</p>
-                    </div>
-                </div>
-
-                <!-- add/remove location for ingredient input boxes -->
-                <div class="col-12 ingredientAddRemoveLocation form-input-spacing">
-                    {% if recipeIngEnum|length != 0 %}
-                    <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
-                    {% for ingredient in recipeIngEnum %}
-                        <div class="step-ingredient-spacing">
-                            <p>Ingredient {{ ingredient[0] + 1 }} </p>
-                            <input class="countIngredients" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}">
-                        </div>
-                    {% endfor %}
-                    {% else %}
-                    <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="1">
-                        <div class="step-ingredient-spacing">
-                            <p>Ingredient 1 </p>
-                            <input class="countIngredients" type="text" id="ingredients-1" name="ingredients-1" value="" pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}">
-                        </div>
-                    {% endif %}
-                </div>
-                        
-                <!-- Recipe steps -->
-                <div class="col-12">
-                    <!-- Header -->
-                    <label type="text" for="steps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
-                    <!-- Add Button -->
-                    <div class="stepAddButton clickable form-button">
-                        <p class="remove-p-margin ">Add</p>
-                    </div>
-                    <!-- Remove button -->
-                    <div class="stepRemoveButton clickable form-button">
-                        <p class="remove-p-margin">Remove</p>
-                    </div>
-                </div>
-
-                <!-- add/remove location for step input boxes -->
-                <div class="col-12 stepAddRemoveLocation form-input-spacing">
-                    {% if recipeSteEnum|length != 0 %}
-                    <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
-                    {% for step in recipeSteEnum %}
-                        <div class="step-ingredient-spacing">
-                            <p>Step {{ step[0] + 1 }} </p>
-                            <textarea class="countSteps" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="1">
-                        <div class="step-ingredient-spacing">
-                            <p>Step 1 </p>
-                            <textarea class="countSteps" type="text" id="steps-1" name="steps-1" value="" col="20" rows="3"></textarea>
-                        </div>
-                    {% endif %}
-                </div>
-                
-                <!-- submit button -->
-                <div class="col">
-                    <input class="custom-button" id="custom-button" type="submit" value="Submit">
-                </div>
-            </div>
-                        
-        </form>
-    </div>     
+            </form>
+        </div>     
     </div>    
 </section>
 {% endblock %}
