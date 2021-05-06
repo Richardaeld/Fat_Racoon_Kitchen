@@ -25,9 +25,9 @@
                         <label  type="text" for="username">Name</label>
                         <input class="formValidation nameValidation" type="text" id="username" name="username" value="{{ userInfo.username.title() }}" minlength="5" maxlength="100" pattern="^[a-zA-Z0-9%_$]{5,100}$" invalid required>
                         <div class="invalid-form form-is-valid make-invis">
-                            <p class="make-invis">Must be between 5 and 100 characters, can contain letters, numbers, and '@.%$'</p>
-                            <p class="make-invis"></p>
-                            <p class="make-invis">Cannot contain ' " $ ,</p>
+                            <p class="make-invis remove-p-margin">Must be between 5 and 100 characters, can contain letters, numbers, and '@.%$'</p>
+                            <p class="make-invis remove-p-margin"></p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
                         </div>
                     </div>
                     
@@ -36,19 +36,19 @@
                         <label  type="text" for="email">Email</label>
                         <input class="formValidation emailValidation" type="email" id="email" name="email" value="{{ userInfo.email }}" minlength="5" maxlength="255" pattern="^[a-zA-Z0-9@.%$]{5,255}$" invalid required>
                         <div class="invalid-form form-is-valid make-invis">
-                            <p class="make-invis">Must be between 5 and 255 characters, can contain letters, numbers, and '@.%$'</p>
-                            <p class="make-invis">must contain appropiate email suffix *hint* must end in .com, .edu, .net, .org</p>
-                            <p class="make-invis">Cannot contain ' " $ ,</p>
+                            <p class="make-invis remove-p-margin">Must be between 5 and 255 characters, can contain letters, numbers, and '@.%$'</p>
+                            <p class="make-invis remove-p-margin">must contain appropiate email suffix *hint* must end in .com, .edu, .net, .org</p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
                         </div>
                     </div>
                     
                     <!--  avatar  -->
                     <div class="col-12 col-md-6 form-input-spacing">
                         <label type="text" for="avatar">Avatar</label>
-                        <input type="file" name="avatar" id="avatar" class="avatar-upload-user">
+                        <input type="file" name="avatar" id="avatar" class="avatar-upload-user clickable">
                         <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
                         <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
-                        <p id="avatar_valid" class="make-invis">Please select a file of 500KB or less. Server space is limited!</p>
+                        <p id="avatar_valid" class="make-invis remove-p-margin">Please select a file of 500KB or less. Server space is limited!</p>
                     </div>
                     
                     <!--  current password  -->
@@ -57,8 +57,8 @@
                         <input class="formValidation passwordSets form-invalid-view" type="password" id="password" name="password" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" invalid required>
                         <div class="invalid-form make-invis">
                             <p>Password must contain upper case letter, lower case letter, a number, and be between 8 and 20 characters</p>
-                            <p class="make-invis">New password and confirm new password must match</p>
-                            <p class="make-invis">Cannot contain ' " $ ,</p>
+                            <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
                         </div>
                     </div>
                     
@@ -72,9 +72,9 @@
                         <label for="newPasswordEdit">New Password</label>
                         <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck1" name="passwordCheck1" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
                         <div class="invalid-form form-is-valid make-invis">
-                            <p class="make-invis">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
-                            <p class="make-invis">New password and confirm new password must match</p>
-                            <p class="make-invis">Cannot contain ' " $ ,</p>
+                            <p class="make-invis remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                            <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
                         </div>
                     </div>
                     
@@ -83,9 +83,9 @@
                         <label for="newPasswordCheckEdit">Confirm New Password</label>
                         <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck2" name="passwordCheck2" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
                         <div class="invalid-form form-is-valid make-invis">
-                            <p class="make-invis">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
-                            <p class="make-invis">New password and confirm new password must match</p>
-                            <p class="make-invis">Cannot contain ' " $ ,</p>
+                            <p class="make-invis remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                            <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
                         </div>
                     </div>
                     
