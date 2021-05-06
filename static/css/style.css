@@ -153,11 +153,15 @@
 }
 
 .make-space-top {
-    padding-top: 1.5rem;
+    padding-top: 5rem;
 }
 
 .make-space {
     padding-bottom: 1.5rem;
+}
+
+.make-space-minus {
+    padding-bottom: 0.75rem;
 }
 
 .make-space-plus {
@@ -420,33 +424,18 @@ input {
 }
 
 /* ---------------------------------------- Container for section headers on index and lessons*/
-.header-height {
-    margin-top: 5rem;
-    margin-bottom: 1rem;
-}
-
-.header-height h1,
-.header-height h3 {
-    /* text-shadow: 0px 1px 2px #333,
-    1px 0px 2px #333,
-    -1px 0px 2px #333,
-    0px -1px 2px #333,
-    2px 2px 3px #333; */
-    /* text-shadow: 2px 2px 4px #333; */
-    /* text-shadow: 2px 2px 2px #474747,
-                4px 4px 2px #474747,
-                6px 6px 2px #474747; */
-    color: #faf9f6;
-    /* color: #378F1D; */
-}
-
 .header-text-shadow {
+    color: #faf9f6;
     text-shadow: 2px 2px 2px #474747,
             4px 4px 2px #474747,
             6px 6px 2px #474747;
 }
 
 /* ---------------------------------------- Repetative class calls */
+
+.auto-margin {
+    margin: auto;
+}
 .yanone-text {
     font-family: "Yanone Kaffeesatz", sans-serif;
 }
@@ -640,9 +629,7 @@ right: 0px;
 .reduce-padding {
     padding: 0.25rem;
 }
-.remove-margin {
-    margin: 0 0 0.5rem 0;
-}
+
 .remove-top-margin {
     margin-top: 0rem;
 }
@@ -962,7 +949,7 @@ footer {
 .custom-button,
 .custom-button-delete {
     width: auto!important;
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
     border: 2px solid #333;
     box-shadow: 4px 4px 2px rgba(0, 0, 0, .5 );
     font-family: "Yanone Kaffeesatz", sans-serif;
@@ -1155,9 +1142,9 @@ h6 {
         bottom:0.1rem;
     }
     
-    .make-space-top {
+    /* .make-space-top {
         padding-top: 2rem;
-    }
+    } */
 
     .make-space {
         padding-bottom: 2rem;
