@@ -206,7 +206,7 @@
                 </li>
                 {% endif %}
             </ul>
-            <form class="form-inline my-2 my-lg-0" method="POST" action="{{ url_for('search_bar_returns', search='user_search') }}">
+            <form class="form-inline my-2 my-lg-0 nav-search" method="POST" action="{{ url_for('search_bar_returns', search='user_search') }}">
                 <input class="form-control mr-sm-2" name="userSearch" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
             </form>
