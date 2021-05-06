@@ -3,7 +3,7 @@
 <!-- carousel -->
 <aside class="row no-gutters align-items-center card-section generic-background">
     <!-- Carousel header -->
-    <div class="col-12 header-height">
+    <div class="col-12 header-height header-text-shadow">
         <h1>Pick a recipe based on its featured ingredient</h1>
     </div>
     <!-- Carousel cards -->
@@ -20,7 +20,7 @@
             <div class="col-10 col-md-10 col-lg-5 col-xl-3 medium-content-height card-carousel generic-box-shadow index-card index-card-pattern index-card-bold transition-fade-out recipe-lists blank-anchor">
                 <!-- Feature header for index card -->    
                 <a href="{{ url_for('recipe_list', feature=feature.name) }}">
-                    <h6 class="yanone-text header-text-spacing">{{feature.name.title()}}</h6>
+                    <h6 class="yanone-text header-text-spacing ">{{feature.name.title()}}</h6>
                 </a>
                 <ul>
                     {% for card in card_carousel %}
@@ -49,7 +49,7 @@
 <!--  Grandparent Classics  -->
 <section class="row no-gutters generic-background">
     <!--  Polaroid classics Header  -->
-    <div class="col-12 header-height">
+    <div class="col-12 header-height header-text-shadow">
         <h1>Impress someone with a Fat Raccoon's GrandParent Classic</h1>
     </div>
 
@@ -96,7 +96,7 @@
 <section class="row no-gutters generic-background">
     <!-- Random recipe header -->
     <div class="row no-gutters justify-content-around align-items-center header-height">
-        <div class="col-12">
+        <div class="col-12 header-text-shadow">
             <h1>Try a random recipe or browse the Fat Raccoon's collection of recipes</h1>
         </div>
         <!-- Search lazy recipes -->
