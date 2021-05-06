@@ -160,6 +160,10 @@
     padding-bottom: 1.5rem;
 }
 
+.make-space-plus {
+    padding-bottom: 4rem;
+}
+
 .make-space-margin {
     margin-bottom: 1.5rem;
 }
@@ -425,12 +429,19 @@ header {
     0px -1px 2px #333,
     2px 2px 3px #333; */
     /* text-shadow: 2px 2px 4px #333; */
-    text-shadow: 2px 2px 2px #474747,
+    /* text-shadow: 2px 2px 2px #474747,
                 4px 4px 2px #474747,
-                6px 6px 2px #474747;
+                6px 6px 2px #474747; */
     color: #faf9f6;
     /* color: #378F1D; */
 }
+
+.header-text-shadow {
+    text-shadow: 2px 2px 2px #474747,
+            4px 4px 2px #474747,
+            6px 6px 2px #474747;
+}
+
 /* ---------------------------------------- Repetative class calls */
 .yanone-text {
     font-family: "Yanone Kaffeesatz", sans-serif;
@@ -900,7 +911,6 @@ footer {
     border: 2px solid #333;
     box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
     display: inline-block;
-    margin-bottom: 1.25rem;
 }
 
 /* ---------------------------------------- specific (unique) form styles */
@@ -989,8 +999,8 @@ footer {
 .profile-header {
     color: #faf9f6;
     /* text-shadow: 2px 2px 4px #333; */
-    text-shadow: 3px 3px 4px #333,
-                -1px -1px 4px #333;
+    /* text-shadow: 3px 3px 4px #333,
+                -1px -1px 4px #333; */
 
 }
 
