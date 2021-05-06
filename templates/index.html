@@ -3,7 +3,7 @@
 <!-- carousel -->
 <aside class="row no-gutters align-items-center card-section generic-background">
     <!-- Carousel header -->
-    <div class="col-12 header-height header-text-shadow">
+    <div class="col-12 header-text-shadow make-space-top make-space">
         <h1>Pick a recipe based on its featured ingredient</h1>
     </div>
     <!-- Carousel cards -->
@@ -49,7 +49,7 @@
 <!--  Grandparent Classics  -->
 <section class="row no-gutters generic-background">
     <!--  Polaroid classics Header  -->
-    <div class="col-12 header-height header-text-shadow">
+    <div class="col-12 header-text-shadow make-space-top make-space">
         <h1>Impress someone with a Fat Raccoon's GrandParent Classic</h1>
     </div>
 
@@ -57,7 +57,7 @@
         <div class="row no-gutters justify-content-around">
             <!-- incase no classics are in DB display this -->
             {% if classics == [] %}
-            <div class="header-height">
+            <div class="header-text-shadow make-space-top make-space">
                 <h1>Currently we have no classics in rotation</h1>
                 <h3>Sorry, try back later for some awesome classics!</h3>
             </div>
@@ -95,30 +95,30 @@
 <!-- Random recipe -->
 <section class="row no-gutters generic-background">
     <!-- Random recipe header -->
-    <div class="row no-gutters justify-content-around align-items-center header-height">
-        <div class="col-12 header-text-shadow">
+    <div class="row no-gutters justify-content-around make-space make-space-top">
+        <div class="col-12 header-text-shadow make-space-minus">
             <h1>Try a random recipe or browse the Fat Raccoon's collection of recipes</h1>
         </div>
         <!-- Search lazy recipes -->
-        <a href="{{ url_for('search_bool_returns', search='lazy') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button remove-margin">
+        <a href="{{ url_for('search_bool_returns', search='lazy') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin">
             <div class="sticky-note-inner-div reduce-padding">
                 <p>Browse our lazy favorites!</p>
             </div>
         </a>
         <!-- Search chef fat_raccoon recipes -->
-        <a href="{{ url_for('search_bar_returns', search='fat_raccoon') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button remove-margin">
+        <a href="{{ url_for('search_bar_returns', search='fat_raccoon') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin">
             <div class="sticky-note-inner-div reduce-padding">
                 <p>Browse our recipes!</p>
             </div>
         </a>
         <!-- Search all recipes, all_recipe page -->
-        <a href="{{ url_for('all_recipes') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button remove-margin">
+        <a href="{{ url_for('all_recipes') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin">
             <div class="sticky-note-inner-div reduce-padding">
                 <p>Browse by feature!</p>
             </div>
         </a>
         <!-- Search grandparent classic recipes -->
-        <a href="{{ url_for('search_bool_returns', search='grandparent') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button remove-margin">
+        <a href="{{ url_for('search_bool_returns', search='grandparent') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin">
             <div class="sticky-note-inner-div reduce-padding ">
                 <p>Browse our classics!</p>
             </div>
@@ -219,19 +219,13 @@
                      <!-- Banner Lazy or grandparent classic if present-->
                      <!-- Both lazy and grandparent classic -->
                     {% if recipeOfDay.lazy == true and recipeOfDay.grandparent == true %}
-                    <div class="make-space">
-                        <h6 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Lazy and Grandparent Classic!</h6>
-                    </div>
+                    <h6 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Lazy and Grandparent Classic!</h6>
                     <!-- lazy favorite -->
                     {% elif recipeOfDay.lazy == true %}
-                    <div class="make-space">
-                        <h6 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h6>
-                    </div>
+                    <h6 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h6>
                      <!-- Grandparent Classic -->
                     {% elif recipeOfDay.grandparent == true %}
-                    <div class="make-space">
-                        <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
-                    </div>
+                    <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
                     {% endif %}
                 </div>
             </div>
