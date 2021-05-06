@@ -5,7 +5,7 @@
     <div class="col-12 make-space">
         <div class="row no-gutters justify-content-between">
             <!--  Create a new recipe  -->
-            <div class="col-4 col-lg-2 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
+            <div class="col-4 col-lg-3 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
                 <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
                     <div class="sticky-note-inner-div">
                         <h6>Share Recipe</h6>
@@ -13,7 +13,7 @@
                 </a>
             </div>
             <!--  Edit user profile  -->
-            <div class="col-4 col-lg-2 sticky-note-no-shadow custom-button profile-button blank-anchor custom-js-button">
+            <div class="col-4 col-lg-3 sticky-note-no-shadow custom-button profile-button blank-anchor custom-js-button">
                 <a href="{{ url_for('edit_user_info') }}">
                     <div class="sticky-note-inner-div">
                         <h6>Update Profile</h6>
@@ -24,28 +24,23 @@
     </div>
     <!--  Username and Bio  -->
     <!-- Bio header -->
-    <div class="col-12 profile-header make-space">
+    <div class="col-12 profile-header make-space header-text-shadow">
         <h1>{{ chef_info.username.title() }}'s Profile</h1>
     </div>
     <!-- Bio information -->
     <div class="col-11 col-lg-6 col-xl-4 sticky-note">
-        <div class="row no-gutters sticky-note-inner-div align-items-center xl-content-height">
-            <h6>{{ chef_info.bio }}</h6>
+        <div class="sticky-note-inner-div xl-content-height">
+            <h3 class="yanone-text">{{ chef_info.username.title() }}'s Bio</h3>
+            <hr>
+            <p>{{ chef_info.bio }}</p>
         </div>
     </div>
     <!--  Avatar of user or basic stand in  -->
     {% if chef_info.avatar == none %}
-    <div class="col-11 col-lg-4 col-xl-3 align-items-center sticky-note sticky-note-right">
-        <div class="row no-gutters justify-content-center sticky-note-inner-div xl-content-height">
-            <div class="avatar">
-                <svg width="50" height="50">
-                    <circle cx="25" cy="25" r="20" stroke-width="4" fill="#010203"/>
-                </svg>
-                <svg width="50" height="50">
-                    <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203"/>
-                </svg>
-            </div>
+    <div class="col-10 col-md-6 col-lg-4 col-xl-2 polaroid-outer generic-box-shadow">
+        <div class="polaroid-picture">
         </div>
+        <h6>{{ chef_info.username.title() }}'s Avatar</h6>
     </div>
     <!-- User Image -->
     {% else %}
@@ -53,6 +48,7 @@
         <div class="polaroid-picture">
             <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="Polaroid picture of chef {{ chef_info.username.title() }}">
         </div>
+        <h6>{{ chef_info.username }}'s Avatar</h6>
     </div>
     {% endif %}
 </section>
