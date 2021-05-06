@@ -48,21 +48,21 @@
                                 
                     <!--  Prep Time  -->
                     <div class="col-12 col-md-3 form-input-spacing">
-                        <label type="text" for="prepTime">Prep (Mins)</label>
+                        <label type="text" for="time1">Prep (Mins)</label>
                         <input class="time form-center-text" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
                         <!-- <p class="remove-p-margin">Minutes</p> -->
                     </div>
                                     
                     <!--  Cook Time  -->
                     <div class="col-12 col-md-3 form-input-spacing">
-                        <label type="text" for="cookTime">Cook (Mins)</label>
+                        <label type="text" for="time2">Cook (Mins)</label>
                         <input class="time form-center-text" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
                         <!-- <p class="remove-p-margin">Minutes</p> -->
                     </div>
 
                     <!--  Total Time  -->
                     <div class="col-12 col-md-3 form-input-spacing">
-                        <label type="text" for="totalTime">Total (Mins)</label>
+                        <label type="text" for="time3">Total (Mins)</label>
                         <input class="make-invis" type="text" name="timeTotal" id="timeTotal" value="4">
                         <input type="number" id="time3" name="time-3" value="{{ recipeInfo.time[2] }}" disabled>
                         <!-- <p class="remove-p-margin">Minutes</p> -->
@@ -73,7 +73,7 @@
                         <label type="text" for="feature">Featured Ingredient</label>
                         <div class="select-option-size">
                             <!-- Recipe feature select/option -->
-                            <select name="feature" id="feature">
+                            <select name="feature" id="feature" class="clickable">
                                 <!-- Adds selected attribute -->
                                 {% for feature in features %}
                                 {% if feature.name == recipeInfo.feature %}
@@ -91,10 +91,10 @@
                     <!-- Recipe Image -->
                     <div class="col-12 col-md-6 form-input-spacing">
                         <label type="text" for="avatar">Recipe Image</label>
-                        <input type="file" name="avatar" id="avatar" class="avatar-upload">
+                        <input type="file" name="avatar" id="avatar" class="avatar-upload clickable">
                         <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
                         <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
-                        <p id="avatar_valid" class="make-invis">Please select a file of 500KB or less. Server space is limited!</p>
+                        <p id="avatar_valid" class="make-invis remove-p-margin">Please select a file of 500KB or less. Server space is limited!</p>
                     </div>
                         
                     {% if admin == True %}
@@ -105,7 +105,7 @@
                                     
                             <!-- Sets checkbox for lazy -->
                             <div class="checkboxes">
-                            <label for="lazy">Lazy favorite</label>
+                            <label for="lazy" class="clickable">Lazy favorite</label>
                             {% if recipeInfo.lazy == True %}
                             <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True" checked>
                             {% else %}
@@ -115,7 +115,7 @@
 
                             <!-- Sets checkboxe for grandparent -->
                             <div class="checkboxes">
-                            <label for="grandparent">Grandparent Classic</label>
+                            <label for="grandparent" class="clickable">Grandparent Classic</label>
                             {% if recipeInfo.grandparent == True %}
                             <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True" checked>
                             {% else %}
