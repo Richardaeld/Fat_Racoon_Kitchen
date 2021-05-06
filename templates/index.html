@@ -81,7 +81,7 @@
                 </div>
                 {% else %}
                 <!-- Filler for missing avatar of recipe -->
-                <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}" class="col-5 col-md-5 col-lg-2 col-xl-2 sticky-note blank-anchor">
+                <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}" class="col-5 col-md-5 col-lg-2 col-xl-2 sticky-note blank-anchor" style="margin-top: 0rem; margin-bottom: 1rem; ">
                     <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow">
                         <p class="col">My chef, {{ recipe[1].created_by.title() }}, hasn't uploaded an image of <ins>{{ recipe[1].name }}</ins> yet :'(</p>
                     </div>
