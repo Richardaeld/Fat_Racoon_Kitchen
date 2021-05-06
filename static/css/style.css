@@ -1003,14 +1003,6 @@ footer {
     text-decoration: none;
 }
 
-.profile-header {
-    color: #faf9f6;
-    /* text-shadow: 2px 2px 4px #333; */
-    /* text-shadow: 3px 3px 4px #333,
-                -1px -1px 4px #333; */
-
-}
-
 .profile-button {
     margin: 1.5rem;
 }
