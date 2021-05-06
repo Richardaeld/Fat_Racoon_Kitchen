@@ -24,13 +24,16 @@
     </div>
 
     <!--  For creating a new recipe  -->
-    <div class="row no-gutters justify-content-center">
+    <div class="container-fluid" >
 
-        <form class="col-10 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }} ">
-            <div class="row no-gutters justify-content-center">
+    
+    <div class="row no-gutters justify-content-center" >
+
+        <form class="col-10 form-base generic-box-shadow yanone-text"  method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }} ">
+            <div class="row no-gutters justify-content-center" >
                         
                 <!-- Form Title Header -->
-                <div class="col-12">
+                <div class="col-12 recipe-name">
                     {% if recipeInfo.name == "Recipe" %}
                     <h1>New Recipe</h1>
                     {% else %}
@@ -132,79 +135,80 @@
                 </div>
                         
                 <!-- Recipe ingredients -->
-                <div class="col-12 form-input-spacing">
-                    <div class="row no-gutters justify-content-center">
-                        <!-- Header -->
-                        <label type="text" for="ingredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>
-                        <!-- Add Button -->
-                        <div class="col-4 col-md-2 custom-button recipeAddButton clickable">
-                            <p>add</p>
-                        </div>
-                        <!-- Remove Button -->
-                        <div class="col-4 col-md-2 custom-button recipeRemoveButton clickable">
-                            <p>Remove</p>
-                        </div>
-                                
-                        <div class="col-10">
-                            <!-- add/remove location for ingredient boxes -->
-                            <div class="row no-gutters justify-content-center ingredientAddRemoveLocation">
-                                <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
-                                {% for ingredient in recipeIngEnum %}
-                                <div class="col-12 col-md-6">
-                                    <div class="row no-gutters align-items-center step-ingredient-spacing">
-                                        <span class="col-2">
-                                            <p>{{ ingredient[0] + 1 }}. </p>
-                                        </span>
-                                        <input class="col-10 countIngredients" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" pattern="[a-zA-z0-9!,.?=+-_/#%&]{0,255}">
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
+                <div class="col-12">
+                    <!-- Header -->
+                    <label type="text" for="ingredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>
+                    <!-- Add Button -->
+                    <div class="recipeAddButton clickable form-button">
+                        <p class="remove-p-margin">Add</p>
                     </div>
+                    <!-- Remove Button -->
+                    <div class="recipeRemoveButton clickable form-button">
+                        <p class="remove-p-margin">Remove</p>
+                    </div>
+                </div>
+
+                <!-- add/remove location for ingredient input boxes -->
+                <div class="col-12 ingredientAddRemoveLocation form-input-spacing">
+                    {% if recipeIngEnum|length != 0 %}
+                    <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
+                    {% for ingredient in recipeIngEnum %}
+                        <div class="step-ingredient-spacing">
+                            <p>Ingredient {{ ingredient[0] + 1 }} </p>
+                            <input class="countIngredients" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}">
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="1">
+                        <div class="step-ingredient-spacing">
+                            <p>Ingredient 1 </p>
+                            <input class="countIngredients" type="text" id="ingredients-1" name="ingredients-1" value="" pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}">
+                        </div>
+                    {% endif %}
                 </div>
                         
                 <!-- Recipe steps -->
-                <div class="col-12 form-input-spacing">
-                    <div class="row no-gutters justify-content-center">
-                        <!-- Header -->
-                        <label type="text" for="steps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
-                        <!-- Add Button -->
-                        <div class="col-4 col-md-2 custom-button stepAddButton clickable">
-                            <p>add</p>
-                        </div>
-                        <!-- Remove button -->
-                        <div class="col-4 col-md-2 custom-button stepRemoveButton clickable">
-                            <p>remove</p>
-                        </div>
+                <div class="col-12">
+                    <!-- Header -->
+                    <label type="text" for="steps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
+                    <!-- Add Button -->
+                    <div class="stepAddButton clickable form-button">
+                        <p class="remove-p-margin ">Add</p>
+                    </div>
+                    <!-- Remove button -->
+                    <div class="stepRemoveButton clickable form-button">
+                        <p class="remove-p-margin">Remove</p>
+                    </div>
+                </div>
 
-                <div class="col-10">
-                <!-- Creation and remove location for step boxes -->
-                <div class="row no-gutters justify-content-center stepAddRemoveLocation">
+                <!-- add/remove location for step input boxes -->
+                <div class="col-12 stepAddRemoveLocation form-input-spacing">
+                    {% if recipeSteEnum|length != 0 %}
                     <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
                     {% for step in recipeSteEnum %}
-                    <div class="col-12 col-md-6 ">
-                        <div class="row no-gutters align-items-center step-ingredient-spacing step-ingredient-input">
-                            <span class="col-2">
-                                <p>{{ step[0] + 1 }}. </p>
-                            </span>
-                            <textarea class="col-10 countSteps" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                        <div class="step-ingredient-spacing">
+                            <p>Step {{ step[0] + 1 }} </p>
+                            <textarea class="countSteps" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
                         </div>
-                    </div>
-                    {% endfor %}
+                        {% endfor %}
+                    {% else %}
+                        <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="1">
+                        <div class="step-ingredient-spacing">
+                            <p>Step 1 </p>
+                            <textarea class="countSteps" type="text" id="steps-1" name="steps-1" value="" col="20" rows="3"></textarea>
+                        </div>
+                    {% endif %}
                 </div>
+                
+                <!-- submit button -->
+                <div class="col">
+                    <input class="custom-button" id="custom-button" type="submit" value="Submit">
                 </div>
-            </div>    
-            </div>
-            </div>
-                        
-            <!-- submit button -->
-            <div class="col">
-                <input class="custom-button" id="custom-button" type="submit" value="Submit">
             </div>
                         
         </form>
-    </div>         
+    </div>     
+    </div>    
 </section>
 {% endblock %}
 

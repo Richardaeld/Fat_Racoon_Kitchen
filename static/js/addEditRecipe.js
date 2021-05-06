@@ -77,22 +77,26 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         // Box structure: div(div(span, input))
         // Creation of elements and adding of content
         let createDivCol = document.createElement("div");
-        createDivCol.className = "col-12 col-md-6";
+        // createDivCol.className = "col-12 col-md-6";
         let createDivRow = document.createElement("div");
-        createDivRow.className = "row no-gutters align-items-center step-ingredient-spacing step-ingredient-input";
-        let createSpan = document.createElement("span");
-        createSpan.className = "col-2";
+        createDivRow.className = "step-ingredient-spacing step-ingredient-input"; // row no-gutters align-items-center
+        // let createSpan = document.createElement("span");
+        // createSpan.className = "col";
         let createSpanP = document.createElement("p");
-        createSpanP.textContent = arrayIngredientLength + ". ";
+        // createSpanP.textContent = arrayIngredientLength + ". ";
         let createInput = document.createElement(inputOrTextarea);
-        createInput.className = "col-10";
+        createInput.className = ""; //col-10
         createInput.id = arrayClass + arrayIngredientLength;
         createInput.name = arrayClass + arrayIngredientLength;
         createInput.type = "text";
         // Adds extra classes if textarea
         if(inputOrTextarea == "textarea"){
+            createSpanP.textContent =  "Step " + arrayIngredientLength;
             createInput.rows = "3";
             createInput.cols = "20";
+        } else {
+            createInput.pattern = "[a-zA-z0-9!,*.?=+-_/#%&]+{0,255}"
+            createSpanP.textContent = "Ingredient " + arrayIngredientLength;
         }
 
         // Creates inital box
@@ -100,8 +104,7 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         // Creates Variable for insert location and inserts complete box structure
         let innerDivLoc = addRemoveLocation.getElementsByTagName("div").length;
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow);
-        addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpan);
-        addRemoveLocation.getElementsByTagName("div")[innerDivLoc].getElementsByTagName("span")[0].appendChild(createSpanP);
+        addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpanP);
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createInput);
     });
 
