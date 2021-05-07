@@ -121,6 +121,8 @@
     position: relative;
     z-index: 1;
     margin: 1.5rem 0rem;
+    width: 83%;
+
 }
 /* Creates internal box */
 .sticky-note-inner-div {
@@ -656,11 +658,7 @@ footer {
     height: 20rem;
     border-top: 2px solid #474747;
     position: relative;
-    padding-left: 0!important;
-    padding-right: 0!important;
 }
-
-
 
 .table-runner-pattern {
     position: absolute;
@@ -671,8 +669,6 @@ footer {
     transform: translateY(-50%);
     top: 50%;
 }
-
-
 
 .social-position  {
     position: relative;
@@ -957,6 +953,13 @@ footer {
     /* width: 80%; */
     /* text-align: right; */
 }
+
+@media (max-width: 991.98px) {
+    .browse-button {
+        margin-bottom: 0.75rem;
+    }
+}
+
 /* form and all button styles */
 .custom-button,
 .custom-button-delete {
