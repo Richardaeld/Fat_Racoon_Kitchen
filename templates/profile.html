@@ -1,116 +1,117 @@
 {% extends "base_login.html" %}
 {% block section %}
 <!--  User basic information  -->
-<section class="row no-gutters justify-content-around align-items-center generic-background">
-    <div class="col-12 make-space">
-        <div class="row no-gutters justify-content-between">
-            <!--  Create a new recipe  -->
-            <div class="col-4 col-lg-3 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
-                <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
-                    <div class="sticky-note-inner-div">
-                        <h6>Share Recipe</h6>
-                    </div>
-                </a>
-            </div>
-            <!--  Edit user profile  -->
-            <div class="col-4 col-lg-3 sticky-note-no-shadow custom-button profile-button blank-anchor custom-js-button">
-                <a href="{{ url_for('edit_user_info') }}">
-                    <div class="sticky-note-inner-div">
-                        <h6>Update Profile</h6>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!--  Username and Bio  -->
-    <!-- Bio header -->
-    <div class="col-12 make-space header-text-shadow">
-        <h1>{{ chef_info.username.title() }}'s Profile</h1>
-    </div>
-    <!-- Bio information -->
-    <div class="col-11 col-lg-6 col-xl-4 sticky-note">
-        <div class="sticky-note-inner-div xl-content-height">
-            <h3 class="yanone-text">{{ chef_info.username.title() }}'s Bio</h3>
-            <hr>
-            <p>{{ chef_info.bio }}</p>
-        </div>
-    </div>
-    <!--  Avatar of user or basic stand in  -->
-    {% if chef_info.avatar == none %}
-    <div class="col-10 col-md-6 col-lg-4 col-xl-2 polaroid-outer generic-box-shadow">
-        <div class="polaroid-picture">
-        </div>
-        <h6>{{ chef_info.username.title() }}'s Avatar</h6>
-    </div>
-    <!-- User Image -->
-    {% else %}
-    <div class="col-10 col-md-6 col-lg-4 col-xl-2 polaroid-outer generic-box-shadow">
-        <div class="polaroid-picture">
-            <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="Polaroid picture of chef {{ chef_info.username.title() }}">
-        </div>
-        <h6>{{ chef_info.username }}'s Avatar</h6>
-    </div>
-    {% endif %}
-</section>
+<article class="container-fluid generic-background">
 
-<!--  Ten most recent columns, 3 in total   -->
-<section class="row no-gutters justify-content-around profile-lists generic-background">
-    
-    <!--  Display ten most recent recipe uploads  -->
-    <div class="col-11 col-md-5 col-xl-3 sticky-note yanone-text">
-        <div class="sticky-note-inner-div xxl-content-height">
-            <!-- Search user upload link -->
-            <a href="{{ url_for('search_user_uploads') }}">
-                <h3>10 Recently Uploaded Recipes</h3>
+    <aside class="row no-gutters justify-content-between make-space">
+        <!--  Create a new recipe  -->
+        <div class="col-4 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
+            <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
+                <div class="sticky-note-inner-div">
+                    <h6>Share Recipe</h6>
+                </div>
             </a>
-            <hr>
-            <!-- List location of uploads -->
-            {% for upload in uploaded %}
-                {% if upload[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
-                    <p class="indie-text"><a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a></p>
-                {% endif %}
-            {% endfor %}
         </div>
+        <!--  Edit user profile  -->
+        <div class="col-4 sticky-note-no-shadow custom-button profile-button blank-anchor custom-js-button">
+            <a href="{{ url_for('edit_user_info') }}">
+                <div class="sticky-note-inner-div">
+                    <h6>Update Profile</h6>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Profile header -->
+    <h1 class="make-space header-text-shadow">{{ chef_info.username.title() }}'s Profile</h1>
+    <!-- Profile Bio and avatar information -->
+    <div class="row no-gutters justify-content-around">
+        
+        <!-- Profile bio -->
+        <section class="col-11 col-lg-6 col-xl-4 sticky-note">
+            <div class="sticky-note-inner-div xl-content-height">
+                <h3 class="yanone-text">{{ chef_info.username.title() }}'s Bio</h3>
+                <hr class="make-space">
+                <p>{{ chef_info.bio }}</p>
+            </div>
+        </section>
+
+        <!-- Filler(Blank) Avatar -->
+        {% if chef_info.avatar == none %}
+        <section class="col-10 col-md-6 col-lg-4 col-xl-2 polaroid-outer generic-box-shadow">
+            <div class="polaroid-picture">
+            </div>
+            <h6>{{ chef_info.username.title() }}'s Avatar</h6>
+        </section>
+        <!-- User Avatar -->
+        {% else %}
+        <section class="col-10 col-md-6 col-lg-4 my-auto polaroid-outer generic-box-shadow">
+            <div class="polaroid-picture">
+                <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="Polaroid picture of chef {{ chef_info.username.title() }}">
+            </div>
+            <h6>{{ chef_info.username.title() }}'s Avatar</h6>
+        </section>
+        {% endif %}
     </div>
 
-    <!--  Display ten most recent favorited recipes  -->
-    <div class="col-11 col-md-5 col-xl-3 sticky-note sticky-note-right yanone-text">
-        <div class="sticky-note-inner-div sticky-note-right-shadow xxl-content-height">
-            <!-- Search user favorite link -->
-            <a href="{{ url_for('search_user_recipes', search='favorites') }}">
-                <h3>10 Recently Favorited Recipes</h3>
-            </a>
-            <hr>
-            <!-- List location of favorites -->
-            {% for favorite in favorites %}
-                {% if favorite %}
-                    {% if favorite[0] + 1 < 11 %}
-                        <p class="indie-text"><a href="{{ url_for('recipe', recipeId=favorite[1][0] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a></p>
+    <!--  Ten most recent columns uploads, favorites, viewed  -->
+    <div class="row no-gutters justify-content-around">
+        <!--  Ten recent recipe uploads  -->
+        <section class="col-11 col-md-5 col-xl-3 sticky-note yanone-text profile-lists">
+            <div class="sticky-note-inner-div xxl-content-height">
+                <!-- Search user uploads  -->
+                <a href="{{ url_for('search_user_uploads') }}">
+                    <h3>10 Recently Uploaded Recipes</h3>
+                </a>
+                <hr class="make-space">
+                <!-- Lists uploads -->
+                {% for upload in uploaded %}
+                    {% if upload[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
+                        <p class="indie-text"><a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a></p>
                     {% endif %}
-                {% endif %}
-            {% endfor %}
-        </div>
-    </div>
-    
-    <!--  Display ten most recently viewed recipes  -->
-    <div class="col-11 col-md-5 col-xl-3 sticky-note yanone-text">
-        <div class="sticky-note-inner-div xxl-content-height">
-            <!-- Search user recent link -->
-            <a href="{{ url_for('search_user_recipes', search='recents') }}">
-                <h3>10 Recently Viewed Recipes</h3>
-            </a>
-            <hr>
-            <!-- List location of Recents -->
-            {% for recent in recents %}
-                {% if recent %}
-                    {% if recent[0] + 1 < 11 %}
-                        <p class="indie-text"><a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a></p>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!--  Ten recent favorited recipes  -->
+        <section class="col-11 col-md-5 col-xl-3 sticky-note sticky-note-right yanone-text profile-lists">
+            <div class="sticky-note-inner-div sticky-note-right-shadow xxl-content-height">
+                <!-- Search user favorites -->
+                <a href="{{ url_for('search_user_recipes', search='favorites') }}">
+                    <h3>10 Recently Favorited Recipes</h3>
+                </a>
+                <hr class="make-space">
+                <!-- Lists favorites -->
+                {% for favorite in favorites %}
+                    {% if favorite %}
+                        {% if favorite[0] + 1 < 11 %}
+                            <p class="indie-text"><a href="{{ url_for('recipe', recipeId=favorite[1][0] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a></p>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!--  Ten recently viewed recipes  -->
+        <section class="col-11 col-md-5 col-xl-3 sticky-note yanone-text profile-lists">
+            <div class="sticky-note-inner-div xxl-content-height">
+                <!-- Search user recents  -->
+                <a href="{{ url_for('search_user_recipes', search='recents') }}">
+                    <h3>10 Recently Viewed Recipes</h3>
+                </a>
+                <hr class="make-space">
+                <!-- Lists Recents -->
+                {% for recent in recents %}
+                    {% if recent %}
+                        {% if recent[0] + 1 < 11 %}
+                            <p class="indie-text"><a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a></p>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
     </div>
-</section>
+</article>
 {% endblock %}
 
 {% block custom_script %}
