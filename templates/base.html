@@ -15,120 +15,123 @@
 </head>
 <body>
     <!--  login and create account modal  -->
-    <aside class="row no-gutters justify-content-center custom-modal make-invis yanone-text" id="modalAside">
-        <div class="col-12 modal-background"></div>
-
-        <!-- Login -->
-        <form class="col-11 col-lg-10 form-base generic-box-shadow" style="overflow: hidden;" id="login-modal" method="POST" action="{{ url_for('login') }}">
-            <!-- Header for login/create modal -->
-            <div class="tab-body make-space-margin">
-                <div class="tab tab-selected">
-                    <span><p>Login</p></span>
-                </div>
-                <div class="tab">
-                    <span><p>Create Account</p></span>
-                </div>
-            </div>
-
-            <div class="row no-gutters">
-                <!-- Email -->
-                <div class="col-12 col-md-4">
-                    <label class="" type="email" for="email">Email:</label>
-                </div>    
-                <div class="col-12 col-md-8 make-space">
-                    <input class="formValidation emailValidation loginValidation form-invalid-view" type="text" id="email" name="email" value="" minlength="5" maxlength="255" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{5,255}$" required>
-                    <div class="invalid-form make-invis">
-                        <p class="remove-p-margin">Must be between 5 and 255 characters, can contain letters and numbers</p>
-                        <p class="make-invis remove-p-margin">Must contain appropiate email suffix (.com, .edu, .net) and @ sign</p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
-                    </div>
-                </div>
-                <!-- Password -->
-                <div class="col-12 col-md-4">
-                    <label class="" type="password" for="password">Password:</label>
-                </div>
-                <div class="col-12 col-md-8 make-space">
-                    <input class="formValidation passwordSets loginValidation form-invalid-view" type="password" id="password" name="password" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{8,20}$" required>
-                    <div class="invalid-form make-invis">
-                        <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters</p>
-                        <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
-                    </div>
-                </div>
-            </div>
-            <input type="text" name="formType" value="login" class="make-invis" aria-hidden="true">
-            <input class="custom-button login-account make-space-margin" id="custom-button-login" name="custom-button-login" type="submit" value="Login" disabled>
-        </form>
-<!------------------------------------------------------------------------------------------------------------------------------------------------->
-        <!-- Create -->
-        <form class="col-11 col-lg-10 form-base generic-box-shadow make-invis" style="overflow: hidden;" id="create-modal" method="POST" action="{{ url_for('create') }}">
-            <div class="tab-body make-space-margin">
+    <aside class="container-fluid custom-modal make-invis yanone-text" id="modalAside">
+        <div class="row no-gutters justify-content-center">
+            <!-- Background filter -->
+            <div class="col-12 modal-background"></div>
+            
+            <!-- Login modal -->
+            <form class="col-11 col-lg-10 form-base generic-box-shadow" style="overflow: hidden;" id="login-modal" method="POST" action="{{ url_for('login') }}">
                 <!-- Header for login/create modal -->
-                <div class="tab">
-                    <span><p>Login</p></span>
-                </div>
-                <div class="tab tab-selected">
-                    <span><p>Create Account</p></span>
-                </div>
-            </div>
-
-            <div class="row no-gutters">
-                <!-- User name -->
-                <div class="col-12 col-md-4">
-                    <label class="" type="text" for="username">User Name:</label>
-                </div>
-                <div class="col-12 col-md-8 make-space">
-                    <input class="formValidation nameValidation createValidation form-invalid-view" type="text" id="usernameCreate" name="username" value="" minlength="5" maxlength="100" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{5,100}$" required>
-                    <div class="invalid-form make-invis">
-                        <p class="remove-p-margin">Must be between 5 and 100 characters, can contain letters and numbers</p>
-                        <p class="make-invis remove-p-margin"></p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                <div class="tab-body make-space-margin">
+                    <div class="tab tab-selected">
+                        <span><p>Login</p></span>
+                    </div>
+                    <div class="tab">
+                        <span><p>Create Account</p></span>
                     </div>
                 </div>
-
-                <!-- Email -->
-                <div class="col-12 col-md-4">
-                    <label class="" type="email" for="email">Email:</label>
-                </div>
-                <div class="col-12 col-md-8 make-space">
-                    <!-- -----------------------------------formbase label class is expanind me through label padding -->
-                    <input class="formValidation emailValidation createValidation form-invalid-view" type="text" id="emailCreate" name="email" value="" minlength="5" maxlength="255" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{5,255}$" required>
-                    <div class="invalid-form make-invis">
-                        <p class="remove-p-margin">Must be between 5 and 255 characters, can contain letters and numbers</p>
-                        <p class="make-invis remove-p-margin">Must contain appropiate email suffix (.com, .edu, .net)</p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                
+                <div class="row no-gutters">
+                    <!-- Email -->
+                    <div class="col-12 col-md-4">
+                        <label class="" type="email" for="email">Email:</label>
+                    </div>    
+                    <div class="col-12 col-md-8 make-space">
+                        <input class="formValidation emailValidation loginValidation form-invalid-view" type="text" id="email" name="email" value="" minlength="5" maxlength="255" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{5,255}$" required>
+                        <div class="invalid-form make-invis">
+                            <p class="remove-p-margin">Must be between 5 and 255 characters, can contain letters and numbers</p>
+                            <p class="make-invis remove-p-margin">Must contain appropiate email suffix (.com, .edu, .net) and @ sign</p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        </div>
+                    </div>
+                    <!-- Password -->
+                    <div class="col-12 col-md-4">
+                        <label class="" type="password" for="password">Password:</label>
+                    </div>
+                    <div class="col-12 col-md-8 make-space">
+                        <input class="formValidation passwordSets loginValidation form-invalid-view" type="password" id="password" name="password" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{8,20}$" required>
+                        <div class="invalid-form make-invis">
+                            <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters</p>
+                            <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Password -->
-                <div class="col-12 col-md-4">
-                    <label class="" type="password" for="password">Password:</label>
-                </div>
-                <div class="col-12 col-md-8 make-space">
-                    <input class="formValidation passwordSets passwordCompare createValidation form-invalid-view" type="password" id="passwordCheck1" name="password" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{8,20}$" required>
-                    <div class="invalid-form make-invis">
-                        <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
-                        <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                <input type="text" name="formType" value="login" class="make-invis" aria-hidden="true">
+                <input class="custom-button login-account make-space-margin" id="custom-button-login" name="custom-button-login" type="submit" value="Login" disabled>
+            </form>
+            <!------------------------------------------------------------------------------------------------------------------------------------------------->
+            <!-- Create modal -->
+            <form class="col-11 col-lg-10 form-base generic-box-shadow make-invis" style="overflow: hidden;" id="create-modal" method="POST" action="{{ url_for('create') }}">
+                <div class="tab-body make-space-margin">
+                    <!-- Header for login/create modal -->
+                    <div class="tab">
+                        <span><p>Login</p></span>
+                    </div>
+                    <div class="tab tab-selected">
+                        <span><p>Create Account</p></span>
                     </div>
                 </div>
-
-                <!-- password check -->
-                <div class="col-12 col-md-4">
-                    <label class="" type="password" for="passwordCheck">Confirm Password:</label>
-                </div>
-                <div class="col-12 col-md-8 make-space">
-                    <input class="formValidation form-invalid-view passwordSets passwordCompare createValidation form-invalid-view" type="password" id="passwordCheck2" name="passwordCheck" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{8,20}$" required>
-                    <div class="invalid-form make-invis">
-                        <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
-                        <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                
+                <div class="row no-gutters">
+                    <!-- User name -->
+                    <div class="col-12 col-md-4">
+                        <label class="" type="text" for="username">User Name:</label>
+                    </div>
+                    <div class="col-12 col-md-8 make-space">
+                        <input class="formValidation nameValidation createValidation form-invalid-view" type="text" id="usernameCreate" name="username" value="" minlength="5" maxlength="100" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{5,100}$" required>
+                        <div class="invalid-form make-invis">
+                            <p class="remove-p-margin">Must be between 5 and 100 characters, can contain letters and numbers</p>
+                            <p class="make-invis remove-p-margin"></p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="col-12 col-md-4">
+                        <label class="" type="email" for="email">Email:</label>
+                    </div>
+                    <div class="col-12 col-md-8 make-space">
+                        <!-- -----------------------------------formbase label class is expanind me through label padding -->
+                        <input class="formValidation emailValidation createValidation form-invalid-view" type="text" id="emailCreate" name="email" value="" minlength="5" maxlength="255" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{5,255}$" required>
+                        <div class="invalid-form make-invis">
+                            <p class="remove-p-margin">Must be between 5 and 255 characters, can contain letters and numbers</p>
+                            <p class="make-invis remove-p-margin">Must contain appropiate email suffix (.com, .edu, .net)</p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Password -->
+                    <div class="col-12 col-md-4">
+                        <label class="" type="password" for="password">Password:</label>
+                    </div>
+                    <div class="col-12 col-md-8 make-space">
+                        <input class="formValidation passwordSets passwordCompare createValidation form-invalid-view" type="password" id="passwordCheck1" name="password" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{8,20}$" required>
+                        <div class="invalid-form make-invis">
+                            <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                            <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        </div>
+                    </div>
+                    
+                    <!-- password check -->
+                    <div class="col-12 col-md-4">
+                        <label class="" type="password" for="passwordCheck">Confirm Password:</label>
+                    </div>
+                    <div class="col-12 col-md-8 make-space">
+                        <input class="formValidation form-invalid-view passwordSets passwordCompare createValidation form-invalid-view" type="password" id="passwordCheck2" name="passwordCheck" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%^&*_-+=?|]{8,20}$" required>
+                        <div class="invalid-form make-invis">
+                            <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                            <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
+                            <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <input type="text" name="formType" value="login" class="make-invis" aria-hidden="true">
-            <input class="custom-button login-account make-space-margin" id="custom-button-create" name="custom-button-login" type="submit" value="Create" disabled>
-        </form>
+                <input type="text" name="formType" value="login" class="make-invis" aria-hidden="true">
+                <input class="custom-button login-account make-space-margin" id="custom-button-create" name="custom-button-login" type="submit" value="Create" disabled>
+            </form>
+        </div>
 
     </aside>
     {% block modal %}
@@ -218,11 +221,7 @@
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-                <div class="row no-gutters justify-content-center flash align-items-center">
-                    <div class="col-10">
-                        <h1> {{ message }} </h1>
-                    </div>
-                </div>
+                <h1 class="flash"> {{ message }} </h1>
             {% endfor %}
         {% endif %}
     {%endwith%}
@@ -231,97 +230,100 @@
     {% block section %}
     {% endblock %}
 
-    <!--  Footer  -->
-    <footer class="row no-gutters justify-content-center align-items-center">
-        <div class="col-12 racoon-pattern table-runner-pattern"></div>
-        <!-- header holds logo, company name, and link to Home page-->
-        <!-- col-10 col-md-4-->
-        <div class="col-md-4 col-lg-5 col-xl-6 d-none d-md-block logo-background blank-anchor">
-            <a href="{{ url_for('index') }}">
-                <h1 class="header-text-1">Fat</h1>
-                <h1 class="header-text-2">Raccoon</h1>
-            </a>
-        </div>
-        <!--  Social Links  -->
-        <div class="col-10 col-md-7 col-lg-6 col-xl-5">
-            <ul class="row no-gutters justify-content-center footer-ul social-link-push recipe-lists-no-padding">
-                <!-- Facebook link -->
-                <li class=" col-6 col-sm-3">
-                    <div class="social-position">
-                        <div class="liquid"></div>
-                        <div class="glass"></div>
-                        <div class="glass-shadow"></div>
-                        <span class="ripple"></span>
-                        <a href="https://www.facebook.com/" target="_blank" aria-label="External link to Fat Raccoon's Facebook" rel="noopener">
-                            <i class="fab fa-facebook-square social-link" aria-hidden="true"></i>
-                        </a>
-                        <div class="napkin-out-container">
-                            <div class="napkin-shadow"></div>
-                            <div class="napkin-border-lines"></div>
-                            <div class="napkin-horizontal-lines"></div>
-                            <div class="napkin-vertical-lines"></div>
-                            <div class="napkin-right-triangle-corner"></div>
-                        </div>
-                    </div>
-                </li>
-                <!-- Instagram link -->
-                <li class=" col-6 col-sm-3">
-                    <div class="social-position">
-                        <div class="liquid"></div>
-                        <div class="glass"></div>
-                        <div class="glass-shadow"></div>
-                        <span class="ripple"></span>
-                        <a href="https://www.instagram.com/" target="_blank" aria-label="External link to Fat Raccoon's Instagram" rel="noopener">
-                            <i class="fab fa-instagram social-link" aria-hidden="true"></i>
-                        </a>
-                        <div class="napkin-out-container">
-                            <div class="napkin-shadow"></div>
-                            <div class="napkin-border-lines"></div>
-                            <div class="napkin-horizontal-lines"></div>
-                            <div class="napkin-vertical-lines"></div>
-                            <div class="napkin-right-triangle-corner"></div>
-                        </div>
-                    </div>
-                </li>
-                <!-- Pinterest Link -->
-                <li class=" col-6 col-sm-3">
-                    <div class="social-position">
-                        <div class="liquid"></div>
-                        <div class="glass"></div>
-                        <div class="glass-shadow"></div>
-                        <span class="ripple"></span>
-                        <a href="https://www.pinterest.com/" target="_blank" aria-label="External link to Fat Raccoon's Pinterest" rel="noopener">
-                            <i class="fab fa-pinterest-square social-link" aria-hidden="true"></i>
-                        </a>
-                        <div class="napkin-out-container">
-                            <div class="napkin-shadow"></div>
-                            <div class="napkin-border-lines"></div>
-                            <div class="napkin-horizontal-lines"></div>
-                            <div class="napkin-vertical-lines"></div>
-                            <div class="napkin-right-triangle-corner"></div>
-                        </div>
-                    </div>
-                </li>
-                <!-- Twitter link -->
-                <li class=" col-6 col-sm-3">
-                    <div class="social-position">
-                        <div class="liquid"></div>
-                        <div class="glass"></div>
-                        <div class="glass-shadow"></div>
-                        <span class="ripple"></span>
-                        <a href="https://twitter.com/?lang=en" target="_blank" aria-label="External link to Fat Raccoon's Twitter" rel="noopener">
-                            <i class="fab fa-twitter-square social-link " aria-hidden="true"></i>
-                        </a>
-                        <div class="napkin-out-container">
-                            <div class="napkin-shadow"></div>
-                            <div class="napkin-border-lines"></div>
-                            <div class="napkin-horizontal-lines"></div>
-                            <div class="napkin-vertical-lines"></div>
-                            <div class="napkin-right-triangle-corner"></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+    <!--  Footer (contains wood grain background)  -->
+    <footer class="container-fluid" >
+        <!-- Table runner background -->
+        <div class="racoon-pattern table-runner-pattern ">
+            <div class="row no-gutters justify-content-center align-items-center max-height">
+                <!-- Logo-->
+                <div class="col-md-4 col-lg-5 col-xl-6 d-none d-md-block logo-background blank-anchor">
+                    <a href="{{ url_for('index') }}">
+                        <h1 class="header-text-1">Fat</h1>
+                        <h1 class="header-text-2">Raccoon</h1>
+                    </a>
+                </div>
+                <!--  Social Links  -->
+                <div class="col-10 col-md-7 col-lg-6 col-xl-5 ">
+                    <ul class="row no-gutters justify-content-center footer-ul social-link-push recipe-lists-no-padding">
+                        <!-- Facebook link -->
+                        <li class=" col-6 col-sm-3">
+                            <div class="social-position">
+                                <div class="liquid"></div>
+                                <div class="glass"></div>
+                                <div class="glass-shadow"></div>
+                                <span class="ripple"></span>
+                                <a href="https://www.facebook.com/" target="_blank" aria-label="External link to Fat Raccoon's Facebook" rel="noopener">
+                                    <i class="fab fa-facebook-square social-link" aria-hidden="true"></i>
+                                </a>
+                                <div class="napkin-out-container">
+                                    <div class="napkin-shadow"></div>
+                                    <div class="napkin-border-lines"></div>
+                                    <div class="napkin-horizontal-lines"></div>
+                                    <div class="napkin-vertical-lines"></div>
+                                    <div class="napkin-right-triangle-corner"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Instagram link -->
+                        <li class=" col-6 col-sm-3">
+                            <div class="social-position">
+                                <div class="liquid"></div>
+                                <div class="glass"></div>
+                                <div class="glass-shadow"></div>
+                                <span class="ripple"></span>
+                                <a href="https://www.instagram.com/" target="_blank" aria-label="External link to Fat Raccoon's Instagram" rel="noopener">
+                                    <i class="fab fa-instagram social-link" aria-hidden="true"></i>
+                                </a>
+                                <div class="napkin-out-container">
+                                    <div class="napkin-shadow"></div>
+                                    <div class="napkin-border-lines"></div>
+                                    <div class="napkin-horizontal-lines"></div>
+                                    <div class="napkin-vertical-lines"></div>
+                                    <div class="napkin-right-triangle-corner"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Pinterest Link -->
+                        <li class=" col-6 col-sm-3">
+                            <div class="social-position">
+                                <div class="liquid"></div>
+                                <div class="glass"></div>
+                                <div class="glass-shadow"></div>
+                                <span class="ripple"></span>
+                                <a href="https://www.pinterest.com/" target="_blank" aria-label="External link to Fat Raccoon's Pinterest" rel="noopener">
+                                    <i class="fab fa-pinterest-square social-link" aria-hidden="true"></i>
+                                </a>
+                                <div class="napkin-out-container">
+                                    <div class="napkin-shadow"></div>
+                                    <div class="napkin-border-lines"></div>
+                                    <div class="napkin-horizontal-lines"></div>
+                                    <div class="napkin-vertical-lines"></div>
+                                    <div class="napkin-right-triangle-corner"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Twitter link -->
+                        <li class=" col-6 col-sm-3">
+                            <div class="social-position">
+                                <div class="liquid"></div>
+                                <div class="glass"></div>
+                                <div class="glass-shadow"></div>
+                                <span class="ripple"></span>
+                                <a href="https://twitter.com/?lang=en" target="_blank" aria-label="External link to Fat Raccoon's Twitter" rel="noopener">
+                                    <i class="fab fa-twitter-square social-link " aria-hidden="true"></i>
+                                </a>
+                                <div class="napkin-out-container">
+                                    <div class="napkin-shadow"></div>
+                                    <div class="napkin-border-lines"></div>
+                                    <div class="napkin-horizontal-lines"></div>
+                                    <div class="napkin-vertical-lines"></div>
+                                    <div class="napkin-right-triangle-corner"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </footer>
     <!-- <script src="{{ url_for('static', filename='js/passwordVal.js') }}"></script>

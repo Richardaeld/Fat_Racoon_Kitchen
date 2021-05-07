@@ -432,7 +432,9 @@ input {
 }
 
 /* ---------------------------------------- Repetative class calls */
-
+.max-height {
+    height: 100%;
+}
 .auto-margin {
     margin: auto;
 }
@@ -653,14 +655,24 @@ footer {
     background: url("../images/cuttingboard-90-small.jpg") 0% 0% / 100% 100%; /* table background image */
     height: 20rem;
     border-top: 2px solid #474747;
+    position: relative;
+    padding-left: 0!important;
+    padding-right: 0!important;
 }
+
+
 
 .table-runner-pattern {
     position: absolute;
     height: 15rem;
+    width: 100%;
     box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, .25),
                 0px -1px 5px 5px rgba(0, 0, 0, .25 );
+    transform: translateY(-50%);
+    top: 50%;
 }
+
+
 
 .social-position  {
     position: relative;
