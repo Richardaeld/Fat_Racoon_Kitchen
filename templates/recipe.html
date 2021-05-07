@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block section %}
-<section class="container-fluid generic-background">
+<article class="container-fluid generic-background">
     <!-- Allow a user to edit or delete their own recipes -->
     {% if recipeInfo.created_by == userInfo.username or userInfo.admin %}
     <aside class="row no-gutters justify-content-between">
@@ -40,7 +40,7 @@
     
     <div class="row no-gutters justify-content-around">
         <!-- picture of recipe -->
-        <article class="col-8 col-md-6 col-lg-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-1 order-xxl-1">
+        <section class="col-8 col-md-6 col-lg-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-1 order-xxl-1">
             <div class="row no-gutters justify-content-center blank-anchor">
                 <!-- Displays recipe avatar -->
                 {% if recipeInfo.avatar %}
@@ -65,10 +65,10 @@
                 </div>
                 {% endif %}
             </div>
-        </article>
+        </section>
 
         <!-- Recipe general info -->
-        <article class="col-12 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2">
+        <section class="col-12 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2">
             <div class="row no-gutters justify-content-center">
                 <div class="sticky-note sticky-note-middle">
                     <div class="row no-gutters sticky-note-inner-div sticky-note-middle-shadow justify-content-center">
@@ -109,10 +109,10 @@
                     </div>
                 </div>
             </div>
-        </article>
+        </section>
 
         <!-- Recipe description -->
-        <article class="col-12 col-lg-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-3 order-xxl-3">
+        <section class="col-12 col-lg-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-3 order-xxl-3">
             <div class="row no-gutters justify-content-center">
                 <div class="sticky-note sticky-note-right">  
                     <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow large-content-height">
@@ -120,10 +120,10 @@
                     </div>
                 </div>
             </div>
-        </article>
+        </section>
 
         <!-- Recipe Ingredients -->
-        <article class="col-12 col-lg-6 order-4">
+        <section class="col-12 col-lg-6 order-4">
             <div class="row no-gutters justify-content-center">
                 <div class="sticky-note">
                     <div class="sticky-note-inner-div">
@@ -142,10 +142,10 @@
                     </div>
                 </div>
             </div>
-        </article>
+        </section>
 
         <!-- Recipe Steps -->
-        <article class="col-12 col-lg-6 order-5">
+        <section class="col-12 col-lg-6 order-5">
             <div class="row no-gutters justify-content-center ">
                 <div class="col-10 sticky-note sticky-note-right">
                     <div class="sticky-note-inner-div sticky-note-right-shadow">
@@ -164,9 +164,9 @@
                     </div>
                 </div>
             </div>
-        </article>
+        </section>
     </div>
-</section>
+</article>
 {% endblock %}
 
 {% block custom_script %}
