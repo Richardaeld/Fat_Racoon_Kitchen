@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% block section %}
-<section class="row no-gutters justify-content-center generic-background">
-    <!-- Recipe List sticky note box -->
-    <div class="col-10 col-md-8 sticky-note">
-        <div class="sticky-note-inner-div large-content-height">
-            <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec">
-                <!-- Feature header -->
-                <h1 class="yanone-text recipe-name">{{ feature.title() }} Recipes</h1>
-                <hr class="make-space">
-                <!-- List of recipes that share this feature -->
-                {% for recipe in allrecipes %}
+<section class="container-fluid generic-background">
+    <div class="row no-gutters justify-content-center">
+        <!-- Recipe List sticky note box -->
+        <div class="col-10 col-md-8 sticky-note">
+            <div class="sticky-note-inner-div large-content-height">
+                <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec">
+                    <!-- Feature header -->
+                    <h1 class="yanone-text recipe-name">{{ feature.title() }} Recipes</h1>
+                    <hr class="make-space">
+                    <!-- List of recipes that share this feature -->
+                    {% for recipe in allrecipes %}
                     <li class="make-invis blank-anchor">
                         <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around">
                             <!-- Recipe name -->
@@ -22,8 +23,9 @@
                             </div>
                         </a>
                     </li>
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </section>
