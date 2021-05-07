@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block section %}
 <!-- carousel -->
-<aside class="container-fluid px-0 card-section generic-background">
+<article class="container-fluid px-0 card-section generic-background">
     <div class="row no-gutters align-items-center">
 
         <!-- Carousel header -->
@@ -19,7 +19,7 @@
                 </div>
                 <!-- carousel index cards -->
                 {% for feature in features %}
-                <div class="col-10 col-md-10 col-lg-5 col-xl-3 medium-content-height card-carousel generic-box-shadow index-card index-card-pattern index-card-bold transition-fade-out recipe-lists blank-anchor">
+                <section class="col-10 col-md-10 col-lg-5 col-xl-3 medium-content-height card-carousel generic-box-shadow index-card index-card-pattern index-card-bold transition-fade-out recipe-lists blank-anchor">
                     <!-- Feature header for index card -->    
                     <a href="{{ url_for('recipe_list', feature=feature.name) }}">
                         <h6 class="yanone-text header-text-spacing ">{{feature.name.title()}}</h6>
@@ -36,7 +36,7 @@
                         {%endif%}
                         {%endfor%}
                     </ul>
-                </div>
+                </section>
                 {% endfor %}
                 <!-- carousel button right side -->
                 <div class="col-2 col-sm-1 carousel-button carousel-right">
@@ -47,10 +47,10 @@
             </div>
         </div>
     </div>
-</aside>
+</article>
     
 <!--  Grandparent Classics  -->
-<section class="container-fluid generic-background">
+<article class="container-fluid generic-background">
     <div class="row no-gutters">
 
         <!--  Polaroid classics Header  -->
@@ -70,7 +70,7 @@
                 <!-- display 4 classic recipes -->
                 {% for recipe in classics %}
                 {% if recipe[1].avatar %}
-                <div class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer generic-box-shadow blank-anchor remove-top-margin">
+                <section class="col-5 col-md-5 col-lg-2 col-xl-2 polaroid-outer generic-box-shadow blank-anchor remove-top-margin">
                     <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
                         <div class="polaroid-picture">
                             <!-- Avatar Image -->
@@ -83,23 +83,25 @@
                             <h6>{{ recipe[1].name }}</h6>
                         </div>
                     </a>
-                </div>
+                </section>
                 {% else %}
                 <!-- Filler for missing avatar of recipe -->
-                <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}" class="col-5 col-md-5 col-lg-2 col-xl-2 sticky-note blank-anchor" style="margin-top: 0rem; margin-bottom: 1rem; ">
-                    <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow">
-                        <p>My chef, {{ recipe[1].created_by.title() }}, hasn't uploaded an image of <ins>{{ recipe[1].name }}</ins> yet :'(</p>
-                    </div>
-                </a>
+                <section class="col-5 col-md-5 col-lg-2 col-xl-2 sticky-note blank-anchor" style="margin-top: 0rem; margin-bottom: 1rem; ">
+                    <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
+                        <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow">
+                            <p>My chef, {{ recipe[1].created_by.title() }}, hasn't uploaded an image of <ins>{{ recipe[1].name }}</ins> yet :'(</p>
+                        </div>
+                    </a>
+                </section>
                 {%endif%}
                 {% endfor %}
             </div>
         </div>
     </div>
-</section>
+</article>
 
 <!-- Random recipe -->
-<section class="container-fluid px-0 generic-background">
+<article class="container-fluid px-0 generic-background">
     <aside class="row no-gutters justify-content-around make-space make-space-top">
         <!-- Random recipe header -->
         <div class="col-12 header-text-shadow make-space-minus">
@@ -134,7 +136,7 @@
     {% for recipeOfDay in random_recipe %}
     <div class="row no-gutters justify-content-around">
         <!-- Chef info with mini float avatar -->
-        <div class="col-12 col-md-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-1 order-xxl-1">
+        <section class="col-12 col-md-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-1 order-xxl-1">
             <div class="row no-gutters justify-content-center">
                 <div class="sticky-note remove-top-margin">
                     <div class="sticky-note-inner-div blank-anchor" style="overflow: hidden;"> <!--  fix overflow with JS  -->
@@ -168,10 +170,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Recipe general info (name, feature, chef, desctiption, times, lazy/classic banner) - sticky note -->
-        <div class="col-11 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height remove-top-margin">
+        <section class="col-11 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height remove-top-margin">
             <div class="row no-gutters sticky-note-inner-div sticky-note-middle-shadow blank-anchor">
                 <!-- Recipe name -->
                 <div class="col-12 make-space">
@@ -232,10 +234,10 @@
                 <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
                 {% endif %}
             </div>
-        </div>
+        </section>
 
         <!-- Recipe avatar/image -->
-        <div class="col-12 col-md-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-3 order-xxl-3">
+        <section class="col-12 col-md-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-3 order-xxl-3">
             <div class="row no-gutters justify-content-center">
                 <!-- Picture of random recipe -->
                 {% if recipeOfDay.avatar %}
@@ -255,11 +257,11 @@
                 </div>
                 {% endif %}
             </div>
-        </div>
+        </section>
 
     </div>
     {% endfor %}
-</section>
+</article>
 {% endblock %}
 
 {% block custom_script %}

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block section %}
-<section class="container-fluid generic-background">
+<article class="container-fluid generic-background">
     <div class="row no-gutters justify-content-center">
         <!-- Recipe List sticky note box -->
-        <div class="col-10 col-md-8 sticky-note">
+        <section class="col-10 col-md-8 sticky-note">
             <div class="sticky-note-inner-div large-content-height">
                 <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec">
                     <!-- Feature header -->
@@ -26,9 +26,9 @@
                     {% endfor %}
                 </ul>
             </div>
-        </div>
+        </section>
     </div>
-</section>
+</article>
 {% endblock %}
 
 {% block custom_script %}

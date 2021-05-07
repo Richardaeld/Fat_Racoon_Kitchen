@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block section %}
-<section class="container-fluid generic-background">
+<article class="container-fluid generic-background">
     <div class="row no-gutters">
 
         <!-- Sticky note per Feature -->
@@ -9,10 +9,10 @@
             <div class="row no-gutters justify-content-center">
                 <!-- Adds left/right respective shadow to sticky notes-->
                 {% if feature[0] % 2 %}
-                <div class="sticky-note sticky-note-right">
+                <section class="sticky-note sticky-note-right">
                     <div class="sticky-note-inner-div sticky-note-right-shadow large-content-height">
                 {% else %}
-                <div class="sticky-note">
+                <section class="sticky-note">
                     <div class="sticky-note-inner-div large-content-height">
                         {% endif %}
                         <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec blank-anchor">
@@ -41,12 +41,12 @@
                             {% endfor %}
                         </ul>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
         {% endfor %}
     </div>
-</section>
+</article>
 {% endblock %}
 
 {% block custom_script %}
