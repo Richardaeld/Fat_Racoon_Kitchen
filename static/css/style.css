@@ -109,7 +109,14 @@
     transform: translateY(-50%);
     object-fit: cover;
 }
-
+@media (min-width: 992px) {
+    .polaroid-outer {
+        min-height: 25rem;
+    }
+    .polaroid-picture {
+        height: 20rem;
+    }
+}
 /* ---------------------------------------- Sticky Note Art */
 /* structure of sticky note is important!*/
 /* > == one level deeper ||  This effect requires a height to be set at the sticky-note level*/ 
