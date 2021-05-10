@@ -42,7 +42,12 @@
                 <!--  Recipe Name  -->
                 <div class="col-12 form-input-spacing">
                     <label type="text" for="name">Recipe Name</label>
-                    <input class="form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
+                    <input class="formValidation recipeGeneralValidation form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
+                    <div class="invalid-form form-is-valid make-invis">
+                        <p class="remove-p-margin">Must be between 5 and 100 characters, can contain letters and numbers</p>
+                        <p class="make-invis remove-p-margin"></p>
+                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                    </div>
                 </div>
                                 
                 <!--  Prep Time  -->
@@ -128,7 +133,12 @@
                 <!-- Recipe description -->
                 <div class="col-12 form-input-spacing">
                     <label type="text" for="text">Recipe Description</label>
-                    <textarea type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
+                    <textarea class="formValidation textValidation" type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
+                    <div class="invalid-form form-is-valid make-invis">
+                        <p class="make-invis remove-p-margin">Must be between 0 and 400 characters</p>
+                        <p class="make-invis remove-p-margin"></p>
+                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                    </div>
                 </div>
                             
                 <!-- Recipe ingredients -->
@@ -151,15 +161,25 @@
                     <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
                     {% for ingredient in recipeIngEnum %}
                         <div class="step-ingredient-spacing">
-                            <p>Ingredient {{ ingredient[0] + 1 }} </p>
-                            <input class="countIngredients" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}">
+                            <h6>Ingredient {{ ingredient[0] + 1 }} </h6>
+                            <input class="countIngredients formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
+                            <div class="invalid-form form-is-valid make-invis">
+                                <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
+                                <p class="make-invis remove-p-margin"></p>
+                                <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                            </div>
                         </div>
                     {% endfor %}
                     {% else %}
                     <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="1">
                         <div class="step-ingredient-spacing">
-                            <p>Ingredient 1 </p>
-                            <input class="countIngredients" type="text" id="ingredients-1" name="ingredients-1" value="" pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}">
+                            <h6>Ingredient 1 </h6>
+                            <input class="countIngredients formValidation recipeGeneralValidation" type="text" id="ingredients-1" name="ingredients-1" value="" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
+                            <div class="invalid-form form-is-valid make-invis">
+                                <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
+                                <p class="make-invis remove-p-margin"></p>
+                                <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                            </div>
                         </div>
                     {% endif %}
                 </div>
@@ -184,15 +204,25 @@
                     <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
                     {% for step in recipeSteEnum %}
                         <div class="step-ingredient-spacing">
-                            <p>Step {{ step[0] + 1 }} </p>
-                            <textarea class="countSteps" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                            <h6>Step {{ step[0] + 1 }} </h6>
+                            <textarea class="countSteps formValidation recipeGeneralValidation" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                            <div class="invalid-form form-is-valid make-invis">
+                                <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
+                                <p class="make-invis remove-p-margin"></p>
+                                <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                            </div>
                         </div>
                         {% endfor %}
                     {% else %}
                         <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="1">
                         <div class="step-ingredient-spacing">
-                            <p>Step 1 </p>
-                            <textarea class="countSteps" type="text" id="steps-1" name="steps-1" value="" col="20" rows="3"></textarea>
+                            <h6>Step 1 </h6>
+                            <textarea class="countSteps formValidation recipeGeneralValidation" type="text" id="steps-1" name="steps-1" value="" col="20" rows="3"></textarea>
+                            <div class="invalid-form form-is-valid make-invis">
+                                <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
+                                <p class="make-invis remove-p-margin"></p>
+                                <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                            </div>
                         </div>
                     {% endif %}
                 </div>
