@@ -22,6 +22,88 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# Validates images
+def validate_image():
+    file = request.files["avatar"]
+    filename = file.content_type
+    if not filename.endswith("stream"):
+        if filename.endswith("jpg") or filename.endswith("jpeg") or (
+                filename.endswith("png")):
+            return True
+        else:
+            flash("Image is incorrect format, please use jpg, jpeg, or png")
+            return False
+    return True
+
+
+# Compares password and password check
+def password_confirm(dictionary):
+    print(request.form.get("passwordCheck2"))
+    if validate_list([["passwordCheck2", "no_space", 8, 20, "password"]]):
+        if request.form.get(
+                "passwordCheck2") == request.form.get("passwordCheck1"):
+            create_new_password("password", "passwordCheck2", dictionary)
+            return True
+        else:
+            flash("Confirm password doesnt match")
+            return False
+    else:
+        return False
+
+
+# Validation types
+def validation_type(validation):
+    alpha = "abcdefghijklmnopqrstuvwxyz"
+    numeric = "1234567890"
+    special = "!@#%&*_+-=?.'/"
+    text = ',"'
+    if validation == "no_space":
+        val_type = alpha + alpha.upper() + numeric + special
+    if validation == "space":
+        val_type = alpha + alpha.upper() + numeric + special + " "
+    if validation == "text":
+        val_type = alpha + alpha.upper() + numeric + special + text + " "
+    return val_type
+
+
+# Validate user string
+def acceptable_input(user_input, val_type, min_char, max_char, error):
+    print(user_input, val_type, min_char, max_char, error)
+    if len(user_input) < min_char or len(user_input) > max_char:
+        flash(f"{error} has incorrect number of characters")
+        return False
+    if val_type == "numeric" and not user_input.isnumeric():
+        flash("Must contain only whole positive numbers")
+        return False
+    for inputCheck in user_input:
+        accepted_char = validation_type(val_type)
+        for acceptCheck in accepted_char:
+            if inputCheck == acceptCheck:
+                break
+            elif acceptCheck == accepted_char[-1]:
+                flash(f"{error.title()} has incorrect character, '{inputCheck}'")
+                return False
+    return True
+
+
+# List call validator
+# form, val_type, min_char, max_char, error,
+def validate_list(val_list):
+    for validate in val_list:
+        if not acceptable_input(request.form.get(validate[0]), validate[1], (
+                validate[2]), validate[3], validate[4]):
+            return False
+        if validate[0] == "email":
+            user_email = request.form.get(validate[0])
+            if not user_email.endswith(".com") and not user_email.endswith(".edu") and not user_email.endswith(".net") and not user_email.endswith(".org"):
+                flash("inappropiate email suffix")
+                return False
+            if user_email.find("@") == -1:
+                flash("missing @")
+                return False
+    return True
+
+
 # Creates a random number starting at 1
 def get_random_number(total_numbers):
     return random.randrange(1, total_numbers + 1)
@@ -102,6 +184,7 @@ def check_user_password(user):
         if check_password_hash(user["password"], request.form.get("password")):
             return True
         else:
+            flash("Incorrect password")
             return False
     except TypeError:
         return False
@@ -113,31 +196,37 @@ def create_new_password(dict_key, form_key, dictioanry):
             request.form.get(form_key))
 
 
-# Request bool from form and adds to upload dictionary
-def get_form_bool(bool_request_list, dictionary):
-    for item in bool_request_list:
-        dictionary[item] = bool(request.form.get(item))
-
-
 # [time, 0], [ingredients, 1], [steps, 1]
 # # Pulls list from form and adds it to dictionary as list
 def get_form_list(pull_list, dictionary):
     for item_list in pull_list:
         dictionary[item_list[0]] = []
-        for item in range(1, (int(request.form.get(
+        for num in range(1, (int(request.form.get(
                 item_list[0] + "Total")) + int(item_list[1]))):
-            if str(request.form.get(item_list[0] + "-" + (str(item)))) != "":
-                dictionary[item_list[0]].append(str(
-                    request.form.get(item_list[0] + "-" + (str(item)))))
+            user_input = str(request.form.get(item_list[0] + "-" + str(num)))
+            if item_list[0] == "time" and not user_input.isnumeric():
+                flash("Times were not all numeric")
+                return False
+            elif item_list[0] != "time" and not acceptable_input(
+                    user_input, "text", 0, 400, "recipe" + item_list[0]):
+                return False
+            # Removes blank entries
+            if user_input != "" and not user_input.isspace():
+                dictionary[item_list[0]].append(user_input)
+    return True
 
 
 # Pulls multiple items from form and adds to dictionary
-def get_form_items(pull_list, dictionary, is_lower):
-    for item in pull_list:
-        if is_lower:
-            dictionary[item] = request.form.get(item).lower()
-        else:
-            dictionary[item] = request.form.get(item)
+# input_list = [form_dict, is_lower_bool, is_bool], dictionary
+def get_form_items(user_input, dictionary):
+    for list_item in user_input:
+        if list_item[1]:
+            dictionary[list_item[0]] = request.form.get(
+                list_item[0]).lower()
+        elif not list_item[1] and not list_item[2]:
+            dictionary[list_item[0]] = request.form.get(list_item[0])
+        elif list_item[2]:
+            dictionary[list_item[0]] = bool(request.form.get(list_item[0]))
 
 
 # Update mongo recipe/user info with $set operator and adds to dictionary

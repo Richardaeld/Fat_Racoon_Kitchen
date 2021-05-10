@@ -13,6 +13,7 @@ import rae  # Custom library made for this project
 
 
 app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 0.5 * 1024 * 1024
 
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -44,6 +45,10 @@ def index():
 def login():
     user = rae.check_mongo_user_unique(True, "email", "email")
     password = rae.check_user_password(user[2])
+    if not rae.validate_list([
+            ["email", "no_space", 5, 255, "email"],
+            ["password", "no_space", 8, 20, "password"]]):
+        return redirect(url_for("index"))
     if not user[0] and password:
         session["user"] = request.form.get("email").lower()
         flash(f"Welcome back, {user[2]['username'].title()}!")
@@ -56,6 +61,12 @@ def login():
 # Logins user in or creates a new user account
 @app.route("/create", methods=("GET", "POST"))
 def create():
+    if not rae.validate_list([
+            ["username", "no_space", 5, 100, "username"],
+            ["email", "no_space", 5, 255, "email"],
+            ["password", "no_space", 8, 20, "password"],
+            ["passwordCheck", "no_space", 8, 20, "password"]]):
+        return redirect(url_for("index"))
     username = rae.check_mongo_user_unique(True, "username", "username")
     useremail = rae.check_mongo_user_unique(True, "email", "email")
     user_input_unique = rae.check_boolean(
@@ -63,11 +74,11 @@ def create():
     if not user_input_unique[0]:
         flash(f"{user_input_unique[1].title()} has already been taken")
         return redirect(url_for("index"))
-    dictionary = mongo.db.blank.find_one({"username": "user"}, {"_id": 0})
-    rae.get_form_items(["username", "email"], dictionary, True)
-    rae.create_new_password("password", "passwordCheck", dictionary)
-    dictionary.update(dict(date=datetime.datetime.now(), admin=False))
-    mongo.db.users.insert_one(dictionary)
+    create_acc = mongo.db.blank.find_one({"username": "user"}, {"_id": 0})
+    rae.get_form_items([["username", True], ["email", True]], create_acc)
+    rae.create_new_password("password", "passwordCheck", create_acc)
+    create_acc.update(dict(date=datetime.datetime.now(), admin=False))
+    mongo.db.users.insert_one(create_acc)
     session["user"] = request.form.get("email").lower()
     flash("Welcome to the Fat Raccoon Family!")
     return redirect(url_for("profile", username=session['user']))
@@ -188,10 +199,18 @@ def upload_recipe(recipeId, username):
         recipeInfo = mongo.db.blank.find_one({"name": "Recipe"})
         recipeInfo.update(dict(date=datetime.datetime.now(), created_by=(
             username), _id=ObjectId(recipeId)))
-    rae.get_form_items(["name", "feature", "text"], recipeInfo, False)
-    rae.get_form_list([["time", 0], [
-        "ingredients", 1], ["steps", 1]], recipeInfo)
-    rae.get_form_bool(["lazy", "grandparent"], recipeInfo)
+    if not rae.get_form_list([
+            ["time", 0], ["ingredients", 1], ["steps", 1]], recipeInfo) or (
+            not rae.validate_list([
+            ["name", "text", 3, 100, "recipe name"],
+            ["feature", "no_space", 4, 13, "feature"],
+            ["text", "text", 0, 400, "recipe description"]])) or (
+            not rae.validate_image()):
+        return redirect(url_for("add_edit_recipe", recipeId="new"))
+    rae.get_form_items([
+        ["name", False, False], ["feature", False, False],
+        ["text", False, False], ["lazy", False, True],
+        ["grandparent", False, True]], recipeInfo)
     rae.update_avatar(
         "avatar_file_valid", recipeInfo["avatar_id"], recipeInfo)
     if not rae.check_mongo_recipe_exists(recipeId)[0]:
@@ -212,24 +231,25 @@ def edit_user_info():
 @app.route("/profile/edit", methods=("GET", "POST"))
 def update_user_info():
     userInfo = mongo.db.users.find_one({"email": session["user"]})
-    if not rae.check_diff_unique(userInfo, ["username", "email"]):
-        return (redirect(url_for("edit_user_info")))
-    if rae.check_user_password(userInfo):
-        rae.get_form_items(["username", "email"], userInfo, True)
-        rae.get_form_items(["bio"], userInfo, False)
-        # --Updates-- Replaces Avatar and (password if present)
-        rae.update_avatar(
-            "avatar_file_valid", userInfo["avatar_id"], userInfo)
-        if request.form.get("passwordCheck2") != "":
-            rae.create_new_password(
-                "password", "passwordCheck2", userInfo)
-        # --Uploads-- mongo with new dictionary
-        flash("Profile updated successfully!")
-        rae.update_mongo("user", userInfo["_id"], userInfo)
-        return(redirect(url_for("profile")))
-    else:
-        flash("Incorrect password, could not update your profile")
-        return(redirect(url_for("edit_user_info")))
+    if not rae.validate_list([[
+            "username", "no_space", 5, 100, "username"],
+            ["email", "no_space", 5, 255, "email"],
+            ["password", "no_space", 8, 20, "password"],
+            ["bio", "text", 0, 400, "bio"]]) or (
+            not rae.check_diff_unique(userInfo, ["username", "email"])) or (
+            not rae.check_user_password(userInfo)) or (
+            not rae.validate_image()):
+        return redirect(url_for("edit_user_info"))
+    rae.get_form_items([
+        ["username", True, False], ["email", True, False],
+        ["bio", False, False]], userInfo)
+    rae.update_avatar(
+        "avatar_file_valid", userInfo["avatar_id"], userInfo)
+    if request.form.get("passwordCheck2") != "":
+        rae.password_confirm(userInfo)
+    flash("Profile updated successfully!")
+    rae.update_mongo("user", userInfo["_id"], userInfo)
+    return(redirect(url_for("profile")))
 
 
 # Returns all recipes that match feature argument
