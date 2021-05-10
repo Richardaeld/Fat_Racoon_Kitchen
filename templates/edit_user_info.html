@@ -23,22 +23,22 @@
                 <!-- User Name -->
                 <div class="col-12 col-md-6 form-input-spacing">
                     <label  type="text" for="username">Name</label>
-                    <input class="formValidation nameValidation" type="text" id="username" name="username" value="{{ userInfo.username.title() }}" minlength="5" maxlength="100" pattern="^[a-zA-Z0-9%_$]{5,100}$" invalid required>
+                    <input class="formValidation nameValidation" type="text" id="username" name="username" value="{{ userInfo.username.title() }}"  invalid required> <!-- minlength="5" maxlength="100" pattern="^[a-zA-Z0-9%_$]{5,100}$" -->
                     <div class="invalid-form form-is-valid make-invis">
-                        <p class="make-invis remove-p-margin">Must be between 5 and 100 characters, can contain letters, numbers, and '@.%$'</p>
+                        <p class="remove-p-margin">Must be between 5 and 100 characters, can contain letters and numbers</p>
                         <p class="make-invis remove-p-margin"></p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
                     </div>
                 </div>
                     
                 <!-- Email -->
                 <div class="col-12 col-md-6 form-input-spacing">
                     <label  type="text" for="email">Email</label>
-                    <input class="formValidation emailValidation" type="email" id="email" name="email" value="{{ userInfo.email }}" minlength="5" maxlength="255" pattern="^[a-zA-Z0-9@.%$]{5,255}$" invalid required>
+                    <input class="formValidation emailValidation" type="email" id="email" name="email" value="{{ userInfo.email }}"  invalid required> <!-- minlength="5" maxlength="255" pattern="^[a-zA-Z0-9@.%$]{5,255}$" -->
                     <div class="invalid-form form-is-valid make-invis">
-                        <p class="make-invis remove-p-margin">Must be between 5 and 255 characters, can contain letters, numbers, and '@.%$'</p>
-                        <p class="make-invis remove-p-margin">must contain appropiate email suffix *hint* must end in .com, .edu, .net, .org</p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        <p class="remove-p-margin">Must be between 5 and 255 characters, can contain letters and numbers</p>
+                        <p class="make-invis remove-p-margin">Must contain appropiate email suffix (.com, .edu, .net)</p>
+                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
                     </div>
                 </div>
                     
@@ -54,45 +54,50 @@
                 <!--  current password  -->
                 <div class="col-12 col-md-6 form-input-spacing">
                     <label for="passwordEdit">Current Password</label>
-                    <input class="formValidation passwordSets form-invalid-view" type="password" id="password" name="password" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" invalid required>
+                    <input class="formValidation passwordSets form-invalid-view" type="password" id="password" name="password" value=""  invalid required> <!-- minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" -->
                     <div class="invalid-form make-invis">
-                        <p>Password must contain upper case letter, lower case letter, a number, and be between 8 and 20 characters</p>
-                        <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters</p>
+                        <p class="make-invis remove-p-margin"></p>
+                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
                     </div>
                 </div>
                     
                 <!-- Reveal creating of new password inputs -->
-                <div class="col-12 hidePassword make-space custom-js-button">
+                <div class="col-12 hidePassword make-space custom-js-button-password">
                     <p class="form-button remove-p-margin">Create new password</p>
                 </div>
                     
                 <!--  new passwod  -->
                 <div class="col-12 col-md-6 form-input-spacing make-invis hidePassword">
                     <label for="newPasswordEdit">New Password</label>
-                    <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck1" name="passwordCheck1" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
+                    <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck1" name="passwordCheck1" value="" > <!-- minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" -->
                     <div class="invalid-form form-is-valid make-invis">
-                        <p class="make-invis remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                        <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                         <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
                     </div>
                 </div>
                     
                 <!--  Confirm new password  -->
                 <div class="col-12 col-md-6 form-input-spacing make-invis hidePassword">
                     <label for="newPasswordCheckEdit">Confirm New Password</label>
-                    <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck2" name="passwordCheck2" value="" minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$">
+                    <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck2" name="passwordCheck2" value="" > <!-- minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" -->
                     <div class="invalid-form form-is-valid make-invis">
-                        <p class="make-invis remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
+                        <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                         <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
-                        <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p>
+                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
                     </div>
                 </div>
                     
                 <!-- Bio -->
                 <div class="col-12 form-input-spacing">
                     <label  type="text" for="bio">Bio</label>
-                    <textarea name="bio" id="bio" cols="30" rows="5" minlength="8" maxlength="400" pattern="^[a-zA-Z0-9_&%$#]{8,120}$">{{ userInfo.bio }}</textarea>
+                    <textarea class="formValidation textValidation" name="bio" id="bio" cols="30" rows="5" >{{ userInfo.bio }}</textarea> <!-- minlength="0" maxlength="400" pattern="^[a-zA-Z0-9_&%$#]{8,120}$" -->
+                    <div class="invalid-form form-is-valid make-invis">
+                        <p class="make-invis remove-p-margin">Must be between 0 and 400 characters</p>
+                        <p class="make-invis remove-p-margin"></p>
+                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                    </div>
                 </div>
                     
                 <!-- submit button -->
