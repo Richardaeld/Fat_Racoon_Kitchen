@@ -314,7 +314,7 @@ if (document.getElementById("flash").getElementsByTagName("div")[0]){
             var divRemove = document.getElementsByClassName("flash")[0];
             divRemove.remove();
         }
-    },7000);
+    },10000);
 }
 
 // ----Social link animation
