@@ -31,7 +31,10 @@ const matchTypeUpper = /[A-Z]/;
 const matchTypeLower = /[a-z]/;
 const matchTypeNumber = /[0-9]/;
 // const matchTypeChatacter = /[.|@|%]/;
-const matchTypeBadCharacter = /['|"|$|,]/;
+// const matchTypeBadCharacter = /['|"|$|,]/;
+
+const matchTypeGoodCharacter = /[!|@|#|%|&|*|_|+|=|?|.|'|/|-]/;
+const matchTypeTextCharacter = /[,|"]/;
 const matchTypeSpaces =  /[ ]/g; // Follow with g to make global
 const matchTypeAtSign = /[@]/;
 const matchTypeDotCom = /.com/;
@@ -128,12 +131,40 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 baseVal.value = baseVal.value.replace(matchTypeSpaces, "_");
             }
             
+            // // Checks for improper characters and invalidates if found
+            // if(baseVal.value.match(matchTypeBadCharacter) != null){
+            //     baseValPara[2].classList.remove("make-invis");
+            // } else {
+            //     baseValPara[2].classList.add("make-invis");
+            // }
+
+// matchTypeUpper
+// matchTypeLower
+// matchTypeNumber
+
             // Checks for improper characters and invalidates if found
-            if(baseVal.value.match(matchTypeBadCharacter) != null){
-                baseValPara[2].classList.remove("make-invis");
-            } else {
-                baseValPara[2].classList.add("make-invis");
+
+            for (i=0; i< baseVal.value.length; i++){
+                char = baseVal.value[i]
+                
+                if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null && char.match(matchTypeNumber) == null) {
+                    baseValPara[2].classList.remove("make-invis");
+                    break
+                } else {
+                    baseValPara[2].classList.add("make-invis");
+                }
             }
+
+            // if(baseVal.value.match(matchTypeGoodCharacter) != null){
+            //     baseValPara[2].classList.remove("make-invis");
+            // } else {
+            //     baseValPara[2].classList.add("make-invis");
+            // }
+
+
+            
+
+
 
             // Validation for password
             if(validationSelector === "password"){
@@ -184,7 +215,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
             //Validates for name/username
             } else if (validationSelector === "name"){
                 // Validates if correct amount of characters present
-                if(baseVal.value.length >= 6 && baseVal.value.length <= 100){
+                if(baseVal.value.length >= 4 && baseVal.value.length <= 100){
                     baseValPara[0].classList.add("make-invis");
                 } else {
                     baseValPara[0].classList.remove("make-invis");
