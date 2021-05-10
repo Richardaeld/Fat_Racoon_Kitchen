@@ -76,6 +76,16 @@
     position: relative;
     top: 0.5rem;
 }
+
+.can-be-flipped {
+    text-align: right!important;
+}
+
+.index-back-text {
+    position:relative;
+    top:5px;
+}
+
 /* Used with feature header for better readability */
 .header-text-spacing {
     letter-spacing: 2px;
