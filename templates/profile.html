@@ -67,7 +67,9 @@
                 <!-- Lists uploads -->
                 {% for upload in uploaded %}
                     {% if upload[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
-                        <p class="indie-text"><a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a></p>
+                        <p class="indie-text">
+                            <a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a>
+                        </p>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -85,7 +87,14 @@
                 {% for favorite in favorites %}
                     {% if favorite %}
                         {% if favorite[0] + 1 < 11 %}
-                            <p class="indie-text"><a href="{{ url_for('recipe', recipeId=favorite[1][0] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a></p>
+                            <div style="width: 100%">
+                                <p class="indie-text" style="display: inline-block; width:90%">
+                                    <a href="{{ url_for('recipe', recipeId=favorite[1][0] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a>
+                                </p>
+                                <a href="{{ url_for('removeRecents', recipeId=favorite[1][0], favType='favorites') }}">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </div>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
@@ -104,7 +113,14 @@
                 {% for recent in recents %}
                     {% if recent %}
                         {% if recent[0] + 1 < 11 %}
-                            <p class="indie-text"><a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a></p>
+                        <div style="width: 100%">
+                            <p class="indie-text" style="display: inline-block; width:90%">
+                                <a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a>
+                            </p>
+                            <a href="{{ url_for('removeRecents', recipeId=recent[1][0], favType='recents') }}">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </div>
                         {% endif %}
                     {% endif %}
                 {% endfor %}

@@ -131,6 +131,18 @@ def addFavorite(recipeId, favoriteChange):
         recipeSteps=list(enumerate(recipeInfo["steps"])))
 
 
+# Remove 10 recent from profile
+@app.route("/removeRecents/<recipeId>/<favType>", methods=("GET", "POST"))
+def removeRecents(recipeId, favType):
+    userInfo = mongo.db.users.find_one({"email": session["user"]})
+    newFav = [fav for fav in userInfo[favType] if fav[0] != ObjectId(recipeId)]
+    if favType == "favorites":
+        rae.update_mongo("user", userInfo["_id"], dict(favorites=newFav))
+    if favType == "recents":
+        rae.update_mongo("user", userInfo["_id"], dict(recents=newFav))
+    return redirect(url_for("profile"))
+
+
 # Returns recipe and auto adjusts recent list for logged in users
 @app.route("/recipe/<recipeId>", methods=("GET", "POST"))
 def recipe(recipeId):
