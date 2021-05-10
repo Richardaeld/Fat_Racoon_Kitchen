@@ -45,9 +45,11 @@ function selectLinks (link) {
 // Defensive code to keep users from starting the validation of new passwords
 var revealPassword = document.getElementsByClassName("hidePassword");
 revealPassword[0].addEventListener("click", function() {
-    revealPassword[0].classList.add("make-invis");
-    revealPassword[1].classList.remove("make-invis");
-    revealPassword[2].classList.remove("make-invis");
+    setTimeout(function() {
+        revealPassword[0].classList.add("make-invis");
+        revealPassword[1].classList.remove("make-invis");
+        revealPassword[2].classList.remove("make-invis");
+    },500);
 });
 
 // ---- Apply Random Avatar Name to Avatar Image
@@ -300,12 +302,6 @@ jsButtonFind.forEach(jsButtonSelect);
 function jsButtonSelect(button) {
     button.addEventListener("click", function(pushButton){
         button.classList.add("custom-button-press-outer");
-        button.getElementsByClassName("sticky-note-inner-div")[0].classList.add("custom-button-press");
-        if(button.id == "deleteModal"){
-            setTimeout(function(unpushButton){
-                button.classList.remove("custom-button-press-outer");
-                button.getElementsByClassName("sticky-note-inner-div")[0].classList.remove("custom-button-press");
-            },3000);
-        }
+        button.getElementsByTagName("p")[0].classList.add("custom-button-press");
     });
 }
