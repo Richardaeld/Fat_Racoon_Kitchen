@@ -72,20 +72,17 @@ var findPasswordComapre = document.querySelectorAll(".passwordCompare");
 findPasswordComapre.forEach(selectPasswordComapre);
 function selectPasswordComapre(comparePassLoc) {
     comparePassLoc.addEventListener("keyup", function () {
-        // if(document.getElementById("custom-button").value === "Create" || document.getElementById("custom-button").value === "Update"){
-            let passCheck1Val = passwordCheck1.parentElement.getElementsByTagName("p")[1];
-            let passCheck2Val = passwordCheck2.parentElement.getElementsByTagName("p")[1];
-            // Compares passwordCheck1 and passwordCheck2, if they match it remove invalid bubble
-            if(passwordCheck1.value == passwordCheck2.value){
-                passCheck1Val.classList.add("make-invis");
-                passCheck2Val.classList.add("make-invis");
-            }else{ // Adds invalid bubble if passwords dont match
-                passCheck1Val.classList.remove("make-invis");
-                passCheck2Val.classList.remove("make-invis");
-            }
-
-            finalValidation(".formValidation");
-
+        let passCheck1Val = passwordCheck1.parentElement.getElementsByTagName("p")[1];
+        let passCheck2Val = passwordCheck2.parentElement.getElementsByTagName("p")[1];
+        // Compares passwordCheck1 and passwordCheck2, if they match it remove invalid bubble
+        if(passwordCheck1.value == passwordCheck2.value){
+            passCheck1Val.classList.add("make-invis");
+            passCheck2Val.classList.add("make-invis");
+        }else{ // Adds invalid bubble if passwords dont match
+            passCheck1Val.classList.remove("make-invis");
+            passCheck2Val.classList.remove("make-invis");
+        }
+        finalValidation(".formValidation");
     });
 }
 
@@ -95,8 +92,8 @@ function selectPasswordComapre(comparePassLoc) {
 const matchTypeUpper = /[A-Z]/;
 const matchTypeLower = /[a-z]/;
 const matchTypeNumber = /[0-9]/;
-// const matchTypeChatacter = /[.|@|%]/;
-const matchTypeBadCharacter = /['|"|$|,]/;
+const matchTypeGoodCharacter = /[!|@|#|%|&|*|_|+|=|?|.|'|/|-]/;
+const matchTypeTextCharacter = /[,|"| ]/;
 const matchTypeSpaces =  /[ ]/g; // Follow with g to make global
 const matchTypeAtSign = /[@]/;
 const matchTypeDotCom = /.com/;
@@ -158,6 +155,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
     findPasswords.forEach(selectPasswords);
     function selectPasswords(baseVal){
         let baseValPara = baseVal.parentElement.getElementsByTagName("p");
+
         // Makes validation bubble visible on focus 
         baseVal.addEventListener("focus", function() {
             validCheck = true
@@ -184,17 +182,52 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
 
         // Applies validation check on every keyup stroke
         baseVal.addEventListener("keyup", function () {
-            // Replaces all spaces with _
-            if(baseVal.value.match(matchTypeSpaces)){
-                baseVal.value = baseVal.value.replace(matchTypeSpaces, "_");
+            // Replaces all spaces with '_'
+            if(validationSelector !== "text"){
+                if(baseVal.value.match(matchTypeSpaces)){
+                    baseVal.value = baseVal.value.replace(matchTypeSpaces, "_");
+                } 
             }
             
-            // Checks for improper characters and invalidates if found
-            if(baseVal.value.match(matchTypeBadCharacter) != null){
-                baseValPara[2].classList.remove("make-invis");
-            } else {
-                baseValPara[2].classList.add("make-invis");
+            // Checks for acceptiable characters
+            for (i=0; i< baseVal.value.length; i++){
+                char = baseVal.value[i]
+                if (validationSelector === "text"){
+                    // console.log(char.match(matchTypeGoodCharacter))
+                    // console.log(char.match(matchTypeNumber))
+                    // console.log(char.match(matchTypeLower))
+                    // console.log(char.match(matchTypeUpper))
+                    // console.log(char.match(matchTypeTextCharacter))
+                    // console.log("Im inside text check")
+                    // console.log(char)
+                    // console.log(baseVal.value.length)
+                    if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeTextCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null  && char.match(matchTypeNumber) == null) {
+                        console.log(char + " this broke me")
+                        baseValPara[2].classList.remove("make-invis");
+                        break
+                    } else {
+                        baseValPara[2].classList.add("make-invis");
+                    }
+                } else {
+                    console.log("Imoutside text check")
+                    if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null && char.match(matchTypeNumber) == null) {
+                        baseValPara[2].classList.remove("make-invis");
+                        break
+                    } else {
+                        baseValPara[2].classList.add("make-invis");
+                    }
+                }
             }
+
+            // Validation for text
+            if(validationSelector === "text"){
+                if(baseVal.value.length >= 0 && baseVal.value.length <= 400){
+                    baseValPara[0].classList.add("make-invis");
+                }else{
+                    baseValPara[0].classList.remove("make-invis");
+                }
+            }
+
 
             // Validation for password
             if(validationSelector === "password"){
@@ -244,7 +277,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
             //Validates for name/username
             } else if (validationSelector === "name"){
                 // Validates if correct amount of characters present
-                if(baseVal.value.length >= 6 && baseVal.value.length <= 100){
+                if(baseVal.value.length >= 4 && baseVal.value.length <= 100){
                     baseValPara[0].classList.add("make-invis");
                 } else {
                     baseValPara[0].classList.remove("make-invis");
@@ -259,6 +292,8 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
     }
 }
 
+//----------------------text validation
+baseValidation(".textValidation", "text", "keyup"); // keyboard
 //----------------------email validation
 baseValidation(".emailValidation", "email", "keyup"); // keyboard
 //---------------------- name validation
@@ -302,6 +337,22 @@ jsButtonFind.forEach(jsButtonSelect);
 function jsButtonSelect(button) {
     button.addEventListener("click", function(pushButton){
         button.classList.add("custom-button-press-outer");
-        button.getElementsByTagName("p")[0].classList.add("custom-button-press");
+        button.getElementsByClassName("sticky-note-inner-div")[0].classList.add("custom-button-press");
+        if(button.id == "deleteModal"){
+            setTimeout(function(unpushButton){
+                button.classList.remove("custom-button-press-outer");
+                button.getElementsByClassName("sticky-note-inner-div")[0].classList.remove("custom-button-press");
+            },3000);
+        }
+    });
+}
+
+// ----button  for new password ----
+let jsButtonPasswordFind = document.querySelectorAll(".custom-js-button-password");
+jsButtonPasswordFind.forEach(jsButtonPasswordSelect);
+function jsButtonPasswordSelect(passwordButton) {
+    passwordButton.addEventListener("click", function(pushPasswordButton){
+        passwordButton.classList.add("custom-button-press-outer");
+        passwordButton.getElementsByTagName("p")[0].classList.add("custom-button-press");
     });
 }
