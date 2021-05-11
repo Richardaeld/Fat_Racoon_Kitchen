@@ -30,7 +30,7 @@
                         {% if card.feature == feature.name %}
                         <li>
                             <a href="{{ url_for('recipe', recipeId=card._id) }}">
-                                <p>--{{ card.name.title() }}</p>
+                                <p class="make-space-minus">--{{ card.name.title() }}</p>
                             </a>
                         </li>
                         {%endif%}
