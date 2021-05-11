@@ -176,10 +176,11 @@
         <section class="col-11 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height remove-top-margin">
             <div class="row no-gutters sticky-note-inner-div sticky-note-middle-shadow blank-anchor">
                 <!-- Recipe name -->
-                <div class="col-12 make-space">
+                <div class="col-12">
                     <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
-                        <h1 class="recipe-name yanone-text">{{ recipeOfDay.name }}</h1>
+                        <h1 class="recipe-name yanone-text remove-p-margin">{{ recipeOfDay.name }}</h1>
                     </a>
+                    <hr class="make-space">
                 </div>
                 <!-- Recipe Feature -->
                 <div class="col-12 col-sm-6 make-space">
