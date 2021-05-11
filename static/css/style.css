@@ -740,7 +740,6 @@ footer {
 .tab-body {
     border-bottom: 2px solid #333;
     background-color: rgba(14, 255, 255, 0.5);
-    overflow: hidden;
     width: 100%;
 }
 /* Cancels out form-base border-radius */
@@ -787,10 +786,22 @@ footer {
 
 @media (max-width: 767.98px) {
     .tab-body {
-        font-size: 1rem;
+        /* font-size: 1rem; */
     }
     .tab-selected {
-        font-size: 1.25rem;
+        /* font-size: 1.25rem; */
+    }
+}
+
+@media (max-width: 575.98px) {
+    .tab {
+        padding: 0.25rem;
+    }
+    .tab-body {
+    
+    }
+    .tab-selected {
+
     }
 }
 /* ---------------------------------------- Form validation */
@@ -859,12 +870,32 @@ footer {
     width: 100vw;
     background-color: rgba(0, 0, 0, .75);
 }
+
+.floating-modal {
+    max-height: 50vh;
+}
+
+@media (max-width: 575.98px) {
+    .floating-modal {
+        overflow: scroll;
+        overflow-y: scroll
+    }
+}
+
 /* ---------------------------------------- basic form styles */
 .form-delete-base,
 .form-base {
     background-color: #dbdbdb;
     /* background-color: rgba(235, 235, 235, 1); */
     margin: 2rem;
+    overflow: hidden;
+}
+
+@media (max-width: 575.98px) {
+  .form-delete-base,
+    .form-base {
+        margin: 0.75rem 0rem;
+    }
 }
 
 .form-base label {
@@ -1222,7 +1253,8 @@ h6 {
     legend,
     select,
     .reduce-h6 {
-        font-size: 1.75rem;
+        /* font-size: 1.75rem; */
+        font-size: 1.25rem;
     }
 
     h1 {
@@ -1231,7 +1263,8 @@ h6 {
 
     h3,
     h6 {
-        font-size: 1.75rem;
+        /* font-size: 1.75rem; */
+        font-size: 1.5rem;
     }
 
     .xl-content-height {
