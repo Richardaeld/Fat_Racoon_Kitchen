@@ -7,7 +7,7 @@
     <!-- Delete modal body -->
     <form class="col-10 form-login form-delete-base generic-box-shadow yanone-text" id="delete-modal" style="overflow: hidden;" method="POST" action="{{ url_for('delete_recipe', recipe_id=recipeInfo._id) }}">
         <div class="tab-body" >
-            <p class="" id="checkName">Type in recipe name <span value="{{recipeInfo.name}}">* {{ recipeInfo.name }} *</span> and click delete to remove entery</p>
+            <p class="remove-p-margin" id="checkName">Type in recipe name <span value="{{recipeInfo.name}}">* {{ recipeInfo.name }} *</span> and click delete to remove entery</p>
         </div>
         <!-- User input -->
         <input type="text" name="recipeName" id="recipeName" invalid>
