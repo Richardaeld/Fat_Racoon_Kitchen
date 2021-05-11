@@ -4,19 +4,19 @@
     
     <!-- Back Button -->
     <aside class="row no-gutters justify-content-start">
-        <div class="col-4 custom-button sticky-note-no-shadow profile-button blank-anchor custom-js-button">
+        <div class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
             <!-- back to profile for new recipes -->
             {% if recipeInfo.name == "Recipe"%}
             <a href="{{ url_for('profile') }}">
                 <div class="sticky-note-inner-div">
-                    <h6>Back</h6>
+                    <h6 class="remove-p-margin">Back</h6>
                 </div>
             </a>
             <!-- Back to recipe page for existing recipes -->
             {% else %}
             <a href="{{ url_for('recipe', recipeId=recipeId) }}">
                 <div class="sticky-note-inner-div">
-                    <h6>Back</h6>
+                    <h6 class="remove-p-margin">Back</h6>
                 </div>
             </a>
             {% endif %}

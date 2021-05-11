@@ -415,7 +415,7 @@ body {
     background-color: #474747;
     text-align: center;
     font-family: "Indie Flower",sans-serif;
-    overflow-wrap: break-word;
+    /* overflow-wrap: break-word; */  /* Dangerous -- needs to be placed in specific places  */
 }
 
 hr {
@@ -437,6 +437,13 @@ input {
 
 .not-clickable {
     cursor: context-menu;
+}
+@media (max-width: 575.98px) {
+
+    .header-button {
+        /* margin: 1.5rem; */
+        /* padding: 1rem; */
+    }
 }
 /* ---------------------------------------- Various container sizes */
 .xl-content-height {
@@ -1079,10 +1086,6 @@ footer {
     text-decoration: none;
 }
 
-.profile-button {
-    margin: 1.5rem;
-}
-
 .remove-icon {
     position:absolute;
     font-size: 1.25rem;
@@ -1260,6 +1263,11 @@ h6 {
     h1 {
         font-size: 2rem;
     }
+
+    .make-space {
+        padding-bottom: 1rem;
+    }
+
 
     h3,
     h6 {
