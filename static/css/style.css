@@ -880,14 +880,18 @@ footer {
 
 .floating-modal {
     max-height: 50vh;
+    overflow: auto;
 }
+/* @media (max-width: 767.98px) { */
+/* @media (max-width: 575.98px) { */
+/* @media (max-width: 1399.98px) { */
 
-@media (max-width: 575.98px) {
-    .floating-modal {
-        overflow: scroll;
-        overflow-y: scroll
-    }
-}
+    /* .floating-modal { */
+        /* overflow: scroll; */
+        /* overflow-y: scroll */
+        /* overflow: auto; */
+    /* } */
+/* } */
 
 /* ---------------------------------------- basic form styles */
 .form-delete-base,
@@ -1268,6 +1272,9 @@ h6 {
         padding-bottom: 1rem;
     }
 
+    .medium-content-height {
+        min-height: 15rem;
+    }
 
     h3,
     h6 {

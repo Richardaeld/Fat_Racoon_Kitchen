@@ -67,8 +67,8 @@
                 <!-- Lists uploads -->
                 {% for upload in uploaded %}
                     {% if upload[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
-                        <div class="ten-recent-space" style="width: 100%">
-                            <p class="indie-text">
+                        <div class="ten-recent-space" style="width: 100%; position: relative;">
+                            <p class="indie-text" style="width:90%; display: inline-block;">
                                 <a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a>
                             </p>
                         </div>

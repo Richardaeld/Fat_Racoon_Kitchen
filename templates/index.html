@@ -86,7 +86,7 @@
                 </section>
                 {% else %}
                 <!-- Filler for missing avatar of recipe -->
-                <section class="col-10 col-sm-5 col-xl-2  sticky-note blank-anchor classics" style="min-height: 20rem;"> <!-- col-md-5 col-lg-2 col-xl-2 -->
+                <section class="col-10 col-sm-5 col-xl-2  sticky-note blank-anchor classics medium-content-height" > <!-- col-md-5 col-lg-2 col-xl-2 -->
                     <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
                         <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow">
                             <p>My chef, {{ recipe[1].created_by.title() }}, hasn't uploaded an image of <ins>{{ recipe[1].name }}</ins> yet :'(</p>
