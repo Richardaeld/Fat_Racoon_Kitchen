@@ -1198,11 +1198,11 @@ h6 {
     } */
 
     .make-space {
-        padding-bottom: 2rem;
+        /* padding-bottom: 2rem; */
     }
 
     .make-space-margin {
-        margin-bottom: 2rem;
+        /* margin-bottom: 2rem; */
     }
     /* art -- index-card -- resize card with smaller devices*/
     .index-face,
