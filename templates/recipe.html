@@ -6,9 +6,9 @@
         <!-- Background Filter-->
         <div class="col-12 modal-background"></div>
         <!-- Delete modal body -->
-        <form class="col-12 col-sm-10 form-login form-delete-base generic-box-shadow yanone-text" id="delete-modal" style="overflow: hidden;" method="POST" action="{{ url_for('delete_recipe', recipe_id=recipeInfo._id) }}">
+        <form class="col-12 col-md-10 form-login form-delete-base generic-box-shadow yanone-text" id="delete-modal" style="overflow: hidden;" method="POST" action="{{ url_for('delete_recipe', recipe_id=recipeInfo._id) }}">
             <div class="tab-body" >
-                <p class="remove-p-margin" id="checkName">Type in recipe name <span value="{{recipeInfo.name}}">* {{ recipeInfo.name }} *</span> and click delete to remove entery</p>
+                <p class="remove-p-margin" id="checkName">Enter recipe name <span value="{{recipeInfo.name}}"> <strong>{{ recipeInfo.name }}</strong></span> to delete recipe</p>
             </div>
             <!-- User input -->
             <input type="text" name="recipeName" id="recipeName" invalid>
