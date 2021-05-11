@@ -427,10 +427,6 @@ input {
     cursor: context-menu;
 }
 /* ---------------------------------------- Various container sizes */
-.xxl-content-height {
-    min-height: 40rem;
-}
-
 .xl-content-height {
     /* height: 30rem;  changed for cell, profile page, chef bio*/
     min-height: 30rem;
@@ -1223,9 +1219,6 @@ h6 {
         font-size: 1.5rem;
     }
 
-    .xxl-content-height {
-        height: 23rem;
-    } 
     .xl-content-height {
         /* height: 20rem;  --------Changed for cell, profile page, chef bio*/
         min-height: 20rem;
