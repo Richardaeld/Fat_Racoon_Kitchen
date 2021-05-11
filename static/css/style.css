@@ -1219,16 +1219,16 @@ h6 {
     textarea,
     legend,
     select {
-        /* font-size: 1.75rem; */
+        font-size: 1.75rem;
     }
 
     h1 {
-        /* font-size: 2.25rem; */
+        font-size: 2rem;
     }
 
     h3,
     h6 {
-        /* font-size: 2rem; */
+        font-size: 1.75rem;
     }
 
     .xl-content-height {
@@ -1236,13 +1236,12 @@ h6 {
         min-height: 20rem;
     }
     /* main nav bar */
-    .custom-nav a,
+    /* .custom-nav a,
     .custom-nav i,
     .custom-nav label,
-    button
-    {
-        font-size: 1.75rem;
-    }
+    .custom-nav input {
+        font-size: 1.5rem;
+    } */
 
     .custom-nav form {
         padding: .25rem 1rem;
