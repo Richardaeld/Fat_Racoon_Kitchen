@@ -383,7 +383,7 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         // let createSpan = document.createElement("span");
         // createSpan.className = "col";
         let createH6 = document.createElement("h6");
-        createH6.classList = "reduce-to-p"
+        createH6.classList = "reduce-h6"
         let validationDiv = document.createElement("div")
         validationDiv.classList = "invalid-form form-is-valid make-invis"
         let val1P = document.createElement("p")

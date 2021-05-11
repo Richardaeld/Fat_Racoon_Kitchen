@@ -1152,7 +1152,8 @@ label,
 input,
 textarea,
 legend,
-select {
+select,
+.reduce-h6 {
     padding-left: 0.5rem!important;
     padding-right: 0.5rem!important;
     font-size: 1.75rem;
@@ -1174,7 +1175,8 @@ h6 {
     input,
     textarea,
     legend,
-    select {
+    select,
+    .reduce-h6 {
         font-size: 1.25rem;
     }
 
@@ -1218,7 +1220,8 @@ h6 {
     input,
     textarea,
     legend,
-    select {
+    select,
+    .reduce-h6 {
         font-size: 1.75rem;
     }
 
