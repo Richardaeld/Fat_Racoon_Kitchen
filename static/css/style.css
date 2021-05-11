@@ -1043,6 +1043,20 @@ footer {
 .profile-button {
     margin: 1.5rem;
 }
+
+.trash-can {
+    position:absolute;
+    font-size: 1.25rem;
+    /* top: 0; */
+    transform: translateY(-35%);
+    top: 35%;
+    /* margin-bottom: 0.75rem; */
+}
+
+.ten-recent-space {
+    margin-bottom: 1rem;
+}
+
 /* ------------------------------------------------------- Recipe Section  ---------------------------------------------------------------- */
 .recipe-name {
     text-shadow: 2px 2px #a7a7a7;
