@@ -177,7 +177,9 @@
 /* Add on sticky-note for as for right side shadow */
 .sticky-note-right.sticky-note:before{
     right: 0;
-    transform: rotateY(180deg) translateX(0px) translateY(0rem) rotate(0deg) skewX(-2deg) skewY(-2deg) scaleX(.95) scaleY(0.9);
+    /* transform: rotateY(180deg) translateX(0px) translateY(0rem) rotate(0deg) skewX(-2deg) skewY(-2deg) scaleX(.95) scaleY(0.9); */
+    /* transform: rotateY(180deg) translateX(0px) translateY(0rem) rotate(0deg) skewX(-2deg) skewY(-2deg) scaleX(.95) scaleY(0.9); */
+    transform: rotateY(180deg) translateX(0px) translateY(-2.5%) rotate(0deg) skewX(0deg) skewY(-2deg) scaleX(.95) scaleY(.95);
 }
 
 .sticky-note-right p {
