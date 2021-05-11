@@ -104,12 +104,12 @@
                 {% if admin == True %}
                 <!--  FR Lazy Favorite and Grandparent Classic checkboxes -->
                 <div class="col-12 form-input-spacing">
-                    <legend type="text" for="avatar">Lazy Favorite or Grandparent Classic</legend>
+                    <legend type="text" for="avatar">Favorite/Classic/Both</legend>
                     <div class="row no-gutters">
                                     
                         <!-- Sets checkbox for lazy -->
                         <div class="checkboxes">
-                        <label for="lazy" class="clickable">Lazy favorite</label>
+                        <label for="lazy" class="clickable">Favorite</label>
                         {% if recipeInfo.lazy == True %}
                         <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True" checked>
                         {% else %}
@@ -119,7 +119,7 @@
 
                         <!-- Sets checkboxe for grandparent -->
                         <div class="checkboxes">
-                        <label for="grandparent" class="clickable">Grandparent Classic</label>
+                        <label for="grandparent" class="clickable">Classic</label>
                         {% if recipeInfo.grandparent == True %}
                         <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True" checked>
                         {% else %}
