@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 {% block modal %}
 <!--  Delete Modal  -->
-<aside class="row no-gutters justify-content-center custom-modal-delete make-invis">
-    <!-- Background Filter-->
-    <div class="col-12 modal-background"></div>
-    <!-- Delete modal body -->
-    <form class="col-10 form-login form-delete-base generic-box-shadow yanone-text" id="delete-modal" style="overflow: hidden;" method="POST" action="{{ url_for('delete_recipe', recipe_id=recipeInfo._id) }}">
-        <div class="tab-body" >
-            <p class="remove-p-margin" id="checkName">Type in recipe name <span value="{{recipeInfo.name}}">* {{ recipeInfo.name }} *</span> and click delete to remove entery</p>
-        </div>
-        <!-- User input -->
-        <input type="text" name="recipeName" id="recipeName" invalid>
-        <br>
-        <!-- Delete button -->
-        <input class="custom-button make-space-margin" id="custom-button-delete" type="submit" value="Delete" disabled>
-    </form>
+<aside class="container-fluid custom-modal-delete make-invis">
+    <div class="row no-gutters justify-content-center">
+        <!-- Background Filter-->
+        <div class="col-12 modal-background"></div>
+        <!-- Delete modal body -->
+        <form class="col-12 col-sm-10 form-login form-delete-base generic-box-shadow yanone-text" id="delete-modal" style="overflow: hidden;" method="POST" action="{{ url_for('delete_recipe', recipe_id=recipeInfo._id) }}">
+            <div class="tab-body" >
+                <p class="remove-p-margin" id="checkName">Type in recipe name <span value="{{recipeInfo.name}}">* {{ recipeInfo.name }} *</span> and click delete to remove entery</p>
+            </div>
+            <!-- User input -->
+            <input type="text" name="recipeName" id="recipeName" invalid>
+            <br>
+            <!-- Delete button -->
+            <input class="custom-button make-space-margin" id="custom-button-delete" type="submit" value="Delete" disabled>
+        </form>
+    </div>
 </aside>
 {% endblock %}
 
@@ -129,7 +131,7 @@
         <section class="col-12 col-lg-6 order-4">
             <div class="row no-gutters justify-content-center">
                 <div class="sticky-note">
-                    <div class="sticky-note-inner-div">
+                    <div class="sticky-note-inner-div medium-content-height">
                         <ul class="recipe-lists recipe-lists-no-padding">
                             <!-- Recipe ingredients header -->
                             <h1 class="yanone-text">Recipe Ingredients</h1>
@@ -151,7 +153,7 @@
         <section class="col-12 col-lg-6 order-5">
             <div class="row no-gutters justify-content-center ">
                 <div class="col-10 sticky-note sticky-note-right">
-                    <div class="sticky-note-inner-div sticky-note-right-shadow">
+                    <div class="sticky-note-inner-div sticky-note-right-shadow medium-content-height">
                         <ul class="recipe-lists recipe-lists-no-padding">
                             <!-- Recipe steps header -->
                             <h1 class="yanone-text">Recipe Steps</h1>
