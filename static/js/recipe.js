@@ -347,7 +347,7 @@ AllLists.forEach(list);
 function list (listItem){
     // Event cycles through text decoration for crossout effect
     listItem.addEventListener("click", function(crossOut) {
-        let itemLoc1 =  listItem.getElementsByTagName("h6")[0];
+        let itemLoc1 =  listItem.getElementsByTagName("p")[0];
         // let itemLoc2 =  listItem.getElementsByTagName("h6")[1];
         //Crossout and uncrossout list items
         if (itemLoc1.style.textDecoration == "line-through"){
