@@ -217,22 +217,28 @@
                         <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeOfDay.time[1] }}</strong> minutes</p>
                     </div>
                 </div>
+                <!-- compensates for banner height -->
                 <div class="col-12 col-sm-4 make-space">
                     <div class="row no-gutters">
                         <h6 class="col-6 col-sm-12">Total</h6>
                         <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeOfDay.time[2] }}</strong> minutes</p>
                     </div>
                 </div>
-                 <!-- Banner Lazy or grandparent classic if present-->
-                 <!-- Both lazy and grandparent classic -->
-                {% if recipeOfDay.lazy == true and recipeOfDay.grandparent == true %}
-                <h6 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Favorite and Classic!</h6>
-                <!-- lazy favorite -->
-                {% elif recipeOfDay.lazy == true %}
-                <h6 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h6>
+                
+                <!-- Banner Lazy or grandparent classic if present-->
+                {% if recipeOfDay.lazy == true or recipeOfDay.grandparent == true %}
+                <div class="make-space max-width">
+                    <!-- Both lazy and grandparent classic -->
+                    {% if recipeOfDay.lazy == true and recipeOfDay.grandparent == true %}
+                    <h6 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Favorite and Classic!</h6>
+                    <!-- lazy favorite -->
+                    {% elif recipeOfDay.lazy == true %}
+                    <h6 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h6>
                     <!-- Grandparent Classic -->
-                {% elif recipeOfDay.grandparent == true %}
-                <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
+                    {% elif recipeOfDay.grandparent == true %}
+                    <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
+                    {% endif %}
+                </div>
                 {% endif %}
             </div>
         </section>

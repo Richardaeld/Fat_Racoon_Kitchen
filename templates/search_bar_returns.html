@@ -67,22 +67,26 @@
                                 </div>
                             </div>
                             <!-- Total time -->
-                            <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space-plus">
+                            <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space">
                                 <div class="row no-gutters">
                                     <h6 class="col-12 col-lg-4 col-xl-12">Total: </h6>
                                     <p class="col-12 col-lg-8 col-xl-12"><strong class="yanone-text">{{ recipe[1].time[2] }}</strong> minutes</p>
                                 </div>
                             </div>
                             <!-- Banner Lazy or grandparent classic if present-->
-                            <!-- Both lazy and grandparent classic -->
-                            {% if recipe[1].lazy == true and recipe[1].grandparent == true %}
-                            <h6 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Favorite and Classic!</h6>
-                            {% elif recipe[1].lazy == true %}
-                            <!-- lazy favorite -->
-                            <h6 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h6>
-                            {% elif recipe[1].grandparent == true %}
-                            <!-- Grandparent Classic -->
-                            <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
+                            {% if recipe[1].lazy == true or recipe[1].grandparent == true %}
+                            <div class="make-space-plus max-width">
+                                <!-- Both lazy and grandparent classic -->
+                                {% if recipe[1].lazy == true and recipe[1].grandparent == true %}
+                                <h6 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Favorite and Classic!</h6>
+                                {% elif recipe[1].lazy == true %}
+                                <!-- lazy favorite -->
+                                <h6 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h6>
+                                {% elif recipe[1].grandparent == true %}
+                                <!-- Grandparent Classic -->
+                                <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
+                                {% endif %}
+                            </div>
                             {% endif %}
                         </a>
                     </div>

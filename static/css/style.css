@@ -447,15 +447,7 @@ input {
         /* padding: 1rem; */
     }
 }
-@media (max-width: 575.98px) {
 
-    .mobile-right {
-        text-align: right;
-    }
-    .mobile-left {
-        text-align: left;
-    }
-}
 /* ---------------------------------------- Various container sizes */
 .xl-content-height {
     /* height: 30rem;  changed for cell, profile page, chef bio*/
