@@ -238,19 +238,13 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
             }
 
             // Validation for password
-            if(validationSelector === "password"){
-
-                // if passwordcompare
-
+            if(validationSelector === "password"){    
                 // Validates the form if correct amount of upper character, total characters and number are found
                 if(baseVal.value.match(matchTypeUpper) && baseVal.value.match(matchTypeLower) && baseVal.value.match(matchTypeNumber) && baseVal.value.length >= 8 && baseVal.value.length <= 20){
                     baseValPara[0].classList.add("make-invis");
                 }else{
                     baseValPara[0].classList.remove("make-invis");
                 }
-
-
-
             // Validation for email
             } else if(validationSelector === "email") {
 
