@@ -9,7 +9,7 @@
             </div>
         </a>
     </aside>
-    
+
     <div class="row no-gutters justify-content-center">
         <!-- Edit user info form -->
         <form class="col-11 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('update_user_info') }}">
@@ -19,7 +19,7 @@
                     <h1>Update {{ userInfo.username.title() }}'s Information</h1>
                     <hr class="make-space">
                 </div>
-                    
+
                 <!-- User Name -->
                 <div class="col-12 col-xl-6 form-input-spacing">
                     <label  type="text" for="username">Name</label>
@@ -30,7 +30,7 @@
                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
                     </div>
                 </div>
-                    
+
                 <!-- Email -->
                 <div class="col-12 col-xl-6 form-input-spacing">
                     <label  type="text" for="email">Email</label>
@@ -41,7 +41,7 @@
                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
                     </div>
                 </div>
-                    
+
                 <!--  avatar  -->
                 <div class="col-12 col-xl-6 form-input-spacing">
                     <label type="text" for="avatar">Avatar</label>
@@ -50,7 +50,7 @@
                     <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
                     <p id="avatar_valid" class="make-invis remove-p-margin">Please select a file of 500KB or less. Server space is limited!</p>
                 </div>
-                    
+
                 <!--  current password  -->
                 <div class="col-12 col-xl-6 form-input-spacing">
                     <label for="passwordEdit">Current Password</label>
@@ -61,12 +61,12 @@
                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
                     </div>
                 </div>
-                    
+
                 <!-- Create new password button -->
                 <div class="hidePassword make-space custom-js-button-password form-input-spacing" style="width: 80%; padding-top: 2rem; ">
                     <p class="form-button remove-p-margin max-width">Create new password</p>
                 </div>
-                    
+
                 <!--  New passwod  -->
                 <div class="col-12 col-xl-6 form-input-spacing make-invis hidePassword">
                     <label for="newPasswordEdit">New Password</label>
@@ -77,7 +77,7 @@
                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
                     </div>
                 </div>
-                    
+
                 <!--  Confirm new password  -->
                 <div class="col-12 col-xl-6 form-input-spacing make-invis hidePassword">
                     <label for="newPasswordCheckEdit">Confirm New Password</label>
@@ -88,7 +88,7 @@
                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
                     </div>
                 </div>
-                    
+
                 <!-- Bio -->
                 <div class="col-12 form-input-spacing">
                     <label  type="text" for="bio">Bio</label>
@@ -99,10 +99,10 @@
                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
                     </div>
                 </div>
-                    
+
                 <!-- submit button -->
                 <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Update" disabled>
-                    
+
             </div>
         </form>
     </div>

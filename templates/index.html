@@ -20,7 +20,7 @@
                 <!-- carousel index cards -->
                 {% for feature in features %}
                     <section class="col-10 col-md-10 col-lg-5 col-xl-3 medium-content-height card-carousel generic-box-shadow index-card index-card-pattern index-card-bold transition-fade-out recipe-lists blank-anchor">
-                        <!-- Header for index card -->    
+                        <!-- Header for index card -->
                         <a href="{{ url_for('recipe_list', feature=feature.name) }}">
                             <h6 class="yanone-text header-text-spacing ">{{feature.name.title()}}</h6>
                         </a>
@@ -48,7 +48,7 @@
         </div>
     </div>
 </article>
-    
+
 <!--  Grandparent Classics  -->
 <article class="container-fluid generic-background">
     <div class="row no-gutters">
@@ -57,7 +57,7 @@
         <div class="col-12 header-text-shadow make-space-top make-space">
             <h1>Impress someone with a Fat Raccoon's GrandParent Classic</h1>
         </div>
-        
+
         <div class="col-12">
             <div class="row no-gutters justify-content-around">
                 {% if classics == [] %}
@@ -176,7 +176,7 @@
             <!-- Recipe general info (name, feature, chef, desctiption, times, lazy/classic banner) -->
             <section class="col-11 col-xl-6 order-1 order-sm-1 order-md-1 order-lg-1 order-xl-2 order-xxl-2 sticky-note sticky-note-middle recipe-of-day-aside-height remove-top-margin">
                 <div class="row no-gutters sticky-note-inner-div sticky-note-middle-shadow blank-anchor">
-                    
+
                     <!-- Recipe name -->
                     <div class="col-12">
                         <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
@@ -184,7 +184,7 @@
                         </a>
                         <hr class="make-space">
                     </div>
-                    
+
                     <!-- Recipe Feature -->
                     <div class="col-12 col-sm-6 make-space">
                         <a href="{{ url_for('search_bar_returns', search=recipeOfDay.feature) }}">
@@ -194,7 +194,7 @@
                             </div>
                         </a>
                     </div>
-                    
+
                     <!-- Recipe chef -->
                     <div class="col-12 col-sm-6 make-space">
                         <a href="{{ url_for('search_bar_returns', search=chef.username) }}">
@@ -204,12 +204,12 @@
                             </div>
                         </a>
                     </div>
-                    
+
                     <!-- Recipe description -->
                     <div class="col-12 make-space">
                         <p>{{ recipeOfDay.text }}</p>
                     </div>
-                    
+
                     <!-- Recipe prep time -->
                     <div class="col-12 col-sm-4 make-space">
                         <div class="row no-gutters">
@@ -233,7 +233,7 @@
                             <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeOfDay.time[2] }}</strong> minutes</p>
                         </div>
                     </div>
-                    
+
                     {% if recipeOfDay.lazy == true or recipeOfDay.grandparent == true %}
                         <!-- Banner Lazy or grandparent classic if present-->
                         <div class="make-space max-width">

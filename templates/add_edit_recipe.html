@@ -1,7 +1,7 @@
 {% extends "base_login.html" %}
 {% block section %}
 <section class="container-fluid generic-background">
-    
+
     <!-- Back Button -->
     <aside class="row no-gutters justify-content-start">
         <div class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
@@ -27,7 +27,7 @@
     <div class="row no-gutters justify-content-center" >
         <form class="col-11 form-base generic-box-shadow yanone-text"  method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }} ">
             <div class="row no-gutters justify-content-center" >
-                        
+
                 <!-- Title Header -->
                 <div class="col-12 recipe-name">
                     {% if recipeInfo.name == "Recipe" %}
@@ -48,13 +48,13 @@
                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
                     </div>
                 </div>
-                                
+
                 <!--  Prep Time  -->
                 <div class="col-12 col-md-3 form-input-spacing">
                     <label type="text" for="time1">Prep (Mins)</label>
                     <input class="time form-center-text" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
                 </div>
-                            
+
                 <!--  Cook Time  -->
                 <div class="col-12 col-md-3 form-input-spacing">
                     <label type="text" for="time2">Cook (Mins)</label>
@@ -66,7 +66,7 @@
                     <label type="text" for="time3">Total (Mins)</label>
                     <input class="make-invis" type="text" name="timeTotal" id="timeTotal" value="4">
                     <input type="number" id="time3" name="time-3" value="{{ recipeInfo.time[2] }}" disabled>
-                </div>                    
+                </div>
 
                 <!-- Recipe Feature -->
                 <div class="col-12 col-xl-6 form-input-spacing">
@@ -87,7 +87,7 @@
                         </select>
                     </div>
                 </div>
-                            
+
                 <!-- Recipe Image -->
                 <div class="col-12 col-xl-6 form-input-spacing">
                     <label type="text" for="avatar">Recipe Image</label>
@@ -96,13 +96,13 @@
                     <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
                     <p id="avatar_valid" class="make-invis remove-p-margin">Please select a file of 500KB or less. Server space is limited!</p>
                 </div>
-                        
+
                 {% if admin == True %}
                     <!--  FR Lazy Favorite and Grandparent Classic checkboxes -->
                     <div class="col-12 form-input-spacing">
                         <legend type="text" for="avatar">Favorite/Classic/Both</legend>
                         <div class="row no-gutters">
-                                        
+
                             <!-- Sets checkbox for lazy -->
                             <div class="checkboxes">
                                 <label for="lazy" class="clickable">Favorite</label>
@@ -150,7 +150,7 @@
                         </div>
                     </div>
                 {% endif %}
-                            
+
                 <!-- Recipe ingredients -->
                 <div class="col-12">
                     <!-- Header -->
@@ -198,7 +198,7 @@
                         {% endif %}
                     {% endif %}
                 </div>
-                            
+
                 <!-- Recipe steps -->
                 <div class="col-12">
                     <!-- Header -->
@@ -246,13 +246,13 @@
                         {% endif %}
                     {% endif %}
                 </div>
-                    
+
                 <!-- submit button -->
                 <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit" disabled>
             </div>
-                            
+
         </form>
-    </div>     
+    </div>
 </section>
 {% endblock %}
 
