@@ -1181,10 +1181,11 @@ footer {
 }
 
 .pagination-ul {
-    padding: 0rem 1rem;
-    position: absolute;
+    /* padding: 0rem 1rem; */
+    /* position: absolute; */
+    position: relative;
     width: 100%;
-    bottom: 20px;
+    /* bottom: 20px; */
     right:0;
     cursor: pointer
 }
