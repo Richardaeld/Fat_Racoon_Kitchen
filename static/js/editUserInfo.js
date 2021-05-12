@@ -228,9 +228,19 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 }
             }
 
+            // Validation for text
+            if(validationSelector === "recipeGeneral"){
+                if(baseVal.value.length >= 5 && baseVal.value.length <= 100){
+                    baseValPara[0].classList.add("make-invis");
+                }else{
+                    baseValPara[0].classList.remove("make-invis");
+                }
+            }
 
             // Validation for password
             if(validationSelector === "password"){
+
+                // if passwordcompare
 
                 // Validates the form if correct amount of upper character, total characters and number are found
                 if(baseVal.value.match(matchTypeUpper) && baseVal.value.match(matchTypeLower) && baseVal.value.match(matchTypeNumber) && baseVal.value.length >= 8 && baseVal.value.length <= 20){
@@ -238,6 +248,8 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 }else{
                     baseValPara[0].classList.remove("make-invis");
                 }
+
+
 
             // Validation for email
             } else if(validationSelector === "email") {
@@ -300,7 +312,8 @@ baseValidation(".emailValidation", "email", "keyup"); // keyboard
 baseValidation(".nameValidation", "name", "keyup"); // keyboard
 //----------------------password validation
 baseValidation(".passwordSets", "password", "keyup"); // keyboard
-
+//---------------------- recipe name validation
+baseValidation(".recipeGeneralValidation", "recipeGeneral", "keyup"); // keyboard
 
 // ----avatar validation ----
 // ---- Create Random Avatar name
