@@ -22,49 +22,49 @@
 
 {% block section %}
 <article class="container-fluid generic-background">
-    <!-- Allow a user to edit or delete their own recipes -->
     {% if recipeInfo.created_by == userInfo.username or userInfo.admin %}
-    <aside class="row no-gutters justify-content-between">
-        <!--  Edit recipe button -->
-        <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}" class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
-            <div class="sticky-note-inner-div">
-                <h6 class="remove-p-margin">Edit Recipe</h6>
+        <!-- Allow a user to edit or delete their own recipes -->
+        <aside class="row no-gutters justify-content-between">
+            <!--  Edit recipe button -->
+            <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}" class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
+                <div class="sticky-note-inner-div">
+                    <h6 class="remove-p-margin">Edit Recipe</h6>
+                </div>
+            </a>
+            <!--  Delete recipe button -->
+            <div class="col-5 custom-button sticky-note-no-shadow clickable custom-js-button" id="deleteModal">
+                <div class="sticky-note-inner-div" >
+                    <h6 class="remove-p-margin">Delete Recipe</h6>
+                </div>
             </div>
-        </a>
-        <!--  Delete recipe button -->
-        <div class="col-5 custom-button sticky-note-no-shadow clickable custom-js-button" id="deleteModal">
-            <div class="sticky-note-inner-div" >
-                <h6 class="remove-p-margin">Delete Recipe</h6>
-            </div>
-        </div>
-    </aside>
+        </aside>
     {% endif %}
     
     <div class="row no-gutters justify-content-around">
-        <!-- picture of recipe -->
+        <!-- Recipe avatar -->
         <section class="col-12 col-md-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-1 order-xxl-1">
             <div class="row no-gutters justify-content-center blank-anchor">
-                <!-- Displays recipe avatar -->
                 {% if recipeInfo.avatar %}
-                <div class="polaroid-outer generic-box-shadow">
-                    <div class="polaroid-picture">
-                        <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="Polaroid picture of {{ recipeInfo.name }}">
+                    <!-- Display recipe avatar -->
+                    <div class="polaroid-outer generic-box-shadow">
+                        <div class="polaroid-picture">
+                            <img src="{{ url_for('avatar', avatar_image=recipeInfo.avatar) }}" alt="Polaroid picture of {{ recipeInfo.name }}">
+                        </div>
+                        <div>
+                            <a href="{{ url_for('search_bar_returns', search=recipeInfo.created_by) }}">
+                                <h6>From: {{ recipeInfo.created_by.title() }}</h6>
+                            </a>
+                        </div>
                     </div>
-                    <div>
-                        <a href="{{ url_for('search_bar_returns', search=recipeInfo.created_by) }}">
-                            <h6>From: {{ recipeInfo.created_by.title() }}</h6>
-                        </a>
-                    </div>
-                </div>
-                <!-- Displays placeholder if recipe avatar missing -->
                 {% else %}
-                <div class="sticky-note">
-                    <div class="row no-gutters align-items-center sticky-note-inner-div large-content-height">
-                        <a href="{{ url_for('search_bar_returns', search=recipeInfo.created_by) }}">
-                            <p class="col">My chef, <ins>{{ recipeInfo.created_by.title() }}</ins>, hasn't uploaded an image of me yet :'(</p>
-                        </a>
+                    <!-- Display placeholder if recipe avatar missing -->
+                    <div class="sticky-note">
+                        <div class="row no-gutters align-items-center sticky-note-inner-div large-content-height">
+                            <a href="{{ url_for('search_bar_returns', search=recipeInfo.created_by) }}">
+                                <p class="col">My chef, <ins>{{ recipeInfo.created_by.title() }}</ins>, hasn't uploaded an image of me yet :'(</p>
+                            </a>
+                        </div>
                     </div>
-                </div>
                 {% endif %}
             </div>
         </section>
@@ -74,38 +74,40 @@
             <div class="row no-gutters justify-content-center ">
                 <div class="sticky-note sticky-note-middle max-width">
                     <div class="row no-gutters sticky-note-inner-div sticky-note-middle-shadow justify-content-center">
-                        <!-- Recipe name -->
                         <div class="col-12 make-space">
-
+                            <!-- Recipe name -->
                             <h1 class="yanone-text recipe-name max-width remove-p-margin">{{ recipeInfo.name.title() }}</h1>
                             <hr class="make-space">
-                            <!-- Recipe favorite button -->
                             {% if favoriteRecipe != None %}
                             <!--  Recipe favorite button  -->
                             <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}" class="max-width blank-anchor favorite">
                                 {% if favoriteRecipe == True %}
+                                <!-- Recipe is favorite -->
                                 <p class="make-space">Favorite!</p>
                                 <img src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Favorite icon">
                                 {% elif favoriteRecipe == False %}
+                                <!-- Recipe is not favorite -->
                                 <p class="make-space">Not a Favorite</p>
                                 <img src="{{ url_for('static', filename='images/star-outline.svg') }}" alt="Unfavorite icon">
                                 {% endif %}
                             </a>
                             {% endif %}
                         </div>
-                        <!-- Recipe times -->
+                        <!-- Recipe prep time -->
                         <div class="col-10 col-sm-4 make-space">
                             <div class="row no-gutters">
                                 <h6 class="col-5 col-sm-12">Prep: </h6>
                                 <p class="col-7 col-sm-12"><strong class="yanone-text">{{ recipeInfo.time[0] }}</strong> minutes</p>
                             </div>
                         </div>
+                        <!-- Recipe cook time -->
                         <div class="col-10 col-sm-4 make-space">
                             <div class="row no-gutters">
                                 <h6 class="col-5 col-sm-12">Cook: </h6>
                                 <p class="col-7 col-sm-12"><strong class="yanone-text">{{ recipeInfo.time[1] }}</strong> minutes</p>
                             </div>
                         </div>
+                        <!-- Recipe total time -->
                         <div class="col-10 col-sm-4 make-space">
                             <div class="row no-gutters">
                                 <h6 class="col-5 col-sm-12">Total: </h6>
@@ -141,10 +143,10 @@
                             <hr class="make-space">
                             <!-- Each recipe ingredient -->
                             {% for ingredient in recipeInfo.ingredients %}
-                            <li class="row no-gutters justify-content-center clickable">
-                                <input class="col-1 checkbox-input" type="checkbox">
-                                <p class="col-10 checkbox-h6">{{ ingredient }}</p>
-                            </li>
+                                <li class="row no-gutters justify-content-center clickable">
+                                    <input class="col-1 checkbox-input" type="checkbox">
+                                    <p class="col-10 checkbox-h6">{{ ingredient }}</p>
+                                </li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -163,10 +165,10 @@
                             <hr class="make-space">
                             <!-- Each recipe step -->
                             {% for step in recipeSteps %}
-                            <li class="row no-gutters justify-content-center clickable">
-                                <input class="col-1 checkbox-input" type="checkbox">
-                                <p class="col-10 checkbox-h6"><span class="yanone-text">{{ step[0] + 1 }}. </span>{{ step[1] }}</p>
-                            </li>
+                                <li class="row no-gutters justify-content-center clickable">
+                                    <input class="col-1 checkbox-input" type="checkbox">
+                                    <p class="col-10 checkbox-h6"><span class="yanone-text">{{ step[0] + 1 }}. </span>{{ step[1] }}</p>
+                                </li>
                             {% endfor %}
                         </ul>
                     </div>

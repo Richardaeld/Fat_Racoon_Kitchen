@@ -36,21 +36,21 @@
             </div>
         </section>
 
-        <!-- Filler(Blank) Avatar -->
         {% if chef_info.avatar == none %}
-        <section class="col-10 col-md-6 col-lg-4 my-auto polaroid-outer generic-box-shadow">
-            <div class="polaroid-picture">
-            </div>
-            <h6>{{ chef_info.username.title() }}'s Avatar</h6>
-        </section>
-        <!-- User Avatar -->
+            <!-- Filler(Blank) Avatar -->
+            <section class="col-10 col-md-6 col-lg-4 my-auto polaroid-outer generic-box-shadow">
+                <div class="polaroid-picture">
+                </div>
+                <h6>{{ chef_info.username.title() }}'s Avatar</h6>
+            </section>
         {% else %}
-        <section class="col-8 col-md-6 col-lg-4 my-auto polaroid-outer generic-box-shadow"> <!-- col-10 col-md-6 -->
-            <div class="polaroid-picture">
-                <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="Polaroid picture of chef {{ chef_info.username.title() }}">
-            </div>
-            <h6>{{ chef_info.username.title() }}'s Avatar</h6>
-        </section>
+            <!-- User Avatar -->
+            <section class="col-8 col-md-6 col-lg-4 my-auto polaroid-outer generic-box-shadow">
+                <div class="polaroid-picture">
+                    <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="Polaroid picture of chef {{ chef_info.username.title() }}">
+                </div>
+                <h6>{{ chef_info.username.title() }}'s Avatar</h6>
+            </section>
         {% endif %}
     </div>
 
@@ -64,9 +64,9 @@
                     <h3>10 Recently Uploaded Recipes</h3>
                 </a>
                 <hr class="make-space">
-                <!-- Lists uploads -->
+                <!-- List of uploads -->
                 {% for upload in uploaded %}
-                    {% if upload[0] + 1 < 11 %} <!--  Change this line to allow more or less on list  -->
+                    {% if upload[0] + 1 < 11 %}
                         <div class="ten-recent-space" style="width: 100%; position: relative;">
                             <p class="indie-text" style="width:90%; display: inline-block;">
                                 <a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a>
@@ -85,7 +85,7 @@
                     <h3>10 Recently Favorited Recipes</h3>
                 </a>
                 <hr class="make-space">
-                <!-- Lists favorites -->
+                <!-- List of favorites -->
                 {% for favorite in favorites %}
                     {% if favorite %}
                         {% if favorite[0] + 1 < 11 %}
@@ -93,6 +93,7 @@
                                 <p class="indie-text" style="display: inline-block; width:90%">
                                     <a href="{{ url_for('recipe', recipeId=favorite[1][0] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a>
                                 </p>
+                                <!-- Remove recipe icon -->
                                 <a href="{{ url_for('removeRecents', recipeId=favorite[1][0], favType='favorites') }}">
                                     <i class="far fa-times-circle remove-icon"></i>
                                 </a>
@@ -115,14 +116,15 @@
                 {% for recent in recents %}
                     {% if recent %}
                         {% if recent[0] + 1 < 11 %}
-                        <div class="ten-recent-space" style="width: 100%; position:relative">
-                            <p class="indie-text" style="display: inline-block; width:90%;">
-                                <a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a>
-                            </p>
-                            <a href="{{ url_for('removeRecents', recipeId=recent[1][0], favType='recents') }}">
-                                <i class="far fa-times-circle remove-icon"></i>
-                            </a>
-                        </div>
+                            <div class="ten-recent-space" style="width: 100%; position:relative">
+                                <p class="indie-text" style="display: inline-block; width:90%;">
+                                    <a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a>
+                                </p>
+                                <!-- Remove recipe icon -->
+                                <a href="{{ url_for('removeRecents', recipeId=recent[1][0], favType='recents') }}">
+                                    <i class="far fa-times-circle remove-icon"></i>
+                                </a>
+                            </div>
                         {% endif %}
                     {% endif %}
                 {% endfor %}

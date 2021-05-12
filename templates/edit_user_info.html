@@ -11,7 +11,7 @@
     </aside>
     
     <div class="row no-gutters justify-content-center">
-        <!-- form -->
+        <!-- Edit user info form -->
         <form class="col-11 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('update_user_info') }}">
             <div class="row no-gutters justify-content-around">
                 <!-- header -->
@@ -62,12 +62,12 @@
                     </div>
                 </div>
                     
-                <!-- Reveal creating of new password inputs -->
+                <!-- Create new password button -->
                 <div class="hidePassword make-space custom-js-button-password form-input-spacing" style="width: 80%; padding-top: 2rem; ">
                     <p class="form-button remove-p-margin max-width">Create new password</p>
                 </div>
                     
-                <!--  new passwod  -->
+                <!--  New passwod  -->
                 <div class="col-12 col-xl-6 form-input-spacing make-invis hidePassword">
                     <label for="newPasswordEdit">New Password</label>
                     <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck1" name="passwordCheck1" value="" > <!-- minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" -->

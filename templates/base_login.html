@@ -17,8 +17,9 @@
     {% block modal %}
     {% endblock %}
 
-    <!-- header holds logo, company name, and link to Home page-->
-    <header class="row no-gutters justify-content-center picnic-pattern align-items-center blank-anchor">
+    <!-- Site Header -->
+    <header class="row no-gutters justify-content-center picnic-pattern blank-anchor">
+        <!-- Logo -->
         <div class="col-10 col-md-4 logo-background">
             <a href="{{ url_for('index') }}">
                 <h1 class="header-text-1">Fat</h1>
@@ -26,7 +27,8 @@
             </a>
         </div>
     </header>
-
+    
+    <!-- Main nav bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-nav yanone-text" >
         <a class="navbar-brand" href="{{ url_for('index') }}">
             <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="Fat raccoon face" style="width:50px;">
@@ -34,7 +36,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 {% if request.endpoint == "index" %}
@@ -91,7 +92,7 @@
             </ul>
             <form class="form-inline my-2 my-lg-0 nav-search" method="POST" action="{{ url_for('search_bar_returns', search='user_search') }}">
                 <input class="form-control mr-sm-2" name="userSearch" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-info my-3 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </nav>
@@ -114,97 +115,108 @@
     {% block section %}
     {% endblock %}
 
-    <!--  Footer  -->
-    <footer class="row no-gutters justify-content-center align-items-center">
-        <div class="col-12 racoon-pattern table-runner-pattern"></div>
-        <!-- header holds logo, company name, and link to Home page-->
-        <!-- col-10 col-md-4-->
-        <div class="col-md-4 col-lg-5 col-xl-6 d-none d-md-block logo-background blank-anchor">
-            <a href="{{ url_for('index') }}">
-                <h1 class="header-text-1">Fat</h1>
-                <h1 class="header-text-2">Raccoon</h1>
-            </a>
-        </div>
-        <!--  Social Links  -->     
-        <div class="col-10 col-md-7 col-lg-6 col-xl-5">
-            <ul class="row no-gutters justify-content-center footer-ul social-link-push recipe-lists-no-padding">
-                <!-- Facebook link -->
-                <li class=" col-6 col-sm-3">
-                    <div class="social-position">
-                        <div class="liquid"></div>
-                        <div class="glass"></div>
-                        <div class="glass-shadow"></div>
-                        <span class="ripple"></span>
-                        <a href="https://www.facebook.com/" target="_blank" aria-label="External link to Fat Raccoon's Facebook" rel="noopener">
-                            <i class="fab fa-facebook-square social-link" aria-hidden="true"></i>
-                        </a>
-                        <div class="napkin-out-container">
-                            <div class="napkin-shadow"></div>
-                            <div class="napkin-border-lines"></div>
-                            <div class="napkin-horizontal-lines"></div>
-                            <div class="napkin-vertical-lines"></div>
-                            <div class="napkin-right-triangle-corner"></div>
-                        </div>
-                    </div>
-                </li>
-                <!-- Instagram link -->
-                <li class=" col-6 col-sm-3">
-                    <div class="social-position">
-                        <div class="liquid"></div>
-                        <div class="glass"></div>
-                        <div class="glass-shadow"></div>
-                        <span class="ripple"></span>
-                        <a href="https://www.instagram.com/" target="_blank" aria-label="External link to Fat Raccoon's Instagram" rel="noopener">
-                            <i class="fab fa-instagram social-link" aria-hidden="true"></i>
-                        </a>
-                        <div class="napkin-out-container">
-                            <div class="napkin-shadow"></div>
-                            <div class="napkin-border-lines"></div>
-                            <div class="napkin-horizontal-lines"></div>
-                            <div class="napkin-vertical-lines"></div>
-                            <div class="napkin-right-triangle-corner"></div>
-                        </div>
-                    </div>
-                </li>
-                <!-- Pinterest Link -->
-                <li class=" col-6 col-sm-3">
-                    <div class="social-position">
-                        <div class="liquid"></div>
-                        <div class="glass"></div>
-                        <div class="glass-shadow"></div>
-                        <span class="ripple"></span>
-                        <a href="https://www.pinterest.com/" target="_blank" aria-label="External link to Fat Raccoon's Pinterest" rel="noopener">
-                            <i class="fab fa-pinterest-square social-link" aria-hidden="true"></i>
-                        </a>
-                        <div class="napkin-out-container">
-                            <div class="napkin-shadow"></div>
-                            <div class="napkin-border-lines"></div>
-                            <div class="napkin-horizontal-lines"></div>
-                            <div class="napkin-vertical-lines"></div>
-                            <div class="napkin-right-triangle-corner"></div>
-                        </div>
-                    </div>
-                </li>
-                <!-- Twitter link -->
-                <li class=" col-6 col-sm-3">
-                    <div class="social-position">
-                        <div class="liquid"></div>
-                        <div class="glass"></div>
-                        <div class="glass-shadow"></div>
-                        <span class="ripple"></span>
-                        <a href="https://twitter.com/?lang=en" target="_blank" aria-label="External link to Fat Raccoon's Twitter" rel="noopener">
-                            <i class="fab fa-twitter-square social-link " aria-hidden="true"></i>
-                        </a>
-                        <div class="napkin-out-container">
-                            <div class="napkin-shadow"></div>
-                            <div class="napkin-border-lines"></div>
-                            <div class="napkin-horizontal-lines"></div>
-                            <div class="napkin-vertical-lines"></div>
-                            <div class="napkin-right-triangle-corner"></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+    <!--  Footer (contains wood grain background)  -->
+    <footer class="container-fluid px-0" >
+        <!-- Table runner background -->
+        <div class="racoon-pattern table-runner-pattern ">
+            <div class="row no-gutters justify-content-center align-items-center max-height">
+                <!-- Logo-->
+                <section class="col-md-4 col-lg-5 col-xl-6 d-none d-md-block logo-background blank-anchor">
+                    <a href="{{ url_for('index') }}">
+                        <h1 class="header-text-1">Fat</h1>
+                        <h1 class="header-text-2">Raccoon</h1>
+                    </a>
+                </section>
+                <!--  Social Links  -->
+                <section class="col-10 col-md-7 col-lg-6 col-xl-5 ">
+                    <ul class="row no-gutters justify-content-center footer-ul social-link-push recipe-lists-no-padding">
+                        <!-- Facebook link -->
+                        <li class=" col-6 col-sm-3">
+                            <div class="social-position">
+                                <!-- Cup art -->
+                                <div class="liquid"></div>
+                                <div class="glass"></div>
+                                <div class="glass-shadow"></div>
+                                <span class="ripple"></span>
+                                <a href="https://www.facebook.com/" target="_blank" aria-label="External link to Fat Raccoon's Facebook" rel="noopener">
+                                    <i class="fab fa-facebook-square social-link" aria-hidden="true"></i>
+                                </a>
+                                <!-- Napkin art -->
+                                <div class="napkin-out-container">
+                                    <div class="napkin-shadow"></div>
+                                    <div class="napkin-border-lines"></div>
+                                    <div class="napkin-horizontal-lines"></div>
+                                    <div class="napkin-vertical-lines"></div>
+                                    <div class="napkin-right-triangle-corner"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Instagram link -->
+                        <li class=" col-6 col-sm-3">
+                            <div class="social-position">
+                                <!-- Cup art -->
+                                <div class="liquid"></div>
+                                <div class="glass"></div>
+                                <div class="glass-shadow"></div>
+                                <span class="ripple"></span>
+                                <a href="https://www.instagram.com/" target="_blank" aria-label="External link to Fat Raccoon's Instagram" rel="noopener">
+                                    <i class="fab fa-instagram social-link" aria-hidden="true"></i>
+                                </a>
+                                <!-- Napkin art -->
+                                <div class="napkin-out-container">
+                                    <div class="napkin-shadow"></div>
+                                    <div class="napkin-border-lines"></div>
+                                    <div class="napkin-horizontal-lines"></div>
+                                    <div class="napkin-vertical-lines"></div>
+                                    <div class="napkin-right-triangle-corner"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Pinterest Link -->
+                        <li class=" col-6 col-sm-3">
+                            <div class="social-position">
+                                <!-- Cup art -->
+                                <div class="liquid"></div>
+                                <div class="glass"></div>
+                                <div class="glass-shadow"></div>
+                                <span class="ripple"></span>
+                                <a href="https://www.pinterest.com/" target="_blank" aria-label="External link to Fat Raccoon's Pinterest" rel="noopener">
+                                    <i class="fab fa-pinterest-square social-link" aria-hidden="true"></i>
+                                </a>
+                                <!-- Napkin art -->
+                                <div class="napkin-out-container">
+                                    <div class="napkin-shadow"></div>
+                                    <div class="napkin-border-lines"></div>
+                                    <div class="napkin-horizontal-lines"></div>
+                                    <div class="napkin-vertical-lines"></div>
+                                    <div class="napkin-right-triangle-corner"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Twitter link -->
+                        <li class=" col-6 col-sm-3">
+                            <div class="social-position">
+                                <!-- Cup art -->
+                                <div class="liquid"></div>
+                                <div class="glass"></div>
+                                <div class="glass-shadow"></div>
+                                <span class="ripple"></span>
+                                <a href="https://twitter.com/?lang=en" target="_blank" aria-label="External link to Fat Raccoon's Twitter" rel="noopener">
+                                    <i class="fab fa-twitter-square social-link " aria-hidden="true"></i>
+                                </a>
+                                <!-- Napkin art -->
+                                <div class="napkin-out-container">
+                                    <div class="napkin-shadow"></div>
+                                    <div class="napkin-border-lines"></div>
+                                    <div class="napkin-horizontal-lines"></div>
+                                    <div class="napkin-vertical-lines"></div>
+                                    <div class="napkin-right-triangle-corner"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
         </div>
     </footer>
     <!-- <script src="{{ url_for('static', filename='js/passwordVal.js') }}"></script> -->

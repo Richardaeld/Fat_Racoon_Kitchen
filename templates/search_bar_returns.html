@@ -2,98 +2,101 @@
 {% block section %}
 <article class="container-fluid  generic-background">
     <div class="row no-gutters justify-content-center">    
-        <!--  If search returns no results  -->
         {% if findRecipes|length() == 0 %}
-        <section class="col-12 col-lg-6">
-            <div class="row no-gutters justify-content-center">
-                <div class="sticky-note"> 
-                    <div class="sticky-note-inner-div blank-anchor make-space large-content-height">
-                        <a href="{{ url_for('index') }}">
-                            <!-- Search, no results header -->
-                            <h1 class="recipe-name yanone-text">Return to Home Page</h1>
-                            <hr class="make-space">
-                            <h6><strong>Search Didn't Return Any Results!</strong></h6>
-                            <p>*hint* Search For recipe name, feature, or chef</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        {% endif %}
-        <!-- If search returns results  -->
-        {% for recipe in findRecipes %}
-        <section class="col-12 col-lg-6">
-            <div class="row no-gutters justify-content-center">
-                <!-- Creates a section error -->
-                {% if recipe[0] % 2 %}
-                <div class="sticky-note sticky-note-right">
-                    <div class="sticky-note-inner-div sticky-note-right-shadow blank-anchor make-space">
-                {% else %}
-                <div class="sticky-note">
-                    <div class="sticky-note-inner-div blank-anchor make-space">
-                {% endif %}
-                        <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}" class="row no-gutters">
-                            <!-- Recipe Name -->
-                            <div class="col-12">
-                                <h1 class="recipe-name yanone-text">{{ recipe[1].name }}</h1>
+            <!--  If search returns no results  -->
+            <section class="col-12 col-lg-6">
+                <div class="row no-gutters justify-content-center">
+                    <div class="sticky-note"> 
+                        <div class="sticky-note-inner-div blank-anchor make-space large-content-height">
+                            <a href="{{ url_for('index') }}">
+                                <!-- Search, no results header -->
+                                <h1 class="recipe-name yanone-text">Return to Home Page</h1>
                                 <hr class="make-space">
-                            </div>
-                            <!-- Recipe feature  -->
-                            <div class="col-12 col-sm-6 col-lg-12 col-xl-6 make-space">
-                                <div class="row no-gutters">
-                                    <h6 class="col-12 col-lg-5 col-xl-12">Features: </h6>
-                                    <p class="col-12 col-lg-7 col-xl-12"><strong>{{ recipe[1].feature.title() }}</strong></p>
-                                </div>
-                            </div>
-                            <!-- Chef name -->
-                            <div class="col-12 col-sm-6 col-lg-12 col-xl-6 make-space">
-                                <div class="row no-gutters">
-                                    <h6 class="col-12 col-lg-4 col-xl-12">Chef: </h6>
-                                    <p class="col-12 col-lg-8 col-xl-12"><strong>{{ recipe[1].created_by.title() }}</strong></p>
-                                </div>
-                            </div>
-                            <!-- Prep time -->
-                            <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space">
-                                <div class="row no-gutters">
-                                    <h6 class="col-12 col-lg-4 col-xl-12">Prep: </h6>
-                                    <p class="col-12 col-lg-8 col-xl-12"><strong class="yanone-text">{{ recipe[1].time[0] }}</strong> minutes</p>
-                                </div>
-                            </div>
-                            <!-- Cook time -->
-                            <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space">
-                                <div class="row no-gutters">
-                                    <h6 class="col--12 col-lg-4 col-xl-12">Cook: </h6>
-                                    <p class="col-12 col-lg-8 col-xl-12"><strong class="yanone-text">{{ recipe[1].time[1] }}</strong> minutes</p>
-                                </div>
-                            </div>
-                            <!-- Total time -->
-                            <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space">
-                                <div class="row no-gutters">
-                                    <h6 class="col-12 col-lg-4 col-xl-12">Total: </h6>
-                                    <p class="col-12 col-lg-8 col-xl-12"><strong class="yanone-text">{{ recipe[1].time[2] }}</strong> minutes</p>
-                                </div>
-                            </div>
-                            <!-- Banner Lazy or grandparent classic if present-->
-                            {% if recipe[1].lazy == true or recipe[1].grandparent == true %}
-                            <div class="make-space-plus max-width">
-                                <!-- Both lazy and grandparent classic -->
-                                {% if recipe[1].lazy == true and recipe[1].grandparent == true %}
-                                <h6 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Favorite and Classic!</h6>
-                                {% elif recipe[1].lazy == true %}
-                                <!-- lazy favorite -->
-                                <h6 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h6>
-                                {% elif recipe[1].grandparent == true %}
-                                <!-- Grandparent Classic -->
-                                <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
-                                {% endif %}
-                            </div>
-                            {% endif %}
-                        </a>
+                                <h6><strong>Search Didn't Return Any Results!</strong></h6>
+                                <p>*hint* Search For recipe name, feature, or chef</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    {% endfor %}
+            </section>
+        {% endif %}
+        {% for recipe in findRecipes %}
+            <!-- If search returns results  -->
+            <section class="col-12 col-lg-6">
+                <div class="row no-gutters justify-content-center">
+                    <!-- Sticky note left/right oscillates per Feature -->
+                    {% if recipe[0] % 2 %}
+                        <!-- Adds left respective shadow to sticky notes-->
+                        <div class="sticky-note sticky-note-right">
+                            <div class="sticky-note-inner-div sticky-note-right-shadow blank-anchor make-space">
+                    {% else %}
+                        <!-- Adds right respective shadow to sticky notes-->
+                        <div class="sticky-note">
+                            <div class="sticky-note-inner-div blank-anchor make-space">
+                    {% endif %}
+                                <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}" class="row no-gutters">
+                                    <!-- Recipe Name -->
+                                    <div class="col-12">
+                                        <h1 class="recipe-name yanone-text">{{ recipe[1].name }}</h1>
+                                        <hr class="make-space">
+                                    </div>
+                                    <!-- Recipe feature  -->
+                                    <div class="col-12 col-sm-6 col-lg-12 col-xl-6 make-space">
+                                        <div class="row no-gutters">
+                                            <h6 class="col-12 col-lg-5 col-xl-12">Features: </h6>
+                                            <p class="col-12 col-lg-7 col-xl-12"><strong>{{ recipe[1].feature.title() }}</strong></p>
+                                        </div>
+                                    </div>
+                                    <!-- Chef name -->
+                                    <div class="col-12 col-sm-6 col-lg-12 col-xl-6 make-space">
+                                        <div class="row no-gutters">
+                                            <h6 class="col-12 col-lg-4 col-xl-12">Chef: </h6>
+                                            <p class="col-12 col-lg-8 col-xl-12"><strong>{{ recipe[1].created_by.title() }}</strong></p>
+                                        </div>
+                                    </div>
+                                    <!-- Prep time -->
+                                    <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space">
+                                        <div class="row no-gutters">
+                                            <h6 class="col-12 col-lg-4 col-xl-12">Prep: </h6>
+                                            <p class="col-12 col-lg-8 col-xl-12"><strong class="yanone-text">{{ recipe[1].time[0] }}</strong> minutes</p>
+                                        </div>
+                                    </div>
+                                    <!-- Cook time -->
+                                    <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space">
+                                        <div class="row no-gutters">
+                                            <h6 class="col--12 col-lg-4 col-xl-12">Cook: </h6>
+                                            <p class="col-12 col-lg-8 col-xl-12"><strong class="yanone-text">{{ recipe[1].time[1] }}</strong> minutes</p>
+                                        </div>
+                                    </div>
+                                    <!-- Total time -->
+                                    <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space">
+                                        <div class="row no-gutters">
+                                            <h6 class="col-12 col-lg-4 col-xl-12">Total: </h6>
+                                            <p class="col-12 col-lg-8 col-xl-12"><strong class="yanone-text">{{ recipe[1].time[2] }}</strong> minutes</p>
+                                        </div>
+                                    </div>
+                                    {% if recipe[1].lazy == true or recipe[1].grandparent == true %}
+                                        <!-- Banner Lazy or grandparent classic if present-->
+                                        <div class="make-space-plus max-width">
+                                            {% if recipe[1].lazy == true and recipe[1].grandparent == true %}
+                                                <!-- Both lazy and grandparent classic -->
+                                                <h6 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Favorite and Classic!</h6>
+                                            {% elif recipe[1].lazy == true %}
+                                                <!-- lazy favorite -->
+                                                <h6 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h6>
+                                            {% elif recipe[1].grandparent == true %}
+                                                <!-- Grandparent Classic -->
+                                                <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                </a>
+                            <!-- blank -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endfor %}
     </div>
 </article>
 {% endblock %}

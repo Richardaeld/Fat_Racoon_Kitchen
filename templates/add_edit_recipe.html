@@ -7,34 +7,33 @@
         <div class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
             <!-- back to profile for new recipes -->
             {% if recipeInfo.name == "Recipe"%}
-            <a href="{{ url_for('profile') }}">
-                <div class="sticky-note-inner-div">
-                    <h6 class="remove-p-margin">Back</h6>
-                </div>
-            </a>
+                <a href="{{ url_for('profile') }}">
+                    <div class="sticky-note-inner-div">
+                        <h6 class="remove-p-margin">Back</h6>
+                    </div>
+                </a>
             <!-- Back to recipe page for existing recipes -->
             {% else %}
-            <a href="{{ url_for('recipe', recipeId=recipeId) }}">
-                <div class="sticky-note-inner-div">
-                    <h6 class="remove-p-margin">Back</h6>
-                </div>
-            </a>
+                <a href="{{ url_for('recipe', recipeId=recipeId) }}">
+                    <div class="sticky-note-inner-div">
+                        <h6 class="remove-p-margin">Back</h6>
+                    </div>
+                </a>
             {% endif %}
         </div>
     </aside>
 
-    <!--  For creating a new recipe  -->
+    <!--  Create/Edit recipe form -->
     <div class="row no-gutters justify-content-center" >
-        <!-- Form -->
         <form class="col-11 form-base generic-box-shadow yanone-text"  method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }} ">
             <div class="row no-gutters justify-content-center" >
                         
-                <!-- Form Title Header -->
+                <!-- Title Header -->
                 <div class="col-12 recipe-name">
                     {% if recipeInfo.name == "Recipe" %}
-                    <h1>New Recipe</h1>
+                        <h1>New Recipe</h1>
                     {% else %}
-                    <h1>{{ recipeInfo.name }}</h1>
+                        <h1>{{ recipeInfo.name }}</h1>
                     {% endif %}
                 </div>
                 <hr class="make-space">
@@ -54,14 +53,12 @@
                 <div class="col-12 col-md-3 form-input-spacing">
                     <label type="text" for="time1">Prep (Mins)</label>
                     <input class="time form-center-text" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
-                    <!-- <p class="remove-p-margin">Minutes</p> -->
                 </div>
                             
                 <!--  Cook Time  -->
                 <div class="col-12 col-md-3 form-input-spacing">
                     <label type="text" for="time2">Cook (Mins)</label>
                     <input class="time form-center-text" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
-                    <!-- <p class="remove-p-margin">Minutes</p> -->
                 </div>
 
                 <!--  Total Time  -->
@@ -69,7 +66,6 @@
                     <label type="text" for="time3">Total (Mins)</label>
                     <input class="make-invis" type="text" name="timeTotal" id="timeTotal" value="4">
                     <input type="number" id="time3" name="time-3" value="{{ recipeInfo.time[2] }}" disabled>
-                    <!-- <p class="remove-p-margin">Minutes</p> -->
                 </div>                    
 
                 <!-- Recipe Feature -->
@@ -80,13 +76,13 @@
                         <select name="feature" id="feature" class="clickable">
                             <!-- Adds selected attribute -->
                             {% for feature in features %}
-                            {% if feature.name == recipeInfo.feature %}
-                            <!--  For editing a existing recipe  -->
-                            <option value="{{ feature.name }}" selected>{{ feature.name.title() }}</option>
-                            {% else %}
-                            <!--  For all none selected catagories  -->
-                            <option value="{{ feature.name }}">{{ feature.name.title() }}</option>
-                            {% endif %}
+                                {% if feature.name == recipeInfo.feature %}
+                                    <!--  For adding selected attribut to option  -->
+                                    <option value="{{ feature.name }}" selected>{{ feature.name.title() }}</option>
+                                {% else %}
+                                    <!--  For all none selected attribute catagories  -->
+                                    <option value="{{ feature.name }}">{{ feature.name.title() }}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -102,56 +98,57 @@
                 </div>
                         
                 {% if admin == True %}
-                <!--  FR Lazy Favorite and Grandparent Classic checkboxes -->
-                <div class="col-12 form-input-spacing">
-                    <legend type="text" for="avatar">Favorite/Classic/Both</legend>
-                    <div class="row no-gutters">
-                                    
-                        <!-- Sets checkbox for lazy -->
-                        <div class="checkboxes">
-                        <label for="lazy" class="clickable">Favorite</label>
-                        {% if recipeInfo.lazy == True %}
-                        <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True" checked>
-                        {% else %}
-                        <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True">
-                        {% endif %}
-                        </div>
+                    <!--  FR Lazy Favorite and Grandparent Classic checkboxes -->
+                    <div class="col-12 form-input-spacing">
+                        <legend type="text" for="avatar">Favorite/Classic/Both</legend>
+                        <div class="row no-gutters">
+                                        
+                            <!-- Sets checkbox for lazy -->
+                            <div class="checkboxes">
+                                <label for="lazy" class="clickable">Favorite</label>
+                                {% if recipeInfo.lazy == True %}
+                                    <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True" checked>
+                                {% else %}
+                                    <input class="clickable" type="checkbox" name="lazy" id="lazy" value="True">
+                                {% endif %}
+                            </div>
 
-                        <!-- Sets checkboxe for grandparent -->
-                        <div class="checkboxes">
-                        <label for="grandparent" class="clickable">Classic</label>
-                        {% if recipeInfo.grandparent == True %}
-                        <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True" checked>
-                        {% else %}
-                        <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True">
-                        {% endif %}
+                            <!-- Sets checkbox for grandparent -->
+                            <div class="checkboxes">
+                                <label for="grandparent" class="clickable">Classic</label>
+                                {% if recipeInfo.grandparent == True %}
+                                    <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True" checked>
+                                {% else %}
+                                    <input class="clickable" type="checkbox" name="grandparent" id="grandparent" value="True">
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
-                </div>
-                {% endif %}
-                            
+                {% endif %} 
 
                 <!-- Recipe description -->
                 {% if recipeIngEnum|length == 1 %}
-                <div class="col-12 form-input-spacing">
-                    <label type="text" for="text">Recipe Description</label>
-                    <textarea class="formValidation form-invalid-view recipeGeneralValidation" type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
-                    <div class="invalid-form make-invis">
-                        <p class="remove-p-margin">Must be between 5 and 100 characters</p>
-                        <p class="make-invis remove-p-margin"></p>
-                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                    <!-- New Recipe -->
+                    <div class="col-12 form-input-spacing">
+                        <label type="text" for="text">Recipe Description</label>
+                        <textarea class="formValidation form-invalid-view recipeGeneralValidation" type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
+                        <div class="invalid-form make-invis">
+                            <p class="remove-p-margin">Must be between 5 and 100 characters</p>
+                            <p class="make-invis remove-p-margin"></p>
+                            <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                        </div>
                     </div>
-                </div>
                 {% else %}
-                <div class="col-12 form-input-spacing">
-                    <label type="text" for="text">Recipe Description</label>
-                    <textarea class="formValidation recipeGeneralValidation" type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
-                    <div class="invalid-form form-is-valid make-invis">
-                        <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
-                        <p class="make-invis remove-p-margin"></p>
-                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                    <!-- Existing recipe -->
+                    <div class="col-12 form-input-spacing">
+                        <label type="text" for="text">Recipe Description</label>
+                        <textarea class="formValidation recipeGeneralValidation" type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
+                        <div class="invalid-form form-is-valid make-invis">
+                            <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
+                            <p class="make-invis remove-p-margin"></p>
+                            <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                        </div>
                     </div>
-                </div>
                 {% endif %}
                             
                 <!-- Recipe ingredients -->
@@ -171,32 +168,34 @@
                 <!-- add/remove location for ingredient input boxes -->
                 <div class="col-12 ingredientAddRemoveLocation form-input-spacing">
                     {% if recipeIngEnum|length != 0 %}
-                    <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
-                    {% if recipeIngEnum|length == 1 %}
-                    {% for ingredient in recipeIngEnum %}
-                        <div class="step-ingredient-spacing">
-                            <h6 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h6>
-                            <input class="countIngredients form-invalid-view formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
-                            <div class="invalid-form make-invis">
-                                <p class=" remove-p-margin">Must be between 5 and 100 characters</p>
-                                <p class="make-invis remove-p-margin"></p>
-                                <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    {% else %}
-                    {% for ingredient in recipeIngEnum %}
-                        <div class="step-ingredient-spacing">
-                            <h6 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h6>
-                            <input class="countIngredients formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
-                            <div class="invalid-form form-is-valid make-invis">
-                                <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
-                                <p class="make-invis remove-p-margin"></p>
-                                <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    {% endif %}
+                        <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
+                        {% if recipeIngEnum|length == 1 %}
+                            <!-- New Recipe -->
+                            {% for ingredient in recipeIngEnum %}
+                                <div class="step-ingredient-spacing">
+                                    <h6 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h6>
+                                    <input class="countIngredients form-invalid-view formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
+                                    <div class="invalid-form make-invis">
+                                        <p class=" remove-p-margin">Must be between 5 and 100 characters</p>
+                                        <p class="make-invis remove-p-margin"></p>
+                                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <!-- Existing recipe -->
+                            {% for ingredient in recipeIngEnum %}
+                                <div class="step-ingredient-spacing">
+                                    <h6 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h6>
+                                    <input class="countIngredients formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
+                                    <div class="invalid-form form-is-valid make-invis">
+                                        <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
+                                        <p class="make-invis remove-p-margin"></p>
+                                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     {% endif %}
                 </div>
                             
@@ -217,34 +216,34 @@
                 <!-- add/remove location for step input boxes -->
                 <div class="col-12 stepAddRemoveLocation form-input-spacing">
                     {% if recipeSteEnum|length != 0 %}
-                    <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
-                    
-                    {% if recipeSteEnum|length == 1 %}
-                        {% for step in recipeSteEnum %}
-                        <div class="step-ingredient-spacing">
-                            <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
-                            <textarea class="countSteps form-invalid-view formValidation recipeGeneralValidation" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
-                            <div class="invalid-form make-invis">
-                                <p class="remove-p-margin">Must be between 5 and 100 characters</p>
-                                <p class="make-invis remove-p-margin"></p>
-                                <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                    {% for step in recipeSteEnum %}
-                        <div class="step-ingredient-spacing">
-                            <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
-                            <textarea class="countSteps formValidation recipeGeneralValidation" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
-                            <div class="invalid-form form-is-valid make-invis">
-                                <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
-                                <p class="make-invis remove-p-margin"></p>
-                                <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% endif %}
-                    
+                        <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
+                        {% if recipeSteEnum|length == 1 %}
+                            <!-- New Recipe -->
+                            {% for step in recipeSteEnum %}
+                                <div class="step-ingredient-spacing">
+                                    <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
+                                    <textarea class="countSteps form-invalid-view formValidation recipeGeneralValidation" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                                    <div class="invalid-form make-invis">
+                                        <p class="remove-p-margin">Must be between 5 and 100 characters</p>
+                                        <p class="make-invis remove-p-margin"></p>
+                                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                        <!-- Existing recipe -->
+                            {% for step in recipeSteEnum %}
+                                <div class="step-ingredient-spacing">
+                                    <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
+                                    <textarea class="countSteps formValidation recipeGeneralValidation" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                                    <div class="invalid-form form-is-valid make-invis">
+                                        <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
+                                        <p class="make-invis remove-p-margin"></p>
+                                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     {% endif %}
                 </div>
                     

@@ -14,7 +14,7 @@
     {% endblock %}
 </head>
 <body>
-    <!--  login and create account modal  -->
+    <!--  Login/Create account modals  -->
     <aside class="container-fluid custom-modal make-invis yanone-text" id="modalAside">
         <div class="row no-gutters justify-content-center">
             <!-- Background filter -->
@@ -22,7 +22,7 @@
             
             <!-- Login modal -->
             <form class="col-12 col-lg-10 form-base generic-box-shadow "  id="login-modal" method="POST" action="{{ url_for('login') }}">
-                <!-- Header for login/create modal -->
+                <!-- Header for login modal -->
                 <div class="tab-body make-space-margin">
                     <div class="tab tab-selected">
                         <span><p>Login</p></span>
@@ -43,7 +43,6 @@
                             <p class="remove-p-margin">Must be between 5 and 255 characters, can contain letters and numbers</p>
                             <p class="make-invis remove-p-margin">Must contain appropiate email suffix (.com, .edu, .net) and @ sign</p>
                             <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
-                            <!-- <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p> -->
                         </div>
                     </div>
                     <!-- Password -->
@@ -56,18 +55,17 @@
                             <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters</p>
                             <p class="make-invis remove-p-margin"></p>
                             <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
-                            <!-- <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p> -->
                         </div>
                     </div>
                 </div>
                 <input type="text" name="formType" value="login" class="make-invis" aria-hidden="true">
                 <input class="custom-button login-account make-space-margin" id="custom-button-login" name="custom-button-login" type="submit" value="Login" disabled> <!-- disabled -->
             </form>
-            <!------------------------------------------------------------------------------------------------------------------------------------------------->
+
             <!-- Create modal -->
             <form class="col-12 col-lg-10 form-base generic-box-shadow make-invis "  id="create-modal" method="POST" action="{{ url_for('create') }}">
                 <div class="tab-body make-space-margin">
-                    <!-- Header for login/create modal -->
+                    <!-- Header for create modal -->
                     <div class="tab">
                         <span><p>Login</p></span>
                     </div>
@@ -87,7 +85,6 @@
                             <p class="remove-p-margin">Must be between 5 and 100 characters, can contain letters and numbers</p>
                             <p class="make-invis remove-p-margin"></p>
                             <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
-                            <!-- <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p> -->
                         </div>
                     </div>
                     
@@ -96,13 +93,11 @@
                         <label class="" type="email" for="email">Email:</label>
                     </div>
                     <div class="col-12 col-md-8 make-space">
-                        <!-- -----------------------------------formbase label class is expanind me through label padding -->
                         <input class="formValidation emailValidation createValidation form-invalid-view" type="text" id="emailCreate" name="email" value=""  required> <!-- minlength="5" maxlength="255" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%&*_+-=?]{5,255}$" -->
                         <div class="invalid-form make-invis">
                             <p class="remove-p-margin">Must be between 5 and 255 characters, can contain letters and numbers</p>
                             <p class="make-invis remove-p-margin">Must contain appropiate email suffix (.com, .edu, .net)</p>
                             <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
-                            <!-- <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p> -->
                         </div>
                     </div>
                     
@@ -116,11 +111,10 @@
                             <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                             <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
                             <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
-                            <!-- <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p> -->
                         </div>
                     </div>
                     
-                    <!-- password check -->
+                    <!-- Password check -->
                     <div class="col-12 col-md-4">
                         <label class="" type="password" for="passwordCheck">Confirm Password:</label>
                     </div>
@@ -130,7 +124,6 @@
                             <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
                             <p class="make-invis remove-p-margin">New password and confirm new password must match</p>
                             <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/</p>
-                            <!-- <p class="make-invis remove-p-margin">Cannot contain ' " $ ,</p> -->
                         </div>
                     </div>
                 </div>
@@ -143,8 +136,9 @@
     {% block modal %}
     {% endblock %}
 
-    <!-- header holds logo, company name, and link to Home page-->
+    <!-- Site Header -->
     <header class="row no-gutters justify-content-center picnic-pattern blank-anchor">
+        <!-- Logo -->
         <div class="col-10 col-md-4 logo-background">
             <a href="{{ url_for('index') }}">
                 <h1 class="header-text-1">Fat</h1>
@@ -153,6 +147,7 @@
         </div>
     </header>
 
+    <!-- Main nav bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-nav yanone-text">
         <a class="navbar-brand" href="{{ url_for('index') }}">
             <img src="{{ url_for('static', filename='images/s_raccoon_face.svg') }}" alt="Fat raccoon face" style="width:50px;">
@@ -160,7 +155,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 {% if request.endpoint == "index" %}
@@ -216,8 +210,8 @@
                 {% endif %}
             </ul>
             <form class="form-inline my-2 my-lg-0 nav-search" method="POST" action="{{ url_for('search_bar_returns', search='user_search') }}">
-                <input style="display: inline-block;" class="form-control mr-sm-2" name="userSearch" type="search" placeholder="Search" aria-label="Search">
-                <button style="display: inline-block;" class="btn btn-outline-info my-3 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" name="userSearch" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-info my-3 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </nav>
@@ -258,6 +252,7 @@
                         <!-- Facebook link -->
                         <li class=" col-6 col-sm-3">
                             <div class="social-position">
+                                <!-- Cup art -->
                                 <div class="liquid"></div>
                                 <div class="glass"></div>
                                 <div class="glass-shadow"></div>
@@ -265,6 +260,7 @@
                                 <a href="https://www.facebook.com/" target="_blank" aria-label="External link to Fat Raccoon's Facebook" rel="noopener">
                                     <i class="fab fa-facebook-square social-link" aria-hidden="true"></i>
                                 </a>
+                                <!-- Napkin art -->
                                 <div class="napkin-out-container">
                                     <div class="napkin-shadow"></div>
                                     <div class="napkin-border-lines"></div>
@@ -277,6 +273,7 @@
                         <!-- Instagram link -->
                         <li class=" col-6 col-sm-3">
                             <div class="social-position">
+                                <!-- Cup art -->
                                 <div class="liquid"></div>
                                 <div class="glass"></div>
                                 <div class="glass-shadow"></div>
@@ -284,6 +281,7 @@
                                 <a href="https://www.instagram.com/" target="_blank" aria-label="External link to Fat Raccoon's Instagram" rel="noopener">
                                     <i class="fab fa-instagram social-link" aria-hidden="true"></i>
                                 </a>
+                                <!-- Napkin art -->
                                 <div class="napkin-out-container">
                                     <div class="napkin-shadow"></div>
                                     <div class="napkin-border-lines"></div>
@@ -296,6 +294,7 @@
                         <!-- Pinterest Link -->
                         <li class=" col-6 col-sm-3">
                             <div class="social-position">
+                                <!-- Cup art -->
                                 <div class="liquid"></div>
                                 <div class="glass"></div>
                                 <div class="glass-shadow"></div>
@@ -303,6 +302,7 @@
                                 <a href="https://www.pinterest.com/" target="_blank" aria-label="External link to Fat Raccoon's Pinterest" rel="noopener">
                                     <i class="fab fa-pinterest-square social-link" aria-hidden="true"></i>
                                 </a>
+                                <!-- Napkin art -->
                                 <div class="napkin-out-container">
                                     <div class="napkin-shadow"></div>
                                     <div class="napkin-border-lines"></div>
@@ -315,6 +315,7 @@
                         <!-- Twitter link -->
                         <li class=" col-6 col-sm-3">
                             <div class="social-position">
+                                <!-- Cup art -->
                                 <div class="liquid"></div>
                                 <div class="glass"></div>
                                 <div class="glass-shadow"></div>
@@ -322,6 +323,7 @@
                                 <a href="https://twitter.com/?lang=en" target="_blank" aria-label="External link to Fat Raccoon's Twitter" rel="noopener">
                                     <i class="fab fa-twitter-square social-link " aria-hidden="true"></i>
                                 </a>
+                                <!-- Napkin art -->
                                 <div class="napkin-out-container">
                                     <div class="napkin-shadow"></div>
                                     <div class="napkin-border-lines"></div>

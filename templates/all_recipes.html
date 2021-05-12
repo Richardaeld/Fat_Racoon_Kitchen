@@ -3,47 +3,49 @@
 <article class="container-fluid generic-background">
     <div class="row no-gutters">
 
-        <!-- Sticky note per Feature -->
+        <!-- Sticky note left/right oscillates per Feature -->
         {% for feature in allFeatures %}
-        <div class="col-12 col-lg-6">
-            <div class="row no-gutters justify-content-center">
-                <!-- Adds left/right respective shadow to sticky notes-->
-                {% if feature[0] % 2 %}
-                <section class="sticky-note sticky-note-right">
-                    <div class="sticky-note-inner-div sticky-note-right-shadow large-content-height">
-                {% else %}
-                <section class="sticky-note">
-                    <div class="sticky-note-inner-div large-content-height">
-                        {% endif %}
-                        <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec blank-anchor">
-                            <!-- Feature name -->
-                            <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
-                                <h1 class="yanone-text recipe-name">{{ feature[1].name.title() }} Recipes </h1>
-                            </a>
-                            <hr class="make-space">
-                            <!-- Recipes that match feature -->
-                            {% for recipe in allRecipes %}
-                            {% if recipe.feature == feature[1].name %}
-                            <!-- Recipe -->
-                            <li class="make-invis">
-                                <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around">
-                                    <!-- Recipe name -->
-                                    <span class="col-12 col-lg-8">
-                                        <h6><strong>{{ recipe.name }}</strong>:</h6>
-                                    </span>
-                                    <!-- Recipe total cook time -->
-                                    <span class="col-12 col-lg-4 d-none d-lg-block d-xl-block">
-                                        <p>{{ recipe.time[2] }} Minutes</p>
-                                    </span>
-                                </a>
-                            </li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </section>
+            <div class="col-12 col-lg-6">
+                <div class="row no-gutters justify-content-center">
+                    <!-- Adds left respective shadow to sticky notes-->
+                    {% if feature[0] % 2 %}
+                        <section class="sticky-note sticky-note-right">
+                            <div class="sticky-note-inner-div sticky-note-right-shadow large-content-height">
+                    <!-- Adds right respective shadow to sticky notes-->
+                    {% else %}
+                        <section class="sticky-note">
+                            <div class="sticky-note-inner-div large-content-height">
+                    {% endif %}
+                                <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec blank-anchor">
+                                    <!-- Feature name -->
+                                    <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
+                                        <h1 class="yanone-text recipe-name">{{ feature[1].name.title() }} Recipes </h1>
+                                    </a>
+                                    <hr class="make-space">
+                                    <!-- Recipes that match feature -->
+                                    {% for recipe in allRecipes %}
+                                        {% if recipe.feature == feature[1].name %}
+                                            <!-- Recipe -->
+                                            <li class="make-invis">
+                                                <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around">
+                                                    <!-- Recipe name -->
+                                                    <span class="col-12 col-lg-8">
+                                                        <h6><strong>{{ recipe.name }}</strong>:</h6>
+                                                    </span>
+                                                    <!-- Recipe total cook time -->
+                                                    <span class="col-12 col-lg-4 d-none d-lg-block d-xl-block">
+                                                        <p>{{ recipe.time[2] }} Minutes</p>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </section>
+                    <!-- blank -->
+                </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 </article>
