@@ -335,7 +335,7 @@ function selectFeature(pagination){
             pagination.getElementsByTagName("li")[nonPag].classList.remove("make-invis");
         }
     // Reveals column items that need pagination
-    }else if(liLength > 5) {
+    }else if(liLength >= 5) {
         for(let usePag = 0; usePag < 5; usePag++ ){
             pagination.getElementsByTagName("li")[usePag].classList.remove("make-invis");
         }
@@ -415,19 +415,34 @@ function selectFeature(pagination){
                 paginationNumber.classList.add("pagination-selected");
                 let firstEllipLoc = paginationNumber.parentElement.getElementsByClassName("first-ellipses")[0];
                 let lastEllipLoc = paginationNumber.parentElement.getElementsByClassName("last-ellipses")[0];
-                //hides unused pagination and reveals appropiate ellipses
-                for(let invisPagNum = 0; invisPagNum < paginationTotal; invisPagNum++){
+                if (paginationTotal > 3){
+                    //hides unused pagination and reveals appropiate ellipses
+                    for(let invisPagNum = 0; invisPagNum < paginationTotal; invisPagNum++){
+                        // Removes pagination 1 greater than clicked pagination and adds ellipses
+                        // if first pagination number is chosen, reaveals 2 greater than total and adds end ellipses
+                        if(parseInt(paginationNumber.textContent) == 1){
+                            if (parseInt(paginationNumber.textContent) +2 < parseInt(pagNumLoc[invisPagNum].textContent) ){
+                                pagNumLoc[invisPagNum].classList.add("make-invis");
+                                lastEllipLoc.classList.remove("make-invis");
+                            }
+                        // Removes pagination 1 greater than clicked pagination and adds ellipses
+                        } else if(parseInt(paginationNumber.textContent) +1 < parseInt(pagNumLoc[invisPagNum].textContent) ){
+                            pagNumLoc[invisPagNum].classList.add("make-invis");
+                            lastEllipLoc.classList.remove("make-invis");
+                        }
 
-                    // Removes pagination 2 greater than clicked pagination and adds ellipses
-                    if(parseInt(paginationNumber.textContent) +1 < parseInt(pagNumLoc[invisPagNum].textContent) ){
-                        pagNumLoc[invisPagNum].classList.add("make-invis");
-                        lastEllipLoc.classList.remove("make-invis");
-                    }
-                    
-                    // Removes pagination 2 lesser than clicked pagination and adds ellipses
-                    if(parseInt(paginationNumber.textContent) -1 > parseInt(pagNumLoc[invisPagNum].textContent) ){
-                        pagNumLoc[invisPagNum].classList.add("make-invis");
-                        firstEllipLoc.classList.remove("make-invis");
+                        // Removes pagination 1 lesser than clicked pagination and adds start ellipses 
+                        // if last pagination number is chosen, reaveals 2 lesser than total and adds start ellipses
+                        if(parseInt(paginationNumber.textContent) == paginationTotal){
+                            if(parseInt(paginationNumber.textContent) -2 > parseInt(pagNumLoc[invisPagNum].textContent)){
+                                pagNumLoc[invisPagNum].classList.add("make-invis");
+                                firstEllipLoc.classList.remove("make-invis");    
+                            }
+                        // Removes pagination 1 lesser than clicked pagination and adds ellipses
+                        }else if (parseInt(paginationNumber.textContent) -1 > parseInt(pagNumLoc[invisPagNum].textContent) ){
+                            pagNumLoc[invisPagNum].classList.add("make-invis");
+                            firstEllipLoc.classList.remove("make-invis");
+                        }        
                     }
                 }
 
@@ -437,7 +452,7 @@ function selectFeature(pagination){
                 } else if(pagNumLoc[parseInt(paginationTotal)-1].classList.contains('make-invis') != true){
                     lastEllipLoc.classList.add("make-invis");
                 }
-            });     
+            });
         // Selects first pagination number
         pagination.parentElement.getElementsByClassName("pagination-number")[0].classList.add("pagination-selected")
         }
