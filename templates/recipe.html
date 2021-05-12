@@ -82,12 +82,12 @@
                             <!-- Recipe favorite button -->
                             {% if favoriteRecipe != None %}
                             <!--  Recipe favorite button  -->
-                            <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}" class="max-width blank-anchor make-space favorite">
+                            <a href="{{ url_for('addFavorite', recipeId=recipeInfo._id, favoriteChange=favoriteRecipe) }}" class="max-width blank-anchor favorite">
                                 {% if favoriteRecipe == True %}
-                                <p>Favorite!</p>
+                                <p class="make-space">Favorite!</p>
                                 <img src="{{ url_for('static', filename='images/star-full.svg') }}" alt="Favorite icon">
                                 {% elif favoriteRecipe == False %}
-                                <p>Not a Favorite</p>
+                                <p class="make-space">Not a Favorite</p>
                                 <img src="{{ url_for('static', filename='images/star-outline.svg') }}" alt="Unfavorite icon">
                                 {% endif %}
                             </a>
