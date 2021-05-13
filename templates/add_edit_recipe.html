@@ -38,18 +38,41 @@
                 </div>
                 <hr class="make-space">
 
+                {% if recipeInfo.name == "" %}
                 <!--  Recipe Name  -->
                 <div class="col-12 form-input-spacing">
                     <label for="name">Recipe Name</label>
                     <input class="formValidation form-invalid-view recipeGeneralValidation form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
+                    <div class="invalid-form make-invis">
+                        <p class="remove-p-margin">Must be between 5 and 100 characters</p>
+                        <p class="make-invis remove-p-margin"></p>
+                        <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-12 form-input-spacing">
+                    <label for="name">Recipe Name</label>
+                    <input class="formValidation recipeGeneralValidation form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
                     <div class="invalid-form form-is-valid make-invis">
                         <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
                         <p class="make-invis remove-p-margin"></p>
                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
                     </div>
                 </div>
+                {% endif %}
 
+                {% if recipeInfo.name == "" %}
                 <!--  Prep Time  -->
+                <div class="col-12 col-md-3 form-input-spacing">
+                    <label for="time1">Prep (Mins)</label>
+                    <input class="formValidation form-invalid-view time form-center-text timeValidation" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
+                    <div class="invalid-form make-invis">
+                        <p class="remove-p-margin">Cannot exceed 999 minutes or contain letters</p>
+                        <p class="make-invis remove-p-margin"></p>
+                        <p class="make-invis remove-p-margin">Can only contain whole numbers</p>
+                    </div>
+                </div>
+                {% else %}
                 <div class="col-12 col-md-3 form-input-spacing">
                     <label for="time1">Prep (Mins)</label>
                     <input class="formValidation time form-center-text timeValidation" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
@@ -59,6 +82,7 @@
                         <p class="make-invis remove-p-margin">Can only contain whole numbers</p>
                     </div>
                 </div>
+                {% endif %}
 
                 <!--  Cook Time  -->
                 <div class="col-12 col-md-3 form-input-spacing">
@@ -137,7 +161,7 @@
                 {% endif %} 
 
                 <!-- Recipe description -->
-                {% if recipeIngEnum|length == 1 %}
+                {% if recipeInfo.name == "" %}
                     <!-- New Recipe -->
                     <div class="col-12 form-input-spacing">
                         <label for="text">Recipe Description</label>
@@ -179,7 +203,7 @@
                 <div class="col-12 ingredientAddRemoveLocation form-input-spacing">
                     {% if recipeIngEnum|length != 0 %}
                         <input class="make-invis" type="text" name="ingredientsTotal" id="ingredientsTotal" value="{{ recipeIngEnum[-1][0] + 1 }}">
-                        {% if recipeIngEnum|length == 1 %}
+                        {% if recipeInfo.name == "" %}
                             <!-- New Recipe -->
                             {% for ingredient in recipeIngEnum %}
                                 <div class="step-ingredient-spacing">
@@ -227,7 +251,7 @@
                 <div class="col-12 stepAddRemoveLocation form-input-spacing">
                     {% if recipeSteEnum|length != 0 %}
                         <input class="make-invis" type="text" name="stepsTotal" id="stepsTotal" value="{{ recipeSteEnum[-1][0] + 1}}">
-                        {% if recipeSteEnum|length == 1 %}
+                        {% if recipeInfo.name == "" %}
                             <!-- New Recipe -->
                             {% for step in recipeSteEnum %}
                                 <div class="step-ingredient-spacing">
