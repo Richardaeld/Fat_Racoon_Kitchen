@@ -314,6 +314,9 @@ def search_bar_returns(search):
 @app.route("/search_user_recipes/<search>")
 def search_user_recipes(search):
     userInfo = rae.call_user()
+    if userInfo[search] == []:
+        return render_template(
+            "search_bar_returns.html", findRecipes=list(enumerate([])))
     findUserSelectedRecipes = {}
     findUserSelectedRecipes["$or"] = []
     for recipe in userInfo[search]:
