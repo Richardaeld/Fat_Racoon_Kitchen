@@ -22,7 +22,7 @@
 
                 <!-- User Name -->
                 <div class="col-12 col-xl-6 form-input-spacing">
-                    <label  type="text" for="username">Name</label>
+                    <label for="username">Name</label>
                     <input class="formValidation nameValidation" type="text" id="username" name="username" value="{{ userInfo.username.title() }}"  invalid required> <!-- minlength="5" maxlength="100" pattern="^[a-zA-Z0-9%_$]{5,100}$" -->
                     <div class="invalid-form form-is-valid make-invis">
                         <p class="make-invis remove-p-margin">Must be between 5 and 100 characters, can contain letters and numbers</p>
@@ -33,8 +33,8 @@
 
                 <!-- Email -->
                 <div class="col-12 col-xl-6 form-input-spacing">
-                    <label  type="text" for="email">Email</label>
-                    <input class="formValidation emailValidation" type="email" id="email" name="email" value="{{ userInfo.email }}"  invalid required> <!-- minlength="5" maxlength="255" pattern="^[a-zA-Z0-9@.%$]{5,255}$" -->
+                    <label for="email">Email</label>
+                    <input class="formValidation emailValidation" type="text" id="email" name="email" value="{{ userInfo.email }}"  invalid required> <!-- minlength="5" maxlength="255" pattern="^[a-zA-Z0-9@.%$]{5,255}$" -->
                     <div class="invalid-form form-is-valid make-invis">
                         <p class="make-invis remove-p-margin">Must be between 5 and 255 characters, can contain letters and numbers</p>
                         <p class="make-invis remove-p-margin">Must contain appropiate email suffix (.com, .edu, .net)</p>
@@ -44,7 +44,7 @@
 
                 <!--  avatar  -->
                 <div class="col-12 col-xl-6 form-input-spacing">
-                    <label type="text" for="avatar">Avatar</label>
+                    <label for="avatar">Avatar</label>
                     <input type="file" name="avatar" id="avatar" class="avatar-upload-user clickable">
                     <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
                     <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
@@ -91,7 +91,7 @@
 
                 <!-- Bio -->
                 <div class="col-12 form-input-spacing">
-                    <label  type="text" for="bio">Bio</label>
+                    <label for="bio">Bio</label>
                     <textarea class="formValidation textValidation" name="bio" id="bio" cols="30" rows="5" >{{ userInfo.bio }}</textarea> <!-- minlength="0" maxlength="400" pattern="^[a-zA-Z0-9_&%$#]{8,120}$" -->
                     <div class="invalid-form form-is-valid make-invis">
                         <p class="make-invis remove-p-margin">Must be between 0 and 400 characters</p>

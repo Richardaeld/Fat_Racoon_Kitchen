@@ -40,7 +40,7 @@
 
                 <!--  Recipe Name  -->
                 <div class="col-12 form-input-spacing">
-                    <label type="text" for="name">Recipe Name</label>
+                    <label for="name">Recipe Name</label>
                     <input class="formValidation form-invalid-view recipeGeneralValidation form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
                     <div class="invalid-form form-is-valid make-invis">
                         <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
@@ -51,26 +51,26 @@
 
                 <!--  Prep Time  -->
                 <div class="col-12 col-md-3 form-input-spacing">
-                    <label type="text" for="time1">Prep (Mins)</label>
+                    <label for="time1">Prep (Mins)</label>
                     <input class="time form-center-text" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
                 </div>
 
                 <!--  Cook Time  -->
                 <div class="col-12 col-md-3 form-input-spacing">
-                    <label type="text" for="time2">Cook (Mins)</label>
+                    <label for="time2">Cook (Mins)</label>
                     <input class="time form-center-text" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
                 </div>
 
                 <!--  Total Time  -->
                 <div class="col-12 col-md-3 form-input-spacing">
-                    <label type="text" for="time3">Total (Mins)</label>
-                    <input class="make-invis" type="text" name="timeTotal" id="timeTotal" value="4">
+                    <label for="time3">Total (Mins)</label>
+                    <input class="make-invis" type="number" name="timeTotal" id="timeTotal" value="4">
                     <input type="number" id="time3" name="time-3" value="{{ recipeInfo.time[2] }}" disabled>
                 </div>
 
                 <!-- Recipe Feature -->
                 <div class="col-12 col-xl-6 form-input-spacing">
-                    <label type="text" for="feature">Featured Ingredient</label>
+                    <label for="feature">Featured Ingredient</label>
                     <div class="select-option-size">
                         <!-- Recipe feature select/option -->
                         <select name="feature" id="feature" class="clickable">
@@ -90,7 +90,7 @@
 
                 <!-- Recipe Image -->
                 <div class="col-12 col-xl-6 form-input-spacing">
-                    <label type="text" for="avatar">Recipe Image</label>
+                    <label for="avatar">Recipe Image</label>
                     <input type="file" name="avatar" id="avatar" class="avatar-upload clickable">
                     <input type="text" name="avatar_name" id="avatar_name" class="make-invis" value="">
                     <input type="text" name="avatar_file_valid" id="avatar_file_valid" class="make-invis" value="">
@@ -100,7 +100,7 @@
                 {% if admin == True %}
                     <!--  FR Lazy Favorite and Grandparent Classic checkboxes -->
                     <div class="col-12 form-input-spacing">
-                        <legend type="text" for="avatar">Favorite/Classic/Both</legend>
+                        <legend>Favorite/Classic/Both</legend>
                         <div class="row no-gutters">
 
                             <!-- Sets checkbox for lazy -->
@@ -130,7 +130,7 @@
                 {% if recipeIngEnum|length == 1 %}
                     <!-- New Recipe -->
                     <div class="col-12 form-input-spacing">
-                        <label type="text" for="text">Recipe Description</label>
+                        <label for="text">Recipe Description</label>
                         <textarea class="formValidation form-invalid-view recipeGeneralValidation" type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
                         <div class="invalid-form make-invis">
                             <p class="remove-p-margin">Must be between 5 and 100 characters</p>
@@ -141,7 +141,7 @@
                 {% else %}
                     <!-- Existing recipe -->
                     <div class="col-12 form-input-spacing">
-                        <label type="text" for="text">Recipe Description</label>
+                        <label for="text">Recipe Description</label>
                         <textarea class="formValidation recipeGeneralValidation" type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
                         <div class="invalid-form form-is-valid make-invis">
                             <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
@@ -154,7 +154,7 @@
                 <!-- Recipe ingredients -->
                 <div class="col-12">
                     <!-- Header -->
-                    <label type="text" for="ingredients" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>
+                    <label for="ingredients-1" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>
                     <!-- Add Button -->
                     <div class="recipeAddButton clickable form-button make-space-margin">
                         <p class="remove-p-margin">Add</p>
@@ -202,7 +202,7 @@
                 <!-- Recipe steps -->
                 <div class="col-12">
                     <!-- Header -->
-                    <label type="text" for="steps" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
+                    <label for="steps-1" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
                     <!-- Add Button -->
                     <div class="stepAddButton clickable form-button make-space-margin">
                         <p class="remove-p-margin ">Add</p>
@@ -222,7 +222,7 @@
                             {% for step in recipeSteEnum %}
                                 <div class="step-ingredient-spacing">
                                     <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
-                                    <textarea class="countSteps form-invalid-view formValidation recipeGeneralValidation" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                                    <textarea class="countSteps form-invalid-view formValidation recipeGeneralValidation" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
                                     <div class="invalid-form make-invis">
                                         <p class="remove-p-margin">Must be between 5 and 100 characters</p>
                                         <p class="make-invis remove-p-margin"></p>
@@ -235,7 +235,7 @@
                             {% for step in recipeSteEnum %}
                                 <div class="step-ingredient-spacing">
                                     <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
-                                    <textarea class="countSteps formValidation recipeGeneralValidation" type="text" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                                    <textarea class="countSteps formValidation recipeGeneralValidation" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
                                     <div class="invalid-form form-is-valid make-invis">
                                         <p class="make-invis remove-p-margin">Must be between 5 and 100 characters</p>
                                         <p class="make-invis remove-p-margin"></p>
