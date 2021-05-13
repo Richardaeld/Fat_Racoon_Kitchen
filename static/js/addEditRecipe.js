@@ -1,9 +1,4 @@
-//--------------------------------------------------------update validation and change variables  -------------------------------------------------
-
-
-// ---- Form Validation for passwords
 //form REGEX
-// const matchAcceptedInput = /[]/;
 const matchTypeUpper = /[A-Z]/;
 const matchTypeLower = /[a-z]/;
 const matchTypeNumber = /[0-9]/;
@@ -19,9 +14,10 @@ const matchTypeDotOrg = /.org/;
 var formIsValid = false;  // Presets validation for initial run
 
 // ----- Final Validation check
-// Sets or removes invalid bubble and invalid attributes
+// Adds/Removes disabled from submit button according to invalids found on form
+// Adds/Removes parent validation container to be visible or invisible for invalid commits
+// Adds/Removes invalid color to input container
 function finalValidation(validationLoc) {
-
     let findFormInputs = document.querySelectorAll(validationLoc);
     findFormInputs.forEach(selectFormInputs);
     function selectFormInputs(finalVal) {
@@ -29,7 +25,7 @@ function finalValidation(validationLoc) {
         currentFormValid = true // Sets macro form validation setting
 
         let checkPLength = finalVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
-        //enables and disables validation bubble according to if input is valid or not
+        // Searches form for invalid input and sets Global/Macro validation
         for (let i=0; i< checkPLength.length; i++){
             let validCheck = finalVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")
             if(validCheck == false){
@@ -38,19 +34,20 @@ function finalValidation(validationLoc) {
             }
         }
 
-        // Validates on global form
+        // Adds/Removes disable to submit button according to validation (Global Validation)
         if(formIsValid) {
             document.getElementById("custom-button").removeAttribute("disabled");
         } else {
             document.getElementById("custom-button").setAttribute("disabled", "");
         }
-        // Validates on macro level
+        // Adds/Removes invalid color
+        // Adds/Removes parent validation container's abaility to display (Macro Validation)
         if (currentFormValid) {
             finalVal.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid");
             finalVal.removeAttribute("invalid");
             finalVal.classList.remove("form-invalid-view");
         } else {
-            // Reveals box if form invalidates
+            // Reveals parent validation container of clicked item if form invalidates
             if (document.activeElement == finalVal){
                 finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
             }
@@ -61,133 +58,51 @@ function finalValidation(validationLoc) {
     }
 }
 
-
-
-// ---------------------------------------------add responsiveness to dynamic forms
-        
-function addValidation (validationLoc, validationSelector) {
-        let valLocPara = validationLoc.parentElement.getElementsByTagName("p");
-        // Makes validation bubble visible on focus 
-        validationLoc.addEventListener("focus", function (stopme) {
-            validCheck = true
-            let checkPLengthTemp = validationLoc.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
-            
-            //enables and disables validation bubble according to if input is valid or not
-            for (let i=0; i< checkPLengthTemp.length; i++){
-                // Sets a validation variable as it checks over all possible invalidation points
-                validCheck = validationLoc.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")
-                if(validCheck == false){
-                    formIsValid = false;
-                }
-            }
-
-            if (formIsValid == false) {
-                validationLoc.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis");
-            }
-        });
-
-
-
-        // Makes validation bubble hidden on blur
-        validationLoc.addEventListener("blur", invisInvalidation)
-        function invisInvalidation() {
-            validationLoc.parentElement.getElementsByTagName("div")[0].classList.add("make-invis");
-        }
-
-
-        // Applies validation check on every keyup stroke
-        validationLoc.addEventListener("keyup", validateOnKeyStroke)
-        function validateOnKeyStroke () {
-            // Checks for acceptiable characters
-            for (i=0; i< validationLoc.value.length; i++){
-                char = validationLoc.value[i]
-                if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeTextCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null  && char.match(matchTypeNumber) == null) {
-                    valLocPara[2].classList.remove("make-invis");
-                    break
-                } else {
-                    valLocPara[2].classList.add("make-invis");
-                }
-            }
-
-            // Validation for text
-            if(validationSelector === "text"){
-                if(validationLoc.value.length >= 0 && validationLoc.value.length <= 400){
-                    valLocPara[0].classList.add("make-invis");
-                }else{
-                    valLocPara[0].classList.remove("make-invis");
-                }
-            }
-
-            // Validation for general recipe text
-            if(validationSelector === "recipeGeneral"){
-                if(validationLoc.value.length >= 5 && validationLoc.value.length <= 100){
-                    valLocPara[0].classList.add("make-invis");
-                }else{
-                    valLocPara[0].classList.remove("make-invis");
-                }
-            }
-
-            // final validation of form
-            formIsValid = true;
-            finalValidation(".formValidation");
-
-        }
-    }
-
-
-// ---------------------------------------------------------------------------------
-
-
-
-
-
 // ---- Base Validation starting point
 // basic (start) validation function
 function baseValidation (inputSelector, validationSelector, userInputType) {
     var findPasswords = document.querySelectorAll(inputSelector);
     findPasswords.forEach(selectPasswords);
     function selectPasswords(baseVal){
-        let baseValPara = baseVal.parentElement.getElementsByTagName("p");
+        let baseValPara = baseVal.parentElement.getElementsByTagName("p");  // Finds the location of the invalid commits
 
         // Makes validation bubble visible on focus 
-        baseVal.addEventListener("focus", function (stopme) {
-            validCheck = true
+        baseVal.addEventListener("focus", function() {
+            validCheck = true  // Presets valitation to valid
             let checkPLengthTemp = baseVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
-            
-            //enables and disables validation bubble according to if input is valid or not
+            // Enables validation bubble according to Macro Validation
             for (let i=0; i< checkPLengthTemp.length; i++){
-                // Sets a validation variable as it checks over all possible invalidation points
-                validCheck = baseVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")
+                validCheck = baseVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")  // Sets variable according to if its valid
+                // Sets Macro Validation variable
                 if(validCheck == false){
                     formIsValid = false;
                 }
             }
-
+            // Disables validation bubble according to Macro Validation
             if (formIsValid == false) {
                 baseVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis");
             }
         });
 
-        // Makes validation bubble hidden on blur
-        baseVal.addEventListener("blur", invisInvalidation)
-        function invisInvalidation() {
+        // Hides validation bubble on blur
+        baseVal.addEventListener("blur", function() {
             baseVal.parentElement.getElementsByTagName("div")[0].classList.add("make-invis");
-        }
+        });
 
         // Applies validation check on every keyup stroke
-        baseVal.addEventListener("keyup", validateOnKeyStroke)
-        function validateOnKeyStroke () {
-            // Replaces all spaces with '_'
-            if(validationSelector !== "text" && validationSelector !== "recipeGeneral"){
+        baseVal.addEventListener("keyup", function () {
+            if(validationSelector !== "text" || validationSelector !=="recipeGeneral"){
+                // Replaces all spaces with '_'
                 if(baseVal.value.match(matchTypeSpaces)){
                     baseVal.value = baseVal.value.replace(matchTypeSpaces, "_");
                 } 
             }
             
-            // Checks for acceptiable characters
+            // Iterates over all individual input characters
             for (i=0; i< baseVal.value.length; i++){
-                char = baseVal.value[i]
-                if (validationSelector === "text" || validationSelector === "recipeGeneral"){
+                char = baseVal.value[i]  // Character being checked
+                if (validationSelector === "text" || validationSelector === "recipeGeneral" ){
+                // Checks for improper characters and sets validation
                     if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeTextCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null  && char.match(matchTypeNumber) == null) {
                         baseValPara[2].classList.remove("make-invis");
                         break
@@ -204,7 +119,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 }
             }
 
-            // Validation for text
+            // Validation for text character total
             if(validationSelector === "text"){
                 if(baseVal.value.length >= 0 && baseVal.value.length <= 400){
                     baseValPara[0].classList.add("make-invis");
@@ -213,7 +128,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 }
             }
 
-            // Validation for text
+            // Validation for recipeGeneral character total
             if(validationSelector === "recipeGeneral"){
                 if(baseVal.value.length >= 5 && baseVal.value.length <= 100){
                     baseValPara[0].classList.add("make-invis");
@@ -223,19 +138,16 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
             }
 
             // Validation for password
-            if(validationSelector === "password"){
-
-                // Validates the form if correct amount of upper character, total characters and number are found
+            if(validationSelector === "password"){    
+                // Validates the form if correct amount of upper character, total characters, numbers and total characters are found
                 if(baseVal.value.match(matchTypeUpper) && baseVal.value.match(matchTypeLower) && baseVal.value.match(matchTypeNumber) && baseVal.value.length >= 8 && baseVal.value.length <= 20){
                     baseValPara[0].classList.add("make-invis");
                 }else{
                     baseValPara[0].classList.remove("make-invis");
                 }
-
             // Validation for email
             } else if(validationSelector === "email") {
-
-                // Validates for length
+                // Validates for total characters found
                 if (baseVal.value.length >= 4 && baseVal.value.length <= 255){
                     baseValPara[0].classList.add("make-invis");
                 } else {
@@ -245,7 +157,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 // Validates for email suffix ('.com', '.edu', '.net') and '@'
                 let emailLength = baseVal.value.length;
                 if  (emailLength >= 4 ){
-                    var checkEmailValue = "";
+                    var checkEmailValue = "";   // Presets string to add suffix email to
                     // Uses last 4 digits to check for suffix
                     for (let i = 3; i >= 0; i--){
                         checkEmailValue += baseVal.value[(emailLength - 1) - i];
@@ -267,6 +179,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                     }
                 }
 
+
             //Validates for name/username
             } else if (validationSelector === "name"){
                 // Validates if correct amount of characters present
@@ -281,7 +194,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
             formIsValid = true;
             finalValidation(".formValidation");
 
-        }
+        });
     }
 }
 
@@ -298,8 +211,79 @@ baseValidation(".recipeGeneralValidation", "recipeGeneral", "keyup"); // keyboar
 
 
 
+// ---------------------------------------------add responsiveness to dynamic forms
+function addValidation (validationLoc, validationSelector) {
+        let valLocPara = validationLoc.parentElement.getElementsByTagName("p");  // Finds the location of the invalid commits
+        // Makes validation bubble visible on focus 
+        validationLoc.addEventListener("focus", function () {
+            validCheck = true  // Presets valitation to valid
+            let checkPLengthTemp = validationLoc.parentElement.getElementsByTagName("p");  // Finds all p's to iterate validation over
+            
+            // Enables validation bubble according to Macro Validation
+            for (let i=0; i< checkPLengthTemp.length; i++){
+                // Sets a validation variable as it checks over all possible invalidation points
+                validCheck = validationLoc.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")  // Sets variable according to if its valid
+                // Sets Macro Validation variable
+                if(validCheck == false){
+                    formIsValid = false;
+                }
+            }
+            // Disables validation bubble according to Macro Validation
+            if (formIsValid == false) {
+                validationLoc.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis");
+            }
+        });
+        // Hides validation bubble on blur
+        validationLoc.addEventListener("blur", invisInvalidation)
+        function invisInvalidation() {
+            validationLoc.parentElement.getElementsByTagName("div")[0].classList.add("make-invis");
+        }
+        // Applies validation check on every keyup stroke
+        validationLoc.addEventListener("keyup", validateOnKeyStroke)
+        function validateOnKeyStroke () {
+            // Iterates over all individual input characters
+            for (i=0; i< validationLoc.value.length; i++){
+                char = validationLoc.value[i]  // Character being checked
+                // Checks for improper characters and sets validation
+                if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeTextCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null  && char.match(matchTypeNumber) == null) {
+                    valLocPara[2].classList.remove("make-invis");
+                    break
+                } else {
+                    valLocPara[2].classList.add("make-invis");
+                }
+            }
+
+            // Validation for text character total
+            if(validationSelector === "text"){
+                if(validationLoc.value.length >= 0 && validationLoc.value.length <= 400){
+                    valLocPara[0].classList.add("make-invis");
+                }else{
+                    valLocPara[0].classList.remove("make-invis");
+                }
+            }
+
+            // Validation for recipeGeneral character total
+            if(validationSelector === "recipeGeneral"){
+                if(validationLoc.value.length >= 5 && validationLoc.value.length <= 100){
+                    valLocPara[0].classList.add("make-invis");
+                }else{
+                    valLocPara[0].classList.remove("make-invis");
+                }
+            }
+            // final validation of form
+            formIsValid = true;
+            finalValidation(".formValidation");
+        }
+    }
+
+
+// ---------------------------------------------------------------------------------
+
+
+
+
 // ---- General ----
-// ----Removes all flash messages after 7 seconds
+// ----Removes all flash messages after 10 seconds
 if (document.getElementById("flash").getElementsByTagName("div")[0]){
     setTimeout( function () {
         let flashRm = document.querySelectorAll(".flash").length;
@@ -345,7 +329,7 @@ function selectLinks (link) {
 var findTime = document.querySelectorAll(".time");
 findTime.forEach(useTime);
 function useTime(updateTime){
-    updateTime.addEventListener("change", function (changeTime) {
+    updateTime.addEventListener("change", function () {
         //Finds prep and cook time
         let time1 = document.getElementById("time1").value;
         let time2 = document.getElementById("time2").value;
@@ -374,14 +358,9 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         arrayIngredientLength++;
         updateBoxCounters();
 
-        // Box structure: div(div(span, input))
-        // Creation of elements and adding of content
+        // Creation of elements and adding of content into new step/ingredient content
         let createContainer = document.createElement("div");
         createContainer.className = "step-ingredient-spacing";
-        // let createDivRow = document.createElement("div");
-        // createDivRow.className = " "; // row no-gutters align-items-center
-        // let createSpan = document.createElement("span");
-        // createSpan.className = "col";
         let createH6 = document.createElement("h6");
         createH6.classList = "reduce-h6"
         let validationDiv = document.createElement("div")
@@ -395,8 +374,6 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         let val3P = document.createElement("p")
         val3P.textContent = "Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/" + '",';
         val3P.classList = "make-invis remove-p-margin"
-        // let createSpanP = document.createElement("p");
-        // createSpanP.textContent = arrayIngredientLength + ". ";
         let createInput = document.createElement(inputOrTextarea);
         createInput.className = "formValidation recipeGeneralValidation"; //col-10
         createInput.id = arrayClass + arrayIngredientLength;
@@ -404,13 +381,10 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         createInput.type = "text";
         // Adds extra classes if textarea
         if(inputOrTextarea == "textarea"){
-            // createSpanP.textContent =  "Step " + arrayIngredientLength;
             createH6.textContent =  "Step " + arrayIngredientLength;
             createInput.rows = "3";
             createInput.cols = "20";
         } else {
-            // createInput.pattern = "[a-zA-z0-9!,*.?=+-_/#%&]+{0,255}"
-            // createSpanP.textContent = "Ingredient " + arrayIngredientLength;
             createH6.textContent = "Ingredient " + arrayIngredientLength;
         }
 
@@ -418,30 +392,16 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         addRemoveLocation.appendChild(createContainer);
         // Creates Variable for insert location and inserts complete box structure
         let innerDivLoc = addRemoveLocation.getElementsByTagName("div").length;
-        // addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createDivRow);
-        // addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(createSpanP);
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createH6);
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(createInput);
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].appendChild(validationDiv);
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(val1P);
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(val2P);
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(val3P);
-        // baseVal.addEventListener("focus", function (stopme) {
-        
-        console.log(addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].getElementsByTagName(inputOrTextarea)[0])
+        // Adds Validation to newly created container
         addValidation(addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].getElementsByTagName(inputOrTextarea)[0], "recipeGeneral")
-
-
-        // stopme.stopPropagation();
-        // showInvalidation.stopPropagation();
-        // validateOnKeyStroke.stopPropagation();
-        // invisInvalidation.stopPropagation();
-        // baseValidation(".recipeGeneralValidation", "recipeGeneral", "keyup"); // keyboard
     });
-// baseValidation(".recipeGeneralValidation", "recipeGeneral", "keyup"); // keyboard
-// validateOnKeyStroke
-// invisInvalidation
-// showInvalidation
+
     // Removes last box in list and updates total box count when remove button is clicked
     document.querySelector(removeButton).addEventListener("click", function() {
         // Defensive, forces users to keep a single box on page
@@ -454,14 +414,15 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         }
     });
 }
+
 //Creates functionality for ingredient add/remove buttons
 createRemoveFormBoxes("ingredientAddRemoveLocation", "ingredientNumber", ".recipeAddButton", "ingredients-", ".recipeRemoveButton", "input", "ingredientsTotal" ,".countIngredients");
 //Creates functionality for step add/remove buttons
 createRemoveFormBoxes("stepAddRemoveLocation", "stepNumber", ".stepAddButton", "steps-", ".stepRemoveButton", "textarea", "stepsTotal", ".countSteps");
 
 // Removes disabled attribute tag when submit button is pushed so information can be accessed
-// If new avatar image present sdds randomly generated image name
-document.getElementById("custom-button").addEventListener("click", function(submitForm) {
+// If new avatar image present adds randomly generated avatar name
+document.getElementById("custom-button").addEventListener("click", function() {
     document.getElementById("avatar_name").setAttribute("value", imageName);
     document.getElementById("time3").removeAttribute("disabled");
     // If new avatar present gives it a random generation name

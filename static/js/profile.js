@@ -1,5 +1,5 @@
 // ---- General ----
-// ----Removes all flash messages after 7 seconds
+// ----Removes all flash messages after 10 seconds
 if (document.getElementById("flash").getElementsByTagName("div")[0]){
     setTimeout( function () {
         let flashRm = document.querySelectorAll(".flash").length;

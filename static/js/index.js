@@ -90,7 +90,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
     var findPasswords = document.querySelectorAll(inputSelector);
     findPasswords.forEach(selectPasswords);
     function selectPasswords(baseVal){
-        let baseValPara = baseVal.parentElement.getElementsByTagName("p"); //  Finds the location of the invalid commits
+        let baseValPara = baseVal.parentElement.getElementsByTagName("p"); // Finds the location of the invalid commits
 
         // Makes validation bubble visible on focus 
         baseVal.addEventListener("focus", function() {
