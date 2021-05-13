@@ -52,13 +52,23 @@
                 <!--  Prep Time  -->
                 <div class="col-12 col-md-3 form-input-spacing">
                     <label for="time1">Prep (Mins)</label>
-                    <input class="time form-center-text" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
+                    <input class="formValidation time form-center-text timeValidation" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
+                    <div class="invalid-form form-is-valid make-invis">
+                        <p class="make-invis remove-p-margin">Cannot exceed 1000 minutes</p>
+                        <p class="make-invis remove-p-margin"></p>
+                        <p class="make-invis remove-p-margin">Can only contain whole numbers</p>
+                    </div>
                 </div>
 
                 <!--  Cook Time  -->
                 <div class="col-12 col-md-3 form-input-spacing">
                     <label for="time2">Cook (Mins)</label>
-                    <input class="time form-center-text" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
+                    <input class="formValidation time form-center-text timeValidation" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
+                    <div class="invalid-form form-is-valid make-invis">
+                        <p class="make-invis remove-p-margin">Cannot exceed 1000 minutes</p>
+                        <p class="make-invis remove-p-margin"></p>
+                        <p class="make-invis remove-p-margin">Can only contain whole numbers</p>
+                    </div>
                 </div>
 
                 <!--  Total Time  -->
