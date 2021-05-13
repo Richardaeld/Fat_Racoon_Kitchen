@@ -276,7 +276,7 @@ function baseValidation (inputSelector, validationSelector) {
                 }
             }
             // Final validation of form
-            // Not STD, finalValidation(".formValidation") call for addEditRecipe.js and editUserInfo.je ONLY
+            // Not STD, finalValidation(".formValidation") call for addEditRecipe.js and editUserInfo.js ONLY
             formIsValid = true;
             finalValidation(".formValidation");
         });
