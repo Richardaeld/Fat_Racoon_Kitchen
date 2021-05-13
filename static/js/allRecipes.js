@@ -378,7 +378,7 @@ function selectFeature(pagination){
         // Sets inline height to stop collapsing on last pagination number
         pagination.style.height = pagination.offsetHeight + "px";
 
-        // Inserts UL to DOM with all appropiate LI
+        // Inserts pagination UL into DOM with all appropiate LI
         pagination.insertAdjacentElement('afterend', createUl);
 
         // Finds all points where a pagination li was created
@@ -399,7 +399,7 @@ function selectFeature(pagination){
                 // Find pagination number position
                 let paginationPosition = 5 * (parseInt(paginationNumber.textContent)- 1);
                 let paginationLi = pagination.getElementsByTagName("li");
-                // Hides all items that are invisible
+                // Hides all items that are visible
                 for(let allInvis = 0; allInvis < liLength; allInvis++ ){
                     paginationLi[allInvis].classList.add("make-invis");
                 }
@@ -413,7 +413,7 @@ function selectFeature(pagination){
 
                 var paginationTotal = paginationNumber.parentElement.getElementsByClassName("pagination-number").length;
                 let pagNumLoc = paginationNumber.parentElement.getElementsByClassName("pagination-number");
-                //reveals all pagination if invisible and removes selected pagination class
+                //reveals all pagination and removes selected pagination class
                 for(let revealPagNum = 0; revealPagNum < paginationTotal; revealPagNum++){
                     pagNumLoc[revealPagNum].classList.remove("make-invis");
                     pagNumLoc[revealPagNum].classList.remove("pagination-selected");
@@ -426,27 +426,27 @@ function selectFeature(pagination){
                 if (paginationTotal > 3){
                     //hides unused pagination and reveals appropiate ellipses
                     for(let invisPagNum = 0; invisPagNum < paginationTotal; invisPagNum++){
-                        // Removes pagination 1 greater than clicked pagination and adds ellipses
-                        // if first pagination number is chosen, reaveals 2 greater than total and adds end ellipses
+                        // Hides all pagination 1 or 2 greater than clicked pagination and adds end ellipses (if appropiate)
                         if(parseInt(paginationNumber.textContent) == 1){
+                            // If first pagination number is chosen, hides all pagination 2 greater than total and adds end ellipses (if appropiate)
                             if (parseInt(paginationNumber.textContent) +2 < parseInt(pagNumLoc[invisPagNum].textContent) ){
                                 pagNumLoc[invisPagNum].classList.add("make-invis");
                                 lastEllipLoc.classList.remove("make-invis");
                             }
-                        // Removes pagination 1 greater than clicked pagination and adds ellipses
+                        // Hides pagination 1 greater than clicked pagination and adds end ellipses (if appropiate)
                         } else if(parseInt(paginationNumber.textContent) +1 < parseInt(pagNumLoc[invisPagNum].textContent) ){
                             pagNumLoc[invisPagNum].classList.add("make-invis");
                             lastEllipLoc.classList.remove("make-invis");
                         }
 
-                        // Removes pagination 1 lesser than clicked pagination and adds start ellipses 
-                        // if last pagination number is chosen, reaveals 2 lesser than total and adds start ellipses
+                        // Hides all pagination 1 or 2 lesser than clicked pagination and adds start ellipses (if appropiate) 
                         if(parseInt(paginationNumber.textContent) == paginationTotal){
+                            // If last pagination number is chosen, hides all pagination 2 or lesser than total and adds start ellipses (if appropiate)
                             if(parseInt(paginationNumber.textContent) -2 > parseInt(pagNumLoc[invisPagNum].textContent)){
                                 pagNumLoc[invisPagNum].classList.add("make-invis");
                                 firstEllipLoc.classList.remove("make-invis");    
                             }
-                        // Removes pagination 1 lesser than clicked pagination and adds ellipses
+                        // Hides pagination 1 lesser than clicked pagination and adds start ellipses (if appropiate)
                         }else if (parseInt(paginationNumber.textContent) -1 > parseInt(pagNumLoc[invisPagNum].textContent) ){
                             pagNumLoc[invisPagNum].classList.add("make-invis");
                             firstEllipLoc.classList.remove("make-invis");
