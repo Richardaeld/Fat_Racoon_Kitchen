@@ -203,7 +203,7 @@ baseValidation(".recipeGeneralValidation", "recipeGeneral");
 
 
 
-// ---------------------------------------------add responsiveness to dynamic forms
+// Adds validation to dynamic input/textareas
 function addValidation (validationLoc, validationSelector) {
         let valLocPara = validationLoc.parentElement.getElementsByTagName("p");  // Finds the location of the invalid commits
         // Makes validation bubble visible on focus 
@@ -252,10 +252,8 @@ function addValidation (validationLoc, validationSelector) {
                 }else{
                     valLocPara[0].classList.remove("make-invis");
                 }
-            }
-
             // Validation for recipeGeneral character total
-            if(validationSelector === "recipeGeneral"){
+            } else if (validationSelector === "recipeGeneral"){
                 if(validationLoc.value.length >= 5 && validationLoc.value.length <= 100){
                     valLocPara[0].classList.add("make-invis");
                 }else{
@@ -267,12 +265,6 @@ function addValidation (validationLoc, validationSelector) {
             finalValidation(".formValidation");
         }
     }
-
-
-// ---------------------------------------------------------------------------------
-
-
-
 
 // ---- General ----
 // ----Removes all flash messages after 10 seconds
@@ -315,8 +307,6 @@ function selectLinks (link) {
     },{passive:true});
 }
 
-
-// ----addeditrecipe ----
 // ---- Changes Total Time acording to prep and cook times being changed
 var findTime = document.querySelectorAll(".time");
 findTime.forEach(useTime);
@@ -423,7 +413,6 @@ document.getElementById("custom-button").addEventListener("click", function() {
     }
 });
 
-
 // ----avatar validation ----
 // ---- Create Random Avatar name
 // Creates a random string for image name assignment
@@ -452,7 +441,6 @@ document.getElementById("avatar").addEventListener("change", function() {
     }
 });
 
-
 // ----button ----
 // ---- Button (Non-form submit buttons) ----
 let jsButtonFind = document.querySelectorAll(".custom-js-button");
@@ -473,5 +461,3 @@ function jsButtonSelect(button) {
 document.getElementById("custom-button").addEventListener("click", function () {
     document.getElementById("custom-button").classList.add("custom-button-press");
 });
-
-
