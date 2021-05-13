@@ -54,7 +54,7 @@
                     <label for="time1">Prep (Mins)</label>
                     <input class="formValidation time form-center-text timeValidation" type="number" id="time1" name="time-1" value="{{ recipeInfo.time[0] }}">
                     <div class="invalid-form form-is-valid make-invis">
-                        <p class="make-invis remove-p-margin">Cannot exceed 1000 minutes</p>
+                        <p class="make-invis remove-p-margin">Cannot exceed 999 minutes or contain letters</p>
                         <p class="make-invis remove-p-margin"></p>
                         <p class="make-invis remove-p-margin">Can only contain whole numbers</p>
                     </div>
@@ -65,7 +65,7 @@
                     <label for="time2">Cook (Mins)</label>
                     <input class="formValidation time form-center-text timeValidation" type="number" id="time2" name="time-2" value="{{ recipeInfo.time[1] }}">
                     <div class="invalid-form form-is-valid make-invis">
-                        <p class="make-invis remove-p-margin">Cannot exceed 1000 minutes</p>
+                        <p class="make-invis remove-p-margin">Cannot exceed 999 minutes or contain letters</p>
                         <p class="make-invis remove-p-margin"></p>
                         <p class="make-invis remove-p-margin">Can only contain whole numbers</p>
                     </div>
