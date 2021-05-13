@@ -40,17 +40,7 @@ function selectLinks (link) {
 }
 
 
-// ----edituserinfo ----
-// Reveals new password section
-// Defensive code to keep users from starting the validation of new passwords
-var revealPassword = document.getElementsByClassName("hidePassword");
-revealPassword[0].addEventListener("click", function() {
-    setTimeout(function() {
-        revealPassword[0].classList.add("make-invis");
-        revealPassword[1].classList.remove("make-invis");
-        revealPassword[2].classList.remove("make-invis");
-    },500);
-});
+
 
 // ---- Apply Random Avatar Name to Avatar Image
 // Adds randomly generated avatar name if new image present
@@ -148,7 +138,7 @@ function finalValidation(validationLoc) {
 
 // ---- Base Validation starting point
 // basic (start) validation function
-function baseValidation (inputSelector, validationSelector, userInputType) {
+function baseValidation (inputSelector, validationSelector) {
     var findPasswords = document.querySelectorAll(inputSelector);
     findPasswords.forEach(selectPasswords);
     function selectPasswords(baseVal){
@@ -186,7 +176,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 } 
             }
 
-            // Iterates over all individual input characters
+            // Checks all individual characters for valid character input
             for (i=0; i< baseVal.value.length; i++){
                 char = baseVal.value[i]  // Character being checked
                 if (validationSelector === "text" || validationSelector === "recipeGeneral" ){
@@ -214,19 +204,23 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 }else{
                     baseValPara[0].classList.remove("make-invis");
                 }
-            }
-
             // Validation for recipeGeneral character total
-            if(validationSelector === "recipeGeneral"){
+            } else if(validationSelector === "recipeGeneral"){
                 if(baseVal.value.length >= 5 && baseVal.value.length <= 100){
                     baseValPara[0].classList.add("make-invis");
                 }else{
                     baseValPara[0].classList.remove("make-invis");
                 }
-            }
-
+            // Validates for name/username
+            } else if (validationSelector === "name"){
+                // Validates if correct amount of characters present
+                if(baseVal.value.length >= 4 && baseVal.value.length <= 100){
+                    baseValPara[0].classList.add("make-invis");
+                } else {
+                    baseValPara[0].classList.remove("make-invis");
+                }
             // Validation for password
-            if(validationSelector === "password"){    
+            } else if (validationSelector === "password"){    
                 // Validates the form if correct amount of upper character, total characters, numbers and total characters are found
                 if(baseVal.value.match(matchTypeUpper) && baseVal.value.match(matchTypeLower) && baseVal.value.match(matchTypeNumber) && baseVal.value.length >= 8 && baseVal.value.length <= 20){
                     baseValPara[0].classList.add("make-invis");
@@ -266,35 +260,24 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                         baseValPara[1].classList.remove("make-invis");
                     }
                 }
-
-            //Validates for name/username
-            } else if (validationSelector === "name"){
-                // Validates if correct amount of characters present
-                if(baseVal.value.length >= 4 && baseVal.value.length <= 100){
-                    baseValPara[0].classList.add("make-invis");
-                } else {
-                    baseValPara[0].classList.remove("make-invis");
-                }
             }
-
-            // final validation of form
+            // Final validation of form
             formIsValid = true;
             finalValidation(".formValidation");
-
         });
     }
 }
 
-//----------------------text validation
-baseValidation(".textValidation", "text", "keyup"); // keyboard
-//----------------------email validation
-baseValidation(".emailValidation", "email", "keyup"); // keyboard
-//---------------------- name validation
-baseValidation(".nameValidation", "name", "keyup"); // keyboard
-//----------------------password validation
-baseValidation(".passwordSets", "password", "keyup"); // keyboard
-//---------------------- recipe name validation
-baseValidation(".recipeGeneralValidation", "recipeGeneral", "keyup"); // keyboard
+// Text validation
+baseValidation(".textValidation", "text");
+// Email validation
+baseValidation(".emailValidation", "email");
+// Name validation
+baseValidation(".nameValidation", "name");
+// Password validation
+baseValidation(".passwordSets", "password");
+// Recipe general content validation
+baseValidation(".recipeGeneralValidation", "recipeGeneral");
 
 // ----avatar validation ----
 // ---- Create Random Avatar name
@@ -326,6 +309,7 @@ document.getElementById("avatar").addEventListener("change", function() {
 
 
 // ----button ----
+// ---- Button (Non-form submit buttons) ----
 let jsButtonFind = document.querySelectorAll(".custom-js-button");
 jsButtonFind.forEach(jsButtonSelect);
 function jsButtonSelect(button) {
@@ -340,13 +324,28 @@ function jsButtonSelect(button) {
         }
     });
 }
+// ---- Button (form submit buttons) ----
+document.getElementById("custom-button").addEventListener("click", function () {
+    document.getElementById("custom-button").classList.add("custom-button-press");
+});
 
 // ----button  for new password ----
 let jsButtonPasswordFind = document.querySelectorAll(".custom-js-button-password");
 jsButtonPasswordFind.forEach(jsButtonPasswordSelect);
 function jsButtonPasswordSelect(passwordButton) {
-    passwordButton.addEventListener("click", function(pushPasswordButton){
+    passwordButton.addEventListener("click", function(){
         passwordButton.classList.add("custom-button-press-outer");
         passwordButton.getElementsByTagName("p")[0].classList.add("custom-button-press");
     });
 }
+
+// Reveals new password section
+// Defensive code to keep users from starting the validation of new passwords
+var revealPassword = document.getElementsByClassName("hidePassword");
+revealPassword[0].addEventListener("click", function() {
+    setTimeout(function() {
+        revealPassword[0].classList.add("make-invis");
+        revealPassword[1].classList.remove("make-invis");
+        revealPassword[2].classList.remove("make-invis");
+    },500);
+});

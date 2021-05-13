@@ -226,10 +226,13 @@ document.getElementsByClassName("modal-background")[0].addEventListener("click",
     modal.classList.add("make-invis");
 });
 
+// ---- Button create (form submit buttons) ----
 // Creates a depressed look if submit button clicked
 document.getElementById("custom-button-create").addEventListener("click", function () {
     document.getElementById("custom-button-create").classList.add("custom-button-press");
 });
+// ---- Button login (form submit buttons) ----
+// Creates a depressed look if submit button clicked
 document.getElementById("custom-button-login").addEventListener("click", function () {
     document.getElementById("custom-button-login").classList.add("custom-button-press");
 });

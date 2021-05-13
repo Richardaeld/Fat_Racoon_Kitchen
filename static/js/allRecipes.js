@@ -86,11 +86,11 @@ function finalValidation(validationLoc) {
 
 // ---- Base Validation starting point
 // basic (start) validation function
-function baseValidation (inputSelector, validationSelector, userInputType) {
+function baseValidation (inputSelector, validationSelector) {
     var findPasswords = document.querySelectorAll(inputSelector);
     findPasswords.forEach(selectPasswords);
     function selectPasswords(baseVal){
-        let baseValPara = baseVal.parentElement.getElementsByTagName("p"); //  Finds the location of the invalid commits
+        let baseValPara = baseVal.parentElement.getElementsByTagName("p");  // Finds the location of the invalid commits
 
         // Makes validation bubble visible on focus 
         baseVal.addEventListener("focus", function() {
@@ -117,32 +117,64 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
 
         // Applies validation check on every keyup stroke
         baseVal.addEventListener("keyup", function () {
-            // Replaces all spaces with '_'
-            if(baseVal.value.match(matchTypeSpaces)){
-                baseVal.value = baseVal.value.replace(matchTypeSpaces, "_");
+            if(validationSelector !== "text" || validationSelector !=="recipeGeneral"){
+                // Replaces all spaces with '_'
+                if(baseVal.value.match(matchTypeSpaces)){
+                    baseVal.value = baseVal.value.replace(matchTypeSpaces, "_");
+                } 
             }
 
-            // Iterates over all individual input characters
+            // Checks all individual characters for valid character input
             for (i=0; i< baseVal.value.length; i++){
                 char = baseVal.value[i]  // Character being checked
+                if (validationSelector === "text" || validationSelector === "recipeGeneral" ){
                 // Checks for improper characters and sets validation
-                if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null && char.match(matchTypeNumber) == null) {
-                    baseValPara[2].classList.remove("make-invis");
-                    break
+                    if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeTextCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null  && char.match(matchTypeNumber) == null) {
+                        baseValPara[2].classList.remove("make-invis");
+                        break
+                    } else {
+                        baseValPara[2].classList.add("make-invis");
+                    }
                 } else {
-                    baseValPara[2].classList.add("make-invis");
+                    if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null && char.match(matchTypeNumber) == null) {
+                        baseValPara[2].classList.remove("make-invis");
+                        break
+                    } else {
+                        baseValPara[2].classList.add("make-invis");
+                    }
                 }
             }
 
+            // Validation for text character total
+            if(validationSelector === "text"){
+                if(baseVal.value.length >= 0 && baseVal.value.length <= 400){
+                    baseValPara[0].classList.add("make-invis");
+                }else{
+                    baseValPara[0].classList.remove("make-invis");
+                }
+            // Validation for recipeGeneral character total
+            } else if(validationSelector === "recipeGeneral"){
+                if(baseVal.value.length >= 5 && baseVal.value.length <= 100){
+                    baseValPara[0].classList.add("make-invis");
+                }else{
+                    baseValPara[0].classList.remove("make-invis");
+                }
+            // Validates for name/username
+            } else if (validationSelector === "name"){
+                // Validates if correct amount of characters present
+                if(baseVal.value.length >= 4 && baseVal.value.length <= 100){
+                    baseValPara[0].classList.add("make-invis");
+                } else {
+                    baseValPara[0].classList.remove("make-invis");
+                }
             // Validation for password
-            if(validationSelector === "password"){
+            } else if (validationSelector === "password"){    
                 // Validates the form if correct amount of upper character, total characters, numbers and total characters are found
                 if(baseVal.value.match(matchTypeUpper) && baseVal.value.match(matchTypeLower) && baseVal.value.match(matchTypeNumber) && baseVal.value.length >= 8 && baseVal.value.length <= 20){
                     baseValPara[0].classList.add("make-invis");
                 }else{
                     baseValPara[0].classList.remove("make-invis");
                 }
-
             // Validation for email
             } else if(validationSelector === "email") {
                 // Validates for total characters found
@@ -155,7 +187,7 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                 // Validates for email suffix ('.com', '.edu', '.net') and '@'
                 let emailLength = baseVal.value.length;
                 if  (emailLength >= 4 ){
-                    var checkEmailValue = "";  // Presets string to add suffix email to
+                    var checkEmailValue = "";   // Presets string to add suffix email to
                     // Uses last 4 digits to check for suffix
                     for (let i = 3; i >= 0; i--){
                         checkEmailValue += baseVal.value[(emailLength - 1) - i];
@@ -176,37 +208,24 @@ function baseValidation (inputSelector, validationSelector, userInputType) {
                         baseValPara[1].classList.remove("make-invis");
                     }
                 }
-
-            // Validates for recipe name/username
-            } else if (validationSelector === "name"){
-                // Validates if correct amount of characters present
-                if(baseVal.value.length >= 4 && baseVal.value.length <= 100){
-                    baseValPara[0].classList.add("make-invis");
-                } else {
-                    baseValPara[0].classList.remove("make-invis");
-                }
             }
-
-            // final validation (Global/Macro) of form for login/create forms
+            // Final validation of form
             formIsValid = true;
-            if(baseVal.classList.contains("loginValidation")){
-                finalValidation(".loginValidation");
-            } else if (baseVal.classList.contains("createValidation")) {
-                finalValidation(".createValidation");
-            } 
+            finalValidation(".formValidation");
         });
     }
 }
 
-//----------------------email validation
-baseValidation(".emailValidation", "email", "keyup"); // keyboard
-//baseValidation(".emailValidation", "email", "touchstart") // touchscreen // never implemented
-//---------------------- name validation
-baseValidation(".nameValidation", "name", "keyup"); // keyboard
-//baseValidation(".nameValidation", "name", "touchstart") // touchscreen // never implemented
-//----------------------password validation
-baseValidation(".passwordSets", "password", "keyup"); // keyboard
-//baseValidation(".passwordSets", "password", "touchstart") // touchscreen // never implemented
+// Text validation
+baseValidation(".textValidation", "text");
+// Email validation
+baseValidation(".emailValidation", "email");
+// Name validation
+baseValidation(".nameValidation", "name");
+// Password validation
+baseValidation(".passwordSets", "password");
+// Recipe general content validation
+baseValidation(".recipeGeneralValidation", "recipeGeneral");
 
 
 // ---- Login Create Modal ----
@@ -226,10 +245,13 @@ document.getElementsByClassName("modal-background")[0].addEventListener("click",
     modal.classList.add("make-invis");
 });
 
+// ---- Button create (form submit buttons) ----
 // Creates a depressed look if submit button clicked
 document.getElementById("custom-button-create").addEventListener("click", function () {
     document.getElementById("custom-button-create").classList.add("custom-button-press");
 });
+// ---- Button login (form submit buttons) ----
+// Creates a depressed look if submit button clicked
 document.getElementById("custom-button-login").addEventListener("click", function () {
     document.getElementById("custom-button-login").classList.add("custom-button-press");
 });
@@ -316,12 +338,12 @@ findFeature.forEach(selectFeature);
 function selectFeature(pagination){
     let liLength = pagination.getElementsByTagName("li").length;
     // Reveals column items that dont need pagination
-    if(liLength < 5 && liLength >= 1){
+    if(liLength < 6 && liLength >= 1){
         for(let nonPag = 0; nonPag < liLength; nonPag++ ){
             pagination.getElementsByTagName("li")[nonPag].classList.remove("make-invis");
         }
     // Reveals column items that need pagination
-    }else if(liLength >= 5) {
+    }else if(liLength >= 6) {
         for(let usePag = 0; usePag < 5; usePag++ ){
             pagination.getElementsByTagName("li")[usePag].classList.remove("make-invis");
         }
