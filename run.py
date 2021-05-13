@@ -315,8 +315,7 @@ def search_bar_returns(search):
 def search_user_recipes(search):
     userInfo = rae.call_user()
     if userInfo[search] == []:
-        return render_template(
-            "search_bar_returns.html", findRecipes=list(enumerate([])))
+        return render_template("search_bar_returns.html", findRecipes=[])
     findUserSelectedRecipes = {}
     findUserSelectedRecipes["$or"] = []
     for recipe in userInfo[search]:
