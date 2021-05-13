@@ -91,7 +91,7 @@ function baseValidation (inputSelector, validationSelector) {
 
         // Applies validation check on every keyup stroke
         baseVal.addEventListener("keyup", function () {
-            if(validationSelector !== "text" && validationSelector !=="recipeGeneral"){
+            if(validationSelector !== "text" && validationSelector !=="recipeGeneral" && validationSelector !== "time"){
                 // Replaces all spaces with '_'
                 if(baseVal.value.match(matchTypeSpaces)){
                     baseVal.value = baseVal.value.replace(matchTypeSpaces, "_");
@@ -109,7 +109,14 @@ function baseValidation (inputSelector, validationSelector) {
                     } else {
                         baseValPara[2].classList.add("make-invis");
                     }
-                } else {
+                } else if (validationSelector === "time") {
+                    if (char.match(matchTypeNumber) == null || baseVal.value == 0) {
+                        baseValPara[2].classList.remove("make-invis");
+                        break
+                    } else {
+                        baseValPara[2].classList.add("make-invis");
+                    }
+                } else{
                     if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null && char.match(matchTypeNumber) == null) {
                         baseValPara[2].classList.remove("make-invis");
                         break
@@ -133,7 +140,14 @@ function baseValidation (inputSelector, validationSelector) {
                 }else{
                     baseValPara[0].classList.remove("make-invis");
                 }
-            // Validates for name/username
+            } else if (validationSelector === "time"){
+                // Validates if correct amount of characters present
+                if(baseVal.value.length > 0 && baseVal.value.length < 4){
+                    baseValPara[0].classList.add("make-invis");
+                } else {
+                    baseValPara[0].classList.remove("make-invis");
+                }
+                // Validates for name/username
             } else if (validationSelector === "name"){
                 // Validates if correct amount of characters present
                 if(baseVal.value.length >= 4 && baseVal.value.length <= 100){
@@ -184,6 +198,7 @@ function baseValidation (inputSelector, validationSelector) {
                 }
             }
             // Final validation of form
+            // Not STD, finalValidation(".formValidation") call for addEditRecipe.js and editUserInfo.je ONLY
             formIsValid = true;
             finalValidation(".formValidation");
         });
@@ -200,8 +215,8 @@ baseValidation(".nameValidation", "name");
 baseValidation(".passwordSets", "password");
 // Recipe general content validation
 baseValidation(".recipeGeneralValidation", "recipeGeneral");
-
-
+// Recipe time validation
+baseValidation(".timeValidation", "time");
 
 // Adds validation to dynamic input/textareas
 function addValidation (validationLoc, validationSelector) {
