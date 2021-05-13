@@ -90,7 +90,9 @@ function baseValidation (inputSelector, validationSelector) {
         });
 
         // Applies validation check on every keyup stroke
-        baseVal.addEventListener("keyup", function () {
+        baseVal.addEventListener("keyup", baseValidationCheck);
+        baseVal.addEventListener("click", baseValidationCheck);
+        function baseValidationCheck() {
             if(validationSelector !== "text" && validationSelector !=="recipeGeneral" && validationSelector !== "time"){
                 // Replaces all spaces with '_'
                 if(baseVal.value.match(matchTypeSpaces)){
@@ -201,7 +203,7 @@ function baseValidation (inputSelector, validationSelector) {
             // Not STD, finalValidation(".formValidation") call for addEditRecipe.js and editUserInfo.js ONLY
             formIsValid = true;
             finalValidation(".formValidation");
-        });
+        }
     }
 }
 
