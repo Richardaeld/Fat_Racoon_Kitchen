@@ -136,7 +136,7 @@ function baseValidation (inputSelector, validationSelector) {
                         baseValPara[2].classList.add("make-invis");
                     }
                 } else if (validationSelector === "time") {
-                    if (char.match(matchTypeNumber) == null || baseVal.value == 0) {
+                    if (char.match(matchTypeNumber) == null) {
                         baseValPara[2].classList.remove("make-invis");
                         break
                     } else {
