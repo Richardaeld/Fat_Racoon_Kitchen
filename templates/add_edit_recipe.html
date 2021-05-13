@@ -6,7 +6,7 @@
     <aside class="row no-gutters justify-content-start">
         <div class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
             <!-- back to profile for new recipes -->
-            {% if recipeInfo.name == "Recipe"%}
+            {% if recipeInfo.name == ""%}
                 <a href="{{ url_for('profile') }}">
                     <div class="sticky-note-inner-div">
                         <h6 class="remove-p-margin">Back</h6>
@@ -30,7 +30,7 @@
 
                 <!-- Title Header -->
                 <div class="col-12 recipe-name">
-                    {% if recipeInfo.name == "Recipe" %}
+                    {% if recipeInfo.name == "" %}
                         <h1>New Recipe</h1>
                     {% else %}
                         <h1>{{ recipeInfo.name }}</h1>
