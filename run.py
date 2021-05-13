@@ -193,7 +193,8 @@ def add_edit_recipe(recipeId):
     features = mongo.db.feature.find()
     if recipeId == "new":
         recipeId = ObjectId()
-        recipeInfo = mongo.db.blank.find_one({"name": "Recipe"})
+        recipeInfo = mongo.db.blank.find_one(
+            {"_id": ObjectId("607b30bb8ac97dfcf527a2b8")})
     else:
         recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
     return render_template(
@@ -208,7 +209,8 @@ def add_edit_recipe(recipeId):
 def upload_recipe(recipeId, username):
     recipeInfo = rae.check_mongo_recipe_exists(recipeId)[2]
     if not rae.check_mongo_recipe_exists(recipeId)[0]:
-        recipeInfo = mongo.db.blank.find_one({"name": "Recipe"})
+        recipeInfo = mongo.db.blank.find_one(
+            {"_id": ObjectId("607b30bb8ac97dfcf527a2b8")})
         recipeInfo.update(dict(date=datetime.datetime.now(), created_by=(
             username), _id=ObjectId(recipeId)))
     if not rae.get_form_list([
