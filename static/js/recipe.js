@@ -117,7 +117,7 @@ function baseValidation (inputSelector, validationSelector) {
 
         // Applies validation check on every keyup stroke
         baseVal.addEventListener("keyup", function () {
-            if(validationSelector !== "text" || validationSelector !=="recipeGeneral"){
+            if(validationSelector !== "text" && validationSelector !=="recipeGeneral"){
                 // Replaces all spaces with '_'
                 if(baseVal.value.match(matchTypeSpaces)){
                     baseVal.value = baseVal.value.replace(matchTypeSpaces, "_");
