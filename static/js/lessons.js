@@ -211,7 +211,11 @@ function baseValidation (inputSelector, validationSelector) {
             }
             // Final validation of form
             formIsValid = true;
-            finalValidation(".formValidation");
+            if(baseVal.classList.contains("loginValidation")){
+                finalValidation(".loginValidation");
+            } else if (baseVal.classList.contains("createValidation")) {
+                finalValidation(".createValidation");
+            } 
         });
     }
 }
