@@ -30,8 +30,8 @@
 }
 /* outer layer */
 .index-card-outer {
-    perspective: 1000px;
-    margin: 2rem 3rem;
+    perspective: 1500px;
+    margin: 2rem 0rem;
 }
 
 .index-card-outer h6 {
@@ -52,7 +52,7 @@
 .index-face,
 .index-back,
 .index-card-outer {
-    height: 20rem;
+    /* min-height: 20rem; */
 }
 
 .index-face,
@@ -60,7 +60,9 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     position: absolute;
-    width: 100%;
+    width: 95%;
+    left: 0;
+    right: 0;
 }
 
 .index-back {
@@ -1285,7 +1287,7 @@ h6 {
     .index-face,
     .index-back,
     .rotating-card {
-        height: 17rem;
+        /* min-height: 17rem; */
     }
 }
 
