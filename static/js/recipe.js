@@ -399,7 +399,10 @@ document.getElementById("deleteModal").addEventListener("click", function() {
 document.getElementsByClassName("modal-background")[1].addEventListener("click", function () {
     document.getElementsByClassName("custom-modal-delete")[0].classList.add("make-invis");
 });
-
+// Depressed button aesthetic
+document.getElementById("custom-button-delete").addEventListener("click", function () {
+    document.getElementById("custom-button-delete").classList.add("custom-button-press");
+});
 // Delete form validation logic
 document.getElementById("recipeName").addEventListener("keyup", function() {
     let modalButton = document.getElementById("custom-button-delete");
@@ -414,4 +417,5 @@ document.getElementById("recipeName").addEventListener("keyup", function() {
     if (check == userinput){
         modalButton.removeAttribute("disabled");
     }
+
 });
