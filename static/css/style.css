@@ -596,6 +596,9 @@ input {
     font-size: 1.5em;
 }
 
+.fat-raccoon-logo {
+    width:50px;
+}
 
 @media (max-width: 991.98px) {
     .nav-search {
@@ -1014,6 +1017,15 @@ footer {
 }
 
 /* ---------------------------------------- specific (unique) form styles */
+.new-password {
+    width: 80%;
+    padding-top: 2rem;
+}
+
+#time3 {
+    background-color: #dbdbdb;
+}
+
 /* Form ingredient and step boxe spacing */ 
 .step-ingredient-spacing { /* change name to step-ingredient-formating */
     padding-right: 10%;
@@ -1118,6 +1130,12 @@ footer {
 
 .ten-recent-space {
     margin-bottom: 1rem;
+    position: relative;
+}
+
+.ten-recent-space p {
+    width:90%;
+    display: inline-block;
 }
 
 /* ------------------------------------------------------- Recipe Section  ---------------------------------------------------------------- */
@@ -1140,6 +1158,7 @@ footer {
 
 .recipe-lists li {
     padding-bottom: 1.5rem;
+    position: relative;
 }
 
 .favorite img {
@@ -1161,7 +1180,7 @@ footer {
 .checkbox-input {
     position:absolute;
     left:0.75rem;
-    transform: translateY(0.75rem) translateX(1rem);
+    top: .50rem;
 }
 
 .checkbox-h6 {

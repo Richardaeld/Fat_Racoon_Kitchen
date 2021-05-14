@@ -67,8 +67,8 @@
                 <!-- List of uploads -->
                 {% for upload in uploaded %}
                     {% if upload[0] + 1 < 11 %}
-                        <div class="ten-recent-space" style="width: 100%; position: relative;">
-                            <p class="indie-text" style="width:90%; display: inline-block;">
+                        <div class="ten-recent-space max-width">
+                            <p class="indie-text">
                                 <a href="{{ url_for('recipe', recipeId=upload[1]._id) }}">{{  upload[0] + 1 }}. {{ upload[1].name }}</a>
                             </p>
                         </div>
@@ -89,8 +89,8 @@
                 {% for favorite in favorites %}
                     {% if favorite %}
                         {% if favorite[0] + 1 < 11 %}
-                            <div class="ten-recent-space" style="width: 100%; position:relative;">
-                                <p class="indie-text" style="display: inline-block; width:90%">
+                            <div class="ten-recent-space max-width">
+                                <p class="indie-text">
                                     <a href="{{ url_for('recipe', recipeId=favorite[1][0] ) }}">{{ favorite[0] + 1 }}. {{ favorite[1][1] }}</a>
                                 </p>
                                 <!-- Remove recipe icon -->
@@ -116,8 +116,8 @@
                 {% for recent in recents %}
                     {% if recent %}
                         {% if recent[0] + 1 < 11 %}
-                            <div class="ten-recent-space" style="width: 100%; position:relative">
-                                <p class="indie-text" style="display: inline-block; width:90%;">
+                            <div class="ten-recent-space max-width">
+                                <p class="indie-text">
                                     <a href="{{ url_for('recipe', recipeId=recent[1][0] ) }}">{{ recent[0] + 1 }}. {{ recent[1][1] }}</a>
                                 </p>
                                 <!-- Remove recipe icon -->

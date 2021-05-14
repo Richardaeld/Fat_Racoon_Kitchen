@@ -140,7 +140,7 @@
             <section class="col-12 col-md-6 col-xl-3 order-3 order-sm-3 order-md-3 order-lg-3 order-xl-1 order-xxl-1">
                 <div class="row no-gutters justify-content-center">
                     <div class="sticky-note remove-top-margin">
-                        <div class="sticky-note-inner-div blank-anchor" style="overflow: hidden;">
+                        <div class="sticky-note-inner-div blank-anchor">
                             {% if chef.avatar != none %}
                                 <!-- Chef avatar -->
                                 <div class="avatar-image">
@@ -159,7 +159,7 @@
                             {% endif %}
                             {% if chef.avatar != none %}
                                 <!-- chef user name and Bio -->
-                                <p style="font-size: 1.5rem;">{{ chef.bio }}</p>
+                                <p>{{ chef.bio }}</p>
                                 <a href="{{ url_for('search_bar_returns', search=chef.username) }}">
                                     <h6>-- {{chef.username.title()}}</h6>
                                 </a>
