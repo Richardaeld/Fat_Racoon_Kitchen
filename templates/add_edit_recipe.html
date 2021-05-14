@@ -282,7 +282,11 @@
                 </div>
 
                 <!-- submit button -->
+                {% if recipeInfo.name == "" %}
                 <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit" disabled>
+                {% else %}
+                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit">
+                {% endif %}
             </div>
 
         </form>
