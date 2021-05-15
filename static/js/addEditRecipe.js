@@ -137,7 +137,7 @@ function baseValidation (inputSelector, validationSelector) {
                 }
             // Validation for recipeGeneral character total
             } else if(validationSelector === "recipeGeneral"){
-                if(baseVal.value.length >= 3 && baseVal.value.length <= 100){
+                if(baseVal.value.length >= 3 && baseVal.value.length <= 400){
                     baseValPara[0].classList.add("make-invis");
                 }else{
                     baseValPara[0].classList.remove("make-invis");
@@ -219,6 +219,8 @@ baseValidation(".passwordSets", "password");
 baseValidation(".recipeGeneralValidation", "recipeGeneral");
 // Recipe time validation
 baseValidation(".timeValidation", "time");
+// Recipe steps validation
+baseValidation(".stepsValidation", "steps");
 
 // Adds validation to dynamic input/textareas
 function addValidation (validationLoc, validationSelector) {
@@ -271,7 +273,7 @@ function addValidation (validationLoc, validationSelector) {
                 }
             // Validation for recipeGeneral character total
             } else if (validationSelector === "recipeGeneral"){
-                if(validationLoc.value.length >= 3 && validationLoc.value.length <= 100){
+                if(validationLoc.value.length >= 3 && validationLoc.value.length <= 400){
                     valLocPara[0].classList.add("make-invis");
                 }else{
                     valLocPara[0].classList.remove("make-invis");
@@ -366,7 +368,7 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         let validationDiv = document.createElement("div")
         validationDiv.classList = "invalid-form form-is-valid make-invis"
         let val1P = document.createElement("p")
-        val1P.textContent = "Must be between 5 and 100 characters"
+        val1P.textContent = "Must be between 3 and 400 characters"
         val1P.classList = "make-invis remove-p-margin"
         let val2P = document.createElement("p")
         val2P.textContent = ""

@@ -129,7 +129,7 @@ function baseValidation (inputSelector, validationSelector) {
             // Checks all individual characters for valid character input
             for (i=0; i< baseVal.value.length; i++){
                 char = baseVal.value[i]  // Character being checked
-                if (validationSelector === "text" || validationSelector === "recipeGeneral" ){
+                if (validationSelector === "text" || validationSelector === "recipeGeneral"){
                 // Checks for improper characters and sets validation
                     if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeTextCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null  && char.match(matchTypeNumber) == null) {
                         baseValPara[2].classList.remove("make-invis");
@@ -163,7 +163,7 @@ function baseValidation (inputSelector, validationSelector) {
                 }
             // Validation for recipeGeneral character total
             } else if(validationSelector === "recipeGeneral"){
-                if(baseVal.value.length >= 3 && baseVal.value.length <= 100){
+                if(baseVal.value.length >= 3 && baseVal.value.length <= 400){
                     baseValPara[0].classList.add("make-invis");
                 }else{
                     baseValPara[0].classList.remove("make-invis");

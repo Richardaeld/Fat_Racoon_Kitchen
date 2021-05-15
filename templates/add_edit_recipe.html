@@ -44,7 +44,7 @@
                     <label for="name">Recipe Name</label>
                     <input class="formValidation form-invalid-view recipeGeneralValidation form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
                     <div class="invalid-form make-invis">
-                        <p class="remove-p-margin">Must be between 3 and 100 characters</p>
+                        <p class="remove-p-margin">Must be between 3 and 400 characters</p>
                         <p class="make-invis remove-p-margin"></p>
                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
                     </div>
@@ -54,7 +54,7 @@
                     <label for="name">Recipe Name</label>
                     <input class="formValidation recipeGeneralValidation form-center-text" type="text" id="name" name="name" value="{{ recipeInfo.name }}">
                     <div class="invalid-form form-is-valid make-invis">
-                        <p class="make-invis remove-p-margin">Must be between 3 and 100 characters</p>
+                        <p class="make-invis remove-p-margin">Must be between 3 and 400 characters</p>
                         <p class="make-invis remove-p-margin"></p>
                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
                     </div>
@@ -210,7 +210,7 @@
                                     <h6 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h6>
                                     <input class="countIngredients form-invalid-view formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
                                     <div class="invalid-form make-invis">
-                                        <p class=" remove-p-margin">Must be between 3 and 100 characters</p>
+                                        <p class=" remove-p-margin">Must be between 3 and 400 characters</p>
                                         <p class="make-invis remove-p-margin"></p>
                                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
                                     </div>
@@ -223,7 +223,7 @@
                                     <h6 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h6>
                                     <input class="countIngredients formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
                                     <div class="invalid-form form-is-valid make-invis">
-                                        <p class="make-invis remove-p-margin">Must be between 3 and 100 characters</p>
+                                        <p class="make-invis remove-p-margin">Must be between 3 and 400 characters</p>
                                         <p class="make-invis remove-p-margin"></p>
                                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
                                     </div>
@@ -258,7 +258,7 @@
                                     <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
                                     <textarea class="countSteps form-invalid-view formValidation recipeGeneralValidation" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
                                     <div class="invalid-form make-invis">
-                                        <p class="remove-p-margin">Must be between 3 and 100 characters</p>
+                                        <p class="remove-p-margin">Must be between 3 and 400 characters</p>
                                         <p class="make-invis remove-p-margin"></p>
                                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
                                     </div>
@@ -271,7 +271,7 @@
                                     <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
                                     <textarea class="countSteps formValidation recipeGeneralValidation" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
                                     <div class="invalid-form form-is-valid make-invis">
-                                        <p class="make-invis remove-p-margin">Must be between 3 and 100 characters</p>
+                                        <p class="make-invis remove-p-margin">Must be between 3 and 400 characters</p>
                                         <p class="make-invis remove-p-margin"></p>
                                         <p class="make-invis remove-p-margin">Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/",</p>
                                     </div>
