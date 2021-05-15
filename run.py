@@ -87,9 +87,13 @@ def create():
 # Removes user's session
 @app.route("/logout")
 def logout():
-    session.pop("user")
-    flash("You've been logged out!")
-    return redirect(url_for("index"))
+    try:
+        if session:
+            session.pop("user")
+            flash("You've been logged out!")
+            return redirect(url_for("index"))
+    except KeyError:
+        return redirect(url_for("index"))
 
 
 # Returns users personal profile
