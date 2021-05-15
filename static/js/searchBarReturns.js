@@ -163,7 +163,7 @@ function baseValidation (inputSelector, validationSelector) {
                 }
             // Validation for recipeGeneral character total
             } else if(validationSelector === "recipeGeneral"){
-                if(baseVal.value.length >= 5 && baseVal.value.length <= 100){
+                if(baseVal.value.length >= 3 && baseVal.value.length <= 100){
                     baseValPara[0].classList.add("make-invis");
                 }else{
                     baseValPara[0].classList.remove("make-invis");

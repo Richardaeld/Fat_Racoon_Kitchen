@@ -137,7 +137,7 @@ function baseValidation (inputSelector, validationSelector) {
                 }
             // Validation for recipeGeneral character total
             } else if(validationSelector === "recipeGeneral"){
-                if(baseVal.value.length >= 5 && baseVal.value.length <= 100){
+                if(baseVal.value.length >= 3 && baseVal.value.length <= 100){
                     baseValPara[0].classList.add("make-invis");
                 }else{
                     baseValPara[0].classList.remove("make-invis");
@@ -271,7 +271,7 @@ function addValidation (validationLoc, validationSelector) {
                 }
             // Validation for recipeGeneral character total
             } else if (validationSelector === "recipeGeneral"){
-                if(validationLoc.value.length >= 5 && validationLoc.value.length <= 100){
+                if(validationLoc.value.length >= 3 && validationLoc.value.length <= 100){
                     valLocPara[0].classList.add("make-invis");
                 }else{
                     valLocPara[0].classList.remove("make-invis");
