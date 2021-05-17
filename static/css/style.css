@@ -50,12 +50,6 @@
 }
 
 .index-face,
-.index-back,
-.index-card-outer {
-    /* min-height: 20rem; */
-}
-
-.index-face,
 .index-back{
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -117,13 +111,6 @@
     margin: 1.25rem 0rem;
 }
 
-@media (min-width: 992px) {
-    .classics {
-        margin: 0rem 1rem 1.25rem 1rem!important;
-    }
-}
-
-
 .polaroid-picture img {
     width: 100%;
     height: 100%;
@@ -133,6 +120,9 @@
     object-fit: cover;
 }
 @media (min-width: 992px) {
+    .classics {
+        margin: 0rem 1rem 1.25rem 1rem!important;
+    }
     .polaroid-outer {
         min-height: 25rem;
     }
@@ -179,8 +169,6 @@
 /* Add on sticky-note for as for right side shadow */
 .sticky-note-right.sticky-note:before{
     right: 0;
-    /* transform: rotateY(180deg) translateX(0px) translateY(0rem) rotate(0deg) skewX(-2deg) skewY(-2deg) scaleX(.95) scaleY(0.9); */
-    /* transform: rotateY(180deg) translateX(0px) translateY(0rem) rotate(0deg) skewX(-2deg) skewY(-2deg) scaleX(.95) scaleY(0.9); */
     transform: rotateY(180deg) translateX(0px) translateY(-2.5%) rotate(0deg) skewX(0deg) skewY(-2deg) scaleX(.95) scaleY(.95);
 }
 
@@ -419,7 +407,6 @@ body {
     background-color: #474747;
     text-align: center;
     font-family: "Indie Flower",sans-serif;
-    /* overflow-wrap: break-word; */  /* Dangerous -- needs to be placed in specific places  */
 }
 
 hr {
@@ -442,17 +429,8 @@ input {
 .not-clickable {
     cursor: context-menu;
 }
-@media (max-width: 575.98px) {
-
-    .header-button {
-        /* margin: 1.5rem; */
-        /* padding: 1rem; */
-    }
-}
-
 /* ---------------------------------------- Various container sizes */
 .xl-content-height {
-    /* height: 30rem;  changed for cell, profile page, chef bio*/
     min-height: 30rem;
 }
 
@@ -471,7 +449,6 @@ input {
             4px 4px 2px #474747,
             6px 6px 2px #474747;
 }
-
 /* ---------------------------------------- Repetative class calls */
 .max-height {
     height: 100%;
@@ -529,7 +506,6 @@ input {
                  0px -3px 2px  rgba(0, 0, 0, .5),
                 inset 0px 2px 2px  rgba(0, 0, 0, .75);
 }
-
 
 .header-text-1:before,
 .header-text-1:after,
@@ -727,29 +703,6 @@ footer {
     list-style-type: none;
 }
 
-@media (max-width: 767.98px) {
-    .social-position {
-        left: 35%;
-    }
-}
-
-@media (max-width: 575.98px) {
-    .table-runner-pattern {
-        height: 13rem;
-    }
-    footer {
-        height:17rem;
-    }
-
-    .social-position {
-        top: 35%;
-        left: 40%;
-    }
-
-    .social-link-push li {
-        height: 90px;
-    }
-}
 /* ------------------------------------------------------- Form Section  ---------------------------------------------------------------- */
 /* ---------------------------------------- All style with tabs are part of form header's login & create account */
 .tab-body {
@@ -766,20 +719,6 @@ footer {
 #delete-modal p {
     padding: 1rem;
 }
-@media (max-width: 767.98px) {
-    #delete-modal p {
-        padding: 0.25rem;
-    }
-    #delete-modal input {
-        margin-top: 0.5rem;
-        /* margin-bottom: 0.25rem; */
-    }
-    #custom-button-delete { /* needs better target  */
-        margin-bottom: 0.75rem;
-    }
-    
-}
-
 
 #delete-modal
 #login-create-modal {
@@ -813,35 +752,13 @@ footer {
     padding: 1rem;
 }
 
-@media (max-width: 767.98px) {
-    .tab-body {
-        /* font-size: 1rem; */
-    }
-    .tab-selected {
-        /* font-size: 1.25rem; */
-    }
-}
-
-@media (max-width: 575.98px) {
-    .tab {
-        padding: 0.25rem;
-    }
-    .tab-body {
-    
-    }
-    .tab-selected {
-
-    }
-}
 /* ---------------------------------------- Form validation */
 .form-invalid-view {
-    /* border: 2px solid rgb(255, 0, 0)!important; */
     border: 2px solid #e60000!important;
 }
 
 .form-invalid-view:focus {
     outline: none;
-    /* border: 2px solid rgb(255, 0, 0); */
     border: 2px solid #e60000;
 }
 
@@ -849,9 +766,7 @@ footer {
 .invalid-form {
     margin-top: 1rem;
     width: 80%;
-    /* border: 2px solid rgb(14, 255, 255); */
     border: 2px solid #e60000;
-    /* background-color: #eeeded; */
     background-color: #BDAABD;
     color: #444;
     position: relative;
@@ -867,7 +782,6 @@ footer {
     position: absolute;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
-    /* border-top: 10px solid rgb(14, 255, 255); */
     border-top: 10px solid #e60000;
     border-bottom: 10px solid transparent;
     transform: rotate(180deg) translateX(50%);
@@ -904,50 +818,23 @@ footer {
     max-height: 50vh;
     overflow: auto;
 }
-/* @media (max-width: 767.98px) { */
-/* @media (max-width: 575.98px) { */
-/* @media (max-width: 1399.98px) { */
-
-    /* .floating-modal { */
-        /* overflow: scroll; */
-        /* overflow-y: scroll */
-        /* overflow: auto; */
-    /* } */
-/* } */
-
 /* ---------------------------------------- basic form styles */
 .form-delete-base,
 .form-base {
     background-color: #dbdbdb;
-    /* background-color: rgba(235, 235, 235, 1); */
     margin: 2rem;
     overflow: hidden;
-}
-
-@media (max-width: 575.98px) {
-  .form-delete-base,
-    .form-base {
-        margin: 0.75rem 0rem;
-    }
 }
 
 .form-base label {
     width: 100%
 }
 
-/* Curved edges only look appeasing on larger screens */
-@media (min-width: 1200px) {
-    .form-delete-base,
-    .form-base {
-        border-radius: 5%;
-    }
-}
-
 .form-input-spacing { /*----------Im new !! AND IMPORTANT*/
     padding-bottom: 3rem
 }
 
-.remove-p-margin {   /*-----------------------------check if im in use*/
+.remove-p-margin {
     margin-bottom: 0rem;
 }
 
@@ -999,12 +886,6 @@ footer {
     background-color: #EFF592;
 }
 
-@media (min-width: 1200px) {
-    .avatar-upload {
-        position: relative;
-        width: 60%!important;
-    }
-}
 /* Corrects box size of select/option */
 .select-option-size select {
     padding: 0.5rem;
@@ -1017,7 +898,6 @@ footer {
     box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
     display: inline-block;
 }
-
 /* ---------------------------------------- specific (unique) form styles */
 .new-password {
     width: 80%;
@@ -1027,7 +907,6 @@ footer {
 #time3 {
     background-color: #dbdbdb;
 }
-
 /* Form ingredient and step boxe spacing */ 
 .step-ingredient-spacing { /* change name to step-ingredient-formating */
     padding-right: 10%;
@@ -1036,44 +915,23 @@ footer {
     margin-bottom: 1rem;
 }
 
-.step-ingredient-input { /* ------remove me Im pointless */
-    /* position: relative;
-    right:0;
-    left:0;
-    width: 100%; */
-}
-
 .step-ingredient-spacing input,
 .step-ingredient-spacing textarea {
     width: 100%;
-    /* position: relative;
-    left: 0;
-    right: 0; */
 }
 
 .step-ingredient-spacing p {
     margin-bottom: 0;
-    /* width: 80%; */
-    /* text-align: right; */
-}
-
-@media (max-width: 991.98px) {
-    .browse-button {
-        margin-bottom: 0.75rem;
-    }
 }
 
 /* form and all button styles */
 .custom-button,
 .custom-button-delete {
     width: auto!important;
-    /* margin-bottom: 1.5rem; */
     border: 2px solid #333;
     box-shadow: 4px 4px 2px rgba(0, 0, 0, .5 )!important;
     font-family: "Yanone Kaffeesatz", sans-serif;
     background-color: #B3F59F;
-    /* padding: 0.25rem; */
-    /* line-height: 1; */
 }
 
 .custom-button:disabled,
@@ -1124,10 +982,8 @@ footer {
 .remove-icon {
     position:absolute;
     font-size: 1.25rem;
-    /* top: 0; */
     transform: translateY(-35%);
     top: 35%;
-    /* margin-bottom: 0.75rem; */
 }
 
 .ten-recent-space {
@@ -1202,11 +1058,8 @@ footer {
 }
 
 .pagination-ul {
-    /* padding: 0rem 1rem; */
-    /* position: absolute; */
     position: relative;
     width: 100%;
-    /* bottom: 20px; */
     right:0;
     cursor: pointer
 }
@@ -1234,7 +1087,6 @@ select,
     padding-left: 0.5rem!important;
     padding-right: 0.5rem!important;
     font-size: 1.75rem;
-    font-size: 1.75rem;  /* just an after thought  */
 }
 
 h1 {
@@ -1246,7 +1098,26 @@ h6 {
     font-size: 2rem;
 }
 
+@media (min-width: 1200px) {
+    /* Curved edges only look appeasing on larger screens */
+    .form-delete-base,
+    .form-base {
+        border-radius: 5%;
+    }
+    .avatar-upload {
+        position: relative;
+        width: 60%!important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .browse-button {
+        margin-bottom: 0.75rem;
+    }
+}
+
 @media (max-width: 767.98px) {
+    /* general text  */
     p,
     label,
     input,
@@ -1265,33 +1136,30 @@ h6 {
     h6 {
         font-size: 1.5rem;
     }
-    /* recipe -- favorite recipe icon (star) */
+    /* favorite icon */
     .favorite img {
         height: 0.75rem;
         width: 0.75rem;
         bottom:0.1rem;
     }
-    
-    /* .make-space-top {
-        padding-top: 2rem;
-    } */
-
-    .make-space {
-        /* padding-bottom: 2rem; */
+    /* footer */
+    .social-position {
+        left: 35%;
     }
-
-    .make-space-margin {
-        /* margin-bottom: 2rem; */
+    /* general form */
+    #delete-modal p {
+        padding: 0.25rem;
     }
-    /* art -- index-card -- resize card with smaller devices*/
-    .index-face,
-    .index-back,
-    .rotating-card {
-        /* min-height: 17rem; */
+    #delete-modal input {
+        margin-top: 0.5rem;
+    }
+    #custom-button-delete {
+        margin-bottom: 0.75rem;
     }
 }
 
 @media (max-width: 575.98px) {
+    /* general text  */
     p,
     label,
     input,
@@ -1299,14 +1167,18 @@ h6 {
     legend,
     select,
     .reduce-h6 {
-        /* font-size: 1.75rem; */
         font-size: 1.25rem;
     }
 
     h1 {
         font-size: 2rem;
     }
-
+    
+    h3,
+    h6 {
+        font-size: 1.5rem;
+    }
+    /* repetitive class calls */
     .make-space {
         padding-bottom: 1rem;
     }
@@ -1315,29 +1187,37 @@ h6 {
         min-height: 15rem;
     }
 
-    .make-space-plus {
-        /* padding-bottom: 2rem; */
-    }
-
-    h3,
-    h6 {
-        /* font-size: 1.75rem; */
-        font-size: 1.5rem;
-    }
 
     .xl-content-height {
-        /* height: 20rem;  --------Changed for cell, profile page, chef bio*/
         min-height: 20rem;
     }
-    /* main nav bar */
-    /* .custom-nav a,
-    .custom-nav i,
-    .custom-nav label,
-    .custom-nav input {
-        font-size: 1.5rem;
-    } */
-
+    /* nav bar */
     .custom-nav form {
         padding: .25rem 1rem;
+    }
+    /* footer */
+    .table-runner-pattern {
+        height: 13rem;
+    }
+    footer {
+        height:17rem;
+    }
+
+    .social-position {
+        top: 35%;
+        left: 40%;
+    }
+
+    .social-link-push li {
+        height: 90px;
+    }
+    /* general form */
+    .tab {
+        padding: 0.25rem;
+    }
+
+    .form-delete-base,
+    .form-base {
+        margin: 0.75rem 0rem;
     }
 }
