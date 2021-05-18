@@ -734,18 +734,18 @@ able to search "lazy" or "grandparent" tags.
         + }
 
     + User entery is structured as
-    + {
-    + username: "user"
-    + email: ""
-    + password: ""
-    + avatar: null
-    + avatar_id: null
-    + bio: ""
-    + admin: false
-    + recents: Array
-    + favorites: Array
-    + date: ""
-    + }
+        + {
+        + username: "user"
+        + email: ""
+        + password: ""
+        + avatar: null
+        + avatar_id: null
+        + bio: ""
+        + admin: false
+        + recents: Array
+        + favorites: Array
+        + date: ""
+        + }
 
 + feature
     + Feature is for a recipes feature ingredient
