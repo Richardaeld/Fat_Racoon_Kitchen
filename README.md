@@ -1,5 +1,5 @@
 # Contents
-[Fat Raccoon - Introduction](#fat-racoon-kitchen---introduction)
+[Fat Raccoon - Introduction](#fat-racoon---introduction)
 
 [UX](#ux)
 + [Goals](#goals)
@@ -66,49 +66,54 @@
 + [Acknowledgements](#acknowledgements)
 
 
-# Fat Racoon Kitchen - Introduction
-The Fat Racoon Kitchen is devoted to helping home cooks provide better meals to friends, family, and/or yourself. We provide a network of user uploaded 
-recipies that can be searched through with our "Ingredience" or "Garbage" search, which is a favorite for our chefs. We stoutly believe that even 
-without the ideal ingredience on hand, a little taste pairing or extra spice can help make any meal provide a savory experience. We eve go out of our way 
-to provide new chefs with some basic cooking lessons in our lessons section. Our end goal is to help home chefs make the jump from recipe depentent to 
-taste depentent. Our chefs know the importance of making the best out of what we have on hand 
+# Fat Racoon - Introduction
+<!-- intro -->
+The Fat Racoon is devoted to helping home cooks provide better meals to friends, family, and/or yourself. We provide a network of our's and user's uploaded 
+recipes that can be searched through with our in app search engine. We stoutly believe that even without the ideal ingredience on hand, a little taste pairing or 
+extra spice can help make any meal provide a savory experience. We even go out of our way to provide new chefs with some basic cooking lessons in our lessons section. 
+Our end goal is to help home chefs make the jump from recipe depentent to taste depentent. Our chefs know the importance of making the best out of what we have on hand 
 and want to share that liberating experience with other home chefs.
-
-The chefs of the Fat Racoon Kitchen started as sleep deprived, nocturnal home chefs that would use the "garbage", leftovers, or that one thing 
-that has to be eatten today (Weve all done it) to make a meal. With practice and study these meals improved over time but it started with learning 
+<!-- abotu us - community -->
+The chefs of the Fat Racoon started as sleep deprived, nocturnal home chefs that would use the, leftovers ("garabage"), or that one thing 
+that has to be eaten today (We've all done it) to make a meal. With practice and study, these meals improved over time but it started with learning 
 fundamental cooking practices and taste pairings. We want to help others wisely spend their kitchen time making the best meals they can. We offer 
-conventional cooking practice and recipe guidance to help them along the way. The Fat Racoon Kitchen believes that helping to establish a community 
-of home cooks and their recipies in an intuitive search engine will be a boon to home chefs everywhere. It helps newer chefs see that not every 
-recipe has to be complicated or convoluted.
+conventional cooking practice and recipe guidance to help them along the way. The Fat Racoon believes that helping to establish a community 
+of home cooks and their recipes in an intuitive search engine will be a boon to home chefs everywhere. It helps newer chefs see that not every 
+recipe has to be complicated or convoluted. 
 
-We offer a brief home cooking fundamental section this section can help home chefs make the best of the "garbage"(feature ingredient) they have to cook. Users can search 
-recipes by feature ingredient to find that one recipe that they want to try. This can be accomplished through the use of our search bar or by searching through our recipe 
-database.
+For our users just searching for a recipe, we ovver several different search methods for them to find what they are looking for. Users can search our data base by chef, feature ingredient,
+or name from our search engine. The front page also off 4 other methods for users to browse the Fat Raccoon's recipes: by 'Lazy Favorites', 'Grandparent Classics', all of the Fat Raccoon's personal recipes. and 
+search by feature.
 
-For our home cooks that submit recipes, we offer a place to put in a recipes description, background, history, etc.... Cooking has more meaning than just preparing 
-food. For many it is a connection to your history or life experience.  We encourage our users to give us a little history in the recipes they submit. 
-Let us help preserve the history of a recipe. Its important to us and to those that submitted it. From a family recipe to this is all I could afford 
+<!-- We offer a brief home cooking fundamental section, this section can help home chefs make the best of what they have on hand to cook.  -->
+<!-- Users can search recipes by feature ingredient to find that one recipe that they want to try. This can be accomplished through the use of our search bar or by searching through our recipe 
+database. -->
+Finally, for those chef's submitting recipes, we offer a place to put in a name, time, picture, brief recipe description, ingredients and steps. This allows someone to easily keep track of a recipe and share it with others.
+Additionally, if the Fat Raccoon finds these recipes appropiate they can add the tags of 'lazy favorite' or 'grandparent classic' to the users recipe.
+
+Cooking has more meaning than just preparing 
+food. For many it is a connection to your history or life experience.  We encourage our users to give us a little meta information in the recipes they submit. 
+Let us help preserve a little of ourselves in a recipe. Its important to us and to those that submitted it. From a family recipe to this is all I could afford 
 in college, let us know!
 
 # UX
 ## Goals
 ### User Goals
-+ I want to find a recipe for dinner.
-+ I want to use my cell phone to look up a recipe.
-+ I was to use a tablet as a "recipe book".
-+ I want to make a pasta dish I dont know.
-+ I want a place to leave a recipe so I can easiy find.
-+ I want help deciding what to cook for dinner.
-+ I want a easy to make recipe.
-+ I want a recipe to surprise my significant other with
-+ I want the aplication to remember a list of recipes I like
-+ I want an easy to read recipe layout while Im cooking
-+ I want a site that has a welcoming feeling
++ I want to find a recipe for dinner. -- Testing Random Recipe
++ I want to use my smart phone or tablet to as a recipe book. -- Testing Text Coss Out Function
++ I want to find a new chicken dish to cook. -- Testing All_Recipe And Recipe_List Pagination
++ I want a place to leave a recipe so I can easiy find. -- Testing Recipe Upload
++ I want help deciding what to cook for dinner and I like a chefs recipes. -- Testing Search Chef Name
++ I want a easy to make recipe. -- Testing Browse Button for Lazy Favorites Recipes
+<!-- + I want a recipe to surprise my significant other with -->
++ I cant remember the name of a recipe that i like -- Testing Recipe Favorites Function
++ I want an easy to read recipe layout while Im cooking -- Testing Text Coss Out Function
++ I lack confidence in my cooking ability and need help. -- Testing Lessons Index Cards
 
 ### Developer Goals
 + As a school project, this site was developed using as little 3rd party code as possible (ex. carousel logic was written by developer and bootstraps version was not used). This 
-was a deliberate choice to help the developer gain a better understanding of how languages such as JS and python function and not done out of ignorance. Understanding the time it 
-takes to develope such code is important.
+was a deliberate choice to help the developer gain a better understanding of how languages such as JS and python function and not done out of ignorance. Understanding how these logics 
+function for similar tasks (Ex, validation) and the time it takes to develope them is important to this developer.
 
 + I want to showcase my python abilities.
     + Datetime (python)
@@ -145,7 +150,7 @@ takes to develope such code is important.
 + I want to showcase my artistic ability
     + css art
         + Sticky Notes with lifting effect
-        + Social Drinks (Links) - stylized as a drink with ice in it with a ripping and ice dipping effect 
+        + Social Drinks (Links) - stylized as a drink with ice in it with a ripping and ice dipping effect
         + Polaroid Picture
         + Table Runner(Header footer)
     + svg art** favicon - blank place holder - arrow for carousel
@@ -170,25 +175,23 @@ takes to develope such code is important.
 ## Header and Footer
 + Southern theme
     + Cutting board logo with engraved text
-    + Southern table runner fot background
-    + Links are stylized drinks
-+ Plan easy to see nav bar
-+ search bar is collapsed in nav bar
+    + Southern table runner for background
+    + Links are stylized as drinks
++ Plan bootstrap nav bar with integrated search engine for a good UX
 
 ## Login and Create Account Modal
-+ Both login and create account combined into single modal to save space
-+ validation prevents users from submitting improper form details
-+ validation also automatically adds '_' in place of a space
++ Both login and create account modals accessible from anypage
++ Validation (python and JS) prevents users from submitting improper form details
++ Validation also automatically adds '_' in place of a space for selected important content
 
 ## Index
-+ index card carousel
-    + Recipes added to index cards for a home made, I can do this feeling
-    + carousel offers three ransomly selected recipes from head chef to display per feature item
-    + Designed to help give users options based on the feature item they wayt to cook
++ Index card carousel
+    + Recipes added to index cards for a home made, I can do this feeling.
+    + Carousel offers three randomly selected recipes from head chef to display per featured item.
+    + Designed to help give users options based on the feature item they want to cook.
 + Grandparent classic polaroids
-    + Recipe's image used on a polaroid picture design with a grey filter to give them a 'classic' appearance
-    + The design is used to give people the nostalgia feeling of a recipe their grandparents might have made
-    + The recipe's name is added to the bottom of the picture to let users know what recipe they are viewing
+    + Recipe's image used on a polaroid picture design. This design is used to give people the nostalgia feeling of a recipe their grandparents might have made.
+    + The recipe's name is added to the bottom of the picture to let users know what recipe they are viewing.
 + Random Recipe section
     + Quick browsing links provided to give users ample ideas if they dont know what to cook
     + A random recipe with basic information and a image is provided to give users an idea of what to cook
@@ -196,8 +199,8 @@ takes to develope such code is important.
     + This section also houses the head chef's Bio and image to help give the site a welcoming feeling
 
 ## Lessons
-+ A simple header that lets users know the cards are clickable was used
 + Index cards
+    + A simple commit is added to the cards that lets users know the cards are clickable
     + Each index card is flippable with most of them containing information on both sides
     + The information provided gives new chefs some hints and tricks at getting started in the kitchen and making the best of what they have on hand
 
@@ -205,35 +208,35 @@ takes to develope such code is important.
 + Two clean buttons on top that allow users to either create a recipe they want to preserve  or update their own profile
 + Users can clearly see their own bio and avatar image
 + Users have access to their entire uplaoded/favorited recipe history with a single click
-    + Users can also see their ten most recently uploaded/favorited as well
-+ Users can see their 10 recently viewed recipes 
+    + Users will always see their ten most recently uploaded/favorited
++ Users can see their 10 recently viewed recipes
 
 ## Recipe
-+ If a user has submitted a recipe they view:
-    + They can modify or delete that recipe
++ If a user has submitted a recipe, they can modify or delete that recipe.
 + Logged in users:
     + Can favorite a recipe so they can return to it easier
-+ clearly displays avatar image so users can see what dish looks like
++ Clearly displays avatar image so users can see what dish looks like
 + All general recipe information is displayed and easiy viewed
-+ Recipe's ingredients and steps: 
-    + each labeled in their own lists
-    + Each item has its own check box
-    + Users can click on any part of the item and it will check the box and cross out the item clicked
++ Recipe's ingredients and steps:
+    + Each labeled in their own lists.
+    + Each item has its own check box.
+    + Users can click on any part of the item and it will check the box and cross out the item clicked.
 
 ## All Recipes
-+ Lists entire DB of recipes by their featured ingredient
-+ When a feature contains more than 5 entires the list updates to have pagination at the bottom of the list
-+ Each list is given a header of the feature type that is the basis for which recipes follow
-+ Each Recipe displays the name and total recipe time to help users decide what they want to make
++ Lists entire DB of recipes by their featured ingredient.
++ When a feature contains more than 5 entires the list updates to have pagination at the bottom of the list.
++ Each list is given a header of the feature type that is the basis for which recipes follow.
++ Each Recipe displays the name and total recipe time to help users decide what they want to make(At smaller resolutions its just a recipe name).
++ Users can click on recipe header to go to a page containing only that featured item.
 
 ## Recipe List
-+ When a list contains more than 5 entires the list updates to have pagination at the bottom of the list
-+ Each Recipe displays the name and total recipe time to help users decide what they want to make
++ When a list contains more than 5 entires the list updates to have pagination at the bottom of the list.
++ Each Recipe displays the name and total recipe time to help users decide what they want to make(At smaller resolutions its just a recipe name).
 
 ## Add Edit Recipes
-+ A form that is less frills than the rest of the page.  This is to give a more serious feeling when creating/editing recipes
++ A form that is less frills than the rest of the page. This is to give a more serious feeling when creating/editing recipes.
 + Users can update every part of a recipe except the boolean tags: Lazy Favorite and Grandparent Classic (Which is reserved for the HeadChef of the site to make this decision)
-+ There is basic HTML validation for the form except for the recipe image which has an additional level of validation to prevent users from upload to large of an image
++ There is basic (Python + JS) validation for the for the image which uses JS to check its file size and python to check its file type.
 + Total cook time updates automatically as prep and cook times are adjusted
 + Recipe Ingerdients and Recipe Steps:
     + Each uses a JS add/remove set of buttons for users to create and remove boxes as they need
@@ -244,7 +247,7 @@ takes to develope such code is important.
 + A form that is less frills than the rest of the page.  This is to give a more serious feeling when creating/editing recipes
 + Uses are able to update their password, username, email, avatar, and bio
 + JS Character # validation is used on name
-+ JS email validation 
++ JS email validation
     + Email validation is limited with suffixes allowed
     + checks for the email suffix .com or .edu
     + This is detailed in **previous bugs** section
@@ -277,11 +280,20 @@ takes to develope such code is important.
 
 ## Scalability
 + Add ability to search for lazy or grandparent classic**
-+ backend varify of image size and type instead of JS validation
++ backend varify of image size instead of relying on JS size validation
 + Adding user selectable filters to search bar
 + Create a user commit form for the recipes. This would give a better sense of community for returning users
 + Allows users to rate each others recipes
 + Improve email validation to accept a wider ranger of email suffixes (ex. regional suffix, .uk, .fr, .de)
+
+<!-- new content -->
++ Improve Validation to use less specific validation types
+    + Example: Use classes to set validation for character count, characters allowed, spaces, allowed, etc...
+    + A dynamic system that has a class for amount of characters allowed and a seperte class that allows for characters to be used would allow for a more dynamic validation to be made with JS which would improve validation code over all
++ Improve search engine to accept a **space** as an **_** to help users more easily find chefs with a or multiple "space(s)" in their name
+ 
+    
+<!-- end new content -->
 
 # Technology Languages
 + HTML - Skeleton frame of the application.
@@ -324,15 +336,249 @@ takes to develope such code is important.
 + Every test of **Developer Tests** was preformed on the above listed systems ar the specified screen orientation.
 + Between landscape and portrait tests, the application was not refreshed. This is a critical part of the test! Part of these tests is that the application is **never** 
 refreshed between tests. This helps test for stability and ensure tablet and mobile users a good experience.
-+ After completion of all of the **Developer Tests** on each system, the system was tested again with random moments of spam clicking and switching between landscape/portrait. 
++ After completion of all of the **Developer Tests** on each system, the system was tested again with random moments of spam clicking and switching between landscape/portrait.
 
 ## Developer Tests
+<!-- new content section -->
+### Testing Random Recipe
 
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content doesn't overlap and is easily read.
+
+#### Assumption(s):
+1. Tester will refresh screen while in landscape and transition it to portrait.
+1. Tester will refresh screen while in portrait and transition it to landscape.
+1. Tester will refresh page until they see a classic banner, a favorite banner, and a favorite/classic banner.
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. Scroll to bottom of screen.
+1. Click the random recipe a make sure it links to the proper recipe.
+1. Repeat steps 1 - 3 approximately 3 - 5 times to check for randomization of recipe.
+
+#### Document Result(s):
+1. Document the recipe name of any broken links.
+1. documentation of recipe name, screen resolution, device, and page any time content has bad UX.
+1. Document if banners are never seen.
+1. documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+
+### Testing Text Coss Out Function
+
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content doesn't overlap and is easily read.
+
+#### Assumption(s):
+1. Tester will refresh screen while in landscape and transition it to portrait.
+1. Tester will refresh screen while in portrait and transition it to landscape.
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. Navigate to any recipe page in any way that you choose.
+1. Scroll to **Recipe Ingredients** section and click check box or text to see if it crosses out.
+1. Scroll to **Recipe Steps** section and click check box or text to see if it crosses out.
+1. Repeat steps 1 - 4 selecting a different recipe path to recipe page each time.
+1. Repeat step 5 approximately 3 times to check for appropiate overall good UX.
+
+#### Document Result(s):
+1. Document any Recipe that's ingredients and steps would not cross out properly.
+1. Document the recipe name and choice of path that have any broken links.
+1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
+1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+
+### Testing All_Recipe And Recipe_List Pagination
+
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content doesn't overlap and is easily read.
+1. Pagination doesn't obscure any content.
+
+#### Assumption(s):
+1. Tester will refresh screen while in landscape and transition it to portrait.
+1. Tester will refresh screen while in portrait and transition it to landscape.
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. Navigate to **All_Recipe** page (on nav bar **All_Recipes** is called **Recipes**).
+1. Find any feature that contains pagination ul.
+1. Click through all numbers of pagination (or 5 random pagination numbers which ever comes first).
+1. Repeat step 4 for 2 other features with pagination.
+1. Select a feature with pagination to navigate to **Recipe_List** page.
+1. Click through all numbers of pagination (or 5 random pagination numbers which ever comes first).
+1. Repeat steps 1-2 and 6-7 approximately 2 times.
+
+#### Document Result(s):
+1. Documentation of recipe name, screen resolution, device, page, and pagination number if any pagination has bad UX
+1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
+1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+
+### Testing Recipe Upload
+
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content doesn't overlap and is easily read.
+1. Tester will intentionally try to submit incorrect data to check for incorrect validation. 
+
+#### Assumption(s):
+1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
+1. Tester has a PNG or JPG file under 500kb, a PNG or JPG over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB
+1. Tester knows what is considered invalid by this form.
+1. Tester will refresh screen while in landscape and transition it to portrait.
+1. Tester will refresh screen while in portrait and transition it to landscape.
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. Click on login in nav bar.
+1. Click on Create Account tab.
+1. Fill out all appropiate information and submit said information.
+1. Once **Profile** page opens click on **Share Recipe**.
+1. Fill out all appropiate information, including an avatar, to submit a new recipe
+1. Navigate to **Profile** and click on **Share Recipe**.
+1. Fill out all appropiate information , including an Avatar and choose one part of from (Name, Prep, Cook, Description, Ingredients, or Steps) to inappropriately fill out and attempt to submit.
+1. Attempt to inappropriately fill selected part of form in all different types of validation to check if form will incorrectly accept this information.
+1. Repeat steps 8 and 9 until all inputs and types of validation have been checked.
+1. Attempt to submit same recipe with a PNG or JPG over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
+1. Return to original submitted recipe.
+1. Repeat steps 8 - 11.
+
+#### Document Result(s):
+1. Documentation of any input/textarea that incorrectly accepted information, what form of validation failed (wheather it was JS, Python, or both), and wheather it was a new recipe or edited recipe.
+1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
+1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+
+### Testing Search Chef Name
+
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content doesn't overlap and is easily read.
+
+#### Assumption(s):
+1. Tester knows all recipes that belong to **Fat_Raccoon**
+1. Tester will refresh screen while in landscape and transition it to portrait.
+1. Tester will refresh screen while in portrait and transition it to landscape.
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. Click on nav bar's search bar.
+1. Input **Fat_Raccoon** into search bar and submit.
+1. Check over returns to make sure all appropriate returns are shown.
+1. Return to **Index Page** of Fat Raccoon.
+1. Scroll to bottom of page where **Random Recipe** is located.
+1. Click on chef's name **Fat_Raccoon** under the recipe's name
+1. Check over returns to make sure all appropriate returns are shown.
+1. Return to **Index Page** of Fat Raccoon.
+1. Scroll to bottom of page where **Random Recipe** is located.
+1. Click on **Fat_Raccoon** on the sticky note with the chef's bio.
+1. Check over returns to make sure all appropriate returns are shown.
+1. Select any recipe from **Fat_Raccoon**
+1. Under the avatar image click the name **Fat_Raccoon**
+1. Check over returns to make sure all appropriate returns are shown.
+
+#### Document Result(s):
+1. Documentation of any link that does not appropriately link to all of **Fat_Raccoon**'s recipes
+1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
+1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+
+### Testing Browse Button for Lazy Favorites Recipes
+
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content doesn't overlap and is easily read.
+
+#### Assumption(s):
+1. Tester knows all recipes tagged as **Lazy Favorite**
+1. Tester will refresh screen while in landscape and transition it to portrait.
+1. Tester will refresh screen while in portrait and transition it to landscape.
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. Scroll down to **Random Recipe** section
+1. Click on the button **Browse our favorites!**
+1. Check over returned recipes to make sure all appropriate recipes are shown.
+
+#### Document Result(s):
+1. Documentation of any recipes that do not appropriately show up when **Lazy Favorite** button is clicked
+1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
+1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+
+### Testing Recipe Favorites Function
+
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content doesn't overlap and is easily read.
+1. Favorite icon responds appropriately to recipes status of favorite vs unfavorite
+
+#### Assumption(s):
+1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
+1. Tester knows the difference between a favorited recipe and un favorited recipe icon
+1. Tester will refresh screen while in landscape and transition it to portrait.
+1. Tester will refresh screen while in portrait and transition it to landscape.
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. Click on login in nav bar.
+1. Click on Create Account tab.
+1. Fill out all appropiate information and submit said information.
+1. Navigate to any recipe of testers choice.
+1. Click on **Not a Favorite** or its icon.
+1. Check to be sure accurate text and icon appear.
+1. Navigate to a different non favorited recipe page.
+1. Click on **Not a Favorite** or its icon.
+1. Check to be sure accurate text and icon appear.
+1. Navigate to **Profile** page.
+1. Click on either of previously favorited recipes in the **10 Recently Favorited Recipes** section.
+1. Check for appropriate favorite status and icon.
+
+#### Document Result(s):
+1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
+1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+1. Documentation of recipe name, and path choosen to recipe any time a favorite or its icon was not displayed correctly
+
+### Testing Lessons Index Cards
+
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content doesn't overlap and is easily read.
+
+#### Assumption(s):
+1. Tester will refresh screen while in landscape and transition it to portrait.
+1. Tester will refresh screen while in portrait and transition it to landscape.
+1. Tester knows that every index card that rotates has a **More on back-->**
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. navigate to **lesson** page. 
+1. Click every single index card and make sure text is appropriately displayed on both sides
+
+#### Document Result(s):
+1. Documentation of any index card that has poor UX, the side the poor UX was on, the resolution, and device used.
+1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
+1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+
+<!-- end new content section -->
 ## Program Tests
 ### BrowserStack
+<!-- Image of browserStack -->
 
 ### Lighthouse
-
+<!-- Image of light house -->
 ### JigSaw
 + Identifies errors in CSS
 
@@ -364,29 +610,29 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 + Email wouldnt JS validate properly
     + Type: email was preventing the regex from functioning properly.
     + Fix was changing type to text and added an extra layer of validation to email, email suffix
-+ Login modal wouldnt operate appropiately on any page other than the index
++ Login modal wouldnt operate appropriately on any page other than the index
     + Login modal was added to base and removed from index
     + base_login was created to replace base for pages user had to be logged in for and needed the modal to NOT be present
 
 ## Current Bugs
 + Social links on footer have a triggering bug. They use JS mouseenter to trigger and trigger improperly due to multiple css layers and a margin. The margin is persisting through multiple
-techniques to remove it, including !important. Changing the layer or to mouseover does not fix the excessive triggering. 
-+ User search box, on medium and small responsiveness, creates a line below the main navigation bar and drops the search bar down to that new line 
-    + A Solution to have search bar collapse has been attempted however this generated poor UX and various targeting bugs 
+techniques to remove it, including !important. Changing the layer or to mouseover does not fix the excessive triggering.
++ User search box, on medium and small responsiveness, creates a line below the main navigation bar and drops the search bar down to that new line
+    + A Solution to have search bar collapse has been attempted however this generated poor UX and various targeting bugs
 + Safari browser Bugs
     + When safari decides sticky-note-right's height is to large the box shadow of its :before has a layer error and overlaps the content of sticky-note-right
     + Input of user search bar is larger than it should be, giving the item bad UX
 + Sticky Note shadow - depending on the magnification used (with a range of 50% - 200%) the :before shadow used will show bad UX ( currently: 80% <)
     + Previously Created "standard" container sizes styles "*size*-container-height" and have them scale with the responsiveness of the site
     + Give empty containers a mininum height
-    + Give full containers a set max height 
+    + Give full containers a set max height
 
 ## Other Problems
 + Email validation
-    + Validation origianlly used suffix validation of ".com" and ".edu". However this validation alienated users from making accounts  
+    + Validation origianlly used suffix validation of ".com" and ".edu". However this validation alienated users from making accounts
     + Suffix validation had to be expanded to include ".net" and ".org".
-+ Searching mongo DB using collection.db.find("$text": "$search": <value>) unable to return booleans.  This is an issue with users being 
-able to search "lazy" or "grandparent" tags. 
++ Searching mongo DB using collection.db.find("$text": "$search": <value>) unable to return booleans.  This is an issue with users being
+able to search "lazy" or "grandparent" tags.
     + A browse button was added that searches for "lazy" and "grandparent" using the equals operator ("$eq")
     + This search requires a specific operator so a button was designed for users. This would allow users to search for these tags and doesnt make the search engine unnecessarily complex
 
@@ -396,7 +642,7 @@ able to search "lazy" or "grandparent" tags.
 + install Flask
     + in bash type "pip3 install Flask"
 + python file structure
-    + create "*name*.py" file in root 
+    + create "*name*.py" file in root
     + create "env.py" file in root
         + Add "env.py" to "gitignore" list (NEVER PUSH THIS FILE)
         + Add "__pycache__/" to "gitignore" list (NEVER PUSH THIS FILE)
@@ -452,7 +698,7 @@ able to search "lazy" or "grandparent" tags.
 + feature
     + Feature is for a recipes feature ingredient
     + There must be a single feature in the collection for the page to function
-    + each feature is structured as 
+    + each feature is structured as
         + {
         + name: "chicken"
         + }
@@ -492,7 +738,7 @@ able to search "lazy" or "grandparent" tags.
 + fs.chunks
     + Will be created automatically after first image is uploaded
     + fs.chunks is for storage of images
-+ fs.files 
++ fs.files
     + Will be created automatically after first image is uploaded
     + fs.files is for storage of images
 
@@ -527,7 +773,7 @@ able to search "lazy" or "grandparent" tags.
 + [W3C Validator](https://validator.w3.org/)
     + Used to identify errors in markup.
 + [JSFiddle](https://jsfiddle.net/)
-    + Used for tinkering and creating CSS art. 
+    + Used for tinkering and creating CSS art.
 + [Inkscape](https://inkscape.org/)
     + Used to create scalable vector graphics (SVG).
 + [RandomKeygen](https://randomkeygen.com/)
@@ -556,5 +802,7 @@ able to search "lazy" or "grandparent" tags.
     + A basic guide to the current version of Werkzeug.
 + [World Wide Web Consortium (W3C)](https://www.w3.org/)
     + Used to understand basic standardization practices for web based apps.
-    
+
 # Acknowledgements
++ Emily Eldridge for help with revising the grammar and flow of this README document.
++ Felipe Souza Alarcon for his suggestion of a recipe themed project, his help and guidance. 
