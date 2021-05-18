@@ -228,7 +228,7 @@
     line-height: 1;
     margin-bottom: 0rem;
 }
-/* ---------------------------------------- Social drink lik with ripple animation Art */
+/* ---------------------------------------- Social drink link with ripple animation Art */
 /* -- Ripple effect and animation -- */
 .ripple {
     position: absolute;
@@ -709,8 +709,7 @@ footer {
     background-color: rgba(14, 255, 255, 0.5);
     width: 100%;
 }
-/* Cancels out form-base border-radius */
-/* -----------------------------------------added a max width to allow  */
+
 #delete-modal input {
     margin-top: 1rem;
 }
@@ -829,7 +828,7 @@ footer {
     width: 100%
 }
 
-.form-input-spacing { /*----------Im new !! AND IMPORTANT*/
+.form-input-spacing {
     padding-bottom: 3rem
 }
 
@@ -906,8 +905,8 @@ footer {
 #time3 {
     background-color: #dbdbdb;
 }
-/* Form ingredient and step boxe spacing */ 
-.step-ingredient-spacing { /* change name to step-ingredient-formating */
+/* Form ingredient and step box spacing */ 
+.step-ingredient-spacing {
     padding-right: 10%;
     padding-left: 10%;
     padding-bottom: 0.5rem;
