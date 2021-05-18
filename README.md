@@ -34,6 +34,14 @@
     + [Developer Tested Systems](#developer-tested-systems)
     + [Developer Testing Methods](#developer-testing-methods)
 + [Developer Tests](#developer-tests)
+    + [Testing Random Recipe](#testing_random_recipe)
+    + [Testing Text Coss Out Function](#testing_text_coss_out_function)
+    + [Testing All_Recipe And Recipe_List Pagination](#testing_all_recipe_and_recipe_list_pagination)
+    + [Testing Recipe Upload](#testing_recipe_upload)
+    + [Testing Search Chef Name](#testing_search_chef_name)
+    + [Testing Browse Button for Lazy Favorites Recipes](#testing_browse_button_for_fazy_favorites_recipes)
+    + [Testing Recipe Favorites Function](#testing_recipe_favorites_function)
+    + [Testing Lessons Index Cards](#testing_lessons_index_cards)
 + [Program Tests](#program-tests)
     + [BrowserStack](#browserstack)
     + [Lighthouse](#lighthouse)
@@ -543,6 +551,9 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 1. Navigate to **Profile** page.
 1. Click on either of previously favorited recipes in the **10 Recently Favorited Recipes** section.
 1. Check for appropriate favorite status and icon.
+1. Navigate to **Profile** page.
+1. Click on the header for **10 Recently Favorited Recipes** section.
+1. Check for appropriate recipes
 
 #### Document Result(s):
 1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
@@ -578,6 +589,7 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 <!-- Image of browserStack -->
 
 ### Lighthouse
+![Light house results](static/readme/testing/lighthouse-fat-raccoon.jpg "Light house results")
 <!-- Image of light house -->
 ### JigSaw
 + Identifies errors in CSS
@@ -695,6 +707,46 @@ able to search "lazy" or "grandparent" tags.
     + paste string in env.py as the "MONGO_URI" value
     + Update the pasted string with the DBname and password by replacing <DBname> and <password> (replace angled brackets as well)
 ### Create the appropiate collections
++ blank
+    + This is where the dictionary base for both new users and new recipes is stored
+    + Two entries are required to be here
+    + The mongo id auto assign is fine for both entries
+    + The value Array is a Mongo assigned Array
+    + The value null is a Mongo assigned null value
+    + The value false is a Mongo assigned boolean value
+    + Recipe entery is structured as
+        + {
+        + name: ""
+        + feature: "chicken"
+        + ingredients: Array
+            + 0: ""
+        + steps: Array
+            + 0: ""
+        + time: Array
+            + 0: ""
+        + date: ""
+        + text: ""
+        + avatar: null
+        + avatar_id: null
+        + grandparent: false
+        + lazy: false
+        + created_by
+        + }
+
+    + User entery is structured as
+    + {
+    + username: "user"
+    + email: ""
+    + password: ""
+    + avatar: null
+    + avatar_id: null
+    + bio: ""
+    + admin: false
+    + recents: Array
+    + favorites: Array
+    + date: ""
+    + }
+
 + feature
     + Feature is for a recipes feature ingredient
     + There must be a single feature in the collection for the page to function
@@ -703,44 +755,19 @@ able to search "lazy" or "grandparent" tags.
         + name: "chicken"
         + }
 + recipes
-    + Recipe is where the sites recipes are stored
-    + There must be a single recipe in the collection for page to function and it must be linked with lead chefs for recipe of the day to function**May have updated to accept no recipes
-    + each recipe is structured as
-        + {
-        + name: "recipe name",
-        + feature: "chicken",
-        + ingredients: ["ingredient1", "ingredient2", "ingredient3", etc...],
-        + steps: ["step1", "step2", "step3", etc...],
-        + time: [15, 20, 35],
-        + text: "Some general information about this recipe",
-        + date: *python time stamp*,
-        + avatar: null,
-        + avatar_id: null,
-        + created_by: "someonesEmail@aol.com",
-        + grandparent: false,
-        + lazy: false
-        + }
+    + Recipe is where the sites recipes are stored.
+    + There is no set number of entires for the site to function properly, however a better UX is provided when the head chef of the site has several recipes entered.
+
 + users
-    + Users is where the sites user information is stored
-    + each user must be structured as
-        + {
-        + username: "some_name",
-        + email: "Email@gmail.com",
-        + password: "*hashed password*",
-        + avatar: null,
-        + avatar_id: null,
-        + bio: "",
-        + admin: false
-        + recent: [],
-        + favorites: [],
-        + date: *python tim stamp*
-        + }
+    + Users is where the sites user information is stored.
+    + There is no set number of entires for the site to function properly, however a better UX is provided if the site has a set head chef.
+
 + fs.chunks
-    + Will be created automatically after first image is uploaded
-    + fs.chunks is for storage of images
+    + Will be created automatically after first image is uploaded.
+    + fs.chunks is for storage of images.
 + fs.files
-    + Will be created automatically after first image is uploaded
-    + fs.files is for storage of images
+    + Will be created automatically after first image is uploaded.
+    + fs.files is for storage of images.
 
 # Tools and Credits
 ## Tools
