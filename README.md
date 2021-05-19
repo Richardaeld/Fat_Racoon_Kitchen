@@ -170,8 +170,42 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
     + svg art** favicon - blank place holder - arrow for carousel
         + Fat Raccoon logo
 
-## Client Stories and Experience Provided
-### Client Stories
+## Client Stories
++ I want to find a recipe for dinner.
+    + I opened the Fat Raccoon's main page. I dont really know what I want so I scrolled down to the bottom of that page. I liked the recipe I saw on the bottom of the page and decided to use that. 
++ I want to use my smart phone or tablet to as a recipe book. -- (+ I have trouble keeping up with physical recipes and remembering what I have on hand and what I dont.)
+    + I opened the Fat Raccoon's main page and found a recipe I like. I got to the recipes page to see what I need to make the recipe. Ive found that if I click the item's check box it, it crosses out the while item and 
+    when I turned my device's off and on I found it didn't automatically reset the screen I was on. I think I will keep using my device to easily keep track of what ingredient I still need or what step of teh recipe I am on
++ I want to find a new chicken dish to cook.
+    + I opened the Fat Raccoon's main page. I didn't immediately find a chicken recipe I liked. I found a button, **Browse by feature!**, and I clicked it.  I found the chicken feature section and all the chicken 
+    recipes I could want!
++ I want a place to leave a recipe so I can easiy find.
+    + I opened the Fat Raccoon's main page. I want to have a digital place to keep a recipe so I create a log in to the Fat Raccoon. The page takes me to my newly created profile page. I click the **Share Recipe** button
+    and input all the recipes information and even a image. I found I can favorite my own recipe but it is also always in the recipes uplaoded section of my profile so I can easily find my recipe whenever I want it. I've 
+    also discovered I can edit my recipe from its page.
++ I want help deciding what to cook for dinner and I like a chefs recipes.
+    + My cousin, Mrs. Fat Raccoon and her husband Mr. Fat Raccoon have similar taste in food as me and I want to easiy find all their recipes. I opened the Fat Raccoon's main page and scrolled to the bottom of the 
+    page where I found a button, **Browse our recipes!**, and I clicked the button. I am now able to see all of the the **Fat Raccoon's** recipes.
+    + My friend has an account on the **Fat Raccoon** and I know my friend's account name. I open the Fat Raccoon's main page and put my friends account name into the search bar and now I am able to see all of my friends
+    uploaded recipes.
+    + I opened the Fat Raccoon's main page and clicked on **recipes** in the navigation bar.  I found a recipe on the recipe page that I really liked, however it wasn't made by the **Fat Raccoon**! I did find that 
+    if I clicked on the chef's name under the picture of their recipe it takes me to all of their submitted recipes!
++ I want a easy to make recipe.
+    + Its been a long day, Im tired, and want an easy recipe to make for dinner. I opened the Fat Raccoon's main page and scroll to the bottom of the page and find a button, **Browse our Lazy Favorites!**. I click this 
+    button and I find numerous recipes that dont require much effort.
++ I cant remember the name of a recipe that i like.
+    + I opened the Fat Raccoon's main page and relized I dont remember the name of the recipe I was looking at last night. I remembered I was logged in so I log into my
+    Fat Raccoon account and Im taken to my profile page where I easily find the recipe I was looking at last night in my **10 Recently Viewed Recipes** section.
+    + I opened the Fat Raccoon's main page and relized I dont remember the name of the recipe I wanted to try. I log into the Fat Raccoon with my account and Im taken 
+    to my profile page. I dont see the recipe in my **10 Recently Viewed Recipes**, However I did favorite the recipe and I easily find the recipe in my **10 Recently Favorited Recipes**
+    section
+    + I opened the Fat Raccoon's main page and relized I dont remember the name of the recipe I wanted to try. I log into the Fat Raccoon with my account and Im taken 
+    to my profile page. I dont see the recipe in my **10 Recently Viewed Recipes**. I also did not find the recipe in my **10 Recently Favorited Recipes** section.
+    I click on my **10 Recently Favorited Recipes** header and Im taken to my entire favorited recipe list. I find the recipe there.
++ I lack confidence in my cooking ability and need help.
+    + I open the Fat Raccoon's main page and I realize Im totally outside of my comfort zone.  I want to try a recipe but everytime I cook, something is just terrible 
+    about the experience. I see the **lesson** section in the navigation bar and decide to give it a shot. I find numerous helpful tips that give me the confidence to 
+    try a recipe that sounds good.
 
 <!-- ### Experience Provided
 + Users can search the entire recipe DB for the recipe they want to use
