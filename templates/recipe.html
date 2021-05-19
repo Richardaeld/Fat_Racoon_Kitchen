@@ -14,7 +14,7 @@
             <input type="text" name="recipeName" id="recipeName" invalid>
             <br>
             <!-- Delete button -->
-            <input class="custom-button make-space-margin" id="custom-button-delete" type="submit" value="Delete" disabled>
+            <input class="custom-button make-space-margin" id="custom-button-delete" type="submit" value="Delete" tabindex="0" role="button" aria-pressed="false" disabled>
         </form>
     </div>
 </aside>
@@ -27,13 +27,13 @@
         <aside class="row no-gutters justify-content-between">
             <!--  Edit recipe button -->
             <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}" class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
-                <div class="sticky-note-inner-div">
+                <div class="sticky-note-inner-div" tabindex="0" role="button" aria-pressed="false">
                     <h6 class="remove-p-margin">Edit Recipe</h6>
                 </div>
             </a>
             <!--  Delete recipe button -->
             <div class="col-5 custom-button sticky-note-no-shadow clickable custom-js-button" id="deleteModal">
-                <div class="sticky-note-inner-div" >
+                <div class="sticky-note-inner-div" tabindex="0" role="button" aria-pressed="false">
                     <h6 class="remove-p-margin">Delete Recipe</h6>
                 </div>
             </div>

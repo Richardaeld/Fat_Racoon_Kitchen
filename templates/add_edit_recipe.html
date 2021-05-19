@@ -8,14 +8,14 @@
             <!-- back to profile for new recipes -->
             {% if recipeInfo.name == ""%}
                 <a href="{{ url_for('profile') }}">
-                    <div class="sticky-note-inner-div">
+                    <div class="sticky-note-inner-div" tabindex="0" role="button" aria-pressed="false">
                         <h6 class="remove-p-margin">Back</h6>
                     </div>
                 </a>
             <!-- Back to recipe page for existing recipes -->
             {% else %}
                 <a href="{{ url_for('recipe', recipeId=recipeId) }}">
-                    <div class="sticky-note-inner-div">
+                    <div class="sticky-note-inner-div" tabindex="0" role="button" aria-pressed="false">
                         <h6 class="remove-p-margin">Back</h6>
                     </div>
                 </a>
@@ -190,11 +190,11 @@
                     <!-- Header -->
                     <label for="ingredients-1" id="ingredientNumber">Recipe Ingredients (<span>1</span>)</label>
                     <!-- Add Button -->
-                    <div class="recipeAddButton clickable form-button make-space-margin">
+                    <div class="recipeAddButton clickable form-button make-space-margin" tabindex="0" role="button" aria-pressed="false">
                         <p class="remove-p-margin">Add</p>
                     </div>
                     <!-- Remove Button -->
-                    <div class="recipeRemoveButton clickable form-button make-space-margin">
+                    <div class="recipeRemoveButton clickable form-button make-space-margin" tabindex="0" role="button" aria-pressed="false">
                         <p class="remove-p-margin">Remove</p>
                     </div>
                 </div>
@@ -238,11 +238,11 @@
                     <!-- Header -->
                     <label for="steps-1" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
                     <!-- Add Button -->
-                    <div class="stepAddButton clickable form-button make-space-margin">
+                    <div class="stepAddButton clickable form-button make-space-margin" tabindex="0" role="button" aria-pressed="false">
                         <p class="remove-p-margin ">Add</p>
                     </div>
                     <!-- Remove button -->
-                    <div class="stepRemoveButton clickable form-button make-space-margin">
+                    <div class="stepRemoveButton clickable form-button make-space-margin" tabindex="0" role="button" aria-pressed="false">
                         <p class="remove-p-margin">Remove</p>
                     </div>
                 </div>
@@ -283,9 +283,9 @@
 
                 <!-- submit button -->
                 {% if recipeInfo.name == "" %}
-                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit" disabled>
+                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit" tabindex="0" role="button" aria-pressed="false" disabled>
                 {% else %}
-                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit">
+                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit" tabindex="0" role="button" aria-pressed="false">
                 {% endif %}
             </div>
 

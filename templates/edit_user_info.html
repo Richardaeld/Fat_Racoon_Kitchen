@@ -4,7 +4,7 @@
     <!-- Back Button -->
     <aside class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
         <a href="{{ url_for('profile') }}">
-            <div class="sticky-note-inner-div">
+            <div class="sticky-note-inner-div" tabindex="0" role="button" aria-pressed="false">
                 <h6 class="remove-p-margin">Back</h6>
             </div>
         </a>
@@ -63,7 +63,7 @@
                 </div>
 
                 <!-- Create new password button -->
-                <div class="hidePassword make-space custom-js-button-password form-input-spacing new-password">
+                <div class="hidePassword make-space custom-js-button-password form-input-spacing new-password" tabindex="0" role="button" aria-pressed="false">
                     <p class="form-button remove-p-margin max-width">Create new password</p>
                 </div>
 
@@ -101,7 +101,7 @@
                 </div>
 
                 <!-- submit button -->
-                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Update" disabled>
+                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Update" tabindex="0" role="button" aria-pressed="false" disabled>
 
             </div>
         </form>
