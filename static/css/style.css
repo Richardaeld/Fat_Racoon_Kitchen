@@ -651,7 +651,7 @@ right: 0px;
     background-color: rgba(111, 18, 231, 0.75);
 }
 .reduce-padding {
-    padding: 0.25rem;
+    padding: 0.75rem;
 }
 
 .remove-top-margin {
@@ -672,6 +672,23 @@ right: 0px;
     width: 75px;
     height: 75px;
 }
+
+.center-browse-text {
+    position: relative;
+}
+
+.center-browse-text p {
+    /* position: absolute; */
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.make-absolute {
+    position: absolute;
+
+}
+
 /* ------------------------------------------------------- Footer Section  ---------------------------------------------------------------- */
 footer {
     background: url("../images/cuttingboard-90-small.jpg") 0% 0% / 100% 100%; /* table background image */

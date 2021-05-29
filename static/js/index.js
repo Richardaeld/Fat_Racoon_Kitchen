@@ -459,3 +459,24 @@ function carouselButton (button) {
 carouselButton("carousel-right");
 // Calls carousel to move left
 carouselButton("carousel-left");
+
+// Sets a standard height for browse buttons
+function setStandardHeight() {
+    var largestHeight = 0;
+    var findHeights = document.querySelectorAll(".makeSameHeight")
+    findHeights.forEach(selectHeights)
+    function selectHeights(itemHeight) {
+
+        if(largestHeight < itemHeight.offsetHeight) {
+            largestHeight = itemHeight.offsetHeight;
+        }
+    }
+    findHeights.forEach(setHeights)
+    function setHeights(setToHeight) {
+        setToHeight.style.height = largestHeight + "px"
+        setToHeight.getElementsByTagName("p")[0].classList.add("make-absolute");
+    }
+}
+
+setStandardHeight()
+window.addEventListener("resize", setStandardHeight);
