@@ -317,7 +317,7 @@ Addressed in **Scalability** and **Other Problems**
 
 ## Wireframe and Live Demo
 ### Wireframe
-![Wireframe of the index page](static/readme/wireframe/index_page-large.png "Wireframe of the welcomeing page")
+![Wireframe of the index page](static/readme/wireframe/index-page-large.png "Wireframe of the welcomeing page")
 + [Balsamiq](https://balsamiq.com/) was used for the planning process.
 + Wireframes were made for all predetermined size variations of the webpage.
 + Each wireframe contains curly brackets that give a description of its contents.
