@@ -325,7 +325,7 @@ Addressed in **Scalability** and **Other Problems**
 
 
 ### Live Demo
-![Demo of the Index page](static/readme/demo/demo_index-large.png "Demo of the Index page")
+![Demo of the Index page](static/readme/demo/demo-index-large.jpg "Demo of the Index page")
 + A fully functioning demo can be found on Heroku, [here](https://fat-raccoon.herokuapp.com/ "Deplayment location").
 + [GitHub's](https://github.com/) IDE [GitPod](https://www.gitpod.io/) was used for the construction process.
 + GitHub houses the master branch, [here](https://github.com/Richardaeld/Fat_Racoon_Kitchen)
