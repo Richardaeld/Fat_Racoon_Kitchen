@@ -2,10 +2,10 @@
 {% block section %}
 <!-- carousel -->
 <article class="container-fluid px-0 card-section generic-background">
-    <div class="row no-gutters align-items-center">
+    <div class="row no-gutters align-items-center justify-content-center">
 
         <!-- Carousel header -->
-        <div class="col-12 header-text-shadow make-space-top make-space">
+        <div class="col-11 header-text-shadow make-space-top make-space">
             <h1>Pick a recipe based on its featured ingredient</h1>
         </div>
         <!-- Carousel body -->
@@ -51,10 +51,10 @@
 
 <!--  Grandparent Classics  -->
 <article class="container-fluid generic-background">
-    <div class="row no-gutters">
+    <div class="row no-gutters justify-content-center">
 
         <!--  Classics Header  -->
-        <div class="col-12 header-text-shadow make-space-top make-space">
+        <div class="col-11 header-text-shadow make-space-top make-space">
             <h1>Impress someone with a Fat Raccoon's GrandParent Classic</h1>
         </div>
 
@@ -105,30 +105,30 @@
     <!-- Browse buttons with random recipe's header -->
     <aside class="row no-gutters justify-content-around make-space make-space-top">
         <!-- Random recipe header -->
-        <div class="col-12 header-text-shadow make-space-minus">
+        <div class="col-11 header-text-shadow make-space-minus">
             <h1>Try a random recipe or browse the Fat Raccoon's collection of recipes</h1>
         </div>
         <!-- Browse lazy recipes -->
-        <a href="{{ url_for('search_bool_returns', search='lazy') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin browse-button makeSameHeight">
-            <div class="sticky-note-inner-div reduce-padding center-browse-text" tabindex="0" role="button" aria-pressed="false">
+        <a href="{{ url_for('search_bool_returns', search='lazy') }}" class="col-11 col-lg-5 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin browse-button">
+            <div class="sticky-note-inner-div reduce-padding" tabindex="0" role="button" aria-pressed="false">
                 <p>Browse our Lazy Favorites!</p>
             </div>
         </a>
         <!-- Browse chef fat_raccoon recipes -->
-        <a href="{{ url_for('search_bar_returns', search='fat_raccoon') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin browse-button makeSameHeight">
-            <div class="sticky-note-inner-div reduce-padding center-browse-text" tabindex="0" role="button" aria-pressed="false">
-                <p>Browse Chef Fat_Raccoon's Recipes!</p>
+        <a href="{{ url_for('search_bar_returns', search='fat_raccoon') }}" class="col-11 col-lg-5 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin browse-button">
+            <div class="sticky-note-inner-div reduce-padding" tabindex="0" role="button" aria-pressed="false">
+                <p>Browse Fat_Raccoon's Recipes!</p>
             </div>
         </a>
         <!-- Browse all recipes, all_recipe page -->
-        <a href="{{ url_for('all_recipes') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin makeSameHeight">
-            <div class="sticky-note-inner-div reduce-padding center-browse-text" tabindex="0" role="button" aria-pressed="false">
+        <a href="{{ url_for('all_recipes') }}" class="col-11 col-lg-5 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin browse-button">
+            <div class="sticky-note-inner-div reduce-padding" tabindex="0" role="button" aria-pressed="false">
                 <p>Browse by Feature!</p>
             </div>
         </a>
         <!-- Browse grandparent classic recipes -->
-        <a href="{{ url_for('search_bool_returns', search='grandparent') }}" class="col-5 col-lg-2 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin makeSameHeight">
-            <div class="sticky-note-inner-div reduce-padding center-browse-text" tabindex="0" role="button" aria-pressed="false">
+        <a href="{{ url_for('search_bool_returns', search='grandparent') }}" class="col-11 col-lg-5 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin browse-button">
+            <div class="sticky-note-inner-div reduce-padding" tabindex="0" role="button" aria-pressed="false">
                 <p>Browse our Grandparent Classics!</p>
             </div>
         </a>
