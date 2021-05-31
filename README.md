@@ -402,9 +402,9 @@ is addressed in **Scalability** and **Other Problems**
         + Tested in portrait, which is tablet responsiveness level.
 
 ### Developer Testing Methods
-+ Every test of **Developer Tests** was preformed on the above listed systems ar the specified screen orientation.
-+ Between landscape and portrait tests, the application was not refreshed. This is a critical part of the test! Part of these tests is that the application is **never** 
-refreshed between tests. This helps test for stability and ensure tablet and mobile users a good experience.
++ Every test of **Developer Tests** was preformed on the above listed systems and the specified screen orientation.
++ Between landscape and portrait tests, the application is appropriately refreshed. This is a critical part of the test! Part of these tests is that the application is appropriately
+refreshed during tests to check for errors. This helps test for stability and ensures that tablet and mobile users have a good experience.
 + After completion of all of the **Developer Tests** on each system, the system was tested again with random moments of spam clicking and switching between landscape/portrait.
 
 ## Developer Tests
@@ -414,7 +414,7 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 ---
 
 #### Expectation(s):
-1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
 1. Content doesn't overlap and is easily read.
 
 #### Assumption(s):
@@ -439,7 +439,7 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 ---
 
 #### Expectation(s):
-1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
 1. Content doesn't overlap and is easily read.
 
 #### Assumption(s):
@@ -465,7 +465,7 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 ---
 
 #### Expectation(s):
-1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
 1. Content doesn't overlap and is easily read.
 1. Pagination doesn't obscure any content.
 
@@ -493,7 +493,7 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 ---
 
 #### Expectation(s):
-1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
 1. Content doesn't overlap and is easily read.
 1. Tester will intentionally try to submit incorrect data to check for incorrect validation. 
 
@@ -529,7 +529,7 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 ---
 
 #### Expectation(s):
-1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
 1. Content doesn't overlap and is easily read.
 
 #### Assumption(s):
@@ -564,7 +564,7 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 ---
 
 #### Expectation(s):
-1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
 1. Content doesn't overlap and is easily read.
 
 #### Assumption(s):
@@ -588,7 +588,7 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 ---
 
 #### Expectation(s):
-1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
 1. Content doesn't overlap and is easily read.
 1. Favorite icon responds appropriately to recipes status of favorite vs unfavorite
 
@@ -626,7 +626,7 @@ refreshed between tests. This helps test for stability and ensure tablet and mob
 ---
 
 #### Expectation(s):
-1. Content fills appropriately and doesn't spill out beyond obvious orders.
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
 1. Content doesn't overlap and is easily read.
 
 #### Assumption(s):
