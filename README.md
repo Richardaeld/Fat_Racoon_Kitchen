@@ -118,6 +118,9 @@ in college, let us know!
 + I cant remember the name of a recipe that i like <!-- Testing Recipe Favorites Function -->
 + I want an easy to read recipe layout while Im cooking <!-- Testing Text Coss Out Function -->
 + I lack confidence in my cooking ability and need help. <!-- Testing Lessons Index Cards -->
+<!-- make a test that uses crud -->
+<!-- make test that user deletes a recipe -->
+<!-- make test that user travels to a deleted recipe -->
 
 ### Developer Goals
 + As a school project, this site was developed using as little 3rd party code as possible (ex. carousel logic was written by developer and bootstraps version was not used on purpose). This 
@@ -232,7 +235,12 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
 ## Login and Create Account Modal
 + Both login and create account modals accessible from anypage.
 + Validation (Python and JS) prevents users from submitting improper form details.
-+ Validation also automatically adds '_' in place of a space for selected important content.
+    + All input's use JS with Python as a double check before allowing upload.
+    + These checks look at characters, character length, and blank space input.
+    + Spaces are changed to '_' using a regex for password, username, and email
+    + JS email validation (proved to be particularly difficult and unique and is detailed in **previous bugs** section):
+        + Email validation is limited with suffixes allowed
+            + Checks for the email suffix .com, .edu, .net, .org, and @
 
 ## Index
 + Index card carousel:
@@ -291,43 +299,46 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
 + There is basic (Python + JS) validation:
     + The image uses JS to check its file size and Python to check its file type.
     + All other input/textarea's use JS with Python as a double check before allowing upload.
+    + These checks look at characters, character length, and blank space input(ingredients/steps).
 + Total cook time updates automatically as prep and cook times are adjusted.
 + Recipe Ingerdients and Recipe Steps:
     + Each uses a JS add/remove set of buttons for users to create and remove boxes as they need.
     + Each box is numbered to help users keep track of the step they are at.
     + The header keeps an active count of visible boxes so users know how many are visible without having to scroll down.
+    + If a user submits a blank entry box (including spaces) the Python validation will remove said box(s).
 
 ## Edit User Info
 + A form that is less frills than the rest of the page. This is to give a more serious feeling when creating/editing recipes.
 + Users are able to update their password, username, email, avatar, and bio.
 + There is basic (Python + JS) validation:
-    
-+ JS character number validation is used on name.
-+ JS email validation
-    + Email validation is limited with suffixes allowed
-    + checks for the email suffix .com or .edu
-    + This is detailed in **previous bugs** section
-+ Users wishing to create a new password, must click on the create new password button. This keeps users from accidently invalidating the form by starting its validation. 
-Addressed in **Scalability** and **Other Problems**
-+ New password validation is JS and uses must type the same password into both boxes
+    + The image uses JS to check its file size and Python to check its file type.
+    + All other input/textarea's use JS with Python as a double check before allowing upload.
+    + These checks look at characters, character length, and blank space input.
+    + Spaces are changed to '_' using a regex for password, username, and email
+    + JS email validation (proved to be particularly difficult and unique and is detailed in **previous bugs** section):
+        + Email validation is limited with suffixes allowed
+            + Checks for the email suffix .com, .edu, .net, .org, and @
+    + New password checks that both typed passwords are the same
++ Users wishing to create a new password, must click on the create new password button. This keeps users from accidently invalidating the form by starting its validation. This 
+is addressed in **Scalability** and **Other Problems**
 
 ## Search Bar Returns
 + This page is used to return 3 different search results:
-    + All user searches from search bar: for recipe name, feature, and chef.
+    + All user searches from search bar: for recipe name, feature, and chef. Chef search is used for **Browse Fat_Racoon's Recipes** as well
     + Profile page searches: all uplaoded, favorited, and recently viewed sections.
-    + Index browse buttons for grandparent classics and lazy favorites.
+    + Index browse buttons for: **Browse our Grandparent Classics** and **Browse our Lazy Favorites**.
 
 ## Page Performance
-<!-- insert image of responsiveness -->
+![Responsiveness image of the Fat Raccoon's random recipe](static/readme/testing/responsive-fat-raccoon.jpg "Responsiveness image of the Fat Raccoon's random recipe")
++ Responsive design across all devices.
 
 ## Wireframe and Live Demo
 ### Wireframe
-![Wireframe of the index page](static/readme/wireframe/index-page-large.png "Wireframe of the welcomeing page")
+![Wireframe of the index page](static/readme/wireframe/index-page-large.png "Wireframe of the welcoming page")
 + [Balsamiq](https://balsamiq.com/) was used for the planning process.
 + Wireframes were made for all predetermined size variations of the webpage.
-+ Each wireframe contains curly brackets that give a description of its contents.
++ Each wireframe contains curly brackets that give a description of its contents and what filler(missing DB data) content should be.
 + [Click here to view all wireframes associated to this project.](static/readme/wireframe "Location of wireframes")
-
 
 ### Live Demo
 ![Demo of the Index page](static/readme/demo/demo-index-large.jpg "Demo of the Index page")
@@ -336,20 +347,19 @@ Addressed in **Scalability** and **Other Problems**
 + GitHub houses the master branch, [here](https://github.com/Richardaeld/Fat_Racoon_Kitchen)
 
 ## Scalability
-+ Add ability to search for lazy or grandparent classic**
-+ backend varify of image size instead of relying on JS size validation
-+ Adding user selectable filters to search bar
-+ Create a user commit form for the recipes. This would give a better sense of community for returning users
-+ Allows users to rate each others recipes
-+ Improve email validation to accept a wider ranger of email suffixes (ex. regional suffix, .uk, .fr, .de)
++ Unify validation for images. So JS and Python check the same material. This would ensure a better UX.
++ Adding user selectable filters to search bar. This would ensure a better UX.
++ Create a user commit form for the recipes. This would give a better sense of community for returning users.
++ Allows users to rate each others recipes. This would give a better sense of community for returning users.
++ Improve email validation to accept a wider ranger of email suffixes (ex. regional suffix, .uk, .fr, .de). This would allow for a larger audiance of users.
 
 <!-- new content -->
-+ Improve Validation to use less packaged validation types and more compartmentalized validation
-    + Example: Use classes to set validation for character count, characters allowed, spaces, allowed, etc...
++ Improve Validation to use less pre-packaged validation types and more compartmentalized validation.
+    + Example: Use classes to set validation for character count, characters allowed, spaces, allowed, etc... all separately.
     + A dynamic system that has a class for amount of characters allowed and a seperte class that allows for characters to be used would allow for a more dynamic validation to be made with JS which would improve validation code over all
 + A stronger form of validation could be used. The validation used is simple and limited. 
     + One good example is users are able to invalidate recipe steps or recipe ingredients by tabing to them.  This forces users to add content or remove the unused box. This is detailed in **bugs** section.    
-+ Improve search engine to accept a **space** as an **_** to help users more easily find chefs with a or multiple "space(s)" in their name
++ Improve search engine to accept a **space** as an **_** to help users more easily find chefs with a single or multiple "space(s)" in their name.
  
     
 <!-- end new content -->
@@ -358,10 +368,10 @@ Addressed in **Scalability** and **Other Problems**
 + HTML - Skeleton frame of the application.
 + CSS - Beautifies the skeleton (HTML).
 + JavaScript - Allows for dynamic content on the application.
-+ Python - Allows back end programs to run. These programs are:
-    + Flask - Allows use of Templating, security, user searching, and other critical functions.
++ Python - Allows back end programs to run. These programs(frameworks and libraries) are:
+    + Flask - Allows use of templating, security, user searching, and other critical functions.
     + Pymongo - Allows flask (python) to communicate with Mongo DB.
-    + PythonDNS
+    + PythonDNS - Allows for DNS data transfer.
     + Werkzeug - Encrypts data as it is sent between the user and server.
     + Datetime - Allows python to take a date/time stamp.
     + Random - Allows a for a random number generator.
