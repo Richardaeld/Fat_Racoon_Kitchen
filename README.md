@@ -672,46 +672,49 @@ refreshed during tests to check for errors. This helps test for stability and en
 
 # Bugs and Other Problems
 ## Previous Bugs
-+ Improper variable passed into addfavorite page if user refreshes page -- check_for_dups used to check boolean status even in refresh -- list comprehension used to remove more lines
-+ Flask was generating a 504 gateway timeout error
-    + A previously harmless while began to loop infinitely when a if comparason value was improper
-    + Fix was being sure the if comparason values were both int, previously one had been a html location because of a missed len
++ Improper variable passed into addfavorite page if user refreshes page.
+    + Created a python function, check_for_dups to check boolean status even in refresh (later improved with list comprehension used to remove more lines).
++ Flask was generating a 504 gateway timeout error.
+    + A previously harmless while loop turned into an infinit loop because of an if comparison value.
+    + Fix was being sure the if comparison values were both int, previously one had been a html location because of a missed len() funciton.
 + Carousel would put up improper amount of items when changing from landscape to portrait.
     + The carousel 'memory' array and position had to be completely reset each time the screen switched between landscape and portrait.
-+ Corner of napkin css art was improper size in safari
-    + Had to add -webkit- to clip-path for saafari
-+ index card art had jagged edges after transform: rotateY(180deg) was applied.
-    + Fix was a recommended line of code -webkit-backface-visibility:hidden -- reccomdation found here https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome
-+ Needed a nonstandard shapped container to hold a repeating linear gradient.
++ Corner of napkin css art was improper size in safari.
+    + Had to add -webkit- to clip-path for saafari.
++ Index card art had jagged edges after transform: rotateY(180deg) was applied.
+    + Fix was a recommended line of code -webkit-backface-visibility:hidden -- reccomdation found here https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome.
++ Needed a nonstandard shaped container to hold a repeating linear gradient.
     + Found solution at MDN using a clip-path:polygon https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path 
-+ Program wouldnt upload to heroku properly
-    + Fix was to add the missing space after colon in Procfile
-+ Numerous occasions used unspecific python if arguments leading to undesired and often difficult to find Bugs
-    + Ex. without specific arguments incorrect add edit recipe page would not edit recipes it would only generate new recipes
-    + An extra operator and arguemnt was added to all if post conditions
-+ Email wouldnt JS validate properly
-    + Type: email was preventing the regex from functioning properly.
-    + Fix was changing type to text and added an extra layer of validation to email, email suffix
-+ Login modal wouldnt operate appropriately on any page other than the index
-    + Login modal was added to base and removed from index
-    + base_login was created to replace base for pages user had to be logged in for and needed the modal to NOT be present
++ Program wouldnt upload to heroku properly.
+    + Fix was to add the missing space after colon in Procfile.
++ On numerous occasions, used unspecific Python if arguments leading to undesired and often difficult to find bugs.
+    + Ex. with general arguments add edit recipe page would not edit recipes, it would only generate new recipes.
+    + An extra operator and arguemnt was added to all if post conditions.
+    + This later evolved into creating a totally new Flask route for updating and creating recipes.
++ Email wouldnt JS validate properly.
+    + **Type: email** was preventing the regex from functioning properly.
+    + Fix was changing type to text and added an extra layer of validation to email, email suffix.
++ Login modal wouldnt operate appropriately on any page other than the index.
+    + Login modal was added to base and removed from index.
+    + base_login was created to replace base for pages user had to be logged in for and needed the modal to NOT be present.
++ User search box, on medium and small responsiveness, creates a line below the main navigation bar and drops the search bar down to that new line
+    + The solution used was to use a Bootstrap navigation bar.
 
 ## Current Bugs
-+ Social links on footer have a triggering bug. They use JS mouseenter to trigger and trigger improperly due to multiple css layers and a margin. The margin is persisting through multiple
-techniques to remove it, including !important. Changing the layer or to mouseover does not fix the excessive triggering.
-+ User search box, on medium and small responsiveness, creates a line below the main navigation bar and drops the search bar down to that new line
-    + A Solution to have search bar collapse has been attempted however this generated poor UX and various targeting bugs
++ Social links on footer have a repetitive triggering bug. They use JS mouseenter to trigger and trigger improperly due to multiple css layers and a margin. 
+    + Multiple attempts have been made to limit event bubbling but no real solution could be found.
+        + These attempts have including changing the type of event the trigger uses to stopPropagation().
 + Safari browser Bugs
-    + When safari decides sticky-note-right's height is to large the box shadow of its :before has a layer error and overlaps the content of sticky-note-right
-    + Input of user search bar is larger than it should be, giving the item bad UX
-+ Sticky Note shadow - depending on the magnification used (with a range of 50% - 200%) the :before shadow used will show bad UX ( currently: 80% <)
-    + Previously Created "standard" container sizes styles "*size*-container-height" and have them scale with the responsiveness of the site
-    + Give empty containers a mininum height
-    + Give full containers a set max height
+    + When safari decides sticky-note-right's height is to large the box shadow of its :before has a layer error and overlaps the content of sticky-note-right.    
++ Sticky Note shadow - depending on the magnification used (with a range of 50% - 200%) the :before shadow used will show bad UX.
+    + A damage control fix was used to help reduce this occurrence
+        + Previously Created "standard" container sizes styles "*size*-container-height" and have them scale with the responsiveness of the site
+        + Give empty containers a mininum height
+        + Give full containers a set max height
 
 ## Other Problems
 + Email validation
-    + Validation origianlly used suffix validation of ".com" and ".edu". However this validation alienated users from making accounts
+    + Validation originally used suffix validation of ".com" and ".edu". However this validation alienated users from making accounts
     + Suffix validation had to be expanded to include ".net" and ".org".
 + Searching mongo DB using collection.db.find("$text": "$search": <value>) unable to return booleans.  This is an issue with users being
 able to search "lazy" or "grandparent" tags.
