@@ -403,7 +403,7 @@ is addressed in **Scalability** and **Other Problems**
 
 ### Developer Testing Methods
 + Every test of **Developer Tests** was preformed on the above listed systems and the specified screen orientation.
-+ Between landscape and portrait tests, the application is appropriately refreshed. This is a critical part of the test! Part of these tests is that the application is appropriately
++ For landscape and portrait tests, the application is appropriately refreshed. This is a critical part of the test! Part of these tests is that the application is appropriately
 refreshed during tests to check for errors. This helps test for stability and ensures that tablet and mobile users have a good experience.
 + After completion of all of the **Developer Tests** on each system, the system was tested again with random moments of spam clicking and switching between landscape/portrait.
 
@@ -418,21 +418,21 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. Tester will refresh screen while in landscape and transition it to portrait.
-1. Tester will refresh screen while in portrait and transition it to landscape.
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
 1. Tester will refresh page until they see a classic banner, a favorite banner, and a favorite/classic banner.
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
 1. Scroll to bottom of screen.
-1. Click the random recipe a make sure it links to the proper recipe.
+1. Click the **random recipe** a make sure it links to the proper recipe.
 1. Repeat steps 1 - 3 approximately 3 - 5 times to check for randomization of recipe.
 
 #### Document Result(s):
 1. Document the recipe name of any broken links.
-1. documentation of recipe name, screen resolution, device, and page any time content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
 1. Document if banners are never seen.
-1. documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
 
 ### Testing Text Coss Out Function
 
@@ -443,22 +443,23 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. Tester will refresh screen while in landscape and transition it to portrait.
-1. Tester will refresh screen while in portrait and transition it to landscape.
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
+1. Tester knows the size of click box that should function for cross out effect.
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
 1. Navigate to any recipe page in any way that you choose.
-1. Scroll to **Recipe Ingredients** section and click check box or text to see if it crosses out.
+1. Scroll to **Recipe Ingredients** section and click check box or text to see if it crosses out correctly.
 1. Scroll to **Recipe Steps** section and click check box or text to see if it crosses out.
-1. Repeat steps 1 - 4 selecting a different recipe path to recipe page each time.
+1. Repeat steps 1 - 4 selecting a different path to recipe page each time (until all known paths are used).
 1. Repeat step 5 approximately 3 times to check for appropiate overall good UX.
 
 #### Document Result(s):
-1. Document any Recipe that's ingredients and steps would not cross out properly.
+1. Document any recipe name that's ingredients and steps would not cross out properly.
 1. Document the recipe name and choice of path that have any broken links.
-1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
-1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
 
 ### Testing All_Recipe And Recipe_List Pagination
 
@@ -470,23 +471,23 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Pagination doesn't obscure any content.
 
 #### Assumption(s):
-1. Tester will refresh screen while in landscape and transition it to portrait.
-1. Tester will refresh screen while in portrait and transition it to landscape.
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
 1. Navigate to **All_Recipe** page (on nav bar **All_Recipes** is called **Recipes**).
 1. Find any feature that contains pagination ul.
 1. Click through all numbers of pagination (or 5 random pagination numbers which ever comes first).
-1. Repeat step 4 for 2 other features with pagination.
+1. Repeat step 4, for 2 other features with pagination (if present).
 1. Select a feature with pagination to navigate to **Recipe_List** page.
 1. Click through all numbers of pagination (or 5 random pagination numbers which ever comes first).
-1. Repeat steps 1-2 and 6-7 approximately 2 times.
+1. Repeat steps 1-2 and 6-7 approximately 2 times (if pagination present).
 
 #### Document Result(s):
-1. Documentation of recipe name, screen resolution, device, page, and pagination number if any pagination has bad UX
-1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
-1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+1. Documentation of recipe name, screen resolution, browser/device, page, and pagination number if any pagination has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
 
 ### Testing Recipe Upload
 
@@ -499,18 +500,18 @@ refreshed during tests to check for errors. This helps test for stability and en
 
 #### Assumption(s):
 1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
-1. Tester has a PNG or JPG file under 500kb, a PNG or JPG over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB
+1. Tester has a PNG or JPG file under 500kb, a PNG or JPG over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
 1. Tester knows what is considered invalid by this form.
-1. Tester will refresh screen while in landscape and transition it to portrait.
-1. Tester will refresh screen while in portrait and transition it to landscape.
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
-1. Click on login in nav bar.
-1. Click on Create Account tab.
+1. Click on **Login** in nav bar.
+1. Click on **Create Account** tab.
 1. Fill out all appropiate information and submit said information.
 1. Once **Profile** page opens click on **Share Recipe**.
-1. Fill out all appropiate information, including an avatar, to submit a new recipe
+1. Fill out all appropiate information, including an avatar, to submit a new recipe.
 1. Navigate to **Profile** and click on **Share Recipe**.
 1. Fill out all appropiate information , including an Avatar and choose one part of from (Name, Prep, Cook, Description, Ingredients, or Steps) to inappropriately fill out and attempt to submit.
 1. Attempt to inappropriately fill selected part of form in all different types of validation to check if form will incorrectly accept this information.
@@ -521,8 +522,8 @@ refreshed during tests to check for errors. This helps test for stability and en
 
 #### Document Result(s):
 1. Documentation of any input/textarea that incorrectly accepted information, what form of validation failed (wheather it was JS, Python, or both), and wheather it was a new recipe or edited recipe.
-1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
-1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
 
 ### Testing Search Chef Name
 
@@ -533,9 +534,9 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. Tester knows all recipes that belong to **Fat_Raccoon**
-1. Tester will refresh screen while in landscape and transition it to portrait.
-1. Tester will refresh screen while in portrait and transition it to landscape.
+1. Tester knows all recipes that belong to **Fat_Raccoon**.
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
@@ -544,20 +545,24 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Check over returns to make sure all appropriate returns are shown.
 1. Return to **Index Page** of Fat Raccoon.
 1. Scroll to bottom of page where **Random Recipe** is located.
-1. Click on chef's name **Fat_Raccoon** under the recipe's name
+1. Click on chef's name **Fat_Raccoon** under the recipe's name.
 1. Check over returns to make sure all appropriate returns are shown.
 1. Return to **Index Page** of Fat Raccoon.
 1. Scroll to bottom of page where **Random Recipe** is located.
 1. Click on **Fat_Raccoon** on the sticky note with the chef's bio.
 1. Check over returns to make sure all appropriate returns are shown.
-1. Select any recipe from **Fat_Raccoon**
-1. Under the avatar image click the name **Fat_Raccoon**
+1. Select any recipe from **Fat_Raccoon** and go to its recipe page.
+1. Under the avatar image click the name **Fat_Raccoon**.
+1. Check over returns to make sure all appropriate returns are shown.
+1. Return to **Index Page** of Fat Raccoon.
+1. Scroll to bottom of page where **Random Recipe** is located.
+1. Click on **Browse Fat_Raccoon Recipes** button.
 1. Check over returns to make sure all appropriate returns are shown.
 
 #### Document Result(s):
-1. Documentation of any link that does not appropriately link to all of **Fat_Raccoon**'s recipes
-1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
-1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+1. Documentation of any link that does not appropriately link to all of **Fat_Raccoon**'s recipes, (including where the link was located).
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
 
 ### Testing Browse Button for Lazy Favorites Recipes
 
@@ -569,19 +574,19 @@ refreshed during tests to check for errors. This helps test for stability and en
 
 #### Assumption(s):
 1. Tester knows all recipes tagged as **Lazy Favorite**
-1. Tester will refresh screen while in landscape and transition it to portrait.
-1. Tester will refresh screen while in portrait and transition it to landscape.
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
-1. Scroll down to **Random Recipe** section
-1. Click on the button **Browse our favorites!**
+1. Scroll down to **Random Recipe** section.
+1. Click on the button **Browse our Lazy Favorites!**.
 1. Check over returned recipes to make sure all appropriate recipes are shown.
 
 #### Document Result(s):
-1. Documentation of any recipes that do not appropriately show up when **Lazy Favorite** button is clicked
-1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
-1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+1. Documentation of any recipes that do not appropriately show up when **Browse our Lazy Favorites** button is clicked.
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
 
 ### Testing Recipe Favorites Function
 
@@ -590,18 +595,19 @@ refreshed during tests to check for errors. This helps test for stability and en
 #### Expectation(s):
 1. Content fills appropriately and doesn't spill out beyond obvious borders.
 1. Content doesn't overlap and is easily read.
-1. Favorite icon responds appropriately to recipes status of favorite vs unfavorite
+1. Favorite icon responds appropriately to recipes status of favorite vs unfavorite.
 
 #### Assumption(s):
 1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
-1. Tester knows the difference between a favorited recipe and un favorited recipe icon
-1. Tester will refresh screen while in landscape and transition it to portrait.
-1. Tester will refresh screen while in portrait and transition it to landscape.
+1. Tester knows the difference between a favorited recipe and an unfavorited recipe icon.
+1. Tester will unfavorite at least a single recipe and check for appropiate response.
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
-1. Click on login in nav bar.
-1. Click on Create Account tab.
+1. Click on **Login** in nav bar.
+1. Click on **Create Account** tab.
 1. Fill out all appropiate information and submit said information.
 1. Navigate to any recipe of testers choice.
 1. Click on **Not a Favorite** or its icon.
@@ -610,16 +616,17 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Click on **Not a Favorite** or its icon.
 1. Check to be sure accurate text and icon appear.
 1. Navigate to **Profile** page.
-1. Click on either of previously favorited recipes in the **10 Recently Favorited Recipes** section.
+1. Click on any favorited recipe in the **10 Recently Favorited Recipes** section.
 1. Check for appropriate favorite status and icon.
 1. Navigate to **Profile** page.
 1. Click on the header for **10 Recently Favorited Recipes** section.
-1. Check for appropriate recipes
+1. Check for appropriate recipes.
 
 #### Document Result(s):
-1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
-1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
-1. Documentation of recipe name, and path choosen to recipe any time a favorite or its icon was not displayed correctly
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
+1. Documentation of recipe name, and path choosen to recipe of any favorite recipe that its icon/status was not displayed correctly.
+1. Documentation of recipe name that did not accept an appropriate click box to change favorite/unfavorite status.
 
 ### Testing Lessons Index Cards
 
@@ -630,19 +637,20 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. Tester will refresh screen while in landscape and transition it to portrait.
-1. Tester will refresh screen while in portrait and transition it to landscape.
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
 1. Tester knows that every index card that rotates has a **More on back-->**
+1. Tester knows the content of each **Lesson** card.
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
-1. navigate to **lesson** page. 
+1. navigate to **Lesson** page. 
 1. Click every single index card and make sure text is appropriately displayed on both sides
 
 #### Document Result(s):
-1. Documentation of any index card that has poor UX, the side the poor UX was on, the resolution, and device used.
-1. Documentation of recipe name, screen resolution, device, and page any time content has bad UX.
-1. Documentation of recipe name, screen resolution, device and page anytime there is an incorrect box shadow.
+1. Documentation of any index card that has poor UX, the side the poor UX was on, the resolution, and browser/device used.
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
 
 <!-- end new content section -->
 ## Program Tests
