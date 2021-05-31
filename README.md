@@ -76,77 +76,75 @@
 
 # Fat Racoon - Introduction
 <!-- intro -->
-The Fat Racoon is devoted to helping home cooks provide better meals to friends, family, our users. We provide a network of our and user's uploaded 
-recipes that can be searched through with our in app search engine. We believe that even without the ideal ingredience on hand, a little taste pairing or 
+The Fat Racoon is devoted to helping home cooks provide better meals to friends, family, and our users. We provide a network of our and our user's 
+recipes. All these recipes can be searched through with our in app search engine. We believe that even without the ideal ingredience on hand, a little taste pairing or 
 extra spice can help make any meal provide a savory experience. We even go out of our way to provide new chefs with some basic cooking lessons in our lessons section. 
-<!--Our end goal is to help home chefs make the jump from recipe depentent to taste depentent.--> Our chefs know the importance of making the best out of what we have on hand 
-and want to share that liberating experience with other home chefs.
-<!-- abotu us - community -->
+Our chefs know the importance of making the best out of what we have on hand and want to share that liberating experience with other home chefs.
+<!-- about us - community -->
 The chefs of the Fat Racoon started as sleep deprived, nocturnal home chefs that would use the, leftovers ("garabage"), or that one thing 
 that has to be eaten today (We've all done it) to make a meal. With practice and study, these meals improved over time but it started with learning 
-fundamental cooking practices and taste pairings. We want to help others wisely spend their kitchen time making the best meals they can. We offer 
+fundamental cooking practices, taste pairings, and thinking in parts of a whole. We want to help others wisely spend their kitchen time making the best meals they can. We offer 
 conventional cooking practice and recipe guidance to help them along the way. The Fat Racoon believes that helping to establish a community 
 of home cooks and their recipes in an intuitive search engine will be a boon to home chefs everywhere. It helps newer chefs see that not every 
 recipe has to be complicated or convoluted. 
-
+<!-- casual users -->
 For our users just searching for a recipe, we offer several different search methods for them to find what they are looking for. Users can search our data base by chef, feature ingredient,
-or name from our search engine. The front page also off 4 other methods for users to browse the Fat Raccoon's recipes: by 'Lazy Favorites', 'Grandparent Classics', all of the Fat Raccoon's personal recipes, and 
+or name. The front page also offers four other methods for users to browse the Fat Raccoon's recipes: by 'Lazy Favorites', 'Grandparent Classics', all of the Fat Raccoon's personal recipes, and 
 search by feature.
 
 <!-- We offer a brief home cooking fundamental section, this section can help home chefs make the best of what they have on hand to cook.  -->
 <!-- Users can search recipes by feature ingredient to find that one recipe that they want to try. This can be accomplished through the use of our search bar or by searching through our recipe 
 database. -->
-For those chef's submitting recipes, we offer a place to put in a name, time, picture, brief recipe description, ingredients and steps. 
+For those chef's submitting recipes, we offer a place to put in a name, prep/cook/total time, picture, brief recipe description, ingredients, and steps. 
 This allows someone to easily keep track of a recipe and share it with others.
-Additionally, if the Fat Raccoon finds these recipes appropiate they can add the tags of 'lazy favorite' or 'grandparent classic' to the users recipe.
+Additionally, if the Fat Raccoon finds these recipes appropiate they will add the tags of 'lazy favorite' or 'grandparent classic' to the users recipe.
 
-Cooking has more meaning than just preparing 
-food. For many it is a connection to your history or life experience.  We encourage our users to give us a little meta information in the recipes they submit. 
+Cooking has more meaning than just preparing food. For many it is a connection to your history or life experience.  We encourage our users to give us a little meta information in the recipes they submit. 
 Let us help preserve a little of ourselves in a recipe. Its important to us and to those that submitted it. From a family recipe to this is all I could afford 
 in college, let us know!
 
-**Disclaimer** This site has some 3rd party recipes in it. Those recipes are documentmented as such in their recipe description section. 
+**Disclaimer** This is a nonprofit student site and has some 3rd party recipes in it. These recipes are used as database information and these recipes are documentmented as such in their recipe description section. 
 
 # UX
 ## Goals
 ### User Goals
-+ I want to find a recipe for dinner. -- Testing Random Recipe
-+ I want to use my smart phone or tablet to as a recipe book. -- Testing Text Coss Out Function
-+ I want to find a new chicken dish to cook. -- Testing All_Recipe And Recipe_List Pagination
-+ I want a place to leave a recipe so I can easiy find. -- Testing Recipe Upload
-+ I want help deciding what to cook for dinner and I like a chefs recipes. -- Testing Search Chef Name
-+ I want a easy to make recipe. -- Testing Browse Button for Lazy Favorites Recipes
++ I want to find a recipe for dinner. <!---- Testing Random Recipe -->
++ I want to use my smart phone or tablet to as a recipe book. <!-- Testing Text Coss Out Function -->
++ I want to find a new chicken dish to cook. <!-- Testing All_Recipe And Recipe_List Pagination-->
++ I want a place to leave a recipe so I can easiy find. <!-- Testing Recipe Upload -->
++ I want help deciding what to cook for dinner and I like a chefs recipes. <!-- Testing Search Chef Name -->
++ I want a easy to make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -- >
 <!-- + I want a recipe to surprise my significant other with -->
-+ I cant remember the name of a recipe that i like -- Testing Recipe Favorites Function
-+ I want an easy to read recipe layout while Im cooking -- Testing Text Coss Out Function
-+ I lack confidence in my cooking ability and need help. -- Testing Lessons Index Cards
++ I cant remember the name of a recipe that i like <!-- Testing Recipe Favorites Function -->
++ I want an easy to read recipe layout while Im cooking <!-- Testing Text Coss Out Function -->
++ I lack confidence in my cooking ability and need help. <!-- Testing Lessons Index Cards -->
 
 ### Developer Goals
 + As a school project, this site was developed using as little 3rd party code as possible (ex. carousel logic was written by developer and bootstraps version was not used on purpose). This 
-was a deliberate choice to help the developer gain a better understanding of how languages such as JS and python function and not done out of ignorance. Understanding how these logics 
-function for similar tasks (Ex, validation) and the time it takes to develope them is important to this developer.
+was a deliberate choice to help the developer gain a better understanding of how languages such as JS and Python function and not done out of ignorance. Understanding how these logics 
+function for similar tasks (Ex, validation) and the time it takes to develope them is an important lesson to this developer.
 
-+ I want to showcase my python abilities.
-    + Importing python libraries(Ex. datetime, random, etc...)
++ I want to showcase my Python abilities.
+    + Importing Python libraries(Ex. datetime, random, etc...)
     + Using Flask (flash, render_template, redirect, request, session, url_for)
         + Jinja (Templates)
             + Allowing one page to have multiple functions
                 + Add edit recipe
                 + base - login/create modal
     + Pymongo (Flask - mongo DB)
-    + Created python validation logic.
+    + Created Python validation logic
         + Checks filetype submitted
         + Checks max and min character length
         + Checks for allowed characters
-    + Created callable function library instead of repeating code.
+    + Created callable function library instead of repeating code
     + Using if expressions: to replace blank sections(missing DB data) with filler Templates, to add the lazy banner on random recipe, etc...
     + Using for expressions: to generate list data ex. recipe lists, recipe ingredient lists, recipe step lists, etc...
-    + Useing a random number generator to randomly select recipes.
+    + Useing a random number generator to randomly select recipes
 
 + I want to showcase my JS abilities
-    + Created carousel JS logic.
-    + Created pagination JS logic.
-    + Created Validation JS logic.
+    + Created carousel JS logic
+    + Created pagination JS logic
+    + Created Validation JS logic
         + Character length
         + Compare two passwords to be sure they match
         + Make sure email has appropriate suffix
@@ -154,42 +152,45 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
 
 + I want to showcase my DB abilites.
     + Mongo DB
-        + User searched have restrictions to specific content.
-        + Searches use restricted results if possible.
-        + searches using operators if applicable.
+        + User searched have restrictions to specific content
+        + Searches use restricted results if possible
+        + Searches use operators if applicable
         + New Recipe and user entries build upon a black template instead of creating an entirely new document each time
-            + This allows for cleaner python to upload changed content
+            + This allows for cleaner Python to upload changed content
         + Allow users to upload recipe/user avatar
 
 + I want to showcase my artistic ability
-    + css art
+    + CSS art
         + Sticky Notes with lifting effect
         + Social Drinks (Links) - stylized as a drink with ice in it with a ripping and ice dipping effect
         + Polaroid Picture
         + Table Runner(Header footer)
-    + svg art** favicon - blank place holder - arrow for carousel
-        + Fat Raccoon logo
+    + SVG art
+        + Favicon and Fat Raccoon logo
+        + Blank head chef avatar place holder
+        + Arrow for carousel
 
 ## Client Stories
+ <!-- -- (+ I have trouble keeping up with physical recipes and remembering what I have on hand and what I dont.) -->
 + I want to find a recipe for dinner.
     + I opened the Fat Raccoon's main page. I dont really know what I want so I scrolled down to the bottom of that page. I liked the recipe I saw on the bottom of the page and decided to use that. 
-+ I want to use my smart phone or tablet to as a recipe book. -- (+ I have trouble keeping up with physical recipes and remembering what I have on hand and what I dont.)
-    + I opened the Fat Raccoon's main page and found a recipe I like. I got to the recipes page to see what I need to make the recipe. Ive found that if I click the item's check box it, it crosses out the while item and 
-    when I turned my device's off and on I found it didn't automatically reset the screen I was on. I think I will keep using my device to easily keep track of what ingredient I still need or what step of teh recipe I am on
++ I want to use my smart phone or tablet to as a recipe book.
+    + I opened the Fat Raccoon's main page and found a recipe I like. I got to the recipe's page to see what I need to make the recipe. Ive found that if I click the item's check box, it crosses out the box and text of the item. I 
+    also turned my device off and on I found it didn't automatically reset the screen I was on. I think I will keep using my device to easily keep track of what ingredient I still need or what step of the recipe I am on.
 + I want to find a new chicken dish to cook.
     + I opened the Fat Raccoon's main page. I didn't immediately find a chicken recipe I liked. I found a button, **Browse by feature!**, and I clicked it.  I found the chicken feature section and all the chicken 
     recipes I could want!
 + I want a place to leave a recipe so I can easiy find.
     + I opened the Fat Raccoon's main page. I want to have a digital place to keep a recipe so I create a log in to the Fat Raccoon. The page takes me to my newly created profile page. I click the **Share Recipe** button
-    and input all the recipes information and even a image. I found I can favorite my own recipe but it is also always in the recipes uplaoded section of my profile so I can easily find my recipe whenever I want it. I've 
-    also discovered I can edit my recipe from its page.
+    and input all the recipes information and even a image. I've discovered I can edit my recipe from its recipe page in the Fat Raccoon app. I've also found I can favorite my own recipe from this page. If I go to my profile 
+    it is also always in the recipes uplaoded section of my profile so I can easily find my recipe whenever I want it.
 + I want help deciding what to cook for dinner and I like a chefs recipes.
     + My cousin, Mrs. Fat Raccoon and her husband Mr. Fat Raccoon have similar taste in food as me and I want to easiy find all their recipes. I opened the Fat Raccoon's main page and scrolled to the bottom of the 
-    page where I found a button, **Browse our recipes!**, and I clicked the button. I am now able to see all of the the **Fat Raccoon's** recipes.
-    + My friend has an account on the **Fat Raccoon** and I know my friend's account name. I open the Fat Raccoon's main page and put my friends account name into the search bar and now I am able to see all of my friends
+    page where I found a button, **Browse Fat_Raccoon's recipes!**, and I clicked the button. I am now able to see all of the the Fat Raccoon's recipes.
+    + My friend has an account on the Fat Raccoon app and I know her/his account name. I open the Fat Raccoon's main page and put my friends account name into the search bar and now I am able to see all of my friends
     uploaded recipes.
-    + I opened the Fat Raccoon's main page and clicked on **recipes** in the navigation bar.  I found a recipe on the recipe page that I really liked, however it wasn't made by the **Fat Raccoon**! I did find that 
-    if I clicked on the chef's name under the picture of their recipe it takes me to all of their submitted recipes!
+    + I opened the Fat Raccoon's main page and clicked on **Recipes** in the navigation bar.  I found a recipe on the recipe page that I really liked, however it wasn't made by the **Fat Raccoon**! I did find that 
+    if I clicked on the chef's name under the picture of their recipe it takes me to all this chefs submitted recipes!
 + I want a easy to make recipe.
     + Its been a long day, Im tired, and want an easy recipe to make for dinner. I opened the Fat Raccoon's main page and scroll to the bottom of the page and find a button, **Browse our Lazy Favorites!**. I click this 
     button and I find numerous recipes that dont require much effort.
@@ -204,7 +205,7 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
     I click on my **10 Recently Favorited Recipes** header and Im taken to my entire favorited recipe list. I find the recipe there.
 + I lack confidence in my cooking ability and need help.
     + I open the Fat Raccoon's main page and I realize Im totally outside of my comfort zone.  I want to try a recipe but everytime I cook, something is just terrible 
-    about the experience. I see the **lesson** section in the navigation bar and decide to give it a shot. I find numerous helpful tips that give me the confidence to 
+    about the experience. I see the **Lesson** section in the navigation bar and decide to give it a shot. I find numerous helpful tips that give me the confidence to 
     try a recipe that sounds good.
 
 <!-- ### Experience Provided
@@ -222,52 +223,52 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
 
 # Design Choices
 ## Header and Footer
-+ Southern theme
-    + Cutting board logo with engraved text
-    + Southern table runner for background
-    + Links are stylized as drinks
-+ Plan bootstrap nav bar with integrated search engine for a good UX
++ Southern theme:
+    + Cutting board logo with stylized engraved text.
+    + Southern table runner for background.
+    + Links are stylized as drinks.
++ Plain bootstrap nav bar with integrated search engine for a good UX.
 
 ## Login and Create Account Modal
-+ Both login and create account modals accessible from anypage
-+ Validation (python and JS) prevents users from submitting improper form details
-+ Validation also automatically adds '_' in place of a space for selected important content
++ Both login and create account modals accessible from anypage.
++ Validation (Python and JS) prevents users from submitting improper form details.
++ Validation also automatically adds '_' in place of a space for selected important content.
 
 ## Index
-+ Index card carousel
++ Index card carousel:
     + Recipes added to index cards for a home made, I can do this feeling.
     + Carousel offers three randomly selected recipes from head chef to display per featured item.
     + Designed to help give users options based on the feature item they want to cook.
-+ Grandparent classic polaroids
++ Grandparent classic polaroids:
     + Recipe's image used on a polaroid picture design. This design is used to give people the nostalgia feeling of a recipe their grandparents might have made.
     + The recipe's name is added to the bottom of the picture to let users know what recipe they are viewing.
-+ Random Recipe section
-    + Quick browsing links provided to give users ample ideas if they dont know what to cook
-    + A random recipe with basic information and a image is provided to give users an idea of what to cook
-    + This is followed with a banner if the recipe is a lazy favorite, grandparent classic, or both
-    + This section also houses the head chef's Bio and image to help give the site a welcoming feeling
++ Random Recipe section:
+    + Quick browsing links provided to give users ample ideas if they dont know what to cook.
+    + A random recipe with basic information and a image is provided to give users an idea of what to cook.
+        + This is followed with a banner if the recipe is a lazy favorite, grandparent classic, or both.
+        + This section also houses the head chef's Bio and image to help give the site a welcoming feeling.
 
 ## Lessons
-+ Index cards
-    + A simple commit is added to the cards that lets users know the cards are clickable
-        + Each index card is flippable with most of them containing information on both sides
-    + The information provided gives new chefs some hints and tricks at getting started in the kitchen and making the best of what they have on hand
++ Index cards:
+    + A simple commit is added to the cards that lets users know the cards are clickable.
+        + Each index card is flippable with most of them containing information on both sides.
+    + The information provided gives new chefs some hints and tricks at getting started in the kitchen and making the best of what they have on hand.
 
 ## Profile
-+ Two clean buttons on top that allow users to either create a recipe they want to preserve or update their own profile
-+ Users can clearly see their own bio and avatar image
-+ Users have access to their entire uplaoded/favorited recipe history with a single click
-    + Users will always see their ten most recently uploaded/favorited/viewed
-+ Users can see their 10 recently viewed recipes
++ Two buttons below navigation bar that allow users to either: **Share Recipe** they want to preserve or **Update Profile**.
++ Users can clearly see their own bio and avatar image. This is a way to give users a feeling of personalization or belonging. 
++ Users have access to their entire uplaoded/favorited recipe history with a single click.
+    + Users will always see their entire most recently uploaded/favorited/ history by clicking the header of either.
++ Users can see their 10 recently viewed recipes.
 
 ## Recipe
 + If a user has submitted a recipe, they can modify or delete that recipe.
 + Logged in users:
-    + Can favorite a recipe so they can return to it easier
+    + Can favorite a recipe so they can return to it easier.
 + Logged in uploader of recipe:
     + Can edit the recipe or delete it.
-+ Clearly displays avatar image so users can see what dish looks like (or displays a defaut blank)
-+ All general recipe information is displayed and easiy viewed
++ Clearly displays avatar image so users can see what dish looks like (or displays a defaut blank).
++ All general recipe information is displayed and easiy viewed.
 + Recipe's ingredients and steps:
     + Each labeled in their own lists.
     + Each item has its own check box.
@@ -275,28 +276,32 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
 
 ## All Recipes
 + Lists entire DB of recipes by their featured ingredient.
-+ When a feature contains more than 5 entires the list updates to have pagination at the bottom of the list.
++ When a feature contains more than 5 entries the list updates to have pagination at the bottom of the list.
 + Each list is given a header of the feature type that is the basis for which recipes follow.
 + Each Recipe displays the name and total recipe time to help users decide what they want to make(At smaller resolutions its just a recipe name).
 + Users can click on recipe header to go to a page containing only that featured item set.
 
 ## Recipe List
-+ When a list contains more than 5 entires the list updates to have pagination at the bottom of the list.
++ When a list contains more than 5 entries the list updates to have pagination at the bottom of the list.
 + Each Recipe displays the name and total recipe time to help users decide what they want to make(At smaller resolutions its just a recipe name).
 
 ## Add Edit Recipes
 + A form that is less frills than the rest of the page. This is to give a more serious feeling when creating/editing recipes.
 + Users can update every part of a recipe except the boolean tags: Lazy Favorite and Grandparent Classic (Which is reserved for the HeadChef of the site to make this decision)
-+ There is basic (Python + JS) validation for the for the image which uses JS to check its file size and python to check its file type.
-+ Total cook time updates automatically as prep and cook times are adjusted
++ There is basic (Python + JS) validation:
+    + The image uses JS to check its file size and Python to check its file type.
+    + All other input/textarea's use JS with Python as a double check before allowing upload.
++ Total cook time updates automatically as prep and cook times are adjusted.
 + Recipe Ingerdients and Recipe Steps:
-    + Each uses a JS add/remove set of buttons for users to create and remove boxes as they need
-    + Each box is numbered to help users keep track of the step they are at
-    + The header keeps an active count of visible boxes so users know how many are visible
+    + Each uses a JS add/remove set of buttons for users to create and remove boxes as they need.
+    + Each box is numbered to help users keep track of the step they are at.
+    + The header keeps an active count of visible boxes so users know how many are visible without having to scroll down.
 
 ## Edit User Info
 + A form that is less frills than the rest of the page. This is to give a more serious feeling when creating/editing recipes.
 + Users are able to update their password, username, email, avatar, and bio.
++ There is basic (Python + JS) validation:
+    
 + JS character number validation is used on name.
 + JS email validation
     + Email validation is limited with suffixes allowed
