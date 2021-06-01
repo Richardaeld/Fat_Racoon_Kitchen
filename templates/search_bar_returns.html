@@ -10,7 +10,7 @@
                         <div class="sticky-note-inner-div blank-anchor make-space large-content-height">
                             <a href="{{ url_for('index') }}">
                                 <!-- Search, no results header -->
-                                <h1 class="recipe-name yanone-text">Return to Home Page</h1>
+                                <h2 class="recipe-name yanone-text">Return to Home Page</h2>
                                 <hr class="make-space">
                                 <h6><strong>Search Didn't Return Any Results!</strong></h6>
                                 <p>*hint* Search For recipe name, feature, or chef</p>
@@ -37,7 +37,7 @@
                                 <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}" class="row no-gutters">
                                     <!-- Recipe Name -->
                                     <div class="col-12">
-                                        <h1 class="recipe-name yanone-text">{{ recipe[1].name }}</h1>
+                                        <h2 class="recipe-name yanone-text">{{ recipe[1].name }}</h2>
                                         <hr class="make-space">
                                     </div>
                                     <!-- Recipe feature  -->
