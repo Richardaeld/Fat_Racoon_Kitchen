@@ -16,12 +16,12 @@
                         <section class="sticky-note">
                             <div class="sticky-note-inner-div large-content-height">
                     {% endif %}
+                                <!-- Feature name -->
                                 <a href="{{ url_for('recipe_list', feature=feature[1].name) }}" class="blank-anchor">
                                     <h2 class="yanone-text recipe-name">{{ feature[1].name.title() }} Recipes </h2>
                                 </a>
                                 <hr class="make-space">
                                 <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec blank-anchor">
-                                    <!-- Feature name -->
                                     <!-- Recipes that match feature -->
                                     {% for recipe in allRecipes %}
                                         {% if recipe.feature == feature[1].name %}
