@@ -70,7 +70,6 @@ function finalValidation(validationLoc) {
         // Adds/Removes parent validation container's abaility to display (Macro Validation)
         if (currentFormValid) {
             finalVal.parentElement.getElementsByTagName("div")[0].classList.add("form-is-valid");
-            finalVal.removeAttribute("invalid");
             finalVal.classList.remove("form-invalid-view");
         } else {
             // Reveals parent validation container of clicked item if form invalidates
@@ -78,7 +77,6 @@ function finalValidation(validationLoc) {
                 finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
             }
             finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid");
-            finalVal.setAttribute("invalid", "");
             finalVal.classList.add("form-invalid-view"); 
         }
     }
