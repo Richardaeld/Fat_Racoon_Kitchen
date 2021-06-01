@@ -331,6 +331,8 @@ is addressed in **Scalability** and **Other Problems**
 ## Page Performance
 ![Responsiveness image of the Fat Raccoon's random recipe](static/readme/testing/responsive-fat-raccoon.jpg "Responsiveness image of the Fat Raccoon's random recipe")
 + Responsive design across all devices.
+<!-- insert Image tiny JPG/PNG -->
++ All Images tinyified to reduce image download times
 
 ## Wireframe and Live Demo
 ### Wireframe
@@ -662,12 +664,15 @@ refreshed during tests to check for errors. This helps test for stability and en
 + Identifies problems with performance, accessibility, best practices, and SEO
 
 ### JigSaw
+<!-- insert Image -->
 + Identifies errors in CSS
 
 ### W3C Validator
+<!-- insert Image -->
 + Identifies errors in HTML
 
 ### JSHint
+<!-- insert Image -->
 + Identifies errors in JS
 
 # Bugs and Other Problems
