@@ -21,7 +21,7 @@
             <div class="col-12 modal-background"></div>
 
             <!-- Login modal -->
-            <form class="col-12 col-lg-10 form-base generic-box-shadow "  id="login-modal" method="POST" action="{{ url_for('login') }}">
+            <form class="col-12 col-lg-10 form-base generic-box-shadow" id="login-modal" method="POST" action="{{ url_for('login') }}">
                 <!-- Header for login modal -->
                 <div class="tab-body make-space-margin">
                     <div class="tab tab-selected">
@@ -63,7 +63,7 @@
             </form>
 
             <!-- Create modal -->
-            <form class="col-12 col-lg-10 form-base generic-box-shadow make-invis "  id="create-modal" method="POST" action="{{ url_for('create') }}">
+            <form class="col-12 col-lg-10 form-base generic-box-shadow make-invis" id="create-modal" method="POST" action="{{ url_for('create') }}">
                 <div class="tab-body make-space-margin">
                     <!-- Header for create modal -->
                     <div class="tab">
@@ -77,7 +77,7 @@
                 <div class="row no-gutters floating-modal">
                     <!-- User name -->
                     <div class="col-12 col-md-4">
-                        <label for="username">User Name:</label>
+                        <label for="usernameCreate">User Name:</label>
                     </div>
                     <div class="col-12 col-md-8 make-space">
                         <input class="formValidation nameValidation createValidation form-invalid-view" type="text" id="usernameCreate" name="username" value=""  required> <!-- minlength="5" maxlength="100" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%&*_+-=?]{5,100}$" -->
@@ -90,7 +90,7 @@
 
                     <!-- Email -->
                     <div class="col-12 col-md-4">
-                        <label for="email">Email:</label>
+                        <label for="emailCreate">Email:</label>
                     </div>
                     <div class="col-12 col-md-8 make-space">
                         <input class="formValidation emailValidation createValidation form-invalid-view" type="text" id="emailCreate" name="email" value=""  required> <!-- minlength="5" maxlength="255" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%&*_+-=?]{5,255}$" -->
@@ -103,7 +103,7 @@
 
                     <!-- Password -->
                     <div class="col-12 col-md-4">
-                        <label for="password">Password:</label>
+                        <label for="passwordCheck1">Password:</label>
                     </div>
                     <div class="col-12 col-md-8 make-space">
                         <input class="formValidation passwordSets passwordCompare createValidation form-invalid-view" type="password" id="passwordCheck1" name="password" value=""  required> <!-- minlength="8" maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%&*_+-=?]{8,20}$" -->
@@ -116,7 +116,7 @@
 
                     <!-- Password check -->
                     <div class="col-12 col-md-4">
-                        <label for="passwordCheck">Confirm Password:</label>
+                        <label for="passwordCheck2">Confirm Password:</label>
                     </div>
                     <div class="col-12 col-md-8 make-space">
                         <input class="formValidation form-invalid-view passwordSets passwordCompare createValidation form-invalid-view" type="password" id="passwordCheck2" name="passwordCheck" value=""  required> <!-- minlength="8" maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9!@#%&*_+-=?]{8,20}$" -->
@@ -141,8 +141,11 @@
         <!-- Logo -->
         <div class="col-10 col-md-4 logo-background">
             <a href="{{ url_for('index') }}">
-                <h1 class="header-text-1">Fat</h1>
-                <h1 class="header-text-2">Raccoon</h1>
+                <h1>
+                    <span class="header-text-1">Fat</span>
+                    <br/>
+                    <span class="header-text-2">Raccoon</span>
+                </h1>
             </a>
         </div>
     </header>
