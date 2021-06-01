@@ -31,9 +31,9 @@
                 <!-- Title Header -->
                 <div class="col-12 recipe-name">
                     {% if recipeInfo.name == "" %}
-                        <h1>New Recipe</h1>
+                        <h2>New Recipe</h2>
                     {% else %}
-                        <h1>{{ recipeInfo.name }}</h1>
+                        <h2>{{ recipeInfo.name }}</h2>
                     {% endif %}
                 </div>
                 <hr class="make-space">
@@ -165,7 +165,7 @@
                     <!-- New Recipe -->
                     <div class="col-12 form-input-spacing">
                         <label for="text">Recipe Description</label>
-                        <textarea class="formValidation form-invalid-view recipeGeneralValidation" type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
+                        <textarea class="formValidation form-invalid-view recipeGeneralValidation" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
                         <div class="invalid-form make-invis">
                             <p class="remove-p-margin">Must be between 3 and 400 characters</p>
                             <p class="make-invis remove-p-margin"></p>
@@ -176,7 +176,7 @@
                     <!-- Existing recipe -->
                     <div class="col-12 form-input-spacing">
                         <label for="text">Recipe Description</label>
-                        <textarea class="formValidation recipeGeneralValidation" type="text" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
+                        <textarea class="formValidation recipeGeneralValidation" id="text" name="text" cols="20" rows="5">{{ recipeInfo.text }}</textarea>
                         <div class="invalid-form form-is-valid make-invis">
                             <p class="make-invis remove-p-margin">Must be between 3 and 400 characters</p>
                             <p class="make-invis remove-p-margin"></p>
@@ -256,7 +256,7 @@
                             {% for step in recipeSteEnum %}
                                 <div class="step-ingredient-spacing">
                                     <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
-                                    <textarea class="countSteps form-invalid-view formValidation recipeGeneralValidation" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                                    <textarea class="countSteps form-invalid-view formValidation recipeGeneralValidation" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" cols="20" rows="3">{{ step[1] }}</textarea>
                                     <div class="invalid-form make-invis">
                                         <p class="remove-p-margin">Must be between 3 and 400 characters</p>
                                         <p class="make-invis remove-p-margin"></p>
@@ -269,7 +269,7 @@
                             {% for step in recipeSteEnum %}
                                 <div class="step-ingredient-spacing">
                                     <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
-                                    <textarea class="countSteps formValidation recipeGeneralValidation" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" value="" col="20" rows="3">{{ step[1] }}</textarea>
+                                    <textarea class="countSteps formValidation recipeGeneralValidation" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" cols="20" rows="3">{{ step[1] }}</textarea>
                                     <div class="invalid-form form-is-valid make-invis">
                                         <p class="make-invis remove-p-margin">Must be between 3 and 400 characters</p>
                                         <p class="make-invis remove-p-margin"></p>
@@ -283,9 +283,9 @@
 
                 <!-- submit button -->
                 {% if recipeInfo.name == "" %}
-                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit" tabindex="0" role="button" aria-pressed="false" disabled>
+                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit" tabindex="0" aria-pressed="false" disabled>
                 {% else %}
-                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit" tabindex="0" role="button" aria-pressed="false">
+                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Submit" tabindex="0" aria-pressed="false">
                 {% endif %}
             </div>
 

@@ -380,13 +380,13 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         createInput.className = "formValidation recipeGeneralValidation"; //col-10
         createInput.id = arrayClass + arrayIngredientLength;
         createInput.name = arrayClass + arrayIngredientLength;
-        createInput.type = "text";
         // Adds extra classes if textarea
         if(inputOrTextarea == "textarea"){
             createH6.textContent =  "Step " + arrayIngredientLength;
             createInput.rows = "3";
             createInput.cols = "20";
         } else {
+            createInput.type = "text";
             createH6.textContent = "Ingredient " + arrayIngredientLength;
         }
 
