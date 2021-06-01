@@ -16,12 +16,12 @@
                         <section class="sticky-note">
                             <div class="sticky-note-inner-div large-content-height">
                     {% endif %}
+                                <a href="{{ url_for('recipe_list', feature=feature[1].name) }}" class="blank-anchor">
+                                    <h2 class="yanone-text recipe-name">{{ feature[1].name.title() }} Recipes </h2>
+                                </a>
+                                <hr class="make-space">
                                 <ul class="recipe-lists recipe-lists-no-padding recipe-lists-no-dec blank-anchor">
                                     <!-- Feature name -->
-                                    <a href="{{ url_for('recipe_list', feature=feature[1].name) }}">
-                                        <h1 class="yanone-text recipe-name">{{ feature[1].name.title() }} Recipes </h1>
-                                    </a>
-                                    <hr class="make-space">
                                     <!-- Recipes that match feature -->
                                     {% for recipe in allRecipes %}
                                         {% if recipe.feature == feature[1].name %}
@@ -29,13 +29,13 @@
                                             <li class="make-invis">
                                                 <a href="{{ url_for('recipe', recipeId=recipe._id) }}" class="row no-gutters justify-content-around">
                                                     <!-- Recipe name -->
-                                                    <span class="col-12 col-lg-8">
+                                                    <div class="col-12 col-lg-8">
                                                         <h6><strong>{{ recipe.name }}</strong> </h6>
-                                                    </span>
+                                                    </div>
                                                     <!-- Recipe total cook time -->
-                                                    <span class="col-12 col-lg-4 d-none d-lg-block d-xl-block">
+                                                    <div class="col-12 col-lg-4 d-none d-lg-block d-xl-block">
                                                         <p>{{ recipe.time[2] }} Minutes</p>
-                                                    </span>
+                                                    </div>
                                                 </a>
                                             </li>
                                         {% endif %}
