@@ -7,7 +7,7 @@
         <!--  Create a new recipe  -->
         <div class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
             <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
-                <div class="sticky-note-inner-div" tabindex="0" role="button" aria-pressed="false">
+                <div class="sticky-note-inner-div">
                     <h6 class="remove-p-margin">Share Recipe</h6>
                 </div>
             </a>
@@ -15,7 +15,7 @@
         <!--  Edit user profile  -->
         <div class="col-5 sticky-note-no-shadow custom-button blank-anchor custom-js-button">
             <a href="{{ url_for('edit_user_info') }}">
-                <div class="sticky-note-inner-div" tabindex="0" role="button" aria-pressed="false">
+                <div class="sticky-note-inner-div">
                     <h6 class="remove-p-margin">Update Profile</h6>
                 </div>
             </a>
@@ -23,7 +23,7 @@
     </aside>
 
     <!-- Profile header -->
-    <h1 class="make-space header-text-shadow">{{ chef_info.username.title() }}'s Profile</h1>
+    <h2 class="make-space header-text-shadow">{{ chef_info.username.title() }}'s Profile</h2>
     <!-- Profile Bio and avatar information -->
     <div class="row no-gutters justify-content-around">
 
