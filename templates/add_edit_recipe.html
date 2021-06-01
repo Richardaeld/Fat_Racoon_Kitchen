@@ -8,14 +8,14 @@
             <!-- back to profile for new recipes -->
             {% if recipeInfo.name == ""%}
                 <a href="{{ url_for('profile') }}">
-                    <div class="sticky-note-inner-div" role="button" aria-pressed="false">
+                    <div class="sticky-note-inner-div">
                         <h6 class="remove-p-margin">Back</h6>
                     </div>
                 </a>
             <!-- Back to recipe page for existing recipes -->
             {% else %}
                 <a href="{{ url_for('recipe', recipeId=recipeId) }}">
-                    <div class="sticky-note-inner-div" tabindex="0" role="button" aria-pressed="false">
+                    <div class="sticky-note-inner-div">
                         <h6 class="remove-p-margin">Back</h6>
                     </div>
                 </a>
