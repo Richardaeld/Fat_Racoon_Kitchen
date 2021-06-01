@@ -8,13 +8,13 @@
         <!-- Delete modal body -->
         <form class="col-12 col-md-10 form-login form-delete-base generic-box-shadow yanone-text" id="delete-modal" method="POST" action="{{ url_for('delete_recipe', recipe_id=recipeInfo._id) }}">
             <div class="tab-body" >
-                <p class="remove-p-margin" id="checkName">Enter recipe name <span value="{{recipeInfo.name}}"> <strong>{{ recipeInfo.name }}</strong></span> to delete recipe</p>
+                <p class="remove-p-margin" id="checkName">Enter recipe name <span><strong>{{ recipeInfo.name }}</strong></span> to delete recipe</p>
             </div>
             <!-- User input -->
             <input type="text" name="recipeName" id="recipeName">
             <br>
             <!-- Delete button -->
-            <input class="custom-button make-space-margin" id="custom-button-delete" type="submit" value="Delete" tabindex="0" role="button" aria-pressed="false" disabled>
+            <input class="custom-button make-space-margin" id="custom-button-delete" type="submit" value="Delete" tabindex="0" aria-pressed="false" disabled>
         </form>
     </div>
 </aside>

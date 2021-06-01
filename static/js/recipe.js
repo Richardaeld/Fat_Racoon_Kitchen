@@ -404,7 +404,7 @@ document.getElementById("custom-button-delete").addEventListener("click", functi
 // Delete form validation logic
 document.getElementById("recipeName").addEventListener("keyup", function() {
     let modalButton = document.getElementById("custom-button-delete");
-    let check = document.getElementById("checkName").getElementsByTagName("span")[0].getAttribute("value");
+    let check = document.getElementById("checkName").getElementsByTagName("span")[0].textContent;
     let userinput = document.getElementById("recipeName").value;
 
     // Apply disabled if validation fails
