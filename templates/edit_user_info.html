@@ -23,7 +23,7 @@
                 <!-- User Name -->
                 <div class="col-12 col-xl-6 form-input-spacing">
                     <label for="username">Name</label>
-                    <input class="formValidation nameValidation" type="text" id="username" name="username" value="{{ userInfo.username.title() }}"  invalid required> <!-- minlength="5" maxlength="100" pattern="^[a-zA-Z0-9%_$]{5,100}$" -->
+                    <input class="formValidation nameValidation" type="text" id="username" name="username" value="{{ userInfo.username.title() }}" required> <!-- minlength="5" maxlength="100" pattern="^[a-zA-Z0-9%_$]{5,100}$" -->
                     <div class="invalid-form form-is-valid make-invis">
                         <p class="make-invis remove-p-margin">Must be between 5 and 100 characters, can contain letters and numbers</p>
                         <p class="make-invis remove-p-margin"></p>
@@ -34,7 +34,7 @@
                 <!-- Email -->
                 <div class="col-12 col-xl-6 form-input-spacing">
                     <label for="email">Email</label>
-                    <input class="formValidation emailValidation" type="text" id="email" name="email" value="{{ userInfo.email }}"  invalid required> <!-- minlength="5" maxlength="255" pattern="^[a-zA-Z0-9@.%$]{5,255}$" -->
+                    <input class="formValidation emailValidation" type="text" id="email" name="email" value="{{ userInfo.email }}" required> <!-- minlength="5" maxlength="255" pattern="^[a-zA-Z0-9@.%$]{5,255}$" -->
                     <div class="invalid-form form-is-valid make-invis">
                         <p class="make-invis remove-p-margin">Must be between 5 and 255 characters, can contain letters and numbers</p>
                         <p class="make-invis remove-p-margin">Must contain appropiate email suffix (.com, .edu, .net)</p>
@@ -53,8 +53,8 @@
 
                 <!--  current password  -->
                 <div class="col-12 col-xl-6 form-input-spacing">
-                    <label for="passwordEdit">Current Password</label>
-                    <input class="formValidation passwordSets form-invalid-view" type="password" id="password" name="password" value=""  invalid required> <!-- minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" -->
+                    <label for="password">Current Password</label>
+                    <input class="formValidation passwordSets form-invalid-view" type="password" id="password" name="password" value="" required> <!-- minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" -->
                     <div class="invalid-form make-invis">
                         <p class="remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters</p>
                         <p class="make-invis remove-p-margin"></p>
@@ -69,7 +69,7 @@
 
                 <!--  New passwod  -->
                 <div class="col-12 col-xl-6 form-input-spacing make-invis hidePassword">
-                    <label for="newPasswordEdit">New Password</label>
+                    <label for="passwordCheck1">New Password</label>
                     <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck1" name="passwordCheck1" value="" > <!-- minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" -->
                     <div class="invalid-form form-is-valid make-invis">
                         <p class="make-invis remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
@@ -80,7 +80,7 @@
 
                 <!--  Confirm new password  -->
                 <div class="col-12 col-xl-6 form-input-spacing make-invis hidePassword">
-                    <label for="newPasswordCheckEdit">Confirm New Password</label>
+                    <label for="passwordCheck2">Confirm New Password</label>
                     <input class="formValidation passwordSets passwordCompare" type="password" id="passwordCheck2" name="passwordCheck2" value="" > <!-- minlength="8" maxlength="20" pattern="^[a-zA-Z0-9_&%$#]{8,20}$" -->
                     <div class="invalid-form form-is-valid make-invis">
                         <p class="make-invis remove-p-margin">Password must contain upper case letter, lower case letter, a number, be between 8 and 20 characters and must match new password</p>
@@ -101,7 +101,7 @@
                 </div>
 
                 <!-- submit button -->
-                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Update" tabindex="0" role="button" aria-pressed="false" disabled>
+                <input class="custom-button make-space-margin" id="custom-button" type="submit" value="Update" tabindex="0" aria-pressed="false" disabled>
 
             </div>
         </form>
