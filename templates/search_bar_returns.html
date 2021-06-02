@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block section %}
 <article class="container-fluid generic-background">
-    <div class="row no-gutters justify-content-center">
+    <div class="row no-gutters justify-content-center make-space">
         <!-- Search Results header -->
         <div class="col-11 header-text-shadow lessons-header make-space">
             <h2>Search Results</h2>
         </div>
         {% if findRecipes|length() == 0 %}
             <!--  If search returns no results  -->
-            <section class="col-12 col-lg-6 make-space">
+            <section class="col-12 col-lg-6">
                 <div class="row no-gutters justify-content-center">
                     <div class="sticky-note">
                         <div class="sticky-note-inner-div blank-anchor make-space large-content-height">
