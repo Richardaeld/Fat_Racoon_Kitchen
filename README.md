@@ -349,6 +349,7 @@ is addressed in **Scalability** and **Other Problems**
 + GitHub houses the master branch, [here](https://github.com/Richardaeld/Fat_Racoon_Kitchen)
 
 ## Scalability
+<!-- Improve html 5 -->
 + Unify validation for images. So JS and Python check the same material. This would ensure a better UX.
 + Adding user selectable filters to search bar. This would ensure a better UX.
 + Create a user commit form for the recipes. This would give a better sense of community for returning users.
