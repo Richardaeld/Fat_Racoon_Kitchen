@@ -259,18 +259,19 @@
                 <div class="row no-gutters justify-content-center">
                     {% if recipeOfDay.avatar %}
                         <!-- Recipe avatar -->
-                        <div class="polaroid-outer generic-box-shadow remove-top-margin make-space-margin"> <!-- sticky-note sticky-note-right recipe-of-day-aside-height col-10 col-md-6 col-lg-10 -->
+                        <div class="polaroid-outer generic-box-shadow remove-top-margin make-space-margin blank-anchor"> <!-- sticky-note sticky-note-right recipe-of-day-aside-height col-10 col-md-6 col-lg-10 -->
                             <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
                                 <div class="polaroid-picture">
                                     <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="Polaroid picture of {{ recipeOfDay.name }}">
                                 </div>
+                            <h4 class="h2-reduce">{{ recipeOfDay.name.title() }}</h4>
                             </a>
                         </div>
                     {% else %}
                         <!-- Filler for missing avatar -->
                         <div class="sticky-note sticky-note-right remove-top-margin">
                             <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow medium-content-height">
-                                <p>My chef, {{ recipeOfDay.created_by.title() }}, hasn't uploaded an image of me yet :'(</p>
+                                <h4 class="h2-reduce">My chef, {{ recipeOfDay.created_by.title() }}, hasn't uploaded an image of me yet :'(</h4>
                             </div>
                         </div>
                     {% endif %}
