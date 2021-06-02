@@ -22,12 +22,12 @@ function finalValidation(validationLoc) {
     findFormInputs.forEach(selectFormInputs);
     function selectFormInputs(finalVal) {
 
-        currentFormValid = true // Sets macro form validation setting
+        currentFormValid = true; // Sets macro form validation setting
 
         let checkPLength = finalVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
         // Searches form for invalid input and sets Global/Macro validation
         for (let i=0; i< checkPLength.length; i++){
-            let validCheck = finalVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")
+            let validCheck = finalVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis");
             if(validCheck == false){
                 formIsValid = false;
                 currentFormValid = false;
@@ -49,7 +49,7 @@ function finalValidation(validationLoc) {
         } else {
             // Reveals parent validation container of clicked item if form invalidates
             if (document.activeElement == finalVal){
-                finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
+                finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis");
             }
             finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid");
             finalVal.setAttribute("invalid", "");
@@ -68,11 +68,11 @@ function baseValidation (inputSelector, validationSelector) {
 
         // Makes validation bubble visible on focus 
         baseVal.addEventListener("focus", function() {
-            validCheck = true  // Presets valitation to valid
+            validCheck = true;  // Presets valitation to valid
             let checkPLengthTemp = baseVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
             // Enables validation bubble according to Macro Validation
             for (let i=0; i< checkPLengthTemp.length; i++){
-                validCheck = baseVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")  // Sets variable according to if its valid
+                validCheck = baseVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis");  // Sets variable according to if its valid
                 // Sets Macro Validation variable
                 if(validCheck == false){
                     formIsValid = false;
@@ -102,26 +102,26 @@ function baseValidation (inputSelector, validationSelector) {
 
             // Checks all individual characters for valid character input
             for (i=0; i< baseVal.value.length; i++){
-                char = baseVal.value[i]  // Character being checked
+                char = baseVal.value[i];  // Character being checked
                 if (validationSelector === "text" || validationSelector === "recipeGeneral" ){
                 // Checks for improper characters and sets validation
                     if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeTextCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null  && char.match(matchTypeNumber) == null) {
                         baseValPara[2].classList.remove("make-invis");
-                        break
+                        break;
                     } else {
                         baseValPara[2].classList.add("make-invis");
                     }
                 } else if (validationSelector === "time") {
                     if (char.match(matchTypeNumber) == null) {
                         baseValPara[2].classList.remove("make-invis");
-                        break
+                        break;
                     } else {
                         baseValPara[2].classList.add("make-invis");
                     }
                 } else{
                     if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null && char.match(matchTypeNumber) == null) {
                         baseValPara[2].classList.remove("make-invis");
-                        break
+                        break;
                     } else {
                         baseValPara[2].classList.add("make-invis");
                     }
@@ -227,13 +227,13 @@ function addValidation (validationLoc, validationSelector) {
         let valLocPara = validationLoc.parentElement.getElementsByTagName("p");  // Finds the location of the invalid commits
         // Makes validation bubble visible on focus 
         validationLoc.addEventListener("focus", function () {
-            validCheck = true  // Presets valitation to valid
+            validCheck = true;  // Presets valitation to valid
             let checkPLengthTemp = validationLoc.parentElement.getElementsByTagName("p");  // Finds all p's to iterate validation over
             
             // Enables validation bubble according to Macro Validation
             for (let i=0; i< checkPLengthTemp.length; i++){
                 // Sets a validation variable as it checks over all possible invalidation points
-                validCheck = validationLoc.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")  // Sets variable according to if its valid
+                validCheck = validationLoc.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis");  // Sets variable according to if its valid
                 // Sets Macro Validation variable
                 if(validCheck == false){
                     formIsValid = false;
@@ -245,20 +245,20 @@ function addValidation (validationLoc, validationSelector) {
             }
         });
         // Hides validation bubble on blur
-        validationLoc.addEventListener("blur", invisInvalidation)
+        validationLoc.addEventListener("blur", invisInvalidation);
         function invisInvalidation() {
             validationLoc.parentElement.getElementsByTagName("div")[0].classList.add("make-invis");
         }
         // Applies validation check on every keyup stroke
-        validationLoc.addEventListener("keyup", validateOnKeyStroke)
+        validationLoc.addEventListener("keyup", validateOnKeyStroke);
         function validateOnKeyStroke () {
             // Iterates over all individual input characters
             for (i=0; i< validationLoc.value.length; i++){
-                char = validationLoc.value[i]  // Character being checked
+                char = validationLoc.value[i];  // Character being checked
                 // Checks for improper characters and sets validation
                 if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeTextCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null  && char.match(matchTypeNumber) == null) {
                     valLocPara[2].classList.remove("make-invis");
-                    break
+                    break;
                 } else {
                     valLocPara[2].classList.add("make-invis");
                 }
@@ -364,18 +364,18 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         let createContainer = document.createElement("div");
         createContainer.className = "step-ingredient-spacing";
         let createH6 = document.createElement("h3");
-        createH6.classList = "reduce-h6"
-        let validationDiv = document.createElement("div")
-        validationDiv.classList = "invalid-form form-is-valid make-invis"
-        let val1P = document.createElement("p")
-        val1P.textContent = "Must be between 3 and 400 characters"
-        val1P.classList = "make-invis remove-p-margin"
-        let val2P = document.createElement("p")
-        val2P.textContent = ""
-        val2P.classList = "make-invis remove-p-margin"
-        let val3P = document.createElement("p")
+        createH6.classList = "reduce-h6";
+        let validationDiv = document.createElement("div");
+        validationDiv.classList = "invalid-form form-is-valid make-invis";
+        let val1P = document.createElement("p");
+        val1P.textContent = "Must be between 3 and 400 characters";
+        val1P.classList = "make-invis remove-p-margin";
+        let val2P = document.createElement("p");
+        val2P.textContent = "";
+        val2P.classList = "make-invis remove-p-margin";
+        let val3P = document.createElement("p");
         val3P.textContent = "Can only contain a-z, A-Z, 0-9, and !@#%&*_+-=?.'/" + '",';
-        val3P.classList = "make-invis remove-p-margin"
+        val3P.classList = "make-invis remove-p-margin";
         let createInput = document.createElement(inputOrTextarea);
         createInput.className = "formValidation recipeGeneralValidation"; //col-10
         createInput.id = arrayClass + arrayIngredientLength;
@@ -401,7 +401,7 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(val2P);
         addRemoveLocation.getElementsByTagName("div")[innerDivLoc].appendChild(val3P);
         // Adds Validation to newly created container
-        addValidation(addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].getElementsByTagName(inputOrTextarea)[0], "recipeGeneral")
+        addValidation(addRemoveLocation.getElementsByTagName("div")[innerDivLoc-1].getElementsByTagName(inputOrTextarea)[0], "recipeGeneral");
     });
 
     // Removes last box in list and updates total box count when remove button is clicked

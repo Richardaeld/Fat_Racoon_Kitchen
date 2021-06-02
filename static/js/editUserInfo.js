@@ -100,12 +100,12 @@ function finalValidation(validationLoc) {
     findFormInputs.forEach(selectFormInputs);
     function selectFormInputs(finalVal) {
 
-        currentFormValid = true // Sets macro form validation setting
+        currentFormValid = true; // Sets macro form validation setting
 
         let checkPLength = finalVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
         // Searches form for invalid input and sets Global/Macro validation
         for (let i=0; i< checkPLength.length; i++){
-            let validCheck = finalVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")
+            let validCheck = finalVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis");
             if(validCheck == false){
                 formIsValid = false;
                 currentFormValid = false;
@@ -126,7 +126,7 @@ function finalValidation(validationLoc) {
         } else {
             // Reveals parent validation container of clicked item if form invalidates
             if (document.activeElement == finalVal){
-                finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis")
+                finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("make-invis");
             }
             finalVal.parentElement.getElementsByTagName("div")[0].classList.remove("form-is-valid");
             finalVal.classList.add("form-invalid-view"); 
@@ -144,11 +144,11 @@ function baseValidation (inputSelector, validationSelector) {
 
         // Makes validation bubble visible on focus 
         baseVal.addEventListener("focus", function() {
-            validCheck = true  // Presets valitation to valid
+            validCheck = true;  // Presets valitation to valid
             let checkPLengthTemp = baseVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
             // Enables validation bubble according to Macro Validation
             for (let i=0; i< checkPLengthTemp.length; i++){
-                validCheck = baseVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis")  // Sets variable according to if its valid
+                validCheck = baseVal.parentElement.getElementsByTagName("p")[i].classList.contains("make-invis");  // Sets variable according to if its valid
                 // Sets Macro Validation variable
                 if(validCheck == false){
                     formIsValid = false;
@@ -178,26 +178,26 @@ function baseValidation (inputSelector, validationSelector) {
 
             // Checks all individual characters for valid character input
             for (i=0; i< baseVal.value.length; i++){
-                char = baseVal.value[i]  // Character being checked
+                char = baseVal.value[i];  // Character being checked
                 if (validationSelector === "text" || validationSelector === "recipeGeneral" ){
                 // Checks for improper characters and sets validation
                     if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeTextCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null  && char.match(matchTypeNumber) == null) {
                         baseValPara[2].classList.remove("make-invis");
-                        break
+                        break;
                     } else {
                         baseValPara[2].classList.add("make-invis");
                     }
                 } else if (validationSelector === "time") {
                     if (char.match(matchTypeNumber) == null) {
                         baseValPara[2].classList.remove("make-invis");
-                        break
+                        break;
                     } else {
                         baseValPara[2].classList.add("make-invis");
                     }
                 } else{
                     if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null && char.match(matchTypeNumber) == null) {
                         baseValPara[2].classList.remove("make-invis");
-                        break
+                        break;
                     } else {
                         baseValPara[2].classList.add("make-invis");
                     }
