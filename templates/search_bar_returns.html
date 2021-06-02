@@ -12,7 +12,7 @@
                                 <!-- Search, no results header -->
                                 <h2 class="recipe-name yanone-text">Return to Home Page</h2>
                                 <hr class="make-space">
-                                <h6><strong>Search Didn't Return Any Results!</strong></h6>
+                                <h3><strong>Search Didn't Return Any Results!</strong></h3>
                                 <p>*hint* Search For recipe name, feature, or chef</p>
                             </a>
                         </div>
@@ -43,35 +43,35 @@
                                     <!-- Recipe feature  -->
                                     <div class="col-12 col-sm-6 col-lg-12 col-xl-6 make-space">
                                         <div class="row no-gutters">
-                                            <h6 class="col-12 col-lg-5 col-xl-12">Features: </h6>
+                                            <h3 class="col-12 col-lg-5 col-xl-12">Features: </h3>
                                             <p class="col-12 col-lg-7 col-xl-12"><strong>{{ recipe[1].feature.title() }}</strong></p>
                                         </div>
                                     </div>
                                     <!-- Chef name -->
                                     <div class="col-12 col-sm-6 col-lg-12 col-xl-6 make-space">
                                         <div class="row no-gutters">
-                                            <h6 class="col-12 col-lg-4 col-xl-12">Chef: </h6>
+                                            <h3 class="col-12 col-lg-4 col-xl-12">Chef: </h3>
                                             <p class="col-12 col-lg-8 col-xl-12"><strong>{{ recipe[1].created_by.title() }}</strong></p>
                                         </div>
                                     </div>
                                     <!-- Prep time -->
                                     <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space">
                                         <div class="row no-gutters">
-                                            <h6 class="col-12 col-lg-4 col-xl-12">Prep: </h6>
+                                            <h3 class="col-12 col-lg-4 col-xl-12">Prep: </h3>
                                             <p class="col-12 col-lg-8 col-xl-12"><strong class="yanone-text">{{ recipe[1].time[0] }}</strong> minutes</p>
                                         </div>
                                     </div>
                                     <!-- Cook time -->
                                     <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space">
                                         <div class="row no-gutters">
-                                            <h6 class="col--12 col-lg-4 col-xl-12">Cook: </h6>
+                                            <h3 class="col--12 col-lg-4 col-xl-12">Cook: </h3>
                                             <p class="col-12 col-lg-8 col-xl-12"><strong class="yanone-text">{{ recipe[1].time[1] }}</strong> minutes</p>
                                         </div>
                                     </div>
                                     <!-- Total time -->
                                     <div class="col-12 col-sm-4 col-lg-12 col-xl-4 make-space">
                                         <div class="row no-gutters">
-                                            <h6 class="col-12 col-lg-4 col-xl-12">Total: </h6>
+                                            <h3 class="col-12 col-lg-4 col-xl-12">Total: </h3>
                                             <p class="col-12 col-lg-8 col-xl-12"><strong class="yanone-text">{{ recipe[1].time[2] }}</strong> minutes</p>
                                         </div>
                                     </div>
@@ -80,13 +80,13 @@
                                         <div class="make-space max-width">
                                             {% if recipe[1].lazy == true and recipe[1].grandparent == true %}
                                                 <!-- Both lazy and grandparent classic -->
-                                                <h6 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Favorite and Classic!</h6>
+                                                <h3 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Favorite and Classic!</h3>
                                             {% elif recipe[1].lazy == true %}
                                                 <!-- lazy favorite -->
-                                                <h6 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h6>
+                                                <h3 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h3>
                                             {% elif recipe[1].grandparent == true %}
                                                 <!-- Grandparent Classic -->
-                                                <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
+                                                <h3 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h3>
                                             {% endif %}
                                         </div>
                                     {% endif %}

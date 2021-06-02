@@ -640,6 +640,8 @@ right: 0px;
     right:0;
     text-shadow: 2px 2px #333;
     color: #faf9f6;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
 }
 .lazy {
     background-color: rgba(18, 138, 231, .75);
