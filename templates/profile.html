@@ -8,7 +8,7 @@
         <div class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
             <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
                 <div class="sticky-note-inner-div">
-                    <h6 class="remove-p-margin">Share Recipe</h6>
+                    <p class="remove-p-margin"><strong>Share Recipe</strong></p>
                 </div>
             </a>
         </div>
@@ -16,7 +16,7 @@
         <div class="col-5 sticky-note-no-shadow custom-button blank-anchor custom-js-button">
             <a href="{{ url_for('edit_user_info') }}">
                 <div class="sticky-note-inner-div">
-                    <h6 class="remove-p-margin">Update Profile</h6>
+                    <p class="remove-p-margin"><strong>Update Profile</strong></p>
                 </div>
             </a>
         </div>
@@ -41,7 +41,7 @@
             <section class="col-10 col-md-6 col-lg-4 my-auto polaroid-outer generic-box-shadow">
                 <div class="polaroid-picture">
                 </div>
-                <h6>{{ chef_info.username.title() }}'s Avatar</h6>
+                <h3>{{ chef_info.username.title() }}'s Avatar</h3>
             </section>
         {% else %}
             <!-- User Avatar -->
@@ -49,7 +49,7 @@
                 <div class="polaroid-picture">
                     <img src="{{ url_for('avatar', avatar_image=chef_info.avatar) }}" alt="Polaroid picture of chef {{ chef_info.username.title() }}">
                 </div>
-                <h6>{{ chef_info.username.title() }}'s Avatar</h6>
+                <h3>{{ chef_info.username.title() }}'s Avatar</h3>
             </section>
         {% endif %}
     </div>

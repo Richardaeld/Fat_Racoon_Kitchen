@@ -22,7 +22,7 @@
                     <section class="col-10 col-md-10 col-lg-5 col-xl-3 medium-content-height card-carousel generic-box-shadow index-card index-card-pattern index-card-bold transition-fade-out recipe-lists blank-anchor">
                         <!-- Header for index card -->
                         <a href="{{ url_for('recipe_list', feature=feature.name) }}">
-                            <h6 class="yanone-text header-text-spacing ">{{feature.name.title()}}</h6>
+                            <h3 class="yanone-text header-text-spacing ">{{feature.name.title()}}</h3>
                         </a>
                         <ul>
                             {% for card in card_carousel %}
@@ -63,8 +63,8 @@
                 {% if classics == [] %}
                     <!-- Filler for missing content -->
                     <div class="header-text-shadow make-space-top make-space">
-                        <h2>Currently we have no classics in rotation</h2>
-                        <h3>Sorry, try back later for some awesome classics!</h3>
+                        <h3>Currently we have no classics in rotation</h3>
+                        <p>Sorry, try back later for some awesome classics!</p>
                     </div>
                 {% endif %}
                 <!-- Displays 4 classic recipes -->
@@ -80,7 +80,7 @@
                             </div>
                             <!-- Name of recipe -->
                             <div>
-                                <h6>{{ recipe[1].name }}</h6>
+                                <p>{{ recipe[1].name }}</p>
                             </div>
                         </a>
                     </section>
@@ -102,12 +102,14 @@
 
 <!-- Random recipe and browse buttons -->
 <article class="container-fluid px-0 generic-background">
-    <!-- Browse buttons with random recipe's header -->
-    <aside class="row no-gutters justify-content-around make-space make-space-top">
-        <!-- Random recipe header -->
+    <!-- Header for Random recipe and Browse Buttons -->
+    <div class="row no-gutters justify-content-around make-space-top">
         <div class="col-11 header-text-shadow make-space-minus">
             <h2>Try a random recipe or browse the Fat Raccoon's collection of recipes</h2>
         </div>
+    </div>
+    <!-- Browse buttons with random recipe's header -->
+    <aside class="row no-gutters justify-content-around make-space ">
         <!-- Browse lazy recipes -->
         <a href="{{ url_for('search_bool_returns', search='lazy') }}" class="col-11 col-lg-5 sticky-note-no-shadow custom-button blank-anchor custom-js-button auto-margin browse-button">
             <div class="sticky-note-inner-div reduce-padding">
@@ -141,33 +143,33 @@
                 <div class="row no-gutters justify-content-center">
                     <div class="sticky-note remove-top-margin">
                         <div class="sticky-note-inner-div blank-anchor">
+                            <h3 class="yanone-text">Head Chef</h3>
+                            <hr class="make-space">
                             {% if chef.avatar != none %}
-                                <!-- Chef avatar -->
-                                <div class="avatar-image">
-                                    <img src="{{ url_for('avatar', avatar_image=chef.avatar) }}" alt="Picture of chef {{ chef.username.title() }}" >
-                                </div>
-                            {% else %}
-                                <!-- Filler for missing avatar picture -->
-                                <div class="avatar" role="img" aria-label="Silhouette of a person">
-                                    <svg width="50" height="50">
-                                        <circle cx="25" cy="25" r="20" stroke-width="4" fill="#010203" />
-                                    </svg>
-                                    <svg width="50" height="50">
-                                        <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203" />
-                                    </svg>
-                                </div>
-                            {% endif %}
-                            {% if chef.avatar != none %}
+                            <!-- Chef avatar -->
+                            <div class="avatar-image">
+                                <img src="{{ url_for('avatar', avatar_image=chef.avatar) }}" alt="Picture of chef {{ chef.username.title() }}" >
+                            </div>
                                 <!-- chef user name and Bio -->
-                                <p>{{ chef.bio }}</p>
-                                <a href="{{ url_for('search_bar_returns', search=chef.username) }}">
-                                    <h6>-- {{chef.username.title()}}</h6>
-                                </a>
+                                <p class="make-space">{{ chef.bio }}</p>
                             {% else %}
+                            <!-- Filler for missing avatar picture -->
+                            <div class="avatar" role="img" aria-label="Silhouette of a person">
+                                <svg width="50" height="50">
+                                    <circle cx="25" cy="25" r="20" stroke-width="4" fill="#010203" />
+                                </svg>
+                                <svg width="50" height="50">
+                                    <circle cx="25" cy="-10" r="30" stroke-width="4" fill="#010203" />
+                                </svg>
+                            </div>
                                 <!-- Filler for blank chef info  -->
                                 <p>Please create your bio head chef!</p>
-                                <h6>-- New Head Chef</h6>
+                                <p>-- New Head Chef</p>
                             {% endif %}
+                            <a href="{{ url_for('search_bar_returns', search=chef.username) }}">
+                                <p><strong>-- {{chef.username.title()}}</strong></p>
+                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -180,7 +182,7 @@
                     <!-- Recipe name -->
                     <div class="col-12">
                         <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
-                            <h2 class="recipe-name yanone-text remove-p-margin">{{ recipeOfDay.name }}</h2>
+                            <h3 class="recipe-name yanone-text remove-p-margin header-text-size">{{ recipeOfDay.name }}</h3>
                         </a>
                         <hr class="make-space">
                     </div>
@@ -189,8 +191,8 @@
                     <div class="col-12 col-sm-6 make-space">
                         <a href="{{ url_for('search_bar_returns', search=recipeOfDay.feature) }}">
                             <div class="row no-gutters justify-content-center">
-                                <h6 class="col-6 col-sm-12">Features: </h6>
-                                <h6 class="col-6 col-sm-12"><strong>{{ recipeOfDay.feature.title() }}</strong></h6>
+                                <h4 class="col-6 col-sm-12 h2-reduce">Features: </h4>
+                                <p class="col-6 col-sm-12"><strong>{{ recipeOfDay.feature.title() }}</strong></p>
                             </div>
                         </a>
                     </div>
@@ -199,8 +201,8 @@
                     <div class="col-12 col-sm-6 make-space">
                         <a href="{{ url_for('search_bar_returns', search=chef.username) }}">
                             <div class="row no-gutters justify-content-center">
-                                <h6 class="col-6 col-sm-12">Chef: </h6>
-                                <h6 class="col-6 col-sm-12"><strong>{{ chef.username.title() }}</strong></h6>
+                                <h4 class="col-6 col-sm-12 h2-reduce">Chef: </h4>
+                                <p class="col-6 col-sm-12"><strong>{{ chef.username.title() }}</strong></p>
                             </div>
                         </a>
                     </div>
@@ -213,7 +215,7 @@
                     <!-- Recipe prep time -->
                     <div class="col-12 col-sm-4 make-space">
                         <div class="row no-gutters">
-                            <h6 class="col-6 col-sm-12">Prep</h6>
+                            <h4 class="col-6 col-sm-12 h2-reduce">Prep</h4>
                             <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeOfDay.time[0] }}</strong> minutes</p>
                         </div>
                     </div>
@@ -221,7 +223,7 @@
                     <!-- Recipe cook time -->
                     <div class="col-12 col-sm-4 make-space">
                         <div class="row no-gutters">
-                            <h6 class="col-6 col-sm-12">Cook</h6>
+                            <h4 class="col-6 col-sm-12 h2-reduce">Cook</h4>
                             <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeOfDay.time[1] }}</strong> minutes</p>
                         </div>
                     </div>
@@ -229,7 +231,7 @@
                     <!-- Recipe total time -->
                     <div class="col-12 col-sm-4 make-space">
                         <div class="row no-gutters">
-                            <h6 class="col-6 col-sm-12">Total</h6>
+                            <h4 class="col-6 col-sm-12 h2-reduce">Total</h4>
                             <p class="col-6 col-sm-12"><strong class="yanone-text">{{ recipeOfDay.time[2] }}</strong> minutes</p>
                         </div>
                     </div>
@@ -239,13 +241,13 @@
                         <div class="make-space max-width">
                             {% if recipeOfDay.lazy == true and recipeOfDay.grandparent == true %}
                                 <!-- Both lazy and grandparent classic -->
-                                <h6 class="recipe-overlay-bottom lazy-classic">Fat Raccoon Favorite and Classic!</h6>
+                                <h4 class="recipe-overlay-bottom lazy-classic h2-reduce">Fat Raccoon Favorite and Classic!</h4>
                             {% elif recipeOfDay.lazy == true %}
                                 <!-- lazy favorite -->
-                                <h6 class="recipe-overlay-bottom lazy">Fat Raccoon Lazy Favorite!</h6>
+                                <h4 class="recipe-overlay-bottom lazy h2-reduce">Fat Raccoon Lazy Favorite!</h4>
                             {% elif recipeOfDay.grandparent == true %}
                                 <!-- Grandparent Classic -->
-                                <h6 class="recipe-overlay-bottom classic">Fat Raccoon Grandparent Classic!</h6>
+                                <h4 class="recipe-overlay-bottom classic h2-reduce">Fat Raccoon Grandparent Classic!</h4>
                             {% endif %}
                         </div>
                     {% endif %}

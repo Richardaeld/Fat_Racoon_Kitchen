@@ -33,7 +33,7 @@
     margin: 2rem 0rem;
 }
 
-.index-card-outer h6 {
+.index-card-outer h3 {
     text-decoration: underline;
 }
 
@@ -1006,7 +1006,7 @@ footer {
     text-shadow: 2px 2px #a7a7a7;
 }
 
-.recipe-lists h6 {
+.recipe-lists h3 {
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -1100,8 +1100,13 @@ h2 {
 }
 
 h3,
+.h2-reduce,
 h6 {
     font-size: 2rem;
+}
+
+.header-text-size {
+    font-size: 3rem;
 }
 
 @media (min-width: 1200px) {
@@ -1134,8 +1139,12 @@ h6 {
     }
 
     h3,
+    .h2-reduce,
     h6 {
         font-size: 1.5rem;
+    }
+    .header-text-size {
+        font-size: 2rem;
     }
     /* favorite icon */
     .favorite img {
@@ -1177,8 +1186,12 @@ h6 {
     }
     
     h3,
+    .h2-reduce,
     h6 {
         font-size: 1.5rem;
+    }
+    .header-text-size {
+        font-size: 2rem;
     }
     /* repetitive class calls */
     .make-space {

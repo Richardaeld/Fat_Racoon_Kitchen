@@ -9,14 +9,14 @@
             {% if recipeInfo.name == ""%}
                 <a href="{{ url_for('profile') }}">
                     <div class="sticky-note-inner-div">
-                        <h6 class="remove-p-margin">Back</h6>
+                        <p class="remove-p-margin"><strong>Back</strong></p>
                     </div>
                 </a>
             <!-- Back to recipe page for existing recipes -->
             {% else %}
                 <a href="{{ url_for('recipe', recipeId=recipeId) }}">
                     <div class="sticky-note-inner-div">
-                        <h6 class="remove-p-margin">Back</h6>
+                        <p class="remove-p-margin"><strong>Back</strong></p>
                     </div>
                 </a>
             {% endif %}
@@ -207,7 +207,7 @@
                             <!-- New Recipe -->
                             {% for ingredient in recipeIngEnum %}
                                 <div class="step-ingredient-spacing">
-                                    <h6 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h6>
+                                    <h3 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h3>
                                     <input class="countIngredients form-invalid-view formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
                                     <div class="invalid-form make-invis">
                                         <p class=" remove-p-margin">Must be between 3 and 400 characters</p>
@@ -220,7 +220,7 @@
                             <!-- Existing recipe -->
                             {% for ingredient in recipeIngEnum %}
                                 <div class="step-ingredient-spacing">
-                                    <h6 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h6>
+                                    <h3 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h3>
                                     <input class="countIngredients formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
                                     <div class="invalid-form form-is-valid make-invis">
                                         <p class="make-invis remove-p-margin">Must be between 3 and 400 characters</p>
@@ -255,7 +255,7 @@
                             <!-- New Recipe -->
                             {% for step in recipeSteEnum %}
                                 <div class="step-ingredient-spacing">
-                                    <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
+                                    <h3 class="reduce-h6">Step {{ step[0] + 1 }} </h3>
                                     <textarea class="countSteps form-invalid-view formValidation recipeGeneralValidation" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" cols="20" rows="3">{{ step[1] }}</textarea>
                                     <div class="invalid-form make-invis">
                                         <p class="remove-p-margin">Must be between 3 and 400 characters</p>
@@ -268,7 +268,7 @@
                         <!-- Existing recipe -->
                             {% for step in recipeSteEnum %}
                                 <div class="step-ingredient-spacing">
-                                    <h6 class="reduce-h6">Step {{ step[0] + 1 }} </h6>
+                                    <h3 class="reduce-h6">Step {{ step[0] + 1 }} </h3>
                                     <textarea class="countSteps formValidation recipeGeneralValidation" id="steps-{{ step[0] + 1 }}" name="steps-{{ step[0] + 1 }}" cols="20" rows="3">{{ step[1] }}</textarea>
                                     <div class="invalid-form form-is-valid make-invis">
                                         <p class="make-invis remove-p-margin">Must be between 3 and 400 characters</p>

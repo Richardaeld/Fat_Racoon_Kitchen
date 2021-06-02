@@ -28,13 +28,13 @@
             <!--  Edit recipe button -->
             <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}" class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
                 <div class="sticky-note-inner-div">
-                    <h6 class="remove-p-margin">Edit Recipe</h6>
+                    <p class="remove-p-margin"><strong>Edit Recipe</strong></p>
                 </div>
             </a>
             <!--  Delete recipe button -->
             <div class="col-5 custom-button sticky-note-no-shadow clickable custom-js-button" id="deleteModal">
                 <div class="sticky-note-inner-div" tabindex="0" role="button" aria-pressed="false">
-                    <h6 class="remove-p-margin">Delete Recipe</h6>
+                    <p class="remove-p-margin"><strong>Delete Recipe</strong></p>
                 </div>
             </div>
         </aside>
@@ -52,7 +52,7 @@
                         </div>
                         <div>
                             <a href="{{ url_for('search_bar_returns', search=recipeInfo.created_by) }}">
-                                <h6>From: {{ recipeInfo.created_by.title() }}</h6>
+                                <p><strong>From: {{ recipeInfo.created_by.title() }}</strong></p>
                             </a>
                         </div>
                     </div>
@@ -96,21 +96,21 @@
                         <!-- Recipe prep time -->
                         <div class="col-10 col-sm-4 make-space">
                             <div class="row no-gutters">
-                                <h6 class="col-5 col-sm-12">Prep: </h6>
+                                <h3 class="col-5 col-sm-12">Prep: </h3>
                                 <p class="col-7 col-sm-12"><strong class="yanone-text">{{ recipeInfo.time[0] }}</strong> minutes</p>
                             </div>
                         </div>
                         <!-- Recipe cook time -->
                         <div class="col-10 col-sm-4 make-space">
                             <div class="row no-gutters">
-                                <h6 class="col-5 col-sm-12">Cook: </h6>
+                                <h3 class="col-5 col-sm-12">Cook: </h3>
                                 <p class="col-7 col-sm-12"><strong class="yanone-text">{{ recipeInfo.time[1] }}</strong> minutes</p>
                             </div>
                         </div>
                         <!-- Recipe total time -->
                         <div class="col-10 col-sm-4 make-space">
                             <div class="row no-gutters">
-                                <h6 class="col-5 col-sm-12">Total: </h6>
+                                <h3 class="col-5 col-sm-12">Total: </h3>
                                 <p class="col-7 col-sm-12"><strong class="yanone-text">{{ recipeInfo.time[2] }}</strong> minutes</p>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
             <div class="row no-gutters justify-content-center">
                 <div class="sticky-note sticky-note-right">
                     <div class="row no-gutters sticky-note-inner-div sticky-note-right-shadow medium-content-height">
-                        <h6 class="yanone-text max-width remove-p-margin">Recipe Description</h6>
+                        <h2 class="yanone-text max-width remove-p-margin h2-reduce">Recipe Description</h2>
                         <hr>
                         <div class="max-height max-width">
                             <p class="max-width">{{ recipeInfo.text }}</p> <!-- height needs to be removed -->
@@ -140,7 +140,7 @@
                 <div class="sticky-note">
                     <div class="sticky-note-inner-div medium-content-height">
                         <!-- Recipe ingredients header -->
-                        <h6 class="yanone-text">Recipe Ingredients</h6>
+                        <h2 class="yanone-text h2-reduce">Recipe Ingredients</h2>
                         <hr class="make-space">
                         <ul class="recipe-lists recipe-lists-no-padding">
                             <!-- Each recipe ingredient -->
@@ -162,7 +162,7 @@
                 <div class="col-10 sticky-note sticky-note-right">
                     <div class="sticky-note-inner-div sticky-note-right-shadow medium-content-height">
                         <!-- Recipe steps header -->
-                        <h6 class="yanone-text">Recipe Steps</h6>
+                        <h2 class="yanone-text h2-reduce">Recipe Steps</h2>
                         <hr class="make-space">
                         <ul class="recipe-lists recipe-lists-no-padding">
                             <!-- Each recipe step -->

@@ -363,7 +363,7 @@ function createRemoveFormBoxes(addRemoveLoc, totalLocId, addButton, arrayClass, 
         // Creation of elements and adding of content into new step/ingredient content
         let createContainer = document.createElement("div");
         createContainer.className = "step-ingredient-spacing";
-        let createH6 = document.createElement("h6");
+        let createH6 = document.createElement("h3");
         createH6.classList = "reduce-h6"
         let validationDiv = document.createElement("div")
         validationDiv.classList = "invalid-form form-is-valid make-invis"
