@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block section %}
 <article class="container-fluid generic-background">
-    <div class="row no-gutters">
-
+    <div class="row no-gutters justify-content-around">
+        <!-- Recipe compendium header -->
+        <div class="col-11 header-text-shadow make-space-top make-space">
+            <h2>Browse the Fat Raccoon's recipe compendium</h2>
+        </div>
         <!-- Sticky note left/right oscillates per Feature -->
         {% for feature in allFeatures %}
             <div class="col-12 col-lg-6">
