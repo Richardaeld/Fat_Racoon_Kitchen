@@ -1,29 +1,26 @@
 {% extends "base_login.html" %}
 {% block section %}
+<!-- Back Button -->
+<aside class="container-fluid generic-background">
+    <div class="row no-gutters">
+        <!-- back to profile for new recipes -->
+        {% if recipeInfo.name == ""%}
+            <a href="{{ url_for('profile') }}" class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
+                <div class="sticky-note-inner-div">
+                    <h2 class="remove-p-margin h2-reduce">Back</h2>
+                </div>
+            </a>
+        <!-- Back to recipe page for existing recipes -->
+        {% else %}
+            <a href="{{ url_for('recipe', recipeId=recipeId) }}" class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
+                <div class="sticky-note-inner-div">
+                    <h2 class="remove-p-margin h2-reduce">Back</h2>
+                </div>
+            </a>
+        {% endif %}
+    </div>
+</aside>
 <section class="container-fluid generic-background">
-
-    <!-- Back Button -->
-    <aside class="row no-gutters justify-content-start">
-        <div class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
-            <!-- back to profile for new recipes -->
-            {% if recipeInfo.name == ""%}
-                <a href="{{ url_for('profile') }}">
-                    <div class="sticky-note-inner-div">
-                        <h2 class="remove-p-margin h2-reduce">Back</h2>
-                    </div>
-                </a>
-            <!-- Back to recipe page for existing recipes -->
-            {% else %}
-                <a href="{{ url_for('recipe', recipeId=recipeId) }}">
-                    <div class="sticky-note-inner-div">
-                        <h2 class="remove-p-margin h2-reduce">Back</h2>
-                    </div>
-                </a>
-            {% endif %}
-        </div>
-    </aside>
-
-    <!--  Create/Edit recipe form -->
     <div class="row no-gutters justify-content-center" >
         <!-- Title Header -->
         <div class="col-11 header-text-shadow lessons-header make-space">
@@ -33,8 +30,8 @@
                 <h2>{{ recipeInfo.name }}</h2>
             {% endif %}
         </div>
-        <!-- <hr class="make-space"> -->
 
+        <!--  Create/Edit recipe form -->
         <form class="col-11 form-base generic-box-shadow yanone-text"  method="POST" enctype="multipart/form-data" action="{{ url_for('upload_recipe', recipeId=recipeId, username=username) }} ">
             <div class="row no-gutters justify-content-center make-space-top make-space">
 

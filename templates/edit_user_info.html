@@ -1,21 +1,22 @@
 {% extends "base_login.html" %}
 {% block section %}
-<section class="container-fluid row no-gutters generic-background">
-    <!-- Back Button -->
-    <aside class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
-        <a href="{{ url_for('profile') }}">
+<!-- Back Button -->
+<aside class="container-fluid generic-background">
+    <div class="row no-gutters">
+        <a href="{{ url_for('profile') }}" class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
             <div class="sticky-note-inner-div">
                 <h2 class="remove-p-margin h2-reduce">Back</h2>
             </div>
         </a>
-    </aside>
-
+    </div>
+</aside>
+<section class="container-fluid row no-gutters generic-background">
     <div class="row no-gutters justify-content-center">
         <!-- header -->
         <div class="col-11 header-text-shadow lessons-header make-space">
             <h2>Update {{ userInfo.username.title() }}'s Information</h2>
-            <!-- <hr class="make-space"> -->
         </div>
+
         <!-- Edit user info form -->
         <form class="col-11 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('update_user_info') }}">
             <div class="row no-gutters justify-content-around make-space-top make-space">

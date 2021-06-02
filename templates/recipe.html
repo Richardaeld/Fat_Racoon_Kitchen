@@ -21,10 +21,10 @@
 {% endblock %}
 
 {% block section %}
-<article class="container-fluid generic-background">
     {% if recipeInfo.created_by == userInfo.username or userInfo.admin %}
-        <!-- Allow a user to edit or delete their own recipes -->
-        <aside class="row no-gutters justify-content-between">
+    <!-- Allow a user to edit or delete their own recipes -->
+    <aside class="container-fluid generic-background">
+        <div class="row no-gutters justify-content-between">
             <!--  Edit recipe button -->
             <a href="{{ url_for('add_edit_recipe', recipeId=recipeInfo._id) }}" class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
                 <div class="sticky-note-inner-div">
@@ -37,9 +37,14 @@
                     <h2 class="remove-p-margin h2-reduce">Delete Recipe</h2>
                 </div>
             </div>
-        </aside>
+        </div>
+    </aside>
     {% endif %}
 
+<article class="container-fluid generic-background">
+    <div class="make-invis">
+        <h3>{{ recipeInfo.name.title() }}</h3>
+    </div>
     <div class="row no-gutters justify-content-around">
         <!-- Recipe avatar -->
         <section class="col-12 col-md-6 col-xl-3 order-2 order-sm-2 order-md-2 order-lg-2 order-xl-1 order-xxl-1">
@@ -52,7 +57,7 @@
                         </div>
                         <div>
                             <a href="{{ url_for('search_bar_returns', search=recipeInfo.created_by) }}">
-                                <p><strong>From: {{ recipeInfo.created_by.title() }}</strong></p>
+                                <h4 class="reduce-h6"><strong>From: {{ recipeInfo.created_by.title() }}</strong></h4>
                             </a>
                         </div>
                     </div>
@@ -61,7 +66,7 @@
                     <div class="sticky-note">
                         <div class="row no-gutters align-items-center sticky-note-inner-div large-content-height">
                             <a href="{{ url_for('search_bar_returns', search=recipeInfo.created_by) }}">
-                                <p class="col">My chef, <ins>{{ recipeInfo.created_by.title() }}</ins>, hasn't uploaded an image of me yet :'(</p>
+                                <h4 class="col reduce-h6">My chef, <ins>{{ recipeInfo.created_by.title() }}</ins>, hasn't uploaded an image of me yet :'(</h4>
                             </a>
                         </div>
                     </div>

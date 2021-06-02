@@ -1,9 +1,7 @@
 {% extends "base_login.html" %}
 {% block section %}
-<!--  User basic information  -->
-<article class="container-fluid generic-background">
-
-    <aside class="row no-gutters justify-content-between make-space">
+<aside class="container-fluid generic-background">
+    <div class="row no-gutters justify-content-between make-space">
         <!--  Create a new recipe  -->
         <div class="col-5 custom-button sticky-note-no-shadow blank-anchor custom-js-button">
             <a href="{{ url_for('add_edit_recipe', recipeId='new') }}">
@@ -20,7 +18,11 @@
                 </div>
             </a>
         </div>
-    </aside>
+    </div>
+</aside>
+
+<!--  User basic information  -->
+<article class="container-fluid generic-background">
 
     <!-- Profile header -->
     <h2 class="make-space header-text-shadow">{{ chef_info.username.title() }}'s Profile</h2>
