@@ -11,14 +11,14 @@
     </aside>
 
     <div class="row no-gutters justify-content-center">
+        <!-- header -->
+        <div class="col-11 header-text-shadow lessons-header make-space">
+            <h2>Update {{ userInfo.username.title() }}'s Information</h2>
+            <!-- <hr class="make-space"> -->
+        </div>
         <!-- Edit user info form -->
         <form class="col-11 form-base generic-box-shadow yanone-text" method="POST" enctype="multipart/form-data" action="{{ url_for('update_user_info') }}">
-            <div class="row no-gutters justify-content-around">
-                <!-- header -->
-                <div class="col-12">
-                    <h2>Update {{ userInfo.username.title() }}'s Information</h2>
-                    <hr class="make-space">
-                </div>
+            <div class="row no-gutters justify-content-around make-space-top make-space">
 
                 <!-- User Name -->
                 <div class="col-12 col-xl-6 form-input-spacing">
