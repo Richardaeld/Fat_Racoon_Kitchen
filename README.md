@@ -372,10 +372,10 @@ is addressed in **Scalability** and **Other Problems**
 + JavaScript - Allows for dynamic content on the application.
 + Python - Allows back end programs to run. These programs(frameworks and libraries) are:
     + Flask - Allows use of templating, security, user searching, and other critical functions.
-    + Pymongo - Allows flask (python) to communicate with Mongo DB.
+    + Pymongo - Allows flask (Python) to communicate with Mongo DB.
     + PythonDNS - Allows for DNS data transfer.
     + Werkzeug - Encrypts data as it is sent between the user and server.
-    + Datetime - Allows python to take a date/time stamp.
+    + Datetime - Allows Python to take a date/time stamp.
     + Random - Allows a for a random number generator.
 + Mongo DB - Database that application communicates with and stores information on.
 
@@ -666,9 +666,10 @@ refreshed during tests to check for errors. This helps test for stability and en
 ### JigSaw
 ![Jigsaw results](static/readme/testing/w3c-jigsaw.jpg "Jigsaw results")
 + Identifies errors in CSS
-+ Warnings are present for some of the css art but MDN shows they are not a problem.
++ Errors are present for some of the CSS art but MDN shows they are not a problem.
     + background "stacking gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
     + Background "repeating linear gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
++ Warnings are present for some of the vendor extensions but those are necessary and the errors can be ignored.
 
 ### W3C Validator
 ![W3C validator results](static/readme/testing/w3c.jpg "W3c validator results")
@@ -683,16 +684,16 @@ refreshed during tests to check for errors. This helps test for stability and en
 # Bugs and Other Problems
 ## Previous Bugs
 + Improper variable passed into addfavorite page if user refreshes page.
-    + Created a python function, check_for_dups to check boolean status even in refresh (later improved with list comprehension used to remove more lines).
+    + Created a Python function, check_for_dups to check boolean status even in refresh (later improved with list comprehension used to remove more lines).
 + Flask was generating a 504 gateway timeout error.
     + A previously harmless while loop turned into an infinit loop because of an if comparison value.
-    + Fix was being sure the if comparison values were both int, previously one had been a html location because of a missed len() funciton.
+    + Fix was being sure the if comparison values were both int, previously one had been a HTML location because of a missed len() funciton.
 + Carousel would put up improper amount of items when changing from landscape to portrait.
     + The carousel 'memory' array and position had to be completely reset each time the screen switched between landscape and portrait.
-+ Corner of napkin css art was improper size in safari.
++ Corner of napkin CSS art was improper size in safari.
     + Had to add -webkit- to clip-path for saafari.
 + Index card art had jagged edges after transform: rotateY(180deg) was applied.
-    + Fix was a recommended line of code -webkit-backface-visibility:hidden -- recommendation found [here](https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome).
+    + Fix was a recommended line of code -webkit-backface-visibility:hidden -- [recommendation found at stackoverflow](https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome).
 + Needed a nonstandard shaped container to hold a repeating linear gradient.
     + Found solution at [MDN using a clip-path:polygon](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path) 
 + Program wouldnt upload to heroku properly.
@@ -711,7 +712,7 @@ refreshed during tests to check for errors. This helps test for stability and en
     + The solution used was to use a Bootstrap navigation bar.
 
 ## Current Bugs
-+ Social links on footer have a repetitive triggering bug. They use JS mouseenter to trigger and trigger improperly due to multiple css layers and a margin. 
++ Social links on footer have a repetitive triggering bug. They use JS mouseenter to trigger and trigger improperly due to multiple CSS layers and a margin. 
     + Multiple attempts have been made to limit event bubbling but no real solution could be found.
         + These attempts have including changing the type of event the trigger uses to stopPropagation().
 + Safari browser Bugs
@@ -732,8 +733,8 @@ able to search "lazy" or "grandparent" tags.
     + This search requires a specific operator so a button was designed for users. This would allow users to search for these tags and doesnt make the search engine unnecessarily complex
 + Limitations of validation:
     + **recipeGeneralValidation** has a minimum character number however it is used on add_edit_recipe.html for recipe steps and recipe ingredients and users could potientially submit blank entires. 
-    There is python validation in place that will not allow a blank entry to be added to the accompying array. However this invalid status could potientially be annoying to users.
-    + If an invalid image type is submitted python will return you to the edit page and undo all previously changed/added material. Which could be annoying to users. 
+    There is Python validation in place that will not allow a blank entry to be added to the accompying array. However this invalid status could potientially be annoying to users.
+    + If an invalid image type is submitted Python will return you to the edit page and undo all previously changed/added material. Which could be annoying to users. 
     *Could not find a effective way to prevent users from submitting invalid file types using JS*
 + Improving pagination function:
     + The original pagination function has an imbedded inner function and is a technical inefficient design.
@@ -744,109 +745,148 @@ able to search "lazy" or "grandparent" tags.
 # Deployment
 ## Setup structure on GitPod for developers
 ### Flask
-+ install Flask
++ Install Flask
     + in bash type "pip3 install Flask"
-+ python file structure
-    + create "*name*.py" file in root
-    + create "env.py" file in root
-        + Add "env.py" to "gitignore" list (NEVER PUSH THIS FILE)
-        + Add "__pycache__/" to "gitignore" list (NEVER PUSH THIS FILE)
++ Python file structure
+    + create `*name*.py` file in root directory
+    + create `env.py` file in root directory
+        + Add `env.py` to `gitignore` file (NEVER PUSH THIS FILE)
+            + Within `env.py` create a the lines:
+                + `os.environ.setdefault("IP", "0.0.0.0")`
+                + `os.environ.setdefault("PORT", "5000")`
+                + `os.environ.setdefault("SECRET_KEY", "")`
+                    + Can be created with [RandomKeygen](https://randomkeygen.com/)
+                + `os.environ.setdefault("MONGO_URI", "")`
+                    + Value will be added after MongoDB database creation
+                + `os.environ.setdefault("MONGO_DBNAME", "*root database*")`
+                    + Value will be added after MongoDB database creation
+        + Add `__pycache__/` to `gitignore` file (NEVER PUSH THIS FILE)
 
 ### PyMongo
-+ install PyMongo
-    + in bash type "pip3 install flask-pymongo"
-    + in bash type "pip3 install dnspython"
++ Install PyMongo
+    + In bash type, `pip3 install flask-pymongo`.
+    + In bash type, `pip3 install dnspython`.
 
 ## Deploy Clone from GitHub
 
 
 ## Heroku Deployment
-+ create app on Heroku
-+ Files for heroku from GitPod
-    + in bash "pip3 freeze --local > requirements.txt
-    + in bash "echo web: python run.py > Procfile"
-        + If the opened Procfile has a blank line at the bottom, delete this line. It could cause problems with Heroku otherwise.
-    + this creates two files for heroku to identify what it needs to run app
-+ link Heroku and GitHub
-    + From personal > *name of app* created at first Setup
-    + select (go to) deploy
-    + select GitHub from 'deployment method' section
-    + from your GitHub account and the name of the cloned repository
-+ Share env.py information with heroku
-    + select (go to) settings
-    + click reveal config vars of config vars
-    + add all of the 'os.environ.setdefault' key value pairs without their quotations
-+ Enable automatic deployment
-    + select (go to) deploy
-    + select 'automatic deploys' in 'automatic deploys' section
-    + select 'deploy branch' in 'manual deploy' section
++ Log into Heroku.
++ Create app on Heroku by clicking **New** and follow directions.
++ Prep files for Heroku.
+    + Files will be created in GitPod:
+        + In bash (of GitPod) type, `pip3 freeze --local > requirements.txt`.
+        + In bash (of GitPod) type, `echo web: python run.py > Procfile`.
+            + Check contents of Procfile. Two problems can occur:
+                + If the opened Procfile has a blank line at the bottom, delete this line. It could cause problems with Heroku otherwise.
+                + Be sure there is a space after the colon.
+        + This creates the two files need for Heroku. These files allow Heroku to identify what it needs to run the app.
++ Link Heroku and GitHub.
+    + Log into Heroku again.
+    + From, Personal click the **name of app** created in Heroku.
+    + Click **Deploy**.
+    + Click **GitHub** from "deployment method" section.
+    + Enter your GitHub informaion and the name of the cloned repository into the "Connect to GitHub" section.
++ Share env.py information with Heroku.
+    + Click **Settings**
+    + Click **Reveal Config Vars** of "Config Vars" section
+    + Add all of the `env.py` key value pairs without their quotations
+    <!-- + Add all of the 'os.environ.setdefault' key value pairs without their quotations -->
++ Enable automatic deployment or manual deploy.
+    + Automatic Deployment:
+        + Click **Deploy**
+        + Click **Enable Automatic Deploys** in "automatic deploys" section.
+        + Click **Deploy Branch** in "manual deploy" section to start initial deployment.
+    + Manual Deployment:
+        + Click **Deploy Branch** in "manual deploy" section any time there is content you want to update active app with.
 
 ## Database build
 ### Database structure
-+ create Database on MongoDB
-+ create collections for Database: feature, recipes, users
-+ add featured items to feature as format: {name:feature} features will be you meal star (ex. protein, veg, pasta)
-+ create index (**notes**)
-    + in bash "python3"
-    + in bash "from *app name* import mongo"
-    + mongo.db.*collection*.create_index([("name", "text"), ("name2","text")])
++ Log into MongoDB.
++ Click **Create a New Cluster** button (in top right corner).
+    + Follow directions.
++ Click **Collections** in your new cluster.
++ Click **Create Database**.
+    + Create your inital root database and it's first collection, "users"
+    + Click your root database's name.
+    + Click **Create Collection** and create remaining necessary collections: "blank", "feature", and "recipes".
+<!-- + Add featured items to feature as format: {name:feature} features will be you meal star (ex. protein, veg, pasta) -->
++ Create index (for user search restrictions). This can be input through GitPod or MongoDB.
+    + MongoDB:
+        + Click your root database's name.
+        + Click **recipes**.
+        + Click **Indexes** in the information secton for **recipes**.
+        + Click **Create Index**.
+        + Using the below format type in all the 'names' of the content users are allowed to search through (Ex. *collection* == recipes, 'name' == created_by, 'name2' == name, 'name3' == feature).
+        + `{`
+        +   `'name': text,`
+        +   `'name2': text,`
+        +   `'name3': text`
+        + `}`
+
+    + GitPod:
+        + In bash (of GitPod) type, `python3`.
+        + In bash (of GitPod) type, `from *app name* import mongo`.
+        + Using the below format type in all the 'names' of the content users are allowed to search through (Ex. *collection* == recipes, 'name' == created_by, 'name2' == name, 'name3' == feature).
+        + `mongo.db.*collection*.create_index([('name', 'text'), ('name2','text'), ('name3','text')])`
+
 ### Connecting to DB
-+ find URI
-    + go to cluster
-    + select 'connect'
-    + select 'connect your application'
-    + select driver (python) and version of python
-    + copy string provided
-    + paste string in env.py as the "MONGO_URI" value
-    + Update the pasted string with the DBname and password by replacing <DBname> and <password> (replace angled brackets as well)
++ Find URI.
+    + Log into MongoDB.
+    + Click **Connect**.
+    + Click **Connect your application**.
+    + Select driver (Python) and version of Python.
+    + Copy string provided.
+    + Paste string in env.py as the "MONGO_URI" value.
+    + Update the pasted string with the DBname and password by replacing <DBname> and <password> (replace angled brackets as well).
 ### Create the appropiate collections
-+ blank
++ Blank:
     + This is where the dictionary base for both new users and new recipes is stored
     + Two entries are required to be here
     + The mongo id auto assign is fine for both entries
     + The value Array is a Mongo assigned Array
     + The value null is a Mongo assigned null value
     + The value false is a Mongo assigned boolean value
-    + Recipe entery is structured as
-        + {
-        + name: ""
-        + feature: "chicken"
-        + ingredients: Array
-            + 0: ""
-        + steps: Array
-            + 0: ""
-        + time: Array
-            + 0: ""
-        + date: ""
-        + text: ""
-        + avatar: null
-        + avatar_id: null
-        + grandparent: false
-        + lazy: false
-        + created_by
-        + }
+    + Recipe entery is structured as:
+        + `{`
+        + `name: ""`
+        + `feature: "chicken"`
+        + `ingredients: Array`
+            + `0: ""`
+        + `steps: Array`
+            + `0: ""`
+        + `time: Array`
+            + `0: ""`
+        + `date: ""`
+        + `text: ""`
+        + `avatar: null`
+        + `avatar_id: null`
+        + `grandparent: false`
+        + `lazy: false`
+        + `created_by`
+        + `}`
 
-    + User entery is structured as
-        + {
-        + username: "user"
-        + email: ""
-        + password: ""
-        + avatar: null
-        + avatar_id: null
-        + bio: ""
-        + admin: false
-        + recents: Array
-        + favorites: Array
-        + date: ""
-        + }
+    + User entery is structured as:
+        + `{`
+        + `username: "user"`
+        + `email: ""`
+        + `password: ""`
+        + `avatar: null`
+        + `avatar_id: null`
+        + `bio: ""`
+        + `admin: false`
+        + `recents: Array`
+        + `favorites: Array`
+        + `date: ""`
+        + `}`
 
 + feature
     + Feature is for a recipes feature ingredient
     + There must be a single feature in the collection for the page to function
     + each feature is structured as
-        + {
-        + name: "chicken"
-        + }
+        + `{`
+        + `name: "chicken"`
+        + `}`
 + recipes
     + Recipe is where the sites recipes are stored.
     + There is no set number of entires for the site to function properly, however a better UX is provided when the head chef of the site has several recipes entered.
