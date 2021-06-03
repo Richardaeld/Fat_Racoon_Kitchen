@@ -344,9 +344,9 @@ is addressed in **Scalability** and **Other Problems**
 
 ### Live Demo
 ![Demo of the Index page](static/readme/demo/demo-index-large.jpg "Demo of the Index page")
-+ A fully functioning demo can be found on Heroku, [here](https://fat-raccoon.herokuapp.com/ "Deplayment location").
++ A fully functioning demo can be found on [Heroku](https://fat-raccoon.herokuapp.com/ "Deplayment location").
 + [GitHub's](https://github.com/) IDE [GitPod](https://www.gitpod.io/) was used for the construction process.
-+ GitHub houses the master branch, [here](https://github.com/Richardaeld/Fat_Racoon_Kitchen)
++ GitHub houses the [master branch](https://github.com/Richardaeld/Fat_Racoon_Kitchen)
 
 ## Scalability
 + Unify Python and JS validation for images. So JS and Python check the same material. This would ensure a better UX.
@@ -667,8 +667,8 @@ refreshed during tests to check for errors. This helps test for stability and en
 ![Jigsaw results](static/readme/testing/w3c-jigsaw.jpg "Jigsaw results")
 + Identifies errors in CSS
 + Warnings are present for some of the css art but MDN shows they are not a problem.
-    + background "stacking gradient" example can be seen at MDN [here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
-    + Background "repeating linear gradient" example can be seen at MDN [here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
+    + background "stacking gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
+    + Background "repeating linear gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
 
 ### W3C Validator
 ![W3C validator results](static/readme/testing/w3c.jpg "W3c validator results")
@@ -692,9 +692,9 @@ refreshed during tests to check for errors. This helps test for stability and en
 + Corner of napkin css art was improper size in safari.
     + Had to add -webkit- to clip-path for saafari.
 + Index card art had jagged edges after transform: rotateY(180deg) was applied.
-    + Fix was a recommended line of code -webkit-backface-visibility:hidden -- reccomdation found here https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome.
+    + Fix was a recommended line of code -webkit-backface-visibility:hidden -- recommendation found [here](https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome).
 + Needed a nonstandard shaped container to hold a repeating linear gradient.
-    + Found solution at MDN using a clip-path:polygon https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path 
+    + Found solution at [MDN using a clip-path:polygon](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path) 
 + Program wouldnt upload to heroku properly.
     + Fix was to add the missing space after colon in Procfile.
 + On numerous occasions, used unspecific Python if arguments leading to undesired and often difficult to find bugs.
