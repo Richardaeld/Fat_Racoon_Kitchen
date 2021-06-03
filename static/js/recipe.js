@@ -46,7 +46,7 @@ function finalValidation(validationLoc) {
     findFormInputs.forEach(selectFormInputs);
     function selectFormInputs(finalVal) {
 
-        currentFormValid = true; // Sets macro form validation setting
+        var currentFormValid = true; // Sets macro form validation setting
 
         let checkPLength = finalVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
         // Searches form for invalid input and sets Global/Macro validation
@@ -92,7 +92,7 @@ function baseValidation (inputSelector, validationSelector) {
 
         // Makes validation bubble visible on focus 
         baseVal.addEventListener("focus", function() {
-            validCheck = true;  // Presets valitation to valid
+            var validCheck = true;  // Presets valitation to valid
             let checkPLengthTemp = baseVal.parentElement.getElementsByTagName("p");  // Finds all p's to iteration validation over
             // Enables validation bubble according to Macro Validation
             for (let i=0; i< checkPLengthTemp.length; i++){
@@ -125,8 +125,8 @@ function baseValidation (inputSelector, validationSelector) {
             }
 
             // Checks all individual characters for valid character input
-            for (i=0; i< baseVal.value.length; i++){
-                char = baseVal.value[i];  // Character being checked
+            for (let i=0; i< baseVal.value.length; i++){
+                var char = baseVal.value[i];  // Character being checked
                 if (validationSelector === "text" || validationSelector === "recipeGeneral"){
                 // Checks for improper characters and sets validation
                     if (char.match(matchTypeGoodCharacter) == null && char.match(matchTypeTextCharacter) == null && char.match(matchTypeUpper) == null && char.match(matchTypeLower) == null  && char.match(matchTypeNumber) == null) {
