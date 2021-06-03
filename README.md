@@ -349,8 +349,7 @@ is addressed in **Scalability** and **Other Problems**
 + GitHub houses the master branch, [here](https://github.com/Richardaeld/Fat_Racoon_Kitchen)
 
 ## Scalability
-<!-- Improve html 5 -->
-+ Unify validation for images. So JS and Python check the same material. This would ensure a better UX.
++ Unify Python and JS validation for images. So JS and Python check the same material. This would ensure a better UX.
 + Adding user selectable filters to search bar. This would ensure a better UX.
 + Create a user commit form for the recipes. This would give a better sense of community for returning users.
 + Allows users to rate each others recipes. This would give a better sense of community for returning users.
@@ -665,16 +664,21 @@ refreshed during tests to check for errors. This helps test for stability and en
 + Identifies problems with performance, accessibility, best practices, and SEO
 
 ### JigSaw
-<!-- insert Image -->
+![Jigsaw results](static/readme/testing/w3c-jigsaw.jpg "Jigsaw results")
 + Identifies errors in CSS
++ Warnings are present for some of the css art but MDN shows they are not a problem.
+    + background "stacking gradient" example can be seen at MDN [here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
+    + Background "repeating linear gradient" example can be seen at MDN [here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
 
 ### W3C Validator
-<!-- insert Image -->
-+ Identifies errors in HTML
+![W3C validator results](static/readme/testing/w3c.jpg "W3c validator results")
++ Identifies errors in HTML and is extremely helpful for semantic HTML
 
 ### JSHint
-<!-- insert Image -->
+![JSHint results](static/readme/testing/jshint.jpg)
 + Identifies errors in JS
++ Pagination's function flags a warning because of a second function that is imbedded within it, the array.forEach() function. This function is imbedded because of the original design of the pagination function and is a technical oversight. 
+    + This issue is addressed in the **Other Problems** section
 
 # Bugs and Other Problems
 ## Previous Bugs
@@ -731,6 +735,11 @@ able to search "lazy" or "grandparent" tags.
     There is python validation in place that will not allow a blank entry to be added to the accompying array. However this invalid status could potientially be annoying to users.
     + If an invalid image type is submitted python will return you to the edit page and undo all previously changed/added material. Which could be annoying to users. 
     *Could not find a effective way to prevent users from submitting invalid file types using JS*
++ Improving pagination function:
+    + The original pagination function has an imbedded inner function and is a technical inefficient design.
+    + This could be fixed by moving the inner function however:
+        + All the dummy data had been removed from the database (by the time this error had been discovered) and thus this newly reconstructed pagination function could not be appropriately tested.
+        + Although technically inefficient this imbedded function is only used in pagination and isn't required anywhere else.
 
 # Deployment
 ## Setup structure on GitPod for developers
