@@ -47,10 +47,10 @@
 .flip-index-card{ 
     transform: rotateY(180deg);
 }
+
 /* Added -webkit-backface-visibility:hidden to correct jagged edges */
 /* This recommended solution was found at stackoverflow  */
 /* https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome */
- 
 .index-face,
 .index-back{
     backface-visibility: hidden;
