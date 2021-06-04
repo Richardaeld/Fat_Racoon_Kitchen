@@ -34,14 +34,17 @@
     + [Developer Tested Systems](#developer-tested-systems)
     + [Developer Testing Methods](#developer-testing-methods)
 + [Developer Tests](#developer-tests)
-    + [Testing Random Recipe](#testing_random_recipe)
-    + [Testing Text Coss Out Function](#testing_text_coss_out_function)
-    + [Testing All_Recipe And Recipe_List Pagination](#testing_all_recipe_and_recipe_list_pagination)
-    + [Testing Recipe Upload](#testing_recipe_upload)
-    + [Testing Search Chef Name](#testing_search_chef_name)
-    + [Testing Browse Button for Lazy Favorites Recipes](#testing_browse_button_for_fazy_favorites_recipes)
-    + [Testing Recipe Favorites Function](#testing_recipe_favorites_function)
-    + [Testing Lessons Index Cards](#testing_lessons_index_cards)
+    + [Testing Random Recipe](#testing-random-recipe)
+    + [Testing Text Coss Out Function](#testing-text-coss-out-function)
+    + [Testing All_Recipe And Recipe_List Pagination](#testing-all_recipe-and-recipe_list-pagination)
+    + [Testing Recipe Upload](#testing-recipe-upload)
+    + [Testing Search Chef Name](#testing-search-chef-name)
+    + [Testing Browse Button for Lazy Favorites Recipes](#testing-browse-button-for-lazy-favorites-recipes)
+    + [Testing Recipe Favorites Function](#testing-recipe-favorites-function)
+    + [Testing Index Cards on Lesson Page](#testing-index-cards-on-lesson-page)
+    + [Testing Profile Updates](#testing-profile-updates)
+    + [Testing Delete Recipe - Full C.R.U.D. Test](#testing-delete-recipe---full-c.r.u.d.-test)
+    + [Testing Delete Button for Recipes on Profile Page](#testing-delete-button-for-recipes-on-profile-page)
 + [Program Tests](#program-tests)
     + [BrowserStack](#browserstack)
     + [Lighthouse](#lighthouse)
@@ -105,12 +108,12 @@ in college, let us know!
 # UX
 ## Goals
 ### User Goals
-+ I want to find a recipe for dinner. <!---- Testing Random Recipe -->
++ I want to find a recipe for dinner. <!-- Testing Random Recipe -->
 + I want to use my smart phone or tablet as a recipe book. <!-- Testing Text Coss Out Function -->
 + I want to find a new chicken dish to cook. <!-- Testing All_Recipe And Recipe_List Pagination-->
 + I want a place to leave a recipe so I can easiy find. <!-- Testing Recipe Upload --> <!-- Tests Create and Read from C.R.U.D. -->
 + I want help deciding what to cook for dinner and I like a specific chef's recipes. <!-- Testing Search Chef Name -->
-+ I want a easy to make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -- >
++ I want a easy to make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -->
 + I can't remember the name of a recipe that i like <!-- Testing Recipe Favorites Function --><!-- Tests edit from C.R.U.D. -->
 + I want an easy to read recipe layout while Im cooking <!-- Testing Text Coss Out Function -->
 + I lack confidence in my cooking ability and need help. <!-- Testing Lessons Index Cards -->
@@ -331,22 +334,22 @@ is addressed in **Scalability** and **Other Problems**.
     + Index browse buttons for: **Browse our Grandparent Classics** and **Browse our Lazy Favorites**.
 
 ## Page Performance
-![Responsiveness image of the Fat Raccoon's random recipe](static/readme/testing/responsive-fat-raccoon.jpg "Responsiveness image of the Fat Raccoon's random recipe")
 + Responsive design across all devices.
-![TinyPNG helps reduce file size and improves UX](static/readme/testing/tinyify.jpg "TinyPNG helps reduce file size and improves UX")
+![Responsiveness image of the Fat Raccoon's random recipe](static/readme/testing/responsive-fat-raccoon.jpg "Responsiveness image of the Fat Raccoon's random recipe")
 + All Images tinyified to reduce image download times
+![TinyPNG helps reduce file size and improves UX](static/readme/testing/tinyify.jpg "TinyPNG helps reduce file size and improves UX")
 
 ## Wireframe and Live Demo
 ### Wireframe
++ Each wireframe contains curly brackets that give a description of its contents and what filler(missing database data) content should be.
 ![Wireframe of the index page](static/readme/wireframe/index-page-large.png "Wireframe of the index page")
 + [Balsamiq](https://balsamiq.com/) was used for the planning process.
 + Wireframes were made for all predetermined size variations of the webpage.
-+ Each wireframe contains curly brackets that give a description of its contents and what filler(missing database data) content should be.
 + [Click here to view all wireframes associated to this project.](static/readme/wireframe "Location of wireframes")
 
 ### Live Demo
-![Demo of the Index page](static/readme/demo/demo-index-large.jpg "Demo of the Index page")
 + A fully functioning demo can be found on [Heroku](https://fat-raccoon.herokuapp.com/ "Deplayment location").
+![Demo of the Index page](static/readme/demo/demo-index-large.jpg "Demo of the Index page")
 + [GitHub's](https://github.com/) IDE [GitPod](https://www.gitpod.io/) was used for the construction process.
 + GitHub houses the [master branch](https://github.com/Richardaeld/Fat_Racoon_Kitchen)
 
@@ -635,7 +638,7 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Documentation of recipe name, and path choosen to recipe of any favorite recipe that its icon/status was not displayed correctly.
 1. Documentation of recipe name that did not accept an appropriate click box to change favorite/unfavorite status.
 
-### Testing Lessons Index Cards
+### Testing Index Cards on Lesson Page
 
 ---
 
@@ -725,7 +728,7 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Documentation of any error in the C.R.U.D. steps.
 1. Documentation of any category where incorrect information was shown.
 
-### Testing Profile's, Recipe Delete Button
+### Testing Delete Button for Recipes on Profile Page
 
 ---
 
@@ -768,24 +771,24 @@ refreshed during tests to check for errors. This helps test for stability and en
 <!-- Image of browserStack -->
 
 ### Lighthouse
-![Light house results](static/readme/testing/lighthouse-fat-raccoon.jpg "Light house results")
 + Identifies problems with performance, accessibility, best practices, and SEO
+![Light house results](static/readme/testing/lighthouse-fat-raccoon.jpg "Light house results")
 
 ### JigSaw
-![Jigsaw results](static/readme/testing/w3c-jigsaw.jpg "Jigsaw results")
 + Identifies errors in CSS
+![Jigsaw results](static/readme/testing/w3c-jigsaw.jpg "Jigsaw results")
 + Errors are present for some of the CSS art but MDN shows they are not a problem.
     + background "stacking gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
     + Background "repeating linear gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
 + Warnings are present for some of the vendor extensions but those extensions are necessary and the errors can be ignored.
 
 ### W3C Validator
-![W3C validator results](static/readme/testing/w3c.jpg "W3c validator results")
 + Identifies errors in HTML and is extremely helpful for semantic HTML
+![W3C validator results](static/readme/testing/w3c.jpg "W3c validator results")
 
 ### JSHint
-![JSHint results](static/readme/testing/jshint.jpg)
 + Identifies errors in JS
+![JSHint results](static/readme/testing/jshint.jpg)
 + Pagination's function flags a warning because of a second function that is imbedded within it, the `<array>.forEach()` function. This function is imbedded because of the original design of the pagination function and is a technical oversight.
     + This issue is addressed in the **Other Problems** section
 
