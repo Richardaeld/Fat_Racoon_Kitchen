@@ -86,7 +86,7 @@ that has to be eaten today (we've all done it) to make a meal. With practice and
 fundamental cooking practices, taste pairings, and thinking in parts of a whole. We want to help others wisely spend their kitchen time making the best meals they can. We offer 
 conventional cooking practice and recipe guidance to help them along the way. The Fat Racoon believes that helping to establish a community 
 of home cooks and their recipes in an intuitive search engine will be a boon to home chefs everywhere. It helps newer chefs see that not every 
-recipe has to be complicated or convoluted. 
+recipe has to be complicated or convoluted.
 <!-- casual users -->
 For users just searching for a recipe, we offer several different search methods for them to find what they are looking for. Users can search our data base by chef, feature ingredient,
 or name. The front page also offers four other methods for users to browse the Fat Raccoon's recipes: by 'Lazy Favorites', 'Grandparent Classics', all of the Fat Raccoon's personal recipes, and 
@@ -132,10 +132,10 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
     + Using Flask (flash, render_template, redirect, request, session, url_for).
         + Using Jinja (Templates).
             + Allowing one HTML template page to have multiple functions.
-                + (Ex. recipes.html)
-                + (Ex. base.html)
-                + (Ex. add_edit_recipe.html)
-                + (Ex. profile.html)
+                + (Ex. `recipes.html`)
+                + (Ex. `base.html`)
+                + (Ex. `add_edit_recipe.html`)
+                + (Ex. `profile.html`)
                 + (Ex. etc ...)
     + Using Pymongo (Flask - mongoDB).
     + Created Python validation logic.
@@ -334,7 +334,7 @@ is addressed in **Scalability** and **Other Problems**.
 
 ## Search Bar Returns
 + This page is used to return three different search results.
-    + All user searches from search bar for: recipe name, feature, and chef. 
+    + All user searches from search bar for: recipe name, feature, and chef.
         + Chef search is used for **Browse Fat_Racoon's Recipes** as well.
     + Profile page searches all: uplaoded, favorited, and recently viewed sections.
     + Index browse buttons for: **Browse our Grandparent Classics** and **Browse our Lazy Favorites**.
@@ -360,37 +360,33 @@ is addressed in **Scalability** and **Other Problems**.
 + GitHub houses the [master branch](https://github.com/Richardaeld/Fat_Racoon_Kitchen)
 
 ## Scalability
-+ Unify Python and JS validation for images. So JS and Python check the same material. This would ensure a better UX.
-    + Another option would be to use a prewritten validator (ex. WTForms).
-+ Add image processing capabilities to python (Ex. Python Pillow).
++ Validation:
+    + Unify Python and JS validation for images. So JS and Python check the same material. This would ensure a better UX.
+    + Improve email validation to accept a wider ranger of email suffixes (ex. regional suffix, .uk, .fr, .de). This would allow for a larger audiance of users.
+    + Improve validation to use less pre-packaged validation types and more compartmentalized validation.
+        + Example: Use classes to set validation for character count, characters allowed, and if spaces allowed. Each of these aforementioned items could be set with a different class that can be applied independent of one another. A dynamic validation system would improve validation code over all.
+    + A stronger form of validation could be used. The validation used is simple and limited.
+        + One good example is users are able to invalidate recipe steps or recipe ingredients by tabing to them.  This forces users to add content or remove the unused box. This is detailed in **Other Problems** section.
+    + One outside solution would be the adaptation of a prewritten validator (ex. WTForms).
+        + This could allow for the JS restrictions to be lifted, leaving only the bubble commits to help users properly fill out the forms.
++ Add image processing capabilities to python (Ex. Python Pillow). This would allow the app to auto configure images rather than restricting what users can upload.
 + Adding user selectable filters to search bar. This would ensure a better UX.
 + Create a user commit form for the recipes. This would give a better sense of community for returning users.
 + Allows users to rate each others recipes. This would give a better sense of community for returning users.
-+ Improve email validation to accept a wider ranger of email suffixes (ex. regional suffix, .uk, .fr, .de). This would allow for a larger audiance of users.
-
-<!-- new content -->
-+ Improve Validation to use less pre-packaged validation types and more compartmentalized validation.
-    + Example: Use classes to set validation for character count, characters allowed, spaces, allowed, etc... all separately.
-    + A dynamic system that has a class for amount of characters allowed and a seperte class that allows for characters to be used would allow for a more dynamic validation to be made with JS which would improve validation code over all
-+ A stronger form of validation could be used. The validation used is simple and limited. 
-    + One good example is users are able to invalidate recipe steps or recipe ingredients by tabing to them.  This forces users to add content or remove the unused box. This is detailed in **bugs** section.    
-+ Improve search engine to accept a **space** as an **_** to help users more easily find chefs with a single or multiple "space(s)" in their name.
- 
-    
-<!-- end new content -->
++ Improve search engine to accept a **space** as an `_` to help users more easily find chefs with a single or multiple "space(s)" in their name.
 
 # Technology Languages
 + HTML - Skeleton frame of the application.
 + CSS - Beautifies the skeleton (HTML).
-+ JavaScript - Allows for dynamic content on the application.
-+ Python - Allows back end programs to run. These programs(frameworks and libraries) are:
++ JavaScript - Allows for dynamic content and function on the application.
++ Python - Allows back end programs to run. These programs (frameworks, libraries, and databases) are:
     + Flask - Allows use of templating, security, user searching, and other critical functions.
     + Pymongo - Allows flask (Python) to communicate with MongoDB.
     + PythonDNS - Allows for DNS data transfer.
     + Werkzeug - Encrypts data as it is sent between the user and server.
     + Datetime - Allows Python to take a date/time stamp.
     + Random - Allows a for a random number generator.
-+ MongoDB - Database that application communicates with and stores information on.
++ MongoDB - NoSQL database that application communicates with and stores information on.
 
 # Testing
 ## Developer Testing Specifications
@@ -423,7 +419,6 @@ refreshed during tests to check for errors. This helps test for stability and en
 + After completion of all of the **Developer Tests** on each system, the system was tested again with random moments of spam clicking and switching between landscape/portrait.
 
 ## Developer Tests
-<!-- new content section -->
 ### Testing Random Recipe
 
 ---
@@ -440,7 +435,7 @@ refreshed during tests to check for errors. This helps test for stability and en
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
 1. Scroll to bottom of screen.
-1. Click the **random recipe** a make sure it links to the proper recipe.
+1. Click the **random recipe** to make sure it links to the proper recipe.
 1. Repeat steps 1 - 3 approximately 3 - 5 times to check for randomization of recipe.
 
 #### Document Result(s):
@@ -461,6 +456,7 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
 1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
 1. Tester knows the size of click box that should function for cross out effect.
+1. Tester knows multiple ways to get to a recipe's page.
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
@@ -471,7 +467,7 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Repeat step 5 approximately 3 times to check for appropriate overall good UX.
 
 #### Document Result(s):
-1. Document any recipe name that's ingredients and steps would not cross out properly.
+1. Document any recipe's name whos ingredients and steps would not cross out properly.
 1. Document the recipe name and choice of path that have any broken links.
 1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
 1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
@@ -488,14 +484,15 @@ refreshed during tests to check for errors. This helps test for stability and en
 #### Assumption(s):
 1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
 1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
+1. Tester will create dummy recipes for this test (if necessary) and keep a record of said dummy data so it can be appropriately handled after testing.
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
 1. Navigate to **All_Recipe** page (on nav bar **All_Recipes** is called **Recipes**).
-1. Find any feature that contains pagination ul.
+1. Find any feature that contains pagination ul (or make some).
 1. Click through all numbers of pagination (or 5 random pagination numbers which ever comes first).
 1. Repeat step 4, for 2 other features with pagination (if present).
-1. Select a feature with pagination to navigate to **Recipe_List** page.
+1. Select a feature with pagination to navigate to **Recipe_List** page. (This is done by clicking the header content Ex. Chicken.)
 1. Click through all numbers of pagination (or 5 random pagination numbers which ever comes first).
 1. Repeat steps 1-2 and 6-7 approximately 2 times (if pagination present).
 
@@ -511,9 +508,9 @@ refreshed during tests to check for errors. This helps test for stability and en
 #### Expectation(s):
 1. Content fills appropriately and doesn't spill out beyond obvious borders.
 1. Content doesn't overlap and is easily read.
-1. Tester will intentionally try to submit incorrect data to check for incorrect validation. 
 
 #### Assumption(s):
+1. Tester will intentionally try to submit incorrect data to check for incorrect validation.
 1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
 1. Tester has a PNG or JPG file under 500kb, a PNG or JPG over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
 1. Tester knows what is considered invalid by this form.
@@ -533,6 +530,7 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Repeat steps 8 and 9 until all inputs and types of validation have been checked.
 1. Attempt to submit same recipe with a PNG or JPG over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
 1. Return to original submitted recipe.
+1. Click **Edit Recipe**.
 1. Repeat steps 8 - 11.
 
 #### Document Result(s):
@@ -633,9 +631,11 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Navigate to **Profile** page.
 1. Click on any favorited recipe in the **10 Recently Favorited Recipes** section.
 1. Check for appropriate favorite status and icon.
+1. Click on **Favorite** or its icon.
+1. Check for appropriate favorite status and icon.
 1. Navigate to **Profile** page.
 1. Click on the header for **10 Recently Favorited Recipes** section.
-1. Check for appropriate recipes.
+1. Check for appropriate recipe(s).
 
 #### Document Result(s):
 1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
@@ -659,7 +659,7 @@ refreshed during tests to check for errors. This helps test for stability and en
 
 #### Testing Step(s):
 1. Load **Index Page** of Fat Raccoon.
-1. navigate to **Lesson** page. 
+1. navigate to **Lesson** page.
 1. Click every single index card and make sure text is appropriately displayed on both sides
 
 #### Document Result(s):
@@ -667,7 +667,6 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
 1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
 
-<!-- end new content section -->
 ## Program Tests
 ### BrowserStack
 <!-- Image of browserStack -->
@@ -682,7 +681,7 @@ refreshed during tests to check for errors. This helps test for stability and en
 + Errors are present for some of the CSS art but MDN shows they are not a problem.
     + background "stacking gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
     + Background "repeating linear gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
-+ Warnings are present for some of the vendor extensions but those are necessary and the errors can be ignored.
++ Warnings are present for some of the vendor extensions but those extensions are necessary and the errors can be ignored.
 
 ### W3C Validator
 ![W3C validator results](static/readme/testing/w3c.jpg "W3c validator results")
@@ -691,67 +690,93 @@ refreshed during tests to check for errors. This helps test for stability and en
 ### JSHint
 ![JSHint results](static/readme/testing/jshint.jpg)
 + Identifies errors in JS
-+ Pagination's function flags a warning because of a second function that is imbedded within it, the array.forEach() function. This function is imbedded because of the original design of the pagination function and is a technical oversight. 
++ Pagination's function flags a warning because of a second function that is imbedded within it, the `<array>.forEach()` function. This function is imbedded because of the original design of the pagination function and is a technical oversight.
     + This issue is addressed in the **Other Problems** section
 
 # Bugs and Other Problems
 ## Previous Bugs
 + Improper variable passed into addfavorite page if user refreshes page.
-    + Created a Python function, check_for_dups to check boolean status even in refresh (later improved with list comprehension used to remove more lines).
+    + Fix:
+        + Created a Python function, check_for_dups to check boolean status even in refresh (later improved with list comprehension used to remove more lines).
 + Flask was generating a 504 gateway timeout error.
     + A previously harmless while loop turned into an infinit loop because of an if comparison value.
-    + Fix was being sure the if comparison values were both int, previously one had been a HTML location because of a missed len() funciton.
-+ Carousel would put up improper amount of items when changing from landscape to portrait.
-    + The carousel 'memory' array and position had to be completely reset each time the screen switched between landscape and portrait.
+    + Fix:
+        + Updating incorrect string value into an int.
+        + This update was needed because of a missed len() function.
++ Carousel would post improper amount of items when changing from landscape to portrait.
+    + Fix:
+        + The carousel's 'memory' array and position had to be completely reset each time the screen switched between landscape and portrait.
 + Corner of napkin CSS art was improper size in safari.
-    + Had to add -webkit- to clip-path for saafari.
+    + Fix:
+        + Had to add -webkit- to clip-path for saafari.
 + Index card art had jagged edges after transform: rotateY(180deg) was applied.
-    + Fix was a recommended line of code -webkit-backface-visibility:hidden -- [recommendation found at stackoverflow](https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome).
+    + Fix:
+        + A recommended line of code -webkit-backface-visibility:hidden [from stackoverflow](https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome).
 + Needed a nonstandard shaped container to hold a repeating linear gradient.
-    + Found solution at [MDN using a clip-path:polygon](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path) 
+    + Fix:
+        + Found solution at [MDN using a clip-path:polygon](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path).
 + Program wouldnt upload to heroku properly.
-    + Fix was to add the missing space after colon in Procfile.
-+ On numerous occasions, used unspecific Python if arguments leading to undesired and often difficult to find bugs.
-    + Ex. with general arguments add edit recipe page would not edit recipes, it would only generate new recipes.
-    + An extra operator and arguemnt was added to all if post conditions.
-    + This later evolved into creating a totally new Flask route for updating and creating recipes.
+    + Fix:
+        + Addedthe missing space after colon in Procfile.
++ On numerous occasions, unspecific (often erroneous) Python if arguments were used leading to undesired and difficult to find bugs.
+    + Example:
+        + Used improper general arguments that created bugs in `add_edit_recipe.html` page that only allowed new recipes to be generated.
+        + Temp Fix:
+            + An extra operator and arguemnt was added to all if post conditions.
+            + This later produced even more difficult bugs to diagnose.
+    + Real Fix:
+        + This lead to a improved understanding of specificity in python.
+        + The aforementioned bug was corrected by creating a totally new Flask route. This allowed for two separate routes, one for updating and the other for creating recipes.
 + Email wouldnt JS validate properly.
     + **Type: email** was preventing the regex from functioning properly.
-    + Fix was changing type to text and added an extra layer of validation to email, email suffix.
-+ Login modal wouldnt operate appropriately on any page other than the index.
-    + Login modal was added to base and removed from index.
-    + base_login was created to replace base for pages user had to be logged in for and needed the modal to NOT be present.
-+ User search box, on medium and small responsiveness, creates a line below the main navigation bar and drops the search bar down to that new line
-    + The solution used was to use a Bootstrap navigation bar.
+    + Fix:
+        + Changing type to text and added an extra layer of validation to email, email suffix to compensate.
++ Login/create modal wouldnt operate appropriately on any page other than the index.
+    + Fix:
+        + Login/create modal was added to `base.html` and removed from `index.html`.
+        + `base_login.html` was created to replace `base.html` for pages the user had to be logged in for and needed the modal to NOT be present.
++ User search box, on medium and small responsiveness, creates a line below the main navigation bar and drops the search bar down to that new line.
+    + Considerable time was dumped into the bug and it was ultimatly unfixable for every browser with the current nav design.
+    + Fix:
+        + A Bootstrap navigation bar repalced the existing navigation bar. This gave a guaranteed good UX across all browsers.
 
 ## Current Bugs
-+ Social links (on footer): 
-    + Have a repetitive triggering bug. They use JS mouseenter to trigger and trigger improperly due to multiple CSS layers and a margin. 
++ Social links (on footer):
+    + Have a repetitive triggering bug. They use JS mouseenter to trigger and trigger improperly due to multiple CSS layers and a margin.
         + Multiple attempts have been made to limit event bubbling but no real solution could be found.
-            + These attempts have including changing the type of event the trigger uses to stopPropagation().
-    + The animation for social links does not function properly on Safari. The start of the animation is scewed compared to all other browsers tested.   
-+ Safari browser Bugs:
-    + When safari decides sticky-note-right's height is to large the box shadow of its :before has a layer error and overlaps the content of sticky-note-right.    
-+ Sticky Note shadow - depending on the magnification used (with a range of 50% - 200%) the :before shadow used will show bad UX.
-    + A damage control fix was used to help reduce this occurrence
-        + Previously Created "standard" container sizes styles "*size*-container-height" and have them scale with the responsiveness of the site
-        + Give empty containers a mininum height
-        + Give full containers a set max height
+            + These attempts have including changing the type of event the trigger uses to `stopPropagation()`.
+            + Having the animation only trigger one time was also a solution. This solution was over looked because it decreased the "wow" factor of the animation.
+    + The animation for social links does not function properly on Safari. The start of the animation is scewed compared to all other browsers tested.
++ Safari browser bugs:
+    + When Safari decides sticky-note-right's height is to large, the box shadow of its :before has a layer error and overlaps the content of sticky-note-right.
++ Sticky Note shadow:
+    + Depending on the magnification used (with a range of 50% - 200%) the :before shadow used will show bad UX.
+    + A damage control fix was used to help reduce this occurrence.
+        + Fix:
+            + Previously Created "standard" container sizes styles `.<size>-container-height` and have them scale with the responsiveness of the site.
+            + Give empty containers a mininum height.
+            + Give full containers a set max height.
 
 ## Other Problems
 + Email validation:
-    + Validation originally used suffix validation of ".com" and ".edu". However this validation alienated users from making accounts
-    + Suffix validation had to be expanded to include ".net" and ".org".
-+ Searching mongoDB using collection.db.find("$text": "$search": <value>) unable to return booleans.  This is an issue with users being
-able to search "lazy" or "grandparent" tags.
-    + A browse button was added that searches for "lazy" and "grandparent" using the equals operator ("$eq")
-    + This search requires a specific operator so a button was designed for users. This would allow users to search for these tags and doesnt make the search engine unnecessarily complex
+    + Validation originally used suffix validation of `.com` and `.edu`. However this validation alienated users from making accounts.
+    + Fix:
+        + Suffix validation had to be expanded to include `.net` and `.org`.
++ Searching mongoDB using `mongo.db.<collection>.find("$text": "$search": <value>)` unable to return booleans.  This is an issue with users being able to search "lazy" or "grandparent" tags.
+    + Fix:
+        + A browse button was added that searches for "lazy" and "grandparent" using the equals operator ("$eq").
+        + This search requires a specific operator so a button was designed for users. This would allow users to search for these tags and doesn't make the search engine unnecessarily complex.
 + Limitations of validation:
-    + **recipeGeneralValidation** has a minimum character number however it is used on add_edit_recipe.html for recipe steps and recipe ingredients and users could potientially submit blank entires. 
-    There is Python validation in place that will not allow a blank entry to be added to the accompying array. However this invalid status could potientially be annoying to users.
+    + **recipeGeneralValidation** has a minimum character number however it is used on `add_edit_recipe.html` for recipe steps and recipe ingredients and users could potientially submit blank entires.
+    + Temp Fix:
+        + Additions to the validation code were made that make it unnecessarily long and convoluted. The problem is further addressed in **Scalability**.
+    <!-- There is Python validation in place that will not allow a blank entry to be added to the accompying array. However this invalid status could potientially be annoying to users. -->
     + If an invalid image type is submitted Python will return you to the edit page and undo all previously changed/added material. Which could be annoying to users. 
-    *Could not find a effective way to prevent users from submitting invalid file types using JS*
-+ Improving pagination function:
+        + Could not find an effective way to prevent users from submitting invalid file types using JS.
+        + Two possible solutions exist:
+            + Incorporate the Python Pillow library to allow python to automatically configure images to appropriate size.
+            + Use a on browser storage Session or JSON to repopulate page when python redirects user because of invalid upload information.
++ Improving pagination function design:
     + The original pagination function has an imbedded inner function and is a technical inefficient design.
     + This could be fixed by moving the inner function however:
         + All the dummy data had been removed from the database (by the time this error had been discovered) and thus this newly reconstructed pagination function could not be appropriately tested.
@@ -763,7 +788,7 @@ able to search "lazy" or "grandparent" tags.
 + Install Flask
     + in bash type "pip3 install Flask"
 + Python file structure
-    + create `*name*.py` file in root directory
+    + create `<name>.py` file in root directory
     + create `env.py` file in root directory
         + Add `env.py` to `gitignore` file (NEVER PUSH THIS FILE)
             + Within `env.py` create a the lines:
@@ -773,7 +798,7 @@ able to search "lazy" or "grandparent" tags.
                     + Can be created with [RandomKeygen](https://randomkeygen.com/)
                 + `os.environ.setdefault("MONGO_URI", "")`
                     + Value will be added after MongoDB database creation
-                + `os.environ.setdefault("MONGO_DBNAME", "*root database*")`
+                + `os.environ.setdefault("MONGO_DBNAME", "<root database>")`
                     + Value will be added after MongoDB database creation
         + Add `__pycache__/` to `gitignore` file (NEVER PUSH THIS FILE)
 
@@ -832,7 +857,7 @@ able to search "lazy" or "grandparent" tags.
         + Click **recipes**.
         + Click **Indexes** in the information secton for **recipes**.
         + Click **Create Index**.
-        + Using the below format type in all the 'names' of the content users are allowed to search through (Ex. *collection* == recipes, 'name' == created_by, 'name2' == name, 'name3' == feature).
+        + Using the below format type in all the 'names' of the content users are allowed to search through (Ex. <collection> == recipes, <name> == created_by, <name2> == name, <name3> == feature).
         + `{`
         +   `'name': text,`
         +   `'name2': text,`
@@ -841,9 +866,9 @@ able to search "lazy" or "grandparent" tags.
 
     + GitPod:
         + In bash (of GitPod) type, `python3`.
-        + In bash (of GitPod) type, `from *app name* import mongo`.
-        + Using the below format type in all the 'names' of the content users are allowed to search through (Ex. *collection* == recipes, 'name' == created_by, 'name2' == name, 'name3' == feature).
-        + `mongo.db.*collection*.create_index([('name', 'text'), ('name2','text'), ('name3','text')])`
+        + In bash (of GitPod) type, `from <app name> import mongo`.
+        + Using the below format type in all the 'names' of the content users are allowed to search through (Ex. <collection> == recipes, <name> == created_by, <name2> == name, <name3> == feature).
+        + `mongo.db.<collection>.create_index([('<name>', 'text'), ('<name2>','text'), ('<name3>','text')])`
 
 ### Connecting to database
 + Find URI.
