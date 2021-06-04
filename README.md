@@ -58,7 +58,7 @@
 + [Setup structure on GitPod for developers](#setup-structure-on-gitpod-for-developers)
     + [Flask](#flask)
     + [Pymongo](#pymongo)
-+ [Deploy Clone from GitHub](#deploy-clone-from-github)
++ [Deploy Clone in GitHub - GitPod](#deploy-clone-in-github---gitpod)
 + [Heroku Deployment](#heroku-deployment)
 + [Database build](#database-build)
     + [Database structure](#database-structure)
@@ -75,30 +75,27 @@
 
 
 # Fat Racoon - Introduction
-<!-- intro -->
+<!-- Intro -->
 The Fat Racoon is devoted to helping home cooks provide better meals to friends, family, and our users. We provide a network of personal and user 
 recipes. All these recipes can be searched through with our in app search engine. We believe that even without the ideal ingredience on hand, a little taste pairing or 
 extra spice can help any meal become a savory experience. We even go out of our way to provide new chefs with some basic cooking lessons in our lessons section. 
 Our chefs know the importance of making the best out of what we have on hand and want to share that liberating experience with other home chefs.
-<!-- about us - community -->
+<!-- About us and idea of community -->
 The chefs of the Fat Racoon started as sleep deprived, nocturnal home chefs that would use the, leftovers ("garabage"), or that one thing 
 that has to be eaten today (we've all done it) to make a meal. With practice and study, these meals improved over time but it started with learning 
 fundamental cooking practices, taste pairings, and thinking in parts of a whole. We want to help others wisely spend their kitchen time making the best meals they can. We offer 
 conventional cooking practice and recipe guidance to help them along the way. The Fat Racoon believes that helping to establish a community 
 of home cooks and their recipes in an intuitive search engine will be a boon to home chefs everywhere. It helps newer chefs see that not every 
 recipe has to be complicated or convoluted.
-<!-- casual users -->
+<!-- Casual users -->
 For users just searching for a recipe, we offer several different search methods for them to find what they are looking for. Users can search our data base by chef, feature ingredient,
 or name. The front page also offers four other methods for users to browse the Fat Raccoon's recipes: by 'Lazy Favorites', 'Grandparent Classics', all of the Fat Raccoon's personal recipes, and 
 search by feature.
-
-<!-- We offer a brief home cooking fundamental section, this section can help home chefs make the best of what they have on hand to cook.  -->
-<!-- Users can search recipes by feature ingredient to find that one recipe that they want to try. This can be accomplished through the use of our search bar or by searching through our recipe 
-database. -->
+<!-- Users that create recipes -->
 For those chef's submitting recipes, we offer a place to put in a name, prep/cook/total time, picture, brief recipe description, ingredients, and steps. 
 This allows someone to easily keep track of a recipe and share it with others.
 Additionally, if the Fat Raccoon finds these recipes appropriate they can add the tags of 'lazy favorite', 'grandparent classic', or both to the user's recipe.
-
+<!-- Meaning behind cooking -->
 Cooking has more meaning than just preparing food. For many it is a connection to your history or life experience.  We encourage our users to give us a little meta information in the recipes they submit. 
 Let us help preserve a little of ourselves in a recipe. Its important to us and to those that submitted it. From a family recipe to this is all I could afford 
 in college, let us know!
@@ -111,16 +108,15 @@ in college, let us know!
 + I want to find a recipe for dinner. <!---- Testing Random Recipe -->
 + I want to use my smart phone or tablet as a recipe book. <!-- Testing Text Coss Out Function -->
 + I want to find a new chicken dish to cook. <!-- Testing All_Recipe And Recipe_List Pagination-->
-+ I want a place to leave a recipe so I can easiy find. <!-- Testing Recipe Upload -->
++ I want a place to leave a recipe so I can easiy find. <!-- Testing Recipe Upload --> <!-- Tests Create and Read from C.R.U.D. -->
 + I want help deciding what to cook for dinner and I like a specific chef's recipes. <!-- Testing Search Chef Name -->
 + I want a easy to make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -- >
-<!-- + I want a recipe to surprise my significant other with -->
-+ I can't remember the name of a recipe that i like <!-- Testing Recipe Favorites Function -->
++ I can't remember the name of a recipe that i like <!-- Testing Recipe Favorites Function --><!-- Tests edit from C.R.U.D. -->
 + I want an easy to read recipe layout while Im cooking <!-- Testing Text Coss Out Function -->
 + I lack confidence in my cooking ability and need help. <!-- Testing Lessons Index Cards -->
-<!-- make a test that uses crud -->
-<!-- make test that user deletes a recipe -->
-<!-- make test that user travels to a deleted recipe -->
++ I've decided I dont like my user bio or avatar anymore. <!-- Tests update of user information/avatar --> <!-- Tests update from C.R.U.D. -->
++ I've uploaded a recipe I decided I dont like anymore. <!-- Tests for deletion of recipe --><!-- Tests delete from C.R.U.D. -->
++ I want to view a favorited recipe (but I find its been removed). <!-- Tests delete button for favorites/recents in profile --> <!-- Tests edit from C.R.U.D. -->
 
 ### Developer Goals
 + As a school project, this site was developed using as little 3rd party code as possible (ex. carousel logic was written by developer and bootstraps version was not used on purpose). This 
@@ -143,7 +139,7 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
         + Checks max and min character length.
         + Checks for allowed characters.
     + Created callable function library instead of repeating code.
-    + Using if expressions: to replace blank sections(missing database data) with filler Templates, to add the lazy banner on random recipe, etc....
+    + Using if expressions: to replace blank sections(missing database data) with filler templates, to add the lazy banner on random recipe, etc....
     + Using for expressions: to generate list data (ex. recipe lists, recipe ingredient lists, recipe step lists, etc...).
     + Using a random number generator to randomly select recipes.
 
@@ -182,7 +178,6 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
         + Created srrows for carousel.
 
 ## Client Stories
- <!-- -- (+ I have trouble keeping up with physical recipes and remembering what I have on hand and what I don't.) -->
 + I want to find a recipe for dinner.
     + I opened the Fat Raccoon's main page. I don't really know what I want so I scrolled down to the bottom of that page. I liked the recipe I saw on the bottom of the page and decided to use that. 
 + I want to use my smart phone or tablet as a recipe book.
@@ -218,19 +213,15 @@ function for similar tasks (Ex, validation) and the time it takes to develope th
     + I open the Fat Raccoon's main page and I realize Im totally outside of my comfort zone. I want to try a recipe but everytime I cook, something is just terrible 
     about the experience. I see the **Lesson** section in the navigation bar and decide to give it a shot. I find numerous helpful tips that give me the confidence to 
     try a recipe that sounds good.
-
-<!-- ### Experience Provided
-+ Users can search the entire recipe database for the recipe they want to use
-+ Have a "random recipe" from the Fat Raccoon chefs for those that don't know what they want.
-+ Site is fully responsive so users can use recipes on their phones or tablets while cooking.
-+ Site allows for users to "scratch through" ingredients or steps on recipe page as they gather or accomplish parts
-+ Users can use user search bar to search for features (also for: chef name and recipe name)
-+ Users can upload their own recipes to have a safe place to keep a recipe they like
-+ Users can use carousel, grnadparent classics or random recipe to help get an idea what to cook
-+ Users search results returns total time it takes to cook a meal 
-+ Grandparent classic was designed to offer users a choice of recipes that are considered classical in the Fat Raccoon
-+ Recipe pages layout is designed specifically for mobile and tablet users.  Providing the best UX possible
-+ Site has a welcoming southern homecooking feeling -->
++ I have a better image and improved bio for my account!
+    + I log into my Fat Raccoon account and Im taken to the profile page. I click on the **Update Profile** button. I choose a new image from my pc and update my bio to be a better representation of myself.
+     I also have to put in my current password before the form will allow me to submit. I submit the form and Im taken back to my profile page where I can see the updated avatar and bio.
++ I have a recipe on Fat Raccoon that isnt as good as I originally thought it was and I want to delete it.
+    + I log into my Fat Raccoon account and Im taken to the profile page. I travel to my recipe's page that I want to delete. I click the **Delete Recipe** button. I am prompted to type in the recipe's name.
+    I type in the recipe's name and the delete button turns green. I delete the recipe. Im taked back to my profile page where the app lets me know Ive deleted the recipe.
++ I deleted a recipe and I forgot to unfavorite it!
+    + I log into my Fat Raccoon account and Im taken to the profile page where I am reminded of my error on my **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. When I click on the recipe 
+    the app tells me the recipe has been deleted. I see there is a button next to the recipes on **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes**. I click this button and the recipe is deleted!
 
 # Design Choices
 ## Header and Footer
@@ -342,7 +333,7 @@ is addressed in **Scalability** and **Other Problems**.
 ## Page Performance
 ![Responsiveness image of the Fat Raccoon's random recipe](static/readme/testing/responsive-fat-raccoon.jpg "Responsiveness image of the Fat Raccoon's random recipe")
 + Responsive design across all devices.
-<!-- insert Image tiny JPG/PNG -->
+![TinyPNG helps reduce file size and improves UX](static/readme/testing/tinyify.jpg "TinyPNG helps reduce file size and improves UX")
 + All Images tinyified to reduce image download times
 
 ## Wireframe and Live Demo
@@ -522,16 +513,17 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Click on **Login** in nav bar.
 1. Click on **Create Account** tab.
 1. Fill out all appropriate information and submit said information.
-1. Once **Profile** page opens click on **Share Recipe**.
+1. Once **Profile** page opens, click on **Share Recipe**.
 1. Fill out all appropriate information, including an avatar, to submit a new recipe.
+1. Check over newly created recipe for all appropriate information.
 1. Navigate to **Profile** and click on **Share Recipe**.
 1. Fill out all appropriate information , including an Avatar and choose one part of from (Name, Prep, Cook, Description, Ingredients, or Steps) to inappropriately fill out and attempt to submit.
 1. Attempt to inappropriately fill selected part of form in all different types of validation to check if form will incorrectly accept this information.
-1. Repeat steps 8 and 9 until all inputs and types of validation have been checked.
+1. Repeat steps 9 and 10 until all inputs and types of validation have been checked.
 1. Attempt to submit same recipe with a PNG or JPG over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
 1. Return to original submitted recipe.
 1. Click **Edit Recipe**.
-1. Repeat steps 8 - 11.
+1. Repeat steps 9 - 12.
 
 #### Document Result(s):
 1. Documentation of any input/textarea that incorrectly accepted information, what form of validation failed (wheather it was JS, Python, or both), and wheather it was a new recipe or edited recipe.
@@ -667,6 +659,110 @@ refreshed during tests to check for errors. This helps test for stability and en
 1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
 1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
 
+### Testing Profile Updates
+
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
+1. Content doesn't overlap and is easily read.
+
+
+#### Assumption(s):
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
+1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. Click on **Login** in nav bar.
+1. Click on **Create Account** tab.
+1. Fill out all appropriate information and submit said information.
+1. Click on **Logout** in nav bar.
+1. Click on **Login** in nav bar.
+1. Log into previously created account.
+1. Click on **Update Profile** upload a avatar, enter a bio, enter current password, and submit.
+1. View all submitted data and check for accuracy.
+1. Click on **Update Profile** upload a new avatar, new bio, current password, and submit.
+1. View all submitted data and check for accuracy.
+
+#### Document Result(s):
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
+1. Documentation of any content that does not update properly.
+
+### Testing Delete Recipe - Full C.R.U.D. Test
+
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
+1. Content doesn't overlap and is easily read.
+
+#### Assumption(s):
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
+1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. Click on **Login** in nav bar.
+1. Click on **Create Account** tab.
+1. Fill out all appropriate information and submit said information.
+1. Once **Profile** page opens, click on **Share Recipe**.
+1. Fill out all appropriate information, including an avatar, to submit a new recipe.
+1. Check over newly created recipe for all appropriate information.
+1. Go to created recipe's page.
+1. Click **Edit Recipe**.
+1. Enter all new information and a new avatar.
+1. Check over newly edited recipe for all appropriate information.
+1. Click **Delete Recipe**
+1. Enter recipe's name and click **delete** button.
+
+#### Document Result(s):
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
+1. Documentation of any error in the C.R.U.D. steps.
+1. Documentation of any category where incorrect information was shown.
+
+### Testing Profile's, Recipe Delete Button
+
+---
+
+#### Expectation(s):
+1. Content fills appropriately and doesn't spill out beyond obvious borders.
+1. Content doesn't overlap and is easily read.
+
+#### Assumption(s):
+1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
+1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
+1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
+1. Tester will use different dummy information per recipe.
+1. Tester will keep a record of non deleted recipes so they can be handled after testing.
+1. Tester knows how to delete recieps.
+
+#### Testing Step(s):
+1. Load **Index Page** of Fat Raccoon.
+1. Click on **Login** in nav bar.
+1. Click on **Create Account** tab.
+1. Fill out all appropriate information and submit said information.
+1. Once **Profile** page opens, click on **Share Recipe**.
+1. Fill out all appropriate information, including an avatar, to submit a new recipe.
+1. Favorite this recipe.
+1. Go to **Profile** page and click **Share Recipe**
+1. Fill out all appropriate information, including an avatar, to submit a new recipe.
+1. Favorite this recipe.
+1. Repeat steps 8 - 10, five times.
+1. Delete a random recipe from its recipe page.
+1. Click on this deleted recipe's name in **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** and be sure the missing recipe message flashes.
+1. Click on the **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** recipe delete button.
+1. Check to be sure appropriate recipes were deleted from the **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** lists.
+
+#### Document Result(s):
+1. Documentation of recipe name, screen resolution, browser/device, and page of any content has bad UX.
+1. Documentation of recipe name, screen resolution, browser/device, and page anytime there is an incorrect box shadow.
+1. Documentation of any incorrect recipe deletions, including if this was a top or bottom adjacent recipe.
+
 ## Program Tests
 ### BrowserStack
 <!-- Image of browserStack -->
@@ -753,7 +849,7 @@ refreshed during tests to check for errors. This helps test for stability and en
     + Depending on the magnification used (with a range of 50% - 200%) the :before shadow used will show bad UX.
     + A damage control fix was used to help reduce this occurrence.
         + Fix:
-            + Previously Created "standard" container sizes styles `.<size>-container-height` and have them scale with the responsiveness of the site.
+            + Previously created "standard" container sizes styles `.<size>-container-height` and have them scale with the responsiveness of the site.
             + Give empty containers a mininum height.
             + Give full containers a set max height.
 
@@ -786,29 +882,38 @@ refreshed during tests to check for errors. This helps test for stability and en
 ## Setup structure on GitPod for developers
 ### Flask
 + Install Flask
-    + in bash type "pip3 install Flask"
+    + In bash (of GitPod) type, `pip3 install Flask`.
 + Python file structure
-    + create `<name>.py` file in root directory
-    + create `env.py` file in root directory
-        + Add `env.py` to `gitignore` file (NEVER PUSH THIS FILE)
-            + Within `env.py` create a the lines:
+    <!-- + Create `<name>.py` file in root directory. -->
+    + Create `env.py` file in root directory.
+        + Add `env.py` to `gitignore` file (NEVER PUSH THIS FILE).
+            + Within `env.py` create the lines:
+                + `import os`
                 + `os.environ.setdefault("IP", "0.0.0.0")`
                 + `os.environ.setdefault("PORT", "5000")`
                 + `os.environ.setdefault("SECRET_KEY", "")`
-                    + Can be created with [RandomKeygen](https://randomkeygen.com/)
+                    + This value can be created with [RandomKeygen](https://randomkeygen.com/)
                 + `os.environ.setdefault("MONGO_URI", "")`
-                    + Value will be added after MongoDB database creation
+                    + This value will be added after MongoDB database creation.
                 + `os.environ.setdefault("MONGO_DBNAME", "<root database>")`
-                    + Value will be added after MongoDB database creation
+                    + This value will be added after MongoDB database creation.
         + Add `__pycache__/` to `gitignore` file (NEVER PUSH THIS FILE)
 
 ### PyMongo
 + Install PyMongo
-    + In bash type, `pip3 install flask-pymongo`.
-    + In bash type, `pip3 install dnspython`.
+    + In bash (of GitPod) type, `pip3 install flask-pymongo`.
+    + In bash (of GitPod) type, `pip3 install dnspython`.
 
-## Deploy Clone from GitHub
-
+## Deploy Clone in GitHub - GitPod
++ Go to the location of the repository in GitHub, [https://github.com/Richardaeld/Fat_Racoon_Kitchen](https://github.com/Richardaeld/Fat_Racoon_Kitchen).
++ Click the **Code** button to get the drop down menu.
++ Copy the HTTPS address provided.
++ Create a new GitPod project and then open this new project.
++ Go to the Bash and type, `git clone `, paste the HTTPS address found in the GitHub page (dont forget the space after "clone"), and press enter.
++ The clone will be created within a new the folder called, "Fat_Racoon_Kitchen" (name of the repository).
++ Unpack everything from this new folder to the root of the GitPod project tree and the project will be fully functional within GitPod (minus the database which we will setup shortly).
++ Open up the file `run.py` and search for "head_chef".
++ Update "fat_raccoon" to your head chefs username.
 
 ## Heroku Deployment
 + Log into Heroku.
@@ -832,7 +937,7 @@ refreshed during tests to check for errors. This helps test for stability and en
     + Click **Reveal Config Vars** of "Config Vars" section
     + Add all of the `env.py` key value pairs without their quotations
     <!-- + Add all of the 'os.environ.setdefault' key value pairs without their quotations -->
-+ Enable automatic deployment or manual deploy.
++ Enable automatic deployment or manually deploy updates.
     + Automatic Deployment:
         + Click **Deploy**
         + Click **Enable Automatic Deploys** in "automatic deploys" section.
@@ -887,7 +992,7 @@ refreshed during tests to check for errors. This helps test for stability and en
     + The value Array is a Mongo assigned Array
     + The value null is a Mongo assigned null value
     + The value false is a Mongo assigned boolean value
-    + Recipe entery is structured as:
+    + Recipe entry is structured as:
         + `{`
         + `name: ""`
         + `feature: "chicken"`
@@ -906,7 +1011,7 @@ refreshed during tests to check for errors. This helps test for stability and en
         + `created_by`
         + `}`
 
-    + User entery is structured as:
+    + User entry is structured as:
         + `{`
         + `username: "user"`
         + `email: ""`
