@@ -336,7 +336,7 @@ is addressed in **Scalability** and **Other Problems**.
 ## Page Performance
 + Responsive design across all devices.
 ![Responsiveness image of the Fat Raccoon's random recipe](static/readme/testing/responsive-fat-raccoon.jpg "Responsiveness image of the Fat Raccoon's random recipe")
-+ All Images tinyified to reduce image download times
++ All Images tinyified to reduce image download times.
 ![TinyPNG helps reduce file size and improves UX](static/readme/testing/tinyify.jpg "TinyPNG helps reduce file size and improves UX")
 
 ## Wireframe and Live Demo
@@ -768,7 +768,9 @@ refreshed during tests to check for errors. This helps test for stability and en
 
 ## Program Tests
 ### BrowserStack
-<!-- Image of browserStack -->
++ [Google Nexus 5 - Default Browser](static/readme/testing/browserstack/4.4_Google-Nexus-5_portrait_real-mobile.jpg)
++ [OS X Big Sur - Chrome 71](static/readme/testing/browserstack/macbsr_chrome_71.0.jpg)
++ [Windows 10 - Chrome 71](static/readme/testing/browserstack/win10_chrome_71.0.jpg)
 
 ### Lighthouse
 + Identifies problems with performance, accessibility, best practices, and SEO
