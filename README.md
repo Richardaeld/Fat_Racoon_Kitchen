@@ -468,10 +468,14 @@ is addressed in **Scalability** and **Other Problems**.
 1. Repeat steps 1 - 3 approximately three to five times to check for randomization of recipe.
 
 #### Document Result(s):
-1. The test name and recipe name if any links are broken.
-1. The test name, recipe name, banner anticipated, and banner displayed if any recipes display an incorrect banner.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. if any links are broken, record:
+    + The test name and recipe name.
+1. If any recipe displays an incorrect banner, record:
+    + The test name, recipe name, banner anticipated, and banner displayed.
+1. if any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template)
+1. if there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template)
 
 ### Testing Text Coss Out Function
 
@@ -522,11 +526,11 @@ is addressed in **Scalability** and **Other Problems**.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
-1. Navigate to the **All_Recipe** page (on the navigation bar **All_Recipes** is called **Recipes**).
+1. Click on **Recipes** on the navigation bar. (This is the Jinja template, **All_Recipes**)
 1. Find any **Featured Ingredient** that contains a pagination `ul` (or make some recipes to trigger pagination).
 1. Click through all the numbers of the pagination `ul` (or five random pagination numbers).
 1. Repeat step 4, for one other **Featured Ingredient** with a pagination `ul`.
-1. Find any **Featured Ingredient** with a pagination `ul` and click on the **Featured Ingredient** header to navigate to the **Recipe_List** page.
+1. Find any **Featured Ingredient** with a pagination `ul` and click on the **Featured Ingredient** header. (This will open the Jinja template, **Recipe_List**.)
 1. Click through all the numbers of the pagination `ul` (or five random pagination numbers).
 1. Repeat steps 2, 6, and 7 approximately one time.
 
@@ -544,7 +548,8 @@ is addressed in **Scalability** and **Other Problems**.
 + I want a place to leave a recipe so I can easily find it later. <!-- Testing Recipe Upload --> <!-- Tests Create and Read from C.R.U.D. -->
 
 #### Expectation(s):
-1. The recipe will upload and display correctly on its recipe page.
+1. The recipe uploads without error.
+1. The recipe displays correctly on its page.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
@@ -552,27 +557,28 @@ is addressed in **Scalability** and **Other Problems**.
 1. The tester will intentionally try to submit incorrect data to check for incorrect validation.
 1. The tester will create an account for this test, and will keep a record of said account.
 1. The tester has a PNG or JPG file under 500kb, a PNG or JPG over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
-1. The tester knows what is considered invalid by this form.
+1. Tester knows the difference between the JS and Python validation.
+1. The tester knows what this form considers invalid and will check every part of the validation. (Example, max character, min character, spaces, characters, etc....)
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
-1. Click on **Login** in navigation bar.
+1. Click on **Login** on the navigation bar.
 1. Click on **Create Account** tab.
 1. Fill out all appropriate information and submit said information.
-1. Once **Profile** page opens, click on **Share Recipe**.
-1. Fill out all appropriate information, including an avatar, to submit a new recipe.
-1. Check over newly created recipe for all appropriate information.
-1. Navigate to **Profile** and click on **Share Recipe**.
-1. Fill out form with all appropriate information, including an avatar. 
+1. Once the **Profile** page is loaded, click on the **Share Recipe** button.
+1. Fill out all appropriate information, including an avatar, and submit the new recipe.
+1. Once the new recipe page is loaded, Check over newly created recipe for all appropriate information.
+1. Navigate back to **Profile** and click on the **Share Recipe** button again.
+1. Fill out the form with all appropriate information, including an avatar.
 1. Choose one element of the form to incorrectly fill out and attempt to submit.
-1. Repeat step 10 until all parts of the form (recipe name, prep time, cook time, recipe description, recipe ingredients, and recipe steps) and types of validation have been tested. 
-1. Attempt to submit same recipe with a PNG or JPG over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
+1. Repeat step 10 until all of the form's user inputs (recipe name, prep time, cook time, recipe description, recipe ingredients, and recipe steps) have had their validation tested. 
+1. Attempt to submit same recipe with a PNG or JPG file over 500KB, a non PNG or JPG file under 500KB, and a none PNG or JPG file over 500KB.
 1. Return to original submitted recipe.
 1. Click **Edit Recipe**.
 1. Repeat steps 9 - 12.
 
 #### Document Result(s):
-1. Documentation of any input/textarea that incorrectly accepted information, what form of validation failed (include wheather it was JS, Python, or both), and if it was a new recipe or edited recipe.
+1. The test name, any input/textarea that incorrectly accepted/refused information, what form of validation failed (include wheather it was JS, Python, or both), and if it was a new recipe or edited recipe if any form of validation fails.
 1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
 1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
 
@@ -584,37 +590,41 @@ is addressed in **Scalability** and **Other Problems**.
 + I want help deciding what to cook for dinner and I like a specific chef's recipes. <!-- Testing Search Chef Name -->
 
 #### Expectation(s):
+1. The chef search returns the correct information.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
 1. Tester knows all recipes that belong to **Fat_Raccoon**.
-1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
-1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
-1. Click on navigation bar's search bar.
-1. Input **Fat_Raccoon** into search bar and submit.
-1. Check over returns to make sure all appropriate returns are shown.
-1. Return to **Index Page** of Fat Raccoon.
-1. Scroll to bottom of page where **Random Recipe** is located.
-1. Click on chef's name **Fat_Raccoon** under the recipe's name.
-1. Check over returns to make sure all appropriate returns are shown.
-1. Return to **Index Page** of Fat Raccoon.
-1. Scroll to bottom of page where **Random Recipe** is located.
-1. Click on **Fat_Raccoon** on the sticky note with the chef's bio.
-1. Check over returns to make sure all appropriate returns are shown.
-1. Select any recipe from **Fat_Raccoon** and go to its recipe page.
-1. Under the avatar image click the name **Fat_Raccoon**.
-1. Check over returns to make sure all appropriate returns are shown.
-1. Return to **Index Page** of Fat Raccoon.
-1. Scroll to bottom of page where **Random Recipe** is located.
-1. Click on **Browse Fat_Raccoon Recipes** button.
-1. Check over returns to make sure all appropriate returns are shown.
+1. Click on the navigation bar's search bar.
+1. Input **Fat_Raccoon** into the search bar and submit.
+1. Check over the returns to make sure all appropriate returns are shown.
+1. Return to the **Index Page** of the Fat Raccoon.
+1. Scroll to the bottom of the page, where the **Random Recipe** is located.
+1. Click on the chef's name, **Fat_Raccoon** under the recipe's name.
+1. Check over the returns to make sure all appropriate returns are shown.
+1. Return to the **Index Page** of the Fat Raccoon.
+1. Scroll to the bottom of the page, where the **Random Recipe** is located.
+1. Find the sticky note with **Head Chef** on it and click on **Fat_Raccoon** at the bottom of that sticky note.
+1. Check over the returns to make sure all appropriate returns are shown.
+1. Select any recipe from the chef **Fat_Raccoon** and go to that recipe's page.
+1. Under the avatar image, click on the name **Fat_Raccoon**.
+1. Check over the returns to make sure all appropriate returns are shown.
+1. Return to the **Index Page** of the Fat Raccoon.
+1. Scroll to the bottom of the page, where the **Random Recipe** is located.
+1. Click on the **Browse Fat_Raccoon Recipes** button.
+1. Check over the returns to make sure all appropriate returns are shown.
 
 #### Document Result(s):
 1. Documentation of any link that does not appropriately link to all of **Fat_Raccoon**'s recipes, (including where the link was located).
+
+
+1. The page (Jinja template), and location on the page where the link is if there is any broken links or they display incorrect information.
+
+
 1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
 1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
 
