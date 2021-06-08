@@ -374,25 +374,22 @@ is addressed in **Scalability** and **Other Problems**.
 + GitHub houses the [master branch](https://github.com/Richardaeld/Fat_Racoon_Kitchen).
 
 ## Scalability
-+ Validation:
-    + Unify Python and JS validation for images. This would allow JS and Python to check the same material. This would ensure a better UX.
-    + Improve email validation to accept a wider range of email suffixes (ex. regional suffix, .uk, .fr, .de). This would allow for a larger audiance of users.
-    + Improve JS validation to use less pre-packaged validation types and more compartmentalized validation.
-        + Example: 
-            + Use classes for JS to set validation for character count, characters allowed, and if spaces are allowed. 
-            + Each of these aforementioned items could be set with a different type class that could be applied independent of one another.
-            + Each of these different types of classes could have hypen values to differentiate their purpose.
++ Validation (two options for improvement):
+    + Improve current validation system by:
+        + Unifing Python and JS validation for images. This would improve the UX when a user tried to upload a incorrect image filetype.
+        + Improve email validation to accept a wider range of email suffixes (ex. regional suffix, .uk, .fr, .de). This would allow for a larger audiance of users.
+        + Improve JS validation to use compartmentalized validation instead of the current prepackage system.
+            + These classes could be applied independently of one another, and could have their expected values set in them.
                 + (ex. charMax-20)
                 + (ex. charMax-100)
                 + (ex. charMax-400)
             + This type of dynamic validation system would improve the overall readability and function of the JS validation code.
-    + A stronger form of validation could be used. The validation in place is simple and limited.
-        + One good example, a user can invalidate recipe steps or recipe ingredients by tabing to them. This forces users to add content or remove the unused box before they can submit the form.
-    + A different approach to validation could be the adaptation of a prewritten validator (ex. WTForms) into the Fat Raccoon application.
-        + This could allow for the JS restrictions to be lifted, leaving only the bubble comments to help users properly fill out the forms.
-        + This would also allow for less redundent and convoluted JS code.
-+ The addition of image processing capabilities to python (Ex. Python Pillow).
-    + This would allow the Fat Raccoon application to automatically configure and alter images rather than relying on user upload restricts.
+    + Update to a validation system that solely validates in Python.
+        + This would make the forms more secure.
+        + Python would be able to check if an email is real and remove the need to check for suffix. (ex. WTForms)
+        + Python could be used to resize an image uploaded (ratio, resolution, and file size). (Ex. Python Pillow)
+        + JS could be used for a visual cue to missing data.
+        + This would reduce JS code and the complexity of the code.
 + Adding user selectable filters to search bar. This would ensure a better more efficient user search.
 + Create a user comment form for the recipes. This would give a better sense of community for users.
 + Create a user rating system for recipes. This would give a better sense of community for users.
@@ -893,200 +890,234 @@ is addressed in **Scalability** and **Other Problems**.
 + [Windows 10 - Chrome 71](static/readme/testing/browserstack/win10_chrome_71.0.jpg)
 
 ### Lighthouse
-+ Identifies problems with performance, accessibility, best practices, and SEO
++ Identifies problems with performance, accessibility, best practices, and SEO.
 ![Light house results](static/readme/testing/lighthouse-fat-raccoon.jpg "Light house results")
 
 ### JigSaw
 + Identifies errors in CSS
 ![Jigsaw results](static/readme/testing/w3c-jigsaw.jpg "Jigsaw results")
 + Errors are present for some of the CSS art but MDN shows they are not a problem.
-    + background "stacking gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
-    + Background "repeating linear gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
+    + A background "stacking gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
+    + A background "repeating linear gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
 + Warnings are present for some of the vendor extensions but those extensions are necessary and the errors can be ignored.
 
 ### W3C Validator
-+ Identifies errors in HTML and is extremely helpful for semantic HTML
++ Identifies errors in HTML.
++ Helpful for proper semantic HTML and ARIA practice.
 ![W3C validator results](static/readme/testing/w3c.jpg "W3c validator results")
 
 ### JSHint
-+ Identifies errors in JS
++ Identifies errors in JS.
 ![JSHint results](static/readme/testing/jshint.jpg)
-+ Pagination's function flags a warning because of a second function that is imbedded within it, the `<array>.forEach()` function. This function is imbedded because of the original design of the pagination function and is a technical oversight.
-    + This issue is addressed in the **Other Problems** section
++ Pagination's function flags a warning, because a second function is imbedded within it. This `<array>.forEach()` function is imbedded because of the original design and is a technical oversight.
+    + This issue is addressed in the **Other Problems** section.
 
 # Bugs and Other Problems
 ## Previous Bugs
-+ Improper variable passed into addfavorite page if user refreshes page.
++ An improper variable was passed into the Flask redirect route, addfavorite. This would cause Flask to send user to an error page.
+    + Caused by:
+        + A user refreshing the recipe page after changing the recipes favorite status.
     + Fix:
-        + Created a Python function, check_for_dups to check boolean status even in refresh (later improved with list comprehension used to remove more lines).
+        + Created a Python function, check_for_dups to check boolean status even in refresh.
 + Flask was generating a 504 gateway timeout error.
-    + A previously harmless while loop turned into an infinit loop because of an if comparison value.
+    + Caused by:
+        + A `while` loop not breaking correctly.
     + Fix:
-        + Updating incorrect string value into an int.
-        + This update was needed because of a missed `len()` function.
-+ Carousel would post improper amount of items when changing from landscape to portrait.
+        + Added a missing `len()` function changing a string value into a comparable int value.
++ Carousel would post improper amount of items on screen.
+    + Caused by:
+        + Changing screen width resolution size.
     + Fix:
-        + The carousel's 'memory' array and position had to be completely reset each time the screen switched between landscape and portrait.
-+ Corner of napkin CSS art was improper size in safari.
+        + The carousel's 'memory' array had to reset each time the screen resolution changed.
++ Corner of napkin CSS art was a incorrect size in the Safari browser.
+    + Caused by:
+        + A missing vendor extension.
     + Fix:
-        + Had to add `-webkit-` to `clip-path` for saafari.
-+ Index card art had jagged edges after `transform: rotateY(180deg)` was applied.
+        + Had to add `-webkit-clip-path` for Safari browser.
++ Index card CSS art had jagged edges after `transform: rotateY(180deg)` was applied.
+    + Caused by:
+        + A missing vendor extension.
     + Fix:
         + A recommended line of code -webkit-backface-visibility:hidden [from stackoverflow](https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome).
-+ Needed a nonstandard shaped container to hold a repeating linear gradient.
++ Heroku would not upload correctly.
+    + Caused by:
+        + GitPod incorrectly creating the Procfile.
     + Fix:
-        + Found solution at [MDN using a clip-path:polygon](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path).
-+ Program wouldnt upload to heroku properly.
+        + Adding the missing space after the colon in the Procfile.
++ Updating (editing) a recipe would create a new recipe.
+    + Caused by:
+        + Forms having the same Flask route.
     + Fix:
-        + Addedthe missing space after colon in Procfile.
-+ On numerous occasions, unspecific (often erroneous) Python if arguments were used leading to undesired and difficult to find bugs.
-    + Example:
-        + Used improper general arguments that created bugs in `add_edit_recipe.html` page that only allowed new recipes to be generated.
-        + Temp Fix:
-            + An extra operator and arguemnt was added to all if post conditions.
-            + This later produced even more difficult bugs to diagnose.
-    + Real Fix:
-        + This lead to a improved understanding of specificity in python.
-        + The aforementioned bug was corrected by creating a totally new Flask route. This allowed for two separate routes, one for updating and the other for creating recipes.
-+ Email wouldnt JS validate properly.
-    + **Type: email** was preventing the regex from functioning properly.
+        + Created an additional route for updating a recipe, so both create and update each had separate routes.
++ Email's JS validation wouldn't validate.
+    + Caused by:
+        + **Type: email** was preventing the regex from functioning properly.
     + Fix:
-        + Changing type to text and added an extra layer of validation to email, email suffix to compensate.
-+ Login/create modal wouldnt operate appropriately on any page other than the index.
+        + Changing the type from email to text. 
++ Login/create modal would only function on `index.html`.
+    + Caused by:
+        + The model was only written on `index.html`.
     + Fix:
         + Login/create modal was added to `base.html` and removed from `index.html`.
-        + `base_login.html` was created to replace `base.html` for pages the user had to be logged in for and needed the modal to NOT be present.
-+ User search box, on medium and small responsiveness, creates a line below the main navigation bar and drops the search bar down to that new line.
-    + Considerable time was dumped into the bug and it was ultimatly unfixable for every browser with the current nav design.
++ Original search bar would display on a separate line below the navigation bar when at device's resolution was at tablet or smaller responsiveness levels. 
+    + Caused by:
+        + Unknown.
     + Fix:
-        + A Bootstrap navigation bar repalced the existing navigation bar. This gave a guaranteed good UX across all browsers.
+        + Replaced the original navigation bar with a Bootstrap navigation bar.
 
 ## Current Bugs
-+ Social links (on footer):
-    + Have a repetitive triggering bug. They use JS mouseenter to trigger and trigger improperly due to multiple CSS layers and a margin.
-        + Multiple attempts have been made to limit event bubbling but no real solution could be found.
-            + These attempts have including changing the type of event the trigger uses to `stopPropagation()`.
-            + Having the animation only trigger one time was also a solution. This solution was over looked because it decreased the "wow" factor of the animation.
-    + The animation for social links does not function properly on Safari. The start of the animation is scewed compared to all other browsers tested.
-+ Safari browser bugs:
-    + When Safari decides sticky-note-right's height is to large, the box shadow of its :before has a layer error and overlaps the content of sticky-note-right.
-+ Sticky Note shadow:
-    + Depending on the magnification used (with a range of 50% - 200%) the :before shadow used will show bad UX.
-    + A damage control fix was used to help reduce this occurrence.
-        + Fix:
-            + Previously created "standard" container sizes styles `.<size>-container-height` and have them scale with the responsiveness of the site.
-            + Give empty containers a mininum height.
-            + Give full containers a set max height.
++ Social links animation triggers continuously when a user mouses over.
+    + Caused by:
+        + Multiple containers stacked on top of one another to create the CSS art. This creates a JS bubbling effect.
+    + Attempted fix(s):
+        + Limiting the bubbleing phenomena with a single "top" level container, limition of trigger function (`stopPropagation()`), and other methods.
+    + Thought(s):
+        + If the animation triggers once this would be a viable solution, however this solution was over looked because it decreased the "wow" factor of the animation.
++ Social links animation is off center on the Safari Browser.
+    + Caused by:
+        + Unknown.
+    + Attempted fix(s):
+        + Different vendor prefixes.
+    + Thought(s):
+        + Uncertain how to fix this for Safari browsers
++ `sticky-note-right`'s pseudo-element (`:before`) have a `box-shadow` that extends over the sticky note on Safari browsers.
+    + Caused by:
+        + A sticky note container being to tall.
+    + Attempted fix(s):
+        + None.
+    + Thought(s):
+        + Problem disappeared after HTML structure was rewritten to make proper use of Bootstrap's `container` and `container-fluid` classes.
++ Sticky note's pseudo-element(s) have a `box-shadow` that occasinally displays its transparent body.
+    + Caused by:
+        + Containers that are too tall, too wide too short, and too thin.
+    + Attempted fix(s):
+        + Containers with a minimum and maximum base size were created (`<size>-content-height`).
+        + The pseudo-element(s) and `box-shadow` were updated to allow for greater variation in their container size.
+    + Thought(s):
+        + The attempted fixes only minimized appearance of the bug.
+        + More reduction in the size of the pseudo-element(s) and an increase in the size of the `box-shadow` could remove this bug further, however it will take a considerable amount of time to find this "golden-ratio" for all screen resolution and browser/device combinations.
 
 ## Other Problems
-+ Email validation:
-    + Validation originally used suffix validation of `.com` and `.edu`. However this validation alienated users from making accounts.
-    + Fix:
-        + Suffix validation had to be expanded to include `.net` and `.org`.
-+ Searching mongoDB using `mongo.db.<collection>.find("$text": "$search": <value>)` unable to return booleans. This is an issue with users being able to search "lazy" or "grandparent" tags.
-    + Fix:
-        + A browse button was added that searches for "lazy" and "grandparent" using the equals operator ("$eq").
-        + This search requires a specific operator so a button was designed for users. This would allow users to search for these tags and doesn't make the search engine unnecessarily complex.
-+ Limitations of validation:
-    + **recipeGeneralValidation** has a minimum character number however it is used on `add_edit_recipe.html` for recipe steps and recipe ingredients and users could potientially submit blank entires.
-    + Temp Fix:
-        + Additions to the validation code were made that make it unnecessarily long and convoluted. The problem is further addressed in **Scalability**.
-    <!-- There is Python validation in place that will not allow a blank entry to be added to the accompying array. However this invalid status could potientially be annoying to users. -->
-    + If an invalid image type is submitted Python will return you to the edit page and undo all previously changed/added material. Which could be annoying to users. 
-        + Could not find an effective way to prevent users from submitting invalid file types using JS.
-        + Two possible solutions exist:
-            + Incorporate the Python Pillow library to allow python to automatically configure images to appropriate size.
-            + Use a on browser storage Session or JSON to repopulate page when python redirects user because of invalid upload information.
-+ Improving pagination function design:
-    + The original pagination function has an imbedded inner function and is a technical inefficient design.
-    + This could be fixed by moving the inner function however:
-        + All the dummy data had been removed from the database (by the time this error had been discovered) and thus this newly reconstructed pagination function could not be appropriately tested.
-        + Although technically inefficient this imbedded function is only used in pagination and isn't required anywhere else.
++ Lack of accepted email suffixes (email validation).
+    + Caused by:
+        + Limitations of the JS validation logic.
+    + Attempted fix(s):
+        + Expanded suffixes allowed for validation to include `.net` and `.org`.
+    + Thought(s):
+        + Email validation should be handled by Python only, instead of JS and Python. This could allow Python to check if the email account is real and remove the reliance on suffixes for validation.
++ MongoDB's general user search, `mongo.db.<collection>.find("$text": "$search": <value>)`, is unable to return booleans. Thus, users are not able to search for **Grandparent Classics** or **Lazy Favorites**.
+    + Caused by:
+        + MongoDB code.
+    + Attempted fix(s):
+        + A set of browse buttons were added to `index.html`. These buttons have a preset search value that uses the operator `$eq`, thus they are able to return boolean tags.
+    + Thought(s):
+        + If more time was available, the addition of filters to the search bar would have been a better solution than the addition of the browse buttons.
++ Current validation system needs to be changed or updated.
+    + Caused by:
+        + Original poor design. This design incorporated JS as the primary validator with HTML and Python acting as backup validatation.
+        + Limitations in JS to validate email information properly.
+    + Attempted fix(s):
+        + None.
+    + Thought(s):
+        + Two options are detailed in **Scalability**.
++ Pagination's JS structure could be revised.
+    + Caused by:
+        + The original pagination function has an imbedded inner function and is a technical inefficient design.
+    + Attempted fix(s):
+        + None.
+    + Thought(s):
+        + This could be fixed by moving the inner function, however all the dummy data had been removed from the database by the time this error had been discovered. Thus a newly reconstructed pagination function could not be appropriately and time efficiently tested.
+        + Although technically inefficient, this imbedded function is only used in pagination and isn't required anywhere else.
++ Needed a triangle shaped container that could hold a `repeating-linear-gradient`.
+    + Caused by:
+        + A specific artistic need in CSS.
+    + Attempted Fix(s):
+        + Originally tried using `<svg><polygon></svg>`, however this would not hold or duplicate an acceptable `repeating-linear-gradient`.
+    + Thought(s):
+        + Found solution at [MDN using a clip-path:polygon](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path).
 
 # Deployment
 ## Setup Structure on GitPod for Developers
 ### Flask
-+ Install Flask
-    + In bash (of GitPod) type, `pip3 install Flask`.
-+ Python file structure
-    <!-- + Create `<name>.py` file in root directory. -->
-    + Create `env.py` file in root directory.
-        + Add `env.py` to `gitignore` file (NEVER PUSH THIS FILE).
++ Install Flask.
+    + In bash (of GitPod) type, `pip3 install Flask` and press enter.
++ Create Python env file.
+    + Create a new file called `env.py` in root directory of GitPod.
+        + Add `env.py` to `gitignore` file (NEVER PUSH THIS FILE). If `gitignore` does not exist create it in root directory of GitPod.
+        + Add `__pycache__/` to `gitignore` file (NEVER PUSH THIS FILE)
             + Within `env.py` create the lines:
                 + `import os`
                 + `os.environ.setdefault("IP", "0.0.0.0")`
                 + `os.environ.setdefault("PORT", "5000")`
                 + `os.environ.setdefault("SECRET_KEY", "")`
-                    + This value can be created with [RandomKeygen](https://randomkeygen.com/)
+                    + This missing value can be created with [RandomKeygen](https://randomkeygen.com/)
                 + `os.environ.setdefault("MONGO_URI", "")`
-                    + This value will be added after MongoDB database creation.
+                    + This missing value will be added after MongoDB database creation.
                 + `os.environ.setdefault("MONGO_DBNAME", "<root database>")`
-                    + This value will be added after MongoDB database creation.
-        + Add `__pycache__/` to `gitignore` file (NEVER PUSH THIS FILE)
+                    + This missing value will be added after MongoDB database creation.
 
 ### PyMongo
 + Install PyMongo
-    + In bash (of GitPod) type, `pip3 install flask-pymongo`.
-    + In bash (of GitPod) type, `pip3 install dnspython`.
+    + In bash (of GitPod) type, `pip3 install flask-pymongo` and press enter.
+    + In bash (of GitPod) type, `pip3 install dnspython` and press enter.
 
 ## Deploy Clone in GitHub - GitPod
-+ Go to the location of the repository in GitHub, [https://github.com/Richardaeld/Fat_Racoon_Kitchen](https://github.com/Richardaeld/Fat_Racoon_Kitchen).
-+ Click the **Code** button to get the drop down menu.
++ Go to the location of the original repository in GitHub, [https://github.com/Richardaeld/Fat_Racoon_Kitchen](https://github.com/Richardaeld/Fat_Racoon_Kitchen).
++ Click on the **Code** button to get the drop down menu.
 + Copy the HTTPS address provided.
-+ Create a new GitPod project and then open this new project.
-+ Go to the Bash and type, `git clone `, paste the HTTPS address found in the GitHub page (don't forget the space after "clone"), and press enter.
-+ The clone will be created within a new the folder called, "Fat_Racoon_Kitchen" (name of the repository).
-+ Unpack everything from this new folder to the root of the GitPod project tree and the project will be fully functional within GitPod (minus the database which we will setup shortly).
++ Create a new GitHub/GitPod project (to house the new clone) and then open this new project.
++ Go to the Bash and type, `git clone <HTTP>`, paste the HTTPS address found in the GitHub page (don't forget the space after "clone"), and press enter.
++ The clone will be created within a new the folder called, "Fat_Racoon_Kitchen" (name of the original repository).
++ Unpack everything from this new folder to the root of the GitPod project tree and the project will be setup within GitPod (minus the database which we will setup shortly).
 + Open up the file `run.py` and search for "head_chef".
-+ Update "fat_raccoon" to your head chefs username.
++ Update the "fat_raccoon" to your new head chef's username.
 
 ## Heroku Deployment
 + Log into Heroku.
-+ Create app on Heroku by clicking **New** and follow directions.
-+ Prep files for Heroku.
-    + Files will be created in GitPod:
++ Create a new app on Heroku by clicking **New** and following the directions.
++ To prep your GitPod repository for Heroku:
+    + Go to your GitPod project that houses the clone from the previous section. 
         + In bash (of GitPod) type, `pip3 freeze --local > requirements.txt`.
         + In bash (of GitPod) type, `echo web: python run.py > Procfile`.
-            + Check contents of Procfile. Two problems can occur:
-                + If the opened Procfile has a blank line at the bottom, delete this line. It could cause problems with Heroku otherwise.
+            + Check contents of Procfile, because two problems can occur:
+                + If the opened Procfile has a blank line at the bottom, delete this line.
                 + Be sure there is a space after the colon.
-        + This creates the two files need for Heroku. These files allow Heroku to identify what it needs to run the app.
-+ Link Heroku and GitHub.
-    + Log into Heroku again.
-    + From, Personal click the **name of app** created in Heroku.
-    + Click **Deploy**.
-    + Click **GitHub** from "deployment method" section.
+        + This creates the two files needed for Heroku to identify what it needs to run the app.
++ Link Heroku and GitHub:
+    + Log into Heroku.
+    + From the **Personal apps** page, click on new app that was just created in Heroku.
+    + Click on **Deploy**.
+    + Click on **GitHub** from **Deployment method** section.
     + Enter your GitHub information and the name of the cloned repository into the "Connect to GitHub" section.
-+ Share env.py information with Heroku.
-    + Click **Settings**
-    + Click **Reveal Config Vars** of "Config Vars" section
-    + Add all of the `env.py` key value pairs without their quotations
-    <!-- + Add all of the 'os.environ.setdefault' key value pairs without their quotations -->
++ Share `env.py` information with Heroku.
+    + Click on **Settings**.
+    + Click on **Reveal Config Vars** from **Config Vars** section.
+    + Add all of the `env.py` key value pairs without their quotations.
 + Enable automatic deployment or manually deploy updates.
     + Automatic Deployment:
-        + Click **Deploy**
-        + Click **Enable Automatic Deploys** in "automatic deploys" section.
-        + Click **Deploy Branch** in "manual deploy" section to start initial deployment.
+        + Click on **Deploy**.
+        + Click on **Enable Automatic Deploys** in "automatic deploys" section..
+        + Click on **Deploy Branch** in "manual deploy" section to start initial deployment.
     + Manual Deployment:
-        + Click **Deploy Branch** in "manual deploy" section any time there is content you want to update active app with.
+        + Click on **Deploy Branch** in "manual deploy" section any time there is content you want to update active app with.
 
 ## Database Build
 ### Database Structure
 + Log into MongoDB.
-+ Click **Create a New Cluster** button (in top right corner).
++ Click on **Create a New Cluster** button (in top right corner).
     + Follow directions.
-+ Click **Collections** in your new cluster.
-+ Click **Create Database**.
-    + Create your inital root database and it's first collection, "users"
-    + Click your root database's name.
++ Click on **Collections** in your new cluster.
++ Click on **Create Database**.
+    + Create your inital `<root database>` and it's first collection, "users"
+    + Click your `<root database>`'s name.
     + Click **Create Collection** and create remaining necessary collections: "blank", "feature", and "recipes".
 <!-- + Add featured items to feature as format: {name:feature} features will be you meal star (ex. protein, veg, pasta) -->
 + Create index (for user search restrictions). This can be input through GitPod or MongoDB.
     + MongoDB:
-        + Click your root database's name.
-        + Click **recipes**.
-        + Click **Indexes** in the information secton for **recipes**.
-        + Click **Create Index**.
+        + Click on the root database's name.
+        + Click on **recipes**.
+        + Click on **Indexes** in the information secton for **recipes**.
+        + Click on **Create Index**.
         + Using the below format type in all the 'names' of the content users are allowed to search through (Ex. <collection> == recipes, <name> == created_by, <name2> == name, <name3> == feature).
         + `{`
         +   `'name': text,`
@@ -1109,6 +1140,10 @@ is addressed in **Scalability** and **Other Problems**.
     + Copy string provided.
     + Paste string in env.py as the "MONGO_URI" value.
     + Update the pasted string with the DBname and password by replacing <DBname> and <password> (replace angled brackets as well).
++ Update missing information in Heroku and GitPod
+
+
+
 ### Create the Appropriate Collections
 + Blank:
     + This is where the dictionary base for both new users and new recipes is stored
