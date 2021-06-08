@@ -468,14 +468,14 @@ is addressed in **Scalability** and **Other Problems**.
 1. Repeat steps 1 - 3 approximately three to five times to check for randomization of recipe.
 
 #### Document Result(s):
-1. if any links are broken, record:
+1. If any links are broken, record:
     + The test name and recipe name.
 1. If any recipe displays an incorrect banner, record:
     + The test name, recipe name, banner anticipated, and banner displayed.
-1. if any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template)
-1. if there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template)
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ### Testing Text Coss Out Function
 
@@ -503,10 +503,14 @@ is addressed in **Scalability** and **Other Problems**.
 1. Repeat step 5 approximately three times to check for appropriate overall good UX.
 
 #### Document Result(s):
-1. The test name, recipe name, if **Recipe Steps** or **Recipe Ingredients** would not cross out properly.
-1. The test name, recipe name and choice of path to said recipe if any links are broken.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. If **Recipe Steps** or **Recipe Ingredients** would not cross out properly, record:
+    + The test name, recipe name, and **Recipe Steps** and/or **Recipe Ingredients** (which ever one was problematic).
+1. If any links are broken, record:
+    + The test name, recipe name and choice of path to said recipe.
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ### Testing All_Recipe And Recipe_List Pagination
 
@@ -522,7 +526,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. Thte tester will create dummy recipes for this test (if necessary), and keep a record of said dummy data.
+1. The tester will create dummy recipes for this test (if necessary), and keep a record of said dummy data.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
@@ -535,10 +539,14 @@ is addressed in **Scalability** and **Other Problems**.
 1. Repeat steps 2, 6, and 7 approximately one time.
 
 #### Document Result(s):
-1. Any dummy data created to fullfill the test's requirments.
-1. The test name, recipe name, **Featured Ingredient**, screen resolution, browser/device, page (**All_Recipes** or **Recipe_List**), and pagination number if any pagination has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. If any recipe dummy data was created to fullfill the test's requirments, record:
+    + The name(s) of all of the recipe(s) created and the username of the account used to create the recipe(s).
+1. If any pagination has bad UX, record:
+    + The test name, recipe name, **Featured Ingredient**, screen resolution, browser/device, page (**All_Recipes** or **Recipe_List**), and pagination number.
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ### Testing Recipe Upload
 
@@ -563,10 +571,10 @@ is addressed in **Scalability** and **Other Problems**.
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
 1. Click on **Login** on the navigation bar.
-1. Click on **Create Account** tab.
-1. Fill out all appropriate information and submit said information.
+1. Click on the **Create Account** tab.
+1. Fill out all the appropriate information and submit said information.
 1. Once the **Profile** page is loaded, click on the **Share Recipe** button.
-1. Fill out all appropriate information, including an avatar, and submit the new recipe.
+1. Fill out all the appropriate information, including an avatar, and submit the new recipe.
 1. Once the new recipe page is loaded, Check over newly created recipe for all appropriate information.
 1. Navigate back to **Profile** and click on the **Share Recipe** button again.
 1. Fill out the form with all appropriate information, including an avatar.
@@ -578,9 +586,14 @@ is addressed in **Scalability** and **Other Problems**.
 1. Repeat steps 9 - 12.
 
 #### Document Result(s):
-1. The test name, any input/textarea that incorrectly accepted/refused information, what form of validation failed (include wheather it was JS, Python, or both), and if it was a new recipe or edited recipe if any form of validation fails.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. An user account (for testing) was created to fullfill the test's requirments, record:
+    + The username and email address of the account.
+1. If any form of validation fails, record:
+    + The test name, any input/textarea that incorrectly accepted or refused information, what form of validation failed (type of validation and if was JS and/or Python), and if it was a new recipe or edited recipe.
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ### Testing Search Chef Name
 
@@ -619,14 +632,12 @@ is addressed in **Scalability** and **Other Problems**.
 1. Check over the returns to make sure all appropriate returns are shown.
 
 #### Document Result(s):
-1. Documentation of any link that does not appropriately link to all of **Fat_Raccoon**'s recipes, (including where the link was located).
-
-
-1. The page (Jinja template), and location on the page where the link is if there is any broken links or they display incorrect information.
-
-
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. If there is is any broken links or incorrect recipe returns, record:
+    + The page (Jinja template), and location on the page where the link can be found.
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ### Testing Browse Button for Lazy Favorites Recipes
 
@@ -636,24 +647,26 @@ is addressed in **Scalability** and **Other Problems**.
 + I want a easy-to-make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -->
 
 #### Expectation(s):
+1. All **Lazy Favorite** recipes are returned.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
 1. Tester knows all recipes tagged as **Lazy Favorite**
-1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
-1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
-1. Scroll down to **Random Recipe** section.
+1. Scroll down to the **Random Recipe** section.
 1. Click on the button **Browse our Lazy Favorites!**.
-1. Check over returned recipes to make sure all appropriate recipes are shown.
+1. Check over the returned recipes to make sure all appropriate recipes are shown.
 
 #### Document Result(s):
-1. Documentation of any recipes that do not appropriately show up when **Browse our Lazy Favorites** button is clicked.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. If any **Lazy Favorite** recipes are not shown or non **Lazy Favorite** recipes are shown, record:
+    + Any **Lazy Favorite** recipes that are missing or incorrect recipes that showed up. 
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ### Testing Recipe Favorites Function
 
@@ -663,42 +676,47 @@ is addressed in **Scalability** and **Other Problems**.
 + I can't remember the name of a recipe that i liked on the Fat Raccoon and I want to find it again. <!-- Testing Recipe Favorites Function --><!-- Tests edit from C.R.U.D. -->
 
 #### Expectation(s):
-1. Favorite icon responds appropriately to recipes status of favorite vs unfavorite.
+1. The favorite icon responds appropriately to recipe status of favorite and unfavorite.
+1. The tester knows the entire click box allocated to changing the favorite status of a recipe.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
-1. Tester knows the difference between a favorited recipe and an unfavorited recipe icon.
-1. Tester will unfavorite at least a single recipe and check for appropriate response.
-1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
-1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
+1. The tester will create an account for this test, and will keep a record of said account.
+1. the tester knows the difference between a favorite recipe and an unfavorit recipe icon.
+1. The tester will favorite/unfavorite a recipe using a random part of its click box.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
-1. Click on **Login** in navigation bar.
-1. Click on **Create Account** tab.
-1. Fill out all appropriate information and submit said information.
-1. Navigate to any recipe of testers choice.
+1. Click on **Login** on the navigation bar.
+1. Click on the **Create Account** tab.
+1. Fill out all the appropriate information and submit said information.
+1. Navigate to any recipe of the testers choice.
 1. Click on **Not a Favorite** or its icon.
-1. Check to be sure accurate text and icon appear.
+1. Check to be sure the accurate text and icon appear.
 1. Navigate to a different non favorited recipe page.
 1. Click on **Not a Favorite** or its icon.
-1. Check to be sure accurate text and icon appear.
-1. Navigate to **Profile** page.
-1. Click on any favorited recipe in the **10 Recently Favorited Recipes** section.
+1. Check to be sure the accurate text and icon appear.
+1. Navigate to the **Profile** page.
+1. Click on any favorited recipe in the **10 Recently Favorited Recipes** section and go to that recipe's page.
 1. Check for appropriate favorite status and icon.
 1. Click on **Favorite** or its icon.
 1. Check for appropriate favorite status and icon.
-1. Navigate to **Profile** page.
-1. Click on the header for **10 Recently Favorited Recipes** section.
-1. Check for appropriate recipe(s).
+1. Navigate to the **Profile** page.
+1. Click on the header for the **10 Recently Favorited Recipes** section.
+1. Check for the appropriate recipe(s).
 
 #### Document Result(s):
-1. Documentation of recipe name, and path choosen to recipe of any favorite recipe that its icon/status was not displayed correctly.
-1. Documentation of recipe name that did not accept an appropriate click box to change favorite/unfavorite status.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. An user account (for testing) was created to fullfill the test's requirments, record:
+    + The username and email address of the account.
+1. if Favorite status or icon is displayed incorrectly, record:
+    + The recipe name and path choosen to the recipe.
+1. If click box for changing favorite status does not respond correctly, record:
+    + The recipe name.
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ### Testing Index Cards on Lesson Page
 
@@ -708,24 +726,28 @@ is addressed in **Scalability** and **Other Problems**.
 + I lack confidence in my cooking ability and need help. <!-- Testing Lessons Index Cards -->
 
 #### Expectation(s):
+1. Index cards rotate appropriately and have a good UX.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
-1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
-1. Tester knows that every index card that rotates has a **More on back-->**
-1. Tester knows the content of each **Lesson** card.
+1. The tester knows every index card with two sides of information must have **More on back-->** on it.
+1. The tester knows the content of each **Lesson** card.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
-1. navigate to **Lesson** page.
-1. Click every single index card and make sure text is appropriately displayed on both sides
+1. Click on **Lesson** on the navigation bar.
+1. Click every single index card and make sure the text is appropriately displayed on both sides.
 
 #### Document Result(s):
-1. Documentation of any index card that has poor UX, the side the poor UX was on, the resolution, and browser/device used.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. If text is present on both sides of the index card and **More on back-->** is missing from the face, record:
+    + The header of the index card.
+1. If any index card has poor UX, record:
+    + The poor UX, the side it was experienced on, the header of the index carsd, the resolution, and browser/device used.
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ### Testing Profile Updates
 
@@ -735,32 +757,41 @@ is addressed in **Scalability** and **Other Problems**.
 + I've decided I don't like my user bio or avatar anymore and want to change them. <!-- Tests update of user information/avatar --> <!-- Tests update from C.R.U.D. -->
 
 #### Expectation(s):
+1. An account can be logged out and logged back in with a new password.
+1. An user account is created and modified.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
-
 #### Assumption(s):
-1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
-1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
-1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
+1. The tester will create an account for this test, and will keep a record of said account.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
-1. Click on **Login** in navigation bar.
-1. Click on **Create Account** tab.
-1. Fill out all appropriate information and submit said information.
-1. Click on **Logout** in navigation bar.
-1. Click on **Login** in navigation bar.
+1. Click on **Login** on the navigation bar.
+1. Click on the **Create Account** tab.
+1. Fill out all the appropriate information and submit said information.
 1. Log into previously created account.
-1. Click on **Update Profile** upload a avatar, enter a bio, enter current password, and submit.
+1. Click on the **Update Profile** button.
+1. Click the **Create New Password** button.
+1. Upload an avatar, enter a bio, the current password, an email, a name and a new password in both new password and confirm new password. Then submit all the data.
 1. View all submitted data and check for accuracy.
-1. Click on **Update Profile** upload a new avatar, new bio, current password, and submit.
+1. Click on **Logout** on the navigation bar.
+1. Click on **Login** on the navigation bar and enter new login information.
+1. Click on the **Update Profile** button.
+1. Upload a new avatar, a new bio, the current password, and submit.
 1. View all submitted data and check for accuracy.
 
 #### Document Result(s):
-1. Documentation of any content that does not update properly.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. An user account (for testing) was created to fullfill the test's requirments, record:
+    + The current username and email address of the account (labeled as current) and the previous username and email address (labeled as previous).
+1. If any user profile content does not update properly, record:
+    + The header of the content that does not update correctly.
+1. If unable to log back into account, record:
+    + Orignial username , original email, new username, and new email.
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ### Testing Delete Recipe - Full C.R.U.D. Test
 
@@ -770,34 +801,43 @@ is addressed in **Scalability** and **Other Problems**.
 + I've uploaded a recipe I don't like anymore and I want to remove it. <!-- Tests for deletion of recipe --><!-- Tests delete from C.R.U.D. -->
 
 #### Expectation(s):
+1. A recipe is created, viewed, edited, and deleted.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
-1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
-1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
+1. The tester will create an account for this test, and will keep a record of said account.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
-1. Click on **Login** in navigation bar.
-1. Click on **Create Account** tab.
-1. Fill out all appropriate information and submit said information.
-1. Once **Profile** page opens, click on **Share Recipe**.
-1. Fill out all appropriate information, including an avatar, to submit a new recipe.
+1. Click on **Login** on the navigation bar.
+1. Click on the **Create Account** tab.
+1. Fill out all the appropriate information and submit said information.
+1. Once the **Profile** page opens, click on **Share Recipe**.
+1. Fill out all the appropriate information, including an avatar, and submit the new recipe.
 1. Check over newly created recipe for all appropriate information.
-1. Go to created recipe's page.
-1. Click **Edit Recipe**.
-1. Enter all new information and a new avatar.
-1. Check over newly edited recipe for all appropriate information.
-1. Click **Delete Recipe**
+1. Favorite the recipe.
+1. Click the **Edit Recipe** button.
+1. Enter all new information, including a new avatar, and submit the updated recipe.
+1. Check over the newly edited recipe for all updated information.
+1. Click the **Delete Recipe** button.
 1. Enter recipe's name and click **delete** button.
+1. Click on the deleted recipe's name in the **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes**.
+1. The application should prompt you with the response, "Sorry this recipe has been removed".
 
 #### Document Result(s):
-1. Documentation of any error in the C.R.U.D. steps.
-1. Documentation of any category where incorrect information was shown.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. An user account (for testing) was created to fullfill the test's requirments, record:
+    + The username and email address of the account.
+1. If the recipe created was not viewable, record:
+    + The recipe name.
+1. If the recipe did not update properly, record:
+    + The recipe name and the content that didnt update correctly.
+1. If the recipe did not delete properly, record:
+    + The recipe name.
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ### Testing Delete Button for Recipes on Profile Page
 
@@ -807,38 +847,44 @@ is addressed in **Scalability** and **Other Problems**.
 + I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page. <!-- Tests delete button for favorites/recents in profile --> <!-- Tests edit from C.R.U.D. -->
 
 #### Expectation(s):
+1. The button that removes a recipe from **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** functions properly.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. Tester will refresh screen while in landscape and transition it to portrait at start of each page.
-1. Tester will refresh screen while in portrait and transition it to landscape at start of each page.
-1. Tester will create an account for this test and keep a record of said account to be appropriately handled after testing.
-1. Tester will use different dummy information per recipe.
-1. Tester will keep a record of non deleted recipes so they can be handled after testing.
-1. Tester knows how to delete recieps.
+1. The tester will create an account for this test, and will keep a record of said account.
+1. The tester will use different dummy information per recipe, and will keep a record of all dummy recipes.
+1. The tester knows how to favorite a recipe.
+1. The tester knows how to remove a recipe from **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes**.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
-1. Click on **Login** in navigation bar.
-1. Click on **Create Account** tab.
-1. Fill out all appropriate information and submit said information.
-1. Once **Profile** page opens, click on **Share Recipe**.
-1. Fill out all appropriate information, including an avatar, to submit a new recipe.
+1. Click on **Login** on the navigation bar.
+1. Click on the **Create Account** tab.
+1. Fill out all the appropriate information and submit said information.
+1. Once the **Profile** page opens, click on the **Share Recipe** button.
+1. Fill out all the appropriate information, including an avatar, and submit the new recipe.
 1. Favorite this recipe.
-1. Go to **Profile** page and click **Share Recipe**
-1. Fill out all appropriate information, including an avatar, to submit a new recipe.
+1. Go to the **Profile** page and click the **Share Recipe** button.
+1. Fill out all the appropriate information, including an avatar, and submit another new recipe.
 1. Favorite this recipe.
 1. Repeat steps 8 - 10, five times.
-1. Delete a random recipe from its recipe page.
-1. Click on this deleted recipe's name in **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** and be sure the missing recipe message flashes.
-1. Click on the **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** recipe delete button.
-1. Check to be sure appropriate recipes were deleted from the **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** lists.
+1. Delete a recipe from these newly created recipes.
+1. Click on the deleted recipe's name in **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** and be sure the missing recipe message flashes.
+1. Removes the recipe from **10 Recently Favorited Recipes** and again on **10 Recently Viewed Recipes**.
+1. Check to be sure the appropriate recipes were deleted from the **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** lists.
 
 #### Document Result(s):
-1. Documentation of any incorrect recipe deletions, including if this was a top or bottom adjacent recipe.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if any content has bad UX.
-1. The test name, recipe name, screen resolution, browser/device, and page (Jinja template) if there is an incorrect box shadow.
+1. An user account (for testing) was created to fullfill the test's requirments, record:
+    + The username and email address of the account.
+1. Recipe dummy data was created to fullfill the test's requirments, record:
+    + The names of all of the recipes created and the username of the account used to create the recipes. Also note which recipes were deleted by the tester.
+1. If the remove recipe button in **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** does not function properly, record:
+    + The recipe name, the account username, screen resolution, and browser/device.
+1. If any content has bad UX, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+1. If there is an incorrect box shadow, record:
+    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
 
 ## Program Tests
 ### BrowserStack
@@ -1010,7 +1056,7 @@ is addressed in **Scalability** and **Other Problems**.
     + From, Personal click the **name of app** created in Heroku.
     + Click **Deploy**.
     + Click **GitHub** from "deployment method" section.
-    + Enter your GitHub informaion and the name of the cloned repository into the "Connect to GitHub" section.
+    + Enter your GitHub information and the name of the cloned repository into the "Connect to GitHub" section.
 + Share env.py information with Heroku.
     + Click **Settings**
     + Click **Reveal Config Vars** of "Config Vars" section
