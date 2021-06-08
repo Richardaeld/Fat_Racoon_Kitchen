@@ -1111,49 +1111,56 @@ is addressed in **Scalability** and **Other Problems**.
     + Create your inital `<root database>` and it's first collection, "users"
     + Click your `<root database>`'s name.
     + Click **Create Collection** and create remaining necessary collections: "blank", "feature", and "recipes".
-<!-- + Add featured items to feature as format: {name:feature} features will be you meal star (ex. protein, veg, pasta) -->
 + Create index (for user search restrictions). This can be input through GitPod or MongoDB.
     + MongoDB:
-        + Click on the root database's name.
-        + Click on **recipes**.
+        + Click on the `<root database>`'s name.
+        + Click on **recipes** collection.
         + Click on **Indexes** in the information secton for **recipes**.
         + Click on **Create Index**.
-        + Using the below format type in all the 'names' of the content users are allowed to search through (Ex. <collection> == recipes, <name> == created_by, <name2> == name, <name3> == feature).
+        + Create the index using the below format.
         + `{`
-        +   `'name': text,`
-        +   `'name2': text,`
-        +   `'name3': text`
+        +   `name: text,`
+        +   `feature: text,`
+        +   `created_by: text`
         + `}`
 
     + GitPod:
-        + In bash (of GitPod) type, `python3`.
-        + In bash (of GitPod) type, `from <app name> import mongo`.
+        + In bash (of GitPod) type, `python3` and push enter.
+        + In bash (of GitPod) type, `from <app name> import mongo` and push enter.
         + Using the below format type in all the 'names' of the content users are allowed to search through (Ex. <collection> == recipes, <name> == created_by, <name2> == name, <name3> == feature).
         + `mongo.db.<collection>.create_index([('<name>', 'text'), ('<name2>','text'), ('<name3>','text')])`
 
 ### Connecting to Database
 + Find URI.
     + Log into MongoDB.
-    + Click **Connect**.
-    + Click **Connect your application**.
-    + Select driver (Python) and version of Python.
+    + Click on **Connect** button.
+    + Click on **Connect your application** button.
+    + Select driver (Python) and version (of Python).
     + Copy string provided.
-    + Paste string in env.py as the "MONGO_URI" value.
-    + Update the pasted string with the DBname and password by replacing <DBname> and <password> (replace angled brackets as well).
-+ Update missing information in Heroku and GitPod
-
-
++ Update missing information in GitPod.
+    + Open GitPod and open `env.py` file.
+    + Paste this string as the value for the key "MONGO_URI".
+    + Update the pasted string with the collection name(<DBname>) and the password for the cluster (<password>).
+    + When you have replace <DBname> and <password> copy the string.
++ Update missing information in Heroku.
+    + Log into Heroku.
+    + Select the new app.
+    + Click on **Settings**.
+    + Click on **Reveal Config Vars** from **Config Vars** section.
+    + Paste in copied string from GitPod into the value for `MONGO_URI`.
+    + Paste in the `<root database>`'s name as the value for `MONGO_DBNAME`.
 
 ### Create the Appropriate Collections
 + Blank:
-    + This is where the dictionary base for both new users and new recipes is stored
-    + Two entries are required to be here
-    + The mongo id auto assign is fine for both entries
-    + The value Array is a Mongo assigned Array
-    + The value null is a Mongo assigned null value
-    + The value false is a Mongo assigned boolean value
+    + This is where the blank dictionary base for new users and new recipes is stored.
+    + Two entries are required to be here.
+    + The mongo `_id` auto assign is fine for both entries.
+    + The value, `Array` is a Mongo assigned as `Array` and must be changed from `string`.
+    + The value, `null` is a Mongo assigned as `Null` value must be changed from `string`.
+    + The value, `false` is a Mongo assigned as `Boolean` value must be changed from `string`.
     + Recipe entry is structured as:
         + `{`
+        + `_id: <auto assigned value>`
         + `name: ""`
         + `feature: "chicken"`
         + `ingredients: Array`
@@ -1173,6 +1180,7 @@ is addressed in **Scalability** and **Other Problems**.
 
     + User entry is structured as:
         + `{`
+        + `_id: <auto assigned value>`
         + `username: "user"`
         + `email: ""`
         + `password: ""`
@@ -1185,27 +1193,26 @@ is addressed in **Scalability** and **Other Problems**.
         + `date: ""`
         + `}`
 
-+ feature
-    + Feature is for a recipes feature ingredient
-    + There must be a single feature in the collection for the page to function
-    + each feature is structured as
++ The feature collection:
+    + The feature collection stores the applications **Featured Ingredient**s.
+    + There must be a minimum of one **Featured Ingredient** document in the feature collection for the application to function.
+    + For the best UX a **Featured Ingredient** document amount of approximately 10 is advised. However, more would also be acceptable.
+    + Each **Featured Ingredient** is structured as:
         + `{`
         + `name: "chicken"`
         + `}`
-+ recipes
-    + Recipe is where the sites recipes are stored.
-    + There is no set number of entires for the site to function properly, however a better UX is provided when the head chef of the site has several recipes entered.
-
-+ users
-    + Users is where the sites user information is stored.
-    + There is no set number of entires for the site to function properly, however a better UX is provided if the site has a set head chef.
-
-+ fs.chunks
-    + Will be created automatically after first image is uploaded.
-    + fs.chunks is for storage of images.
-+ fs.files
-    + Will be created automatically after first image is uploaded.
-    + fs.files is for storage of images.
++ The recipes collection:
+    + The recipe collection stores the applications recipes.
+    + There is no set number of documents for the application to function properly, however a better UX is provided when the head chef of the application has several recipe documents entered.
++ The users collection:
+    + The users collection stores the applications user information.
+    + There is no set number of documents for the application to function properly, however a better UX is provided if the application has a set head chef.
++ The fs.chunks Collection:
+    + Will be created automatically after the first image is uploaded.
+    + The fs.chunks collection is for the storage of image data.
++ The fs.files collection:
+    + Will be created automatically after the first image is uploaded.
+    + The fs.files collection is for the storage of image file data.
 
 # Tools and Credits
 ## Tools
