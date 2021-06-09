@@ -397,7 +397,7 @@ is addressed in **Scalability** and **Other Problems**.
 ### Developer Tested Systems
 + Windows 10 (Chrome 87**, Edge 87**, Firefox 84**)
     + Chrome
-        + Developed in Chrome
+        + Developed in Chrome.
         + Initially tested in every bootstrap breakpoint during development.
         + Tested in landscape, which is desktop responsiveness level.
         + Tested in portrait, which is tablet responsiveness level.
@@ -414,7 +414,7 @@ is addressed in **Scalability** and **Other Problems**.
 + iPad, 5th gen 13.3(Safari 13**)
     + Safari
         + Tested in landscape, which is tablet responsiveness level.
-        + Tested in portrait, which is mobile responsiveness level.
+        + Tested in portrait, which is tablet responsiveness level.
 
 ### Developer Testing Methods
 + Every test of **Developer Tests** was preformed on the above listed systems and the specified screen orientation.
@@ -422,7 +422,7 @@ is addressed in **Scalability** and **Other Problems**.
     + Once in landscape.
     + Once in portrait.
     + Once with random moments of spam clicking and switching between landscape/portrait.
-        + The final of the three tests is critical to be sure tablet and mobile users have a enjoyable experience.
+        + The final of the three tests is critical to be sure tablet and mobile users have an enjoyable experience.
 
 ## Developer Tests
 ### Testing Random Recipe
@@ -440,23 +440,23 @@ is addressed in **Scalability** and **Other Problems**.
 
 #### Assumption(s):
 1. The tester will keep performing this test until they see a classic banner, a favorite banner, and a favorite/classic banner.
-1. The tester has list of recipes that contain the favorite, classic, and favorite/classic boolean tag.
+1. The tester has a list of recipes that contain the favorite, classic, and favorite/classic boolean tag.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
 1. Scroll to the bottom of the page.
 1. Click the **random recipe** to make sure it links to the proper recipe.
-1. Repeat steps 1 - 3 approximately three to five times to check for randomization of recipe.
+1. Repeat steps 1 - 3 approximately five times to check for randomization of recipe.
 
 #### Document Result(s):
 1. If any links are broken, record:
-    + The test name and recipe name.
+    + The test name, recipe name, and a brief description of the problem.
 1. If any recipe displays an incorrect banner, record:
     + The test name, recipe name, banner anticipated, and banner displayed.
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ### Testing Text Coss Out Function
 
@@ -466,7 +466,7 @@ is addressed in **Scalability** and **Other Problems**.
 + I want to use my smart phone or tablet as a recipe book. <!-- Testing Text Coss Out Function -->
 
 #### Expectation(s):
-1. The content of the **Recipe Steps** and **Recipe Ingredients** sections cross out correctly.
+1. The content of the **Recipe Steps** and **Recipe Ingredients** sections crosses out correctly.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
@@ -480,18 +480,17 @@ is addressed in **Scalability** and **Other Problems**.
 1. Navigate to any recipe page.
 1. Scroll to the **Recipe Ingredients** section and click the check box or text to see if it crosses out correctly.
 1. Scroll to the **Recipe Steps** section and click the check box or text to see if it crosses out correctly.
-1. Repeat steps 2 - 4 selecting a different path to recipe page each time (or until all known paths are used).
-1. Repeat step 5 approximately three times to check for appropriate overall good UX.
+1. Repeat steps 2 - 4 approximately three times. (Choose a different path to the recipe page each time or until all known paths are used).
 
 #### Document Result(s):
-1. If **Recipe Steps** or **Recipe Ingredients** would not cross out properly, record:
-    + The test name, recipe name, and **Recipe Steps** and/or **Recipe Ingredients** (which ever one was problematic).
+1. If **Recipe Steps** or **Recipe Ingredients** do not cross out properly, record:
+    + The test name, recipe name, **Recipe Steps** and/or **Recipe Ingredients** (which ever one was problematic), and a brief description of the problem.
 1. If any links are broken, record:
-    + The test name, recipe name and choice of path to said recipe.
+    + The test name, recipe name, choice of path to said recipe, and a brief description of the problem.
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ### Testing All_Recipe And Recipe_List Pagination
 
@@ -513,21 +512,23 @@ is addressed in **Scalability** and **Other Problems**.
 1. Load the **Index Page** of the Fat Raccoon.
 1. Click on **Recipes** on the navigation bar. (This is the Jinja template, **All_Recipes**)
 1. Find any **Featured Ingredient** that contains a pagination `ul` (or make some recipes to trigger pagination).
-1. Click through all the numbers of the pagination `ul` (or five random pagination numbers).
+1. Click through five random pagination numbers of the pagination `ul`.
 1. Repeat step 4, for one other **Featured Ingredient** with a pagination `ul`.
 1. Find any **Featured Ingredient** with a pagination `ul` and click on the **Featured Ingredient** header. (This will open the Jinja template, **Recipe_List**.)
-1. Click through all the numbers of the pagination `ul` (or five random pagination numbers).
+1. Click through five random pagination numbers of the pagination `ul`.
 1. Repeat steps 2, 6, and 7 approximately one time.
 
 #### Document Result(s):
+1. If an user account was created to fullfill the test's requirments, record:
+    + The username, email address of the account, and that this is a test account.
 1. If any recipe dummy data was created to fullfill the test's requirments, record:
-    + The name(s) of all of the recipe(s) created and the username of the account used to create the recipe(s).
+    + The names of all of the recipes created, the username of the account that created the recipes, and that they are all dummy data.
 1. If any pagination has bad UX, record:
-    + The test name, recipe name, **Featured Ingredient**, screen resolution, browser/device, page (**All_Recipes** or **Recipe_List**), and pagination number.
+    + The test name, recipe name, **Featured Ingredient**, screen resolution, browser/device, page (**All_Recipes** or **Recipe_List**), pagination number, and a brief description of the problem.
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ### Testing Recipe Upload
 
@@ -545,8 +546,8 @@ is addressed in **Scalability** and **Other Problems**.
 #### Assumption(s):
 1. The tester will intentionally try to submit incorrect data to check for incorrect validation.
 1. The tester will create an account for this test, and will keep a record of said account.
-1. The tester has a PNG or JPG file under 500kb, a PNG or JPG over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
-1. Tester knows the difference between the JS and Python validation.
+1. The tester has a PNG or JPG image under 500kb, a PNG or JPG image over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
+1. The tester knows the difference between JS and Python validation.
 1. The tester knows what this form considers invalid and will check every part of the validation. (Example, max character, min character, spaces, characters, etc....)
 
 #### Testing Step(s):
@@ -556,25 +557,25 @@ is addressed in **Scalability** and **Other Problems**.
 1. Fill out all the appropriate information and submit said information.
 1. Once the **Profile** page is loaded, click on the **Share Recipe** button.
 1. Fill out all the appropriate information, including an avatar, and submit the new recipe.
-1. Once the new recipe page is loaded, Check over newly created recipe for all appropriate information.
-1. Navigate back to **Profile** and click on the **Share Recipe** button again.
+1. Once the new recipe page is loaded, check over the newly created recipe for all appropriate information.
+1. Navigate back to the **Profile** page and click on the **Share Recipe** button.
 1. Fill out the form with all appropriate information, including an avatar.
 1. Choose one element of the form to incorrectly fill out and attempt to submit.
 1. Repeat step 10 until all of the form's user inputs (recipe name, prep time, cook time, recipe description, recipe ingredients, and recipe steps) have had their validation tested. 
-1. Attempt to submit same recipe with a PNG or JPG file over 500KB, a non PNG or JPG file under 500KB, and a none PNG or JPG file over 500KB.
-1. Return to original submitted recipe.
-1. Click **Edit Recipe**.
+1. Attempt to submit same recipe with a PNG or JPG image over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
+1. Return to the original submitted recipe's page.
+1. Click on the **Edit Recipe** button.
 1. Repeat steps 9 - 12.
 
 #### Document Result(s):
-1. An user account (for testing) was created to fullfill the test's requirments, record:
-    + The username and email address of the account.
+1. An user account was created to fullfill the test's requirments, record:
+    + The username, email address of the account, and that this is a test account.
 1. If any form of validation fails, record:
-    + The test name, any input/textarea that incorrectly accepted or refused information, what form of validation failed (type of validation and if was JS and/or Python), and if it was a new recipe or edited recipe.
+    + The test name, any input/textarea that incorrectly accepted or refused information, what form of validation failed (type of validation and if was JS and/or Python), if it was a new recipe or edited recipe, and a brief description of the problem.
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ### Testing Search Chef Name
 
@@ -589,23 +590,23 @@ is addressed in **Scalability** and **Other Problems**.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. Tester knows all recipes that belong to **Fat_Raccoon**.
+1. Tester knows all recipes that belong to the chef **Fat_Raccoon**.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
 1. Click on the navigation bar's search bar.
-1. Input **Fat_Raccoon** into the search bar and submit.
+1. Input the **Fat_Raccoon** into the search bar and submit.
 1. Check over the returns to make sure all appropriate returns are shown.
 1. Return to the **Index Page** of the Fat Raccoon.
 1. Scroll to the bottom of the page, where the **Random Recipe** is located.
-1. Click on the chef's name, **Fat_Raccoon** under the recipe's name.
+1. Click on the chef's name, **Fat_Raccoon**, which is under the recipe's name.
 1. Check over the returns to make sure all appropriate returns are shown.
 1. Return to the **Index Page** of the Fat Raccoon.
 1. Scroll to the bottom of the page, where the **Random Recipe** is located.
-1. Find the sticky note with **Head Chef** on it and click on **Fat_Raccoon** at the bottom of that sticky note.
+1. Find the sticky note with **Head Chef** on it and click on the text **Fat_Raccoon**, which is at the bottom of that sticky note.
 1. Check over the returns to make sure all appropriate returns are shown.
 1. Select any recipe from the chef **Fat_Raccoon** and go to that recipe's page.
-1. Under the avatar image, click on the name **Fat_Raccoon**.
+1. Under the avatar image, click on the name, **Fat_Raccoon**.
 1. Check over the returns to make sure all appropriate returns are shown.
 1. Return to the **Index Page** of the Fat Raccoon.
 1. Scroll to the bottom of the page, where the **Random Recipe** is located.
@@ -614,11 +615,11 @@ is addressed in **Scalability** and **Other Problems**.
 
 #### Document Result(s):
 1. If there is is any broken links or incorrect recipe returns, record:
-    + The page (Jinja template), and location on the page where the link can be found.
+    + The page (Jinja template), location on the page where the link can be found, and a brief description of the problem.
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ### Testing Browse Button for Lazy Favorites Recipes
 
@@ -643,11 +644,11 @@ is addressed in **Scalability** and **Other Problems**.
 
 #### Document Result(s):
 1. If any **Lazy Favorite** recipes are not shown or non **Lazy Favorite** recipes are shown, record:
-    + Any **Lazy Favorite** recipes that are missing or incorrect recipes that showed up. 
+    + Any **Lazy Favorite** recipes that are missing, incorrect recipes that showed up, and a brief description of the problem. 
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ### Testing Recipe Favorites Function
 
@@ -688,16 +689,16 @@ is addressed in **Scalability** and **Other Problems**.
 1. Check for the appropriate recipe(s).
 
 #### Document Result(s):
-1. An user account (for testing) was created to fullfill the test's requirments, record:
-    + The username and email address of the account.
+1. An user account was created to fullfill the test's requirments, record:
+    + The username, email address of the account, and that this is a test account.
 1. if Favorite status or icon is displayed incorrectly, record:
-    + The recipe name and path choosen to the recipe.
+    + The recipe name, path choosen to the recipe, and a brief description of the problem.
 1. If click box for changing favorite status does not respond correctly, record:
-    + The recipe name.
+    + The recipe name and a brief description of the problem.
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ### Testing Index Cards on Lesson Page
 
@@ -722,13 +723,13 @@ is addressed in **Scalability** and **Other Problems**.
 
 #### Document Result(s):
 1. If text is present on both sides of the index card and **More on back-->** is missing from the face, record:
-    + The header of the index card.
+    + The header of the index card and a brief description of the problem.
 1. If any index card has poor UX, record:
-    + The poor UX, the side it was experienced on, the header of the index carsd, the resolution, and browser/device used.
+    + The poor UX, the side it was experienced on, the header of the index carsd, the resolution, browser/device used, and a brief description of the problem.
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ### Testing Profile Updates
 
@@ -763,16 +764,16 @@ is addressed in **Scalability** and **Other Problems**.
 1. View all submitted data and check for accuracy.
 
 #### Document Result(s):
-1. An user account (for testing) was created to fullfill the test's requirments, record:
-    + The current username and email address of the account (labeled as current) and the previous username and email address (labeled as previous).
+1. An user account was created to fullfill the test's requirments, record:
+    + The current username and email address of the account (labeled as current), the previous username and email address (labeled as previous), and that this is a test account.
 1. If any user profile content does not update properly, record:
-    + The header of the content that does not update correctly.
+    + The header of the content that does not update correctly and a brief description of the problem.
 1. If unable to log back into account, record:
-    + Orignial username , original email, new username, and new email.
+    + Orignial username , original email, new username, new email, and a brief description of the problem.
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ### Testing Delete Recipe - Full C.R.U.D. Test
 
@@ -807,18 +808,18 @@ is addressed in **Scalability** and **Other Problems**.
 1. The application should prompt you with the response, "Sorry this recipe has been removed".
 
 #### Document Result(s):
-1. An user account (for testing) was created to fullfill the test's requirments, record:
-    + The username and email address of the account.
+1. An user account was created to fullfill the test's requirments, record:
+    + The username, email address of the account, and that this is a test account.
 1. If the recipe created was not viewable, record:
-    + The recipe name.
+    + The recipe name and a brief description of the problem.
 1. If the recipe did not update properly, record:
-    + The recipe name and the content that didnt update correctly.
+    + The recipe name, the content that didnt update correctly, and a brief description of the problem.
 1. If the recipe did not delete properly, record:
-    + The recipe name.
+    + The recipe name and a brief description of the problem.
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ### Testing Delete Button for Recipes on Profile Page
 
@@ -856,16 +857,16 @@ is addressed in **Scalability** and **Other Problems**.
 1. Check to be sure the appropriate recipes were deleted from the **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** lists.
 
 #### Document Result(s):
-1. An user account (for testing) was created to fullfill the test's requirments, record:
-    + The username and email address of the account.
+1. An user account was created to fullfill the test's requirments, record:
+    + The username, email address of the account, and that this is a test account.
 1. Recipe dummy data was created to fullfill the test's requirments, record:
-    + The names of all of the recipes created and the username of the account used to create the recipes. Also note which recipes were deleted by the tester.
+    + The names of all of the recipes created, the username of the account used to create the recipes, which recipes were deleted by the tester, and that these are all dummy data.
 1. If the remove recipe button in **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** does not function properly, record:
-    + The recipe name, the account username, screen resolution, and browser/device.
+    + The recipe name, the account username, screen resolution, browser/device, and a brief description of the problem.
 1. If any content has bad UX, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
-    + The test name, recipe name, screen resolution, browser/device, and page (Jinja template).
+    + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
 ## Program Tests
 ### BrowserStack
