@@ -355,7 +355,6 @@ function selectLinks (link) {
 // ---- lessons ----
 // Makes sure index cards are appropriately sized
 // Makes index cards flippable
-// var findIndexCards = document.querySelectorAll(".index-rotate");
 var findIndexCards = document.querySelectorAll(".index-card-outer");
 findIndexCards.forEach(selectIndexCards);
 function selectIndexCards(card){
