@@ -205,7 +205,7 @@
                             {% for ingredient in recipeIngEnum %}
                                 <div class="step-ingredient-spacing">
                                     <h3 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h3>
-                                    <input class="countIngredients form-invalid-view formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
+                                    <input class="countIngredients form-invalid-view formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}">
                                     <div class="invalid-form make-invis">
                                         <p class=" remove-p-margin">Must be between 3 and 400 characters</p>
                                         <p class="make-invis remove-p-margin"></p>
@@ -218,7 +218,7 @@
                             {% for ingredient in recipeIngEnum %}
                                 <div class="step-ingredient-spacing">
                                     <h3 class="reduce-h6">Ingredient {{ ingredient[0] + 1 }} </h3>
-                                    <input class="countIngredients formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}" > <!-- pattern="[a-zA-z0-9!,.?=+-_/#%&]+{0,255}" -->
+                                    <input class="countIngredients formValidation recipeGeneralValidation" type="text" id="ingredients-{{ ingredient[0] + 1 }}" name="ingredients-{{ ingredient[0] + 1 }}" value="{{ ingredient[1] }}">
                                     <div class="invalid-form form-is-valid make-invis">
                                         <p class="make-invis remove-p-margin">Must be between 3 and 400 characters</p>
                                         <p class="make-invis remove-p-margin"></p>
@@ -233,7 +233,7 @@
                 <!-- Recipe steps -->
                 <div class="col-12">
                     <!-- Header -->
-                    <label for="steps-1" id="stepNumber">Recipe Steps (<span>1</span>)</label>  <!-- for id and name will have problems with JS additional script -->
+                    <label for="steps-1" id="stepNumber">Recipe Steps (<span>1</span>)</label>
                     <!-- Add Button -->
                     <div class="stepAddButton clickable form-button make-space-margin" tabindex="0" role="button" aria-pressed="false">
                         <p class="remove-p-margin ">Add</p>
@@ -292,9 +292,5 @@
 {% endblock %}
 
 {% block custom_script %}
-<!-- <script src="{{ url_for('static', filename='js/addEditRecipe.js') }}"></script>
-<script src="{{ url_for('static', filename='js/avatarValidation.js') }}"></script>
-<script src="{{ url_for('static', filename='js/button.js') }}"></script> -->
 <script src="{{ url_for('static', filename='js/addEditRecipe.js') }}"></script>
-
 {% endblock %}

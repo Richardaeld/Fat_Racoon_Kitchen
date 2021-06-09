@@ -132,7 +132,7 @@
                         <h2 class="yanone-text max-width remove-p-margin h2-reduce">Recipe Description</h2>
                         <hr>
                         <div class="max-height max-width">
-                            <p class="max-width">{{ recipeInfo.text }}</p> <!-- height needs to be removed -->
+                            <p class="max-width">{{ recipeInfo.text }}</p>
                         </div>
                     </div>
                 </div>
@@ -188,6 +188,4 @@
 
 {% block custom_script %}
 <script src="{{ url_for('static', filename='js/recipe.js') }}"></script>
-<!-- <script src="{{ url_for('static', filename='js/recipe.js') }}"></script>
-<script src="{{ url_for('static', filename='js/button.js') }}"></script> -->
 {% endblock %}

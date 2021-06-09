@@ -70,7 +70,7 @@
                 <!-- Displays 4 classic recipes -->
                 {% for recipe in classics %}
                     {% if recipe[1].avatar %}
-                    <section class="col-10 col-sm-5 col-xl-2  polaroid-outer generic-box-shadow blank-anchor classics"> <!-- col-md-5 col-lg-2 col-xl-2 -->
+                    <section class="col-10 col-sm-5 col-xl-2  polaroid-outer generic-box-shadow blank-anchor classics">
                         <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
                             <div class="polaroid-picture">
                                 <!-- Recipe avatar -->
@@ -86,7 +86,7 @@
                     </section>
                     {% else %}
                     <!-- Filler for missing avatar -->
-                    <section class="col-10 col-sm-5 col-xl-2  sticky-note blank-anchor classics medium-content-height" > <!-- col-md-5 col-lg-2 col-xl-2 -->
+                    <section class="col-10 col-sm-5 col-xl-2  sticky-note blank-anchor classics medium-content-height">
                         <a href="{{ url_for('recipe', recipeId=recipe[1]._id) }}">
                             <div class="row no-gutters align-items-center sticky-note-inner-div sticky-note-right-shadow">
                                 <p>My chef, {{ recipe[1].created_by.title() }}, hasn't uploaded an image of <ins>{{ recipe[1].name }}</ins> yet :'(</p>
@@ -259,7 +259,7 @@
                 <div class="row no-gutters justify-content-center">
                     {% if recipeOfDay.avatar %}
                         <!-- Recipe avatar -->
-                        <div class="polaroid-outer generic-box-shadow remove-top-margin make-space-margin blank-anchor"> <!-- sticky-note sticky-note-right recipe-of-day-aside-height col-10 col-md-6 col-lg-10 -->
+                        <div class="polaroid-outer generic-box-shadow remove-top-margin make-space-margin blank-anchor">
                             <a href="{{ url_for('recipe', recipeId=recipeOfDay._id) }}">
                                 <div class="polaroid-picture">
                                     <img src="{{ url_for('avatar', avatar_image=recipeOfDay.avatar) }}" alt="Polaroid picture of {{ recipeOfDay.name }}">
@@ -283,7 +283,5 @@
 {% endblock %}
 
 {% block custom_script %}
-    <!-- <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/button.js') }}"></script> -->
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 {% endblock %}
