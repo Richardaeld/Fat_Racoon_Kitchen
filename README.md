@@ -77,41 +77,29 @@
 
 # Fat Racoon - Introduction
 <!-- Intro -->
-The Fat Racoon is devoted to helping home cooks provide better meals.<!--to friends, family, and our users--> We provide a compendium of chef Fat_Raccoon's (combination of two chefs) personal recipes along with our user's recipes. 
+The Fat Racoon is devoted to helping home cooks provide better meals. We provide a compendium of chef Fat_Raccoon's (combination of Mrs and Mr. Fat_Raccoon) personal recipes along with our user's recipes. 
 All these recipes can be searched through with our in app search engine. We believe that even without the ideal ingredients on hand, a little extra knowledge or extra seasoning can help any meal become a savory experience. 
-We even go out of our way to provide our new home cooks with some basic cooking lessons in our **lesson** section. The chefs of the Fat Raccoon know the importance of making the best out of what we have on hand and want to 
+We even go out of our way to provide our new home cooks with some basic cooking lessons in our **lesson** section. The chef Fat_Raccoon knows the importance of making the best out of what there is on hand and wants to 
 share that liberating experience with others.
 <!-- About us -->
-The head chefs of the Fat Racoon started as sleep deprived, nocturnal home cooks that would use the, leftover "garbage" from the fridge to make a meal. With practice and study, these meals improved over time, but it started with 
-learning fundamental cooking practices, including how to pair flavors and learning to generalize measurements. The Fat Raccoon's **Lesson** section offers this general cooking knowledge and more to help our new cooks get started. 
-Chef Fat_Raccoon offers a personal insight to a recipe in the recipe's description and ingredients sections. It is important to the Fat Raccoon that new cooks see not every recipe has to be complicated or convoluted. 
+The head chefs of the Fat Raccoon (Mrs. and Mrs. Fat_Racoon) started as sleep deprived, nocturnal home cooks that would use the, leftover "garbage" from the fridge to make a meal. With practice and study, these meals improved over time, 
+but it started with learning fundamental cooking practices, including how to pair flavors and learning to generalize measurements. The Fat Raccoon's **Lesson** section offers this general cooking knowledge and more to help our new cooks 
+get started. Chef Fat_Raccoon offers a personal insight to a recipe in the recipe's description and ingredients sections. It is important to the Fat Raccoon that new cooks see not every recipe has to be complicated or convoluted. 
 We hope this helps others spend their kitchen time wisely and they make the best meals they can. 
 <!-- Community -->
 The Fat Raccoon hopes to facilitate a growing compendium of its user's. The Fat Raccoon currently offers users the ability to search other home cooks by their username but we wish to expand upon this in the future. 
-With this basic structure in place, we at the Fat Raccoon hope to establish a community of home cooks and catalogue their recipes with an intuitive search engine which 
-will be a boon to home cooks everywhere. 
-<!-- The Fat Raccoon also hopes its users see 
-The Fat Racoon wants to help establish a community of home cooks and catalogue their recipes with an intuitive search engine which 
-will be a boon to home cooks everywhere. -->
-<!-- It helps newer cooks see that not every recipe has to be complicated or convoluted.-->
-<!-- The Fat Raccon offers these conventional cooking practice and recipe guidance to help them along the way.  -->
-<!-- Chef Fat_Raccoon's recipes will help newer cooks see that not every recipe has to be complicated or convoluted. -->
-<!-- This can be found in our **lesson** section and the extra information provided within chef Fat_Raccoon's recipe descriptions and ingredients.  -->
-
+With this basic structure in place, we at the Fat Raccoon hope to establish a community of home cooks and catalogue their recipes with an intuitive search engine which will be a boon to home cooks everywhere. 
 <!-- Casual users -->
-Our casual users just searching for a recipe, we offer several different search methods to help them find what they are looking for. These users can search our database by chef, featured ingredient, or recipe name. 
+For our casual users that are only searching for a recipes, we offer several different search methods to help them find what they are looking for. These users can search our database by chef, featured ingredient, or recipe name. 
 The front page also offers other methods for users to browse the Fat Raccoon's recipes, such as: **Lazy Favorites**, **Grandparent Classics**, all of **Chef Fat_Raccoon's Recipes**, and **Featured Ingredient**.
 <!-- Users that create recipes -->
 For our home cooks that are submitting recipes, we offer a place to put in a recipe name, the prep/cook/total time, a picture, a brief recipe description, ingredients, and steps. 
-This allows anyone to easily keep track of recipes and share them with others.Additionally, if the Fat Raccoon finds these recipes appropriate, they can add the tags **Lazy Favorite**, **Grandparent Classic**, or both.
+This allows anyone to easily keep track of recipes and share them with others. Additionally, if the Fat Raccoon finds these recipes appropriate, they can add the tags **Lazy Favorite**, **Grandparent Classic**, or both.
 <!-- Meaning behind cooking -->
 Cooking has more meaning than just preparing food. For many it is a connection to your history or life experiences. We encourage our users to give us a little personal touch to the recipes they submit.
 It's important to the Fat Raccoon's mission to preserve personal and family history through sharing recipes and creating a strong community of home cooks. 
-<!-- meta information in the recipes they submit. 
-Let us help preserve a little of ourselves in a recipe. Its important to us and to those that submitted it. From a family recipe to this is all I could afford 
-in college, let us know! -->
 
-**Disclaimer:** This is a nonprofit student site and has some 3rd party recipes in it. These recipes are used as database information and these recipes are documented as such in their recipe description section. 
+**Disclaimer:** This is a nonprofit student site and has some 3rd party recipes in it. These recipes are used as database information and are documented as external recipes such in their recipe description section. 
 
 # UX
 ## Goals
@@ -119,43 +107,40 @@ in college, let us know! -->
 + I want to find a recipe for dinner. <!-- Testing Random Recipe -->
 + I want to use my smart phone or tablet as a recipe book. <!-- Testing Text Coss Out Function -->
 + I want to find a new chicken dish to cook. <!-- Testing All_Recipe And Recipe_List Pagination-->
-+ I want a place to leave a recipe so I can easily find it later. <!-- Testing Recipe Upload --> <!-- Tests Create and Read from C.R.U.D. -->
++ I want a place to leave a recipe so I can easily find it later. <!-- Testing Recipe Upload -->
 + I want help deciding what to cook for dinner and I like a specific chef's recipes. <!-- Testing Search Chef Name -->
 + I want a easy-to-make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -->
-+ I can't remember the name of a recipe that i liked on the Fat Raccoon and I want to find it again. <!-- Testing Recipe Favorites Function --><!-- Tests edit from C.R.U.D. -->
-+ I want an easy-to-read recipe layout while I'm cooking. <!-- Testing Text Coss Out Function - testing function already satisfied -->
++ I can't remember the name of a recipe that i liked on the Fat Raccoon and I want to find it again. <!-- Testing Recipe Favorites Function -->
++ I want an easy-to-read recipe layout while I'm cooking. <!-- Testing Text Coss Out Function - testing function already satisfied --> <!-- ---------------------------------------remove  -->
 + I lack confidence in my cooking ability and need help. <!-- Testing Lessons Index Cards -->
-+ I've decided I don't like my user bio or avatar anymore and want to change them. <!-- Tests update of user information/avatar --> <!-- Tests update from C.R.U.D. -->
-+ I've uploaded a recipe I don't like anymore and I want to remove it. <!-- Tests for deletion of recipe --><!-- Tests delete from C.R.U.D. -->
-+ I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page. <!-- Tests delete button for favorites/recents in profile --> <!-- Tests edit from C.R.U.D. -->
++ I've decided I don't like my user bio or avatar anymore and want to change them. <!-- Tests update of user information/avatar -->
++ I've uploaded a recipe I don't like anymore and I want to remove it. <!-- Tests for deletion of recipe --><!-- Tests C.R.U.D. -->
++ I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page's **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. <!-- Tests delete button for favorites/recents in profile -->
 
 ### Developer Goals
-+ As a school project, this site was developed using as little 3rd party code as possible (ex. carousel logic was written by developer and Bootstrap's version was not used on purpose). This 
++ As a school project, this application was developed using as little 3rd party code as possible (ex. carousel logic was written by developer and Bootstrap's version was not used on purpose). This 
 was a deliberate choice to help the developer gain a better understanding of how languages such as JS and Python function and not done out of ignorance.
 
-+ I want to showcase my Python abilities.
++ I want to showcase my Python abilities, by:
     + Importing Python libraries (Ex. datetime, random, etc...).
-    + Using Flask's dependencies, such as: flash, render_template, redirect, request, session, and url_for.
-        + Using these dependencies in advanced ways. One such example is using a single Jinja template for multiple functions. This can be seen on:
-            + (Ex. `add_edit_recipe.html`)
-            + (Ex. `base.html`)
-            + (Ex. `recipes.html`)
-    + Using Pymongo (Flask - MongoDB).
+    + Using Flask's dependencies, such as: `flash`, `render_template`, `redirect`, `request`, `session`, and `url_for`.
+    + Using a single Jinja template for multiple functions (Ex. `add_edit_recipe.html` uses the same template to create and modify a recipe).    
+    + Using Pymongo to communicate with MongoDB database.
     + Creating Python validation logic, which:
         + Checks filetype submitted.
         + Checks max and min character length.
         + Checks for allowed characters.
     + Creating a callable function library instead of repeating code.
     + Minimizing function length.
+    + Using a random number generator to randomly select recipes.
     + Using if expressions, that:
         + Replace blank sections (missing database data) with filler templates.
         + Add a specific banner on random recipe.
         + etc....
     + Using for expressions, that:
         + Generate list data for recipe lists, recipe ingredient lists, recipe step lists, etc....
-    + Using a random number generator to randomly select recipes.
 
-+ I want to showcase my JS abilities.
++ I want to showcase my JS abilities, by:
     + Creating carousel JS logic.
     + Creating pagination JS logic.
     + Creating validation JS logic that:
@@ -165,17 +150,17 @@ was a deliberate choice to help the developer gain a better understanding of how
         + Checks for appropriate email suffix.
         + Replace spaces with `_` using a regex.
 
-+ I want to showcase my MongoDB's (NoSQL database) database abilities.
++ I want to showcase my MongoDB's (NoSQL database) database abilities, by:
     + Restricting user searches to specific content.
-        + One example is, only allowing users to search for chef name, featured ingredient, and recipe name.
+        + Only allowing users to search for chef name, featured ingredient, and recipe name from the recipe document.
     + Removing non pertinent data sent to clients from server (if possible). 
-        + Restricted user searches remove recipe ingredient(s), recipe step(s), and recipe description from its returns.
+        + Restricted user searches, remove recipe ingredient(s), recipe step(s), and recipe description from its returns.
     + Searches use operators if applicable.
-        + The `$or` operator is used to allow a list of Python dictionary `ObjectId` to be compiled and sent to MongoDB as a single inquiry.
+        + The `$or` operator is used to allow a list of Python dictionary `ObjectId`s to be compiled and sent to MongoDB as a single inquiry.
     + Creating a new recipe or account document will build upon a prestored blank template instead of creating an entirely new document each time. (This allows for cleaner coded Python to upload content.)
     + Allow users to upload avatars for their profile and recipes.
 
-+ I want to showcase my artistic ability.
++ I want to showcase my artistic ability, by:
     + Using CSS art.
         + Created sticky notes with lifting effect.
         + Created drinks.
@@ -192,50 +177,50 @@ was a deliberate choice to help the developer gain a better understanding of how
 
 ## Client Stories
 + I want to find a recipe for dinner.
-    + I opened the Fat Raccoon's main page. I don't really know what I want so I scrolled down to the bottom of the page. I liked the random recipe I saw on the bottom of the page and decided to use that recipe. 
+    + I opened the Fat Raccoon's main page. I don't know what I want, so I scrolled down to the bottom of the page. I liked the random recipe I saw on the bottom of the page and decided to use that recipe. 
 + I want to use my smart phone or tablet as a recipe book.
-    + I opened the Fat Raccoon's main page and found a recipe I like. I went to the recipe's page to see what I need to make the recipe. I've found that if I click the item's check box, it crosses out the box and the text of the item. 
-    I turned my device off and on, and I found it didn't automatically reset the screen I was on so all the boses are still checked. I think I will keep using my device to easily keep track of what ingredient(s) I still need or what step 
+    + I opened the Fat Raccoon's main page, and I found a recipe I like. I went to the recipe's page to see what I need to make the recipe. I've found that if I click the item's check box, it crosses out the box and the text of the item.
+    I turned my device off and on. I found it didn't automatically reset the screen I was on, so all the boxes are still checked. I think I will keep using my device to easily keep track of what ingredient(s) I still need or what step 
     of the recipe I am on.
 + I want to find a new chicken dish to cook.
-    + I opened the Fat Raccoon's main page. I didn't immediately find a chicken recipe that I liked. I found a button, **Browse by Featured Ingredient!**, and I clicked it. I found the featured ingredient section for chicken 
-    and all the chicken recipes I could want!
+    + I opened the Fat Raccoon's main page, and I didn't immediately find a chicken recipe that I liked. Instead, I found a button, **Browse by Featured Ingredient!**, and I clicked it. I found the **Featured Ingredient** section for 
+    chicken and all the chicken recipes I could want!
 + I want a place to leave a recipe so I can easily find it later.
-    + I opened the Fat Raccoon's main page. I want to have a digital place to keep a recipe, so I created a Fat Raccoon account. The app took me to my newly created profile page. I clicked the **Share Recipe** button
-    and filled out all the recipe's information and even an image. I've discovered that I can edit my recipe from its recipe page in the Fat Raccoon app. I've also found I can favorite my own recipe from its page. If I go to my 
+    + I opened the Fat Raccoon's main page. I want to have a digital place to keep a recipe, so I created a Fat Raccoon account. The app took me to my newly created profile page. I clicked the **Share Recipe** button,
+    and I filled out all the recipe's information including an image. I've discovered that I can edit my recipe from its recipe page in the Fat Raccoon app. I've also found I can favorite my own recipe from its page. If I go to my 
     profile, it is in the **10 Recently Uploaded Recipes** section of my profile so I can easily find my recipe whenever I want it.
 + I want help deciding what to cook for dinner and I like a specific chef's recipes.
-    + My friends, Mrs. Fat Raccoon and her husband, Mr. Fat Raccoon have similar taste in food as me and I want to easily find all of their recipes. I opened the Fat Raccoon's main page and scrolled to the bottom of the 
+    + My friends, Mrs. and Mr. Fat_Raccoon have similar taste in food as me, and I want to easily find all of their recipes. I opened the Fat Raccoon's main page. I scrolled to the bottom of the 
     page where I found a button, **Browse Chef Fat_Raccoon's recipes!**, and I clicked the button. I am now able to see all of the chef Fat_Raccoon's recipes.
-    + My friend has an account on the Fat Raccoon app and I know her/his username name. I open the Fat Raccoon's main page and put my friends username name into the search bar and now I am able to see all of my friend's
+    + My friend has an account on the Fat Raccoon app and I know her/his username name. I opened the Fat Raccoon's main page and put my friends username into the search bar and now I am able to see all of my friend's
     uploaded recipes.
-    + I opened the Fat Raccoon's main page and clicked on **Recipes** in the navigation bar. I found a recipe on the recipe page that I liked, however it wasn't made by the chef Fat_Raccoon! I did find that 
-    if I clicked on the chef's name under the picture of their recipe it takes me to all the recipes submitted by this chef.
+    + I opened the Fat Raccoon's main page, and I clicked on **Recipes** in the navigation bar. I found a recipe on this page that I liked, however it wasn't made by the chef Fat_Raccoon! I did find that 
+    if I clicked on the chef's name, under the picture of their recipe, it takes me to all the recipes submitted by this chef.
 + I want an easy-to-make recipe.
-    + It's been a long day, I'm tired, and want an easy recipe to make for dinner. I opened the Fat Raccoon's main page and scrolled to the bottom of the page and found a button, **Browse our Lazy Favorites!**. I clicked this 
-    button and I found numerous recipes that don't require much effort.
+    + It's been a long day, I'm tired, and I want an easy-to-make recipe for dinner. I opened the Fat Raccoon's main page, and I scrolled to the bottom of the page. I found a button, **Browse our Lazy Favorites!**, and I clicked this 
+    button. I found numerous recipes that don't require much effort.
 + I can't remember the name of a recipe that i liked on the Fat Raccoon and I want to find it again.
-    + I opened the Fat Raccoon's main page and realized that I don't remember the name of the recipe I was looking at last night. I remembered I was logged in, so I logged into my
+    + I opened the Fat Raccoon's main page, and I realized that I don't remember the name of the recipe I was looking at last night. I remembered I was logged in, so I logged into my
     Fat Raccoon account. I was taken to my profile page where I easily found the recipe I was looking at last night in my **10 Recently Viewed Recipes** section.
-    + I opened the Fat Raccoon's main page and realized that I don't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account and I'm taken 
-    to my profile page. I don't see the recipe in my **10 Recently Viewed Recipes**, however I did favorite the recipe and I easily find the recipe in my **10 Recently Favorited Recipes**
-    section
+    + I opened the Fat Raccoon's main page, and I realized that I don't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account, and I'm taken 
+    to my profile page. I don't see the recipe in my **10 Recently Viewed Recipes**, however I did favorite the recipe and easily found it in my **10 Recently Favorited Recipes**
+    section.
     + I opened the Fat Raccoon's main page and realized that I don't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account and I'm taken 
     to my profile page. I don't see the recipe in my **10 Recently Viewed Recipes**. I also did not find the recipe in my **10 Recently Favorited Recipes** section.
     I clicked on my **10 Recently Favorited Recipes** header and I'm taken to a list of all my favorite recipes. I found the recipe there.
 + I lack confidence in my cooking ability and need help.
-    + I opened the Fat Raccoon's main page and I realized I'm completely outside of my comfort zone. I wanted to try a recipe but every time I cook, something is terrible 
+    + I opened the Fat Raccoon's main page and I realized I'm completely outside of my comfort zone. I wanted to try a recipe, but every time I cook, something is terrible 
     about the experience. I saw the **Lesson** section in the navigation bar and decided to give it a shot. I found numerous helpful tips that gave me the confidence to 
     try a recipe that looked good.
-+ I've decided I don't like my user bio or avatar anymore and want to change them.
++ I've decided that I don't like my user bio or avatar anymore and I want to change them.
     + I logged into my Fat Raccoon account and I'm taken to the profile page. I clicked on the **Update Profile** button. I chose a new image from my pc and updated my bio to be a better representation of myself.
      I also had to put in my current password before the form allowed me to submit it. I submitted the form and was taken back to my profile page where I saw the updated avatar and bio.
 + I've uploaded a recipe I don't like anymore and I want to remove it.
-    + I logged into my Fat Raccoon account and I'm taken to the profile page. I went to my recipe's page that I wanted to delete. I clicked the **Delete Recipe** button. I was prompted to type in the recipe's name.
-    I typed in the recipe's name and the delete button turned green. I deleted the recipe. I'm taken back to my profile page where the app let me know I've deleted the recipe.
-+ I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page.
-    + I logged into my Fat Raccoon account and I'm taken to the profile page where I am reminded of my error on my **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. When I clicked on the recipe 
-    the app notified me that the recipe has been deleted. I saw that a button next to the recipes on **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** looks like a delete icon. I click this button and the 
+    + I logged into my Fat Raccoon account and I'm taken to the profile page. I went to my recipe's page that I wanted to delete. I clicked the **Delete Recipe** button, and I was prompted to type in the recipe's name.
+    I typed in the recipe's name, and the delete button turned green. I deleted the recipe. I'm taken back to my profile page where the app lets me know I've deleted the recipe.
++ I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page's **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections.
+    + I logged into my Fat Raccoon account and I'm taken to the profile page where I am reminded of my error in my **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. When I clicked on the recipe 
+    the app notified me that the recipe has been deleted. I saw that a button next to the recipes on **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** looks like a delete icon. I clicked this icon and the 
     recipe is removed from my favorites.
 
 # Design Choices
@@ -250,7 +235,7 @@ was a deliberate choice to help the developer gain a better understanding of how
 + Both login and create account modals are accessible from any non-logged-in page.
 + Form validation (Python and JS) prevents users from submitting improper form details and helps improve their submittion experience.
     + All input's use JS and Python as a duel-layered check before allowing upload.
-    + These checks look at characters, character length, and blank space input.
+    + These checks look at characters, character length, blank space input, and more.
     + A regex changes spaces to `_` for password, username, and email inputs.
     + Email validation:
         + Email validation is limited because of suffixes allowed.
@@ -261,9 +246,9 @@ was a deliberate choice to help the developer gain a better understanding of how
 + Index card carousel:
     + Recipes added to index cards for a home-made look.
     + Carousel offers three randomly selected recipes per featured ingredient from the head chef of the site.
-    + Helps give users recipe options based on the featured ingredient they want to cook with.
+    + Gives recipe options based on the featured ingredient a user wants to cook with.
 + Grandparent Classic Polaroids:
-    + Recipe images are used  with a Polaroid picture design. This design is used to make users feel the nostalgia of a recipe their grandparents might have prepared.
+    + Recipe images are used with a Polaroid picture design. This design is used to make users feel the nostalgia of a recipe their grandparents might have prepared.
     + The recipe's name is added to the bottom of the picture to let users know what recipe they are viewing.
 + Random recipe section:
     + Quick browsing links are provided to give users ample ideas for cooking.
@@ -273,57 +258,57 @@ was a deliberate choice to help the developer gain a better understanding of how
 
 ## Lessons
 + Index cards:
-    + A simple comment is added to the cards to let users know  that the cards are clickable.
-        + Each index card be flipped over with most of them containing information on both sides.
-    + The information provided will give new cooks some hints and tricks at getting started in the kitchen and making the best of what they have on hand.
+    + A comment is added to each clickable card to notify users they can click on the card for an effect.
+        + Each clickable index card, can be flipped over with most of them containing information on both sides.
+    + The information provided on the index cards will give new and experienced cooks some kitchen hints and tricks.
 
 ## Profile
 + Profile header buttons:
-    + Two buttons below the navigation bar allow users to either: share a new recipe  or update their profile.
-+ Users can clearly see their own bio and avatar image. This is a way to give users a feeling of personalization.
+    + Two buttons below the navigation bar allow users to either: share a new recipe or update their profile.
++ Users can clearly see their own bio and avatar image. This gives users a feeling of personalization.
 + Users have access to their entire uploaded or favorite recipe history with a single click of said items header.
     + Users will always be able to see their 10 recently uploaded/favorited/viewed in their respective containers.
     + This allows users to keep track of recipes they want to return to.
 
 ## Recipe
-+ Logged in recipe creator:
++ If logged in and the recipe creator:
     + Can modify or delete that recipe. By using its respective header button.
-+ Logged in user:
-    + Can favorite a recipe so they can easily return to it later.
-+ Clearly displays avatar image so users can see what dish looks like (or displays a defaut blank).
++ If logged in:
+    + User can favorite a recipe so they can easily return to it later.
++ Clearly displays avatar image so users can see what the dish looks like (or displays a defaut blank).
 + All general recipe information is displayed and easily viewed.
-+ Recipe's ingredients and steps:
++ A recipe's ingredients and steps:
     + Each labeled in their own lists.
     + Each item has its own check box.
     + Users can click on any part of the item and it will check the box and cross out the item clicked.
 
 ## All Recipes
 + Lists entire database of recipes by their featured ingredient.
-+ When a featured ingredient contains more than 5 recipes the list updates to have pagination at the bottom of the featured ingredient container.
-+ Each featured ingredient container is given a header of the featured ingredient name so users can easily understand what is in each container.
-+ Each listed recipe displays its name and combined cook and prep time to help users decide what they want to make (at smaller resolutions its just a recipe name).
-+ Users can click on featured ingredient header to go to a page containing only that featured ingredients.
++ When a featured ingredient container houses more than five recipes the list updates to integrate pagination at the bottom of the featured ingredient container.
++ Each featured ingredient container is given a header of the featured ingredient's name so users can easily understand what is in each container.
++ Each listed recipe displays its name and combined cook and prep time to help users decide what they want to make (at smaller resolutions it's just a recipe name).
++ Users can click on the featured ingredient header to go to a page containing only those featured ingredients.
 
 ## Recipe List
-+ When a featured ingredient contains more than 5 recipes the list updates to have pagination at the bottom of the featured ingredient container.
-+ Each listed recipe displays its name and combined cook and prep time to help users decide what they want to make (at smaller resolutions its just a recipe name).
++ When a featured ingredient container houses more than five recipes the list updates to integrate pagination at the bottom of the featured ingredient container.
++ Each listed recipe displays its name and combined cook and prep time to help users decide what they want to make (at smaller resolutions it's just a recipe name).
 
 ## Add Edit Recipes
-+ Uses a plain form that is intentionally more blandless than the rest of the page. This is to give users a more serious feeling when creating and editing recipes.
-+ Users can update every part of a recipe except the boolean tags of **Lazy Favorite** and **Grandparent Classic** (which is reserved for the head chef of the site to make this decision).
++ Uses a plain form that is intentionally more bland than the rest of the application. This gives users a more serious feeling when creating and editing recipes.
++ Users can update every part of a recipe, except the boolean tags of **Lazy Favorite** and **Grandparent Classic** (which is reserved for the head chef of the site to make this decision).
 + There is basic (Python + JS) validation:
     + The image uses JS to check its file size and Python to check its file type.
     + All other input and textareas use JS and Python as a duel-layered check before allowing upload.
-    + These checks look at characters, character length, and blank space input (ingredients/steps).
+    + These checks look at characters, character length, and/or blank space input.
 + Total cook time updates automatically as prep and cook times are adjusted.
 + Recipe ingerdients and recipe steps:
-    + Each uses a JS add/remove set of buttons for users to create and remove boxes as they need.
-    + Each box is numbered to help users keep track of the number they are at.
-    + The header of recipe ingredient or recipe steps will keep an active count of visible boxes so users know how many boxes they have created without scrolling down.
+    + Both uses a set of JS add/remove buttons for users to create and remove boxes as they need.
+    + Each input/textarea box is numbered to help users keep track of the number they are at.
+    + The header both sections will keep an active count of created boxes so users know how many boxes they have created without the need to scroll down.
     + If a user submits a blank entry box (including spaces) the Python validation will remove said box(s).
 
 ## Edit User Info
-+ Uses a plain form that is intentionally more blandless than the rest of the page. This is to give users a more serious feeling when editing their profile.
++ Uses a plain form that is intentionally more bland than the rest of the application. This gives users a more serious feeling when editing their profile.
 + Users are able to update their password, username, email, avatar, and bio.
 + There is basic (Python + JS) validation:
     + The image uses JS to check its file size and Python to check its file type.
@@ -332,25 +317,24 @@ was a deliberate choice to help the developer gain a better understanding of how
     + A regex changes spaces to `_` for password, username, and email inputs.
     + Email validation:
         + Email validation is limited because of suffixes allowed.
-            + Currently checks for the email suffixes `.com`, `.edu`, `.net`, `.org`.
-            + Currently checks for an `@`.
-    + Additional validation for new password creation:
-        + Uses Python and JS to check that both typed passwords are identical.
-+ Users wishing to create a new password, must click on the **Create New Password** button. This keeps users from accidently invalidating the form by starting new password validation. This 
+            + Currently it checks for the email suffixes `.com`, `.edu`, `.net`, `.org`.
+            + Currently it checks for an `@`.
+    + Creating a new password uses validation that checks both new password and confirm new password are identical.
++ Users wishing to create a new password, must click on the **Create New Password** button. This keeps users from accidently invalidating the form by starting the new password validation. This 
 is addressed in **Scalability** and **Other Problems**.
 
 ## Search Bar Returns
 + This page is used to return three different search type results:
     + Returns user searches from search bar.
-        + This search is a restricted to recipe name, feature, and chef.
-        + This same return functions with the browse button, **Browse Chef Fat_Racoon's Recipes**.
+        + This search is restricted to only searching for recipe name, feature, and chef.        
+        + This search is also used with the **Browse Chef Fat_Racoon's Recipes** button.
         + This search does not include recipe ingredients, recipe steps, or recipe description of the requested documents. This is to lesson the burden on the server and the clients internet usage.
     + Returns the profile page's recently **10 Recently Favorited Recipes**, and **10 Recently Viewed Recipes** searches.
-        + This search uses the `$or` operator to find all the recipes detailed the aforementioned sections in one clean search instead of multiple searches.
+        + This search uses the `$or` operator to find all the recipes detailed in the aforementioned sections in one clean search instead of multiple searches.
     + Returns the profile page's **10 Recently Uploaded Recipes** searches.
         + This search does not include recipe ingredients, recipe steps, or recipe description of the requested documents. This is to lesson the burden on the server and the clients internet usage.
-    + Returns the index browse button searches for **Browse our Grandparent Classics** and **Browse our Lazy Favorites**.
-        + This search works only for boolean value results.
+    + Returns the browse button searches for **Browse our Grandparent Classics** and **Browse our Lazy Favorites**.
+        + This search is only capable of looking for boolean values.
 
 ## Page Performance
 + The Fat Raccoon app has a responsive design across all devices.
@@ -362,8 +346,8 @@ is addressed in **Scalability** and **Other Problems**.
 ### Wireframe
 + Each wireframe contains curly brackets that give a description of its contents and what the filler (missing database data) content should be.
 ![Wireframe of the index page](static/readme/wireframe/index-page-large.png "Wireframe of the index page")
-+ [Balsamiq](https://balsamiq.com/) was used for the planning process.
-+ Wireframes were made for all predetermined size variations of the webpage.
++ [Balsamiq](https://balsamiq.com/) was used for the planning process and wireframe creation.
++ Wireframes were made for all predetermined size variations of the application.
 + Wireframes were made for the models to streamline their design. This also allowed for them to be shown without over complicating the primary page design.
 + [Click here to view all wireframes associated to this project.](static/readme/wireframe "Location of wireframes")
 
@@ -375,8 +359,8 @@ is addressed in **Scalability** and **Other Problems**.
 
 ## Scalability
 + Validation (two options for improvement):
-    + Improve current validation system by:
-        + Unifing Python and JS validation for images. This would improve the UX when a user tried to upload a incorrect image filetype.
+    + Option one, improve the current validation system.
+        + Unify Python and JS validation for images. This would improve the UX when a user tries to upload a incorrect image filetype.
         + Improve email validation to accept a wider range of email suffixes (ex. regional suffix, .uk, .fr, .de). This would allow for a larger audiance of users.
         + Improve JS validation to use compartmentalized validation instead of the current prepackage system.
             + These classes could be applied independently of one another, and could have their expected values set in them.
@@ -384,15 +368,15 @@ is addressed in **Scalability** and **Other Problems**.
                 + (ex. charMax-100)
                 + (ex. charMax-400)
             + This type of dynamic validation system would improve the overall readability and function of the JS validation code.
-    + Update to a validation system that solely validates in Python.
+    + Option two, update to a validation system that only uses Python.
         + This would make the forms more secure.
-        + Python would be able to check if an email is real and remove the need to check for suffix. (ex. WTForms)
-        + Python could be used to resize an image uploaded (ratio, resolution, and file size). (Ex. Python Pillow)
-        + JS could be used for a visual cue to missing data.
-        + This would reduce JS code and the complexity of the code.
-+ Adding user selectable filters to search bar. This would ensure a better more efficient user search.
-+ Create a user comment form for the recipes. This would give a better sense of community for users.
-+ Create a user rating system for recipes. This would give a better sense of community for users.
+        + Python would be able to check if an email is real and this would remove the need for a suffix check. (ex. WTForms)
+        + Python could be used to resize an uploaded image and not just refuse one. (Ex. Python Pillow)
+        + The role of JS could be reduced to visual cues for what data is expected to be input.
+            + This would reduce JS code and the complexity of the code.
++ Adding user selectable filters to the search bar. This would ensure a better more efficient user search.
++ Create an user comment form for the recipes. This would give a better sense of community for users.
++ Create an user rating system for recipes. This would give a better sense of community for users.
 + Improve search engine to accept a **space** as an `_` to help users more easily find chefs with a single or multiple "space(s)" in their name.
 
 # Technology Languages
@@ -405,8 +389,8 @@ is addressed in **Scalability** and **Other Problems**.
     + PythonDNS - Allows for DNS data transfer.
     + Werkzeug - Encrypts data as it is sent between the user and server.
     + Datetime - Allows Python to take a date/time stamp.
-    + Random - Allows a for a random number generator.
-+ MongoDB - NoSQL database that application communicates with and stores information on.
+    + Random - Allows for a random number generator.
++ MongoDB - NoSQL database that the application communicates with and stores information on.
 
 # Testing
 ## Developer Testing Specifications
@@ -1035,6 +1019,17 @@ is addressed in **Scalability** and **Other Problems**.
         + Originally tried using `<svg><polygon></svg>`, however this would not hold or duplicate an acceptable `repeating-linear-gradient`.
     + Thought(s):
         + Found solution at [MDN using a clip-path:polygon](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path).
++ If a user has over ten favorited recipes then they might not be able to delete a recipe from their profile's favorite list.
+    + Caused by:
+        + Having over ten favorite recipes and wanting to remove a recipe that's outside the **10 Recently Favorited Recipes** ten recipe ceiling.
+    + Attempted Fix(s):
+        + None, discovered to late in project to attempt a fix.
+    + Thought(s):
+        + The original fix, added the ability to remove recipes from the users favorite list while they were on their profile page. This was added to allow users to remove recipes that have been deleted and would not be 
+        otherwise removable from their favorites list.
+        + The narrow scoped fix doesn't take into consideration if a user has over ten favorites and one of the original favorited recipes was deleted.
+        + Expanding up on the Jinja template `search_bar_returns.html` to allow removal of a favorite recipe would be a fix for this issue.
+
 
 # Deployment
 ## Setup Structure on GitPod for Developers
@@ -1257,17 +1252,19 @@ is addressed in **Scalability** and **Other Problems**.
 
 ### References and Ideas
 + [Bootstrap](https://getbootstrap.com/)
-    + Framework used to help speed up development and provide a better overall UX.
+    + A framework used to help speed up development and provide a better overall UX.
 + [Flask](https://flask.palletsprojects.com/en/1.1.x/)
     + A basic guide to the current version of Flask.
++ [MongoDB](https://docs.mongodb.com/manual/)
+    + A basic guide to MongoDB's syntax and function.
 + [MDN Web Docs](https://developer.mozilla.org/en-US/)
     + Invaluable source of information about JavaScript, HTML, and CSS.
 + [PyMongo](https://pymongo.readthedocs.io/en/stable/)
     + A basic guide to the current version of PyMongo
 + [Stack Overflow](https://stackoverflow.com/)
-    + Great souce of information for finding a starting place and direction to research.
+    + A great souce of information for finding a starting place and direction to research.
 + [TestLodge](https://blog.testlodge.com/how-to-write-test-cases-for-software-with-sample/)
-    + Used to help formulate test syntax structure.
+    + Used to help formulate the test syntax structure.
 + [W3Schools](https://www.w3schools.com/)
     + Extremely helpful for explaining base HTML, CSS, and JavaScript principles.
 + [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
