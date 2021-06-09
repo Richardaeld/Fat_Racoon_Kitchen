@@ -39,9 +39,6 @@ function selectLinks (link) {
     },{passive:true});
 }
 
-
-
-
 // ---- Apply Random Avatar Name to Avatar Image
 // Adds randomly generated avatar name if new image present
 document.getElementById("custom-button").addEventListener("click", function() {
@@ -51,7 +48,6 @@ document.getElementById("custom-button").addEventListener("click", function() {
         document.getElementById("avatar_file_valid").value = true;
     }
 });
-
 
 // ---- Validation ----
 // Compares these id targets: passwordCheck1 and passwordCheck2 and adds/removes invalid commit
