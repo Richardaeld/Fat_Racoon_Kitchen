@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Reenie+Beanie&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
 /* white == faf9f6 *//* black == 333 */
 /* ------------------------------------------------------- art and background section  ---------------------------------------------------------------- */
 /* ---------------------------------------- gradient Patterns  */
@@ -415,10 +414,6 @@ hr {
     width: 50%;
     border-top: 2px solid #333;
 }
-/* Top header (that contains logo) bottom Strong border  */
-header {
-    border-bottom: 2px solid rgba(226, 14, 14, .5);
-}
 
 input {
     background-color: #faf9f6;
@@ -430,6 +425,10 @@ input {
 
 .not-clickable {
     cursor: context-menu;
+}
+/* Top header's (that contains logo) bottom border  */
+header {
+    border-bottom: 2px solid rgba(226, 14, 14, .5);
 }
 /* ---------------------------------------- Various container sizes */
 .xl-content-height {
