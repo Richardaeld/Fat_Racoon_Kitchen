@@ -56,10 +56,10 @@
 + [Other Problems](#other-problems)
 
 [Deployment](#deployment)
++ [Deploy Clone in GitHub - GitPod](#deploy-clone-in-github---gitpod)
 + [Setup structure on GitPod for Developers](#setup-structure-on-gitpod-for-developers)
     + [Flask](#flask)
     + [Pymongo](#pymongo)
-+ [Deploy Clone in GitHub - GitPod](#deploy-clone-in-github---gitpod)
 + [Heroku Deployment](#heroku-deployment)
 + [Database Build](#database-build)
     + [Database Structure](#database-structure)
@@ -375,8 +375,8 @@ is addressed in **Scalability** and **Other Problems**.
         + The role of JS could be reduced to visual cues for what data is expected to be input.
             + This would reduce JS code and the complexity of the code.
 + Adding user selectable filters to the search bar. This would ensure a better more efficient user search.
-+ Create an user comment form for the recipes. This would give a better sense of community for users.
-+ Create an user rating system for recipes. This would give a better sense of community for users.
++ Create a user comment form for the recipes. This would give a better sense of community for users.
++ Create a user rating system for recipes. This would give a better sense of community for users.
 + Improve search engine to accept a **space** as an `_` to help users more easily find chefs with a single or multiple "space(s)" in their name.
 
 # Technology Languages
@@ -452,7 +452,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. If any links are broken, record:
     + The test name, recipe name, and a brief description of the problem.
 1. If any recipe displays an incorrect banner, record:
-    + The test name, recipe name, banner anticipated, and banner displayed.
+    + The test name, recipe name, banner anticipated, banner displayed, and a brief description of the problem.
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
@@ -519,7 +519,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. Repeat steps 2, 6, and 7 approximately one time.
 
 #### Document Result(s):
-1. If an user account was created to fullfill the test's requirments, record:
+1. If a user account was created to fullfill the test's requirments, record:
     + The username, email address of the account, and that this is a test account.
 1. If any recipe dummy data was created to fullfill the test's requirments, record:
     + The names of all of the recipes created, the username of the account that created the recipes, and that they are all dummy data.
@@ -535,7 +535,7 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I want a place to leave a recipe so I can easily find it later. <!-- Testing Recipe Upload --> <!-- Tests Create and Read from C.R.U.D. -->
++ I want a place to leave a recipe so I can easily find it later. <!-- Testing Recipe Upload -->
 
 #### Expectation(s):
 1. The recipe uploads without error.
@@ -568,7 +568,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. Repeat steps 9 - 12.
 
 #### Document Result(s):
-1. An user account was created to fullfill the test's requirments, record:
+1. A user account was created to fullfill the test's requirments, record:
     + The username, email address of the account, and that this is a test account.
 1. If any form of validation fails, record:
     + The test name, any input/textarea that incorrectly accepted or refused information, what form of validation failed (type of validation and if was JS and/or Python), if it was a new recipe or edited recipe, and a brief description of the problem.
@@ -655,7 +655,7 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I can't remember the name of a recipe that i liked on the Fat Raccoon and I want to find it again. <!-- Testing Recipe Favorites Function --><!-- Tests edit from C.R.U.D. -->
++ I can't remember the name of a recipe that i liked on the Fat Raccoon and I want to find it again. <!-- Testing Recipe Favorites Function -->
 
 #### Expectation(s):
 1. The favorite icon responds appropriately to recipe status of favorite and unfavorite.
@@ -689,10 +689,10 @@ is addressed in **Scalability** and **Other Problems**.
 1. Check for the appropriate recipe(s).
 
 #### Document Result(s):
-1. An user account was created to fullfill the test's requirments, record:
+1. A user account was created to fullfill the test's requirments, record:
     + The username, email address of the account, and that this is a test account.
 1. if Favorite status or icon is displayed incorrectly, record:
-    + The recipe name, path choosen to the recipe, and a brief description of the problem.
+    + The test name, recipe name, path choosen to the recipe, and a brief description of the problem.
 1. If click box for changing favorite status does not respond correctly, record:
     + The recipe name and a brief description of the problem.
 1. If any content has bad UX, record:
@@ -723,9 +723,9 @@ is addressed in **Scalability** and **Other Problems**.
 
 #### Document Result(s):
 1. If text is present on both sides of the index card and **More on back-->** is missing from the face, record:
-    + The header of the index card and a brief description of the problem.
+    + The test name, the header of the index card, and a brief description of the problem.
 1. If any index card has poor UX, record:
-    + The poor UX, the side it was experienced on, the header of the index carsd, the resolution, browser/device used, and a brief description of the problem.
+    + The test name, the side it was experienced on, the header of the index card, the resolution, browser/device used, and a brief description of the problem.
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
@@ -736,11 +736,11 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I've decided I don't like my user bio or avatar anymore and want to change them. <!-- Tests update of user information/avatar --> <!-- Tests update from C.R.U.D. -->
++ I've decided I don't like my user bio or avatar anymore and want to change them. <!-- Tests update of user information/avatar -->
 
 #### Expectation(s):
-1. An account can be logged out and logged back in with a new password.
-1. An user account is created and modified.
+1. A Fat Raccoon account can be logged out and logged back in with a new password.
+1. A user account can be created and modified.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
@@ -752,10 +752,9 @@ is addressed in **Scalability** and **Other Problems**.
 1. Click on **Login** on the navigation bar.
 1. Click on the **Create Account** tab.
 1. Fill out all the appropriate information and submit said information.
-1. Log into previously created account.
 1. Click on the **Update Profile** button.
-1. Click the **Create New Password** button.
-1. Upload an avatar, enter a bio, the current password, an email, a name and a new password in both new password and confirm new password. Then submit all the data.
+1. Click on the **Create New Password** button.
+1. Upload an avatar, enter a bio, the current password, an email, a username and a new password in both new password and confirm new password. Then submit all the data.
 1. View all submitted data and check for accuracy.
 1. Click on **Logout** on the navigation bar.
 1. Click on **Login** on the navigation bar and enter new login information.
@@ -764,12 +763,12 @@ is addressed in **Scalability** and **Other Problems**.
 1. View all submitted data and check for accuracy.
 
 #### Document Result(s):
-1. An user account was created to fullfill the test's requirments, record:
+1. A user account was created to fullfill the test's requirments, record:
     + The current username and email address of the account (labeled as current), the previous username and email address (labeled as previous), and that this is a test account.
 1. If any user profile content does not update properly, record:
-    + The header of the content that does not update correctly and a brief description of the problem.
+    + The test name, the header of the content that does not update correctly and a brief description of the problem.
 1. If unable to log back into account, record:
-    + Orignial username , original email, new username, new email, and a brief description of the problem.
+    + The test name, the current username and email address of the account (labeled as current), the previous username and email address (labeled as previous), and a brief description of the problem.
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
@@ -780,10 +779,11 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I've uploaded a recipe I don't like anymore and I want to remove it. <!-- Tests for deletion of recipe --><!-- Tests delete from C.R.U.D. -->
++ I've uploaded a recipe I don't like anymore and I want to remove it. <!-- Tests for deletion of recipe --><!-- Tests C.R.U.D. -->
 
 #### Expectation(s):
 1. A recipe is created, viewed, edited, and deleted.
+1. A missing recipe message is flashed when a user tries to view a deleted recipe.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
@@ -795,7 +795,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. Click on **Login** on the navigation bar.
 1. Click on the **Create Account** tab.
 1. Fill out all the appropriate information and submit said information.
-1. Once the **Profile** page opens, click on **Share Recipe**.
+1. Once the **Profile** page opens, click on the **Share Recipe** button.
 1. Fill out all the appropriate information, including an avatar, and submit the new recipe.
 1. Check over newly created recipe for all appropriate information.
 1. Favorite the recipe.
@@ -803,19 +803,21 @@ is addressed in **Scalability** and **Other Problems**.
 1. Enter all new information, including a new avatar, and submit the updated recipe.
 1. Check over the newly edited recipe for all updated information.
 1. Click the **Delete Recipe** button.
-1. Enter recipe's name and click **delete** button.
-1. Click on the deleted recipe's name in the **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes**.
+1. Enter recipe's name and click the modal's **delete** button.
+1. Once the **Profile** page opens, click on the deleted recipe's name in the **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes**.
 1. The application should prompt you with the response, "Sorry this recipe has been removed".
 
 #### Document Result(s):
-1. An user account was created to fullfill the test's requirments, record:
+1. A user account was created to fullfill the test's requirments, record:
     + The username, email address of the account, and that this is a test account.
 1. If the recipe created was not viewable, record:
-    + The recipe name and a brief description of the problem.
+    + The test name, recipe name and a brief description of the problem.
 1. If the recipe did not update properly, record:
-    + The recipe name, the content that didnt update correctly, and a brief description of the problem.
+    + The test name, recipe name, the content that didnt update correctly, and a brief description of the problem.
 1. If the recipe did not delete properly, record:
-    + The recipe name and a brief description of the problem.
+    + The test name, recipe name and a brief description of the problem.
+1. If the missing recipe message did not flash, record:
+    + The test name, recipe name, and a brief description of the problem.
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
@@ -826,7 +828,7 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page. <!-- Tests delete button for favorites/recents in profile --> <!-- Tests edit from C.R.U.D. -->
++ I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page. <!-- Tests delete button for favorites/recents in profile -->
 
 #### Expectation(s):
 1. The button that removes a recipe from **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** functions properly.
@@ -847,22 +849,22 @@ is addressed in **Scalability** and **Other Problems**.
 1. Once the **Profile** page opens, click on the **Share Recipe** button.
 1. Fill out all the appropriate information, including an avatar, and submit the new recipe.
 1. Favorite this recipe.
-1. Go to the **Profile** page and click the **Share Recipe** button.
+1. Go to the **Profile** page and click on the **Share Recipe** button.
 1. Fill out all the appropriate information, including an avatar, and submit another new recipe.
 1. Favorite this recipe.
 1. Repeat steps 8 - 10, five times.
 1. Delete a recipe from these newly created recipes.
 1. Click on the deleted recipe's name in **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** and be sure the missing recipe message flashes.
-1. Removes the recipe from **10 Recently Favorited Recipes** and again on **10 Recently Viewed Recipes**.
+1. Removes the recipe from **10 Recently Favorited Recipes** and again on **10 Recently Viewed Recipes** using the remove icon.
 1. Check to be sure the appropriate recipes were deleted from the **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** lists.
 
 #### Document Result(s):
-1. An user account was created to fullfill the test's requirments, record:
+1. A user account was created to fullfill the test's requirments, record:
     + The username, email address of the account, and that this is a test account.
 1. Recipe dummy data was created to fullfill the test's requirments, record:
-    + The names of all of the recipes created, the username of the account used to create the recipes, which recipes were deleted by the tester, and that these are all dummy data.
-1. If the remove recipe button in **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** does not function properly, record:
-    + The recipe name, the account username, screen resolution, browser/device, and a brief description of the problem.
+    + The testname, the names of all of the recipes created, the username of the account used to create the recipes, which recipes were deleted by the tester, and that these are all dummy data.
+1. If the remove recipe icon in **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** does not function properly, record:
+    + The test name, recipe name, the account username, screen resolution, browser/device, and a brief description of the problem.
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
@@ -899,31 +901,32 @@ is addressed in **Scalability** and **Other Problems**.
 
 # Bugs and Other Problems
 ## Previous Bugs
-+ An improper variable was passed into the Flask redirect route, addfavorite. This would cause Flask to send user to an error page.
++ A recipe page would return an error page if refreshed.
     + Caused by:
         + A user refreshing the recipe page after changing the recipes favorite status.
     + Fix:
-        + Created a Python function, check_for_dups to check boolean status even in refresh.
+        + Created a Python function, `check_for_dups`, to check boolean status of favorite (even in refresh).
+        + Now instead of returning an error page it changes the favorite status of the recipe.
 + Flask was generating a 504 gateway timeout error.
     + Caused by:
         + A `while` loop not breaking correctly.
     + Fix:
-        + Added a missing `len()` function changing a string value into a comparable int value.
-+ Carousel would post improper amount of items on screen.
+        + Added a missing `len()` function. This changed a string value into a comparable int value.
++ Carousel would post incorrect amount of index cards the on screen.
     + Caused by:
-        + Changing screen width resolution size.
+        + Changing screen width or resolution size.
     + Fix:
         + The carousel's 'memory' array had to reset each time the screen resolution changed.
-+ Corner of napkin CSS art was a incorrect size in the Safari browser.
++ Corner of the napkin CSS art was an incorrect size in the Safari browser.
     + Caused by:
         + A missing vendor extension.
     + Fix:
-        + Had to add `-webkit-clip-path` for Safari browser.
+        + Had to add `-webkit-clip-path` for the Safari browser.
 + Index card CSS art had jagged edges after `transform: rotateY(180deg)` was applied.
     + Caused by:
         + A missing vendor extension.
     + Fix:
-        + A recommended line of code -webkit-backface-visibility:hidden [from stackoverflow](https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome).
+        + A recommended line of code, `-webkit-backface-visibility:hidden` [from stackoverflow](https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome).
 + Heroku would not upload correctly.
     + Caused by:
         + GitPod incorrectly creating the Procfile.
@@ -931,20 +934,20 @@ is addressed in **Scalability** and **Other Problems**.
         + Adding the missing space after the colon in the Procfile.
 + Updating (editing) a recipe would create a new recipe.
     + Caused by:
-        + Forms having the same Flask route.
+        + Forms having the same Flask route and relying on an `if` statement to sort them properly.
     + Fix:
         + Created an additional route for updating a recipe, so both create and update each had separate routes.
 + Email's JS validation wouldn't validate.
     + Caused by:
-        + **Type: email** was preventing the regex from functioning properly.
+        + `type: email` was preventing the regex from functioning properly.
     + Fix:
-        + Changing the type from email to text. 
+        + Changing the `type: email` to `type: text`. 
 + Login/create modal would only function on `index.html`.
     + Caused by:
         + The model was only written on `index.html`.
     + Fix:
         + Login/create modal was added to `base.html` and removed from `index.html`.
-+ Original search bar would display on a separate line below the navigation bar when at device's resolution was at tablet or smaller responsiveness levels. 
++ Original search bar would display on a separate line below the navigation bar when resolution was at tablet responsiveness level or smaller. 
     + Caused by:
         + Unknown.
     + Fix:
@@ -965,7 +968,7 @@ is addressed in **Scalability** and **Other Problems**.
         + Different vendor prefixes.
     + Thought(s):
         + Uncertain how to fix this for Safari browsers
-+ `sticky-note-right`'s pseudo-element (`:before`) have a `box-shadow` that extends over the sticky note on Safari browsers.
++ `sticky-note-right`'s pseudo-element (`:before`) has a `box-shadow` that extends over the sticky note on Safari browsers.
     + Caused by:
         + A sticky note container being to tall.
     + Attempted fix(s):
@@ -974,20 +977,20 @@ is addressed in **Scalability** and **Other Problems**.
         + Problem disappeared after HTML structure was rewritten to make proper use of Bootstrap's `container` and `container-fluid` classes.
 + Sticky note's pseudo-element(s) have a `box-shadow` that occasinally displays its transparent body.
     + Caused by:
-        + Containers that are too tall, too wide too short, and too thin.
+        + Containers that are too tall, too wide, too short, and/or too thin.
     + Attempted fix(s):
         + Containers with a minimum and maximum base size were created (`<size>-content-height`).
         + The pseudo-element(s) and `box-shadow` were updated to allow for greater variation in their container size.
     + Thought(s):
         + The attempted fixes only minimized appearance of the bug.
-        + More reduction in the size of the pseudo-element(s) and an increase in the size of the `box-shadow` could remove this bug further, however it will take a considerable amount of time to find this "golden-ratio" for all screen resolution and browser/device combinations.
+        + More reduction in the size of the pseudo-element(s) and an increase in the size of the `box-shadow` could remove this bug further. However, it will take a considerable amount of time to find this "golden-ratio" for all screen resolutions and browser/device combinations.
 
 ## Other Problems
 + Lack of accepted email suffixes (email validation).
     + Caused by:
         + Limitations of the JS validation logic.
     + Attempted fix(s):
-        + Expanded suffixes allowed for validation to include `.net` and `.org`.
+        + Expanded suffixes allowed to include `.net` and `.org`.
     + Thought(s):
         + Email validation should be handled by Python only, instead of JS and Python. This could allow Python to check if the email account is real and remove the reliance on suffixes for validation.
 + MongoDB's general user search, `mongo.db.<collection>.find("$text": "$search": <value>)`, is unable to return booleans. Thus, users are not able to search for **Grandparent Classics** or **Lazy Favorites**.
@@ -1020,26 +1023,36 @@ is addressed in **Scalability** and **Other Problems**.
         + Originally tried using `<svg><polygon></svg>`, however this would not hold or duplicate an acceptable `repeating-linear-gradient`.
     + Thought(s):
         + Found solution at [MDN using a clip-path:polygon](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path).
-+ If a user has over ten favorited recipes then they might not be able to delete a recipe from their profile's favorite list.
++ If a user has over ten favorited recipes they might not be able to delete a recipe from their profile's favorite list.
     + Caused by:
-        + Having over ten favorite recipes and wanting to remove a recipe that's outside the **10 Recently Favorited Recipes** ten recipe ceiling.
+        + Having over ten favorite recipes and wanting to remove a recipe that's outside the **10 Recently Favorited Recipes**'s ten recipe ceiling.
     + Attempted Fix(s):
         + None, discovered to late in project to attempt a fix.
     + Thought(s):
-        + The original fix, added the ability to remove recipes from the users favorite list while they were on their profile page. This was added to allow users to remove recipes that have been deleted and would not be 
+        + The original fix, added the ability to remove recipes from the users favorite list while the user was on their profile page. This was added to allow users to remove recipes that had been deleted and would not be 
         otherwise removable from their favorites list.
-        + The narrow scoped fix doesn't take into consideration if a user has over ten favorites and one of the original favorited recipes was deleted.
-        + Expanding up on the Jinja template `search_bar_returns.html` to allow removal of a favorite recipe would be a fix for this issue.
-
+        + The narrow scoped fix doesn't take into consideration if a user has over ten favorites and one of the original favorite recipes was deleted.
+        + Expanding upon the Jinja template `search_bar_returns.html` to allow removal of a favorite recipe would be a fix for this issue.
 
 # Deployment
+## Deploy Clone in GitHub - GitPod
++ Go to the location of the original repository in GitHub, [https://github.com/Richardaeld/Fat_Racoon_Kitchen](https://github.com/Richardaeld/Fat_Racoon_Kitchen).
++ Click on the **Code** button to get the drop down menu.
++ Copy the HTTPS address provided.
++ Create a new GitHub/GitPod project (to house the new clone) and then open this new project.
++ Go to the Bash and type, `git clone <HTTP>`, paste the HTTPS address found in the GitHub page (don't forget the space after "clone"), and press enter.
++ The clone will be created within a new the folder called, "Fat_Racoon_Kitchen" (name of the original repository).
++ Unpack everything from this new folder to the root of the GitPod project tree and the project will be setup within GitPod (minus the database which we will setup shortly).
++ Open up the file `run.py` and search for "head_chef".
++ Update the "fat_raccoon" to your new head chef's username.
+
 ## Setup Structure on GitPod for Developers
 ### Flask
 + Install Flask.
-    + In bash (of GitPod) type, `pip3 install Flask` and press enter.
+    + In bash (of GitPod clone) type, `pip3 install Flask` and press enter.
 + Create Python env file.
-    + Create a new file called `env.py` in root directory of GitPod.
-        + Add `env.py` to `gitignore` file (NEVER PUSH THIS FILE). If `gitignore` does not exist create it in root directory of GitPod.
+    + Create a new file called `env.py` in root directory of GitPod clone.
+        + Add `env.py` to `gitignore` file (NEVER PUSH THIS FILE). If `gitignore` does not exist, create it in the root directory of the GitPod clone.
         + Add `__pycache__/` to `gitignore` file (NEVER PUSH THIS FILE)
             + Within `env.py` create the lines:
                 + `import os`
@@ -1054,48 +1067,37 @@ is addressed in **Scalability** and **Other Problems**.
 
 ### PyMongo
 + Install PyMongo
-    + In bash (of GitPod) type, `pip3 install flask-pymongo` and press enter.
-    + In bash (of GitPod) type, `pip3 install dnspython` and press enter.
-
-## Deploy Clone in GitHub - GitPod
-+ Go to the location of the original repository in GitHub, [https://github.com/Richardaeld/Fat_Racoon_Kitchen](https://github.com/Richardaeld/Fat_Racoon_Kitchen).
-+ Click on the **Code** button to get the drop down menu.
-+ Copy the HTTPS address provided.
-+ Create a new GitHub/GitPod project (to house the new clone) and then open this new project.
-+ Go to the Bash and type, `git clone <HTTP>`, paste the HTTPS address found in the GitHub page (don't forget the space after "clone"), and press enter.
-+ The clone will be created within a new the folder called, "Fat_Racoon_Kitchen" (name of the original repository).
-+ Unpack everything from this new folder to the root of the GitPod project tree and the project will be setup within GitPod (minus the database which we will setup shortly).
-+ Open up the file `run.py` and search for "head_chef".
-+ Update the "fat_raccoon" to your new head chef's username.
+    + In bash (of GitPod clone) type, `pip3 install flask-pymongo` and press enter.
+    + In bash (of GitPod clone) type, `pip3 install dnspython` and press enter.
 
 ## Heroku Deployment
 + Log into Heroku.
 + Create a new app on Heroku by clicking **New** and following the directions.
-+ To prep your GitPod repository for Heroku:
++ Prep your GitPod repository for Heroku:
     + Go to your GitPod project that houses the clone from the previous section. 
-        + In bash (of GitPod) type, `pip3 freeze --local > requirements.txt`.
-        + In bash (of GitPod) type, `echo web: python run.py > Procfile`.
+        + In bash (of GitPod clone) type, `pip3 freeze --local > requirements.txt`.
+        + In bash (of GitPod clone) type, `echo web: python run.py > Procfile`.
             + Check contents of Procfile, because two problems can occur:
                 + If the opened Procfile has a blank line at the bottom, delete this line.
                 + Be sure there is a space after the colon.
         + This creates the two files needed for Heroku to identify what it needs to run the app.
 + Link Heroku and GitHub:
     + Log into Heroku.
-    + From the **Personal apps** page, click on new app that was just created in Heroku.
+    + From the **Personal apps** page, click on the new app that was just created in Heroku.
     + Click on **Deploy**.
     + Click on **GitHub** from **Deployment method** section.
     + Enter your GitHub information and the name of the cloned repository into the "Connect to GitHub" section.
 + Share `env.py` information with Heroku.
     + Click on **Settings**.
     + Click on **Reveal Config Vars** from **Config Vars** section.
-    + Add all of the `env.py` key value pairs without their quotations.
+    + Add all of the `env.py` key and value pairs without their quotations.
 + Enable automatic deployment or manually deploy updates.
     + Automatic Deployment:
         + Click on **Deploy**.
         + Click on **Enable Automatic Deploys** in "automatic deploys" section..
         + Click on **Deploy Branch** in "manual deploy" section to start initial deployment.
     + Manual Deployment:
-        + Click on **Deploy Branch** in "manual deploy" section any time there is content you want to update active app with.
+        + Click on **Deploy Branch** in "manual deploy" section any time there is content you want to update the active app with.
 
 ## Database Build
 ### Database Structure
@@ -1119,41 +1121,41 @@ is addressed in **Scalability** and **Other Problems**.
         +   `feature: text,`
         +   `created_by: text`
         + `}`
-
     + GitPod:
-        + In bash (of GitPod) type, `python3` and push enter.
-        + In bash (of GitPod) type, `from <app name> import mongo` and push enter.
-        + Using the below format type in all the 'names' of the content users are allowed to search through (Ex. <collection> == recipes, <name> == created_by, <name2> == name, <name3> == feature).
+        + In bash (of GitPod clone) type, `python3` and push enter.
+        + In bash (of GitPod clone) type, `from <app name> import mongo` and push enter.
+        + Using the below format type in the 'names' of the content users are allowed to search through (Ex. <collection> == recipes, <name> == created_by, <name2> == name, <name3> == feature).
         + `mongo.db.<collection>.create_index([('<name>', 'text'), ('<name2>','text'), ('<name3>','text')])`
 
 ### Connecting to Database
 + Find URI.
     + Log into MongoDB.
-    + Click on **Connect** button.
-    + Click on **Connect your application** button.
+    + Click on the **Connect** button.
+    + Click on the **Connect your application** button.
     + Select driver (Python) and version (of Python).
     + Copy string provided.
 + Update missing information in GitPod.
-    + Open GitPod and open `env.py` file.
-    + Paste this string as the value for the key "MONGO_URI".
+    + Open the GitPod repository that contains the clone and open `env.py` file.
+    + Paste this string into the value for the key `MONGO_URI`.
     + Update the pasted string with the collection name(<DBname>) and the password for the cluster (<password>).
-    + When you have replace <DBname> and <password> copy the string.
+    + When you have replaced <DBname> and <password> copy the string.
+    + Type in the `<root database>`'s name as the value for the key `MONGO_DBNAME`.
 + Update missing information in Heroku.
     + Log into Heroku.
-    + Select the new app.
+    + Select the new app that was previously created.
     + Click on **Settings**.
     + Click on **Reveal Config Vars** from **Config Vars** section.
-    + Paste in copied string from GitPod into the value for `MONGO_URI`.
-    + Paste in the `<root database>`'s name as the value for `MONGO_DBNAME`.
+    + Paste in copied string from GitPod into the value for the key `MONGO_URI`.
+    + Type in the `<root database>`'s name as the value for the key `MONGO_DBNAME`.
 
 ### Create the Appropriate Collections
 + Blank:
     + This is where the blank dictionary base for new users and new recipes is stored.
     + Two entries are required to be here.
     + The mongo `_id` auto assign is fine for both entries.
-    + The value, `Array` is a Mongo assigned as `Array` and must be changed from `string`.
-    + The value, `null` is a Mongo assigned as `Null` value must be changed from `string`.
-    + The value, `false` is a Mongo assigned as `Boolean` value must be changed from `string`.
+    + The value, `Array` is Mongo assigned as `Array` and must be changed from `string`.
+    + The value, `null` is Mongo assigned as `Null` and must be changed from `string`.
+    + The value, `false` is Mongo assigned as `Boolean` and must be changed from `string`.
     + Recipe entry is structured as:
         + `{`
         + `_id: <auto assigned value>`
@@ -1192,7 +1194,7 @@ is addressed in **Scalability** and **Other Problems**.
 + The feature collection:
     + The feature collection stores the applications **Featured Ingredient**s.
     + There must be a minimum of one **Featured Ingredient** document in the feature collection for the application to function.
-    + For the best UX a **Featured Ingredient** document amount of approximately 10 is advised. However, more would also be acceptable.
+    + For the best UX a **Featured Ingredient** document amount of approximately ten is advised. However, more would also be acceptable.
     + Each **Featured Ingredient** is structured as:
         + `{`
         + `name: "chicken"`
@@ -1203,7 +1205,8 @@ is addressed in **Scalability** and **Other Problems**.
 + The users collection:
     + The users collection stores the applications user information.
     + There is no set number of documents for the application to function properly, however a better UX is provided if the application has a set head chef.
-+ The fs.chunks Collection:
+    + It is also recommended that the head chef's admin status in MongoDB be set to `admin: true`. The admin status will allow the head chef to quickly and easily alter inappropriate recipes or images.
++ The fs.chunks collection:
     + Will be created automatically after the first image is uploaded.
     + The fs.chunks collection is for the storage of image data.
 + The fs.files collection:
