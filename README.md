@@ -76,28 +76,26 @@
 
 
 # Fat Racoon - Introduction
-<!-- Intro -->
-The Fat Racoon is devoted to helping home cooks provide better meals. We provide a compendium of chef Fat_Raccoon's (combination of Mrs and Mr. Fat_Raccoon) personal recipes along with our user's recipes. 
-All these recipes can be searched through with our in app search engine. We believe that even without the ideal ingredients on hand, a little extra knowledge or extra seasoning can help any meal become a savory experience. 
-We even go out of our way to provide our new home cooks with some basic cooking lessons in our **lesson** section. The chef Fat_Raccoon knows the importance of making the best out of what there is on hand and wants to 
-share that liberating experience with others.
-<!-- About us -->
-The head chefs of the Fat Raccoon (Mrs. and Mrs. Fat_Racoon) started as sleep deprived, nocturnal home cooks that would use the, leftover "garbage" from the fridge to make a meal. With practice and study, these meals improved over time, 
-but it started with learning fundamental cooking practices, including how to pair flavors and learning to generalize measurements. The Fat Raccoon's **Lesson** section offers this general cooking knowledge and more to help our new cooks 
-get started. Chef Fat_Raccoon offers a personal insight to a recipe in the recipe's description and ingredients sections. It is important to the Fat Raccoon that new cooks see not every recipe has to be complicated or convoluted. 
-We hope this helps others spend their kitchen time wisely and they make the best meals they can. 
-<!-- Community -->
-The Fat Raccoon hopes to facilitate a growing compendium of its user's. The Fat Raccoon currently offers users the ability to search other home cooks by their username but we wish to expand upon this in the future. 
-With this basic structure in place, we at the Fat Raccoon hope to establish a community of home cooks and catalogue their recipes with an intuitive search engine which will be a boon to home cooks everywhere. 
-<!-- Casual users -->
-For our casual users that are only searching for a recipes, we offer several different search methods to help them find what they are looking for. These users can search our database by chef, featured ingredient, or recipe name. 
-The front page also offers other methods for users to browse the Fat Raccoon's recipes, such as: **Lazy Favorites**, **Grandparent Classics**, all of **Chef Fat_Raccoon's Recipes**, and **Featured Ingredient**.
-<!-- Users that create recipes -->
-For our home cooks that are submitting recipes, we offer a place to put in a recipe name, the prep/cook/total time, a picture, a brief recipe description, ingredients, and steps. 
-This allows anyone to easily keep track of recipes and share them with others. Additionally, if the Fat Raccoon finds these recipes appropriate, they can add the tags **Lazy Favorite**, **Grandparent Classic**, or both.
-<!-- Meaning behind cooking -->
-Cooking has more meaning than just preparing food. For many it is a connection to your history or life experiences. We encourage our users to give us a little personal touch to the recipes they submit.
-It's important to the Fat Raccoon's mission to preserve personal and family history through sharing recipes and creating a strong community of home cooks. 
+<!-- Intro with goals -- thesis -->
+The Fat Raccoon was created to help home cooks share and store their personal recipes. Once a user creates an account they can begin uploading recipes, and the account will track uploades, favorites, and recently viewed 
+recipes for the user. This application also offers multiple ways to search for recipes, including: a search engine on the navigation bar, a recipe compendium, browse buttons, and more. The Fat Raccoon also wants to 
+offer guidence to blossoming home cooks. The app has two head chefs, Mrs. and Mr. Fat_Raccoon that go by the username of Fat_Raccoon. They offer their combined kitchen experience in the form of basic kitchen 
+knowledge in the **Lesson** section and some personal insight on all of their uploaded recipes. The Fat Raccoon hopes to: facilitate a growing compendium that's intuitive and easily navigable, provide recipe pages that have 
+ample information and the ability to keep track of the ingredient and step a user is on, and offer insight to basic cooking knowledge.
+<!-- About us, lessons, and head chef personal touch -->
+The head chefs of the Fat Raccoon started as sleep deprived, nocturnal home cooks that would use the, leftover "garbage" from the fridge to make a meal. With practice and study, these meals improved over time, but it started 
+with learning fundamental cooking practices. These practices included how to pair flavors, learning to generalize measurements, taste as you cook, etc.... The **Lesson** section of the Fat Raccoon offers this general cooking 
+knowledge to help our new cooks get started. The head chefs also offer some personal insight in all the recipes they have uploaded. Mrs. and Mr. Fat_Raccoon hope the lessons and insight they offer help home cooks spend their 
+kitchen time wisely, make the best meals they can, and allow blossoming home cooks to see not every recipe has to be complicated or convoluted. 
+<!-- Personalized recipe compendium and ease of recipe page use -->
+The Fat Raccoon strives to be the personalized recipe book every home cook desires. Every user's profile page features: a uploades, favorites, and recently viewed section. This allows users to quickly and easily find any recipe they 
+have previous experience with. The recipe pages of the Fat Raccoon offers an image of the recipe, a description, and other basic information. Most importantly, the recipe page offers a crossout function that allows users to 
+crossout any ingredient they have or cooking step they have already taken.
+<!-- Collection of recipes and search methods -->
+The Fat Raccoon hopes to facilitate a growing compendium of its user's recipes. In consideration of this, the Fat Raccoon offers multiple ways to search for recipes. The search engine on the navigation bar allows
+users to search for a recipe's **featured ingredient**, the recipe's name, or search for recipes by the chef that created them. Some browsing buttons are offered on the Fat Raccoon's index page and allow users to search
+whole catagories with a single click. These catagories include: all of the chef Fat_Raccoon's recipes, **Lazy Favorites**, **Grandparent Classics**, and a quick link to the recipe compendium. The recipe compendium is sorted
+by **featured ingredient** and upload order. The recipe compendium also offers pagination to large **featured ingredient** sections this allows them to be smaller and more digestable to users. 
 
 **Disclaimer:** This is a nonprofit student site and has some 3rd party recipes in it. These recipes are used as database information and are documented as external recipes such in their recipe description section. 
 
@@ -107,13 +105,12 @@ It's important to the Fat Raccoon's mission to preserve personal and family hist
 + I want to find a recipe for dinner. <!-- Testing Random Recipe -->
 + I want to use my smart phone or tablet as a recipe book. <!-- Testing Text Coss Out Function -->
 + I want to find a new chicken dish to cook. <!-- Testing All_Recipe And Recipe_List Pagination-->
-+ I want a place to leave a recipe so I can easily find it later. <!-- Testing Recipe Upload -->
++ I want a place to leave a recipe, so I can easily find it later. <!-- Testing Recipe Upload -->
 + I want help deciding what to cook for dinner and I like a specific chef's recipes. <!-- Testing Search Chef Name -->
-+ I want a easy-to-make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -->
-+ I can't remember the name of a recipe that i liked on the Fat Raccoon and I want to find it again. <!-- Testing Recipe Favorites Function -->
-+ I want an easy-to-read recipe layout while I'm cooking. <!-- Testing Text Coss Out Function - testing function already satisfied --> <!-- ---------------------------------------remove  -->
++ I want an easy-to-make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -->
++ I can't remember the name of a recipe that i liked on the Fat Raccoon, and I want to find it again. <!-- Testing Recipe Favorites Function -->
 + I lack confidence in my cooking ability and need help. <!-- Testing Lessons Index Cards -->
-+ I've decided I don't like my user bio or avatar anymore and want to change them. <!-- Tests update of user information/avatar -->
++ I've decided that I don't like my user bio or avatar anymore and I want to change them. <!-- Tests update of user information/avatar -->
 + I've uploaded a recipe I don't like anymore and I want to remove it. <!-- Tests for deletion of recipe --><!-- Tests C.R.U.D. -->
 + I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page's **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. <!-- Tests delete button for favorites/recents in profile -->
 
@@ -123,10 +120,10 @@ was a deliberate choice to help the developer gain a better understanding of how
 
 + I want to showcase my Python abilities, by:
     + Importing Python libraries (Ex. datetime, random, etc...).
-    + Using Flask's dependencies, such as: `flash`, `render_template`, `redirect`, `request`, `session`, and `url_for`.
+    + Using Flask's APIs, such as: `flash`, `render_template`, `redirect`, `request`, `session`, and `url_for`.
     + Using a single Jinja template for multiple functions (Ex. `add_edit_recipe.html` uses the same template to create and modify a recipe).    
     + Using Pymongo to communicate with MongoDB database.
-    + Creating Python validation logic, which:
+    + Creating Python validation logic, that:
         + Checks filetype submitted.
         + Checks max and min character length.
         + Checks for allowed characters.
@@ -136,14 +133,16 @@ was a deliberate choice to help the developer gain a better understanding of how
     + Using if expressions, that:
         + Replace blank sections (missing database data) with filler templates.
         + Add a specific banner on random recipe.
-        + etc....
+        + Etc....
     + Using for expressions, that:
-        + Generate list data for recipe lists, recipe ingredient lists, recipe step lists, etc....
+        + Generate list data for recipe lists. 
+        + Generate recipe ingredient lists.
+        + Etc....
 
 + I want to showcase my JS abilities, by:
     + Creating carousel JS logic.
     + Creating pagination JS logic.
-    + Creating validation JS logic that:
+    + Creating validation JS logic, that:
         + Checks character length.
         + Checks for allowable characters.
         + Compares two passwords to be sure they match.
@@ -152,25 +151,25 @@ was a deliberate choice to help the developer gain a better understanding of how
 
 + I want to showcase my MongoDB's (NoSQL database) database abilities, by:
     + Restricting user searches to specific content.
-        + Only allowing users to search for chef name, featured ingredient, and recipe name from the recipe document.
-    + Removing non pertinent data sent to clients from server (if possible). 
-        + Restricted user searches, remove recipe ingredient(s), recipe step(s), and recipe description from its returns.
+        + (Ex. Only allowing users to search for chef name, featured ingredient, and recipe name from the in app recipe search engine.)
+    + Removing non pertinent data sent to the client from the server (if possible). 
+        + (Ex. Removing recipe ingredient(s), recipe step(s), and recipe description from the in app recipe search engine.)
     + Searches use operators if applicable.
-        + The `$or` operator is used to allow a list of Python dictionary `ObjectId`s to be compiled and sent to MongoDB as a single inquiry.
-    + Creating a new recipe or account document will build upon a prestored blank template instead of creating an entirely new document each time. (This allows for cleaner coded Python to upload content.)
+        + (Ex. The `$or` operator is used to allow a dictionary list of `ObjectId`s to be compiled and sent to MongoDB as a single inquiry.)
+    + Creating a new recipe or account document will build upon a prestored blank template instead of creating an entirely new document each time. (This allows for cleaner coded Python when uploading new content.)
     + Allow users to upload avatars for their profile and recipes.
 
 + I want to showcase my artistic ability, by:
-    + Using CSS art.
+    + Creating CSS art.
         + Created sticky notes with lifting effect.
         + Created drinks.
-            + Stylized as tea with ice in it.
-                + The drink ripples when a user's mouse cursor passes over it.
-                + The drink's "ice" has a diping effect when a user's mouse cursor passes over it.
+            + Stylized as tea with ice in it, which:
+                + Ripples when a user's mouse cursor passes over it.
+                + The "ice" has a dipping effect when a user's mouse cursor passes over it.
         + Created napkins that the drinks sit on.
         + Created Polaroid pictures.
         + Created table runners (header and footer).
-    + Using SVG art.
+    + Creating SVG art.
         + Created favicon and Fat Raccoon logo (raccoon face).
         + Created blank head chef avatar place holder (black and blue silhouette).
         + Created arrows for carousel.
@@ -185,21 +184,21 @@ was a deliberate choice to help the developer gain a better understanding of how
 + I want to find a new chicken dish to cook.
     + I opened the Fat Raccoon's main page, and I didn't immediately find a chicken recipe that I liked. Instead, I found a button, **Browse by Featured Ingredient!**, and I clicked it. I found the **Featured Ingredient** section for 
     chicken and all the chicken recipes I could want!
-+ I want a place to leave a recipe so I can easily find it later.
-    + I opened the Fat Raccoon's main page. I want to have a digital place to keep a recipe, so I created a Fat Raccoon account. The app took me to my newly created profile page. I clicked the **Share Recipe** button,
-    and I filled out all the recipe's information including an image. I've discovered that I can edit my recipe from its recipe page in the Fat Raccoon app. I've also found I can favorite my own recipe from its page. If I go to my 
-    profile, it is in the **10 Recently Uploaded Recipes** section of my profile so I can easily find my recipe whenever I want it.
++ I want a place to leave a recipe, so I can easily find it later.
+    + I've decided I want a digital place to keep a recipe, so I opened the Fat Raccoon's main page. I created a Fat Raccoon account from the login/create modal. The app took me to my newly created profile page. I 
+    clicked the **Share Recipe** button, and I filled out all the recipe's information including an image. I've discovered that I can edit my recipe from its recipe page in the Fat Raccoon app. I've also found I can favorite 
+    my own recipe from its page. If I go to my profile, it is in the **10 Recently Uploaded Recipes** section of my profile so I can easily find my recipe whenever I want it.
 + I want help deciding what to cook for dinner and I like a specific chef's recipes.
     + My friends, Mrs. and Mr. Fat_Raccoon have similar taste in food as me, and I want to easily find all of their recipes. I opened the Fat Raccoon's main page. I scrolled to the bottom of the 
-    page where I found a button, **Browse Chef Fat_Raccoon's recipes!**, and I clicked the button. I am now able to see all of the chef Fat_Raccoon's recipes.
-    + My friend has an account on the Fat Raccoon app and I know her/his username name. I opened the Fat Raccoon's main page and put my friends username into the search bar and now I am able to see all of my friend's
+    page where I found a button, **Browse Chef Fat_Raccoon's recipes!**, and I clicked the button. I am now able to see all of the recipes from the chef, Fat_Raccoon.
+    + My friend has an account on the Fat Raccoon app and I know her/his username. I opened the Fat Raccoon's main page and put my friends username into the search bar and now I am able to see all of my friend's
     uploaded recipes.
-    + I opened the Fat Raccoon's main page, and I clicked on **Recipes** in the navigation bar. I found a recipe on this page that I liked, however it wasn't made by the chef Fat_Raccoon! I did find that 
+    + I opened the Fat Raccoon's main page, and I clicked on **Recipes** in the navigation bar. I found a recipe on this page that I liked, however it wasn't made by the chef, Fat_Raccoon! I did find that 
     if I clicked on the chef's name, under the picture of their recipe, it takes me to all the recipes submitted by this chef.
 + I want an easy-to-make recipe.
     + It's been a long day, I'm tired, and I want an easy-to-make recipe for dinner. I opened the Fat Raccoon's main page, and I scrolled to the bottom of the page. I found a button, **Browse our Lazy Favorites!**, and I clicked this 
     button. I found numerous recipes that don't require much effort.
-+ I can't remember the name of a recipe that i liked on the Fat Raccoon and I want to find it again.
++ I can't remember the name of a recipe that i liked on the Fat Raccoon, and I want to find it again.
     + I opened the Fat Raccoon's main page, and I realized that I don't remember the name of the recipe I was looking at last night. I remembered I was logged in, so I logged into my
     Fat Raccoon account. I was taken to my profile page where I easily found the recipe I was looking at last night in my **10 Recently Viewed Recipes** section.
     + I opened the Fat Raccoon's main page, and I realized that I don't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account, and I'm taken 
@@ -216,7 +215,7 @@ was a deliberate choice to help the developer gain a better understanding of how
     + I logged into my Fat Raccoon account and I'm taken to the profile page. I clicked on the **Update Profile** button. I chose a new image from my pc and updated my bio to be a better representation of myself.
      I also had to put in my current password before the form allowed me to submit it. I submitted the form and was taken back to my profile page where I saw the updated avatar and bio.
 + I've uploaded a recipe I don't like anymore and I want to remove it.
-    + I logged into my Fat Raccoon account and I'm taken to the profile page. I went to my recipe's page that I wanted to delete. I clicked the **Delete Recipe** button, and I was prompted to type in the recipe's name.
+    + I logged into my Fat Raccoon account and I'm taken to the profile page. I went to the page of my recipe that I want to delete. I clicked the **Delete Recipe** button, and I was prompted to type in the recipe's name.
     I typed in the recipe's name, and the delete button turned green. I deleted the recipe. I'm taken back to my profile page where the app lets me know I've deleted the recipe.
 + I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page's **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections.
     + I logged into my Fat Raccoon account and I'm taken to the profile page where I am reminded of my error in my **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. When I clicked on the recipe 
@@ -535,7 +534,7 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I want a place to leave a recipe so I can easily find it later. <!-- Testing Recipe Upload -->
++ I want a place to leave a recipe, so I can easily find it later. <!-- Testing Recipe Upload -->
 
 #### Expectation(s):
 1. The recipe uploads without error.
@@ -626,7 +625,7 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I want a easy-to-make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -->
++ I want an easy-to-make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -->
 
 #### Expectation(s):
 1. All **Lazy Favorite** recipes are returned.
@@ -655,7 +654,7 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I can't remember the name of a recipe that i liked on the Fat Raccoon and I want to find it again. <!-- Testing Recipe Favorites Function -->
++ I can't remember the name of a recipe that i liked on the Fat Raccoon, and I want to find it again. <!-- Testing Recipe Favorites Function -->
 
 #### Expectation(s):
 1. The favorite icon responds appropriately to recipe status of favorite and unfavorite.
@@ -736,7 +735,7 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I've decided I don't like my user bio or avatar anymore and want to change them. <!-- Tests update of user information/avatar -->
++ I've decided that I don't like my user bio or avatar anymore and I want to change them. <!-- Tests update of user information/avatar -->
 
 #### Expectation(s):
 1. A Fat Raccoon account can be logged out and logged back in with a new password.
@@ -828,7 +827,7 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page. <!-- Tests delete button for favorites/recents in profile -->
++ I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page's **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. <!-- Tests delete button for favorites/recents in profile -->
 
 #### Expectation(s):
 1. The button that removes a recipe from **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** functions properly.
