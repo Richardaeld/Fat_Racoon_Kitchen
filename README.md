@@ -77,25 +77,28 @@
 
 # Fat Racoon - Introduction
 <!-- Intro with goals -- thesis -->
-The Fat Raccoon was created to help home cooks share and store their personal recipes. Once a user creates an account they can begin uploading recipes, and the account will track uploades, favorites, and recently viewed 
-recipes for the user. This application also offers multiple ways to search for recipes, including: a search engine on the navigation bar, a recipe compendium, browse buttons, and more. The Fat Raccoon also wants to 
-offer guidence to blossoming home cooks. The app has two head chefs, Mrs. and Mr. Fat_Raccoon that go by the username of Fat_Raccoon. They offer their combined kitchen experience in the form of basic kitchen 
-knowledge in the **Lesson** section and some personal insight on all of their uploaded recipes. The Fat Raccoon hopes to: facilitate a growing compendium that's intuitive and easily navigable, provide recipe pages that have 
-ample information and the ability to keep track of the ingredient and step a user is on, and offer insight to basic cooking knowledge.
-<!-- About us, lessons, and head chef personal touch -->
-The head chefs of the Fat Raccoon started as sleep deprived, nocturnal home cooks that would use the, leftover "garbage" from the fridge to make a meal. With practice and study, these meals improved over time, but it started 
-with learning fundamental cooking practices. These practices included how to pair flavors, learning to generalize measurements, taste as you cook, etc.... The **Lesson** section of the Fat Raccoon offers this general cooking 
-knowledge to help our new cooks get started. The head chefs also offer some personal insight in all the recipes they have uploaded. Mrs. and Mr. Fat_Raccoon hope the lessons and insight they offer help home cooks spend their 
-kitchen time wisely, make the best meals they can, and allow blossoming home cooks to see not every recipe has to be complicated or convoluted. 
-<!-- Personalized recipe compendium and ease of recipe page use -->
-The Fat Raccoon strives to be the personalized recipe book every home cook desires. Every user's profile page features: a uploades, favorites, and recently viewed section. This allows users to quickly and easily find any recipe they 
-have previous experience with. The recipe pages of the Fat Raccoon offers an image of the recipe, a description, and other basic information. Most importantly, the recipe page offers a crossout function that allows users to 
-crossout any ingredient they have or cooking step they have already taken.
-<!-- Collection of recipes and search methods -->
-The Fat Raccoon hopes to facilitate a growing compendium of its user's recipes. In consideration of this, the Fat Raccoon offers multiple ways to search for recipes. The search engine on the navigation bar allows
-users to search for a recipe's **featured ingredient**, the recipe's name, or search for recipes by the chef that created them. Some browsing buttons are offered on the Fat Raccoon's index page and allow users to search
-whole catagories with a single click. These catagories include: all of the chef Fat_Raccoon's recipes, **Lazy Favorites**, **Grandparent Classics**, and a quick link to the recipe compendium. The recipe compendium is sorted
-by **featured ingredient** and upload order. The recipe compendium also offers pagination to large **featured ingredient** sections this allows them to be smaller and more digestable to users. 
+The Fat Raccon was created to facilitate a community accumulation and sharing of family recipes.
+Each recipe uploaded into our app gets its own page with an easy-to-read responsive layout that's ideal for tablet and mobile users.
+Additionally, each recipe's ingredients and steps sections allow users to cross out items as they progress through the recipe.
+Our recipes can be searched through with an in app search engine that looks for: who created the recipe, the recipe's name, and its featured ingredient.
+Members of the Fat Raccoon community can easily share their recipes by giving friends and family their username. 
+Our notorious and enduring mascot, a plump Raccoon, combined with our "Southern American" home crafted appearance make the Fat Raccoon a memorable experience.
+This community created recipe compendium should be the last cookbook any home cook should ever need.
+<!-- avid users --<!-- Personalized Cookbook -->
+The Fat Raccoon wants offer its account holders not only a community driven compendium but a personalized recipe book as well.
+Those with an account can add a bio and avatar to their profile page that will welcome them upon logging in every time.
+This profile page also offers three personalized recipe lists.
+These lists include: recipes that the user has uploaded, their favorite recipes, and 10 previously viewed recipes.
+<!-- New users -->
+Even if our users dont create an account they will still have access to a plethora of different search methods that will help them find any recipe they desire.
+The opening page of the Fat Raccoon offers a multitude of different searches, including: random recipes based on featured ingredient, a random assortment of recipes with the grandparent classic tag, a random Fat_Raccoon recipe, and more. 
+Users can search our entire recipe compendium, which is sorted by featured ingredient and upload date.
+Finally, there is our aformentioned in app search engine that can be found on the navigation bar at any time.
+<!-- About us, lessons, and head chef's personal touch -->
+The Fat Raccoons plump mascot started as a joke between the head chefs of this application. 
+Both these chefs were overworked, sleep deprived, and often nocturnal home cooks that would use the leftover "garbage" from the fridge to make a meal.
+The lessons these "fat raccoons" learned are offered in the lesson section of the Fat Raccoon app.
+The "fat raccoons" also offer their personal recipes under the chef name Fat_Raccoon, and they hope the additional personal touches they add to their recipes encourage others to do the same.
 
 **Disclaimer:** This is a nonprofit student site and has some 3rd party recipes in it. These recipes are used as database information and are documented as external recipes such in their recipe description section. 
 
