@@ -64,7 +64,7 @@
 + [Database Build](#database-build)
     + [Database Structure](#database-structure)
     + [Connecting to Database](#connecting-to-database)
-    + [Create the Appropriate Collections](#create-the-appropriate-collections)
+    + [Create the Appropriate Documents](#create-the-appropriate-documents)
 
 [Tools and Credits](#tools-and-credits)
 + [Tools](#tools)
@@ -499,13 +499,13 @@ is addressed in **Scalability** and **Other Problems**.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
-1. Navigate to any recipe page.
-1. Scroll to the **Recipe Ingredients** section and click the check box or text to see if it crosses out correctly.
-1. Scroll to the **Recipe Steps** section and click the check box or text to see if it crosses out correctly.
+1. Navigate to a recipe page of the testers choosing.
+1. Scroll to the **Recipe Ingredients** section and click a check box or text to see if it crosses out correctly.
+1. Scroll to the **Recipe Steps** section and click a check box or text to see if it crosses out correctly.
 1. Repeat steps 2 - 4 approximately three times. (Choose a different path to the recipe page each time or until all known paths are used).
 
 #### Document Result(s):
-1. If content from **Recipe Steps** or **Recipe Ingredients** sections do not cross out properly, record:
+1. If the content from the **Recipe Steps** or **Recipe Ingredients** sections does not cross out properly, record:
     + The test name, recipe name, **Recipe Steps** and/or **Recipe Ingredients** (which ever one was problematic), and a brief description of the problem.
 1. If any links are broken, record:
     + The test name, recipe name, choice of path to said recipe, and a brief description of the problem.
@@ -528,7 +528,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. The tester will create dummy recipes for this test (if necessary), and keep a record of said dummy data.
+1. The tester will create dummy recipes for this test (if necessary), and keep a record of the dummy recipes.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
@@ -567,7 +567,7 @@ is addressed in **Scalability** and **Other Problems**.
 
 #### Assumption(s):
 1. The tester will intentionally try to submit incorrect data to check for incorrect validation.
-1. The tester will create an account for this test, and will keep a record of said account.
+1. The tester will create an account for this test, and will keep a record of the account.
 1. The tester has a PNG or JPG image under 500kb, a PNG or JPG image over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
 1. The tester knows the difference between JS and Python validation.
 1. The tester knows what this form considers invalid and will check every part of the validation. (Example, max character, min character, spaces, characters, etc....)
@@ -607,7 +607,7 @@ is addressed in **Scalability** and **Other Problems**.
 + I want help deciding what to cook for dinner and I like a specific chef's recipes. <!-- Testing Search Chef Name -->
 
 #### Expectation(s):
-1. The chef search returns the correct information.
+1. The chef searches return the correct information.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
@@ -625,7 +625,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. Check over the returns to make sure all appropriate returns are shown.
 1. Return to the **Index Page** of the Fat Raccoon.
 1. Scroll to the bottom of the page, where the **Random Recipe** is located.
-1. Find the sticky note with **Head Chef** on it and click on the text Fat_Raccoon, which is at the bottom of that sticky note.
+1. Find the sticky note with **Head Chef** on it and click on the text, Fat_Raccoon, which is at the bottom of that sticky note.
 1. Check over the returns to make sure all appropriate returns are shown.
 1. Select any recipe from the chef Fat_Raccoon and go to that recipe's page.
 1. Under the avatar image, click on the name, Fat_Raccoon.
@@ -666,7 +666,7 @@ is addressed in **Scalability** and **Other Problems**.
 
 #### Document Result(s):
 1. If any lazy favorite recipes are not shown or non lazy favorite recipes are shown, record:
-    + Any lazy favorite recipes that are missing, incorrect recipes that showed up, and a brief description of the problem. 
+    + Any lazy favorite recipes that are missing, incorrect recipes that have shown up, and a brief description of the problem. 
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
@@ -686,9 +686,9 @@ is addressed in **Scalability** and **Other Problems**.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. The tester will create an account for this test, and will keep a record of said account.
-1. the tester knows the difference between a favorite recipe and an unfavorit recipe icon.
-1. The tester will favorite/unfavorite a recipe using a random part of its click box.
+1. The tester will create an account for this test, and will keep a record of this account.
+1. the tester knows the difference between a favorite recipe and an unfavorite recipe icon.
+1. The tester will favorite and unfavorite a recipe using a random part of its click box.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
@@ -703,7 +703,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. Check to be sure the accurate text and icon appear.
 1. Navigate to the **Profile** page.
 1. Click on any favorited recipe in the **10 Recently Favorited Recipes** section and go to that recipe's page.
-1. Check for appropriate favorite status and icon.
+1. Check for the appropriate favorite status and icon.
 1. Click on **Favorite** or its icon.
 1. Check for appropriate favorite status and icon.
 1. Navigate to the **Profile** page.
@@ -716,7 +716,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. if Favorite status or icon is displayed incorrectly, record:
     + The test name, recipe name, path choosen to the recipe, and a brief description of the problem.
 1. If click box for changing favorite status does not respond correctly, record:
-    + The recipe name and a brief description of the problem.
+    + The test name, recipe name and a brief description of the problem.
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
@@ -735,7 +735,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. The tester knows every index card with two sides of information must have **More on back-->** on it.
+1. The tester knows that every index card with two sides of information must have **More on back-->** on it.
 1. The tester knows the content of each **Lesson** card.
 
 #### Testing Step(s):
@@ -776,7 +776,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. Fill out all the appropriate information and submit said information.
 1. Click on the **Update Profile** button.
 1. Click on the **Create New Password** button.
-1. Upload an avatar, enter a bio, the current password, an email, a username and a new password in both new password and confirm new password. Then submit all the data.
+1. Upload an avatar, enter a bio, the current password, a new email, a new username and a new password in both the new password and confirm new password areas. Then submit all the data.
 1. View all submitted data and check for accuracy.
 1. Click on **Logout** on the navigation bar.
 1. Click on **Login** on the navigation bar and enter new login information.
@@ -789,7 +789,7 @@ is addressed in **Scalability** and **Other Problems**.
     + The current username and email address of the account (labeled as current), the previous username and email address (labeled as previous), and that this is a test account.
 1. If any user profile content does not update properly, record:
     + The test name, the header of the content that does not update correctly and a brief description of the problem.
-1. If unable to log back into account, record:
+1. If unable to log back into the test account, record:
     + The test name, the current username and email address of the account (labeled as current), the previous username and email address (labeled as previous), and a brief description of the problem.
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
@@ -804,13 +804,13 @@ is addressed in **Scalability** and **Other Problems**.
 + I've uploaded a recipe I don't like anymore and I want to remove it. <!-- Tests for deletion of recipe --><!-- Tests C.R.U.D. -->
 
 #### Expectation(s):
-1. A recipe is created, viewed, edited, and deleted.
+1. A recipe will be created, viewed, edited, and deleted.
 1. A missing recipe message is flashed when a user tries to view a deleted recipe.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. The tester will create an account for this test, and will keep a record of said account.
+1. The tester will create an account for this test, and will keep a record of the account.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
@@ -853,12 +853,12 @@ is addressed in **Scalability** and **Other Problems**.
 + I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page's **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. <!-- Tests delete button for favorites/recents in profile -->
 
 #### Expectation(s):
-1. The button that removes a recipe from **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** functions properly.
+1. The button that removes a recipe from the **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** sections functions properly.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
 1. The page content doesn't overlap and is easily read.
 
 #### Assumption(s):
-1. The tester will create an account for this test, and will keep a record of said account.
+1. The tester will create an account for this test, and will keep a record of the account.
 1. The tester will use different dummy information per recipe, and will keep a record of all dummy recipes.
 1. The tester knows how to favorite a recipe.
 1. The tester knows how to remove a recipe from **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes**.
@@ -875,17 +875,17 @@ is addressed in **Scalability** and **Other Problems**.
 1. Fill out all the appropriate information, including an avatar, and submit another new recipe.
 1. Favorite this recipe.
 1. Repeat steps 8 - 10, five times.
-1. Delete a recipe from these newly created recipes.
-1. Click on the deleted recipe's name in **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** and be sure the missing recipe message flashes.
-1. Removes the recipe from **10 Recently Favorited Recipes** and again on **10 Recently Viewed Recipes** using the remove icon.
-1. Check to be sure the appropriate recipes were deleted from the **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** lists.
+1. Go to one of these newly created recipe's page and delete the recipe.
+1. Once the **Profile** page opens, click on the deleted recipe's name in the **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** sections and be sure the missing recipe message flashes.
+1. Removes the recipe from the **10 Recently Favorited Recipes** section and again in the **10 Recently Viewed Recipes** section using the remove icon.
+1. Check to be sure the appropriate recipes were removed from the **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** section lists.
 
 #### Document Result(s):
 1. A user account was created to fullfill the test's requirments, record:
     + The username, email address of the account, and that this is a test account.
 1. Recipe dummy data was created to fullfill the test's requirments, record:
-    + The testname, the names of all of the recipes created, the username of the account used to create the recipes, which recipes were deleted by the tester, and that these are all dummy data.
-1. If the remove recipe icon in **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** does not function properly, record:
+    + The test name, the names of all of the recipes created, the username of the account used to create the recipes, which recipes were deleted by the tester, and that these are dummy data.
+1. If the remove recipe icon in the **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** sections does not function properly, record:
     + The test name, recipe name, the account username, screen resolution, browser/device, and a brief description of the problem.
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
@@ -894,6 +894,7 @@ is addressed in **Scalability** and **Other Problems**.
 
 ## Program Tests
 ### BrowserStack
++ Allows a wide range of devices to be quickly and easily tested.
 + [Google Nexus 5 - Default Browser](static/readme/testing/browserstack/4.4_Google-Nexus-5_portrait_real-mobile.jpg)
 + [OS X Big Sur - Chrome 71](static/readme/testing/browserstack/macbsr_chrome_71.0.jpg)
 + [Windows 10 - Chrome 71](static/readme/testing/browserstack/win10_chrome_71.0.jpg)
@@ -923,18 +924,18 @@ is addressed in **Scalability** and **Other Problems**.
 
 # Bugs and Other Problems
 ## Previous Bugs
-+ A recipe page would return an error page if refreshed.
++ A recipe page would redirect to an error page if refreshed.
     + Caused by:
         + A user refreshing the recipe page after changing the recipes favorite status.
     + Fix:
         + Created a Python function, `check_for_dups`, to check boolean status of favorite (even in refresh).
-        + Now instead of returning an error page it changes the favorite status of the recipe.
+        + Now instead of redirecting to an error page it changes the favorite status of the recipe.
 + Flask was generating a 504 gateway timeout error.
     + Caused by:
         + A `while` loop not breaking correctly.
     + Fix:
         + Added a missing `len()` function. This changed a string value into a comparable int value.
-+ Carousel would post incorrect amount of index cards the on screen.
++ Carousel would post an incorrect amount of index cards the on screen.
     + Caused by:
         + Changing screen width or resolution size.
     + Fix:
@@ -1015,7 +1016,7 @@ is addressed in **Scalability** and **Other Problems**.
         + Expanded suffixes allowed to include `.net` and `.org`.
     + Thought(s):
         + Email validation should be handled by Python only, instead of JS and Python. This could allow Python to check if the email account is real and remove the reliance on suffixes for validation.
-+ MongoDB's general user search, `mongo.db.<collection>.find("$text": "$search": <value>)`, is unable to return booleans. Thus, users are not able to search for grandparent classics or lazy favorites boolean tags.
++ MongoDB's general user search, `mongo.db.<collection>.find("$text": "$search": <value>)`, is unable to return booleans. Thus, users are not able to search for the grandparent classic or lazy favorite boolean tags.
     + Caused by:
         + MongoDB code.
     + Attempted fix(s):
@@ -1027,7 +1028,8 @@ is addressed in **Scalability** and **Other Problems**.
         + Original poor design. This design incorporated JS as the primary validator with HTML and Python acting as backup validatation.
         + Limitations in JS to validate email information properly.
     + Attempted fix(s):
-        + None.
+        + Removed all HTML's validation.
+        + Adjusted JS and Python validation to be more compatible with each other. 
     + Thought(s):
         + Two options are detailed in **Scalability**.
 + Pagination's JS structure could be revised.
@@ -1049,7 +1051,7 @@ is addressed in **Scalability** and **Other Problems**.
     + Caused by:
         + Having over ten favorite recipes and wanting to remove a recipe that's outside the **10 Recently Favorited Recipes**'s ten recipe ceiling.
     + Attempted Fix(s):
-        + None, discovered to late in project to attempt a fix.
+        + None. This was discovered to late in project to attempt a fix.
     + Thought(s):
         + The original fix, added the ability to remove recipes from the users favorite list while the user was on their profile page. This was added to allow users to remove recipes that had been deleted and would not be 
         otherwise removable from their favorites list.
@@ -1062,20 +1064,20 @@ is addressed in **Scalability** and **Other Problems**.
 + Click on the **Code** button to get the drop down menu.
 + Copy the HTTPS address provided.
 + Create a new GitHub/GitPod project (to house the new clone) and then open this new project.
-+ Go to the Bash and type, `git clone <HTTP>`, paste the HTTPS address found in the GitHub page (don't forget the space after "clone"), and press enter.
-+ The clone will be created within a new the folder called, "Fat_Racoon_Kitchen" (name of the original repository).
++ Go to the Bash and type, `git clone <HTTPS>`, paste the HTTPS address found in the GitHub page (don't forget the space after "clone"), and press enter.
++ A clone will be created within a new folder called, "Fat_Racoon_Kitchen" (name of the original repository).
 + Unpack everything from this new folder to the root of the GitPod project tree and the project will be setup within GitPod (minus the database which we will setup shortly).
-+ Open up the file `run.py` and search for "head_chef".
-+ Update the "fat_raccoon" to your new head chef's username.
++ Open the file `run.py` and search for "head_chef".
++ Update the "fat_raccoon" to your new head chef's in-app username.
 
 ## Setup Structure on GitPod for Developers
 ### Flask
-+ Install Flask.
++ Install Flask:
     + In bash (of GitPod clone) type, `pip3 install Flask` and press enter.
-+ Create Python env file.
++ Create Python env file:
     + Create a new file called `env.py` in root directory of GitPod clone.
-        + Add `env.py` to `gitignore` file (NEVER PUSH THIS FILE). If `gitignore` does not exist, create it in the root directory of the GitPod clone.
-        + Add `__pycache__/` to `gitignore` file (NEVER PUSH THIS FILE)
+        + Add the text `env.py` to the list within the `gitignore` file (NEVER PUSH THIS FILE). If `gitignore` does not exist, create it in the root directory of the GitPod clone.
+        + Add the text `__pycache__/` to the list within the `gitignore` file (NEVER PUSH THIS FILE)
             + Within `env.py` create the lines:
                 + `import os`
                 + `os.environ.setdefault("IP", "0.0.0.0")`
@@ -1088,7 +1090,7 @@ is addressed in **Scalability** and **Other Problems**.
                     + This missing value will be added after MongoDB database creation.
 
 ### PyMongo
-+ Install PyMongo
++ Install PyMongo:
     + In bash (of GitPod clone) type, `pip3 install flask-pymongo` and press enter.
     + In bash (of GitPod clone) type, `pip3 install dnspython` and press enter.
 
@@ -1097,11 +1099,11 @@ is addressed in **Scalability** and **Other Problems**.
 + Create a new app on Heroku by clicking **New** and following the directions.
 + Prep your GitPod repository for Heroku:
     + Go to your GitPod project that houses the clone from the previous section. 
-        + In bash (of GitPod clone) type, `pip3 freeze --local > requirements.txt`.
-        + In bash (of GitPod clone) type, `echo web: python run.py > Procfile`.
+        + In bash (of GitPod clone) type, `pip3 freeze --local > requirements.txt` and press enter.
+        + In bash (of GitPod clone) type, `echo web: python run.py > Procfile` and press enter.
             + Check contents of Procfile, because two problems can occur:
                 + If the opened Procfile has a blank line at the bottom, delete this line.
-                + Be sure there is a space after the colon.
+                + Be sure there is a space after the colon in the Procfile.
         + This creates the two files needed for Heroku to identify what it needs to run the app.
 + Link Heroku and GitHub:
     + Log into Heroku.
@@ -1112,14 +1114,16 @@ is addressed in **Scalability** and **Other Problems**.
 + Share `env.py` information with Heroku.
     + Click on **Settings**.
     + Click on **Reveal Config Vars** from **Config Vars** section.
-    + Add all of the `env.py` key and value pairs without their quotations.
+    + Add all of the `env.py` key and value pairs without their quotations. 
+        + (Ex. key - `IP`)
+        + (Ex. value - `0.0.0.0`)
 + Enable automatic deployment or manually deploy updates.
     + Automatic Deployment:
         + Click on **Deploy**.
-        + Click on **Enable Automatic Deploys** in "automatic deploys" section..
-        + Click on **Deploy Branch** in "manual deploy" section to start initial deployment.
+        + Click on **Enable Automatic Deploys** in **automatic deploys** section.
+        + Click on **Deploy Branch** in **manual deploy** section to start initial deployment.
     + Manual Deployment:
-        + Click on **Deploy Branch** in "manual deploy" section any time there is content you want to update the active app with.
+        + Click on **Deploy Branch** in **manual deploy** section any time there is content you want to update the active app with.
 
 ## Database Build
 ### Database Structure
@@ -1170,14 +1174,14 @@ is addressed in **Scalability** and **Other Problems**.
     + Paste in copied string from GitPod into the value for the key `MONGO_URI`.
     + Type in the `<root database>`'s name as the value for the key `MONGO_DBNAME`.
 
-### Create the Appropriate Collections
+### Create the Appropriate Documents
 + Blank:
     + This is where the blank dictionary base for new users and new recipes is stored.
     + Two entries are required to be here.
     + The mongo `_id` auto assign is fine for both entries.
-    + The value, `Array` is Mongo assigned as `Array` and must be changed from `string`.
-    + The value, `null` is Mongo assigned as `Null` and must be changed from `string`.
-    + The value, `false` is Mongo assigned as `Boolean` and must be changed from `string`.
+    + The value, `Array` is MongoDB assigned as `Array` and its type must be changed from `string`.
+    + The value, `null` is MongoDB assigned as `Null` and its type must be changed from `string`.
+    + The value, `false` is user input and can be assigned after its type has been changed from `string` to `boolean`.
     + Recipe entry is structured as:
         + `{`
         + `_id: <auto assigned value>`
@@ -1216,7 +1220,7 @@ is addressed in **Scalability** and **Other Problems**.
 + The feature collection:
     + The feature collection stores the applications featured ingredients.
     + There must be a minimum of one featured ingredient document in the feature collection for the application to function.
-    + For the best UX a featured ingredient document amount of approximately ten is advised. However, more would also be acceptable.
+    + For the best UX, a featured ingredient document amount of approximately ten is advised. However, more would also be acceptable.
     + Each featured ingredient is structured as:
         + `{`
         + `name: "chicken"`
