@@ -99,18 +99,18 @@ def logout():
 # Returns users personal profile
 @app.route("/profile")
 def profile():
-    userInfo = rae.check_mongo_user_unique(False, "email", session["user"])
-    if not userInfo[0]:
-        return render_template(
-            "profile.html", chef_info=userInfo[2],
-            favorites=list(enumerate(userInfo[2]["favorites"])),
-            recents=list(enumerate(userInfo[2]["recents"])),
-            uploaded=list(enumerate(mongo.db.recipes.find(
-                {"created_by": userInfo[2]["username"]},
-                {"name": 1}).sort("date", -1))))
-    else:
+    try:
+        userInfo = rae.check_mongo_user_unique(False, "email", session["user"])
+        if not userInfo[0]:
+            return render_template(
+                "profile.html", chef_info=userInfo[2],
+                favorites=list(enumerate(userInfo[2]["favorites"])),
+                recents=list(enumerate(userInfo[2]["recents"])),
+                uploaded=list(enumerate(mongo.db.recipes.find(
+                    {"created_by": userInfo[2]["username"]},
+                    {"name": 1}).sort("date", -1))))
+    except KeyError:
         flash("Your session has ended please login again")
-        session.pop("user")
         return redirect(url_for("index"))
 
 
@@ -138,13 +138,17 @@ def addFavorite(recipeId, favoriteChange):
 # Remove 10 recent from profile
 @app.route("/removeRecents/<recipeId>/<favType>", methods=("GET", "POST"))
 def removeRecents(recipeId, favType):
-    userInfo = mongo.db.users.find_one({"email": session["user"]})
-    newFav = [fav for fav in userInfo[favType] if fav[0] != ObjectId(recipeId)]
-    if favType == "favorites":
-        rae.update_mongo("user", userInfo["_id"], dict(favorites=newFav))
-    if favType == "recents":
-        rae.update_mongo("user", userInfo["_id"], dict(recents=newFav))
-    return redirect(url_for("profile"))
+    try:
+        userInfo = mongo.db.users.find_one({"email": session["user"]})
+        newFav = [fav for fav in userInfo[favType] if fav[0] != ObjectId(recipeId)]
+        if favType == "favorites":
+            rae.update_mongo("user", userInfo["_id"], dict(favorites=newFav))
+        if favType == "recents":
+            rae.update_mongo("user", userInfo["_id"], dict(recents=newFav))
+        return redirect(url_for("profile"))
+    except KeyError:
+        flash("Your session has ended please login again")
+        return redirect(url_for("index"))
 
 
 # Returns recipe and auto adjusts recent list for logged in users
@@ -193,21 +197,24 @@ def delete_recipe(recipe_id):
 
 @app.route("/add_edit_recipe/<recipeId>")
 def add_edit_recipe(recipeId):
-    userInfo = mongo.db.users.find_one({"email": session["user"]})
-    features = mongo.db.feature.find()
-    if recipeId == "new":
-        recipeId = ObjectId()
-        recipeInfo = mongo.db.blank.find_one(
-            {"_id": ObjectId("607b30bb8ac97dfcf527a2b8")})
-    else:
-        recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
-    return render_template(
-        "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
-        recipeIngEnum=list(enumerate(recipeInfo["ingredients"])),
-        recipeSteEnum=list(enumerate(recipeInfo["steps"])),
-        admin=userInfo["admin"], recipeId=recipeId,
-        username=userInfo["username"])
-
+    try:
+        userInfo = mongo.db.users.find_one({"email": session["user"]})
+        features = mongo.db.feature.find()
+        if recipeId == "new":
+            recipeId = ObjectId()
+            recipeInfo = mongo.db.blank.find_one(
+                {"_id": ObjectId("607b30bb8ac97dfcf527a2b8")})
+        else:
+            recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
+        return render_template(
+            "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
+            recipeIngEnum=list(enumerate(recipeInfo["ingredients"])),
+            recipeSteEnum=list(enumerate(recipeInfo["steps"])),
+            admin=userInfo["admin"], recipeId=recipeId,
+            username=userInfo["username"])
+    except KeyError:
+        flash("Your session has ended please login again")
+        return redirect(url_for("index"))
 
 @app.route("/upload_recipe/<recipeId>/<username>", methods=("GET", "POST"))
 def upload_recipe(recipeId, username):
@@ -241,9 +248,12 @@ def upload_recipe(recipeId, username):
 # Returns a page for users to edit their user info
 @app.route("/edit_user_info")
 def edit_user_info():
-    userInfo = mongo.db.users.find_one({"email": session["user"]})
-    return render_template("edit_user_info.html", userInfo=userInfo)
-
+    try:
+        userInfo = mongo.db.users.find_one({"email": session["user"]})
+        return render_template("edit_user_info.html", userInfo=userInfo)
+    except KeyError:
+        flash("Your session has ended please login again")
+        return redirect(url_for("index"))
 
 # Edits user information
 @app.route("/profile/edit", methods=("GET", "POST"))
