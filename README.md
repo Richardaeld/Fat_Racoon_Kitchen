@@ -1,5 +1,5 @@
 # Contents
-[Fat Raccoon - Introduction](#fat-racoon---introduction)
+[Fat Raccoon - Introduction](#fat-raccoon---introduction)
 
 [UX](#ux)
 + [Goals](#goals)
@@ -75,18 +75,17 @@
 + [Acknowledgements](#acknowledgements)
 
 
-# Fat Racoon - Introduction
-<!-- Intro with goals -- thesis -->
-The Fat Raccon was created to facilitate a community sharing and accumulation of family recipes.
+# Fat Raccoon - Introduction
+<!-- Intro -->
+The Fat Raccoon was designed to facilitate a home cooking community for the accumulation of family recipes.
+Our notorious and enduring mascot, a plump Raccoon, combined with our "Southern American" home-crafted appearance make the Fat Raccoon application a memorable experience.
+This community created recipe compendium should be the last cookbook any home cook should ever need.
+<!-- How it works -->
 Each recipe uploaded into our app gets its own page with an easy-to-read responsive layout that's ideal for tablet and mobile users.
-<!-- each recipe's ingrtedient and step container allow users to cross out items as they progress through the recipe -->
 Additionally, each recipe's ingredient and step sections allow users to cross out items as they progress through the recipe.
 Our recipes can be searched through with an in-app search engine that looks for the recipe's name, who created the recipe, and its featured ingredient.
 Members of the Fat Raccoon community can easily share their recipes by giving friends and family their username. 
-Our notorious and enduring mascot, a plump Raccoon, combined with our "Southern American" home-crafted appearance make the Fat Raccoon application a memorable experience.
-This community created recipe compendium should be the last cookbook any home cook should ever need.
 <!-- Personalized cookbook -->
-<!-- The Fat Raccoon wants to offer its account holders a community driven compendium as well as a personalized recipe book. -->
 The Fat Raccoon wants to offer its account holders a community driven compendium and a personalized recipe book.
 Those with an account can add a bio and avatar to their profile page that will welcome them upon logging in.
 This profile page also offers three personalized recipe lists: recipes that the user has uploaded, their favorite recipes, and 10 previously viewed recipes.
@@ -94,7 +93,7 @@ This profile page also offers three personalized recipe lists: recipes that the 
 Even if our users don't create an account, they will still have access to a plethora of different search methods that will help them find any recipe they desire.
 The opening page of the Fat Raccoon offers a multitude of different searches, including: random recipes based on a featured ingredient, a random assortment of recipes with the grandparent classic tag, a random Fat_Raccoon recipe, and more. 
 Users can search our entire recipe compendium which is sorted by featured ingredient and upload date.
-Finally, there is our aformentioned in-app search engine that can be found on the navigation bar at any time.
+Finally, there is our aforementioned in-app search engine that can be found on the navigation bar at any time.
 <!-- About us, lessons, and head chef's personal touch -->
 The Fat Raccoon's plump mascot started as a joke between the head chefs of this application. 
 Both these chefs were overworked, sleep deprived, and often nocturnal home cooks that would use the leftover "garbage" from the fridge to make a meal.
@@ -112,7 +111,7 @@ The "fat raccoons" also offer their personal recipes under the chef name Fat_Rac
 + I want a place to leave a recipe, so I can easily find it later. <!-- Testing Recipe Upload -->
 + I want help deciding what to cook for dinner and I like a specific chef's recipes. <!-- Testing Search Chef Name -->
 + I want an easy-to-make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -->
-+ I can't remember the name of a recipe that i liked on the Fat Raccoon, and I want to find it again. <!-- Testing Recipe Favorites Function -->
++ I can't remember the name of a recipe that I liked on the Fat Raccoon, and I want to find it again. <!-- Testing Recipe Favorites Function -->
 + I lack confidence in my cooking ability and need help. <!-- Testing Lessons Index Cards -->
 + I've decided that I don't like my user bio or avatar anymore and I want to change them. <!-- Tests update of user information/avatar -->
 + I've uploaded a recipe I don't like anymore and I want to remove it. <!-- Tests for deletion of recipe --><!-- Tests C.R.U.D. -->
@@ -127,7 +126,7 @@ was a deliberate choice to help the developer gain a better understanding of how
     + Using Flask's APIs, such as: `flash`, `render_template`, `redirect`, `request`, `session`, and `url_for`.
     + Using a single Jinja template for multiple functions (Ex. `add_edit_recipe.html` uses the same template to create and modify a recipe).    
     + Using Pymongo to communicate with MongoDB database.
-    + Creating Python validation logic, that:
+    + Creating Python validation logic that:
         + Checks filetype submitted.
         + Checks max and min character length.
         + Checks for allowed characters.
@@ -135,11 +134,11 @@ was a deliberate choice to help the developer gain a better understanding of how
     + Creating a callable function library instead of repeating code.
     + Minimizing function length.
     + Using a random number generator to randomly select recipes.
-    + Using if expressions, that:
+    + Using `if` expressions that:
         + Replace blank sections (missing database data) with filler templates.
         + Add a specific banner on random recipe.
         + Etc....
-    + Using for expressions, that:
+    + Using `for` expressions that:
         + Generate list data for recipe lists. 
         + Generate recipe ingredient lists.
         + Etc....
@@ -147,14 +146,14 @@ was a deliberate choice to help the developer gain a better understanding of how
 + I want to showcase my JS abilities, by:
     + Creating carousel JS logic.
     + Creating pagination JS logic.
-    + Creating validation JS logic, that:
+    + Creating validation JS logic that:
         + Checks character length.
         + Checks for allowable characters.
         + Compares two passwords to be sure they match.
         + Checks for appropriate email suffix.
         + Replace spaces with `_` using a regex.
 
-+ I want to showcase my MongoDB's (NoSQL database) database abilities, by:
++ I want to showcase my MongoDB's (NoSQL database) database abilities by:
     + Restricting user searches to specific content.
         + (Ex. Only allowing users to search for chef name, featured ingredient, and recipe name from the in-app recipe search engine.)
     + Removing non pertinent data sent to the client from the server when applicable. 
@@ -163,7 +162,7 @@ was a deliberate choice to help the developer gain a better understanding of how
         + (Ex. The `$or` operator is used to allow a dictionary list of `ObjectId`s to be compiled and sent to MongoDB as a single inquiry.)
     + Creating a new recipe or account document will build upon a prestored blank template instead of creating an entirely new document each time. This allows:
         + For cleaner coded Python when uploading new content.
-        + For easily updating the standard recipe and user documents. 
+        + For easily updating the standard for creating new recipe and user documents. 
     + Allow users to upload avatars for their profile and recipes.
 
 + I want to showcase my artistic ability, by:
@@ -175,7 +174,7 @@ was a deliberate choice to help the developer gain a better understanding of how
             + Animated to have the "ice" dip when a user's mouse cursor passes over it.
         + Created napkins that the drinks sit on.
         + Created Polaroid pictures.
-        + Created table runners (header and footer).
+        + Created table runners.
         + Created index cards.
     + Creating SVG art.
         + Created favicon and Fat Raccoon logo (raccoon face).
@@ -184,47 +183,47 @@ was a deliberate choice to help the developer gain a better understanding of how
 
 ## Client Stories
 + I want to find a recipe for dinner.
-    + I opened the Fat Raccoon's main page. I don't know what I want, so I scrolled down to the bottom of the page. I liked the random recipe I saw on the bottom of the page and decided to use that recipe. 
+    + I opened the Fat Raccoon's main page. I don't know what I want for dinner, so I scrolled down to the bottom of the page. I liked the random recipe I saw on the bottom of the page and decided to use that recipe. 
 + I want to use my smart phone or tablet as a recipe book.
-    + I opened the Fat Raccoon's main page, and I found a recipe I like. I went to the recipe's page to see what I need to make the recipe. I've found that if I click the item's check box, it crosses out the box and the text of the item.
+    + I opened the Fat Raccoon's main page and I found a recipe I like. I went to the recipe's page to see what ingredients I need to make the recipe. I found that if I click the item's check box, it crosses out the box and the text of the item.
     I turned my device off and on. I found it didn't automatically reset the screen I was on, so all the boxes are still checked. I think I will keep using my device to easily keep track of what ingredient(s) I still need or what step 
     of the recipe I am on.
 + I want to find a new chicken dish to cook.
-    + I opened the Fat Raccoon's main page, and I didn't immediately find a chicken recipe that I liked. Instead, I found a button, **Browse by Featured Ingredient!**, and I clicked it. The **Featured Ingredient** section for 
+    + I opened the Fat Raccoon's main page and I didn't immediately find a chicken recipe that I liked. Instead, I found a button, **Browse by Featured Ingredient!**, and I clicked it. The **Featured Ingredient** section for 
     chicken has all the chicken recipes I could want!
 + I want a place to leave a recipe, so I can easily find it later.
     + I've decided I want a digital place to keep a recipe, so I opened the Fat Raccoon's main page. I created a Fat Raccoon account from the login/create modal. The app took me to my newly created profile page. I 
-    clicked the **Share Recipe** button, and I filled out all the recipe's information including an image. I've discovered that I can edit my recipe from its recipe page in the Fat Raccoon app. I can also favorite 
+    clicked the **Share Recipe** button and I filled out all the recipe's information including an image. I've discovered that I can edit my recipe from its recipe page in the Fat Raccoon app. I can also favorite 
     my own recipe from its recipe page. When I go back to my profile, my recipe is displayed in the **10 Recently Uploaded Recipes** and **10 Recently Favorited Recipes** sections so I can easily find my recipe whenever I want it.
 + I want help deciding what to cook for dinner and I like a specific chef's recipes.
-    + My friends, Mrs. and Mr. Fat_Raccoon have similar taste in food as me, and I want to easily find all of their recipes. I opened the Fat Raccoon's main page. I scrolled to the bottom of the 
-    page where I found a button, **Browse Chef Fat_Raccoon's recipes!**, and I clicked the button. I am now able to see all of the recipes from the chef, Fat_Raccoon.
-    + My friend has an account on the Fat Raccoon app and I know her/his username. I opened the Fat Raccoon's main page and put my friends username into the search bar and now I am able to see all of my friend's
+    + My friends, Mrs. and Mr. Fat_Raccoon have similar taste in food as me and I want to easily find all of their recipes. I opened the Fat Raccoon's main page and I scrolled to the bottom of the 
+    page. I found a button, **Browse Chef Fat_Raccoon's recipes!**, and I clicked the button. I am now able to see all of the recipes from the chef, Fat_Raccoon.
+    + My friend has an account on the Fat Raccoon app and I know her/his username. I opened the Fat Raccoon's main page and put my friend's username into the search bar and now I can see all of my friend's
     uploaded recipes.
-    + I opened the Fat Raccoon's main page, and I clicked on **Recipes** in the navigation bar. I found a recipe on this page that I liked, however it wasn't made by the chef, Fat_Raccoon! I did find that 
-    if I clicked on the chef's name, under the picture of their recipe, it takes me to all the recipes submitted by this chef.
+    + I opened the Fat Raccoon's main page and I clicked on **Recipes** in the navigation bar. I found a recipe on this page that I liked, however, it wasn't made by the chef, Fat_Raccoon! I did find that 
+    if I clicked on the chef's name under the picture of their recipe, it takes me to all the recipes submitted by this chef.
 + I want an easy-to-make recipe.
-    + It's been a long day, I'm tired, and I want an easy-to-make recipe for dinner. I opened the Fat Raccoon's main page, and I scrolled to the bottom of the page. I found a button, **Browse our Lazy Favorites!**, and I clicked this 
-    button. I am greeted with numerous recipes that don't require much effort.
-+ I can't remember the name of a recipe that i liked on the Fat Raccoon, and I want to find it again.
-    + I opened the Fat Raccoon's main page, and I realized that I don't remember the name of the recipe I was looking at last night. I remembered I was logged in, so I logged into my
+    + It's been a long day, I'm tired, and I want an easy-to-make recipe for dinner. I opened the Fat Raccoon's main page and I scrolled to the bottom of the page. I found a button, **Browse our Lazy Favorites!**, and I clicked this 
+    button. I was greeted with numerous recipes that don't require much effort.
++ I can't remember the name of a recipe that I liked on the Fat Raccoon, and I want to find it again.
+    + I opened the Fat Raccoon's main page and I realized that I don't remember the name of the recipe I was looking at last night. I remembered I was logged in, so I logged into my
     Fat Raccoon account. I was taken to my profile page where I easily found the recipe I was looking at last night in my **10 Recently Viewed Recipes** section.
-    + I opened the Fat Raccoon's main page, and I realized that I don't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account, and I'm taken 
+    + I opened the Fat Raccoon's main page and I realized that I don't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account, and I was taken 
     to my profile page. I don't see the recipe in my **10 Recently Viewed Recipes**, however I did favorite the recipe and easily found it in my **10 Recently Favorited Recipes**
     section.
-    + I opened the Fat Raccoon's main page and realized that I don't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account and I'm taken 
+    + I opened the Fat Raccoon's main page and realized that I don't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account and I was 
     to my profile page. I don't see the recipe in my **10 Recently Viewed Recipes**. I also did not find the recipe in my **10 Recently Favorited Recipes** section.
     I clicked on my **10 Recently Favorited Recipes** header and I'm taken to a list of all my favorite recipes. I found the recipe there.
 + I lack confidence in my cooking ability and need help.
-    + I opened the Fat Raccoon's main page and I realized I'm completely outside of my comfort zone. I want to try a recipe, but every time I cook, something is terrible 
-    about the experience. I saw the **Lesson** section in the navigation bar and decided to give it a shot. I found numerous helpful tips that gave me the confidence I need to 
+    + I opened the Fat Raccoon's main page and I realized that I'm completely outside of my comfort zone. I want to try a recipe, but every time I cook something is terrible 
+    about the experience. I saw the **Lesson** section in the navigation bar and decided to give it a shot. I found numerous helpful tips that gave me the confidence I needed to 
     try a recipe I was intimidated by.
 + I've decided that I don't like my user bio or avatar anymore and I want to change them.
     + I logged into my Fat Raccoon account and I'm taken to the profile page. I clicked on the **Update Profile** button. I chose a new image from my pc and updated my bio to be a better representation of myself.
      I also had to put in my current password before the form allowed me to submit it. I submitted the form and was taken back to my profile page where I saw the updated avatar and bio.
 + I've uploaded a recipe I don't like anymore and I want to remove it.
-    + I logged into my Fat Raccoon account and I'm taken to the profile page. I went to the page of my recipe that I want to delete. I clicked the **Delete Recipe** button, and I was prompted to type in the recipe's name.
-    I typed in the recipe's name, and the delete button turned green. I deleted the recipe. I'm taken back to my profile page where the app lets me know I've deleted the recipe.
+    + I logged into my Fat Raccoon account and I'm taken to the profile page. I went to the page of my recipe that I want to delete. I clicked the **Delete Recipe** button and I was prompted to type in the recipe's name.
+    I typed in the recipe's name and the delete button turned green. I deleted the recipe. I'm taken back to my profile page where the app lets me know I've deleted the recipe.
 + I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page's **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections.
     + I logged into my Fat Raccoon account and I'm taken to the profile page where I am reminded of my error in my **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. When I clicked on the recipe 
     the app notified me that the recipe has been deleted. I saw that a button next to the recipes on **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** looks like a delete icon. I clicked this icon in both sections 
@@ -241,10 +240,10 @@ was a deliberate choice to help the developer gain a better understanding of how
 
 ## Login and Create Account Modal
 + Both login and create account modals are accessible from any non-logged-in page.
-+ The form validation notifies users, with comment bubbles, if the information they have input doesn't meet the forms criteria. These bubbles greatly improve the users form experience.
++ The form validation notifies users, with comment bubbles, if the information they have inputted doesn't meet the forms criteria. These bubbles greatly improve the users form experience.
 + The form validation:
     + Prevents users from submitting invalid information.
-    + Uses a duel-layered JS and Python check before any content is allowed to be upload.
+    + Uses a dual-layered JS and Python check before any content is allowed to be uploaded.
     + Checks characters, character length, blank space input, and more.
     + Uses a regex that changes spaces to `_` for password, username, and email inputs.
     + Uses an email validation that:
@@ -253,12 +252,12 @@ was a deliberate choice to help the developer gain a better understanding of how
 
 ## Index
 + Index card carousel:
-    + Index cards give a home-made loo that is welcoming to users.
+    + Index cards give a home-made look that is welcoming to users.
     + Each featured ingredient has its own index card.
-    + Each index card offers three randomly selected recipes based its featured ingredient. This helps undecided users find an appropriate recipes
+    + Each index card offers three randomly selected recipes based its featured ingredient which helps undecided users find an appropriate recipe.
 + Grandparent classic Polaroids:
-    + The Recipes used in this section are all considered classical recipes that would have been comfort foods created by grandparents.
-    + The Polaroid design is ment to give users a feeling of nostalgia because of their dated appearance.
+    + The recipes used in this section are all considered classic recipes that are comfort foods created by grandparents.
+    + The Polaroid design is meant to give users a feeling of nostalgia because of their dated appearance.
     + The recipe's name is added to the bottom of the picture to let users know what recipe they are viewing.
 + Random recipe section:
     + Quick browsing links are provided to give users ample ideas for cooking.
@@ -269,54 +268,54 @@ was a deliberate choice to help the developer gain a better understanding of how
 ## Lessons
 + Index cards:
     + A comment is added to each clickable card to notify users they can click on the card for an effect.
-    + Each clickable index card, can be flipped over with most of them containing information on both sides.
+    + Each clickable index card can be flipped over, with most of them containing information on both sides.
     + The information provided on the index cards will give new and experienced cooks some kitchen hints and tricks.
 
 ## Profile
-+ The Profile is headed with two buttons that allow users to share a new recipe or update their profile.
++ The Profile has a header with two buttons that allow users to share a new recipe or update their profile.
 + Users can clearly see their own uploaded bio and avatar image which gives users a feeling of personalization.
-+ Users have access to their entire upload and favorite recipe history with a single click of said items header.
-+ Users will always be able to see their 10 recently uploaded/favorited/viewed in their respective containers. These containers help users to keep track of recipes they want to return to.
++ Users have access to their entire upload history and favorited recipe history with a single click of those headers.
++ Users will always be able to see their 10 recently uploaded, favorited, and viewed recipes in their respective containers. These containers help users keep track of recipes they want to return to.
 
 ## Recipe
 + If a user is logged in and is the recipe's creator:
-    + A User can modify or delete that recipe. By using its respective header button.
+    + A User can modify or delete that recipe by using its respective header button.
 + If a user is logged in:
-    + User can favorite a recipe so they can easily return to it later.
-+ A Polaroid picture design is added to the recipes uploaded image which gives a more appealing visual for users.
-+ If a user has not uploaded an image a default blank will be used instead.
+    + A user can favorite a recipe so that they can easily return to it later.
++ A Polaroid picture design is added to the recipe's uploaded image which gives a more appealing visual for users.
++ If a user has not uploaded an image, a default blank will be used instead.
 + All of the recipe's general information is displayed and easily viewed.
 + A recipe's ingredients and steps each have:
     + Their own labeled sticky note container.
-    + Each item of these containers has its own check box.
-    + Users can click on any part of the item or its check box and it will check the box and cross out the item clicked.
+    + Each item in these containers has its own check box.
+    + Users can click on any part of the item or its check box and it will check the box and cross out the item.
     + The cross out function allows users to keep track of which ingredient(s) they require or what step they are on. 
 
 ## All Recipes
 + Lists the entire database of recipes by their featured ingredient. This helps users search for a recipe they want.
-+ When a featured ingredient container houses more than five recipes the list updates to integrate pagination at the bottom of the featured ingredient container.
-+ The pagination displays only five recipes at a time. This helps stop users from becoming overwhelmed with content.
-+ Each featured ingredient container is given a header that consists of the featured ingredient's name, This allows users to easily see what is in each container.
-+ Each listed recipe displays its name and total time (combined cook and prep time) to help users decide what they want to make, however at smaller resolutions it's reduced to just a recipe name to improve UX.
++ When a featured ingredient container houses more than five recipes, the list updates to integrate pagination at the bottom of the featured ingredient container.
++ The pagination displays only five recipes at a time. This prevents users from becoming overwhelmed with content.
++ Each featured ingredient container is given a header that consists of the featured ingredient's name. This allows users to easily see what is in each container.
++ Each listed recipe displays its name and total time (combined cook and prep time) to help users decide what they want to make, however, at smaller resolutions it's reduced to just a recipe name to improve UX.
 + Users can click on the featured ingredient header to go to a page containing only those featured ingredients.
 
 ## Recipe List
 + Has a single featured ingredient container.
-+ When a featured ingredient container houses more than five recipes the list updates to integrate pagination at the bottom of the featured ingredient container.
-+ The pagination displays only five recipes at a time. This helps stop users from becoming overwhelmed with content.
-+ Each listed recipe displays its name and total time (combined cook and prep time) to help users decide what they want to make, however at smaller resolutions it's reduced to just a recipe name to improve UX.
++ When a featured ingredient container houses more than five recipes, the list updates to integrate pagination at the bottom of the featured ingredient container.
++ The pagination displays only five recipes at a time. This prevents users from becoming overwhelmed with content.
++ Each listed recipe displays its name and total time (combined cook and prep time) to help users decide what they want to make, however, at smaller resolutions it's reduced to just a recipe name to improve UX.
 
 ## Add Edit Recipes
-+ Uses a plain form that is intentionally more bland than the rest of the application. This gives users a more serious feeling when creating and editing recipes.
-+ Users can update every part of a recipe, except the boolean tags of lazy favorite and grandparent classic.
-+ A recipe can be given the tags of lazy favorite and/or grandparent classic by the app's head chef if the recipe meets the prerequisites.
-+ The form validation notifies users, with comment bubbles, if the information they have input doesn't meet the forms criteria. These bubbles greatly improve the users form experience.
++ Uses a plain form that is intentionally minimalist. This design allows users to focus on the content they are creating.
++ Users can update every part of a recipe except the boolean tags of lazy favorite and grandparent classic.
++ A recipe can be given the tags of lazy favorite and/or grandparent classic by the app's head chef if the recipe meets the requirements.
++ The form validation notifies users, with comment bubbles, if the information they have inputted doesn't meet the forms criteria. These bubbles greatly improve the users form experience.
 + The form validation:
     + Prevents users from submitting invalid information.
-    + The image uses JS to check its file size and Python to check its file type.
-    + All other input and textareas use JS and Python as a duel-layered check before allowing upload.
+    + The image validation uses JS to check its file size and Python to check its file type.
+    + All other input and textareas use JS and Python as a dual-layered check before allowing upload.
     + These checks look at characters, character length, and/or blank space input.
-+ The total cook time updates automatically as prep and cook times are adjusted. This helps users with their math.
++ The total cook time updates automatically as prep and cook times are adjusted, thus users don't have to calculate the total time themselves.
 + A recipe's ingredients and steps each have:
     + A set of JS add/remove buttons for users to create and remove input boxes as they need.
     + An input/textarea box that is numbered to help users keep track of the ingredient/step number they are on.
@@ -324,13 +323,13 @@ was a deliberate choice to help the developer gain a better understanding of how
     + If a user submits a blank entry box (including spaces) the Python validation will remove said box(s).
 
 ## Edit User Info
-+ Uses a plain form that is intentionally more bland than the rest of the application. This gives users a more serious feeling when editing their profile.
++ Uses a plain form that is intentionally minimalist. This design allows users to focus on the content they are creating.
 + Users are able to update their password, username, email, avatar, and bio.
-+ The form validation notifies users, with comment bubbles, if the information they have input doesn't meet the forms criteria. These bubbles greatly improve the users form experience.
++ The form validation notifies users, with comment bubbles, if the information they have inputted doesn't meet the forms criteria. These bubbles greatly improve the users form experience.
 + The form validation:
     + Prevents users from submitting invalid information.
-    + The image uses JS to check its file size and Python to check its file type.
-    + All other input and textareas use JS and Python as a duel-layered check before allowing upload.
+    + The image validation uses JS to check its file size and Python to check its file type.
+    + All other input and textareas use JS and Python as a dual-layered check before allowing upload.
     + These checks look at characters, character length, and blank space input.
     + A regex changes spaces to `_` for password, username, and email inputs.
     + Uses an email validation that:
@@ -677,7 +676,7 @@ is addressed in **Scalability** and **Other Problems**.
 ---
 
 #### Tests User Story
-+ I can't remember the name of a recipe that i liked on the Fat Raccoon, and I want to find it again. <!-- Testing Recipe Favorites Function -->
++ I can't remember the name of a recipe that I liked on the Fat Raccoon, and I want to find it again. <!-- Testing Recipe Favorites Function -->
 
 #### Expectation(s):
 1. The favorite icon responds appropriately to recipe status of favorite and unfavorite.
