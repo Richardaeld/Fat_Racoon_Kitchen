@@ -13,7 +13,7 @@
     + [Testing Recipe Favorites Function](#testing-recipe-favorites-function)
     + [Testing Index Cards on Lesson Page](#testing-index-cards-on-lesson-page)
     + [Testing Profile Updates](#testing-profile-updates)
-    + [Testing Delete Recipe - Full C.R.U.D. Test](#testing-delete-recipe---full-c.r.u.d.-test)
+    + [Testing Delete Recipe - Full CRUD Test](#testing-delete-recipe---full-crud-test)
     + [Testing Delete Button for Recipes on Profile Page](#testing-delete-button-for-recipes-on-profile-page)
 + [Program Tests](#program-tests)
     + [BrowserStack](#browserstack)
@@ -404,7 +404,7 @@
 1. If there is an incorrect box shadow, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
-### Testing Delete Recipe - Full C.R.U.D. Test
+### Testing Delete Recipe - Full CRUD Test
 
 ---
 
