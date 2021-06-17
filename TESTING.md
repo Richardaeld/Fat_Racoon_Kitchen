@@ -5,7 +5,7 @@
     + [Developer Testing Methods](#developer-testing-methods)
 + [Developer Tests](#developer-tests)
     + [Testing Random Recipe](#testing-random-recipe)
-    + [Testing Text Coss Out Function](#testing-text-coss-out-function)
+    + [Testing Text Cross Out Function](#testing-text-cross-out-function)
     + [Testing All_Recipe And Recipe_List Pagination](#testing-all_recipe-and-recipe_list-pagination)
     + [Testing Recipe Upload](#testing-recipe-upload)
     + [Testing Search Chef Name](#testing-search-chef-name)
