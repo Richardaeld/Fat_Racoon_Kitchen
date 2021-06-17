@@ -8,7 +8,7 @@
 + [Client Stories](#client-stories)
 
 [Design Choices](#design-choices)
-+ [Header and Footer](#header-and-footer)
++ [Base - Header and Footer](#base---header-and-footer)
 + [Login and Create Account Modal](#login-and-create-account-modal)
 + [Index](#index)
 + [Lessons](#lessons)
@@ -121,7 +121,7 @@ The "fat raccoons" also offer their personal recipes under the chef name Fat_Rac
 + As a school project, this application was developed using as little 3rd party code as possible (ex. carousel logic was written by developer and Bootstrap's version was not used on purpose). This 
 was a deliberate choice to help the developer gain a better understanding of how languages such as JS and Python function and not done out of ignorance.
 
-+ I want to showcase my Python abilities, by:
++ I want to showcase my Python abilities by:
     + Importing Python libraries (Ex. datetime, random, etc...).
     + Using Flask's APIs, such as: `flash`, `render_template`, `redirect`, `request`, `session`, and `url_for`.
     + Using a single Jinja template for multiple functions (Ex. `add_edit_recipe.html` uses the same template to create and modify a recipe).    
@@ -143,7 +143,7 @@ was a deliberate choice to help the developer gain a better understanding of how
         + Generate recipe ingredient lists.
         + Etc....
 
-+ I want to showcase my JS abilities, by:
++ I want to showcase my JS abilities by:
     + Creating carousel JS logic.
     + Creating pagination JS logic.
     + Creating validation JS logic that:
@@ -160,16 +160,16 @@ was a deliberate choice to help the developer gain a better understanding of how
         + (Ex. Removing recipe ingredient(s), recipe step(s), and recipe description from the in-app recipe search engine returns.)
     + Searches use operators when applicable.
         + (Ex. The `$or` operator is used to allow a dictionary list of `ObjectId`s to be compiled and sent to MongoDB as a single inquiry.)
-    + Creating a new recipe or account document will build upon a prestored blank template instead of creating an entirely new document each time. This allows:
-        + For cleaner coded Python when uploading new content.
-        + For easily updating the standard for creating new recipe and user documents. 
+    + Creating a new recipe or account document will build upon a pre-stored blank template instead of creating an entirely new document each time. This allows:
+        + For cleaner coded Python.
+        + For the document standard to easily be updated. 
     + Allow users to upload avatars for their profile and recipes.
 
-+ I want to showcase my artistic ability, by:
++ I want to showcase my artistic ability by:
     + Creating CSS art.
         + Created sticky notes with a lifting effect.
         + Created drinks with an animation. These drinks are:
-            + Stylized as tea with ice in it
+            + Stylized as tea with ice in it.
             + Animated to have ripples when a user's mouse cursor passes over it.
             + Animated to have the "ice" dip when a user's mouse cursor passes over it.
         + Created napkins that the drinks sit on.
@@ -183,54 +183,54 @@ was a deliberate choice to help the developer gain a better understanding of how
 
 ## Client Stories
 + I want to find a recipe for dinner.
-    + I opened the Fat Raccoon's main page. I don't know what I want for dinner, so I scrolled down to the bottom of the page. I liked the random recipe I saw on the bottom of the page and decided to use that recipe. 
+    + I opened the Fat Raccoon's main page. I didn't know what I wanted for dinner, so I scrolled down to the bottom of the page. I liked the random recipe I saw on the bottom of the page and decided to use that recipe. 
 + I want to use my smart phone or tablet as a recipe book.
-    + I opened the Fat Raccoon's main page and I found a recipe I like. I went to the recipe's page to see what ingredients I need to make the recipe. I found that if I click the item's check box, it crosses out the box and the text of the item.
-    I turned my device off and on. I found it didn't automatically reset the screen I was on, so all the boxes are still checked. I think I will keep using my device to easily keep track of what ingredient(s) I still need or what step 
+    + I opened the Fat Raccoon's main page and I found a recipe I liked. I went to the recipe's page to see what ingredients I needed to make the recipe. I found that if I clicked the item's check box, it crossed out the box and the text of the item.
+    I turned my device off and on. I found it didn't automatically reset the screen I was on, so all the boxes were still checked. I think I will keep using my device to easily keep track of what ingredient(s) I still need or what step 
     of the recipe I am on.
 + I want to find a new chicken dish to cook.
     + I opened the Fat Raccoon's main page and I didn't immediately find a chicken recipe that I liked. Instead, I found a button, **Browse by Featured Ingredient!**, and I clicked it. The **Featured Ingredient** section for 
-    chicken has all the chicken recipes I could want!
+    chicken had all the chicken recipes I could want!
 + I want a place to leave a recipe, so I can easily find it later.
     + I've decided I want a digital place to keep a recipe, so I opened the Fat Raccoon's main page. I created a Fat Raccoon account from the login/create modal. The app took me to my newly created profile page. I 
-    clicked the **Share Recipe** button and I filled out all the recipe's information including an image. I've discovered that I can edit my recipe from its recipe page in the Fat Raccoon app. I can also favorite 
-    my own recipe from its recipe page. When I go back to my profile, my recipe is displayed in the **10 Recently Uploaded Recipes** and **10 Recently Favorited Recipes** sections so I can easily find my recipe whenever I want it.
+    clicked the **Share Recipe** button and I filled out all the recipe's information including an image. I discovered that I could edit my recipe from its recipe page in the Fat Raccoon app. I could also favorite 
+    my own recipe from its recipe page. When I went back to my profile, my recipe was displayed in the **10 Recently Uploaded Recipes** and **10 Recently Favorited Recipes** sections so I can easily find my recipe whenever I want it.
 + I want help deciding what to cook for dinner and I like a specific chef's recipes.
-    + My friends, Mrs. and Mr. Fat_Raccoon have similar taste in food as me and I want to easily find all of their recipes. I opened the Fat Raccoon's main page and I scrolled to the bottom of the 
-    page. I found a button, **Browse Chef Fat_Raccoon's recipes!**, and I clicked the button. I am now able to see all of the recipes from the chef, Fat_Raccoon.
-    + My friend has an account on the Fat Raccoon app and I know her/his username. I opened the Fat Raccoon's main page and put my friend's username into the search bar and now I can see all of my friend's
+    + My friends, Mrs. and Mr. Fat_Raccoon have similar taste in food as me and I wanted to easily find all of their recipes. I opened the Fat Raccoon's main page and I scrolled to the bottom of the 
+    page. I found a button, **Browse Chef Fat_Raccoon's recipes!**, and I clicked the button. I was then able to see all of the recipes from the chef, Fat_Raccoon.
+    + My friend has an account on the Fat Raccoon app and I knew her/his username. I opened the Fat Raccoon's main page and typed my friend's username into the search bar. After doing this, I was able to see all of my friend's
     uploaded recipes.
     + I opened the Fat Raccoon's main page and I clicked on **Recipes** in the navigation bar. I found a recipe on this page that I liked, however, it wasn't made by the chef, Fat_Raccoon! I did find that 
-    if I clicked on the chef's name under the picture of their recipe, it takes me to all the recipes submitted by this chef.
+    if I clicked on the chef's name under the picture of their recipe, it took me to all the recipes submitted by this chef.
 + I want an easy-to-make recipe.
-    + It's been a long day, I'm tired, and I want an easy-to-make recipe for dinner. I opened the Fat Raccoon's main page and I scrolled to the bottom of the page. I found a button, **Browse our Lazy Favorites!**, and I clicked this 
+    + It has been a long day, I'm tired, and I wanted an easy-to-make recipe for dinner. I opened the Fat Raccoon's main page and I scrolled to the bottom of the page. I found a button, **Browse our Lazy Favorites!**, and I clicked this 
     button. I was greeted with numerous recipes that don't require much effort.
 + I can't remember the name of a recipe that I liked on the Fat Raccoon, and I want to find it again.
-    + I opened the Fat Raccoon's main page and I realized that I don't remember the name of the recipe I was looking at last night. I remembered I was logged in, so I logged into my
+    + I opened the Fat Raccoon's main page and I realized that I didn't remember the name of the recipe I was looking at last night. I remembered I was logged in the previous night, so I logged into my
     Fat Raccoon account. I was taken to my profile page where I easily found the recipe I was looking at last night in my **10 Recently Viewed Recipes** section.
-    + I opened the Fat Raccoon's main page and I realized that I don't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account, and I was taken 
-    to my profile page. I don't see the recipe in my **10 Recently Viewed Recipes**, however I did favorite the recipe and easily found it in my **10 Recently Favorited Recipes**
+    + I opened the Fat Raccoon's main page and I realized that I didn't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account and I was taken 
+    to my profile page. I didn't see the recipe in my **10 Recently Viewed Recipes**, however, I did favorite the recipe and easily found it in my **10 Recently Favorited Recipes**
     section.
-    + I opened the Fat Raccoon's main page and realized that I don't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account and I was 
-    to my profile page. I don't see the recipe in my **10 Recently Viewed Recipes**. I also did not find the recipe in my **10 Recently Favorited Recipes** section.
-    I clicked on my **10 Recently Favorited Recipes** header and I'm taken to a list of all my favorite recipes. I found the recipe there.
+    + I opened the Fat Raccoon's main page and realized that I didn't remember the name of the recipe I wanted to try. I logged into my Fat Raccoon account and I was taken
+    to my profile page. I didn't see the recipe in my **10 Recently Viewed Recipes**. I also did not find the recipe in my **10 Recently Favorited Recipes** section.
+    I clicked on my **10 Recently Favorited Recipes** header and I was taken to a list of all my favorite recipes. I found the recipe there.
 + I lack confidence in my cooking ability and need help.
-    + I opened the Fat Raccoon's main page and I realized that I'm completely outside of my comfort zone. I want to try a recipe, but every time I cook something is terrible 
+    + I opened the Fat Raccoon's main page and I realized that I was completely outside of my cooking comfort zone. I wanted to try a recipe, but every time I cook there is something terrible 
     about the experience. I saw the **Lesson** section in the navigation bar and decided to give it a shot. I found numerous helpful tips that gave me the confidence I needed to 
     try a recipe I was intimidated by.
 + I've decided that I don't like my user bio or avatar anymore and I want to change them.
-    + I logged into my Fat Raccoon account and I'm taken to the profile page. I clicked on the **Update Profile** button. I chose a new image from my pc and updated my bio to be a better representation of myself.
+    + I logged into my Fat Raccoon account and I was taken to the profile page. I clicked on the **Update Profile** button. I chose a new image from my pc and updated my bio to be a better representation of myself.
      I also had to put in my current password before the form allowed me to submit it. I submitted the form and was taken back to my profile page where I saw the updated avatar and bio.
 + I've uploaded a recipe I don't like anymore and I want to remove it.
-    + I logged into my Fat Raccoon account and I'm taken to the profile page. I went to the page of my recipe that I want to delete. I clicked the **Delete Recipe** button and I was prompted to type in the recipe's name.
-    I typed in the recipe's name and the delete button turned green. I deleted the recipe. I'm taken back to my profile page where the app lets me know I've deleted the recipe.
+    + I logged into my Fat Raccoon account and I was taken to the profile page. I went to the page of my recipe that I wanted to delete. I clicked the **Delete Recipe** button and I was prompted to type in the recipe's name.
+    I typed in the recipe's name and the delete button turned green. I deleted the recipe. I was taken back to my profile page where the app let me know that Ie deleted the recipe.
 + I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page's **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections.
-    + I logged into my Fat Raccoon account and I'm taken to the profile page where I am reminded of my error in my **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. When I clicked on the recipe 
-    the app notified me that the recipe has been deleted. I saw that a button next to the recipes on **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** looks like a delete icon. I clicked this icon in both sections 
-    and the recipe is removed from my **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections.
+    + I logged into my Fat Raccoon account and I was taken to the profile page where I was reminded of my error in my **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. When I clicked on the recipe 
+    the app notified me that the recipe had been deleted. I saw that a button next to the recipes on **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** looked like a delete icon. I clicked this icon in both sections 
+    and the recipe was removed from my **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections.
 
 # Design Choices
-## Header and Footer
+## Base - Header and Footer
 + Southern theme:
     + Cutting board logo with stylized engraved text.
     + Southern table runner for background.
@@ -279,20 +279,20 @@ was a deliberate choice to help the developer gain a better understanding of how
 
 ## Recipe
 + If a user is logged in and is the recipe's creator:
-    + A User can modify or delete that recipe by using its respective header button.
+    + A user can modify or delete that recipe by using its respective header button.
 + If a user is logged in:
     + A user can favorite a recipe so that they can easily return to it later.
 + A Polaroid picture design is added to the recipe's uploaded image which gives a more appealing visual for users.
 + If a user has not uploaded an image, a default blank will be used instead.
-+ All of the recipe's general information is displayed and easily viewed.
++ Each recipe's general information is displayed and easily viewed.
 + A recipe's ingredients and steps each have:
     + Their own labeled sticky note container.
-    + Each item in these containers has its own check box.
-    + Users can click on any part of the item or its check box and it will check the box and cross out the item.
-    + The cross out function allows users to keep track of which ingredient(s) they require or what step they are on. 
+    + Items with their own check boxes.
+    + The ability for users to click on any part of the item or its check box which will check the box and cross out the item.
+    + A cross out function which allows users to keep track of which ingredient(s) they require or what step they are on. 
 
 ## All Recipes
-+ Lists the entire database of recipes by their featured ingredient. This helps users search for a recipe they want.
++ Lists the entire database of recipes by their featured ingredient. This helps users search for any recipe they want.
 + When a featured ingredient container houses more than five recipes, the list updates to integrate pagination at the bottom of the featured ingredient container.
 + The pagination displays only five recipes at a time. This prevents users from becoming overwhelmed with content.
 + Each featured ingredient container is given a header that consists of the featured ingredient's name. This allows users to easily see what is in each container.
@@ -315,11 +315,11 @@ was a deliberate choice to help the developer gain a better understanding of how
     + The image validation uses JS to check its file size and Python to check its file type.
     + All other input and textareas use JS and Python as a dual-layered check before allowing upload.
     + These checks look at characters, character length, and/or blank space input.
-+ The total cook time updates automatically as prep and cook times are adjusted, thus users don't have to calculate the total time themselves.
++ The total cook time updates automatically as prep and cook times are adjusted, so users don't have to calculate the total time themselves.
 + A recipe's ingredients and steps each have:
     + A set of JS add/remove buttons for users to create and remove input boxes as they need.
     + An input/textarea box that is numbered to help users keep track of the ingredient/step number they are on.
-    + The header of both sections will keep an active count of the created boxes. This shows users how many boxes have been created.
+    + The header of both sections keeps an active count of the created boxes. This shows users how many boxes have been created.
     + If a user submits a blank entry box (including spaces) the Python validation will remove said box(s).
 
 ## Edit User Info
@@ -335,25 +335,25 @@ was a deliberate choice to help the developer gain a better understanding of how
     + Uses an email validation that:
         + Checks for an appropriate email suffix and that the email address contains a `@`.
             + (Ex. `.com`, `.edu`, `.net`, and `.org`)
-    + Creating a new password will use validation that checks both the new password and the confirm new password are identical.
-+ Users wishing to create a new password, must click on the **Create New Password** button. This keeps users from accidently invalidating the form by starting the new password validation. This 
-is addressed in **Scalability** and **Other Problems**.
+    + Uses a password validation that checks both the "new password" and the "confirm new password" to be sure they are identical.
++ Users who wish to create a new password must click on the **Create New Password** button. This button keeps users from accidently starting the new password validation and invalidating the form. This is addressed in **Scalability** and **Other Problems**.
 
 ## Search Bar Returns
-+ Lists all returned recipes in their own sticky note that is filled with:
-    + The recipes general information.
-    + A banner gfor **Browse our Grandparent Classics**, **Browse our Lazy Favorites**, or both.
-    + This allows users to easily find the recipe they are searching for.
-    + A place holder message if the search has no results. This place holder will redirect a user to the home page when clicked on. 
++ Lists all returned recipes on their own sticky note.
++ Allows users to easily read all the returned recipes.
++ The returned sticky notes will have:
+    + The recipe's general information.
+    + A place for the banner for **Browse our Grandparent Classics**, **Browse our Lazy Favorites**, or both. 
+    + A placeholder message if the search has no results. This place holder will redirect a user to the home page when clicked on. 
 + This page is used to return four different search type results, that:
     + Return user searches from the search bar. These searches:
-        + Are restricted to only searching for recipe name, featured ingredient, and created by.
+        + Are restricted to searching for recipe name, featured ingredient, and created by.
         + Are used with the **Browse Chef Fat_Racoon's Recipes** button.
-        + Do not return recipe ingredients, recipe steps, or recipe description of the requested documents. This is to lesson the burden on the server and improve the clients load time.
+        + Do not return recipe ingredients, recipe steps, or recipe description of the requested documents. This is to lessen the burden on the server and improve the clients load time.
     + Return the profile page's recently **10 Recently Favorited Recipes**, and **10 Recently Viewed Recipes** searches. These searches:
-        + Use the `$or` operator to find favorite or viewed recipes in a single clean search instead of multiple searches. This is to lesson the burden on the server and improve the clients load time.
+        + Use the `$or` operator to find favorite or viewed recipes in a single clean search instead of multiple searches. This is to lessen the burden on the server and improve the clients load time.
     + Return the profile page's **10 Recently Uploaded Recipes** searches. These searches:
-        + Do not return recipe ingredients, recipe steps, or recipe description of the requested documents. This is to lesson the burden on the server and improve the clients load time.
+        + Do not return recipe ingredients, recipe steps, or recipe description of the requested documents. This is to lessen the burden on the server and improve the clients load time.
     + Return the browse button searches for **Browse our Grandparent Classics** and **Browse our Lazy Favorites**. These searches:
         + Use the `$eq` operator to find boolean tags.
         + This search is only capable of looking for true boolean values.
@@ -361,7 +361,7 @@ is addressed in **Scalability** and **Other Problems**.
 ## Page Performance
 + The Fat Raccoon app has a responsive design across all devices.
 ![Responsiveness image of the Fat Raccoon's random recipe](static/readme/testing/responsive-fat-raccoon.jpg "Responsiveness image of the Fat Raccoon's random recipe")
-+ All developer uploaded images are tinyified to reduce image download times and improve UX.
++ All developer uploaded images have been compressed to reduce image download times and improve UX.
 ![TinyPNG helps reduce file size and improves UX](static/readme/testing/tinyify.jpg "TinyPNG helps reduce file size and improves UX")
 
 ## Wireframe and Live Demo
@@ -370,7 +370,7 @@ is addressed in **Scalability** and **Other Problems**.
 ![Wireframe of the index page](static/readme/wireframe/index-page-large.png "Wireframe of the index page")
 + [Balsamiq](https://balsamiq.com/) was used for the planning process and wireframe creation.
 + Wireframes were made for all predetermined size variations of the application.
-+ Wireframes were made for the models to streamline their design. This also allowed for the models to be shown without over complicating the wireframe design.
++ Wireframes were made for the modals to streamline their design. This also allowed for the modals to be shown without over complicating the wireframe design.
 + [Click here to view all wireframes associated to this project.](static/readme/wireframe "Location of wireframes")
 
 ### Live Application
@@ -381,25 +381,24 @@ is addressed in **Scalability** and **Other Problems**.
 
 ## Scalability
 + Validation has two options for improvement:
-    + Option one, improve the current validation system. That would entail:
+    + Option one: improve the current validation system. This would entail:
         + Unifying Python and JS validation for images. This would improve the UX when a user tries to upload an incorrect image filetype.
-        + Improveing email validation to accept a wider range of email suffixes (ex. regional suffix, .uk, .fr, .de). This would allow for a larger audiance of users.
-        + Improveing JS validation to use compartmentalized validation instead of the current prepackage system. That would entail:
-            + That validation classes could be applied independently of one another, and could have their expected values set in them.
+        + Improving email validation to accept a wider range of email suffixes (ex. regional suffix, .uk, .fr, .de). This would allow for a larger audience of users.
+        + Improving JS validation to use compartmentalized validation instead of the current prepackage system. This would entail:
+            + That the validation classes could be applied independently of one another and could have their expected values set in them.
                 + (ex. charMax-20)
                 + (ex. charMax-100)
                 + (ex. charMax-400)
             + This type of dynamic validation system would improve the overall readability and function of the JS validation code.
-    + Option two, update to a validation system that only uses Python. That would entail:
-        + Implementing WTForms and would allow Python to actively check if an email is real. This would also remove the need for a suffix check system.
-        + Implementing Pillow and would allow python to actively resize an uploaded image and not just refuse one. This would greatly improve a user's experience with uploading images.
-        + The role of JS would be reduced to only visual cues for what data is expected to be input and would greatly reduce the amount of JS code and its complexity.
+    + Option two: update to a validation system that only uses Python. This would entail:
+        + Implementing WTForms, allowing Python to actively check if an email address is real. This would also remove the need for a suffix check system.
+        + Implementing Pillow, allowing Python to actively resize an uploaded image and not just refuse one that is too large. This would greatly improve a user's experience with uploading images.
+        + The role of JS to be reduced to only visual cues which would greatly reduce the amount of JS code and its complexity.
         + This would also make the forms more secure.
 + Adding user selectable filters to the search bar. This would ensure a better more efficient user search.
-+ Expand recipe pages to show the recipe creator's bio and/or avatar. This would give users more pride in their content.
++ Expand recipe pages to show the recipe creator's bio and/or avatar. This would give users more satisfaction with their uploaded content.
 + Create a user comment form for the recipes. This would give a better sense of community for users.
 + Create a user rating system for the recipes. This would give a better sense of community for users.
-+ Improve search engine to accept a **space** as an `_` to help users more easily find chefs with a single or multiple "space(s)" in their name.
 
 # Technology Languages
 + HTML - Skeleton frame of the application.
@@ -439,25 +438,25 @@ is addressed in **Scalability** and **Other Problems**.
         + Tested in portrait, which is tablet responsiveness level.
 
 ### Developer Testing Methods
-+ Every test of **Developer Tests** was preformed on the above listed systems and the specified screen orientation.
++ Every test of **Developer Tests** was performed on the above listed systems and the specified screen orientation.
 + The tester will perform each test of **Developer Tests** three times: 
     + Once in landscape.
     + Once in portrait.
-    + Once with random moments of spam clicking and switching between landscape/portrait. This final test is critical to insure tablet and mobile users have an enjoyable experience.
+    + Once with random moments of spam clicking and switching between landscape/portrait. This final test is critical to ensure tablet and mobile users have an enjoyable experience.
 
 ## Developer Tests
 ### Testing Random Recipe
 
 ---
 
-#### Tests User Story
+#### User Story
 + I want to find a recipe for dinner. <!-- Testing Random Recipe -->
 
 #### Expectation(s):
 1. The recipe displayed in random recipe is actually random.
 1. The random recipe's banner functions correctly.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
 1. The tester will keep performing this test until they see a classic banner, a favorite banner, and a favorite/classic banner.
@@ -479,22 +478,22 @@ is addressed in **Scalability** and **Other Problems**.
 1. If there is an incorrect box shadow, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
-### Testing Text Coss Out Function
+### Testing Text Cross Out Function
 
 ---
 
-#### Tests User Story
+#### User Story
 + I want to use my smart phone or tablet as a recipe book. <!-- Testing Text Coss Out Function -->
 
 #### Expectation(s):
-1. The content of the **Recipe Steps** and **Recipe Ingredients** sections crosses out correctly.
+1. The content of the **Recipe Steps** and **Recipe Ingredients** sections will cross out correctly.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
-1. The tester knows the size for each clickable area that causes the cross out effect and will be choosing a different place to click every time.
+1. The tester knows the size for each clickable area that causes the cross out effect and will be choose a different place to click every time.
 1. The tester knows multiple ways to get to a recipe's page.
-1. The tester is not repeatingly using the same path to a recipe page.
+1. The tester is not repeatedly using the same path to a recipe page.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
@@ -513,21 +512,21 @@ is addressed in **Scalability** and **Other Problems**.
 1. If there is an incorrect box shadow, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
 
-### Testing All_Recipe And Recipe_List Pagination
+### Testing All_Recipe and Recipe_List Pagination
 
 ---
 
-#### Tests User Story
+#### User Story
 + I want to find a new chicken dish to cook. <!-- Testing All_Recipe And Recipe_List Pagination-->
 
 #### Expectation(s):
-1. Pagination appears when its supposed to.
+1. Pagination appears when it's supposed to.
 1. Pagination doesn't obscure any content.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
-1. The tester will create dummy recipes for this test (if necessary), and keep a record of the dummy recipes.
+1. The tester will create dummy recipes for this test (if necessary) and keep a record of the dummy recipes.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
@@ -540,9 +539,9 @@ is addressed in **Scalability** and **Other Problems**.
 1. Repeat steps 2, 6, and 7 approximately one time.
 
 #### Document Result(s):
-1. If a user account was created to fullfill the test's requirments, record:
+1. If a user account was created to fulfill the test's requirements, record:
     + The username, email address of the account, and that this is a test account.
-1. If any recipe dummy data was created to fullfill the test's requirments, record:
+1. If any recipe dummy data was created to fulfill the test's requirements, record:
     + The names of all of the recipes created, the username of the account that created the recipes, and that they are all dummy data.
 1. If any pagination has bad UX, record:
     + The test name, recipe name, featured ingredient, screen resolution, browser/device, page (**All_Recipes** or **Recipe_List**), pagination number, and a brief description of the problem.
@@ -555,19 +554,19 @@ is addressed in **Scalability** and **Other Problems**.
 
 ---
 
-#### Tests User Story
+#### User Story
 + I want a place to leave a recipe, so I can easily find it later. <!-- Testing Recipe Upload -->
 
 #### Expectation(s):
 1. The recipe uploads without error.
 1. The recipe displays correctly on its page.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
 1. The tester will intentionally try to submit incorrect data to check for incorrect validation.
 1. The tester will create an account for this test, and will keep a record of the account.
-1. The tester has a PNG or JPG image under 500kb, a PNG or JPG image over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
+1. The tester has a PNG or JPG image under 500kb, a PNG or JPG image over 500KB, a non-PNG or JPG image file under 500KB, and a non-PNG or JPG image file over 500KB.
 1. The tester knows the difference between JS and Python validation.
 1. The tester knows what this form considers invalid and will check every part of the validation. (Example, max character, min character, spaces, characters, etc....)
 
@@ -575,21 +574,21 @@ is addressed in **Scalability** and **Other Problems**.
 1. Load the **Index Page** of the Fat Raccoon.
 1. Click on **Login** on the navigation bar.
 1. Click on the **Create Account** tab.
-1. Fill out all the appropriate information and submit said information.
+1. Fill out all the appropriate information and click submit.
 1. Once the **Profile** page is loaded, click on the **Share Recipe** button.
-1. Fill out all the appropriate information, including an avatar, and submit the new recipe.
+1. Fill out all the appropriate information, including an avatar, and click submit.
 1. Once the new recipe page is loaded, check over the newly created recipe for all appropriate information.
 1. Navigate back to the **Profile** page and click on the **Share Recipe** button.
 1. Fill out the form with all appropriate information, including an avatar.
 1. Choose one element of the form to incorrectly fill out and attempt to submit.
-1. Repeat step 10 until all of the form's user inputs (recipe name, prep time, cook time, recipe description, recipe ingredients, and recipe steps) have had their validation tested. 
-1. Attempt to submit same recipe with a PNG or JPG image over 500KB, a non PNG or JPG image file under 500KB, and a none PNG or JPG image file over 500KB.
+1. Repeat step 10 until each of the form's user inputs (recipe name, prep time, cook time, recipe description, recipe ingredients, and recipe steps) have had their validation tested. 
+1. Attempt to submit the same recipe with a PNG or JPG image over 500KB, a non-PNG or JPG image file under 500KB, and a non-PNG or JPG image file over 500KB.
 1. Return to the original submitted recipe's page.
 1. Click on the **Edit Recipe** button.
 1. Repeat steps 9 - 12.
 
 #### Document Result(s):
-1. A user account was created to fullfill the test's requirments, record:
+1. A user account was created to fulfill the test's requirements, record:
     + The username, email address of the account, and that this is a test account.
 1. If any form of validation fails, record:
     + The test name, any input/textarea that incorrectly accepted or refused information, what form of validation failed (type of validation and if was JS and/or Python), if it was a new recipe or edited recipe, and a brief description of the problem.
@@ -602,13 +601,13 @@ is addressed in **Scalability** and **Other Problems**.
 
 ---
 
-#### Tests User Story
+#### User Story
 + I want help deciding what to cook for dinner and I like a specific chef's recipes. <!-- Testing Search Chef Name -->
 
 #### Expectation(s):
-1. The chef searches return the correct information.
+1. Searching by chef name will return the correct information.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
 1. Tester knows all the recipes that belong to the chef Fat_Raccoon.
@@ -635,7 +634,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. Check over the returns to make sure all appropriate returns are shown.
 
 #### Document Result(s):
-1. If there is is any broken links or incorrect recipe returns, record:
+1. If there is any broken links or incorrect recipe returns, record:
     + The page (Jinja template), location on the page where the link can be found, and a brief description of the problem.
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
@@ -646,13 +645,13 @@ is addressed in **Scalability** and **Other Problems**.
 
 ---
 
-#### Tests User Story
+#### User Story
 + I want an easy-to-make recipe. <!-- Testing Browse Button for Lazy Favorites Recipes -->
 
 #### Expectation(s):
 1. All recipes with the lazy favorite boolean tag are returned.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
 1. Tester knows all recipes tagged as lazy favorite.
@@ -664,7 +663,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. Check over the returned recipes to make sure all appropriate recipes are shown.
 
 #### Document Result(s):
-1. If any lazy favorite recipes are not shown or non lazy favorite recipes are shown, record:
+1. If any lazy favorite recipes are not shown or non-lazy favorite recipes are shown, record:
     + Any lazy favorite recipes that are missing, incorrect recipes that have shown up, and a brief description of the problem. 
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
@@ -675,31 +674,30 @@ is addressed in **Scalability** and **Other Problems**.
 
 ---
 
-#### Tests User Story
+#### User Story
 + I can't remember the name of a recipe that I liked on the Fat Raccoon, and I want to find it again. <!-- Testing Recipe Favorites Function -->
 
 #### Expectation(s):
 1. The favorite icon responds appropriately to recipe status of favorite and unfavorite.
-1. The tester knows the entire click box allocated to changing the favorite status of a recipe.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
-1. The tester will create an account for this test, and will keep a record of this account.
-1. the tester knows the difference between a favorite recipe and an unfavorite recipe icon.
+1. The tester will create an account for this test and will keep a record of this account.
+1. The tester knows the difference between the two icons: favorite recipe and an unfavorite recipe.
 1. The tester will favorite and unfavorite a recipe using a random part of its click box.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
 1. Click on **Login** on the navigation bar.
 1. Click on the **Create Account** tab.
-1. Fill out all the appropriate information and submit said information.
-1. Navigate to any recipe of the testers choice.
+1. Fill out all the appropriate information and click submit.
+1. Navigate to any recipe of the tester's choice.
 1. Click on **Not a Favorite** or its icon.
-1. Check to be sure the accurate text and icon appear.
+1. Check to be sure the correct text and icon appear.
 1. Navigate to a different non favorited recipe page.
 1. Click on **Not a Favorite** or its icon.
-1. Check to be sure the accurate text and icon appear.
+1. Check to be sure the correct text and icon appear.
 1. Navigate to the **Profile** page.
 1. Click on any favorited recipe in the **10 Recently Favorited Recipes** section and go to that recipe's page.
 1. Check for the appropriate favorite status and icon.
@@ -710,12 +708,12 @@ is addressed in **Scalability** and **Other Problems**.
 1. Check for the appropriate recipe(s).
 
 #### Document Result(s):
-1. A user account was created to fullfill the test's requirments, record:
+1. A user account was created to fulfill the test's requirements, record:
     + The username, email address of the account, and that this is a test account.
-1. if Favorite status or icon is displayed incorrectly, record:
-    + The test name, recipe name, path choosen to the recipe, and a brief description of the problem.
-1. If click box for changing favorite status does not respond correctly, record:
-    + The test name, recipe name and a brief description of the problem.
+1. If the favorite status or icon is displayed incorrectly, record:
+    + The test name, recipe name, path taken to the recipe, and a brief description of the problem.
+1. If the click box for changing the favorite status does not respond correctly, record:
+    + The test name, recipe name, and a brief description of the problem.
 1. If any content has bad UX, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
@@ -725,16 +723,16 @@ is addressed in **Scalability** and **Other Problems**.
 
 ---
 
-#### Tests User Story
+#### User Story
 + I lack confidence in my cooking ability and need help. <!-- Testing Lessons Index Cards -->
 
 #### Expectation(s):
 1. Index cards rotate appropriately and have a good UX.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
-1. The tester knows that every index card with two sides of information must have **More on back-->** on it.
+1. The tester knows that every index card with two sides of information displays the text **More on back-->**.
 1. The tester knows the content of each **Lesson** card.
 
 #### Testing Step(s):
@@ -756,26 +754,26 @@ is addressed in **Scalability** and **Other Problems**.
 
 ---
 
-#### Tests User Story
+#### User Story
 + I've decided that I don't like my user bio or avatar anymore and I want to change them. <!-- Tests update of user information/avatar -->
 
 #### Expectation(s):
-1. A Fat Raccoon account can be logged out and logged back in with a new password.
+1. A Fat Raccoon account can be logged in with a newly changed password.
 1. A user account can be created and modified.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
-1. The tester will create an account for this test, and will keep a record of said account.
+1. The tester will create an account for this test and will keep a record of the account.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
 1. Click on **Login** on the navigation bar.
 1. Click on the **Create Account** tab.
-1. Fill out all the appropriate information and submit said information.
+1. Fill out all the appropriate information and click submit.
 1. Click on the **Update Profile** button.
 1. Click on the **Create New Password** button.
-1. Upload an avatar, enter a bio, the current password, a new email, a new username and a new password in both the new password and confirm new password areas. Then submit all the data.
+1. Upload an avatar, enter a bio, the current password, a new email, a new username and change the accounts password. Then submit all the data.
 1. View all submitted data and check for accuracy.
 1. Click on **Logout** on the navigation bar.
 1. Click on **Login** on the navigation bar and enter new login information.
@@ -784,7 +782,7 @@ is addressed in **Scalability** and **Other Problems**.
 1. View all submitted data and check for accuracy.
 
 #### Document Result(s):
-1. A user account was created to fullfill the test's requirments, record:
+1. A user account was created to fulfill the test's requirements, record:
     + The current username and email address of the account (labeled as current), the previous username and email address (labeled as previous), and that this is a test account.
 1. If any user profile content does not update properly, record:
     + The test name, the header of the content that does not update correctly and a brief description of the problem.
@@ -799,25 +797,25 @@ is addressed in **Scalability** and **Other Problems**.
 
 ---
 
-#### Tests User Story
+#### User Story
 + I've uploaded a recipe I don't like anymore and I want to remove it. <!-- Tests for deletion of recipe --><!-- Tests C.R.U.D. -->
 
 #### Expectation(s):
 1. A recipe will be created, viewed, edited, and deleted.
 1. A missing recipe message is flashed when a user tries to view a deleted recipe.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
-1. The tester will create an account for this test, and will keep a record of the account.
+1. The tester will create an account for this test and will keep a record of the account.
 
 #### Testing Step(s):
 1. Load the **Index Page** of the Fat Raccoon.
 1. Click on **Login** on the navigation bar.
 1. Click on the **Create Account** tab.
-1. Fill out all the appropriate information and submit said information.
+1. Fill out all the appropriate information and click submit.
 1. Once the **Profile** page opens, click on the **Share Recipe** button.
-1. Fill out all the appropriate information, including an avatar, and submit the new recipe.
+1. Fill out all the appropriate information, including an avatar, and click submit.
 1. Check over newly created recipe for all appropriate information.
 1. Favorite the recipe.
 1. Click the **Edit Recipe** button.
@@ -829,12 +827,12 @@ is addressed in **Scalability** and **Other Problems**.
 1. The application should prompt you with the response, "Sorry this recipe has been removed".
 
 #### Document Result(s):
-1. A user account was created to fullfill the test's requirments, record:
+1. A user account was created to fulfill the test's requirements, record:
     + The username, email address of the account, and that this is a test account.
 1. If the recipe created was not viewable, record:
     + The test name, recipe name and a brief description of the problem.
 1. If the recipe did not update properly, record:
-    + The test name, recipe name, the content that didnt update correctly, and a brief description of the problem.
+    + The test name, recipe name, the content that didn't update correctly, and a brief description of the problem.
 1. If the recipe did not delete properly, record:
     + The test name, recipe name and a brief description of the problem.
 1. If the missing recipe message did not flash, record:
@@ -848,17 +846,17 @@ is addressed in **Scalability** and **Other Problems**.
 
 ---
 
-#### Tests User Story
+#### User Story
 + I deleted my recipe but I forgot to unfavorite it. Now I want to remove it from my profile page's **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** sections. <!-- Tests delete button for favorites/recents in profile -->
 
 #### Expectation(s):
 1. The button that removes a recipe from the **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** sections functions properly.
 1. The page content fills appropriately and doesn't spill out beyond obvious borders.
-1. The page content doesn't overlap and is easily read.
+1. The page content doesn't overlap and is easy to read.
 
 #### Assumption(s):
-1. The tester will create an account for this test, and will keep a record of the account.
-1. The tester will use different dummy information per recipe, and will keep a record of all dummy recipes.
+1. The tester will create an account for this test and will keep a record of the account.
+1. The tester will use different dummy information per recipe and will keep a record of all dummy recipes.
 1. The tester knows how to favorite a recipe.
 1. The tester knows how to remove a recipe from **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes**.
 
@@ -866,9 +864,9 @@ is addressed in **Scalability** and **Other Problems**.
 1. Load the **Index Page** of the Fat Raccoon.
 1. Click on **Login** on the navigation bar.
 1. Click on the **Create Account** tab.
-1. Fill out all the appropriate information and submit said information.
+1. Fill out all the appropriate information and click submit.
 1. Once the **Profile** page opens, click on the **Share Recipe** button.
-1. Fill out all the appropriate information, including an avatar, and submit the new recipe.
+1. Fill out all the appropriate information, including an avatar, and click submit.
 1. Favorite this recipe.
 1. Go to the **Profile** page and click on the **Share Recipe** button.
 1. Fill out all the appropriate information, including an avatar, and submit another new recipe.
@@ -876,14 +874,14 @@ is addressed in **Scalability** and **Other Problems**.
 1. Repeat steps 8 - 10, five times.
 1. Go to one of these newly created recipe's page and delete the recipe.
 1. Once the **Profile** page opens, click on the deleted recipe's name in the **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** sections and be sure the missing recipe message flashes.
-1. Removes the recipe from the **10 Recently Favorited Recipes** section and again in the **10 Recently Viewed Recipes** section using the remove icon.
+1. Remove the recipe from the **10 Recently Favorited Recipes** section and again in the **10 Recently Viewed Recipes** section using the remove icon.
 1. Check to be sure the appropriate recipes were removed from the **10 Recently Favorited Recipes** and **10 Recently Viewed Recipes** section lists.
 
 #### Document Result(s):
-1. A user account was created to fullfill the test's requirments, record:
+1. A user account was created to fulfill the test's requirements, record:
     + The username, email address of the account, and that this is a test account.
-1. Recipe dummy data was created to fullfill the test's requirments, record:
-    + The test name, the names of all of the recipes created, the username of the account used to create the recipes, which recipes were deleted by the tester, and that these are dummy data.
+1. Recipe dummy data was created to fulfill the test's requirements, record:
+    + The test name, the names of all the recipes created, the username of the account used to create the recipes, which recipes were deleted by the tester, and that these are dummy data.
 1. If the remove recipe icon in the **10 Recently Favorited Recipes** or **10 Recently Viewed Recipes** sections does not function properly, record:
     + The test name, recipe name, the account username, screen resolution, browser/device, and a brief description of the problem.
 1. If any content has bad UX, record:
@@ -908,11 +906,11 @@ is addressed in **Scalability** and **Other Problems**.
 + Errors are present for some of the CSS art but MDN shows they are not a problem.
     + A background "stacking gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
     + A background "repeating linear gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
-+ Warnings are present for some of the vendor extensions but those extensions are necessary and the errors can be ignored.
++ Warnings are present for some of the vendor extensions, but those extensions are necessary and the errors can be ignored.
 
 ### W3C Validator
 + Identifies errors in HTML.
-+ Helpful for proper semantic HTML and ARIA practice.
++ Helpful for proper semantic HTML and ARIA standard practices.
 ![W3C validator results](static/readme/testing/w3c.jpg "W3c validator results")
 
 ### JSHint
@@ -958,7 +956,7 @@ is addressed in **Scalability** and **Other Problems**.
     + Caused by:
         + Forms having the same Flask route and relying on an `if` statement to sort them properly.
     + Fix:
-        + Created an additional route for updating a recipe, so both create and update each had separate routes.
+        + Created an additional route for updating a recipe, so both create and update each have separate routes.
 + Email's JS validation wouldn't validate.
     + Caused by:
         + `type: email` was preventing the regex from functioning properly.
@@ -966,7 +964,7 @@ is addressed in **Scalability** and **Other Problems**.
         + Changing the `type: email` to `type: text`. 
 + Login/create modal would only function on `index.html`.
     + Caused by:
-        + The model was only written on `index.html`.
+        + The modal was only written on `index.html`.
     + Fix:
         + Login/create modal was added to `base.html` and removed from `index.html`.
 + The original search bar would display on a separate line below the navigation bar when the resolution was at tablet responsiveness level or smaller. 
@@ -979,92 +977,92 @@ is addressed in **Scalability** and **Other Problems**.
 + Social links animation triggers continuously when a user mouses over.
     + Caused by:
         + Multiple containers stacked on top of one another to create the CSS art. This creates a JS bubbling effect.
-    + Attempted fix(s):
-        + Limiting the bubbleing phenomena with a single "top" level container, limition of trigger function (`stopPropagation()`), and other methods.
+    + Attempted fix(es):
+        + Limiting the bubbling phenomena with a single "top" level container, limiting the trigger with the function (`stopPropagation()`), and other methods.
     + Thought(s):
-        + If the animation triggers once this would be a viable solution, however this solution was over looked because it decreased the "wow" factor of the animation.
-+ Social links animation is off center on the Safari Browser.
+        + If the animation triggers once, this would be a viable solution. However, this solution was overlooked because it decreased the "wow" factor of the animation.
++ Social links animation is off-center on the Safari Browser.
     + Caused by:
         + Unknown.
-    + Attempted fix(s):
+    + Attempted fix(es):
         + Different vendor prefixes.
     + Thought(s):
         + Uncertain how to fix this for Safari browsers
 + `sticky-note-right`'s pseudo-element (`:before`) has a `box-shadow` that extends over the sticky note on Safari browsers.
     + Caused by:
-        + A sticky note container being to tall.
-    + Attempted fix(s):
+        + A sticky note container being too tall.
+    + Attempted fix(es):
         + None.
     + Thought(s):
         + Problem disappeared after HTML structure was rewritten to make proper use of Bootstrap's `container` and `container-fluid` classes.
-+ Sticky note's pseudo-element(s) have a `box-shadow` that occasinally displays its transparent body.
++ Sticky note's pseudo-element(s) have a `box-shadow` that occasionally displays its transparent body.
     + Caused by:
         + Containers that are too tall, too wide, too short, and/or too thin.
-    + Attempted fix(s):
+    + Attempted fix(es):
         + Containers with a minimum and maximum base size were created (`<size>-content-height`).
         + The pseudo-element(s) and `box-shadow` were updated to allow for greater variation in their container size.
     + Thought(s):
-        + The attempted fixes only minimized appearance of the bug.
+        + The attempted fixes only minimized the appearance of the bug.
         + More reduction in the size of the pseudo-element(s) and an increase in the size of the `box-shadow` could remove this bug further. However, it will take a considerable amount of time to find this "golden-ratio" for all screen resolutions and browser/device combinations.
 
 ## Other Problems
 + Lack of accepted email suffixes (email validation).
     + Caused by:
         + Limitations of the JS validation logic.
-    + Attempted fix(s):
+    + Attempted fix(es):
         + Expanded suffixes allowed to include `.net` and `.org`.
     + Thought(s):
         + Email validation should be handled by Python only, instead of JS and Python. This could allow Python to check if the email account is real and remove the reliance on suffixes for validation.
 + MongoDB's general user search, `mongo.db.<collection>.find("$text": "$search": <value>)`, is unable to return booleans. Thus, users are not able to search for the grandparent classic or lazy favorite boolean tags.
     + Caused by:
         + MongoDB code.
-    + Attempted fix(s):
-        + A set of browse buttons were added to `index.html`. These buttons have a preset search value that uses the operator `$eq`, thus they are able to return boolean tags.
+    + Attempted fix(es):
+        + A set of browse buttons were added to `index.html`. These buttons have a preset search value that uses the operator `$eq`, so they can return boolean tags.
     + Thought(s):
-        + If more time was available, the addition of filters to the search bar would have been a better solution than the addition of the browse buttons.
+        + The addition of filters to the search bar would have been a better solution than the addition of the browse buttons.
 + Current validation system needs to be changed or updated.
     + Caused by:
-        + Original poor design. This design incorporated JS as the primary validator with HTML and Python acting as backup validatation.
-        + Limitations in JS to validate email information properly.
-    + Attempted fix(s):
+        + Original poor design. This design incorporated JS as the primary validator with HTML and Python acting as backup validation.
+        + Limitations of JS to validate email address properly.
+    + Attempted fix(es):
         + Removed all HTML's validation.
         + Adjusted JS and Python validation to be more compatible with each other. 
     + Thought(s):
         + Two options are detailed in **Scalability**.
 + Pagination's JS structure could be revised.
     + Caused by:
-        + The original pagination function has an imbedded inner function and is a technical inefficient design.
-    + Attempted fix(s):
+        + The original pagination function has an imbedded inner function and is a technically inefficient design.
+    + Attempted fix(es):
         + None.
     + Thought(s):
-        + This could be fixed by moving the inner function, however all the dummy data had been removed from the database by the time this error had been discovered. Thus a newly reconstructed pagination function could not be appropriately and time efficiently tested.
+        + This could be fixed by moving the inner function, however, all the dummy data had been removed from the database by the time this error had been discovered. Thus a newly reconstructed pagination function could not be appropriately and time efficiently tested.
         + Although technically inefficient, this imbedded function is only used in pagination and isn't required anywhere else.
 + Needed a triangle shaped container that could hold a `repeating-linear-gradient`.
     + Caused by:
-        + A specific artistic need in CSS.
-    + Attempted Fix(s):
+        + A specific artistic need from CSS.
+    + Attempted fix(es):
         + Originally tried using `<svg><polygon></svg>`, however this would not hold or duplicate an acceptable `repeating-linear-gradient`.
     + Thought(s):
         + Found solution at [MDN using a clip-path:polygon](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path).
-+ If a user has over ten favorited recipes they might not be able to delete a recipe from their profile's favorite list.
++ If a user has more than ten favorited recipes, they might not be able to delete a recipe from their profile's favorite list.
     + Caused by:
-        + Having over ten favorite recipes and wanting to remove a recipe that's outside the **10 Recently Favorited Recipes**'s ten recipe ceiling.
-    + Attempted Fix(s):
-        + None. This was discovered to late in project to attempt a fix.
+        + Having more than ten favorite recipes and wanting to remove a recipe that's outside the **10 Recently Favorited Recipes**'s ten recipe ceiling.
+    + Attempted fix(es):
+        + None. This was discovered too late in the project to attempt a fix.
     + Thought(s):
-        + The original fix, added the ability to remove recipes from the users favorite list while the user was on their profile page. This was added to allow users to remove recipes that had been deleted and would not be 
-        otherwise removable from their favorites list.
-        + The narrow scoped fix doesn't take into consideration if a user has over ten favorites and one of the original favorite recipes was deleted.
-        + Expanding upon the Jinja template `search_bar_returns.html` to allow removal of a favorite recipe would be a fix for this issue.
+        + The original fix added the ability to remove recipes from the user's favorite list while the user was on their profile page. This was added to allow users to remove recipes that had been deleted and could not be 
+        deleted from their favorites list.
+        + The scope of this fixwas too narrow and didn't take into consideration if a user has over ten favorites.
+        + Expanding the Jinja template `search_bar_returns.html` to allow the removal of a favorite recipe would be an improved appropriately scoped correction for this issue.
 
 # Deployment
 ## Deploy Clone in GitHub - GitPod
 + Go to the location of the original repository in GitHub, [https://github.com/Richardaeld/Fat_Racoon_Kitchen](https://github.com/Richardaeld/Fat_Racoon_Kitchen).
-+ Click on the **Code** button to get the drop down menu.
++ Click on the **Code** button to get the drop-down menu.
 + Copy the HTTPS address provided.
 + Create a new GitHub/GitPod project (to house the new clone) and then open this new project.
-+ Go to the Bash and type, `git clone <HTTPS>`, paste the HTTPS address found in the GitHub page (don't forget the space after "clone"), and press enter.
-+ A clone will be created within a new folder called, "Fat_Racoon_Kitchen" (name of the original repository).
++ Go to the Bash and type, `git clone <HTTPS>`, paste the HTTPS address found in the GitHub page (don't forget the space after "clone") and press enter.
++ A clone will be created within a new folder called "Fat_Racoon_Kitchen" (name of the original repository).
 + Unpack everything from this new folder to the root of the GitPod project tree and the project will be setup within GitPod (minus the database which we will setup shortly).
 + Open the file `run.py` and search for "head_chef".
 + Update the "fat_raccoon" to your new head chef's in-app username.
@@ -1131,14 +1129,14 @@ is addressed in **Scalability** and **Other Problems**.
     + Follow directions.
 + Click on **Collections** in your new cluster.
 + Click on **Create Database**.
-    + Create your inital `<root database>` and it's first collection, "users"
+    + Create your initial `<root database>` and its first collection, "users".
     + Click your `<root database>`'s name.
     + Click **Create Collection** and create remaining necessary collections: "blank", "feature", and "recipes".
 + Create index (for user search restrictions). This can be input through GitPod or MongoDB.
     + MongoDB:
         + Click on the `<root database>`'s name.
         + Click on **recipes** collection.
-        + Click on **Indexes** in the information secton for **recipes**.
+        + Click on **Indexes** in the information section for **recipes**.
         + Click on **Create Index**.
         + Create the index using the below format.
         + `{`
@@ -1219,7 +1217,7 @@ is addressed in **Scalability** and **Other Problems**.
 + The feature collection:
     + The feature collection stores the applications featured ingredients.
     + There must be a minimum of one featured ingredient document in the feature collection for the application to function.
-    + For the best UX, a featured ingredient document amount of approximately ten is advised. However, more would also be acceptable.
+    + For the best UX, approximately ten featured ingredient documents are advised. However, more would also be acceptable.
     + Each featured ingredient is structured as:
         + `{`
         + `name: "chicken"`
@@ -1229,7 +1227,7 @@ is addressed in **Scalability** and **Other Problems**.
     + There is no set number of documents for the application to function properly, however a better UX is provided when the head chef of the application has several recipe documents entered.
 + The users collection:
     + The users collection stores the applications user information.
-    + There is no set number of documents for the application to function properly, however a better UX is provided if the application has a set head chef.
+    + There is no set number of documents for the application to function properly, however a better UX is provided if the application has a designated head chef.
     + It is also recommended that the head chef's admin status in MongoDB be set to `admin: true`. The admin status will allow the head chef to quickly and easily alter inappropriate recipes or images.
 + The fs.chunks collection:
     + Will be created automatically after the first image is uploaded.
@@ -1291,7 +1289,7 @@ is addressed in **Scalability** and **Other Problems**.
 + [PyMongo](https://pymongo.readthedocs.io/en/stable/)
     + A basic guide to the current version of PyMongo
 + [Stack Overflow](https://stackoverflow.com/)
-    + A great souce of information for finding a starting place and direction to research.
+    + A great source of information for finding a starting place for research.
 + [TestLodge](https://blog.testlodge.com/how-to-write-test-cases-for-software-with-sample/)
     + Used to help formulate the test syntax structure.
 + [W3Schools](https://www.w3schools.com/)
@@ -1299,7 +1297,7 @@ is addressed in **Scalability** and **Other Problems**.
 + [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
     + A basic guide to the current version of Werkzeug.
 + [World Wide Web Consortium (W3C)](https://www.w3.org/)
-    + Used to understand basic standardization practices for web based apps.
+    + Used to understand basic standardization practices for web-based apps.
 
 # Acknowledgements
 + Emily Eldridge for help with revising the grammar and flow of this README document.
