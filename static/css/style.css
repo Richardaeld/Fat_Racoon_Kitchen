@@ -133,11 +133,12 @@
 }
 /* ---------------------------------------- Sticky Note Art */
 /* structure of sticky note is important!*/
-/* > == one level deeper ||  This effect requires a height to be set at the sticky-note level*/ 
+/* > == one level deeper and This effect requires a height to be set at the sticky-note level*/
 /* div(sticky-note) > div(sticky-note-inner-div) > p () *place content here within p* */
 /* sticky-note-right goes with sticky-note to generate a reverse shadow  */
 /*  sticky-note-middle goes with sticky-note to generate a bottom shadow  */
 /*  *sticky-note-no-shadow* can replace sticky-note to remove lifting shadow  */
+
 /* Creates external box */
 .sticky-note-no-shadow,
 .sticky-note {
