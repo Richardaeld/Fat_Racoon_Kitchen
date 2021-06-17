@@ -28,16 +28,6 @@
 [Technology Languages](#technology-languages)
 
 [Testing](#testing)
-+ [Developer Testing Specifications](#developer-testing-specifications)
-    + [Developer Tested Systems](#developer-tested-systems)
-    + [Developer Testing Methods](#developer-testing-methods)
-+ [Developer Tests](#developer-tests)
-+ [Program Tests](#program-tests)
-    + [BrowserStack](#browserstack)
-    + [Lighthouse](#lighthouse)
-    + [JigSaw](#jigsaw)
-    + [W3C Validator](#w3c-validator)
-    + [JSHint](#jshint)
 
 [Bugs and Other Problems](#bugs-and-other-problems)
 + [Previous Bugs](#previous-bugs)
@@ -403,68 +393,7 @@ was a deliberate choice to help the developer gain a better understanding of how
 + MongoDB - NoSQL database that the application communicates with and stores information on.
 
 # Testing
-## Developer Testing Specifications
-### Developer Tested Systems
-+ Windows 10 (Chrome 87**, Edge 87**, Firefox 84**)
-    + Chrome
-        + Developed in Chrome.
-        + Initially tested in every bootstrap breakpoint during development.
-        + Tested in landscape, which is desktop responsiveness level.
-        + Tested in portrait, which is tablet responsiveness level.
-    + Edge
-        + Tested in landscape, which is desktop responsiveness level.
-        + Tested in portrait, which is tablet responsiveness level.
-    + Firefox
-        + Tested in landscape, which is desktop responsiveness level.
-        + Tested in portrait, which is tablet responsiveness level.
-+ G8 ThinQ (Chrome 87**)
-    + Chrome
-        + Tested in landscape, which is tablet responsiveness level.
-        + Tested in portrait, which is Mobile responsiveness level.
-+ iPad, 5th gen 13.3(Safari 13**)
-    + Safari
-        + Tested in landscape, which is tablet responsiveness level.
-        + Tested in portrait, which is tablet responsiveness level.
-
-### Developer Testing Methods
-+ Every test of **Developer Tests** was performed on the above listed systems and the specified screen orientation.
-+ The tester will perform each test of **Developer Tests** three times:
-    + Once in landscape.
-    + Once in portrait.
-    + Once with random moments of spam clicking and switching between landscape/portrait. This final test is critical to ensure tablet and mobile users have an enjoyable experience.
-
-## Developer Tests
-+ The **Developer Tests** can be found on [this separate README](README_TESTS.md).
-
-## Program Tests
-### BrowserStack
-+ Allows a wide range of devices to be quickly and easily tested.
-+ [Google Nexus 5 - Default Browser](static/readme/testing/browserstack/4.4_Google-Nexus-5_portrait_real-mobile.jpg)
-+ [OS X Big Sur - Chrome 71](static/readme/testing/browserstack/macbsr_chrome_71.0.jpg)
-+ [Windows 10 - Chrome 71](static/readme/testing/browserstack/win10_chrome_71.0.jpg)
-
-### Lighthouse
-+ Identifies problems with performance, accessibility, best practices, and SEO.
-![Light house results](static/readme/testing/lighthouse-fat-raccoon.jpg "Light house results")
-
-### JigSaw
-+ Identifies errors in CSS
-![Jigsaw results](static/readme/testing/w3c-jigsaw.jpg "Jigsaw results")
-+ Errors are present for some of the CSS art but MDN shows they are not a problem.
-    + A background "stacking gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
-    + A background "repeating linear gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
-+ Warnings are present for some of the vendor extensions, but those extensions are necessary and the errors can be ignored.
-
-### W3C Validator
-+ Identifies errors in HTML.
-+ Helpful for proper semantic HTML and ARIA standard practices.
-![W3C validator results](static/readme/testing/w3c.jpg "W3c validator results")
-
-### JSHint
-+ Identifies errors in JS.
-![JSHint results](static/readme/testing/jshint.jpg)
-+ Pagination's function flags a warning, because a second function is imbedded within it. This `<array>.forEach()` function is imbedded because of the original design and is a technical oversight.
-    + This issue is addressed in the **Other Problems** section.
++ [The **Testing** documentation can be found on the TESTING.md](TESTING.md).
 
 # Bugs and Other Problems
 ## Previous Bugs

@@ -15,6 +15,13 @@
     + [Testing Profile Updates](#testing-profile-updates)
     + [Testing Delete Recipe - Full C.R.U.D. Test](#testing-delete-recipe---full-c.r.u.d.-test)
     + [Testing Delete Button for Recipes on Profile Page](#testing-delete-button-for-recipes-on-profile-page)
++ [Program Tests](#program-tests)
+    + [BrowserStack](#browserstack)
+    + [Lighthouse](#lighthouse)
+    + [JigSaw](#jigsaw)
+    + [W3C Validator](#w3c-validator)
+    + [JSHint](#jshint)
++ [README.md](README.md)
 
 
 # Testing
@@ -492,3 +499,36 @@
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the bad UX.
 1. If there is an incorrect box shadow, record:
     + The test name, recipe name, screen resolution, browser/device, page (Jinja template), and a brief description of the incorrect box shadow.
+
+## Program Tests
+### BrowserStack
++ Allows a wide range of devices to be quickly and easily tested.
++ [Google Nexus 5 - Default Browser](static/readme/testing/browserstack/4.4_Google-Nexus-5_portrait_real-mobile.jpg)
++ [OS X Big Sur - Chrome 71](static/readme/testing/browserstack/macbsr_chrome_71.0.jpg)
++ [Windows 10 - Chrome 71](static/readme/testing/browserstack/win10_chrome_71.0.jpg)
+
+### Lighthouse
++ Identifies problems with performance, accessibility, best practices, and SEO.
+![Light house results](static/readme/testing/lighthouse-fat-raccoon.jpg "Light house results")
+
+### JigSaw
++ Identifies errors in CSS
+![Jigsaw results](static/readme/testing/w3c-jigsaw.jpg "Jigsaw results")
++ Errors are present for some of the CSS art but MDN shows they are not a problem.
+    + A background "stacking gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#stacked_gradients).
+    + A background "repeating linear gradient" example can be seen at [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients#Repeating_linear_gradients).
++ Warnings are present for some of the vendor extensions, but those extensions are necessary and the errors can be ignored.
+
+### W3C Validator
++ Identifies errors in HTML.
++ Helpful for proper semantic HTML and ARIA standard practices.
+![W3C validator results](static/readme/testing/w3c.jpg "W3c validator results")
+
+### JSHint
++ Identifies errors in JS.
+![JSHint results](static/readme/testing/jshint.jpg)
++ Pagination's function flags a warning, because a second function is imbedded within it. This `<array>.forEach()` function is imbedded because of the original design and is a technical oversight.
+    + This issue is addressed in the **Other Problems** section.
+
+# README.md
++ [Return to the README.md](README.md)
