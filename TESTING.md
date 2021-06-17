@@ -21,7 +21,7 @@
     + [JigSaw](#jigsaw)
     + [W3C Validator](#w3c-validator)
     + [JSHint](#jshint)
-+ [README.md](#readme.md)
++ [Return to README](#return-to-readme)
 
 
 # Testing
@@ -530,5 +530,5 @@
 + Pagination's function flags a warning, because a second function is imbedded within it. This `<array>.forEach()` function is imbedded because of the original design and is a technical oversight.
     + This issue is addressed in the **Other Problems** section.
 
-# README.md
+# Return to README
 + [Return to the README.md](README.md)
