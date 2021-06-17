@@ -755,10 +755,15 @@ was a deliberate choice to help the developer gain a better understanding of how
     + Used to create scalable vector graphics (SVG).
 + [RandomKeygen](https://randomkeygen.com/)
     + Used to create random secret key for "env.py"
++ [PEP8 online](http://pep8online.com/)
+    + Used to identify errors in Python.
 
 ## Credits
 ### Code Citations
-+ [Pretty Printed](https://www.youtube.com/watch?v=DsgAuceHha4) - how to upload images to MongoDB
++ [Pretty Printed](https://www.youtube.com/watch?v=DsgAuceHha4)
+    + How to upload images to MongoDB using a specified image route.
++ [Neven on Stackoverflow](https://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome)
+    + How to smooth jagged edges from CSS transformations in Chrome browser using `-webkit-backface-visibility:hidden`.
 
 ### References and Ideas
 + [Bootstrap](https://getbootstrap.com/)
