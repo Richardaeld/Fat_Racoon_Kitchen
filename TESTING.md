@@ -21,7 +21,7 @@
     + [JigSaw](#jigsaw)
     + [W3C Validator](#w3c-validator)
     + [JSHint](#jshint)
-+ [README.md](README.md)
++ [README.md](#README.md)
 
 
 # Testing

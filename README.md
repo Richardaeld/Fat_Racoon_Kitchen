@@ -393,7 +393,7 @@ was a deliberate choice to help the developer gain a better understanding of how
 + MongoDB - NoSQL database that the application communicates with and stores information on.
 
 # Testing
-+ [The **Testing** documentation can be found on the TESTING.md](TESTING.md).
++ The **Testing** documentation can be found on [TESTING.md](TESTING.md).
 
 # Bugs and Other Problems
 ## Previous Bugs
