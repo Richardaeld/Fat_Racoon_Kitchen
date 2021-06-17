@@ -44,6 +44,7 @@
     + [Database Structure](#database-structure)
     + [Connecting to Database](#connecting-to-database)
     + [Create the Appropriate Documents](#create-the-appropriate-documents)
++ [Run Application in GitPod](#run-application-in-gitpod)
 
 [Tools and Credits](#tools-and-credits)
 + [Tools](#tools)
@@ -711,6 +712,10 @@ was a deliberate choice to help the developer gain a better understanding of how
 + The fs.files collection:
     + Will be created automatically after the first image is uploaded.
     + The fs.files collection is for the storage of image file data.
+
+## Run Application in GitPod
++ Run Fat Raccoon application.
+    + In bash (of GitPod clone) type, `python3 run.py` and press enter.
 
 # Tools and Credits
 ## Tools
