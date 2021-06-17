@@ -717,6 +717,7 @@ was a deliberate choice to help the developer gain a better understanding of how
 + To run Fat Raccoon application.
     + Complete every other part of **Deployment**.
     + In bash (of GitPod clone) type, `python3 run.py` and press enter.
+    + Click the **Open Browser** button for port 8080.
 
 # Tools and Credits
 ## Tools
