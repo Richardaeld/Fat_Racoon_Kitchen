@@ -81,7 +81,8 @@ def acceptable_input(user_input, val_type, min_char, max_char, error):
             if inputCheck == acceptCheck:
                 break
             elif acceptCheck == accepted_char[-1]:
-                flash(f"{error.title()} has incorrect character, '{inputCheck}'")
+                flash(
+                    f"{error.title()} has incorrect character, '{inputCheck}'")
                 return False
     return True
 
@@ -95,7 +96,10 @@ def validate_list(val_list):
             return False
         if validate[0] == "email":
             user_email = request.form.get(validate[0])
-            if not user_email.endswith(".com") and not user_email.endswith(".edu") and not user_email.endswith(".net") and not user_email.endswith(".org"):
+            if not user_email.endswith(".com") and (
+                    not user_email.endswith(".edu")) and (
+                    not user_email.endswith(".net")) and (
+                    not user_email.endswith(".org")):
                 flash("inappropiate email suffix")
                 return False
             if user_email.find("@") == -1:

@@ -1,6 +1,7 @@
 import os
 import random
 import datetime
+import rae  # Custom library made for this project
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -9,7 +10,6 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
-import rae  # Custom library made for this project
 
 
 app = Flask(__name__)
@@ -140,7 +140,8 @@ def addFavorite(recipeId, favoriteChange):
 def removeRecents(recipeId, favType):
     try:
         userInfo = mongo.db.users.find_one({"email": session["user"]})
-        newFav = [fav for fav in userInfo[favType] if fav[0] != ObjectId(recipeId)]
+        newFav = [
+            fav for fav in userInfo[favType] if fav[0] != ObjectId(recipeId)]
         if favType == "favorites":
             rae.update_mongo("user", userInfo["_id"], dict(favorites=newFav))
         if favType == "recents":
@@ -205,7 +206,8 @@ def add_edit_recipe(recipeId):
             recipeInfo = mongo.db.blank.find_one(
                 {"_id": ObjectId("607b30bb8ac97dfcf527a2b8")})
         else:
-            recipeInfo = (mongo.db.recipes.find_one({"_id": ObjectId(recipeId)}))
+            recipeInfo = (mongo.db.recipes.find_one(
+                {"_id": ObjectId(recipeId)}))
         return render_template(
             "add_edit_recipe.html", features=features, recipeInfo=recipeInfo,
             recipeIngEnum=list(enumerate(recipeInfo["ingredients"])),
@@ -215,6 +217,7 @@ def add_edit_recipe(recipeId):
     except KeyError:
         flash("Your session has ended please login again")
         return redirect(url_for("index"))
+
 
 @app.route("/upload_recipe/<recipeId>/<username>", methods=("GET", "POST"))
 def upload_recipe(recipeId, username):
@@ -254,6 +257,7 @@ def edit_user_info():
     except KeyError:
         flash("Your session has ended please login again")
         return redirect(url_for("index"))
+
 
 # Edits user information
 @app.route("/profile/edit", methods=("GET", "POST"))
