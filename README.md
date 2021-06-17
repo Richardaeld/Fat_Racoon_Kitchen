@@ -348,7 +348,7 @@ was a deliberate choice to help the developer gain a better understanding of how
 ### Wireframe
 + Each wireframe contains curly brackets that give a description of its contents and what the filler (missing database data) content should be.
 ![Wireframe of the index page](static/readme/wireframe/index-page-large.png "Wireframe of the index page")
-+ [Balsamiq](https://balsamiq.com/) was used for the planning process and wireframe creation.
++ Balsamiq was used for the planning process and wireframe creation.
 + Wireframes were made for all predetermined size variations of the application.
 + Wireframes were made for the modals to streamline their design. This also allowed for the modals to be shown without over complicating the wireframe design.
 + [Click here to view all wireframes associated to this project.](static/readme/wireframe "Location of wireframes")
@@ -356,7 +356,7 @@ was a deliberate choice to help the developer gain a better understanding of how
 ### Live Application
 + A fully functioning application can be found on [Heroku](https://fat-raccoon.herokuapp.com/ "Deplayment location").
 ![Index page of the Fat Raccoon](static/readme/demo/demo-index-large.jpg "Index page of the Fat Raccoon")
-+ [GitHub's](https://github.com/) IDE [GitPod](https://www.gitpod.io/) was used for the construction process.
++ GitHub's IDE GitPod was used for the construction process.
 + GitHub houses the [master branch](https://github.com/Richardaeld/Fat_Racoon_Kitchen).
 
 ## Scalability
