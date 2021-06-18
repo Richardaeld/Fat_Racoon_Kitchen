@@ -20,7 +20,7 @@
 + [Edit User Info](#edit-user-info)
 + [Search Bar Returns](#search-bar-returns)
 + [Page Performance](#page-performance)
-+ [Wireframe and Live Demo](#wireframe-and-live-demo)
++ [Wireframe and Live Application](#wireframe-and-live-application)
     + [Wireframe](#wireframe)
     + [Live Application](#live-application)
 + [Scalability](#scalability)
@@ -344,7 +344,7 @@ was a deliberate choice to help the developer gain a better understanding of how
 + All developer uploaded images have been compressed to reduce image download times and improve UX.
 ![TinyPNG helps reduce file size and improves UX](static/readme/testing/tinyify.jpg "TinyPNG helps reduce file size and improves UX")
 
-## Wireframe and Live Demo
+## Wireframe and Live Application
 ### Wireframe
 + Each wireframe contains curly brackets that give a description of its contents and what the filler (missing database data) content should be.
 ![Wireframe of the index page](static/readme/wireframe/index-page-large.png "Wireframe of the index page")
