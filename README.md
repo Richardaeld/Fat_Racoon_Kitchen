@@ -451,8 +451,8 @@ was a deliberate choice to help the developer gain a better understanding of how
         + Replaced the original navigation bar with a Bootstrap navigation bar.
 + Pagination would not function with 20 entires in the container
     + Caused by:
-        + Entries being over 15 and a multiple of 5.
-        + The JS wasn't placing the end ellipses which is required for pagination to function properly
+        + Entries being over 15 and a multiple of 5 in a single featured ingredient container.
+        + The JS wasn't placing the end ellipses which is required for pagination to function properly.
     + Fix:
         + Reduced number by one where end ellipses starts. This causes the pagination to trigger on multiples of five properly.
 
@@ -526,7 +526,7 @@ was a deliberate choice to help the developer gain a better understanding of how
     + Attempted fix(es):
         + None.
     + Thought(s):
-        + This could be fixed by moving the inner function, however, all the dummy data had been removed from the database by the time this error had been discovered. Thus a newly reconstructed pagination function could not be appropriately and time efficiently tested.
+        + This could be fixed by moving the inner function.
         + Although technically inefficient, this imbedded function is only used in pagination and isn't required anywhere else.
 + Needed a triangle shaped container that could hold a `repeating-linear-gradient`.
     + Caused by:
