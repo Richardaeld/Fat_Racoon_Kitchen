@@ -281,6 +281,8 @@ def update_user_info():
         rae.password_confirm(userInfo)
     flash("Profile updated successfully!")
     rae.update_mongo("user", userInfo["_id"], userInfo)
+    session.pop("user")
+    session["user"] = request.form.get("email").lower()
     return(redirect(url_for("profile")))
 
 
