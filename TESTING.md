@@ -21,8 +21,9 @@
     + [JigSaw](#jigsaw)
     + [W3C Validator](#w3c-validator)
     + [JSHint](#jshint)
-+ [Return to README](#return-to-readme)
+    + [PEP8 online](#pep8-online)
 
++ [Return to README](#return-to-readme)
 
 # Testing
 ## Developer Testing Specifications
@@ -529,6 +530,9 @@
 ![JSHint results](static/readme/testing/jshint.jpg)
 + Pagination's function flags a warning, because a second function is imbedded within it. This `<array>.forEach()` function is imbedded because of the original design and is a technical oversight.
     + This issue is addressed in the **Other Problems** section.
+
+### PEP8 online
++ Identifies errors in Python.
 
 # Return to README
 + [Return to the README.md](README.md)
