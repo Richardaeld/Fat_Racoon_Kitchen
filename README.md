@@ -492,7 +492,7 @@ was a deliberate choice to help the developer gain a better understanding of how
         + Check boxes use `position: absolute` which makes them difficult to align.
     + Attempted fix(es):
         + Used `transform: translate(-50%)` and `top: 50%` were used to center the boxes, however, this centered the boxes to the middle of their text element.
-        + A `top:<#rem>` was used to approximate where the box should be. This lead to an overall good UX, however, single line text entries on small devices gave the boxes a skewed look.
+        + A `top:<#rem>` was used to approximate where the box should be. This lead to an overall good UX, however, single line text entries on small devices still give the boxes a skewed look.
     + Thought(s):
         + Setting the check box position with JS could be a more precise solution.
 
