@@ -484,12 +484,11 @@ was a deliberate choice to help the developer gain a better understanding of how
 + The Check box alignment for recipe ingredients and recipe steps is skewed on smaller devices.
     + Caused by:
         + Check boxes use `position: absolute` which makes them difficult to align.
-    + Attemped fix(es):
+    + Attempted fix(es):
         + `transform: translate(-50%)` and `top: 50%` were used to center the boxes, however this centered the boxes to the middle of their text element
         + A `top:<#rem>` was used to approximate where the box should be. This leads to an overall good UX. However, single line text entries on small devices will give the boxes a skewed look.
     + Thought(s);
         + Setting the check box position with JS could be a more precise solution.
-
 
 ## Other Problems
 + Lack of accepted email suffixes (email validation).
