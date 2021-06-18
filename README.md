@@ -487,13 +487,13 @@ was a deliberate choice to help the developer gain a better understanding of how
     + Thought(s):
         + The attempted fixes only minimized the appearance of the bug.
         + More reduction in the size of the pseudo-element(s) and an increase in the size of the `box-shadow` could remove this bug further. However, it will take a considerable amount of time to find this "golden-ratio" for all screen resolutions and browser/device combinations.
-+ The Check box alignment for recipe ingredients and recipe steps is skewed on smaller devices.
++ The check box alignment for recipe ingredients and recipe steps is skewed on smaller devices.
     + Caused by:
         + Check boxes use `position: absolute` which makes them difficult to align.
     + Attempted fix(es):
-        + `transform: translate(-50%)` and `top: 50%` were used to center the boxes, however this centered the boxes to the middle of their text element
-        + A `top:<#rem>` was used to approximate where the box should be. This leads to an overall good UX. However, single line text entries on small devices will give the boxes a skewed look.
-    + Thought(s);
+        + `transform: translate(-50%)` and `top: 50%` were used to center the boxes, however this centered the boxes to the middle of their text element.
+        + A `top:<#rem>` was used to approximate where the box should be. That lead to an overall good UX, however, single line text entries on small devices gave the boxes a skewed look.
+    + Thought(s):
         + Setting the check box position with JS could be a more precise solution.
 
 ## Other Problems
