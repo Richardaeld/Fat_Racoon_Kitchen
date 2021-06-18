@@ -520,7 +520,7 @@ was a deliberate choice to help the developer gain a better understanding of how
         + Switching between landscape/portrait orientation.
     + Attempted fix(es):
         + Removed appearance of the recipe's total time from smaller devices (resolutions).
-        + Removed the decreasing size of the `make-space` class.
+        + Removed the breakpoint reductions to the size of the `make-space` class.
     + Thought(s):
         + The attempted fixes have lessened the appearance of this bug, however, further improvements are needed.
         + Forcing the page to refresh when switching between landscape/portrait orientation would fix this, however, this would also reset the pagination a user is on.
