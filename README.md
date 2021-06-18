@@ -515,6 +515,16 @@ was a deliberate choice to help the developer gain a better understanding of how
     + Thought(s):
         + A limited view area is unfortunately a standard that mobile users (with smaller mobile devices) have come to accept.
         + In portrait orientation, this modal functions with a good UX.
++ The templates `all_recipes.html` and `recipe_list.html` can have text content that extends beyond their obvious borders.
+    + Caused by:
+        + Switching between landscape/portrait orientation.
+    + Attempted fix(es):
+        + Removed appearance of the recipe's total time from smaller devices (resolutions).
+        + Removed the decreasing size of the `make-space` class.
+    + Thought(s):
+        + The attempted fixes have lessened the appearance of this bug, however, further improvements are needed.
+        + Forcing the page to refresh when switching between landscape/portrait orientation would fix this, however, this would also reset the pagination a user is on.
+        + A lower character limit on the recipe names could help, but this may also worsen the UX.
 
 ## Other Problems
 + Lack of accepted email suffixes (email validation).
