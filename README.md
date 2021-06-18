@@ -495,6 +495,17 @@ was a deliberate choice to help the developer gain a better understanding of how
         + A `top:<#rem>` was used to approximate where the box should be. This lead to an overall good UX, however, single line text entries on small devices still give the boxes a skewed look.
     + Thought(s):
         + Setting the check box position with JS could be a more precise solution.
++ Small devices in landscape orientation using the on-screen keyboard have an extremely limited view window. This makes creating an account and logging in difficult for users with this screen orientation and device combo.
+    + Caused by:
+        + The limited screen real estate when the on-screen keyboard is used.
+        + The browser navigation bar activating when the keyboard is used.
+        + The app's navigation bar is always present on the screen.
+        + The login/create modal has a fixed placement which is problematic for small mobile device users in landscape orientation.
+    + Attempted fix(es):
+        + None.
+    + Thought(s):
+        + A Limited view area is an unfortunate standard that mobile users (with smaller mobile devices) have come to accept.
+        + In portrait orientation this modal functions with a good UX.
 
 ## Other Problems
 + Lack of accepted email suffixes (email validation).
