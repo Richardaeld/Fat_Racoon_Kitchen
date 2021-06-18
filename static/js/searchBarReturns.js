@@ -178,7 +178,7 @@ function baseValidation (inputSelector, validationSelector) {
                 // Validates for name/username
             } else if (validationSelector === "name"){
                 // Validates if correct amount of characters present
-                if(baseVal.value.length >= 4 && baseVal.value.length <= 100){
+                if(baseVal.value.length >= 5 && baseVal.value.length <= 100){
                     baseValPara[0].classList.add("make-invis");
                 } else {
                     baseValPara[0].classList.remove("make-invis");
