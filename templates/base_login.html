@@ -68,9 +68,15 @@
                 </li>
                 {% endif %}
                 {% if request.endpoint == "recipe" or request.endpoint == "add_edit_recipe" or request.endpoint == "addFavorite" %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">{{ recipeInfo.name.title() }} <span class="sr-only">(current)</span></a>
-                </li>
+                    {% if recipeInfo.name == "" %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">New Recipe <span class="sr-only">(current)</span></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">{{ recipeInfo.name.title() }} <span class="sr-only">(current)</span></a>
+                    </li>
+                    {% endif %}
                 {% endif %}
                 {% if session.user == null %}
                 <li class="nav-item">
