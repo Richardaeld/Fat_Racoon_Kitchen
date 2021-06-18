@@ -388,7 +388,7 @@ function selectFeature(pagination){
             createUl.appendChild(createLi);
 
             // Creates end ellipses
-            if (pagNumFrame == Math.floor(liLength/5) ){
+            if (pagNumFrame == Math.floor(liLength/5 - 1)){
                 let createLi = document.createElement("li");
                 createLi.className = "col list-group-item pagination-content last-ellipses make-invis not-clickable";
                 createLi.textContent = "...";
