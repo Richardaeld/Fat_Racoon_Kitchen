@@ -1234,6 +1234,9 @@ h6 {
     .social-link-push li {
         height: 90px;
     }
+    .rights-reserved {
+        font-size: .75rem;
+    }
     /* general form */
     .tab {
         padding: 0.25rem;
