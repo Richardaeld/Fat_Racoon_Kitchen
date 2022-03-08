@@ -561,8 +561,9 @@ header {
     color: #faf9f6;
 }
 
-.flash h1 {
+.flash p {
     margin-bottom: 0;
+    font-size: 3rem;
 }
 /* ------------------------------------------------------- Main Nav Bar Section  ---------------------------------------------------------------- */
 .custom-nav {
@@ -1142,7 +1143,8 @@ h6 {
     }
 
     h1,
-    h2 {
+    h2,
+    .flash {
         font-size: 2rem;
     }
 
